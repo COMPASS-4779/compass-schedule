@@ -1,0 +1,516 @@
+{
+ "meta": {
+  "version": "3.0",
+  "passMark": 85
+ },
+ "chapters": [
+  {
+   "id": "ch02",
+   "num": 2,
+   "title": "受動態",
+   "color": "#1976d2",
+   "items": [
+    {
+     "id": "ch02_001",
+     "num": "001",
+     "name": "「受動態」とは？",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-1",
+       "content": "『「受動態」とは？』\n受動態（受け身）は be動詞＋過去分詞。「〜される／〜られる」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "受動態（受け身）は be動詞＋過去分詞。「〜される／〜られる」を表す。\n能動態 (Active)\nS V O\n「Sが O を Vする」\nシグナル/特徴\n通常の主語＋動詞＋目的語\n受動態 (Passive)\nS be + V-en (by O)\n「Sが Oに よって Vされる」\nシグナル/特徴\n目的語が主語に変わる"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Tom broke the window.\nトムが窓を割った。（能動）\nThe window was broken by Tom.\n窓はトムによって割られた。（受動）\nEnglish is spoken in many countries.\n英語は多くの国で話されている。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nbe + 過去分詞 ＝ 受動態\n2\nby 〜 で行為者を表す\n3\n目的語が主語になる"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_001_「受動態」とは？_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「受動態」とは︖   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計４点）\n\n①   Tom loves Carol.   トムは\n\n②   Carol is loved by Tom.   キャロルは\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   彼らは，ケンを愛している。\n\n   They   Ken.\n\n(2)   彼らは，ケンを愛していた。\n\n   They   Ken.\n\n(3)   ケンは，彼らに愛されている。\n\n   Ken   by them.\n\n(4)   ケンは，彼らに愛されていた。\n\n   Ken   by them.\n\n(5)   皆が，ユミとマキを尊敬している。\n\n   Everyone   Yumi and Maki.\n\n(6)   皆が，ユミとマキを尊敬していた。\n\n   Everyone   Yumi and Maki.\n\n(7)   ユミとマキは，皆に尊敬されている。\n\n   Yumi and Maki   .\n\n(8)   ユミとマキは，皆に尊敬されていた。\n\n   Yumi and Maki   .\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各６点・計 18 点）\n\n(1)   ワインはぶどうからできている。\n\n   Wine   from grapes.\n\n(2)   私は幼年時代にトミーと呼ばれていた。\n\n   I   Tommy during my childhood.\n\n(3)   その電車は多くの人で混み合っていた。\n\n   The train   with many people.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 24 点）\n\n(1)   その腕時計は，誕生日プレゼントとしてジャックに与えられた。\n\n   The watch (   ) Jack as a birthday present.\n\n   ① gave to   ② was given to\n\n(2)   台風のため，その試合は中止された。\n\n   The game (   ) due to a typhoon.\n\n   ① canceled   ② was canceled\n\n(3)   ボールはワンバウンドで彼に捕球された。\n\n   The ball (   ) on the first bounce by him.\n\n   ① caught   ② was caught\n\n(4)   山々は雪で覆われていた。\n\n   The mountains (   ) snow.\n\n   ① covered with   ② were covered with\n\f５   次の能動態の文を，下線部を主語にして受動態の文に書きかえなさい。\n   （各７点・計 14 点）\n\n(1)   Both adults and children like the anime.\n\n   →\n\n(2) A lot of people in the world read that story.\n\n   →\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   校門は毎朝７時に開けられる。\n\n(2)   紙はいつ発明されましたか。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の問いに答えなさい。\n\n(1)   次の３つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n   Who opened the window?\n\n   was the window opened by?\n\n   was the window opened?\n\n(2)   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n①   彼の犬はどこで見つかったのですか。\n   ( found / was / dog / where / his / ? )\n\n②   電話は誰によって発明されたのですか。\n   ( by / the / who / invented / telephone / was / ? )\n\n③   この機械は何のために使われるのですか。\n   ( for / what / this / used / machine / is / ? )",
+       "answer_text": "Ａ問題\n\n１\n\n①   Tom loves Carol.   トムはキャロルを愛している。\n\n②   Carol is loved by Tom.   キャロルはトムに愛されている。\n\n２\n\n(1)   love\n\n(2)   loved\n\n(3)   is loved\n\n(4)   was loved\n\n(5)   respects\n\n(6)   respected\n\n(7)   are respected by everyone\n\n(8)   were respected by everyone\n\nＢ問題\n\n３\n\n(1)   is made\n\n(2)   was called\n\n(3)   was crowded\n\n４\n\n(1)   ② was given to\n(2)   ② was canceled\n\f(3)   ② was caught\n(4)   ② were covered with\n\n５\n\n(1)   The anime is liked by both adults and children.\n\n(2)   That story is read by a lot of people in the world.\n\n６\n\n(1)   [例] The school gate is opened at seven every morning.\n\n(2)   [例] When was paper invented?\n\nＣ問題\n\n７\n\n(1) Who was the window opened by?\n\n   By whom was the window opened?\n\n   誰が窓を開けたのですか。[窓は誰によって開けられたのですか。]\n\n(2)\n\n①   Where was his dog found?\n\n②   Who was the telephone invented by?\n\n③   What is this machine used for?",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_001『「受動態」とは？』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_001『「受動態」とは？』（演習）.pdf",
+       "q_count": 34
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "2 章「受動態」 第２章「受動態」   1,2 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「受動態」とは？\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   昨晩，メアリーは私たちを夕食に招待しました。\n\n   Mary   us to dinner last evening.\n\n(2)   昨晩，私たちはメアリーに夕食に招待されました。\n   We   to dinner by Mary last evening.\n(3)   そのいすは妹の部屋で使われます。\n\n   The chair   in my sister’s room.\n\n(4)   この像は，1886 年に建てられました。\n\n   This statue   in 1886.\n\n(5)   その小さな犬はアンに飼われています。\n\n   The small dog   by Ann.\n\n(6)   私のささいな秘密はだれにも知られていません。\n\n   My little secret   to anyone.\n\n(7)   私の部屋は毎週土曜日に掃除されます。\n\n   My room   up every Saturday.\n\n(8)   このバッグはイタリア製ですか。\n\n   this bag   in Italy?\n\n   74",
+       "answer_text": "章「受動態」   1,21-2\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) invited\n\n(2) were invited\n\n(3) is used\n\n(4) was built\n\n(5) is kept\n\n(6) isn’t [is not] known\n\n(7) is cleaned\n\n(8) Is ／ made",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_001『「受動態」とは？』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_001『「受動態」とは？』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 1 2   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   「受動態」とは？   ⑴ ジャックは皆に尊敬されています。\n\n 例題\n   次の日本文にあう英文になるように、   に適する   Jack（   ）by everybody.\n   語（句）を書きなさい。\n   ① respects   ② is respected\n⑴ 皆がトムを愛しています。\n  Everyone   Tom.\n   ⑵ 英語は日本で話されています。\n⑵ トムは皆に愛されています。   English（   ）Japan.\n  Tom   by everyone.\n   ① is spoken by   ② is spoken in\n⑶ この手紙はメアリーによって書かれました。\n  This letter   by Mary.   ⑶ その会議は月曜日に開かれました。\n   The meeting（   ）on Monday.\n⑷ この車は日本で作られました。\n  This car   in Japan.   ① hold   ② was held\n\n   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n Tom\n   omitsu Kimura の   This temple（   ）752.\n\n「受動態」とは?   ① is built by   ② was built by\n   ③ is built in   ④ was built in\n 受動態   be動詞＋過去分詞\n\n〔例〕 Tom loves Carol.（love「～を愛する」）\n   ↓\n   Carol is loved by Tom.（be loved「愛される」）",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_001『「受動態」とは？』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_001『「受動態」とは？』（習得）.pdf",
+       "q_count": 17
+      }
+     }
+    },
+    {
+     "id": "ch02_003",
+     "num": "003",
+     "name": "「助動詞＋be done」の表現",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-2",
+       "content": "『「助動詞＋be done」の表現』\n助動詞のある文の受動態は「助動詞 + be + 過去分詞」。"
+      },
+      {
+       "title": "概要",
+       "content": "助動詞のある文の受動態は「助動詞 + be + 過去分詞」。\n助動詞＋受動態\ncan / will / must など\n助動詞の後ろは必ず be\nシグナル/特徴\nbe done の形\n助動詞 + be + V-en\n否定形・疑問形\n助動詞 + not + be done\nシグナル/特徴\nCan it be done? など"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "This problem can be solved easily.\nこの問題は簡単に解決できる。\nThe work must be finished by tomorrow.\n仕事は明日までに終えられなければならない。\nThe letter will be sent tomorrow.\n手紙は明日送られるだろう。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n助動詞＋be＋過去分詞\n2\nbe は必ず原形\n3\n助動詞 not be done"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_003_「助動詞＋be done」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 助 動 詞 ＋ be done」 の 表 現   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（２点）\n\n   ＜受動態＞\n①   will do   →   will be done\n\n②   can do   →\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   昨晩，メアリーは私たちを夕食に招待した。\n\n   Mary   us to dinner last evening.\n\n(2)   昨晩，私たちはメアリーに夕食に招待された。\n\n   We   to dinner by Mary last evening.\n\n(3)   昨晩，私たちはメアリーに夕食に招待されなかった。\n\n   We   to dinner by Mary last evening.\n\n(4)   昨晩，あなたはメアリーに夕食に招待されましたか。\n\n   to dinner by Mary last evening?\n\n(5)   トムがこの時計を修理した。\n\n   Tom   this watch.\n\n(6)   トムがこの時計を修理するでしょう。\n\n   Tom   this watch.\n\n(7)   この時計は，トムによって修理された。\n\n   This watch   by Tom.\n\n(8)   この時計は，トムによって修理されるでしょう。\n\n   This watch   by Tom.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各６点・計 18 点）\n\n(1)   その水泳プールは冬には閉まっているだろう。\n\n   The swimming pool   in winter.\n\n(2)   彼女の意志は容易に変えることができない。\n\n   Her will   easily.\n\n(3)   彼の業績は，チームメイトから尊敬されるにちがいない。\n\n   His achievement   by his teammates.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 24 点）\n\n(1)   This idea must (   ) by all the members.\n\n   ①   accept   ② be accepted   ③ accepted\n\n(2)   This smart phone can (   ) easily by the elderly people.\n\n   ① use   ② used   ③ be used\n\n(3)   The decision should (   ) as soon as possible.\n\n   ① make   ② be making   ③ be made\n\n(4)   Her rude attitude won’t (   ) at all.\n\n   ① be liked   ② like   ③ liked\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各８点・計 16 点）\n\n(1)   宿題は今晩までに終わらせられるだろう。\n   ( this / by / doing / the homework / will / done / be / evening / . )\n\f(2)   その本は学校の図書室で借りることができる。\n   ( the school library / the book / be / from / borrow / can / borrowed / . )\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   トムは彼の先生に怒られるだろう。\n\n(2)   この書類(document)は英語で書かれなければならない。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の問いに答えなさい。\n(1)   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n   His voice was very loud and (   ) from far away.\n\n   ① can hear   ② can have heard   ③ could be hearing   ④ could be heard\n\n(2)   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   その国際会議は，来月開かれる予定だ。\n   ( is / next / to / international / held / the / going / be / month / conference / . )",
+       "answer_text": "Ａ問題\n１   ＜受動態＞\n①   will do   →   will be done\n\n②   can do   →   can be done\n\n２\n\n(1)   invited\n\n(2)   were invited\n\n(3)   weren’t [were not] invited\n\n(4)   Were you invited\n\n(5)   repaired\n\n(6)   will repair\n\n(7)   was repaired\n\n(8)   will be repaired\n\nＢ問題\n\n３\n\n(1)   will be closed\n\n(2)   can’t [cannot] be turned [changed]\n\n   her に続く will は「意志」という意味の名詞であることに注意。\n\n(3)   must be respected\n\f４\n\n(1)   ② be accepted\n(2)   ③ be used\n(3)   ③ be made\n(4)   ① be liked\n\n５\n\n(1)   The homework will be done by this evening.   ( doing が不要 )\n\n(2)   The book can be borrowed from the school library.   ( borrow が不要 )\n\n６\n\n(1)   [例] Tom will be scolded [got angry with] by his teacher.\n\n(2)   [例] This document must be written in English.\n\nＣ問題\n\n７\n\n(1)   ④ could be heard\n   彼の声はとても大きく，遠くからでも聞こえた。\n\n   ※過去のことなので，「助動詞 can の過去形 could＋受動態」になっている\n\n(2)   The international conference is going to be held next month.\n\n   ※be going to を受動態で使うときの語順に注意",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_003『「助動詞＋be done」の表現』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_003『「助動詞＋be done」の表現』（演習）.pdf",
+       "q_count": 39
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "2 章「受動態」 第２章「受動態」   3,4 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「助動詞＋be done」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   その最新映画は，この映画館で見られます。\n\n   The latest movie   at this theater.\n\n(2)   来年，新しい図書館が公園の近くに建設されるでしょう。\n\n   A new library   close to the park next year.\n\n(3)   真実が語られなければならない。\n\n   The truth   .\n\n(4)   午前中，その会議室は使用可能です。\n\n   The meeting room   in the morning.\n\n(5)   そのイベントは，今年の夏に仙台で開催されるだろう。\n\n   The event   in Sendai this summer.\n\n(6)   その計画は，予告なく変更されるかもしれません。\n\n   The plan   without notice.\n\n(7)   これらの野菜は，生で食べられます。\n\n   These vegetables   raw.\n\n   78",
+       "answer_text": "章「受動態」   3,43-4\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) can be seen\n\n(2) will be built\n\n(3) must be told\n\n(4) can be used\n\n(5) will be held\n\n(6) may be changed\n\n(7) can be eaten",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_003『「助動詞＋be done」の表現』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_003『「助動詞＋be done」の表現』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 ３ ４   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   「助動詞＋be done」の表現   ⑴ This task must（   ）by noon.\n   次の日本文にあう英文になるように、   に適する\n 例題   ① finish   ② be finished   ③ finished\n   語（句）を書きなさい。\n\n⑴ マイクがこの車を修理するでしょう。\n   ⑵ Mt. Fuji can（   ）from this window.\n  Mike   this car.\n   ① see   ② be see   ③ be seen\n⑵ この車はマイクによって修理されるでしょう。\n  This car   by Mike.\n   ⑶ The meeting will（   ）on Friday.\n⑶ 私は家から東京タワーを見ることができます。\n   ① hold   ② held   ③ be held\n  I   Tokyo Tower from my house.\n\n⑷ 東京タワーが私の家から見えます。\n  Tokyo Tower   from my house.   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   どんなことをしてもデフレを抑えなければならない。\n   Deflation（   ）at any cost.\n\n   ① must control   ② must controlled\n   omitsu Kimura の\n Tom   ③ must be controlled\n\n「助動詞＋be done」の表現\n\n 助動詞の受動態→助動詞＋be+過去分詞\n\n〔例〕 will do → will be done\n   can do → can be done",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_003『「助動詞＋be done」の表現』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_003『「助動詞＋be done」の表現』（習得）.pdf",
+       "q_count": 19
+      }
+     }
+    },
+    {
+     "id": "ch02_005",
+     "num": "005",
+     "name": "完了形の受動態（have been done）",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-3",
+       "content": "『完了形の受動態（have been done）』\n完了形の受動態は have/has + been + 過去分詞。"
+      },
+      {
+       "title": "概要",
+       "content": "完了形の受動態は have/has + been + 過去分詞。\n完了形の受動態\nhave/has been + V-en\n現在完了の受動態\nシグナル/特徴\nずっと〜されている\nhave been + V-en\nhad been / will have been\n過去・未来完了の受動態\nシグナル/特徴\n基準時点まで〜されてきた"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "The road has been repaired.\n道路は修理された（今その状態）。\nThis book has been read by many people.\nこの本は多くの人に読まれてきた。\nThe bridge had been built by 2010.\nその橋は2010年までに建設されていた。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nhave/has + been + V-en\n2\n完了の意味＋受動\n3\n過去/未来完了形でも応用可"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_005_完了形の受動態（have been done）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "完 了 形 の 受 動 態 (have been done)   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（２点）\n\n   ＜完了形＞   ＜完了形の受動態＞\n①   have done   →   have been done\n\n②   have made   →\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   真実が語られなければならない。\n\n   The truth   .\n\n(2)   午前中，その会議室は使用可能だ。\n\n   The meeting room   in the morning.\n\n(3)   その計画は，予告なく変更されるかもしれない。\n\n   The plan   without notice.\n\n(4)   その仕事は昨日トムによって終えられましたか。\n\n   by Tom yesterday?\n\n(5)   トムは明日その仕事を終えるでしょう。\n\n   Tom   the work tomorrow.\n\n(6)   トムはちょうどその仕事を終えたところだ。\n\n   Tom   the work.\n\n(7)   その仕事は明日トムによって終えられるでしょう。\n\n   The work   by Tom tomorrow.\n\n(8)   その仕事はちょうどトムによって終えられたところだ。\n\n   The work   by Tom.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 18 点）\n\n(1)   その城は，最近多くの観光客に訪問されています。\n\n   The castle   by a lot of tourists recently.\n\n(2)   彗星群が３日間南の空に見られた。\n\n   A comet group   in the southern sky for three days.\n\n(3)   これらのジーンズは，一度も洗濯されていません。\n\n   These jeans   .\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 24 点）\n\n(1)   The thief (   ) by the police.\n\n   ① has caught   ② has been catching   ③ has been caught\n\n(2)   The bad news (   ) in her office.\n\n   ① has just announced   ② has be just announced\n\n   ③ has just been announced\n\n(3)   An oil field (   ) under the sea.\n\n   ① has discovered   ② has been discovering   ③ has been discovered\n\n(4)   These beautiful pictures (   ) by my grandfather before he died.\n\n   ① had taken   ② had been taken   ③ had been taking\n\n５   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   The cancellation of the game (   ).\n\n   ① has already been decided   ② has already be decided\n\n   ③ has already decided   ④ has already deciding\n\f(2)   I(   ) by a TV reporter on the street.\n\n   ① have never interviewed   ② have never be interviewed\n\n   ③ have never been interviewed   ④ have never been interviewing\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   その絵はちょうど完成されたところです。\n\n(2)   彼が有名になってから，彼の歌は世界中で歌われています。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の( )内の語(句)を正しく並べかえなさい。ただし，余計な１語が含まれて\n   います。また，完成した英文を日本語に訳しなさい。\n\n(1)   This store ( for / having / weeks / been / has / two / closed ).\n\n(2)   ( his / has / by / being / English / been / Tom / never / teacher / scolded / . )\n\n８   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n   その店では，多くの本が売られています。\n\n   They sell many books at that store.\n\n   Many books   .",
+       "answer_text": "Ａ問題\n１\n\n   ＜完了形＞   ＜完了形の受動態＞\n①   have done   →   have been done\n\n②   have made   →   have been made\n\n２\n\n(1)   must be told\n\n(2)   can be used [is available]\n\n(3)   may be changed\n\n(4)   Was the work finished\n\n(5)   will finish\n\n(6)   has just finished\n\n(7)   will be finished\n\n(8)   has been just finished\n\nＢ問題\n\n３\n\n(1)   has been visited\n\n(2)   has been seen\n\n   comet group 「彗星群」\n\n(3)   have never been washed\n\f４\n\n(1)   ③ has been caught\n(2)   ③ has just been announced\n(3)   ③ has been discovered\n(4)   ② had been taken\n\n５\n\n(1)   ① has already been decided\n(2)   ③ have never been interviewed\n\n６\n\n(1)   [例] The picture has just been completed [finished].\n\n(2)   [例] His song has been sung all over the world since he became famous.\n\nＣ問題\n\n７\n\n(1)   This store has been closed for two weeks.   ( having が不要 )\n\n   この店は，２週間閉まったままだ。\n\n(2)   Tom has never been scolded by his English teacher.   ( being が不要 )\n\n   トムは今までに一度も，英語の先生に叱られたことがない。\n\n８\n\n   Many books are sold at that store.\n\n   ※日本文からもわかるように，ここでの They は特定の「彼ら」ではなく，一般の\n   人々・不特定多数の人々をさす。このように，主語が特定の人をさしていない場合\n   には，受動態にしたときに「by …」は省略されるのがふつう。ここでは，Many\n   books are sold at that store by them.とは書かず，「by them」は省略される。",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_005『完了形の受動態（have been done）』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_005『完了形の受動態（have been done）』（演習）.pdf",
+       "q_count": 43
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "2 章「受動態」 第２章「受動態」   5,6 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   完了形の受動態 (have been done)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼は 20 年間以上，有能な弁護士として知られています。\n\n   He   as an able lawyer for over twenty years.\n\n(2)   その絵は昨日，私の父によって購入された。\n\n   The painting   by my father yesterday.\n\n(3)   その絵はすでに私の父によって購入されている。\n\n   The painting   by my father.\n\n(4)   彼はちょうど３冊の絵本を出版した。\n\n   He   three picture books.\n\n(5)   ３冊の絵本が彼によってちょうど出版された。\n\n   Three picture books   by him.\n\n(6)   ３年前にその川に橋がかけられました。\n\n   A bridge   across the river three years ago.\n\n(7)   その川にはまだ橋がかけられていません。\n\n   A bridge   across the river yet.\n\n   82",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) has been known\n\n(2) was bought\n\n(3) has already been bought\n\n(4) has just published\n\n(5) have just been published\n\n(6) was built\n\n(7) has not [hasn’t] been built",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_005『完了形の受動態（have been done）』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_005『完了形の受動態（have been done）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 ５ ６   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   完了形の受動態（have been done）   ⑴ This shop（   ）since last month.\n   次の日本文にあう英文になるように、   に適する\n 例題   ① has closed   ② has been closing   ③ has been closed\n   語（句）を書きなさい。\n\n⑴ このスーパーマーケットは昨年、閉店した。\n   ⑵ These cars（   ）by Tom.\n  This supermarket   last year.\n   ① have just washed   ② have be just washed\n⑵ このスーパーマーケットは先週から閉店している。\n   ③ have just been washed\n  This supermarket   since last week.\n\n⑶ ジャックはちょうどその仕事を終えたところです。\n   入試レベルにチャレンジ\n  Jack   the work.\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n⑷ その仕事はちょうどジャックによって終えられたところです。\n   Ken（   ）as a famous actor.\n  The work   by Jack.\n   ① has known   \t\t   ② has be known\n   ③ has been known\t\t   ④ has been knowing\n\n   omitsu Kimura の\n Tom\n\n 完了形の受動態（have been done）\n\n 完了形の受動態   have been done\n〔例〕 have done → have been done\n   have made → have been made",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_005『完了形の受動態（have been done）』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_005『完了形の受動態（have been done）』（習得）.pdf",
+       "q_count": 16
+      }
+     }
+    },
+    {
+     "id": "ch02_007",
+     "num": "007",
+     "name": "進行形の受動態（be動詞＋being done）",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-4",
+       "content": "『進行形の受動態（be動詞＋being done）』\n進行形の受動態は be動詞 + being + 過去分詞。「今〜されている最中」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "進行形の受動態は be動詞 + being + 過去分詞。「今〜されている最中」を表す。\n進行形の受動態\nis / are / was / were being + V-en\n進行中の受動態\nシグナル/特徴\n「されつつある」\nbe + being + V-en\n形が複雑なので注意\n状態動詞は使えない\nシグナル/特徴\nbe 動詞 + being が連続"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "The house is being painted.\n家はペンキを塗られているところだ。\nDinner was being prepared when I arrived.\n私が着いた時、夕食は準備されているところだった。\nA new bridge is being built.\n新しい橋が建設中だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nbe + being + V-en\n2\n「〜されている最中」\n3\n状態動詞は不可"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_007_進行形の受動態（be動詞＋being done）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "進 ⾏ 形 の 受 動 態 (be 動 詞 ＋ being done)   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（２点）\n\n   ＜進行形＞   ＜進行形の受動態＞\n①   is doing   →   is being done\n\n②   is making   →\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   彼は 20 年間以上，有能な弁護士として知られている。\n\n   He   as an able lawyer for over twenty years.\n\n(2)   その絵は昨日，私の父によって購入された。\n\n   The painting   by my father yesterday.\n\n(3)   その絵はすでに私の父によって購入されている。\n\n   The painting   by my father.\n\n(4)   ３年前にその川に橋がかけられた。\n\n   A bridge   across the river three years ago.\n\n(5)   その川にはまだ橋がかけられていない。\n\n   A bridge   across the river yet.\n\n(6)   その川には新しい橋がかけられるだろう。\n\n   A new bridge   across the river.\n\n(7)   彼らはその川に新しい橋をかけている。\n\n   They   a new bridge across the river.\n\n(8)   その川には新しい橋がかけられているところだ。\n\n   A new bridge   across the river.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各７点・計 21 点）\n\n(1)   現在，ボブによるプレゼンテーションが行われている。\n\n   The presentation   by Bob now.\n\n(2)   クラスでは，議論が続けられている。\n\n   The discussion   in the class.\n\n(3)   父のノートパソコンは今，修理されているところだ。\n\n   My father’s notebook computer   now.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 21 点）\n\n(1)   Nancy is (   ) by her father for her rudeness.\n\n   ① scolding   ② been scolding   ③ being scolded\n\n(2)   The train doors were (   ) when I got to the platform.\n\n   ① closing   ② being closed   ③ being closing\n\n(3)   The factory is (   ) many kinds of machines day by day.\n\n   ① producing   ② been producing   ③ being produced\n\n５   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   明日の今頃は，そのイベントは開催されているだろう。\n\n   The event (   ) at this time tomorrow.\n\n   ① holds   ② will hold   ③ will be being held\n\n(2)   私が帰宅すると，父の誕生日パーティーが準備されているところだった。\n\n   My father’s birthday party (   ) when I got home.\n\n   ① had prepared   ② was being prepared   ③ was preparing\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   生徒らによって，その大きな机が体育館に移動されているところだ。\n\n(2)   その概要(outline)が先生によって説明されている。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい\n\n(1)   While the lecture (   ) they were taking notes silently.\n\n   ① has been given   ② was being given   ③ is being given   ④ was giving\n\n(2)   It has been hard for us to concentrate on class lately because a road\n   (   ) in front of our school.\n\n   ① is building   ② builds   ③ has built   ④ is being built\n\n８ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Robert can’t leave the meeting now because an important plan   1   discussed.\n   〈14 年追試〉\n   ① had been   ② is   ③ is being   ④ was",
+       "answer_text": "Ａ問題\n１\n\n   ＜進行形＞   ＜進行形の受動態＞\n①   is doing   →   is being done\n\n②   is making   →   is being made\n\n２\n\n(1)   has been known\n\n(2)   was bought\n\n(3)   has already been bought\n\n(4)   was built\n\n(5)   has not [hasn’t] been built\n\n(6)   will be built\n\n(7)   are building\n\n(8)   is being built\n\nＢ問題\n\n３\n\n(1)   is being given\n\n(2)   is being continued\n\n(3)   is being repaired\n\f４\n\n(1)   ③ being scolded\n(2)   ② being closed\n(3)   ① producing\n\n５\n\n(1)   ③ will be being held\n(2)   ② was being prepared\n\n６\n\n(1)   [例] The large desk is being moved to the gym by students.\n\n(2)   [例] The outline is being explained by the teacher.\n\nＣ問題\n\n７\n\n(1)   ② was being given\n   講演が行われている間，彼らは黙々とメモを取り続けた。\n\n(2)   ④ is being built\n   学校の前の道路が造られているので，私たちは最近ずっと，授業に集中するのが難し\n   い状態が続いている。\n\n８\n\n   ③ is being\n   重要な計画が議論されているので，ロバートは今，会議を離れることができない。",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_007『進行形の受動態（be動詞＋being done）』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_007『進行形の受動態（be動詞＋being done）』（演習）.pdf",
+       "q_count": 51
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "2 章「受動態」 第２章「受動態」   7,8 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   進行形の受動態(be 動詞＋being done)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼はニューヨークを発つ前に，両親に手紙を書いています。\n\n   He   a letter to his parents before he leaves New York.\n\n(2)   彼がニューヨークを発つ前に，両親への手紙が書かれています。\n\n   A letter to his parents   before he leaves New York.\n\n(3)   多くの観客がその時，彼のダンス演技を鑑賞していた。\n\n   Many audiences   his dance performance then.\n\n(4)   彼のダンス演技はその時，多くの観客に鑑賞されていた。\n\n   His dance performance   by many audiences then.\n\n(5)   私が店を訪れたとき，最新のバッグがショーウインドに飾られていた。\n\n   The latest bags   in the show window when I visited\n\n   the shop.\n\n(6)   多くの貴重な建築物が，次々に破壊されています。\n\n   Many valuable buildings   one after the other.\n\n(7)   その問題は今，テレビで専門家によって議論されています。\n\n   The problem   by specialists on TV now.\n\n   86",
+       "answer_text": "章「受動態」   7,87-8\n――――――――――――――――――――――――――――――――――――――――――\n\n 進 行 形 の受 動 態 (be 動 詞 ＋being done) ―解 答 ―\n\n１\n\n(1) is writing\n\n(2) is being written\n\n(3) were watching\n\n(4) was being watched\n\n(5) were being displayed\n\n(6) are being destroyed\n\n(7) is being discussed",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_007『進行形の受動態（be動詞＋being done）』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_007『進行形の受動態（be動詞＋being done）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 ７ ８   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   進行形の受動態（be動詞＋being done）   Tokyo Skytree was（   ）when I went to Tokyo.\n   次の日本文にあう英文になるように、   に適する\n 例題   ① building   ② been building   ③ being built\n   語（句）を書きなさい。\n\n⑴ 彼らは新しいショッピングセンターを建てている。\n  They   a new shopping center.\n   入試レベルにチャレンジ\n⑵ 新しいショッピングセンターが建てられている。   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n  The new shopping center   .\n   今、学生たちによるプレゼンテーションが行われています。\n   The presentation（   ）by the students now.\n\n   ① gave   ② was given   ③ is being given\n\n   omitsu Kimura の\n Tom\n\n 進行形の受動態（be動詞＋being+done）\n\n 進行形の受動態   be動詞＋being+done\n〔例〕 is doing → is being done\n   is making → is being made",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_007『進行形の受動態（be動詞＋being done）』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_007『進行形の受動態（be動詞＋being done）』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch02_009",
+     "num": "009",
+     "name": "「動詞のカタマリ」の受動態",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-5",
+       "content": "『「動詞のカタマリ」の受動態』\nlook at / take care of などの「動詞＋前置詞のカタマリ」も、ひと塊として受動態にする。"
+      },
+      {
+       "title": "概要",
+       "content": "look at / take care of などの「動詞＋前置詞のカタマリ」も、ひと塊として受動態にする。\n動詞のカタマリ\nlook at / take care of / laugh at\n動詞＋前置詞をひとまとまりに\nシグナル/特徴\n前置詞も忘れない\n受動態でも保持\nbe looked at by 〜\n前置詞も残す\nシグナル/特徴\n省略するとミス"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "She was laughed at by everyone.\n彼女はみんなに笑われた。\nThe baby is taken care of by his mother.\n赤ちゃんはお母さんに世話されている。\nHe was looked up to as a hero.\n彼は英雄として尊敬されていた。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n動詞＋前置詞をひとまとまりに\n2\n受動態でも前置詞を残す\n3\nlook at / take care of / laugh at"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_009_「動詞のカタマリ」の受動態_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「動詞のカタマリ」の受動態   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計６点）\n\n   ＜受動態＞\n①   laugh at   ～を笑う   →   be laughed at\n\n②   speak to   ～に話しかける   →\n\n③   look up to   ～を尊敬する   →\n\n④   take care of   ～を世話する   →\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n\n(1)   この部屋は明日，トムによって掃除されるでしょう。\n\n   This room   by Tom tomorrow.\n\n(2)   この部屋はちょうど，トムによって掃除されたところだ。\n\n   This room   by Tom.\n\n(3)   この部屋は昨日，トムによって掃除された。\n\n   This room   by Tom yesterday.\n\n(4)   この部屋は今，トムによって掃除されている。\n\n   This room   by Tom now.\n\n(5)   この部屋はそのとき，トムによって掃除されていた。\n\n   This room   by Tom then.\n\n(6)   トムはそのとき，この部屋を掃除していた。\n\n   Tom   this room at that time.\n\n(7)   その問題は今，テレビで専門家によって議論されている。\n\n   The problem   by specialists on TV now.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 12 点）\n\n(1)   彼はクラスのみんなに信頼されています。\n\n   He   by everybody in his class.\n\n(2)   彼女は陰で悪く言われています。\n\n   She   behind her back.\n\n４   (   )内にあてはまる前置詞を下の選択肢から選びなさい。（各６点・計 24 点）\n\n(1)   昨日，値引き販売は中止されました。\n\n   The discount sale was called (   ) yesterday.\n\n(2)   人生は航海にたとえられます。\n\n   Life is compared (   ) a voyage.\n\n(3)   彼女は厳格な家庭に育った。\n\n   She was brought (   ) in a strict family.\n\n(4)   患者らは，看護師にとてもよく面倒をみてもらっていた。\n\n   The patients were looked (   ) very well by the nurses.\n\n   [ to / after / on / with / off / in / up / out ]\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各７点・計 21 点）\n\n(1)   彼の父親の事業は，彼によって引き継がれました。\n   ( business / was / father’s / by / him / taken / over / his / . )\n\f(2)   彼は，兄弟たちから見下されていました。\n   ( by / his brothers / looked / on / he / was / down / . )\n\n(3)   その経験は，そのような状況で生かされるでしょう。\n   ( will be / made / in / that experience / use / such / of / a situation / . )\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   彼の新しい歌はみんなに聞かれている。\n\n(2)   そのコンサートチケットは売り切れだった。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   次の   に適する語(句)を書きなさい。\n\n   ＜意味＞   ＜受動態＞\n\n①   look at   →\n\n②   hear from   →\n\n③   make fun of   →\n\n(2)   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n①   The boy ( looked / Yuki / was / at / by ).\n\f②   He ( made / his / by / at / fun / school / friend / was / of ).\n\n③   My uncle has never ( heard / for / from / he / been / left / since ) Brazil.\n\n８   次の３つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n(1)   My parents took good care of me.\n\n   I   by my parents.\n\n   Good care   by my parents.\n\n(2)   We should take good care of our health.\n\n   Our health   .\n\n   Good care   .",
+       "answer_text": "Ａ問題\n\n１   ＜受動態＞\n\n①   laugh at   ～を笑う   →   be laughed at\n\n②   speak to   ～に話しかける   →   be spoken to\n\n③   look up to   ～を尊敬する   →   be looked up to\n\n④   take care of   ～を世話する   →   be taken care of\n\n２\n\n(1)   will be cleaned\n\n(2)   has just been cleaned\n\n(3)   was cleaned\n\n(4)   is being cleaned\n\n(5)   was being cleaned\n\n(6)   was cleaning\n\n(7)   is being discussed\n\nＢ問題\n\n３\n\n(1)   is relied on\n\n(2)   is spoken ill of\n\f４\n\n(1)   off\n\n(2)   to\n\n(3)   up\n\n(4)   after\n\n５\n\n(1)   His father’s business was taken over by him.\n\n(2)   He was looked down on by his brothers.\n\n(3)   That experience will be made use of in such a situation.\n\n６\n\n(1)   [例] His new song is listened to by everyone.\n\n(2)   [例] The concert tickets were sold out.\n\nＣ問題\n\n７\n(1)\n   ＜意味＞   ＜受動態＞\n\n①   look at   ～を見る   →   be looked at\n\n②   hear from   ～から連絡がある   →   be heard from\n\n③   make fun of   ～をからかう   →   be made fun of\n\n(2)\n\n①   The boy was looked at by Yuki.\n\n   その男の子は，ユキに見られた。\n②   He was made fun of by his friend at school.\n   彼は学校で友達にからかわれた。\n\n③   My uncle has never been heard from since he left for Brazil.\n\n   私のおじはブラジルに行ったまま，連絡がありません。\n\f８\n\n(1)   My parents took good care of me.\n\n   I was taken good care of by my parents.\n\n   Good care was taken of me by my parents.\n\n   私の両親は，十分に私の世話をしてくれた。\n\n(2)   We should take good care of our health.\n\n   Our health should be taken good care of.\n\n   Good care should be taken of our health.\n\n   私たちは，健康に十分注意するべきだ。\n\n   ※名詞が「前置詞＋名詞」のカタマリで修飾されて，「動詞＋名詞＋前置詞＋名詞」\n   の形になっている場合，\n   ①動詞の後ろの名詞を主語にした受動態\n   ②前置詞の後ろの名詞を主語にした受動態\n   の２パターンの受動態で表せる。",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_009『「動詞のカタマリ」の受動態』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_009『「動詞のカタマリ」の受動態』（演習）.pdf",
+       "q_count": 32
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "2 章「受動態」 第２章「受動態」   9,10 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「動詞のカタマリ」の受動態\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   アンは，冗談を言って笑われた。\n\n   Ann   for her joke.\n\n(2)   犬を散歩させていたとき，私は通行人に話しかけられた。\n\n   I   by a passerby when I walked my dog.\n\n(3)   ジョンは指導者として尊敬されています。\n\n   John   as a leader.\n\n(4)   それらの犬はジェーンに世話をされています。\n\n   Those dogs   by Jane.\n\n(5)   新しいコーチは，すべてのチームメイトに良く言われています（評判がよい）。\n\n   The new coach   by all of our teammates.\n\n(6)   試合は水曜日まで延期されました。\n\n   The match   until Wednesday.\n\n(7)   その男は，スパイだと判明した。\n\n   The man   to be a spy.\n\n   90",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) was laughed at\n\n(2) was spoken to\n\n(3) is looked up to\n\n(4) are taken care of [are looked after]\n\n(5) is spoken well of\n\n(6) was put off\n\n(7) was found out",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_009『「動詞のカタマリ」の受動態』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_009『「動詞のカタマリ」の受動態』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 ９ 10   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   「動詞のカタマリ」の受動態   ⑴ 私は外国人に話しかけられた。\n\n 例題\n   次の日本文にあう英文になるように、   に適する   I（   ）by a foreigner.\n   語（句）を書きなさい。\n   ① was spoken   ② was spoken to\n⑴ 皆がトムを笑った。\n  Everybody   Tom.\n   ⑵ 彼は皆に尊敬されています。\n⑵ トムが皆に笑われた。   He（   ）by everybody.\n  Tom   by everybody.\n   ① is looked up   ② is looked up to\n⑶ トムは彼女に話しかけた。\n  Tom   her.\n   入試レベルにチャレンジ\n⑷ 彼女はトムに話しかけられた。\n   次の日本文にあう英文になるように、   に適する\n  She   by Tom.   語（句）を書きなさい。\n\n   おじいちゃんは母に世話されていました。\n   Grandpa   by my mother.\n\n   omitsu Kimura の\n  Tom\n\n「動詞のカタマリ」の受動態\n\n 受動態   be動詞＋過去分詞\n\n〔例〕 laugh at → be laughed at\n   speak to → be spoken to\n   look up to → be looked up to\n   take care of → be taken care of",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_009『「動詞のカタマリ」の受動態』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_009『「動詞のカタマリ」の受動態』（習得）.pdf",
+       "q_count": 10
+      }
+     }
+    },
+    {
+     "id": "ch02_011",
+     "num": "011",
+     "name": "「be made to 原形」のパターン",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-6",
+       "content": "『「be made to 原形」のパターン』\n使役・知覚動詞の受動態では、原形不定詞が to 不定詞に変わる（be made to 原形）。"
+      },
+      {
+       "title": "概要",
+       "content": "使役・知覚動詞の受動態では、原形不定詞が to 不定詞に変わる（be made to 原形）。\n能動態\nmake 人 V (原形)\n原形不定詞を取る\nシグナル/特徴\nHe made me wait.\n受動態（to が必要）\nbe made to V (to不定詞)\n受動態では to が復活\nシグナル/特徴\nI was made to wait."
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He made me wait for an hour.\n彼は私を1時間待たせた。（能動）\nI was made to wait for an hour.\n私は1時間待たされた。（受動）\nShe was seen to enter the building.\n彼女は建物に入るのを見られた。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nbe made to + 原形\n2\nsee/hear など知覚動詞も同様\n3\nto が復活することに注意"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_011_「be made to 原形」のパターン_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 be made to 原 形 」 の パ タ ー ン   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   be made to 原形\n\n②   be seen to 原形\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   アンは，冗談を言って笑われた。\n\n   Ann   for her joke.\n\n(2)   犬を散歩させていたとき，私は通行人に話しかけられた。\n\n   I   by a passerby when I walked my dog.\n\n(3)   ジョンは指導者として尊敬されています。\n\n   John   as a leader.\n\n(4)   それらの犬はジェーンに世話をされています。\n\n   Those dogs   by Jane.\n\n(5)   彼のダンス演技はその時，多くの観客に鑑賞されていた。\n\n   His dance performance   by many audiences then.\n\n(6)   ３冊の絵本が彼によってちょうど出版された。\n\n   Three picture books   by him.\n\n(7)   そのイベントは，今年の夏に仙台で開催されるだろう。\n\n   The event   in Sendai this summer.\n\n(8)   多くの貴重な建築物が，次々に破壊されている。\n\n   Many valuable buildings   one after the other.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 15 点）\n\n(1)   メアリーは他人の悪口を言うのを聞かれたことがなかった。\n\n   Mary was never   ill of others.\n\n(2)   トムは，姉にその部屋の外で待たされた。\n\n   Tom   outside the room by his sister.\n\n(3)   昨夜，彼は公園を走っているところを見られた。\n\n   Last night he   running in the park.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 18 点）\n\n(1)   Ken was heard (   ) a song by them.\n\n   ① sing   ② sung   ③ to sing\n\n(2)   She was made (   ) off the TV by his father.\n\n   ① turn   ② to turn   ③ turned\n\n(3)   I was seen (   ) a birthday cake for her.\n\n   ① to make   ② made   ③ make\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各７点・計 21 点）\n\n(1)   彼女は，その店に入るのに気づかれた。\n   ( to / store / she / observed / the / was / enter / . )\n\n(2)   こんな寒い日に海で泳ぐ人は誰も見られなかった。\n   ( on / day / nobody / the sea / was / to / such / seen / swim / a cold / in / . )\n\f(3)   なぜあなたたちは放課後，体育館の掃除をさせられたのですか。\n   ( you / school / made / the gym / were / why / clean / to / after / ? )\n\n６   次の日本文を英語で書きなさい。（各９点・計 18 点）\n\n(1)   妹は朝早くに，ピアノの練習をさせられた。\n\n(2)   ナンシーは，先生に叱られているところを見られた。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の問いに答えなさい。\n\n(1)   次の英語を日本語にしなさい。\n\n①   be forced to 原形\n\n②   be allowed to 原形\n\n(2)   次の４つの英文がほぼ同じ意味になるように，   に適する語(句)を\n\n   書きなさい。\n\n   Ken was made to wait for a long time by Yuki.\n\n   Yuki made Ken   for a long time.\n\n   Ken was forced   for long time by Yuki.\n\n   Yuki forced Ken   for a long time.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい\n\n(1)   My brother was forced (   ) math for the exam.\n\n   ① study   ② studied   ③ to study\n\n(2)   The students were ordered (   ) in a line.\n\n   ① stood   ② to stand   ③ stand\n\n(3)   I was asked (   ) a birthday cake for her.\n\n   ① make   ② made   ③ to make\n\n(4) A guide dog is trained (   ) without any reason.\n\n   ① to not bark   ② not to bark   ③ not to barking\n\n(5)   I was allowed (   ) a day off.\n\n   ① to take   ② take   ③ took",
+       "answer_text": "Ａ問題\n\n１\n\n①   be made to 原形   ～させられる\n\n②   be seen to 原形   ～するのを見られる\n\n２\n\n(1)   was laughed at\n\n(2)   was spoken to\n\n(3)   is looked up to [respected]\n\n(4)   are taken care of [are looked after]\n\n(5)   was being watched\n\n(6)   have just been published\n\n(7)   will be held\n\n(8)   are being destroyed\n\nＢ問題\n\n３\n\n(1)   heard to speak\n\n(2)   was made to wait\n\n(3)   was seen to be\n\n４\n\n(1)   ③ to sing\n(2)   ② to turn\n(3)   ① to make\n\f５\n(1)   She was observed to enter the store.\n\n(2)   Nobody was seen to swim in the sea on such a cold day.\n\n(3)   Why were you made to clean the gym after school?\n\n６\n\n(1)   [例] My sister was made to practice the piano early in the morning.\n\n(2)   [例] Nancy was seen to be scolded by her teacher.\n\nＣ問題\n７\n(1)   ①   be forced to 原形   (無理やり)～させられる\n\n   ②   be allowed to 原形   ～することを許される\n\n(2)   Ken was made to wait for a long time by Yuki.\n\n   Yuki made Ken wait for a long time.\n\n   Ken was forced to wait for a long time by Yuki.\n\n   Yuki forced Ken to wait for a long time.\n\n８\n\n(1)   ③ to study\n   私の兄[弟]は，試験のために数学を(無理やり)勉強させられた。\n\n(2)   ② to stand\n   その生徒たちは，一列に並んで立つように命じられた。\n\n(3)   ③ to make\n   私は，彼女のための誕生日ケーキをつくるように頼まれた。\n\n(4)   ② not to bark\n   盲導犬は，むやみに吠えないように訓練されている。\n\n(5)   ① to take\n   私は，一日休みをとることを許された。",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_011『「be made to 原形」のパターン』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_011『「be made to 原形」のパターン』（演習）.pdf",
+       "q_count": 54
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "2 章「受動態」 第２章「受動態」   11,12 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「be made to 原形」のパターン\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   トムは今朝，自分の部屋を掃除した。\n\n   Tom   his room this morning.\n\n(2)   トムは今朝，自分の部屋を掃除させられた。\n\n   Tom   his room this morning.\n\n(3)   彼女はその飛行機から降りた。\n\n   She   out of the airplane.\n\n(4)   彼女はその飛行機から降りるところを見られた。\n\n   She   out of the airplane.\n\n(5)   ジェーンは罰として皿洗いをさせられた。\n\n   Jane   dishes as a punishment.\n\n(6)   ジャックはお年寄りに優しくしているところを見られた。\n\n   Jack   gentle to an aged man.\n\n(7)   私は歌を歌うのを聞かれた。\n\n   I   a song.\n\n(8)   マリアは幼少期のころ，決してその食べ物を食べさせられることはなかった。\n\n   Maria   eat the food during her childhood.\n\n   94",
+       "answer_text": "第２章「受動態」\n――――――――――――――――――――――――――――――――――――――――――\n\n   「be made to 原 形」のパターン ―解 答―\n\n１\n\n(1) cleaned\n\n(2) was made to clean\n\n(3) got\n\n(4) was seen to get\n\n(5) was made to wash\n\n(6) was seen to be\n\n(7) was heard to sing\n\n(8) was never made to",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_011『「be made to 原形」のパターン』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_011『「be made to 原形」のパターン』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 11 12   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n  「be made to 原形」のパターン   I was made（   ）there by Nancy.\n   次の日本文にあう英文になるように、   に適する\n 例題   ① went   ② go   ③ to go\n   語（句）を書きなさい。\n\n⑴ 私はひとりでそこへ行った。\n  I   there alone.   入試レベルにチャレンジ\n   次の日本文にあう英文になるように、   に適する\n⑵ 私はひとりで行かされた。\n   語（句）を書きなさい。\n  I   there alone.\n   彼が勉強するところを見たことがなかった。\n⑶ 彼はその部屋に入った。\n   He was never   .\n  He   the room.\n\n⑷ 彼はその部屋に入るところを見られた。\n  He   the room.\n\n   omitsu Kimura の\n  Tom\n\n 「be made to 原形」のパターン\n\n  受動態   be動詞＋過去分詞\n\n 〔例〕 「～させられる」 be made to 原形\n   「～するのを見られる」 be seen to 原形",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_011『「be made to 原形」のパターン』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_011『「be made to 原形」のパターン』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch02_013",
+     "num": "013",
+     "name": "「人は～すると言われている」のパターン",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-7",
+       "content": "『「人は～すると言われている」のパターン』\n「人々は〜と言う」を受動態で表すと「It is said that 〜／S is said to V」となる。"
+      },
+      {
+       "title": "概要",
+       "content": "「人々は〜と言う」を受動態で表すと「It is said that 〜／S is said to V」となる。\n能動態\nPeople say that 〜\n「人々は〜と言う」\nシグナル/特徴\nsay / believe / think\n受動態の2パターン\nIt is said that 〜 / S is said to V\n「〜と言われている」\nシグナル/特徴\n2通りの書き換え"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "It is said that he is rich.\n彼は金持ちだと言われている。\nHe is said to be rich.\n（同上）\nIt is believed that she will win.\n彼女が勝つと信じられている。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIt is said that 〜\n2\nS is said to V\n3\nsay / believe / think に応用"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_013_「人は～すると言われている」のパターン_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「⼈は〜すると⾔われている」のパターン   100\n\nＡ問題\n１   次の   に適する１語を書きなさい。\n   （各２点・計４点）\n\n   ＜人は～すると言われている＞\n   It is said   人 V ～   ＝   人 is said   V ～\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   トムは今朝，自分の部屋を掃除した。\n\n   Tom   his room this morning.\n\n(2)   トムは今朝，自分の部屋を掃除させられた。\n\n   Tom   his room this morning.\n\n(3)   彼女はその飛行機から降りた。\n\n   She   out of the airplane.\n\n(4)   彼女はその飛行機から降りるところを見られた。\n\n   She   out of the airplane.\n\n(5)   新しいコーチは，すべてのチームメイトに良く言われています（評判がよい）。\n\n   The new coach   by all of our teammates.\n\n(6)   試合は水曜日まで延期されました。\n\n   The match   until Wednesday.\n\n(7)   その男は，スパイだと判明した。\n\n   The man   to be a spy.\n\n(8)   今，彼によって両親への手紙が書かれています。\n\n   A letter to his parents   by him now.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各７点・計 21 点）\n(1)   ４つ葉のクローバーは幸運をもたらすと信じられている。\n\n   It   a four-leaf clover brings a good luck.\n\n(2)   トムとナンシーは仲がいいと思われている。\n\n   Tom and Nancy   get along well.\n\n(3)   彼は次の試験で満点を取るだろうと期待されている。\n\n   He   get a perfect score on the next exam.\n\n４   (   )内にあてはまる語(句)を下の選択肢から選びなさい。（各７点・計 21 点）\n\n(1)   日本チームはその国際試合に勝つだろうと予想されている。\n\n   (   ) the Japan team will win the international game.\n\n(2)   彼女は無実だと信じられている。\n\n   (   ) she is innocent.\n\n(3)   彼が事業に成功したことが知られている。\n\n   (   ) he has succeeded in his business.\n\n   [ It is known that / It is believed that / It is expected that ]\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各７点・計 14 点）\n(1)   彼はまもなく新しい小説を出版するだろうと言われている。\n   ( publish / that / he / is / novel / will / a new / it / soon / said / . )\n\n(2)   彼女はその事故とは関係がないと考えられていた。\n   ( have nothing / was / thought / she / to / the accident / to do with / . )\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   彼は天才だと言われている。\n\n(2)   彼女はすぐに家に帰ってくると思われていた。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の３つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n(1)   They say that she studied abroad when she was young.\n\n   She   when she was young.\n\n   It   when she was young.\n\n(2)   They believe that he was rich in his youth.\n\n   He   in his youth.\n\n   It   in his youth.",
+       "answer_text": "Ａ問題\n\n１\n   It is said that 人 V ～   ＝   人 is said to V ～\n\n２\n\n(1)   cleaned\n\n(2)   was made to clean\n\n(3)   got\n\n(4)   was seen to get\n\n(5)   is spoken well of\n\n(6)   was put off\n\n(7)   was found out\n\n(8)   is being written\n\nＢ問題\n\n３\n\n(1)   is believed that\n\n(2)   are thought to\n\n(3)   is expected to\n\n４\n\n(1)   It is expected that\n\n(2)   It is believed that\n\n(3)   It is known that\n\f５\n\n(1)   It is said that he will publish a new novel soon.\n\n(2)   She was thought to have nothing to do with the accident.\n\n   have nothing to do with ～   「～と関係がない」\n\n６\n\n(1)   [例] He is said to be a genius. [It is said that he is a genius.]\n\n(2)   [例] She was thought to come back home soon. [It was thought that she would\n\n   come back home soon.]\n\nＣ問題\n\n７\n\n(1)   They say that she studied abroad when she was young.\n\n   She is said to have studied abroad when she was young.\n\n   It is said that she studied abroad when she was young.\n\n(2)   They believe that he was rich in his youth.\n\n   He is believed to have been rich in his youth.\n\n   It is believed that he was rich in his youth.",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_013『「人は～すると言われている」のパターン』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_013『「人は～すると言われている」のパターン』（演習）.pdf",
+       "q_count": 20
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "2 章「受動態」 第２章「受動態」   13,14 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「人は〜すると言われている」のパターン\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   有名なロックバンドが来日すると言われている。\n\n   It   that the famous rock band will come to Japan.\n\n   The famous rock band   to Japan.\n\n(2)   彼女はフランス語を流暢に話すと思われている。\n\n   It   that she speaks French fluently.\n\n   She   French fluently.\n\n(3)   私は料理が苦手だと思われている。\n\n   I   poor at cooking.\n\n   It   that I am poor at cooking.\n\n(4)   その大統領は，演説がすばらしいと言われていました。\n\n   That president   excellent in making speeches.\n\n   It   the president was excellent in making speeches.\n\n   98",
+       "answer_text": "第２章「受動態」\n――――――――――――――――――――――――――――――――――――――――――\n\n  「人 は〜すると言 われている」のパターン ―解 答 ―\n\n１\n\n(1) is said\n\n   is said to come\n\n(2) is thought\n\n   is thought to speak\n\n(3) am thought to be\n\n   is thought\n\n(4) was said to be\n\n   was said that",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_013『「人は～すると言われている」のパターン』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_013『「人は～すると言われている」のパターン』（習熟）.pdf",
+       "q_count": 4
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 13 14   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n「 人 は～すると言われている」\n   のパターン   ⑴ 彼はお金持ちだと言われている。\n\n   例題\n   次の日本文にあう英文になるように、   に適する   He is said（   ）.\n   語（句）を書きなさい。\n   ① that he is rich   ② to be rich\n彼は留学すると言われている。\nIt   that he will study abroad.\n   ⑵ 彼は病気で寝ていると言われている。\nHe   abroad.   It is said（   ）.\n\n   ① that he is ill in bed   ② to be ill in bed\n\n   入試レベルにチャレンジ\n   次の日本文にあう英文になるように、カッコ内から\n   最も適当なものを選び、丸で囲みなさい。\n\n   彼はその大学に進学すると思われている。\n   （ He is thought / It is thought ）that he will go on\n   to the college.\n\n   omitsu Kimura の\n   Tom\n\n 「 人 は～すると言われている」のパターン\n\n   It is said that 人 V～ ＝ 人 is said to V～",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_013『「人は～すると言われている」のパターン』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_013『「人は～すると言われている」のパターン』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch02_015",
+     "num": "015",
+     "name": "「驚く」なのに受動態のパターン（“感情”を表す動詞）",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-8",
+       "content": "『「驚く」なのに受動態のパターン（“感情”を表す動詞）』\n「驚く」「興奮する」など感情を表す動詞は、英語では受動態で表すことが多い。"
+      },
+      {
+       "title": "概要",
+       "content": "「驚く」「興奮する」など感情を表す動詞は、英語では受動態で表すことが多い。\n日本語：能動的\n驚く / 興奮する / 感動する\n日本語では能動的に表す\nシグナル/特徴\n私は驚いた\n英語：受動態\nbe surprised / excited / moved\n英語では「受動態」\nシグナル/特徴\nby ではなく at / with が多い"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I was surprised at the news.\n私はそのニュースに驚いた。\nShe was excited about the trip.\n彼女は旅行にわくわくしていた。\nHe was disappointed with the result.\n彼はその結果に失望した。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n感情動詞は受動態で表現\n2\nby 以外の前置詞に注意\n3\nat / with / about など"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_015_「驚く」なのに受動態のパターン（“感情”を表す動詞）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「驚く」なのに受動態のパターン（“感情”を表す動詞）   100\n\nＡ問題\n\n１   次の英語を日本語にしなさい。（各２点・計 10 点）\n\n①   surprise   人を驚かせる   →   be surprised\n\n②   disappoint   人をがっかりさせる   →   be disappointed\n\n③   please   人をよろこばせる   →   be pleased\n\n④   satisfy   人を満足させる   →   be satisfied\n\n⑤   excite   人を興奮させる   →   be excited\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 28 点）\n(1)   有名なロックバンドが来日すると言われている。\n\n   It   that the famous rock band will come to Japan.\n\n   The famous rock band   to Japan.\n\n(2)   私は料理が苦手だと思われている。\n\n   I   poor at cooking.\n\n   It   that I am poor at cooking.\n\n(3)   ジェーンは罰として皿洗いをさせられた。\n\n   Jane   the dishes as a punishment.\n\n(4)   私は歌を歌うのを聞かれた。\n\n   I   a song.\n\n(5)   マリアは幼少期のころ，決してその食べ物を食べさせられることはなかった。\n\n   Maria   eat the food during her childhood.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 10 点）\n(1)   あなたは日々のトレーニングの結果に満足していますか。\n\n   the result of daily training?\n\n(2)   私は，彼が私の父と同い年であると知って驚いた。\n\n   I   know that he was the same age as my father.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各５点・計 15 点）\n\n(1)   I(   ) with that idea.\n\n   ① confused   ② was confusing   ③ was confused\n\n(2)   The children (   ) of thunder.\n\n   ① frightened   ② were frightening   ③ were frightened\n\n(3)   My little daughter (   ) at the dog.\n\n   ① doesn’t terrify   ② isn’t terrifying   ③ isn’t terrified\n\n５   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 21 点）\n\n(1)   彼女はオーディションに合格しなかったことにがっかりしなかった。\n\n   She (   ) failing to pass the audition.\n\n   ① didn’t disappoint   ② wasn’t disappointed at\n\n   ③ wasn’t disappointed that\n\n(2)   上司は健康について心配している。\n\n   My boss (   ) his health.\n\n   ① worried about   ② is worried about   ③ is worrying about\n\n(3)   今日の試合はとても興奮するものだった。誰もがとても興奮していた。\n\n   Today’s game was very (   ). Everyone was very (   ) with it.\n\n   ① excited ／ exciting   ② exciting ／ excite   ③ exciting ／ excited\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   みんなが彼の成功に喜んでいた。\n\n(2)   その子どもたちはそのニュースを聞いてがっかりしている。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n\n(1)   be interested in\n\n(2)   be absorbed in\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   He has (   ) the research on the rare disease of the heart since\n   he became a doctor.\n\n   ① interested in ② been interesting to   ③ interested   ④ been interested in\n\n(2)   She was so (   ) in the book that she didn’t hear her name called.\n\n   ① concerned   ② absorbed   ③ engaged   ④ surprised",
+       "answer_text": "Ａ問題\n１\n①   surprise   人を驚かせる   →   be surprised   驚く\n\n②   disappoint   人をがっかりさせる   →   be disappointed   がっかりする\n\n③   please   人をよろこばせる   →   be pleased   よろこぶ\n\n④   satisfy   人を満足させる   →   be satisfied   満足する\n\n⑤   excite   人を興奮させる   →   be excited   興奮する\n\n２\n\n(1)   is said\n   is said to come\n(2)   am thought to be\n   is thought\n\n(3)   was made to wash\n\n(4)   was heard to sing\n\n(5)   was never made to\n\nＢ問題\n３\n(1) Are you satisfied with\n\n(2)   was surprised to\n\n４\n\n(1)   ③ was confused\n(2)   ③ were frightened\n(3)   ③ isn’t terrified\n\f５\n\n(1)   ② wasn’t disappointed at\n(2)   ② is worried about\n(3)   ③ exciting ／ excited\n\n６\n\n(1)   [例] Everybody [Everyone] was pleased with his success.\n\n(2)   [例] The children are disappointed to hear the news.\n\nＣ問題\n\n７\n\n(1)   be interested in   ～に興味がある，～に関心がある\n\n(2)   be absorbed in   ～に熱中している，～に夢中である\n\n８\n\n(1)   ④ been interested in\n   彼は医者になってから，その珍しい心臓病についての研究に関心をもっている。\n\n(2)   ② absorbed\n   彼女は読書に夢中で，名前を呼ばれたのが聞こえなかった。",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_015『「驚く」なのに受動態のパターン（“感情”を表す動詞）』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_015『「驚く」なのに受動態のパターン（“感情”を表す動詞）』（演習）.pdf",
+       "q_count": 50
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「驚 く」なのに受 動 態 のパターン（“感 情 ”を表 す動 詞 ）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私たちは彼の突然の死に驚いている。\n\n   We   at his sudden death.\n\n(2)   私は彼の無知さにがっかりした。\n\n   I   at his ignorance.\n\n(3)   あなたがここに来てくれて嬉しい。\n\n   I   that you have come here.\n\n(4)   私たちは我がチームの勝利に満足している。\n\n   We   with the victory of our team.\n\n(5)   トムは大好きな俳優と会うことができて興奮していた。\n\n   Tom   that he could see his favorite actor.\n\n(6)   私たちの先生はその結果を喜んでいなかった。\n\n   Our teacher   with the result.\n\n(7)   私は現在の状況に満足していない。\n\n   I   with my present situation.\n\n(8)   彼は私からの手紙に驚くにちがいない。\n\n   He must   at the letter from me.\n\n   102",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n   「驚 く」なのに受 動 態 のパターン （“感 情 ”を表 す動 詞 ） ―解 答 ―\n\n１\n\n(1) are surprised\n\n(2) was disappointed\n\n(3) am pleased\n\n(4) are satisfied\n\n(5) was excited\n\n(6) was not pleased\n\n(7) am not satisfied\n\n(8) be surprised",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_015『「驚く」なのに受動態のパターン（“感情”を表す動詞）』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_015『「驚く」なのに受動態のパターン（“感情”を表す動詞）』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 15 16   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n「驚く」なのに受動態のパターン（“感情”を表す動詞）\n   ⑴ He（   ）at the news.\n\n 例題\n   次の日本文にあう英文になるように、   に適する   ① surprised   ② was surprising   ③ was surprised\n   語（句）を書きなさい。\n\n⑴ トムはその知らせに驚いた。   ⑵ We（   ）that they passed the exam.\n  Tom   at the news.   ① pleased   ② were pleasing   ③ were pleased\n\n⑵ 私は自分自身に失望している。\n   ⑶ I（   ）to watch the movie.\n  I   at myself.\n   ① excited   ② was exciting   ③ was excited\n\n   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   父は、その結果に満足していない。\n   My father（   ）the result.\n   omitsu Kimura の\n  Tom\n\n   ① isn’t satisfied with   ② isn’t satisfied by\n 「驚く」なのに受動態のパターン   ③ doesn’t satisfy\n\n 〔例〕「 人 を驚かせる」surprise →「驚く」be surprised\n   「 人 をがっかりさせる」disappoint →\n   「がっかりする」be disappointed\n   「 人 をよろこばせる」please →「よろこぶ」be pleased\n   「 人 を満足させる」satisfy →「満足する」be satisfied\n   「 人 を興奮させる」excite →「興奮する」be excited",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_015『「驚く」なのに受動態のパターン（“感情”を表す動詞）』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_015『「驚く」なのに受動態のパターン（“感情”を表す動詞）』（習得）.pdf",
+       "q_count": 17
+      }
+     }
+    },
+    {
+     "id": "ch02_017",
+     "num": "017",
+     "name": "「ケガをする」なのに受動態のパターン（“被害”を表す動詞）",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-9",
+       "content": "『「ケガをする」なのに受動態のパターン（“被害”を表す動詞）』\n「ケガをする」「殺される」など、被害を表す動詞も英語では受動態を用いる。"
+      },
+      {
+       "title": "概要",
+       "content": "「ケガをする」「殺される」など、被害を表す動詞も英語では受動態を用いる。\n日本語：能動的\nケガをする / 殺される / 死ぬ\n被害を能動的に言う\nシグナル/特徴\nbe injured / be killed\n英語：受動態\n受動態で表現\nbe wounded / be hurt\nシグナル/特徴\n受動態の感覚に慣れる"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He was injured in the accident.\n彼は事故でけがをした。\nMany people were killed in the war.\n戦争で多くの人が亡くなった。\nShe was hurt in a car crash.\n彼女は自動車事故で負傷した。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n被害動詞も受動態\n2\nbe injured / killed / hurt\n3\nby 以外の前置詞も多い"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_017_「ケガをする」なのに受動態のパターン（“被害”を表す動詞）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「ケガをする」なのに受動態のパターン（“被害”を表す動詞）   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   injure   ～にケガをさせる   →   be injured\n\n②   delay   ～を遅らせる   →   be delayed\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   私たちは彼の突然の死に驚いている。\n\n   We   at his sudden death.\n\n(2)   私は彼の無知さにがっかりした。\n\n   I   at his ignorance.\n\n(3)   トムは大好きな俳優と会うことができて興奮していた。\n\n   Tom   that he could see his favorite actor.\n\n(4)   私たちの先生はその結果を喜んでいなかった。\n\n   Our teacher   with the result.\n\n(5)   私は現在の状況に満足していない。\n\n   I   with my present situation.\n\n(6)   その大統領は，演説がすばらしいと言われていました。\n\n   That president   excellent in making speeches.\n\n   It   the president was excellent in making speeches.\n\n(7)   ジャックはお年寄りに優しくしているところを見られた。\n\n   Jack   gentle to an aged man.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各８点・計 16 点）\n(1)   私は彼女の言葉に傷ついた。\n\n   I   by her words.\n\n(2)   彼は，私に会議に決して遅れないことを約束した。\n\n   He promised me that he would never   for the meeting.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   Nancy (   ) in the right arm in the accident.\n\n   ① wounded   ② was wounding   ③ was wounded\n\n(2)   She (   ) to hear about the news.\n\n   ① hurt   ② was hurting   ③ was hurt\n\n５   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 24 点）\n\n(1)   His arrival (   ) for thirty minutes.\n\n   ① will delay   ② will be delayed   ③ is delaying\n\n(2)   The girl (   ) in the accident, but she said she was fine.\n\n   ① injured   ② was injuring   ③ was injured\n\n(3)   I crashed into a tree and (   ) while skiing.\n\n   ① wounding   ② wounded   ③ was wounded\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   その少女は公園で遊んでいてケガをした。\n\n(2)   今朝，電車は１時間遅れました。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n\n(1)   be caught in\n\n(2)   be killed\n\n(3)   be drowned\n\n(4)   be defeated [beaten]\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Many people (   ) in the war.\n\n   ① killed   ② were dead   ③ had dead   ④ were killed\n\n(2)   We were caught (   ) a heavy storm.\n\n   ① for   ② at   ③ in   ④ on\n\n(3)   His team (   ) in the finals.\n\n   ① had defeated   ② defeated   ③ has defeated   ④ was defeated",
+       "answer_text": "Ａ問題\n\n１\n\n①   injure   ～にケガをさせる   →   be injured   ～がケガをする\n\n②   delay   ～を遅らせる   →   be delayed   ～が遅れる\n\n２\n\n(1)   are surprised\n\n(2)   was disappointed\n\n(3)   was excited\n\n(4)   was not pleased\n\n(5)   am not satisfied\n\n(6)   was said to be\n\n   was said that\n\n(7)   was seen to be\n\nＢ問題\n\n３\n\n(1)   was hurt\n\n(2)   be delayed\n\n４\n\n(1)   ③ was wounded\n(2)   ③ was hurt\n\f５\n\n(1)   ② will be delayed\n(2)   ③ was injured\n(3)   ③ was wounded\n\n６\n\n(1)   [例] The girl was injured while playing in the park.\n\n(2)   [例] The train was delayed for an hour this morning.\n\nＣ問題\n\n７\n\n(1)   be caught in   ～(雨・交通渋滞など)にあう\n\n(2)   be killed   ～(戦争・事故など)で死ぬ\n\n(3)   be drowned   おぼれ死ぬ\n\n(4)   be defeated [beaten]   負ける\n\n８\n\n(1)   ④ were killed\n   その戦争でたくさんの人々が亡くなった。\n\n   ※② were dead は，「死んでいた」という状態を表す。ここでは，戦争によって「殺\n   される(死ぬ)」という動作を表せる，④ were killed が適切。\n\n(2)   ③ in\n   私たちはひどい嵐にあった。\n\n(3)   ④ was defeated\n   彼のチームは決勝で負けた。",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_017『「ケガをする」なのに受動態のパターン（“被害”を表す動詞）』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_017『「ケガをする」なのに受動態のパターン（“被害”を表す動詞）』（演習）.pdf",
+       "q_count": 52
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「ケガをする」なのに受 動 態 のパターン（“被 害 ”を表 す動 詞 ）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   多くの人がその事故で負傷したと伝えられている。\n\n   It is reported that many people   in the accident.\n\n(2)   ボブは割れたグラスの破片でケガをした。\n\n   Bob   by a piece of broken glass.\n\n(3)   私たちは数日間作業が遅れている。\n\n   We   in working for some days.\n\n(4)   悪天候のために飛行機の出発は２時間ほど遅れるだろう。\n\n   The departure of the plane   for two hours because of bad\n\n   weather.\n\n(5)   私は柔道の練習中に軽いケガをした。\n\n   I slightly   myself while I was practicing judo.\n\n(6)   バスはひどい交通渋滞のために遅れた。\n\n   The bus   due to the heavy traffic jam.\n\n   106",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n「ケガをする」なのに受 動 態 のパターン （“被 害 ”を表 す動 詞 ） ―解 答 ―\n\n１\n\n(1) were injured\n\n(2) was injured\n\n(3) are delayed\n\n(4) will be delayed\n\n(5) injured\n\n(6) was delayed",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_017『「ケガをする」なのに受動態のパターン（“被害”を表す動詞）』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_017『「ケガをする」なのに受動態のパターン（“被害”を表す動詞）』（習熟）.pdf",
+       "q_count": 6
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 17 18   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n「ケガをする」なのに受動態のパターン（“被害”を表す動詞）\n   He（   ）in the accident.\n\n 例題\n   次の日本文にあう英文になるように、   に適する   ① injured   ② was injuring   ③ was injured\n   語（句）を書きなさい。\n\n⑴ ナンシーは昨日、事故でけがをした。\n   入試レベルにチャレンジ\n  Nancy   in an accident.\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n⑵ バスは激しい雨のため遅れている。\n   The plane（   ）because of the typhoon.\n  The bus   because of heavy rain.\n   ① will delay   ② will be delayed   ③ is delaying\n\n   omitsu Kimura の\n  Tom\n\n 「ケガをする」なのに受動態のパターン\n\n 「～にケガをさせる」injure →「～がケガをする」be injured\n 「～を遅らせる」delay →「～が遅れる」be delayed",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_017『「ケガをする」なのに受動態のパターン（“被害”を表す動詞）』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_017『「ケガをする」なのに受動態のパターン（“被害”を表す動詞）』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch02_019",
+     "num": "019",
+     "name": "by以外の前置詞を使う受動態",
+     "slides": [
+      {
+       "title": "第02章 受動態 / 2-10",
+       "content": "『by以外の前置詞を使う受動態』\n受動態の by 以外に、with / at / in / about など、特定の前置詞を使う表現がある。"
+      },
+      {
+       "title": "概要",
+       "content": "受動態の by 以外に、with / at / in / about など、特定の前置詞を使う表現がある。\nby 以外の前置詞\nbe filled with\n「〜で満たされる」\nシグナル/特徴\n材料・道具に with\n頻出パターン\nbe interested in / known to\n「〜に興味がある」「〜に知られている」\nシグナル/特徴\nto / in / for / about"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "The bottle is filled with water.\nビンは水で満たされている。\nHe is interested in music.\n彼は音楽に興味がある。\nShe is known to everyone.\n彼女はみんなに知られている。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nbe filled with（材料）\n2\nbe interested in / known to\n3\n前置詞をセットで覚える"
+      }
+     ],
+     "pptx_path": "../第02章/成果物/第02章_019_by以外の前置詞を使う受動態_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "by 以 外 の 前 置 詞 を 使 う 受 動 態   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   be known to\n\n②   be covered with\n\n③   be married to\n\n④   be dressed in\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n(1)   多くの人がその事故で負傷したと伝えられている。\n\n   It is reported that many people   in the accident.\n\n(2)   悪天候のために飛行機の出発は２時間ほど遅れるだろう。\n\n   The departure of the plane   for two hours because of bad\n\n   weather.\n\n(3)   私は柔道の練習中に軽いケガをした。\n\n   I was slightly   while practicing judo.\n\n(4)   バスはひどい交通渋滞のために遅れた。\n\n   The bus   due to the heavy traffic jam.\n\n(5)   あなたがここに来てくれて嬉しい。\n\n   I   that you have come here.\n\n(6)   私たちは我がチームの勝利に満足している。\n\n   We   with the victory of our team.\n\n(7)   彼は私からの手紙に驚くにちがいない。\n\n   He must   at the letter from me.\n\fＢ問題\n３   正しい英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n(1)   I was astonished   his many talents.\n\n(2)   The princess will be dressed   white at the ceremony.\n\n(3)   He has been scared   dogs ever since he was bitten in his childhood.\n\n(4)   His wife is unsatisfied   their new house.\n\n４   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各７点・計 21 点）\n\n(1)   その展示会は非常に多くの人々で混雑した。\n\n   The exhibition   a huge number of people.\n\n(2)   その女性は偉大な政治家として世界中に知られている。\n\n   The woman   a great politician all over the world.\n\n(3)   彼はアフリカでの支援活動で称賛された。\n\n   He   his support activities in Africa.\n\n５   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 14 点）\n\n(1)   あの角のレストランは，あたたかいおもてなしで有名だ。\n\n   The restaurant on that corner (   ) its warm hospitality.\n\n   ① is known   ② is known by   ③ is known to   ④ is known for\n\n(2)   母親は娘が消息を絶ったという知らせにショックを受けた。\n\n   The mother (   ) the news that her daughter had disappeared.\n\n   ① was shocked at   ② was shocked to\n\n   ③ was shocked with ④ was shocked for\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   その結果は，私のクラスメート全員に知られるだろう。\n\n(2)   私の弟は洋楽に興味がある。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の英語を日本語にしなさい。\n\n＜be known＋前置詞＞\n\n①   be known to\n\n②   be known by\n\n③   be known for\n\n④   be known as\n\n ＜by 以外の前置詞を使う受動態＞\n\n①   be filled with\n\n②   be crowded with\n\n③   be confronted with\n\n④   be concerned with\n\n⑤   be acquainted with\n\n⑥   be engaged in\n\n⑦   be involved in\n\n⑧   be accustomed to\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   This city is known (   ) its old temples.\n\n   ① to   ② by   ③ for   ④ as\n\n(2)   The movie is known (   ) everyone in this country.\n\n   ① to   ② by   ③ for   ④ as\n\n(3)   She is known (   ) a singer.\n\n   ① to   ② by   ③ for   ④ as\n\n(4)   We are known (   ) the friends we keep.\n\n   ① to   ② by   ③ for   ④ as\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n   If you have an unreasonable dislike of someone, you are   1   that person.\n   〈07 年本試〉\n\n   ① concerned with   ② indifferent to ③ mistaken for   ④ prejudiced against",
+       "answer_text": "Ａ問題\n\n１\n\n①   be known to   ～に知られている\n\n②   be covered with   ～でおおわれている\n\n③   be married to   ～と結婚する\n\n④   be dressed in   ～を着ている\n\n２\n\n(1)   were injured\n\n(2)   will be delayed\n\n(3)   injured\n\n(4)   was delayed\n\n(5)   am pleased\n\n(6)   are satisfied\n\n(7)   be surprised\n\nＢ問題\n\n３\n\n(1)   at [by]\n\n(2)   in\n\n(3)   of\n\n(4)   with\n\f４\n\n(1)   was crowded with\n\n(2)   is known as\n\n(3)   was praised for\n\n５\n\n(1)   ④ is known for\n(2)   ① was shocked at\n\n６\n\n(1)   [例] The result will be known to all my classmates.\n\n(2)   [例] My brother is interested in western music.\n\nＣ問題\n\n７\n\n＜be known＋前置詞＞\n\n①   be known to   ～に知られている\n\n②   be known by   ～によってわかる\n\n③   be known for   ～で知られている，有名である\n\n④   be known as   ～として知られている，有名である\n\n＜by 以外の前置詞を使う受動態＞\n\n①   be filled with   ～で満たされている\n\n②   be crowded with   ～で混雑している\n\n③   be confronted with   ～に直面している\n\n④   be concerned with   ～とかかわっている\n\n⑤   be acquainted with   ～を知っている\n\n⑥   be engaged in   ～に従事している\n\f⑦   be involved in   ～にかかわっている，参加している\n\n⑧   be accustomed to   ～に慣れている\n\n８\n\n(1)   ③ for\n   この都市は，古い寺で知られている。\n\n(2)   ① to\n   その映画は，この国のみんなに知られている。\n\n(3)   ④ as\n   彼女は歌手として知られている。\n\n(4)   ② by\n   付き合う友達によって，人(人格)がわかる。\n９\n\n   ④ prejudiced against\n   もしあなたが理由なく誰かを嫌っているのなら，あなたはその人に対して偏見を持っ\n   ていることになる。",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_019『by以外の前置詞を使う受動態』（演習）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_019『by以外の前置詞を使う受動態』（演習）.pdf",
+       "q_count": 68
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "――――――――――――――――――――――――――――――――――――――――――――――――\n\n   by 以外の前置詞を使う受動態\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   富士山はその美しさで世界に知られています。\n\n   Mt. Fuji   the world for its beauty.\n\n(2)   ５月には，その大木は緑の葉で覆われているだろう。\n\n   The large tree   green leaves in May.\n\n(3)   ナンシーは昨年，彼と結婚した。\n\n   Nancy   him last year.\n\n(4)   クリスは私に，来年彼女と結婚するだろうと言った。\n\n   Chris told me that he   her next year.\n\n(5)   彼はその日，紺色のスーツを着ていた。\n\n   He   a dark blue suit on that day.\n\n(6)   聖ニコラスは，サンタクロースとして知られている。\n\n   Saint Nicholas   Santa Claus.\n\n(7)   サッカーをしていた少年たちは，泥まみれだった。\n\n   The boys playing soccer   mud.\n\n(8)   ルーシーはいつも最新の流行のものを着ている。\n\n   Lucy   the latest fashion.\n\n   110",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) is known to\n\n(2) will be covered with\n\n(3) was married to\n\n(4) would be married to\n\n(5) was dressed in\n\n(6) is known as\n\n(7) were covered with\n\n(8) is always dressed in",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_019『by以外の前置詞を使う受動態』（習熟）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_019『by以外の前置詞を使う受動態』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "受動態 19 20   練習\n   次の英文が正しくなるように、   に適する\n   語（句）を書きなさい。\n   by以外の前置詞を使う受動態   ⑴ The mountains were covered   snow.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n   ⑵ I am satisfied   my car.\n⑴ 彼の名前は学校中に知られている。\n  His name   everyone in our school.\n   入試レベルにチャレンジ\n⑵ その机はほこりで覆われていた。\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n  The desk   dust.\n   彼女は偉大な科学者として知られている。\n⑶ キャロルは有名なサッカー選手と結婚する。\n   She（   ）a great scientist.\n  Carol will be   a famous football player.\n\n⑷ ナンシーは今日、赤いシャツを着ている。   ① is known to   ② is known for\n  Nancy   a red shirt today.   ③ is known as   ④ is known by\n\n   omitsu Kimura の\n  Tom\n\n by以外の前置詞を使う受動態\n\n be known to 「〜に知られている」\n be covered with 「〜でおおわれている」\n be married to 「〜と結婚する」\n be dressed in 「〜を着ている」",
+       "answer_text": "",
+       "problem_pdf": "../第02章/問題_h_eng_gra_02_019『by以外の前置詞を使う受動態』（習得）.pdf",
+       "answer_pdf": "../第02章/解答_h_eng_gra_02_019『by以外の前置詞を使う受動態』（習得）.pdf",
+       "q_count": 10
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,516 @@
+{
+ "meta": {
+  "version": "3.0",
+  "passMark": 85
+ },
+ "chapters": [
+  {
+   "id": "ch03",
+   "num": 3,
+   "title": "助動詞",
+   "color": "#ff9800",
+   "items": [
+    {
+     "id": "ch03_001",
+     "num": "001",
+     "name": "canの基本用法",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-1",
+       "content": "『canの基本用法』\ncan の基本は「能力（〜できる）」「許可（〜してもよい）」「可能性（〜でありうる）」。"
+      },
+      {
+       "title": "概要",
+       "content": "can の基本は「能力（〜できる）」「許可（〜してもよい）」「可能性（〜でありうる）」。\ncan ＝ 〜できる\n能力 (ability)\n「〜することができる」\nシグナル/特徴\nI can swim.\ncan ＝ 〜してよい\n許可 / 可能性\n「〜してもよい／〜でありうる」\nシグナル/特徴\nCan I 〜? / It can be true."
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I can swim well.\n私は上手に泳げる。\nCan I use your pen?\nあなたのペンを使ってもいいですか。\nAnyone can make a mistake.\n誰でも間違えることがある。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n能力：〜できる\n2\n許可：〜してよい\n3\n可能性：〜でありうる"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_001_canの基本用法_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "can の 基 本 用 法   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計４点）\n\n＜can の基本用法＞\n①   可能   ～できる\n\n②   可能性\n\n③   許可\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n(1)   彼女は毎日ピアノを弾く。\n\n   She   the piano every day.\n\n(2)   彼女は今，ピアノを弾いている。\n\n   She   the piano now.\n\n(3)   ９時になると，彼女は３時間ピアノを弾き続けていることになる。\n\n   By nine she   the piano for three hours.\n\n(4)   来月その演奏会で彼女はピアノを弾く予定だ。\n\n   She   the piano in the concert next month.\n\n(5)   彼女は明日ピアノを弾くでしょう。\n\n   She   the piano tomorrow.\n\n(6)   このピアノは彼女によって弾かれるでしょう。\n\n   This piano   by her.\n\n(7)   彼女はピアノを弾くことができる。\n\n   She   the piano.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 18 点）\n(1)   入ってもよいですか。\n\n   in?\n\n(2)   この席に座ってよいですよ。私はそろそろ出かけます。\n\n   You   this seat. I am going to leave soon.\n\n(3)   彼は夜遅くまで起きているはずがない。\n\n   He   up late at night.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 21 点）\n\n(1)   ジャックが空腹なはずがない。２人分の夕食を食べたところだ。\n\n   Jack (   ) hungry. He has just had dinner for two people.\n\n   ① is   ② can be   ③ cannot be\n\n(2)   あのビルの屋上から富士山を見ることができる。\n\n   You (   ) Mt. Fuji from the top of that building.\n\n   ① see   ② can see   ③ cannot see\n\n(3)   わずかな誤解はいつでも生じうる。\n\n   A slight misunderstanding (   ) at any time.\n\n   ① arises   ② can arise   ③ can be arisen\n\n５   次の英文を日本語に訳しなさい。（各８点・計 16 点）\n\n(1)   Tom cannot do such a silly thing.\n\n(2)   That rumor can be a lie.\n\f６   次の日本文を英語で書きなさい。（各 10 点・計 20 点）\n\n(1)   だれでもミスをすることがありえる。\n\n(2)   宿題を終えたあと，出かけてもよいですか。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の問いに答えなさい。\n\n(1)   次の   に適する語(句)を書きなさい。\n\n＜can の基本用法＞\n\n①   可能\n\n②   可能性\n\n   →   否定文で   ～はずがない\n\n   →   疑問文で   はたして～だろうか\n\n③   許可\n\n(2)   次の英文を日本語に訳しなさい。\n\n①   Can the news be true?\n\n②   His aunt cannot be over forty. She looks in her thirties.\n\n③   Can it be true that his sister broke her arm?",
+       "answer_text": "Ａ問題\n\n１\n＜can の基本用法＞\n①   可能   ～できる\n\n②   可能性   ～ありえる\n\n③   許可   ～してもよい\n\n２\n\n(1)   She plays the piano every day.\n\n(2)   She is playing the piano now.\n\n(3)   By nine she will have been playing the piano for three hours.\n\n(4)   She is going to play the piano in the concert next month.\n\n(5)   She will play the piano tomorrow.\n\n(6)   This piano will be played by her.\n\n(7)   She can play the piano.\n\nＢ問題\n\n３\n\n(1)   Can I come\n\n(2)   can take [have]\n\n(3)   cannot [can’t] stay\n\f４\n\n(1)   ③ cannot be\n(2)   ② can see\n(3)   ② can arise\n\n５\n\n(1)   トムがそんな愚かなことをするはずがない。\n\n(2)   そのうわさはうそであることもありえる。\n\n６\n\n(1)   [例] Everyone can make a mistake.\n\n(2)   [例] Can I go out after I finish my homework?\n\nＣ問題\n\n７\n\n(1)\n\n＜can の基本用法＞\n\n①   可能   ～できる\n\n②   可能性   ～ありえる\n\n   →   否定文で   ～はずがない\n\n   →   疑問文で   はたして～だろうか\n\n③   許可   ～してもよい\n\n(2)\n\n①   その知らせは，はたして本当だろうか。\n\n②   彼のおばは，40 歳を超えているはずがない。彼女は 30 代に見える。\n\n③   彼の姉[妹]が腕を骨折したというのは，はたして本当だろうか。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_001『canの基本用法』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_001『canの基本用法』（演習）.pdf",
+       "q_count": 37
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   1 ,2\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   can の基本用法\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私の弟はコンピュータを使うことができる。\n\n   My younger brother   a computer.\n\n(2)   私たちは失敗することもありえる。\n\n   We   a mistake.\n\n(3)   あなたは私のギターをひいてもよいです。\n\n   You   my guitar.\n\n(4)   そんなに   く泳ぐことはできません。\n\n   I   so fast.\n\n(5)   ここに座ってもよいですか。\n\n   I sit here?\n\n(6)   ナンシーが病気のはずがない。向こうでテニスをしているよ。\n\n   Nancy   ill. She is playing tennis over there.\n\n(7)   いつでも事故は起こりうる。\n\n   An accident   at any time.\n\n(8)   これらの品は店では買うことができません。\n\n   You   these goods in stores.\n\n   116",
+       "answer_text": "章「助動詞」   1,21-2\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) can use\n\n(2) can make\n\n(3) can play\n\n(4) cannot [can’t] swim\n\n(5) Can\n\n(6) cannot [can’t] be\n\n(7) can happen [occur]\n\n(8) cannot [can’t] buy",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_001『canの基本用法』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_001『canの基本用法』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 1 2   練習   次の英文を日本語に訳しなさい。\n\n   canの基本用法   ⑴ Everyone can tell a lie.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 彼はピアノをとても上手にひくことができる。\n   ⑵ His story can’t be true.\n He   play the piano very well.\n\n⑵ あなたの電話を使ってもよいですか。\n   I use your phone?   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n⑶ ナンシーは家にいるはずがない。   理論的にはその問題は起こりうる。\n 今朝、学校に行ったのだから。   The problem（   ）in theory.\n Nancy   be home.\n She went to school this morning.   ① happens   ② can happen   ③ can be happened\n\n   omitsu Kimura の\n Tom\n\n canの基本用法\n\n「ありえる」というキモチ\n ① 可能「～できる」\n ② 可能性「～ありえる」\n ③ 許可「～してもよい」",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_001『canの基本用法』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_001『canの基本用法』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch03_003",
+     "num": "003",
+     "name": "must の基本用法",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-2",
+       "content": "『must の基本用法』\nmust の基本は「義務（〜しなければならない）」と「強い推量（〜にちがいない）」。"
+      },
+      {
+       "title": "概要",
+       "content": "must の基本は「義務（〜しなければならない）」と「強い推量（〜にちがいない）」。\n義務\nmust V\n「〜しなければならない」\nシグナル/特徴\n= have to\n推量\nmust be 〜\n「〜にちがいない」\nシグナル/特徴\n強い確信"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "You must study hard.\nあなたは一生懸命勉強しなければならない。\nHe must be tired.\n彼は疲れているにちがいない。\nYou must not be late.\n遅刻してはいけない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n義務：〜しなければならない\n2\n推量：〜にちがいない\n3\nmust not ＝禁止"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_003_must の基本用法_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "must の 基 本 用 法   100\n\nＡ問題\n\n１   次の   に適する語(句)を書きなさい。（各２点・計４点）\n\n＜must の基本用法＞\n①   義務   ～しなければならない\n\n②   断定\n\n③   禁止（must not）\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n\n(1)   私の弟はコンピュータを使うことができる。\n\n   My younger brother   a computer.\n\n(2)   私たちは失敗することもありえる。\n\n   We   a mistake.\n\n(3)   あなたは私のギターをひいてもよい。\n\n   You   my guitar.\n\n(4)   そんなに速く泳ぐことはできません。\n\n   I   so fast.\n\n(5)   ここに座ってもよいですか。\n\n   I sit here?\n\n(6)   ナンシーが病気のはずがない。向こうでテニスをしているよ。\n\n   Nancy   ill. She is playing tennis over there.\n\n(7)   いつでも事故は起こりうる。\n\n   An accident   at any time.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各７点・計 21 点）\n(1)   そのような電子メールに返信をしてはいけません。\n\n   You   to such e-mails.\n\n(2)   残念ですが，あなたがたにお別れを言わなければなりません。\n\n   I’m sorry that I   good-bye to you.\n\n(3)   明らかな証拠があるので，彼の供述は本当に違いない。\n\n   His statement   true because there is evident proof.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   あの女性は彼の母親であるはずがない。お姉さんに違いない。\n\n   The woman (   ) be his mother. She (   ) be his older sister.\n\n   ① must ／ can   ② must not ／ cannot\n\n   ③ cannot ／ must   ④ cannot ／ must not\n\n(2)   彼女が今，香港にいるはずがない。東京にいるに違いない。\n\n   She (   ) in Hong Kong now. She (   ) in Tokyo.\n\n   ① can be ／ must be   ② cannot be ／ must be\n\n   ③ can be ／ must not be   ④ cannot be ／ must not be\n\n５   次の英文を日本語に訳しなさい。（各９点・計 18 点）\n\n(1)   Her car is in front of her office. She must be in her office now.\n\n(2) You must not go out of the classroom until a chime sounds.\n\f６   次の日本文を英語で書きなさい。（各 10 点・計 20 点）\n\n(1)   彼女はまだ 20 代に違いない。\n\n(2)   あなたは決してうそをついてはいけません。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   下線部に注意して，次の２つの英文がほぼ同じ意味になるように，   に適する語\n\n   (句)を書きなさい。\n\n①   You must not use a cellphone here.\n\n   a cellphone here.\n\n②   You must be quiet in this room.\n\n   in this room.\n\n③   She must be very kind.\n\n   I’m   that she is very kind.\n\n④   He must not be hungry. He has just had dinner.\n\n   He   hungry. He has just had dinner.",
+       "answer_text": "Ａ問題\n\n１\n＜must の基本用法＞\n①   義務   ～しなければならない\n\n②   断定   ～に違いない\n\n③   禁止（must not）   絶対に～するな\n\n２\n\n(1)   can use\n\n(2)   can make\n\n(3)   can play\n\n(4)   cannot [can’t] swim\n\n(5)   Can\n\n(6)   cannot [can’t] be\n\n(7)   can happen [occur]\n\nＢ問題\n\n３\n\n(1)   must not reply\n\n(2)   must say\n\n(3)   must be\n\f４\n\n(1)   ③ cannot ／ must\n(2)   ② cannot be ／ must be\n\n５\n\n(1)   彼女の車が会社の前にある。彼女は今，会社にいるに違いない。\n\n(2)   チャイムが鳴るまで，教室を出てはいけません。\n\n６\n\n(1)   [例] She must still be in her twenties.\n\n(2)   [例] You must not lie [tell a lie].\n\nＣ問題\n\n７\n\n①   You must not use a cellphone here.\n\n   Don’t use a cellphone here.\n\n   ここで携帯電話を使ってはいけません。\n\n②   You must be quiet in this room.\n\n   Be quiet in this room.\n\n   この部屋では静かにしなければならない。[この部屋では静かにしなさい。]\n\n③   She must be very kind.\n\n   I’m sure that she is very kind.\n\n   彼はとても親切に違いない。\n\n④   He must not be hungry. He has just had dinner.\n\n   He cannot [can’t] be hungry. He has just had dinner.\n\n   彼は空腹であるはずがない。彼は夕食を食べ終えたばかりだ。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_003『must の基本用法』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_003『must の基本用法』（演習）.pdf",
+       "q_count": 31
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   3 ,4\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   must の基本用法\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   あなたたちは試合に勝つために，より一層練習しなければならない。\n\n   You   harder to win the match.\n\n(2)   ドアのそばに立っている女性は，(絶対に)ルーシーに違いない。\n\n   The woman standing by the door   Lucy.\n\n(3)   会議中は(絶対に)その部屋に入ってはいけない。\n\n   Everyone   that room during the meeting.\n\n(4)   私は今週末までに，決断をしなければなりません。\n\n   I   my decision by this weekend.\n\n(5)   これらの品は(絶対に)機内に持ち込んではいけません。\n\n   You   these items on the airplane.\n\n(6)   私はバス停まで走らなければ，乗り遅れてしまうだろう。\n\n   I   to the bus stop or I’ll miss the bus.\n\n(7)   (絶対に)ここで写真をとってはいけません。\n\n   You   a photo here.\n\n(8)   彼は知識が豊富だ。彼は(絶対に)専門家に違いない。\n\n   He has a lot of knowledge.   He   an expert.\n\n   120",
+       "answer_text": "章「助動詞」   3,43-4\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) must practice\n\n(2) must be\n\n(3) must not enter\n\n(4) must make\n\n(5) must not take\n\n(6) must run\n\n(7) must not take\n\n(8) must be",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_003『must の基本用法』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_003『must の基本用法』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 ３ ４   練習   次の英文を日本語に訳しなさい。\n\n   mustの基本用法   ⑴ You must not have too much food.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私は（絶対に）宿題をしなければならない。\n   ⑵ She must be Nancy’s mother.\n I   do my homework.\n\n⑵ トムは今、（絶対に）家にいるに違いない。\n Tom   be home now.   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉のペアを次の選択肢から選びなさい。\n⑶ あなたは（絶対に）遅刻してはならない。\n   彼は40代であるわけがない。30代に違いない。\n You   be late.\n   He（   ）be in his forties.\n   He（   ）be in his thirties.\n\n   ① must / can\t\t   ② must not / cannot\n   ③ cannot / must   ④ cannot / must not\n\n   omitsu Kimura の\n Tom\n\n mustの基本用法\n\n「絶対」というキモチ\n ① 義務「～しなければならない」\n ② 断定「～に違いない」\n ③ 禁止（must not）「絶対に～するな」",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_003『must の基本用法』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_003『must の基本用法』（習得）.pdf",
+       "q_count": 12
+      }
+     }
+    },
+    {
+     "id": "ch03_005",
+     "num": "005",
+     "name": "mayの基本用法",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-3",
+       "content": "『mayの基本用法』\nmay の基本は「許可（〜してもよい）」と「弱い推量（〜かもしれない）」。"
+      },
+      {
+       "title": "概要",
+       "content": "may の基本は「許可（〜してもよい）」と「弱い推量（〜かもしれない）」。\n許可\nmay V\n「〜してもよい」（やや改まった許可）\nシグナル/特徴\nMay I 〜? が丁寧\n推量\nmay V\n「〜かもしれない」\nシグナル/特徴\n弱めの推量"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "May I come in?\n入ってもよろしいですか。\nIt may rain tomorrow.\n明日雨が降るかもしれない。\nHe may know the answer.\n彼は答えを知っているかもしれない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n許可：〜してもよい\n2\n推量：〜かもしれない\n3\nMay I 〜? は丁寧表現"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_005_mayの基本用法_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "may の 基 本 用 法   100\n\nＡ問題\n\n１   次の   に適する語(句)を書きなさい。（各２点・計６点）\n\n＜may の基本用法＞\n①   推量   ～かもしれない\n\n②   許可\n\n③   祈り（May＋S＋原形～！）\n\n④   譲歩（may～, but…）\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n(1)   あなたたちは試合に勝つために，より一層練習しなければならない。\n\n   You   harder to win the match.\n\n(2)   ドアのそばに立っている女性は，(絶対に)ルーシーに違いない。\n\n   The woman standing by the door   Lucy.\n\n(3)   その話が本当であるはずがない。\n\n   The story   .\n\n(4)   私はバス停まで走らなければ，乗り遅れてしまうだろう。\n\n   I   to the bus stop or I’ll miss the bus.\n\n(5)   これらの品は店では買うことができません。\n\n   You   these goods in stores.\n\n(6)   (絶対に)ここで写真をとってはいけません。\n\n   You   a photo here.\n\n(7)   あなたのコンピューターを使ってもよいですか。\n\n   your computer?\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 20 点）\n\n(1)   アドバイスをお願いしてもよろしいでしょうか。\n\n   I ask you for some advice?\n\n(2)   彼女の話し方から判断すると，彼女は有能な弁護士かもしれない。\n\n   Judging from the way she speaks, she   a capable lawyer.\n\n(3)   馬を水際まで連れて行くことはできるかもしれないが，水を飲ませることはできない。\n\n   You   a horse to the water, but you cannot make it drink.\n\n(4)   あなたがうまくいきますように！\n\n   succeed!\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 18 点）\n\n(1)   あなたが長生きしますように！\n\n   (   ) you live long!\n\n   ① Will   ② May   ③ Can\n\n(2)   それは本当かもしれない。\n\n   It (   ) true.\n\n   ① must   ② may   ③ may be\n\n(3)   不思議に聞こえるかもしれないが，それは本当のことだ。\n\n   It (   ) sound strange, but it's true.\n\n   ① may   ② cannot   ③ must\n\f５   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n\n(1)   Be careful! The dog may bite you.\n\n(2)   May I ask you a favor?\n\n(3)   Tom may be wrong, but I don’t think he is.\n\n６   次の日本文を英語で書きなさい。（各７点・計 14 点）\n\n(1)   彼女の赤ちゃんはお腹が空いているのかもしれない。\n\n(2)   あなたのお名前をお聞きしてもよろしいでしょうか。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   ( )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，下線部を日本語に訳しなさい。\n\n(1)   “Do you respect him?”\n\n   “No. He (   ) clever, but he is not honest.”\n\n   ① mustn’t be   ② may be   ③ can’t   ④ may not be\n\n(2)   “It is a little hot in this room, isn’t it?”\n\n   “You (   ) open the window, then.”\n\n   ① cannot   ② must not   ③ must   ④ may\n\f(3)   “I am going to get married to Ann next month.”\n\n   “Congratulations! (   ) you be filled with happiness forever!”\n\n   ① May   ② Can   ③ Must   ④ Will\n\n(4)   “Have you seen Keiko?”\n\n   “No, but she (   ) be in her classroom.”\n\n   ① must not   ② should   ③ may   ④ can’t",
+       "answer_text": "Ａ問題\n\n１\n＜may の基本用法＞\n①   推量   ～かもしれない\n\n②   許可   ～してもよい\n\n③   祈り（May＋S＋原形～！）   ～しますように！\n\n④   譲歩（may～, but…）   (確かに)～かもしれない(が)\n\n２\n\n(1)   must practice\n\n(2)   must be\n\n(3)   cannot [can’t] be true\n\n(4)   must run\n\n(5)   cannot [can’t] buy\n\n(6)   must not take\n\n(7)   Can [May] I use\n\nＢ問題\n\n３\n\n(1)   May [Can]\n\n(2)   may be\n\n(3)   may take [lead]\n\n(4)   May you\n\f４\n\n(1)   ② May\n(2)   ③ may be\n(3)   ① may\n５\n\n(1)   気をつけて。その犬はあなたを噛むかもしれない。\n\n(2)   お願いをしてもいいですか。\n\n(3)   (確かに)トムは間違っているかもしれないが，私は彼が間違っているとは思わない。\n\n６\n\n(1)   [例] Her baby may be hungry.\n\n(2)   [例] May [Can] I have your name?\n\nＣ問題\n\n７\n\n(1)   ② may be\n   (確かに)彼は賢いかもしれませんが，正直ではありません。\n\n(2)   ④ may\n   それなら窓を開けても良いですよ。\n\n(3)   ① May\n   あなた(たち)が永遠に幸せいっぱいでありますように！\n\n(4)   ③ may\n   いいえ，でも彼女は教室にいるかもしれません。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_005『mayの基本用法』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_005『mayの基本用法』（演習）.pdf",
+       "q_count": 52
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   5 ,6\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   may の基本用法\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼女はそのプレゼントに驚くかもしれない。\n\n   She   surprised at the present.\n\n(2)   私にいくつか質問していいよ。\n\n   You   me some questions.\n\n(3)   娘が試験に合格できますように。\n\n   my daughter pass the examination!\n\n(4)   あなたの判断は正しいかもしれないが，私はそうは思わない。\n\n   You   right in your judgment, but I don’t think so.\n\n(5)   英語で話してもよいでしょうか。\n\n   I speak in English?\n\n(6)   もっと効率のよい方法があるかもしれない。\n\n   There   a more efficient method.\n\n(7)   あなたに神の祝福がありますように。\n\n   the blessing of God be upon you!\n\n(8)   それはいいアイデアかもしれないが，実行するのが難しい。\n\n   That   a good idea, but it’s difficult to carry it out.\n\n   124",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) may be\n\n(2) may [can] ask\n\n(3) May\n\n(4) may be\n\n(5) May [Can]\n\n(6) may be\n\n(7) May\n\n   the blessing of God   「神の祝福」\n\n(8) may be",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_005『mayの基本用法』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_005『mayの基本用法』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 ５ ６   練習   次の英文を日本語に訳しなさい。\n\n   mayの基本用法   ⑴ May I ask you a question?\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 明日、雨が降るかもしれない。\n   ⑵ Tom has not come yet.   He may be absent today.\n It   rain tomorrow.\n\n⑵ 私のお父さんのパソコン使っていいよ。\n You   use my father’s PC.   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n⑶ 君が幸せでありますように。   “Have you seen Jack?”\n   you be happy!   “No, but he（   ）at his desk.”\n\n⑷ 彼女が間違っているかもしれないが、私はそうとは思わない。   ① mustn’t be   ② may be   ③ is\n She   be wrong, but I don’t think she is.\n\n   omitsu Kimura の\n Tom\n\n mayの基本用法\n\n「なんとなく」というキモチ\n ① 推量「～かもしれない」\n ② 許可「～してもよい」\n ③ 祈り（May+S+原形～！）「～しますように！」\n ④ 譲歩（may～,but…）\n   「（確かに）～かもしれない（が）」",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_005『mayの基本用法』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_005『mayの基本用法』（習得）.pdf",
+       "q_count": 13
+      }
+     }
+    },
+    {
+     "id": "ch03_007",
+     "num": "007",
+     "name": "助動詞の過去形(would／could／might)",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-4",
+       "content": "『助動詞の過去形(would／could／might)』\nwould / could / might は単なる過去形ではなく、「丁寧」「仮定」「推量の弱さ」も表す。"
+      },
+      {
+       "title": "概要",
+       "content": "would / could / might は単なる過去形ではなく、「丁寧」「仮定」「推量の弱さ」も表す。\n過去・丁寧\nwould / could / might\n現在形より丁寧／弱い推量\nシグナル/特徴\nCould you 〜? が丁寧\n仮定・推量\n仮定法でも使う\nIf 〜, S would V\nシグナル/特徴\nwould＝〜だろうに"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Could you help me?\n手伝ってくださいませんか。（丁寧）\nIt might rain tomorrow.\n明日雨が降るかもしれない。（may より弱い推量）\nWhen I was young, I would often play here.\n若い頃よくここで遊んだものだ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n丁寧表現：Could you / Would you\n2\n弱い推量：might\n3\nwould often＝よく〜したものだ"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_007_助動詞の過去形(would／could／might)_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "助 動 詞 の 過 去 形 (would /could /might)   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計６点）\n\n①   助動詞 will の過去形\n\n②   助動詞 can の過去形\n\n③   助動詞 may の過去形\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   ケンは今，家にいるかもしれない。\n\n   Ken   home now.\n\n(2)   ケンは今，家にいるはずがない。\n\n   Ken   home now.\n\n(3)   ケンは今日の午後，家にいるだろう。\n\n   Ken   home this afternoon.\n\n(4)   ケンは今，家にいるに違いない。\n\n   Ken   home now.\n\n(5)   娘が試験に合格できますように。\n\n   my daughter pass the examination!\n\n(6)   英語で話してもよいでしょうか。\n\n   I speak in English?\n\n(7)   私は今週末までに，決断をしなければなりません。\n\n   I   my decision by this weekend.\n\n(8)   それはいいアイデアかもしれないが，実行するのが難しい。\n\n   That   a good idea, but it’s difficult to carry it out.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各７点・計 21 点）\n(1)   お申し出をお受けするのは難しいかもしれません。\n\n   It   difficult for me to accept your offer.\n\n(2)   ご意見をうかがってもよろしいでしょうか。\n\n   I ask your opinion?\n\n(3)   アンは細かい点に注意を払うことができなかった。\n\n   Ann   attention to details.\n\n４   次の英文を日本語に訳しなさい。（各７点・計 14 点）\n\n(1)   Could you tell me how to get to the hospital?\n\n(2)   Ten years ago, He could run much faster than he can now.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各７点・計 21 点）\n(1)   朝食には何がよろしいですか。\n   ( like / what / you / for / would / breakfast / ? )\n\n(2)   私は昨夜，終電に乗れなかった。\n   ( night / I / catch / the last / couldn’t / last / train / . )\n\n(3)   校長先生は全校集会で，その理由を説明されるかもしれません。\n   ( principal / the school / explain / our / might / assembly / the reason / at / . )\n\f６   次の日本文を，(   )内の指示に従って英語で書きなさい。（各７点・計 14 点）\n\n(1)   私の父は今夜，帰宅が遅くなるかもしれません。   (might を用いて)\n\n(2)   私に少しお時間をくださいますか。   (could を用いて)\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   下線部に注意して，次の英文を日本語に訳しなさい。\n\n＜助動詞 will(過去形 would)の基本用法＞\n\n①   単純未来\n   It will snow tomorrow.\n\n②   意志未来\n   I will call you tonight.\n\n③   強い意志・拒絶（主に否定文で）\n   This car will not move.\n\n④   習慣・習性\n   Ice will float on water.\n\n⑤   依頼\n   Will you open the window?\n\n⑥   推測\n   He will be tired now.\n\f＜助動詞 shall の基本用法＞\n\n①   相手の意向をたずねる\n   Shall I clean your room?\n\n②   勧誘\n   Shall we watch the movie?\n\n(2)   次の英文を日本語に訳しなさい。\n\n①   He would not go to the hospital, even though he had a high fever.\n\n②   This door will not open.\n\n③   That door would not open.\n\n④   Shall we play soccer after school?\n\n⑤   Shall I wash your car?\n\n８ 〈センター試験にチャレンジ〉次の会話の   において，二人目の発言が最も適当\n  な応答となるように文を作るには，(A)と(B)をどのように選んで組み合わせればよい\n  か，下の①～⑧のうちから一つ選べ。   〈14 年追試〉\n\n   Lynne：I’m leaving for work, dear. See you at dinner.\n   Yoshi：\n\n   (A) Could you   (A) bring our garbage   (A) when you leave?\n   (B) Why didn’t you   (B) take out the garbage   (B) while driving to the office?\n\n   ①   (A)→(A)→(A)   ② (A)→(A)→(B)   ③   (A)→(B)→(A)\n   ④   (A)→(B)→(B)   ⑤ (B)→(A)→(A)   ⑥   (B)→(A)→(B)\n   ⑦   (B)→(B)→(A)   ⑧ (B)→(B)→(B)",
+       "answer_text": "Ａ問題\n\n１\n\n①   助動詞 will の過去形   would\n\n②   助動詞 can の過去形   could\n\n③   助動詞 may の過去形   might\n\n２\n\n(1)   may be\n\n(2)   cannot [can’t] be\n\n(3)   will be\n\n(4)   must be\n\n(5)   May\n\n(6)   May [Can]\n\n(7)   must make [have to make]\n\n(8)   may be\n\nＢ問題\n\n３\n\n(1)   might be\n\n(2)   Might [Could, May]\n\n(3)   couldn’t [could not] pay\n\f４\n\n(1)   その病院への行き方を教えていただけますか。\n\n(2)   10 年前，彼は今よりずっと速く走れた。\n\n５\n\n(1)   What would you like for breakfast?\n\n(2)   I couldn’t catch the last train last night.\n\n(3)   Our principal might explain the reason at the school assembly.\n   school assembly 「全校集会」\n６\n\n(1)   [例] My father might come home late tonight.\n\n(2)   [例] Could you give me a little [some] time?\n\nＣ問題\n\n７\n(1)\n\n＜助動詞 will の基本用法＞\n\n①   単純未来\n   It will snow tomorrow.   明日は雪が降るだろう。\n\n②   意志未来\n   I will call you tonight.   今夜あなたに電話するよ。\n\n③   強い意志（拒絶）\n   This car will not move.   この車はどうしても動こうとしない。\n\n④   習慣・習性\n   Ice will float on water.   氷は水に浮くものだ。\n\n⑤   依頼\n   Will you open the window?   窓を開けてくれませんか。\n\n⑥   推測\n   He will be tired now.   彼は今疲れているだろう。\n\f＜助動詞 shall の基本用法＞\n\n①   相手の意向をたずねる\n   Shall I clean your room?   あなたの部屋を掃除しましょうか。\n\n②   勧誘\n   Shall we watch the movie?   その映画を見ましょうか。\n\n(2)\n\n①   彼は高熱があったのだが，どうしても病院に行こうとしなかった。\n\n②   このドアはどうしても開かない。\n\n③   あのドアはどうしても開かなかった。\n\n④   放課後にサッカーをしましょうか。\n\n⑤   あなたの車を洗いましょうか。\n\n８\n\n   ③ (A)→(B)→(A)\n\n   Could you take out the garbage when you leave?\n\n   リン「あなた，私は仕事に出かけるわ。また夕食のときにね。」\n   ヨシ「出かけるときにゴミを出していってもらえるかい？」\n\n   ※形だけでは判断できないので，文脈から判断することがポイント。\n\n   (A) Could you「～していただけますか？」\n   (B) Why didn’t you「どうして～しなかったの？(～すればいいのに)」\n\n   (A) bring our garbage「ゴミを持ってくる」\n   (B) take out the garbage「ゴミを出す」\n\n   (A) when you leave?「出発するとき」\n   (B) while driving to the office?「会社に車で行くとき」\n\n   ※リン「あなた，私は仕事に出かけるわ。また夕食のときにね。」に対して，\n   「出かけるときにゴミを出していってほしい。」という依頼の意味になる，\n   ③ (A)→(B)→(A)の組み合わせが適切。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_007『助動詞の過去形(would／could／might)』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_007『助動詞の過去形(would／could／might)』（演習）.pdf",
+       "q_count": 46
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   7 ,8\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   助動詞の過去形(would/could/might)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   窓を閉めていただけますか。\n\n   you close the window?\n\n(2)   ジョンは２才で泳げた。\n\n   John   at two.\n\n(3)   社長が会議に出席されるかもしれません。\n\n   The president   the conference.\n\n(4)   紅茶をもう少し召し上がりませんか。\n\n   you have some more tea?\n\n(5)   私にタクシーを呼んでいただけますか。\n\n   you call a taxi for me?\n\n(6)   その政治家は，駅前の広場で演説するかもしれません。\n\n   The politician   a speech in the square in front of the\n\n   station.\n\n(7)   小学生のとき，私は自転車に乗れませんでした。\n\n   I   a bike when I was an elementary student.\n\n(8)   運転免許証を見せていただけますか。\n\n   you show me your driver’s license?\n\n   128",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   助 動 詞 の過 去 形 (would/could/might) ―解 答 ―\n\n１\n\n(1) Would [Could]\n\n(2) could swim\n\n(3) might attend\n\n(4) Would\n\n(5) Would [Could]\n\n(6) may [might] make\n\n(7) could not [couldn’t] ride\n\n(8) Would [Could]",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_007『助動詞の過去形(would／could／might)』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_007『助動詞の過去形(would／could／might)』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 ７ ８   練習   次の英文を日本語に訳しなさい。\n\n 助動詞の過去形（would / could / might）   ⑴ Would you give me a discount?\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ その本を貸してくれませんか。\n   ⑵ Could you pass me the salt?\n   you lend me the book?\n\n⑵ ナンシーは３才でピアノがひけた。\n Nancy   play the piano at three.   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n\n⑶ ジャックは奥さんと一緒にパーティに来るかもしれません。\n   駅までの行き方を教えていただけませんか。\n Jack   come to the party with his wife.\n   （tell / way / could / me / to / you / the）the station?\n\n   omitsu Kimura の\n Tom\n\n 助動詞の過去形（would / could / might）\n\n ① will / can / mayの過去形\n ②「ていねい」なキモチ",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_007『助動詞の過去形(would／could／might)』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_007『助動詞の過去形(would／could／might)』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch03_009",
+     "num": "009",
+     "name": "助動詞の代用表現（be able to／have to)",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-5",
+       "content": "『助動詞の代用表現（be able to／have to)』\nbe able to ＝ can の代用、have to ＝ must の代用。時制を自由に変えられる。"
+      },
+      {
+       "title": "概要",
+       "content": "be able to ＝ can の代用、have to ＝ must の代用。時制を自由に変えられる。\nbe able to\ncan の代用\n「〜できる」\nシグナル/特徴\n未来形・完了形にも使える\nhave to\nmust の代用\n「〜しなければならない」\nシグナル/特徴\n客観的な必要"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I will be able to speak English.\n私は英語を話せるようになるだろう。\nShe has had to work late.\n彼女は遅くまで働かなければならなかった。\nDo I have to go?\n私は行かなければなりませんか。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nbe able to ＝ can の代用（時制可）\n2\nhave to ＝ must の代用\n3\nmust は時制変化できない"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_009_助動詞の代用表現（be able to／have to)_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "助 動 詞 の 代 用 表 現 (be able to /have to)   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   be able to\n\n②   have to\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 32 点）\n(1)   窓を閉めていただけますか。\n\n   you close the window?\n\n(2)   ジョンは２才で泳げた。\n\n   John   at two.\n\n(3)   あなたに神の祝福がありますように。\n\n   the blessing of God be upon you!\n\n(4)   社長が会議にご出席されるかもしれません。\n\n   The president   the conference.\n\n(5)   紅茶をもう少し召し上がりませんか。\n\n   you have some more tea?\n\n(6)   小学生のとき，私は自転車に乗れなかった。\n\n   I   a bike when I was an elementary student.\n\n(7)   会議中は(絶対に)その部屋に入ってはいけない。\n\n   Everyone   that room during the meeting.\n\n(8)   私にいくつか質問していいよ。\n\n   You   me some questions.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   be able to もしくは have to を用いること。（各５点・計 20 点）\n\n(1)   この好天の中，私たちはたくさんの星を見ることができる。\n\n   We   many stars in this fine weather.\n\n(2)   あなたは急がなくてもよい。\n\n   You   .\n\n(3)   あなたはもう一度先生に相談する必要があると思う。\n\n   I think you   with your teacher one more time.\n\n(4)   その時，私は彼女に話しかけることができなかった。\n\n   I   speak to her at that time.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 12 点）\n\n(1)   My father (   ) catch fish. He was good at fishing.\n\n   ① was able to   ② can   ③ wasn’t able to   ④ cannot\n\n(2) You (   ) dress up because it was only an informal party.\n\n   ① must   ② must not   ③ have to   ④ didn’t have to\n\n５   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各６点・計 18 点）\n\n(1)   彼は始発列車に乗るために早起きしなければならなかった。\n\n   He   early in the morning to catch the first train.\n\n(2)   彼らはいつか世界の舞台に立つことができるだろう。\n\n   They   on the world stage someday.\n\n(3)   娘さんは大丈夫です。薬を飲む必要はありません。\n\n   Your daughter is all right. She   any medicine.\n\f６   次の日本文を英語で書きなさい。（各７点・計 14 点）\n\n(1)   彼女は約束を守らなければならなかった。\n\n(2)   あなたは昨夜，よく眠れましたか。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   次の英語を日本語にしなさい。\n\n   have only to V\n\n   ＝ All you have to do is (to) V\n\n＜助動詞 need＞   ※need は，否定文・疑問文では助動詞としても使われる\n\n①   S need not [needn’t] V\n\n   ＝ S don’t [doesn’t] need to V\n\n   ＝ S don’t [doesn’t] have to V\n\n②   Need S V ～ ?\n\n   ＝ Do [Does] S need to V ～ ?\n\n   ＝ Do [Does] S have to V ～ ?\n\n(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   あなたは，彼に会いさえすればよい。\n\n   You have   .\n\f(3)   下線部に注意して，次の２つの英文がほぼ同じ意味になるように，   に適する\n   １語を書きなさい。\n\n①   You don’t have to get up early tomorrow.\n\n   You   not get up early tomorrow.\n\n②   Does he have to attend the meeting this afternoon?\n\n   he attend the meeting this afternoon?\n\n③   She has to call her grandmother tonight.\n\n   She need   call her grandmother tonight.",
+       "answer_text": "Ａ問題\n\n１\n\n①   be able to   ～できる\n\n②   have to   ～する必要がある\n\n２\n\n(1)   Would [Could]\n\n(2)   could [was able to] swim\n\n(3)   May\n\n   the blessing of God 「神の祝福」\n\n(4)   might attend\n\n(5)   Would\n\n(6)   could not [couldn’t / was not able to / wasn’t able to] ride\n\n(7)   must not enter\n\n(8)   may [can] ask\n\nＢ問題\n\n３\n\n(1)   are able to see\n\n(2)   don’t have to hurry\n\n(3)   have to consult\n\n(4)   was not [wasn’t] able to\n\f４\n\n(1)   ① was able to\n(2)   ④ didn’t have to\n\n５\n\n(1)   had to get up\n\n(2)   will be able to stand\n\n(3)   doesn’t have to take\n\n６\n\n(1)   [例] She had to keep her promise.\n\n(2)   [例] Were you able to sleep well last night?\n\nＣ問題\n\n７\n(1)\n   have only to V   ～しさえすればよい\n\n   ＝ All you have to do is (to) V\n\n＜助動詞 need＞\n①   S need not [needn’t] V (※ここでの need は助動詞)   S は～する必要がない\n\n   ＝ S don’t [doesn’t] need to V (※ここでの need は動詞)\n\n   ＝ S don’t [doesn’t] have to V\n\n②   Need S V ～ ? (※ここでの need は助動詞)   S は～する必要がありますか。\n\n   ＝ Do [Does] S need to V ～ ? (※ここでの need は動詞)\n\n   ＝ Do [Does] S have to V ～ ?\n\n(2) You have only to meet [see] him.\n\f(3)\n\n①   You don’t have to get up early tomorrow.\n\n   You need not get up early tomorrow.\n\n   あなたは明日，早く起きる必要はない。\n\n②   Does he have to attend the meeting this afternoon?\n\n   Need he attend the meeting this afternoon?\n\n   彼は今日の午後，その会議に出席する必要がありますか。\n\n③   She has to call her grandmother tonight.\n\n   She need to call her grandmother tonight.\n\n   彼女は今夜，祖母に電話をする必要がある。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_009『助動詞の代用表現（be able to／have to)』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_009『助動詞の代用表現（be able to／have to)』（演習）.pdf",
+       "q_count": 37
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   9 ,1 0\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   助動詞の代用表現(be able to/have to)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   だだし，be able to もしくは have to を用いること。\n\n(1)   彼女はその日，音楽室のグランドピアノをひくことができた。\n\n   She   the grand piano in the music room at that day.\n\n(2)   私たちは先週，合唱コンクールの練習をしなければならなかった。\n\n   We   for the chorus contest last week.\n\n(3)   私といっしょに行かなくてもいいですよ。\n\n   You   go with me.\n\n(4)   私たちは３時間以内で，その山を登ることができた。\n\n   We   the mountain in three hours.\n\n(5)   あなたがたは英語で彼らとコミュニケーションをとらなければなりません。\n\n   You   with them in English.\n\n(6)   私たちは式典で着飾らなければならなかった。\n\n   We   up at the ceremony.\n\n(7)   ケビンは先週の水曜日に返事を受け取ることができた。\n\n   He   an answer last Wednesday.\n\n(8)   生徒たちは，30 分以内にそれらの難しい問題を解かければならなかった。\n\n   The students   those difficult questions in half an\n\n   hour.\n\n   132",
+       "answer_text": "章「助動詞」   9,10\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n  助 動 詞 の代 用 表 現 (be able to/have to) ―解 答 ―\n\n１\n\n(1) was able to play\n\n(2) had to practice\n\n(3) don’t have to\n\n(4) were able to climb\n\n(5) have to communicate\n\n(6) had to dress\n\n(7) was able to receive\n\n(8) had to solve",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_009『助動詞の代用表現（be able to／have to)』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_009『助動詞の代用表現（be able to／have to)』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 ９ 10   練習\n   次の日本文にあう英文になるように、   に適する\n   語（句）を書きなさい。\n 助動詞の代用表現（be able to / have to）   ⑴ あなたはすぐに泳げるようになるでしょう。\n\n 例題\n   次の日本文にあう英文になるように、   に適する   You will   swim soon.\n   語（句）を書きなさい。\n\n⑴ リンダは昨日、100ｍ泳ぐことができた。   ⑵ トムは父に電話をかけなければならなかった。\n  Linda   swim 100 meters yesterday.   Tom   call his father.\n\n⑵ 宿題をしなければならない。   ⑶ 私はその講義に出席することができた。\n  I   do my homework.   I   attend the lecture.\n\n⑶ 全部は食べなくてもいいですよ。   ⑷ 日曜日は早起きしなくてもよい。\n  You   eat all.   You   get up early on Sunday.\n\n   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   You（   ）go to university today\n   because all the lectures are cancelled.\n\n  Tom\n   omitsu Kimura の   ① have to\t\t\t   ② must\n   ③ don’t have to   ④ must not\n\n 助動詞の代用表現（be able to / have to）\n\n →「to」を使うと「客観的」⇐外からわかる\n ① be able to 「～できる」\n   （可能）\n ② have to   「する必要がある」\n   （必要性）",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_009『助動詞の代用表現（be able to／have to)』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_009『助動詞の代用表現（be able to／have to)』（習得）.pdf",
+       "q_count": 13
+      }
+     }
+    },
+    {
+     "id": "ch03_011",
+     "num": "011",
+     "name": "「～するほうがよい」の表現（should／ought to／had better）",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-6",
+       "content": "『「～するほうがよい」の表現（should／ought to／had better）』\nshould / ought to / had better は「〜するほうがよい」を表すが、ニュアンスが異なる。"
+      },
+      {
+       "title": "概要",
+       "content": "should / ought to / had better は「〜するほうがよい」を表すが、ニュアンスが異なる。\nshould / ought to\n提案・道徳的助言\n「〜すべきだ／したほうがよい」\nシグナル/特徴\n穏やかな勧め\nhad better\nhad better V\n「〜したほうがよい（さもないと…）」\nシグナル/特徴\nやや強い忠告／脅し"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "You should see a doctor.\n医者に診てもらうべきだ。\nYou ought to apologize.\n謝るべきだ。\nYou had better leave now.\nもう出発したほうがいい（さもないと…）。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nshould / ought to ＝ 穏やかな助言\n2\nhad better ＝ 強い忠告\n3\nhad better not ＝ 〜しないほうがよい"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_011_「～するほうがよい」の表現（should／ought to／had better）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "第３章「助動詞」   得点\n\n   「〜するほうがよい」の表現 (should/ought to/had better)   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計４点）\n\n ＜「～するほうがよい」の表現＞   →   ＜否定形＞\n\n   ①   should   →   should not\n\n   ②   ought to   →\n\n   ③   had better   →\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   あなたは，今行かなければならない。※２通りの表現で\n\n   You   now.\n\n   You   now.\n\n(2)   エミはすぐに泳げるようになるでしょう。\n\n   Emi   soon.\n\n(3)   私たちは先週，合唱コンクールの練習をしなければならなかった。\n\n   We   for the chorus contest last week.\n\n(4)   ケンは，４歳でピアノが弾けた。※２通りの表現で\n\n   Ken   the piano at four.\n\n   Ken   the piano at four.\n\n(5)   私といっしょに行かなくてもいいですよ。\n\n   You   go with me.\n\n(6)   あなたは食べ過ぎてはいけません。\n\n   You   too much food.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各８点・計 24 点）\n\n(1)   自分の個人情報について何も話さないほうがよい。\n\n   You   say anything about your personal information.\n\n(2)   あなたは今すぐ医者に診てもらったほうがよい。\n\n   You   see a doctor right now.\n\n(3)   彼らはもうこの問題について議論しないほうがいい。\n\n   They   discuss this issue any longer.\n\n４   次の英文を日本語に訳しなさい。（各８点・計 16 点）\n\n(1)   She ought to consult with her parents about it.\n\n(2) You had better not go out today, because you have a slight fever.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各８点・計 16 点）\n\n(1)   あなたは甘いものを食べすぎないほうがよい。\n   ( not / you / to / too / should / much / eat / sweets / . )\n\n(2)   あなたは行動する前によく考えるほうがよい。\n   ( before / you / had / you / think twice / ought / better / act / . )\n\f６   次の日本文を，(   )内の指示に従って英語で書きなさい。（各８点・計 16 点）\n\n(1)   あなたはうそを言わないほうがよい。 (had better を用いて)\n\n(2)   あなたは彼の忠告に従ったほうがよい。 (ought to を用いて)\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   次の英語を日本語にしなさい。\n\n   why should S V\n\n＜助動詞 dare＞   ※dare は，否定文・疑問文では助動詞としても使われる\n\n①   S dare not V\n\n②   Dare S V…?\n\n③   How dare S V…? [!]\n\n(2)   (  )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，完成した英文を日本語に訳しなさい。\n\n   Momoko dare not (   ) to her father.\n\n   ① complaining   ② complain   ③ complained   ④ to complain\n\f(3)   次の英文を日本語に訳しなさい。\n\n①   How dare you say such a thing!\n\n②   You’re not wrong. Why should you apologize?\n\n③   Akira dared not argue with her about the matter.",
+       "answer_text": "「 〜 す る ほ う が よ い 」 の 表 現 (should /o ught to /had bette r)\n\nＡ問題\n\n１\n\n＜「～するほうがよい」の表現＞   →   ＜否定形＞\n\n   ①   should   →   should not\n\n   ②   ought to   →   ought not to\n\n   ③   had better   →   had better not\n\n２\n\n(1)   have to go ／ must go（順不同）\n\n(2)   will be able to swim\n\n(3)   had to practice\n\n(4)   was able to play ／ could play（順不同）\n\n(5)   don’t have to\n\n(6)   must not eat [have]\n\nＢ問題\n\n３\n\n(1)   had better not [ought not to, should not]\n\n(2)   had better [ought to]\n\n(3)   ought not to [should not]\n\f４\n\n(1)   彼女はそれについて両親に相談したほうがよい。\n\n(2)   あなたは微熱があるで，今日は外出しないほうがよい。\n\n５\n\n(1) You should not eat too much sweets.   ( to が不要 )\n\n(2) You had better think twice before you act.   ( ought が不要 )\n\n６\n\n(1)   [例] You had better not tell a lie [lies].\n\n(2)   [例] You ought to follow his advice.\n\nＣ問題\n\n７\n(1)\n   why should S V   いったいなぜ～か   ※強い疑問・反語のニュアンス\n\n＜助動詞 dare＞\n\n①   S dare not V   S は～する勇気がない／S はあえて～しない\n\n②   Dare S V…?   S は～する勇気がありますか。\n\n③   How dare S V…? [!]   よくも～できるね。\n\n(2)   ② complain\n   モモコは父に文句を言う勇気がない。\n(3)\n\n①   よくもそんなことが言えるね。\n\n②   あなたは間違っていない。いったいなぜ謝るのか。\n\n③   アキラはその問題について，彼女とあえて言い争う気はなかった。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_011『「～するほうがよい」の表現（should／ought to／had better）』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_011『「～するほうがよい」の表現（should／ought to／had better）』（演習）.pdf",
+       "q_count": 31
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   11 ,1 2\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「〜するほうがよい」の表 現 (should/ought to/had better)\n\n１   次の日本文にあう英文になるように，(   )内の指示に従って   に適する語(句)\n   を書きなさい。\n\n(1)   あなたは毎日運動をしたほうがよい。   (should を用いて)\n\n   You   every day.\n\n(2)   あなたは無駄使いをしないほうがよい。   (should を用いて)\n\n   You   your money.\n\n(3)   彼女は１人でその町に行かないほうがよい。 (ought to を用いて)\n\n   She   to the town alone.\n\n(4)   ナンシーはもっとよく考えるほうがよい。 (ought to を用いて)\n\n   Nancy   more carefully.\n\n(5)   あなたは熱が下がるまでシャワーを浴びないほうがよい。 (had better を用いて)\n\n   You   a shower till your fever goes down.\n\n(6)   台風が近づいているので，家にいたほうがよい。(had better を用いて)\n\n   We   at home, because a typhoon is approaching.\n\n   136",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n「〜するほうがよい」の表 現 (should/ought to/had better) ―解 答 ―\n\n１\n\n(1) should exercise\n\n(2) should not [shouldn’t] waste\n\n(3) ought not to go\n\n(4) ought to think\n\n(5) had better not take\n\n(6) had better stay [be]",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_011『「～するほうがよい」の表現（should／ought to／had better）』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_011『「～するほうがよい」の表現（should／ought to／had better）』（習熟）.pdf",
+       "q_count": 6
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 11 12   練習   次の英文を日本語に訳しなさい。\n\n「～するほうがよい」の表現 （should / ought to /\n   had better）\n   ⑴ You should leave her alone.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ あなたは早起きしたほうがよい。\n   ⑵ You had better not tell him the truth.\n  You   get up early in the morning.\n\n⑵ あなたは夜、出歩かないほうがよい。\n  You   go out at night.   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   ジャックには話しかけないほうがよい。\n   （Jack / should / talk / to / not / ought / you / to / . ）\n\n   omitsu Kimura の\n  Tom\n\n 「～するほうがよい」の表現（should / ought to / had better）\n\n ① アドバイス\n →should\n   〈気持ち〉、ought to〈客観性〉\n\n ② 上から目線\n →had better\n   〈軽い命令〉\n   ※否定形は should not / ought not to /\n   had better not",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_011『「～するほうがよい」の表現（should／ought to／had better）』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_011『「～するほうがよい」の表現（should／ought to／had better）』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch03_013",
+     "num": "013",
+     "name": "would oftenとused toの違い",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-7",
+       "content": "『would oftenとused toの違い』\nwould often は「（過去に）よく〜したものだ」、used to は「以前は〜していた（今は違う）」。"
+      },
+      {
+       "title": "概要",
+       "content": "would often は「（過去に）よく〜したものだ」、used to は「以前は〜していた（今は違う）」。\nwould often\n過去の動作の反復\n「よく〜したものだ」\nシグナル/特徴\n今もしているか不明\nused to\n過去の状態・習慣\n「以前は〜していた（今は違う）」\nシグナル/特徴\n状態にも使える"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He would often come to see me.\n彼はよく私に会いに来たものだ。\nI used to live in Osaka.\n以前は大阪に住んでいた（今は違う）。\nThere used to be a tree here.\nここに木があった（今はない）。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwould often ＝ 動作の反復\n2\nused to ＝ 状態にも使える\n3\nused to は「今は違う」を含意"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_013_would oftenとused toの違い_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "would often と used to の 違 い   100\n\nＡ問題\n\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   would often\n\n②   used to\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   あなたは毎日運動をしたほうがよい。   (should を用いて)\n\n   You   every day.\n\n(2)   あなたは無駄使いをしないほうがよい。   (should を用いて)\n\n   You   your money.\n\n(3)   彼女は１人でその町に行かないほうがよい。 (ought to を用いて)\n\n   She   to the town alone.\n\n(4)   台風が近づいているので，家にいたほうがよい。\n\n   We had   at home, because a typhoon is approaching.\n\n(5)   ここで写真を撮ってはいけない。\n\n   You   here.\n\n(6)   日曜日は早起きしなくても良い。\n\n   You   on Sunday.\n\n(7)   ユリコは昨日，祖母に電話をかけなければならなかった。\n\n   Yuriko   yesterday.\n\n(8)   ケーキをもう１つ召し上がりませんか。\n\n   you have another piece of cake?\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各８点・計 16 点）\n(1)   私は家族といっしょにそのテレビドラマをよく見たものだった。\n\n   I   the TV drama with my family.\n\n(2)   以前そのテーマパークは日曜日には混雑したものだった。\n\n   The theme park   crowded on Sundays.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 24 点）\n\n(1)   父はよく朝早くに川沿いを散歩したものだ。\n\n   My father (   ) a walk along the river early in the morning.\n\n   ① would often take   ② was used to taking   ③ took\n\n(2)   以前私の祖父の会社は東京駅の近くにありました。\n\n   My grandfather’s company (   ) close to Tokyo station.\n\n   ① would often stand   ② stood   ③ used to stand\n\n(3)   放課後の教室で彼女らとよく話したものだった。\n\n   I(   ) with them in the classroom after school.\n\n   ① would often talk   ② was used to talking   ③ used to talk\n\n５   次の英文を日本語に訳しなさい。（各８点・計 16 点）\n\n(1)   I would often go on trips to Hokkaido every winter.\n\n(2)   There used to be a junior high school in this village.\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   私の家の周りには畑がありました。\n\n(2)   私はよく学校の図書館で勉強したものでした。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n\n   would often   【過去の習慣】   ※動作動詞のみ\n\n   used to   ⅰ）【過去の状態】\n\n   ⅱ）【過去の習慣】\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   I think this is where an old temple (   ) be.\n\n   ① was used to   ② would often   ③ used to   ④ was kept\n\n(2)   When Tom lived in Osaka, he (   ) often come to see me.\n\n   ① should   ② would   ③ ought to   ④ used to\n\f９   〈センター試験にチャレンジ〉(A)と(B)の組み合わせとして最も適当なものを，\n   下の①～④から一つ選べ。\n\n   Wood ( A   ) be used as the main fuel, but nowadays fossil fuels ( B   ) widely.\n   〈16 年本試〉\n\n   ①   A: used to B: are used   ② A: used to B: have been used\n   ③   A: was used to B: are used   ④ A: was used to B: have been used",
+       "answer_text": "Ａ問題\n\n１\n\n①   would often   よく～したものだ\n\n②   used to   以前は～だった・した(が，今はもうない)\n\n２\n\n(1)   should exercise\n\n(2)   should not [shouldn’t] waste\n\n(3)   ought not to go\n\n(4)   better stay [be]\n\n(5)   must not [mustn’t] take a picture here\n\n(6)   don’t have to get up early\n\n(7)   had to call her grandmother\n\n(8)   Would\n\nＢ問題\n\n３\n\n(1)   would often watch\n\n(2)   used to be\n\n４\n\n(1)   ① would often take\n(2)   ③ used to stand\n(3)   ① would often talk\n\f５\n\n(1)   毎年冬には北海道へよく旅行に行ったものでした。\n\n(2)   以前この村に中学校がありました。\n\n６\n\n(1)   [例] There used to be farms around my house.\n\n(2)   [例] I would often study in the school library.\n\nＣ問題\n\n７\n\n   would often   【過去の習慣】よく～したものだ   ※動作動詞のみ\n\n   used to   ⅰ）【過去の状態】以前は～だった・した(が，今はもうない)\n\n   ⅱ）【過去の習慣】よく～したものだ\n\n８\n\n(1)   ③ used to\n   ここは，かつて古いお寺があったところだと思う。\n   ※「あった」という過去の状態を表すので，② would often は使えない。\n\n(2)   ② would\n   トムは大阪に住んでいたころ，よく私に会いに来た。\n   ※この文では，もし(   )の直後に often がなければ，④ used to も使える。\n９\n\n   ① A: used to B: are used\n   木材は以前主要な燃料として使われていたが、今日では化石燃料が広く使われている。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_013『would oftenとused toの違い』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_013『would oftenとused toの違い』（演習）.pdf",
+       "q_count": 44
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   1 3 ,1 4\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   would often と used to の違い\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私はひまなときにはよく推理小説を読んだものでした。\n\n   I   detective stories in my free time.\n\n(2)   以前は公園のそばに劇場がありました。\n\n   There   a theater by the park.\n\n(3)   学生のころ，この辺りにいい喫茶店がありました。\n\n   The nice coffee shop   about here when I was a\n\n   student.\n\n(4)   毎週日曜日には家族とよく教会に行ったものでした。\n\n   I   to the church with my family on Sundays.\n\n(5)   かつてその城にはとても美しい王女が住んでいました。\n\n   A very beautiful princess   in the castle.\n\n(6)   母は私たちのためによくケーキを焼いたものでした。\n\n   My mother   cakes for us.\n\n(7)   祖父母の家の前庭には，以前桜の木がありました。\n\n   Cherry trees   in the garden in front of my\n\n   grandparents’ house.\n\n(8) 若いころはよく深夜にラジオを聞いていたものでした。\n\n   I   to the radio late at midnight when I was young.\n\n   140",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) would often read\n\n(2) used to be\n\n(3) used to be [stand]\n\n(4) would often go\n\n(5) used to live\n\n(6) would often bake [make]\n\n(7) used to stand [be]\n\n(8) would often listen",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_013『would oftenとused toの違い』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_013『would oftenとused toの違い』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 13 14   練習   次の英文を日本語に訳しなさい。\n\n  would often と used to の違い   ⑴ I would often go fishing with him.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 週末によくギターを弾いたものでした。\n   ⑵ The store used to stand on that corner.\n  I   often play the guitar on weekends.\n\n⑵ 以前はここに公園がありました。\n  There   be a park here.   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   私の家の近くに、大きな木がありました。\n   There（   ）be a tall tree near my house.\n\n   ① was used to   ② used to   ③ would often\n\n   omitsu Kimura の\n  Tom\n\n would often と used to の違い\n\n ① would often「よく～したものだ」\n   →「often」つまり「回数が多かった」\n\n ② used to「以前は～だった・した（が、今はもうない）」\n   →「現在との対比」がポイント",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_013『would oftenとused toの違い』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_013『would oftenとused toの違い』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch03_015",
+     "num": "015",
+     "name": "助動詞（must／cannot／may）＋have 過去分詞",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-8",
+       "content": "『助動詞（must／cannot／may）＋have 過去分詞』\n助動詞＋have＋過去分詞は「過去への推量・後悔」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "助動詞＋have＋過去分詞は「過去への推量・後悔」を表す。\nmust / cannot have V-en\nmust have V-en / cannot have V-en\n「〜したにちがいない／〜したはずがない」\nシグナル/特徴\n過去への強い推量\nmay have V-en\nmay have V-en\n「〜したかもしれない」\nシグナル/特徴\n過去への弱い推量"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He must have missed the train.\n彼は電車に乗り遅れたにちがいない。\nShe cannot have said such a thing.\n彼女がそんなことを言ったはずがない。\nHe may have forgotten the meeting.\n彼は会議を忘れたかもしれない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nmust have V-en ＝ にちがいない\n2\ncannot have V-en ＝ はずがない\n3\nmay have V-en ＝ かもしれない"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_015_助動詞（must／cannot／may）＋have 過去分詞_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "第３章「助動詞」   得点\n\n   助動詞(must/cannot/may)＋have 過去分詞   100\n\nＡ問題\n\n１   次の英語を日本語にしなさい。（各２点・計６点）\n①   must have 過去分詞\n\n②   cannot have 過去分詞\n\n③   may have 過去分詞\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   彼女は今，家にいるに違いない。\n\n   She   home now.\n\n(2)   彼女は今，家にいるはずがない。\n\n   She   home now.\n\n(3)   彼女は今，家にいるかもしれない。\n\n   She   home now.\n\n(4)   彼女は昨日，家にいた。\n\n   She   home yesterday.\n\n(5)   彼女は３日間ずっと，家にいた。\n\n   She   home for three days.\n\n(6)   あなたは熱が下がるまでシャワーを浴びないほうがよい。\n\n   You had   a shower till your fever goes down.\n\n(7)   以前は公園のそばに劇場があった。\n\n   There   a theater by the park.\n\n(8)   若いころはよく深夜にラジオを聞いていたものだった。\n\n   I   to the radio late at night when I was young.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 15 点）\n(1)   ジャックは宿題を忘れたはずがない。\n\n   Jack   his homework.\n\n(2)   彼女は家事をすることにうんざりしていたかもしれない。\n\n   She   tired of doing housework.\n\n(3)   母は私のことを心配していたに違いない。\n\n   My mother   worried about me.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 18 点）\n\n(1)   彼が私たちに心から謝罪したはずがない。\n\n   He (   ) to us from the bottom of his heart.\n\n   ① cannot apologize   ② must apologize   ③ cannot have apologized\n\n(2)   アンとルーシーは互いにとって良きライバルだったに違いない。\n\n   Ann and Lucy (   ) good rivals to each other.\n\n   ① must   ② must have been   ③ may have been\n\n(3)   彼らはロンドンの郊外に引っ越したかもしれない。\n\n   They (   ) to the suburbs of London.\n\n   ① may have moved   ② may not move   ③ must have moved\n\n５   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各７点・計 21 点）\n\n(1)   彼はとても急いでいる。今朝，寝過ごしたに違いない。\n\n   He is in a terrible rush. He   this morning.\n\f(2)   彼は以前にメアリーと会ったかもれないが，彼女の名前は覚えていない。\n\n   He   with Mary before, but he doesn’t remember her\n\n   name.\n\n(3)   ローラがそのような筋の通らないことを言ったはずがない。\n\n   Laura   such an unreasonable thing.\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   彼がそんなことをしたはずがない。\n\n(2)   彼女は伝言を残したに違いない。\n\nＣ問題\n\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n\n①   might have 過去分詞\n\n②   would like to have 過去分詞\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Kaori (   ) there yesterday, but I didn’t see her.\n\n   ① may be   ② might have been   ③ should be   ④ should be\n\f(2) You (   ) have seen Akemi in Tokyo this morning. She is still\n   in America.\n\n   ① must   ② shouldn’t   ③ may   ④ can’t\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   My brother   1   have been very popular when he was a high school student. He\n   still gets lots of New Year’s cards from his former classmates.\n   〈13 年本試〉\n   ① must   ② ought to   ③ should   ④ would",
+       "answer_text": "Ａ問題\n\n１\n\n①   must have 過去分詞   ～したに違いない\n\n②   cannot have 過去分詞   ～したはずがない\n\n③   may have 過去分詞   ～したかもしれない\n\n２\n\n(1)   must be\n\n(2)   cannot [can’t] be\n\n(3)   may be\n\n(4)   was\n\n(5)   has been\n\n(6)   better not take\n\n(7)   used to be\n\n(8)   would often listen\n\nＢ問題\n\n３\n\n(1)   cannot have forgot [forgotten]\n\n(2)   may have been\n\n(3)   must have been\n\f４\n\n(1)   ③ cannot have apologized\n(2)   ② must have been\n(3)   ① may have moved\n\n５\n\n(1)   must have overslept [must have got up late]\n\n(2)   may have met\n\n(3)   cannot have said\n\n６\n\n(1)   [例] He cannot have done such a thing.\n\n(2)   [例] She must have left a message.\n\nＣ問題\n\n７\n\n①   might have 過去分詞   (ひょっとしたら)～したかもしれない\n\n②   would like to have 過去分詞   ～したかったのだが(実際にはできなかった)\n\n８\n\n(1)   ② might have been\n   カオリは昨日そこにいたかもしれないが，私は彼女を見かけなかった。\n\n(2)   ④ can’t ※can’t have 過去分詞 ＝ cannot have 過去分詞\n   あなたが今朝，東京でアケミに会ったはずはない。彼女はまだアメリカにいるんだ。\n\n９\n\n   ① must\n   私の兄は高校時代，とても人気だったに違いない。彼は今でも元クラスメートからた\n   くさんの年賀状をもらっている。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_015『助動詞（must／cannot／may）＋have 過去分詞』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_015『助動詞（must／cannot／may）＋have 過去分詞』（演習）.pdf",
+       "q_count": 49
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   1 5 ,1 6\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   助動詞 (must/cannot/may) ＋have 過去分詞\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼は常識のある人に違いない。\n\n   He   a man of common sense.\n\n(2)   彼は常識のある人であったに違いない。\n\n   He   a man of common sense.\n\n(3)   彼は常識のある人であったはずがない。\n\n   He   a man of common sense.\n\n(4)   彼は常識のある人であったかもしれない。\n\n   He   a man of common sense.\n\n(5)   ジェーンは彼の職業を知っているかもしれない。\n\n   Jane   his occupation.\n\n(6)   ジェーンは彼の職業を知っていたかもしれない。\n\n   Jane   his occupation.\n\n(7)   ジェーンは彼の職業を知っていたはずがない。\n\n   Jane   his occupation.\n\n(8)   ジェーンは彼の職業を知っていたに違いない。\n\n   Jane   his occupation.\n\n   144",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n 助 動 詞 (must/cannot/may) ＋have 過 去 分 詞 ―解 答 ―\n\n１\n\n(1) must be\n\n(2) must have been\n\n(3) cannot have been\n\n(4) may have been\n\n(5) may know\n\n(6) may have known\n\n(7) cannot have known\n\n(8) must have known",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_015『助動詞（must／cannot／may）＋have 過去分詞』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_015『助動詞（must／cannot／may）＋have 過去分詞』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 15 16   練習\n   次の日本文にあう英文になるように、   に適する\n   語（句）を書きなさい。\n助動詞（must / cannot / may）＋have 過去分詞\n   ⑴ 彼がそんなことを言ったはずがない。\n\n 例題\n   次の日本文にあう英文になるように、   に適する   He   such a thing.\n   語（句）を書きなさい。\n\n⑴ 彼はそうするに違いない。   ⑵ ジャックは昨日、宿題をしたに違いない。\n  He   do so.   Jack   his homework yesterday.\n\n⑵ 彼はそうしたに違いない。   ⑶ ナンシーは病気だったのかもしれない。\n  He   so.   Nancy   ill.\n\n⑶ 彼はそうしたはずがない。\n  He   so.\n   入試レベルにチャレンジ\n⑷ 彼はそう言ったかもしれない。   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n  He   so.\n   彼が飛行機に乗り遅れたはずがない。\n   He（   ）the plane.\n\n  Tom\n   omitsu Kimura の   ① cannot miss   ② must miss   ③ cannot have missed\n\n 助動詞（must / cannot / may）+ have 過去分詞\n\n → 過去について の、今のキモチ\n ① must have 過去分詞   「 〜した に違いない」\n ② cannot have 過去分詞   「 〜した はずがない」\n ③ may have 過去分詞   「 〜した かもしれない」",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_015『助動詞（must／cannot／may）＋have 過去分詞』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_015『助動詞（must／cannot／may）＋have 過去分詞』（習得）.pdf",
+       "q_count": 13
+      }
+     }
+    },
+    {
+     "id": "ch03_017",
+     "num": "017",
+     "name": "助動詞（should／need not）＋ have 過去分詞",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-9",
+       "content": "『助動詞（should／need not）＋ have 過去分詞』\nshould / need not ＋ have ＋ 過去分詞は「すべきだった／する必要はなかった」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "should / need not ＋ have ＋ 過去分詞は「すべきだった／する必要はなかった」を表す。\nshould have V-en\nshould have V-en\n「〜すべきだったのに（しなかった）」\nシグナル/特徴\n後悔・非難\nneed not have V-en\nneed not have V-en\n「〜する必要はなかったのに（した）」\nシグナル/特徴\nやらなくてよかった"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "You should have studied harder.\nもっと勉強すべきだったのに。\nI shouldn't have eaten so much.\nあんなに食べるべきじゃなかった。\nYou need not have come so early.\nそんなに早く来る必要はなかったのに。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nshould have V-en ＝ 後悔\n2\nshouldn't have V-en ＝ するべきじゃなかった\n3\nneed not have V-en ＝ する必要なかった"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_017_助動詞（should／need not）＋ have 過去分詞_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "助 動 詞 (should /need not)＋ have 過 去 分 詞   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   should have 過去分詞\n\n②   need not have 過去分詞\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   彼は常識のある人に違いない。\n\n   He   a man of common sense.\n\n(2)   彼は常識のある人であったに違いない。\n\n   He   a man of common sense.\n\n(3)   彼は常識のある人であったはずがない。\n\n   He   a man of common sense.\n\n(4)   彼は常識のある人であったかもしれない。\n\n   He   a man of common sense.\n\n(5)   私は昨日，宿題をしなければならなかった。\n\n   I   my homework yesterday.\n\n(6)   あなたは早起きした方がよい。\n\n   You   early in the morning.\n\n(7)   ナンシーはもっとよく考えるほうがよい。\n\n   Nancy   to think more carefully.\n\n(8)   トムは彼女に真実を伝えないほうがよい。\n\n   Tom   not tell her the truth.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各７点・計 21 点）\n\n(1)   彼はそんな電子メールに返信するべきではなかったのに。\n\n   He   to such an e-mail.\n\n(2)   子どもたちは午前中に部屋の掃除を終わらせるべきだったのに。\n\n   The children   their room in the morning.\n\n(3)   私は沈黙を守るべきだったと思う。\n\n   I think I   silent.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 21 点）\n\n(1)   彼女は何か冷たい飲み物を持ってくるべきだったのに，持ってこなかった。\n\n   She (   ) something cold to drink, but she didn’t.\n\n   ① have brought   ② should bring   ③ should have brought\n\n(2)   あなたは彼にその悲しい知らせを伝える必要はなかったのに，伝えた。\n\n   You (   ) him the sad news, but you did.\n\n   ① need not have told   ② need not tell   ③ haven’t told\n\n(3)   あなたはその手紙を読むべきではなかったのに，読んだ。\n\n   You (   ) the letter, but you did.\n\n   ① didn’t read   ② should not have read   ③ should not read\n\n５   次の英文を日本語に訳しなさい。（各７点・計 14 点）\n\n(1) You need not have bought so much bread.\n\n(2)   The game should not have been called off.\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   あなたはその質問に答える必要はなかったのに。\n\n(2)   彼女は９時までにここに来るべきだったのに。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   次の英語を日本語にしなさい。\n\n＜should／ought to have 過去分詞＞\n①   should have 過去分詞 ＝ ought to have 過去分詞\n\n   次の２つの意味がある\n\n   ⅰ)\n\n   ⅱ)   ※by now「今ごろはもう」などと一緒に\n   使われることが多い\n\n②   should not have 過去分詞 ＝ ought not to have 過去分詞\n\n＜had better 過去分詞＞\n①   had better have 過去分詞\n\n②   had better not have 過去分詞\n\n(2)   次の英文を日本語に訳しなさい。\n\n①   I should have posted this letter yesterday.\n\f②   The letter I posted three days ago should have reached him by now.\n\n(3)   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n①   ユミは彼をそんなに長い間待たせておくべきではなかったのに。\n   Yumi ( to / kept / not / have / ought ) him waiting for such a long time.\n\n②   トムはそこへ行かない方がよかったのに。\n   Tom ( better / gone / had / have / not ) there.\n\n８ 〈センター試験にチャレンジ〉   1 に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Our teacher is requiring us to write another report, and now I have two to finish by\n   Friday. I   1   have finished the first assignment last week.\n   〈13 年追試〉\n   ① may   ② must   ③ should   ④ would",
+       "answer_text": "Ａ問題\n\n１\n\n①   should have 過去分詞   ～するべきだったのに\n\n②   need not have 過去分詞   ～する必要はなかったのに\n\n２\n\n(1)   must be\n\n(2)   must have been\n\n(3)   cannot have been\n\n(4)   may have been\n\n(5)   had to do\n\n(6)   should [ought to] get up\n\n(7)   ought\n\n(8)   had better\n\nＢ問題\n３\n(1)   should not have replied\n\n(2)   should have finished cleaning\n\n(3)   should have kept\n４\n\n(1)   ③ should have brought\n(2)   ① need not have told\n(3)   ② should not have read\n\f５\n\n(1)   あなたはそんなにたくさんのパンを買う必要がなかったのに。\n\n(2)   その試合は中止されるべきでなかったのに。\n\n６\n\n(1)   [例] You need not have answered the question.\n\n(2)   [例] She should have come here by nine o’clock.\n\nＣ問題\n\n７\n\n(1)\n\n＜should ／ ought to have 過去分詞＞\n①   should have 過去分詞 ＝ ought to have 過去分詞\n\n   次の２つの意味がある\n\n   ⅰ) ～すべきだったのに\n\n   ⅱ) 当然～したはずだ（推量）\n\n②   should not have 過去分詞 ＝ ought not to have 過去分詞\n\n   ～すべきではなかったのに\n\n＜had better 過去分詞＞\n\n①   had better have 過去分詞   ～したほうがよかったのに(実際にはしなかった)\n\n②   had better not have 過去分詞   ～しないほうがよかったのに(実際にはした)\n\n(2)\n\n①   私は，昨日その手紙を出すするべきだったのに(出さなかった)。\n\n②   私が３日前に出した手紙は，今ごろはもう彼に届いているはずだ。\n\f(3)\n\n①   Yumi ought not to have kept him waiting for such a long time.\n\n②   Tom had better not have gone there.\n\n８\n\n   ③ should\n   先生は私たちに別のレポートを書くよう要求してきて，今や金曜日までに終わらせな\n   ければならないレポートが２つもある。先週に最初の課題を終わらせておくべきだっ\n   た。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_017『助動詞（should／need not）＋ have 過去分詞』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_017『助動詞（should／need not）＋ have 過去分詞』（演習）.pdf",
+       "q_count": 46
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   1 7 ,1 8\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   助動詞(should/need not)＋have 過去分詞\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   あなたは彼女の助言に従うべきだ。\n\n   You   her advice.\n\n(2)   あなたは彼女の助言に従うべきだったのに。\n\n   You   her advice.\n\n(3)   あなたは彼女の助言に従う必要がなかったのに。\n\n   You   her advice.\n\n(4)   彼は昨夜，もっと早く寝るべきだったのに。\n\n   He   to bed earlier last night.\n\n(5)   あなたはそんなに急いで来る必要はなかったのに。\n\n   You   in such a hurry.\n\n(6)   リズは約束をやぶるべきではなかったのに。\n\n   Liz   her promise.\n\n(7)   あなたは彼にお金を貸すべきではなかったのに。\n\n   You   him money.\n\n(8)   母は午前中に花に水をやる必要がなったのに。\n\n   My mother   the flowers in the morning.\n\n   148",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n  助 動 詞 (should/need not)＋have 過 去 分 詞 ―解 答 ―\n\n１\n\n(1) should follow\n\n(2) should have followed\n\n(3) need not have followed\n\n(4) should have gone\n\n(5) need not have come\n\n(6) should not have broken\n\n(7) should not have lent\n\n(8) need not have watered",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_017『助動詞（should／need not）＋ have 過去分詞』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_017『助動詞（should／need not）＋ have 過去分詞』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 17 18   練習   次の英文を日本語に訳しなさい。\n\n助動詞（should / need not）＋ have 過去分詞   ⑴ You should have done it earlier.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ あなたはそれをするべきだ。\n   ⑵ He need not have said such a thing.\n  You   so.\n\n⑵ あなたはそれをするべきだったのに。\n  You   so.   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n⑶ あなたはそれをする必要がなかったのに。   子供たちはアイスクリームを食べるべきではなかったのに、\n  You   so.   食べた。\n   The children（   ）the ice cream, but they did.\n\n   ① didn’t eat\n   ② should not have eaten\n   ③ should not eat\n\n   omitsu Kimura の\n  Tom\n\n 助動詞（should / need not）+ have 過去分詞\n\n → 過去について の、今のキモチ（後悔・非難）\n   ① should have 過去分詞   「～するべきだったのに」\n   ② need not have 過去分詞 「～する必要はなかったのに」",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_017『助動詞（should／need not）＋ have 過去分詞』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_017『助動詞（should／need not）＋ have 過去分詞』（習得）.pdf",
+       "q_count": 10
+      }
+     }
+    },
+    {
+     "id": "ch03_021",
+     "num": "021",
+     "name": "助動詞を含む慣用表現",
+     "slides": [
+      {
+       "title": "第03章 助動詞 / 3-10",
+       "content": "『助動詞を含む慣用表現』\n助動詞を含む慣用表現には、cannot help V-ing（〜せずにはいられない）、may well V（〜するのも当然）などがある。"
+      },
+      {
+       "title": "概要",
+       "content": "助動詞を含む慣用表現には、cannot help V-ing（〜せずにはいられない）、may well V（〜するのも当然）などがある。\ncannot help V-ing\ncannot but V / cannot help V-ing\n「〜せずにはいられない」\nシグナル/特徴\n感情の制御不能\nmay well / may as well\nmay well V / may as well V\n「〜するのも当然／〜してもよい」\nシグナル/特徴\n妥当性・選択肢"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I cannot help laughing.\n笑わずにはいられない。\nShe may well be angry.\n彼女が怒るのも当然だ。\nWe may as well go home.\n家に帰ったほうがいいだろう。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\ncannot help V-ing ＝ せずにはいられない\n2\nmay well ＝ 〜するのも当然\n3\nmay as well ＝ してもよい"
+      }
+     ],
+     "pptx_path": "../第03章/成果物/第03章_021_助動詞を含む慣用表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "助動詞を含む慣用表現   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   would like to 原形\n\n②   may well 原形\n\n③   would rather 原形\n\n④   would rather A (than B)\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n(1)   私たちは効率的にエネルギーを使用することが必要だ。\n\n   It is essential that   energy efficiently.\n\n(2)   私は，私たちがもっと注意深く考えるように提案した。\n\n   I suggested that we   more carefully.\n\n(3)   アンは医者にみてもらう必要がある。\n\n   It is necessary that Ann   a doctor.\n\n(4)   彼は，私が部活動に参加するように提案した。\n\n   He proposed that   part in the club activities.\n\n(5)   彼らはそれは私の誤りだと言い張った。\n\n   They insisted that it   my fault.\n\n(6)   あなたはそんなに急いで来る必要はなかったのに。\n\n   You   in such a hurry.\n\n(7)   リズは約束をやぶるべきではなかったのに。\n\n   Liz   her promise.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 18 点）\n\n(1)   あなたの父親があなたを誇りに思っているのももっともだ。\n\n   Your father   proud of you.\n\n(2)   私は彼に，私の提案に賛成してほしいのです。\n\n   I   to my proposal.\n\n(3)   私たちは失敗についてお詫びしたいです。\n\n   We   for our failure.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 21 点）\n\n(1)   私は不正な手段でお金を儲けるよりもむしろ貧乏でいたほうがましだ。\n\n   I(   ) poor than make money by unfair means.\n\n   ① would like to be   ② would rather be\n\n(2)   できれば明日は，そのボランティア活動に参加したくない。\n\n   I(   ) in the volunteer activity tomorrow.\n\n   ① would rather not participate   ② would not rather participate\n\n(3)   彼女がその知らせに驚くのももっともだ。\n\n   She (   ) surprised at the news.\n\n   ① would rather be   ② may well be\n\n５   次の英文を日本語に訳しなさい。（各８点・計 16 点）\n\n(1)   I would like to make a reservation at a hotel near the station.\n\n(2)   Girls may well cry at the movie.\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n(1)   私たちは，明日よりもむしろ今日，買い物に行きたいです。\n\n(2)   私はまたあなたとお会いしたいです。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   次の英語を日本語にしなさい。\n\n①   cannot [can’t] help Ving\n   ＝ cannot [can’t] but V\n   ＝ cannot [can’t] help but V\n\n②   cannot [can’t] … too ～\n\n③   may well V\n   ＝ might well V\n\n   次の２つの意味がある\n   ⅰ) ＝ It is natural that ～\n\n   ⅱ) ＝ It is likely that ～\n\n ④   may [might] as well … as ～\n\n⑤   may [might] as well …\n\n⑥   would rather … than ～\n\n(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n①   そこに行くよりは，家にいたほうがよい。\n\n   I   stay home   .\n\f②   あなたは，私と一緒に来たほうがよいでしょう。\n\n   You   come with me.\n\n③   車を運転するときには，いくら注意してもしすぎることはない。\n\n   You   when you drive a car.\n\n④   明日は，勉強するよりは読書したい。\n\n   I   read a book than study tomorrow.\n\n⑤   私たちは，その話に笑わざるをえなかった。\n\n   We   laughing at the story.\n\n   We couldn’t but   at the story.\n\n   We couldn’t help   laugh at the story.\n\n(3)   下線部に注意して，次の２つの英文がほぼ同じ意味になるように，   に適する\n   語(句)を書きなさい。\n①   Yumi may well be angry.\n\n   It is   that Yumi is angry.\n\n②   The news may well be true.\n\n   It is   that the news is true.\n\n８ 〈センター試験にチャレンジ〉 1   に入れるのに最も適当なものを，下の①～④から\n  一つ選べ。\n\n   I   1   go to the seaside this summer. I’ve had enough of the mountains.\n   〈06 年本試〉\n\n   ① rather   ② would rather   ③ prefer   ④ would prefer",
+       "answer_text": "Ａ問題\n\n１\n\n①   would like to 原形   ～したい\n\n②   may well 原形   ～するのは当然だ\n\n③   would rather 原形   ～したい\n\n④   would rather A (than B)   （B するよりも）A したい\n\n２\n\n(1)   we (should) use\n\n(2)   (should) think\n\n(3)   (should) see\n\n(4)   I (should) take\n\n(5)   (should) be\n\n(6)   need not have come\n\n(7)   should not have broken\n\nＢ問題\n\n３\n\n(1)   may well be [feel]\n\n(2)   would like him to agree\n\n(3)   would like to apologize\n\f４\n\n(1)   ② would rather be\n(2)   ① would rather not participate\n(3)   ② may well be\n５\n\n(1)   私は駅に近いホテルを予約したいのです。\n\n(2)   少女たちがその映画を見て泣くのももっともだ。\n\n６\n\n(1)   [例] We would rather go shopping today than tomorrow.\n\n(2)   [例] I would like to see you again.\n\nＣ問題\n\n７\n(1)\n①   cannot [can’t] help Ving   ～せざるをえない\n\n   ＝ cannot [can’t] but V\n\n   ＝ cannot [can’t] help but V\n\n②   cannot [can’t] … too ～   いくら…しても～しすぎることはない\n\n③   may well V\n   ＝ might well V\n\n   次の２つの意味がある\n   ⅰ) ＝ It is natural that ～   ～するのはもっともだ\n\n   ⅱ) ＝ It is likely that ～   たぶん～だろう\n\n ④   may [might] as well … as ～   ～するより…するほうがよい／\n\n   ～するのは…するようなものだ\n\n⑤   may [might] as well …   …するほうがよいだろう\n\n⑥   would rather … than ～   ～するくらいなら…したい\n\f(2)\n①   I may [might] as well stay home as go there.\n\n②   You may [might] as well come with me.\n\n③   You cannot be too careful when you drive a car.\n\n④   I would rather read a book than study tomorrow.\n\n⑤   We couldn’t help laughing at the story.\n\n   We couldn’t but laugh at the story.\n\n   We couldn’t help but laugh at the story.\n(3)\n①   It is natural that Yumi is angry.\n\n   ユミが怒るのももっともだ。\n\n②   It is likely that the news is true.\n\n   その知らせは，たぶん本当だろう。\n\n８\n\n   ② would rather\n   今年の夏は海辺に行きたい。もう山は十分だよ。",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_021『助動詞を含む慣用表現』（演習）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_021『助動詞を含む慣用表現』（演習）.pdf",
+       "q_count": 49
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "3 章「助動詞」 第３章「助動詞」   2 1 ,2 2\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   助動詞を含む慣用表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私は航空便でこの手紙を送りたいです。\n\n   I   this letter by air.\n\n(2)   あなたが結果を心配するのももっともだ。\n\n   You   about the result.\n\n(3)   私は昨日，旅行から帰ってきたばかりです。今日は家にいたいです。\n\n   I just came back from a trip yesterday.   I   at\n\n   home today.\n\n(4)   私は今朝は，ご飯よりもパンが食べたい。\n\n   I   bread than rice this morning.\n\n(5)   できれば私は飛行機に乗りたくない。\n\n   I   not get on the airplane.\n\n(6)   私はあなたにいっしょに釣りに行ってほしいです。\n\n   I   fishing with me.\n\n(7)   彼女の母親が彼女を叱るのも当然だ。\n\n   Her mother   her.\n\n(8)   私は歩くよりも，バスを待ちたいです。\n\n   I   for a bus   walk.\n\n   156",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) would like to send\n\n(2) may well worry\n\n(3) would rather stay [be]\n\n(4) would rather eat [have]\n\n(5) would rather\n\n(6) would like you to go\n\n(7) may well scold\n\n(8) would rather wait ／ than",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_021『助動詞を含む慣用表現』（習熟）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_021『助動詞を含む慣用表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "助動詞 21 22   練習   次の英文を日本語に訳しなさい。\n\n   助動詞を含む慣用表現   ⑴ Nancy may well get angry.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ お寿司が食べたいです。\n   ⑵ I would like you to come with me.\n  I   have sushi.\n\n⑵ 彼がそう思うのももっともだ。\n  He   think so.   入試レベルにチャレンジ\n   次の日本文にあう英文になるように、カッコ内から最も適当なものを選び、\n   丸で囲みなさい。\n⑶ 雨なので外出したくありません。むしろ家で勉強したいです。\n  I don’t want to go out because of rain.   できればこの仕事は明日に持ち越したくない。\n  I   study at home.   I（would like / would rather）not leave this work till\n   tomorrow.\n\n   omitsu Kimura の\n  Tom\n\n 助動詞を含む慣用表現\n\n →熟語として覚えよう‼\n ① would like to 原形「～したい」←want to 原形をていねいに\n ② may well 原形\t\t   「～するのは当然だ」\n ③ would rather 原形「～したい」\n   would rather A\n   （than B） 「（Bするよりも）Aしたい」",
+       "answer_text": "",
+       "problem_pdf": "../第03章/問題_h_eng_gra_03_021『助動詞を含む慣用表現』（習得）.pdf",
+       "answer_pdf": "../第03章/解答_h_eng_gra_03_021『助動詞を含む慣用表現』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

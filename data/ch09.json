@@ -1,0 +1,866 @@
+{
+ "meta": {
+  "version": "3.0",
+  "passMark": 85
+ },
+ "chapters": [
+  {
+   "id": "ch09",
+   "num": 9,
+   "title": "関係詞",
+   "color": "#009688",
+   "items": [
+    {
+     "id": "ch09_001",
+     "num": "001",
+     "name": "関係代名詞１（「人が～」「物が～」の代わり）",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-1",
+       "content": "『関係代名詞１（「人が～」「物が～」の代わり）』\n関係代名詞 who / which は、2つの文を1つにつなげ、名詞のうしろから情報を補足する。"
+      },
+      {
+       "title": "概要",
+       "content": "関係代名詞 who / which は、2つの文を1つにつなげ、名詞のうしろから情報を補足する。\nwho（人）\n人 + who + V\n「〜する人」（主格）\nシグナル/特徴\n先行詞は人\nwhich（物）\n物 + which + V\n「〜する物」（主格）\nシグナル/特徴\n先行詞は物"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I know a girl who plays the piano.\n私はピアノを弾く女の子を知っている。\nThis is a book which sells well.\nこれはよく売れる本だ。\nThe man who lives next door is kind.\n隣に住む男性は親切だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwho ＝ 人の主格\n2\nwhich ＝ 物の主格\n3\n関係代名詞 + V"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_001_関係代名詞１（「人が～」「物が～」の代わり）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 代 名 詞 １ （「 ⼈ が 〜 」「 物 が 〜 」 の 代 わ り ）   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計４点）\n(1)   I have a brother who lives in London.\n\n   私には   兄がいます。\n\n(2)   This is the city which is famous for apples.\n\n   ここは   街です。\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   トムには友達がいます。彼女は東京出身です。\n\n   Tom has a friend.   is from Tokyo.\n\n(2)   トムには東京出身の友達がいます。\n\n   Tom has a friend   is from Tokyo.\n\n(3)   彼は銀行で働いています。それは丘の上に立っています。\n\n   He works at a bank.   stands on a hill.\n\n(4)   彼は丘の上に立っている銀行で働いています。\n\n   He works at a bank   stands on a hill.\n\n(5)   これらのクッキーはおいしいです。それらはユミによってつくられました。\n\n   These cookies are delicious.   were made by Yumi.\n\n(6)   ユミによってつくられたこのケーキはおいしいです。\n\n   These cookies   were made by Yumi are delicious.\n\n(7)   女の子がピアノを弾いています。彼女は私の妹です。\n\n   A girl is playing the piano.   is my sister.\n\n(8)   ピアノを弾いている女の子は，私の妹です。\n\n   The girl   is playing the piano is my sister.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を関係代名詞を用いて\n   書きなさい。（各５点・計 20 点）\n\n(1)   私にはシカゴに住んでいるいとこがいる。\n\n   I have a cousin   in Chicago.\n\n(2)   あれは有名なイタリア人の設計士によって設計されたビルです。\n\n   That is a building   designed by a famous Italian designer.\n\n(3)   向こうに建つ銅像が見えますか。\n\n   Can you see the bronze statue   over there?\n\n(4)   舞台中央で妖精の役を演じている男の子が，私の息子です。\n\n   The boy   the role of a fairy at the center of the stage\n\n   is my son.\n\n４   次の２つの英文を関係代名詞を用いて１つの英文に書きかえなさい。\n   （各６点・計 18 点）\n(1)   I have a friend.   She desires to go to an American university.\n\n(2)   We got the concert tickets.   They were released yesterday.\n\n(3)   The curry is very spicy.   It is made by my father.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各６点・計 12 点）\n\n(1)   隣りに住む男の人はオーストラリアの出身です。\n   The man ( lives / Australia / door / who / which / from / comes / next ).\n\f(2)   彼は海外から家具を輸入する会社で働いている。\n   He ( abroad / furniture / for / who / which / a company / imports / works / from ).\n\n６   次の日本文を英語で書きなさい。（各 11 点・計 22 点）\n\n(1)   トムと話している少年は私の弟です。\n\n(2)   これは，若者の間でとても人気のある映画です。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   There is a girl at the door (   ) wants to meet you.\n\n   ① which   ② who   ③ whom   ④ what\n\n(2)   The stationery store (   ) I was looking for was next to the station.\n\n   ① where   ② who   ③ which   ④ in which\n\n(3)   There are many students (   ) like science (   ) like math.\n\n   ① which ／ which   ② which ／ who\n\n   ③ who ／ which   ④ who ／ who",
+       "answer_text": "関係代名詞１（\n   「⼈が〜」\n\nＡ問題\n１\n(1)   私にはロンドンに住んでいる兄がいます。\n\n(2)   ここはリンゴで有名な街です。\n\n２\n\n(1)   She\n\n(2)   who\n\n(3)   It\n\n(4)   which\n\n(5)   They\n\n(6)   which\n\n(7)   She\n\n(8)   who\n\nＢ問題\n３\n(1)   who lives\n\n(2)   which was\n\n(3)   which stands\n\n(4)   who is playing\n\n４\n\n(1)   I have a friend who desires to go to an American university.\n\n(2)   We got the concert tickets which were released yesterday.\n\n(3)   The curry which is made by my father is very spicy.\n\f５\n\n(1)   who lives next door comes from Australia   ( which が不要 )\n\n(2)   works for a company which imports furniture from abroad ( who が不要 )\n\n６\n\n(1)   [例] The boy who is talking with Tom is my brother.\n\n(2)   [例] This is a movie which is very popular among young people.\n\nＣ問題\n\n７\n\n(1)   ② who\n   玄関口に，あなたに会いたいという女の子がいる。\n\n(2)   ③ which\n   私が探していた文具屋は，駅の隣にあった。\n\n(3)   ④ who ／ who\n   理科が好きな生徒の中で、数学を好きな生徒はたくさんいる。\n\n   There are many students [who like science] <who like math>.\n\n   ・１つ目のカッコに入る関係代名詞 who は，students にかかる\n   → students who like science で，「理科が好きな生徒たち」となる\n   ・２つ目のカッコに入る関係代名詞 who は，students who like science にかかる\n   → students who like science who like math で，\n   「理科が好きな生徒たちの中で，数学が好きな生徒たち」となる\n   ・many は，students who like science who like math にかかる\n   → There are many students who like science who like math で，\n   「理科が好きな生徒たちの中で，数学が好きな生徒たちは，たくさんいる」",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_001『関係代名詞１（「人が～」「物が～」の代わり）』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_001『関係代名詞１（「人が～」「物が～」の代わり）』（演習）.pdf",
+       "q_count": 36
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   1,2 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞１（「人が～」「物が～」の代わり）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を関係代名詞を用いて\n   書きなさい。\n\n(1)   メアリーには３か国語を話せる友達がいます。\n\n   Mary has a friend   three languages.\n\n(2)   ケイトは広い庭のある家に住んでいました。\n\n   Kate lived in a house   a large garden.\n\n(3)   向こうを歩いている女性が新しい助教です。\n\n   The woman   over there is a new assistant professor.\n\n(4)   私は兄から送られたメールを受け取った。\n\n   I received an e-mail   by my brother.\n\n(5)   私たちは昨日ハッピーエンドの映画を見ました。\n\n   We watched a movie   a happy ending yesterday.\n\n(6)   赤いネクタイをしている人がスミス医師です。\n\n   The man   a red tie is Dr. Smith.\n\n(7)   このクラスは中国語を初めて学ぶ生徒たちのためのものです。\n\n   This class is for students   Chinese for the first time.\n\n(8)   港へ行くバスは１時間おきに出ます。\n\n   The bus   to the harbor leaves every other hour.\n\n   446",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n  関 係 代 名 詞 １ （「人 が～」「物 が～」の代 わり） －解 答 ―\n\n１\n\n(1) who can speak\n\n(2) which had\n\n(3) who is walking\n\n(4) which was sent\n\n(5) which had\n\n(6) who is wearing [wears]\n\n(7) who learn\n\n(8) which goes",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_001『関係代名詞１（「人が～」「物が～」の代わり）』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_001『関係代名詞１（「人が～」「物が～」の代わり）』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 1 2   練習   次の英文を日本語に訳しなさい。\n\n 関係代名詞１（「人が～」\n   「物が～」の代わり）\n   ⑴ The boy who is running in the yard is Tom.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ トムには東京に住んでいる姉がいます。\n   ⑵ This is the city which is famous for oranges.\n Tom has a sister   lives in Tokyo.\n\n⑵ 彼らは丘の上に立つ家に住んでいます。\n They live in a house   stands on a hill.   入試レベルにチャレンジ\n   次の英文を日本語に訳しなさい。\n⑶ 私にはニューヨーク出身の友達がいます。\n   This cake which is made by Carol is delicious.\n I have a friend   is from New York.\n\n⑷ これは初心者向けの本です。\n This is the book   is good\n for beginners.\n\n   omitsu Kimura の\n Tom\n\n 関係代名詞１\n\n 人 who ～   イミのカタマリ\n\n 物 which ～ イミのカタマリ\n\n 直前の 人 や 物 に「その 人 が/その 物 が」\n という説明を「うしろから」つけたす。",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_001『関係代名詞１（「人が～」「物が～」の代わり）』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_001『関係代名詞１（「人が～」「物が～」の代わり）』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch09_003",
+     "num": "003",
+     "name": "関係代名詞２（「人の～」「物の～」の代わり）",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-2",
+       "content": "『関係代名詞２（「人の～」「物の～」の代わり）』\n所有格 whose は「〜の」を表し、人にも物にも使える。"
+      },
+      {
+       "title": "概要",
+       "content": "所有格 whose は「〜の」を表し、人にも物にも使える。\nwhose + 名詞\n先行詞 + whose + 名詞\n所有格\nシグナル/特徴\n人・物両方OK\n「〜の」\nof which (= whose)\n物に対しては of which も可\nシグナル/特徴\nやや堅い表現"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I know a boy whose father is a doctor.\n私はお父さんが医者である少年を知っている。\nI have a book whose cover is red.\n表紙が赤い本を持っている。\nThe house whose roof is blue is mine.\n屋根が青い家は私のものだ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwhose ＝ 所有格\n2\n人にも物にも使える\n3\nwhose + 名詞"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_003_関係代名詞２（「人の～」「物の～」の代わり）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 代 名 詞 2（「 ⼈ の 〜 」「 物 の 〜 」 の 代 わ り ）   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計４点）\n(1)   I have a friend whose brother lives in London.\n\n   私には   友達がいます。\n\n(2)   There is a house whose roof is red.\n\n   家があります。\n\n２   次の日本文にあう英文になるように，   に適する語(句)を関係代名詞を用いて\n   書きなさい。（各３点・計 24 点）\n(1)   メアリーには３か国語を話せる友達がいます。\n\n   Mary has a friend   three languages.\n\n(2)   ケイトは広い庭のある家に住んでいました。\n\n   Kate lived in a house   a large garden.\n\n(3)   向こうを歩いている女性が新しい助教です。\n\n   The woman   over there is a new assistant professor.\n\n(4)   私は兄から送られたメールを受け取った。\n\n   I received an e-mail   by my brother.\n\n(5)   私たちは昨日ハッピーエンドの映画を見ました。\n\n   We watched a movie   a happy ending yesterday.\n\n(6)   赤いネクタイをしている人がスミス医師です。\n\n   The man   a red tie is Dr. Smith.\n\n(7)   私は，母親が有名歌手である男の子に会いました。\n\n   I met a boy   mother is a famous singer.\n\n(8)   頂上が雪で覆われている山は，富士山です。\n\n   The mountain   top is covered with snow is Mt. Fuji.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞を用いること。（各５点・計 20 点）\n\n(1)   私には，お兄さんが医学部の学生である友達がいます。\n\n   I have a friend   a medical student.\n\n(2)   彼は，昆虫採集が趣味である私の友達です。\n\n   He is my friend   collecting insects.\n\n(3)   私のおじは，赤い屋根の洋風の家に住んでいます。\n\n   My uncle lives in a Western-style house   red.\n\n(4)   私は，表紙がかわいい子ネコたちの写真になっている雑誌を買った。\n\n   I bought a magazine   is a picture of pretty kittens.\n\n４   次の２つの文を関係代名詞 whose を用いて１つの英文に書きかえなさい。\n\n   （各６点・計 18 点）\n\n(1)   I met a lady.   Her hair style was very unique.\n\n(2)   Jack wants to buy a notebook computer.   Its price is affordable.\n\n(3)   This is a picture of my cat.   Its hair is fluffy.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各６点・計 12 点）\n\n(1)   私は，あごひげがとても白くて長いおじいさんを見ました。\n   ( I / old / man / beard / was / very white / whose / and / an / saw / long / . )\n\f(2)   頂上が雪で覆われているその山は，この地方で一番高い。\n   ( covered / top / snow / the mountain / the highest / with / whose / is / is )\n   in this region.\n\n６   次の日本文を英語で書きなさい。（各 11 点・計 22 点）\n\n(1)   私には，お父さんが消防士である友達がいます。\n\n(2)   私は, 名前がチョコ(Choco)という犬を飼っています。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n   ただし，関係代名詞を用いること。\n\n(1)   One of my friends’ mother is a scientist.\n\n   I have a friend   .\n\n(2)   The dictionary with a green cover is mine.\n\n   The dictionary   .\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   The girl (   ) bicycle was stolen was my classmate.\n\n   ① who   ② that   ③ which   ④ whose\n\f(2)   Look at the house (   ) roof is red.\n\n   ＝ The house (   ) is red.\n\n   ① which ／the roof which   ② whose ／the roof which\n\n   ③ which ／the roof of which   ④ whose ／the roof of which\n\n(3)   The house (   ) red is ours.\n\n   ＝ The house (   ) a red roof is ours.\n\n   ① which roof is ／ with   ② whose roof is ／ with\n\n   ③ which roof is ／ on   ④ whose roof is ／ on",
+       "answer_text": "関係代名詞 2（「⼈の〜」\n\nＡ問題\n１\n(1)   私にはお兄さんがロンドンに住んでいる友達がいます。\n\n(2)   屋根が赤い家があります。\n\n２\n(1)   who can speak\n\n(2)   which had\n\n(3)   who is walking\n\n(4)   which was sent\n\n(5)   which had\n\n(6)   who is wearing [wears]\n\n(7)   whose\n\n(8)   whose\n\nＢ問題\n３\n(1)   whose brother is\n\n(2)   whose hobby is\n\n(3)   whose roof is\n\n(4)   whose cover\n\n４\n\n(1)   I met a lady whose hair style was very unique.\n\n(2)   Jack wants to buy a notebook computer whose price is affordable.\n\n   ジャックは，価格が手ごろなノートパソコンを買いたい。\n\f(3)   This is a picture of my cat whose hair is fluffy.\n\n   これは，毛がフワフワした私のネコの写真です。\n\n５\n\n(1)   I saw an old man whose beard was very white and long.\n\n(2)   The mountain whose top is covered with snow is the highest\n\n６\n\n(1)   [例] I have a friend whose father is a firefighter.\n\n(2)   [例] I have a dog whose name is Choco.\n\nＣ問題\n\n７\n\n(1)   I have a friend whose mother is a scientist.\n\n   私には，お母さんが科学者である友達がいます。\n(2)   The dictionary whose cover is green is mine.\n\n   緑の表紙の辞書は私のものです。\n８\n\n(1)   ④ whose\n   自転車を盗まれた少女は，私のクラスメートだった。\n\n(2)   ④ whose ／ the roof of which\n   屋根が赤い家を見て。\n   ※「先行詞＋whose＋名詞」は，「人以外」が先行詞の場合，\n   「先行詞＋the＋名詞＋of which」の形で表すことができる\n   ※９章「前置詞＋関係代名詞」も参照\n\n(3)   ② whose roof is ／ with\n   赤い屋根の家が，私たちの家です。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_003『関係代名詞２（「人の～」「物の～」の代わり）』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_003『関係代名詞２（「人の～」「物の～」の代わり）』（演習）.pdf",
+       "q_count": 38
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   3,4 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞 2（「人の～」「物の～」の代わり）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 whose を用いること。\n\n(1)   ケビンには，父が有名な音楽家である友達がいます。\n\n   Kevin has a friend   is a famous musician.\n\n(2)   山の麓には，屋根がオレンジ色の家々が立っている。\n\n   On the foot of the mountain, there are houses   are\n\n   orange.\n\n(3)   昨日傘が盗まれた人は誰ですか。\n\n   Who is the person   was stolen yesterday?\n\n(4)   私は，夫が高校の物理の先生だという女性に会いました。\n\n   I met a woman   is a physics teacher at a high school.\n\n(5)   このチームには，スペインの名門サッカーチームのメンバーになることが目標だとい\n\n   う選手がいる。\n\n   This team has a player   is to become a member of a\n\n   great Spanish soccer team.\n\n(6)   その老人はサイドミラー(side mirror)が壊れた車を運転していた。\n\n   The old man was driving a car   was broken.\n\n(7)   私は，祖父がオリンピック選手だったという女性を知っています。\n\n   I know a woman   was an Olympic athlete.\n\n(8)   先端が雲に隠れている塔が，エッフェル塔です。\n\n   The tower   hidden by clouds is the Eiffel\n\n   Tower.\n\n   450",
+       "answer_text": "章「関係詞」   3,43-4\n――――――――――――――――――――――――――――――――――――――――――\n\n 関 係 代 名 詞 2 （「人 の～」「物 の～」の代 わり） －解 答 ―\n\n１\n\n(1) whose father\n\n(2) whose roofs\n\n(3) whose umbrella\n\n(4) whose husband\n\n(5) whose goals [ends]\n\n(6) whose side mirror\n\n(7) whose grandfather\n\n(8) whose top is",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_003『関係代名詞２（「人の～」「物の～」の代わり）』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_003『関係代名詞２（「人の～」「物の～」の代わり）』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 ３ ４   練習   次の英文を日本語に訳しなさい。\n\n 関係代名詞２（「人の～」\n   「物の～」の代わり）\n   ⑴ I know a man whose mother is a famous writer.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私には、お父さんがニューヨークに住んでいる友達がいます。\n   ⑵ The mountain whose top is covered with snow is Mt. Fuji.\n I have a friend   father lives\n in New York.\n\n⑵ 屋根が青い家がある。   入試レベルにチャレンジ\n There is a house   roof is blue.\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   トムは、兄が高校で数学を教えている友達がいます。\n   Tom has a friend（ brother / math / in high school /\n   teaches / whose / his ）.\n\n   omitsu Kimura の\n Tom\n\n 関係代名詞２\n\n 人 whose ～   イミのカタマリ\n\n 物 whose ～   イミのカタマリ\n\n 直前の 人 や 物 に「その 人 の名詞/その 物 の名詞」\n という説明を「うしろから」つけたす",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_003『関係代名詞２（「人の～」「物の～」の代わり）』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_003『関係代名詞２（「人の～」「物の～」の代わり）』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch09_005",
+     "num": "005",
+     "name": "関係代名詞３（「人を～」「物を～」の代わり）",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-3",
+       "content": "『関係代名詞３（「人を～」「物を～」の代わり）』\n目的格の関係代名詞 whom / which / that は省略可。「〜を…する」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "目的格の関係代名詞 whom / which / that は省略可。「〜を…する」を表す。\nwho(m)（人）\n人 + who(m) + S V\n「Sが Vする人」\nシグナル/特徴\n目的格は省略可\nwhich（物）\n物 + which + S V\n「Sが Vする物」\nシグナル/特徴\n目的格は省略可"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "The man (whom) I met yesterday is a doctor.\n昨日会った男性は医者だ。\nThis is the book (which) I bought.\nこれは私が買った本だ。\nThe girl (whom) you saw is my sister.\nあなたが見た少女は私の妹だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n目的格は省略可\n2\nwho(m) ＝ 人を\n3\nwhich ＝ 物を"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_005_関係代名詞３（「人を～」「物を～」の代わり）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 代 名 詞 3（「 ⼈ を 〜 」「 物 を 〜 」 の 代 わ り ）   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n(1)   This is the book which I bought yesterday.\n\n   これは   本です。\n\n(2)   The girl whom I met yesterday is Yumi.\n\n   はユミです。\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 who, which, whose のどれかを用いること。（各３点・計 21 点）\n(1)   ケビンには，父が有名な音楽家である友達がいます。\n\n   Kevin has a friend   is a famous musician.\n\n(2)   ケビンには，有名な音楽家である友達がいます。\n\n   Kevin has a friend   is a famous musician.\n\n(3)   山の麓には，屋根がオレンジ色の家々が立っている。\n\n   On the foot of the mountain, there are houses   are orange.\n\n(4)   昨日傘が盗まれた人は誰ですか。\n\n   Who is the person   was stolen yesterday?\n\n(5)   先端が雲に隠れている塔が，エッフェル塔です。\n\n   The tower   hidden by clouds is the Eiffel Tower.\n\n(6)   このクラスは中国語を初めて学ぶ生徒たちのためのものです。\n\n   This class is for students   Chinese for the first time.\n\n(7)   港へ行くバスは１時間おきに出ます。\n\n   The bus   to the harbor leaves every other hour.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n\n(1)   これは私が前にあなたにお勧めした推理小説です。\n\n   This is the mystery novel   before.\n\n(2)   私が昨日駅までの道を教えた老女は杖をついていました。\n\n   The old woman   yesterday\n\n   used a stick.\n\n(3)   私は正門のそばであなたと話していた女性を知りません。\n\n   I don’t know the woman   talking with by the front gate.\n\n(4)   トムは君がしているサングラスを欲しがっているよ。\n\n   Tom wants the sun glasses   wearing.\n\n４   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1)   These are English idioms which I have to memorize by the end of this month.\n\n(2)   Is she a woman whom you can trust?\n\n(3)   The man I am planning to go fishing with is Mr. Smith.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各 10 点・計 20 点）\n\n(1)   これらはあなたがたが至急検査しなければならない点です。\n   ( points / which / are / you / inspect / these / must / urgently / . )\n\f(2)   ビルとサムは私がオフィスで一緒に働いている人です。\n   ( Sam / working / I / Bill / am / persons / are / with / and ) in the office.\n\n６   次の日本文を，whom または which を用いて英語で書きなさい。\n   （各 10 点・計 20 点）\n(1)   これは私が長い間ずっと欲しかった車です。\n\n(2)   私が一緒にそのコンサートに行った女の子はナンシーです。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n(1)   Look at the black fish in the tank (   ) my father caught yesterday.\n\n   ① whose   ② who   ③ what   ④ which\n\n(2)   The old lady (   ) in the airport is known as a great scientist.\n\n   ① to whom you met   ② in which you met   ③ which you met   ④ you met\n\n(3)   Ken is the only student that I know (   ) passed this exam.\n\n   ① whom   ② which   ③ who   ④ what\n\n(4)   Kyoto is the city that Tom has visited (   ) he likes very much.\n\n   ① who   ② which   ③ whose   ④ what\n\f８   次の英文を日本語に訳しなさい。\n\n(1)   Kenta is the only Japanese that Ann knows cannot speak English.\n\n(2)   Kenta is the only Japanese that Ann knows who cannot speak English.\n\n(3)   Kenta is the only Japanese that Ann knows, and that cannot speak English.\n\n９ 〈センター試験にチャレンジ〉 1 ～   2 に入れるのに最も適当なものを，それぞ\n  れ下の①～④から一つずつ選べ。\n\n(1)   If there is anything   1   for you, please let me know.\n   〈10 年追試〉\n   ① I can do   ② I can do that   ③ that I can   ④ what I can do\n\n(2)   “Which girl is Shiori?”\n   “The one   2   had a chat with a moment ago.”\n   〈12 年本試〉\n   ①I   ② myself ③ that   ④ who",
+       "answer_text": "関係代名詞 3（「⼈を〜」\n\nＡ問題\n\n１\n\n(1)   This is the book which I bought yesterday.\n\n   これは私が昨日買った本です。\n\n(2)   The girl whom I met yesterday is Yumi.\n\n   私が昨日会った少女はユミです。\n\n２\n\n(1)   whose father\n\n(2)   who\n\n(3)   whose roofs\n\n(4)   whose umbrella\n\n(5)   whose top is\n\n(6)   who learn\n\n(7)   which goes\n\nＢ問題\n\n３\n\n(1)   (which) I recommended you\n\n(2)   (whom) I told the way to the station\n\n(3)   (whom) you were\n\n(4)   (which) you are\n\f４\n\n(1)   これらは，私が今月末までに覚えなければならない英熟語です。\n\n(2)   彼女はあなた(たち)が信頼できる人ですか。\n\n(3)   私が一緒に釣りに行く予定の人はスミスさんです。\n\n５\n\n(1)   These are points which you must inspect urgently.\n\n(2)   Bill and Sam are persons I am working with\n\n６\n\n(1)   [例] This is the car which I have wanted for a long time.\n\n(2)   [例] The girl whom I went to the concert with is Nancy.\n\nＣ問題\n\n７\n\n(1)   ④ which\n   昨日私の父が捕まえた，水槽の中の黒い魚を見て。\n   ※関係代名詞が「直前にない名詞」を修飾するパターンに注意\n   ここでは，which は「the black fish」にかかる\n\n(2)   ④ you met\n   空港であなたが会った老婦人は，偉大な科学者として知られている。\n\n   ※whom you met の，関係代名詞 whom が省略されている\n\n(3)   ③ who\n   ケンは私が知っている中で，この試験に通った唯一の生徒だ。\n\n   ※８の解説を参照\n\n(4)   ② which\n   京都はトムが訪れたことがある中で，彼がとても気に入っている街です。\n\n   ※８の解説を参照\n\f８\n\n※９章「関係代名詞の that」も参照\n\n＜関係代名詞の「連鎖」「二重」「並列」＞\n(1)\n   Kenta is the only Japanese that (Ann knows) cannot speak English.\n   ケンタは，英語を話せないとアンが知っている唯一の日本人だ。\n\n   ※関係詞の直後に I think, she believes, he knows などの S＋V が入りこんで，\n\n   「関係詞＋<S＋V>＋(S＋)V」の形で，ひとつのカタマリの節になることがある。\n\n   いったん<S＋V>の部分(ここでは Ann knows)を除いて考えると訳しやすい\n   ※「連鎖関係代名詞」といわれることもある使い方\n(2)\n   Kenta is the only Japanese [that Ann knows] <who cannot speak English.>\n\n   ケンタは，アンが知っている中で，英語を話せない唯一の日本人である。\n   ※(3)と違い，アンは，ケンタ以外にも日本人を知っている可能性がある\n\n   ①「that Ann knows(アンが知っている)」が「Japanese(日本人)」にかかる\n   ②「who cannot speak English(英語を話せない)」が「Japanese that Ann knows(ア\n   ンが知っている日本人)」にかかる\n   ③「the only(唯一の)」が「Japanese that Ann knows who cannot speak English(ア\n   ンが知っている中で，英語を話せない日本人)」を修飾する\n   ※関係代名詞の「二重限定」といわれることもある使い方\n(3)\n   Kenta is the only Japanese [that Ann knows], and <that cannot speak English.>\n\n   ケンタは，アンが知っている，かつ英語を話せない，唯一の日本人である。\n   ※(2)と違い，アンは，ケンタ以外の日本人を知らない\n\n   ※「that Ann knows(アンが知っている)」と「that cannot speak English(英語を話\n   せない)」がそれぞれ「the only Japanese(唯一の日本人)」にかかっている\n   ※関係代名詞の「並列」といわれることもある使い方\n\f９\n\n(1)   ① I can do\n   もし私に何かできることがあれば，どうぞ教えてください。\n\n(2)   ①I\n   「どちらの女の子がシオリ？」\n   「ついさっき私が話していた女の子の方だよ。」",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_005『関係代名詞３（「人を～」「物を～」の代わり）』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_005『関係代名詞３（「人を～」「物を～」の代わり）』（演習）.pdf",
+       "q_count": 55
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   5,6 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞 3（「人を～」「物を～」の代わり）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 whom または which を用いること。\n\n(1)   これは私が昨日もらった手紙です。\n\n   This is a letter   received yesterday.\n\n(2)   ウィルソン先生が話している生徒を知っていますか。\n\n   Do you know the   Mr. Wilson is talking to?\n\n(3)   これは明日返却しなければいけない本です。\n\n   This is the   I must return tomorrow.\n\n(4)   彼が会いたい女性はユミです。\n\n   The woman   to see is Yumi.\n\n(5)   あれが，私たちが明日見る予定の映画です。\n\n   That is the   are going to see tomorrow.\n\n(6)   あなたは失くした財布を見つけましたか。\n\n   Have you found the purse   ?\n\n(7)   ケビンが一緒に走っている男子はジムです。\n\n   The boy   Kevin   is Jim.\n\n(8)   ビルが夕食に招待した女性はナンシーでした。\n\n   The lady   Bill   was Nancy.\n\n   454",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n 関 係 代 名 詞 3 （「人 を～」「物 を～」の代 わり） －解 答 ―\n\n１\n\n(1) which I\n\n(2) student whom\n\n(3) book which\n\n(4) whom he wants\n\n(5) movie which we\n\n(6) which you lost\n\n(7) whom ／ is running with\n\n(8) whom ／ invited to dinner",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_005『関係代名詞３（「人を～」「物を～」の代わり）』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_005『関係代名詞３（「人を～」「物を～」の代わり）』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 ５ ６   練習   次の英文を日本語に訳しなさい。\n\n 関係代名詞３（「人を～」\n   「物を～」の代わり）\n   ⑴ That is the man whom I want to see.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ これは私が昨日買った本です。\n   ⑵ The lady he loves is attractive.\n This is the book   I bought yesterday.\n\n⑵ こちらが、私が昨日会った少年です。\n This is the boy   I met yesterday.   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n⑶ ナンシーは図書館から借りた本を読んでいる。\n Nancy is reading a book   she   トムが探していた本は、売り切れだった。\n borrowed from the library.   The book（ was / for / which / looking / Tom / it ）was\n   sold out.\n⑷ 私と昨日テニスをした男性は、ジャックです。\n The man   I played tennis with is Jack.\n\n   omitsu Kimura の\n Tom\n\n 関係代名詞３\n\n 人 whom ～   イミのカタマリ\n\n 物 which ～   イミのカタマリ\n\n 直前の 人 や 物 に「その 人 を/その 物 を」\n という説明を「うしろから」つけたす",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_005『関係代名詞３（「人を～」「物を～」の代わり）』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_005『関係代名詞３（「人を～」「物を～」の代わり）』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch09_007",
+     "num": "007",
+     "name": "関係代名詞のthat",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-4",
+       "content": "『関係代名詞のthat』\nthat は人にも物にも使える万能関係代名詞。最上級・序数・only などの後では that が好まれる。"
+      },
+      {
+       "title": "概要",
+       "content": "that は人にも物にも使える万能関係代名詞。最上級・序数・only などの後では that が好まれる。\nthat ＝ 万能\nthat ＝ who/which の代わり\n人・物どちらでも\nシグナル/特徴\n主格・目的格\nthat を好む場合\n最上級 / 序数 / -thing / all\nthat が好まれる文脈\nシグナル/特徴\nthe only / all"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "The first person that came was Tom.\n最初に来た人はトムだった。\nThis is the best book that I have ever read.\nこれは私が読んだ中で最高の本だ。\nAnything that happens is fine.\n何が起こっても大丈夫。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nthat ＝ who/which の代用\n2\n最上級・序数・only と相性◎\n3\nanything that 〜 など"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_007_関係代名詞のthat_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 代 名 詞 の that   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計４点）\n(1)   道を渡っている少年と犬を見てください。\n\n   Look at the boy and his dog   are crossing the street.\n\n(2)   彼女は私が今まであった中で最も美しい女の子だ。\n\n   She is the most beautiful girl   I have ever seen.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   （1）～（7）については関係代名詞 who, which, whose, whom のどれかを用いること。\n   （各３点・計 27 点）\n(1)   これは私が昨日もらった手紙です。\n\n   This is a letter   received yesterday.\n\n(2)   ウィルソン先生が話している生徒を知っていますか。\n\n   Do you know the   Mr. Wilson is talking to?\n\n(3)   その老人はサイドミラー(side mirror)が壊れた車を運転していた。\n\n   The old man was driving a car   was broken.\n\n(4)   私は病院で働いている女性に会った。\n\n   I met a woman   at a hospital.\n\n(5)   私は，夫が病院で働いているという女性に会った。\n\n   I met a woman   at a hospital.\n\n(6)   私が会った女性は，病院で働いている。\n\n   The woman   works at a hospital.\n\n(7)   彼女は，丘の上に立っている病院で働いている。\n\n   She works at a hospital   stands on a hill.\n\f(8)   これは私の街で一番古い寺です。\n\n   This is   temple in my town.\n\n(9)   私は，すべての科目の中で一番難しい教科は国語だと思います。\n\n   I think   subject of all is Japanese.\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 that を用いること。（各５点・計 20 点）\n\n(1)   これは母が持っていた，たった１つの指輪です。\n\n   This is the   my mother had.\n\n(2)   私が飢餓の子どもたちのためにできることがあるだろうか。\n\n   Is there   I can do for starving children?\n\n(3)   トムは公園で走っている少女とイヌを見かけました。\n\n   Tom saw the girl and her dog   in the park.\n\n(4)   これは, 私が今までに読んだ中で最も長い小説です。\n\n   This is the longest novel   .\n\n４   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1)   That is the very English expression that I have just learned.\n\n(2)   Mr. Watson was the first foreign teacher that came to our school.\n\n(3)   The girl and her cat that were sleeping in the bed looked very happy.\n\f５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n(1)   浜辺で遊んでいる少年と犬を見かけた。（各８点・計 16 点）\n   I saw ( his dog / and / on / a boy / the beach / that / were / playing ).\n\n(2)   あなたが彼のためにできることは，彼が戻るまでここにいることだけです。\n   ( that / is / him / to / here / you / for / all / do / can / stay ) until he comes back.\n\n６   次の日本文を，関係代名詞 that を用いて英語で書きなさい。（各９点・計 18 点）\n(1)   京都は，まさにトムが訪れたいと思っている場所です。\n\n(2)   富士山は，私が今まで見た中で最も美しい山だ。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英文を日本語に訳しなさい。\n\n(1)   The elderly woman and her dog that were sitting under the tree looked sleepy.\n\n(2)   This is the only mechanical pencil that I have.\n\n(3) Yuki lost all pens that her father had bought her.\n\n(4)   Who that understand music can say she is a good pianist?\n\n(5)   He is not the man that he was five years ago.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   He is not the man (   ) he was when Ann met him for the first time.\n\n   ① whom   ② who   ③ what   ④ that\n\n(2)   Who (   ) has seen this picture can forget its beauty?\n\n   ① that   ② which   ③ who   ④ whom",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   Look at the boy and his dog that are crossing the street.\n\n(2)   She is the most beautiful girl that I have ever seen.\n\n２\n\n(1)   which I\n\n(2)   student whom\n\n(3)   whose side mirror\n\n(4)   who works\n\n(5)   whose husband works\n\n(6)   whom I met [saw]\n\n(7)   which\n\n(8)   the oldest   ※８章「『最上級』の表現」\n\n(9)   the most difficult   ※８章「『最上級』の表現」\n\nＢ問題\n\n３\n\n(1)   only ring that\n\n(2)   anything that\n\n(3)   that were running\n\n(4)   that I have ever read\n\f４\n(1)   それはまさに私が習ったばかりの英語表現だ。\n\n(2)   ワトソン先生は私たちの学校に来た最初の外国人教師でした。\n\n(3)   ベッドで眠っていた少女とネコはとても幸せそうに見えた。\n\n５\n\n(1)   a boy and his dog that were playing on the beach\n\n(2) All that you can do for him is to stay here\n\n６\n\n(1)   [例] Kyoto is the very [just] place that Tom wants to visit.\n\n(2)   [例] Mt. Fuji is the most beautiful mountain that I have ever seen.\n\nＣ問題\n７\n次のような場合は，ふつう，関係代名詞に that がよく使われる\n\n(1)   木の下に座っていた年配の女性と彼女の犬は，眠そうに見えました。\n   先行詞が「人＋物」（「人＋物」にかかるパターン）のとき\n\n(2)   これが，私が持っている唯一のシャーペンです。\n   先行詞が最上級（最上級にかかるパターン）のとき\n\n(3)   ユキは父親が買ってくれたすべてのペンをなくした。\n   先行詞に all，every，any，no など，\n   「すべて」\n   「まったく～ない」といった意味を表\n   す修飾語がついているとき\n\n(4)   音楽を理解する人で，彼女を優れたピアニストだと言う人がいるだろうか。\n   疑問詞が先行詞になっているとき\n   ※Who that ～ … 「～人で，…な人がいるだろうか」\n\n(5)   彼は，５年前のような彼ではない。\n   節内の補語が先行詞になっている場合\n\n   その他にも，the first(最初の)，the second(２番目の)，the very(まさにその)，the\n   same(同じ)，the only(唯一の)，など，先行詞が「特定の１つのものである」こと\n   を表すときは，関係代名詞に that を使うことが多い\n\f８\n\n(1)   ④ that\n   彼は，アンが初めて会った時のような彼ではない。\n\n(2)   ① that\n   この絵を見たことがある人で，その美しさを忘れる人がいるだろうか。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_007『関係代名詞のthat』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_007『関係代名詞のthat』（演習）.pdf",
+       "q_count": 37
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   7,8 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞の that\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 that を用いること。\n\n(1)   これは私が今までに見た中で最も美しい絵です。\n\n   This is the most beautiful picture   ever seen.\n\n(2)   あなたにこの傘を貸してくれた少年は誰ですか。\n\n   Who is the boy   you this umbrella?\n\n(3)   これはまさにメアリーが欲しいと思っているバッグです。\n\n   This is the very   Mary wants.\n\n(4)   川のそばを散歩している女性と犬が見えますか。\n\n   Can you see the woman and her dog   by the river?\n\n(5)   私が最初に登った山は高尾山です。\n\n   The   I climbed is Mt. Takao.\n\n(6)   これは彼女が持っているたった１枚のコートだ。\n\n   This is the   she has.\n\n(7)   レギュラー選手として選ばれた最後のメンバーは誰ですか。\n\n   Who is the   was chosen as a regular player?\n\n(8)   私がジャックについて知っていることは，彼の年齢だけである。\n\n   All   about Jack is his age.\n\n   458",
+       "answer_text": "章「関係詞」   7,87-8\n――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞の that －解答―\n\n１\n\n(1) that I have\n\n(2) that lent\n\n(3) bag that\n\n(4) that are walking\n\n(5) first mountain that\n\n(6) only coat that\n\n(7) last member that\n\n(8) that I know",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_007『関係代名詞のthat』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_007『関係代名詞のthat』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 ７ ８   練習   次の英文を日本語に訳しなさい。\n\n   関係代名詞のthat   ⑴ Lucy is the most beautiful girl that I have ever seen.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 道を渡っている少女とネコを見てください。\n   ⑵ The boy and his dog that were crossing the street were\n Look at the girl and her cat   are\n   hit by a car.\n crossing the street.\n\n⑵ ここは私が知っている最高のレストランです。\n This is the best restaurant   I know.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内に適する語（句）を\n   次の選択肢から選びなさい。\n\n   This is the only dictionary（   ）she has.\n\n   ① what   ② who   ③ that\n\n   omitsu Kimura の\n Tom\n\n 関係代名詞のthat\n\n ① 代わりとしてのthat\n   → 人 のwhoや 物 のwhichなどの代わりとして\n ② 特にthatを使うパターン\n   ➡ ⎧⎪「 人 + 物 」にかかるパターン\n   ⎩ 最上級にかかるパターン",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_007『関係代名詞のthat』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_007『関係代名詞のthat』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch09_009",
+     "num": "009",
+     "name": "前置詞＋関係代名詞",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-5",
+       "content": "『前置詞＋関係代名詞』\n前置詞 + 関係代名詞は、文中の前置詞を関係詞の前に移動した形。やや堅い文体。"
+      },
+      {
+       "title": "概要",
+       "content": "前置詞 + 関係代名詞は、文中の前置詞を関係詞の前に移動した形。やや堅い文体。\n前置詞 + which\nin / on / for + which\n「物について／物の中で」\nシグナル/特徴\n前置詞は前に移動\n前置詞 + whom\nto / of + whom\n「人に／人の」\nシグナル/特徴\nwhom は省略不可"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "This is the house in which I lived.\nここは私が住んでいた家だ。\nHe is the man with whom I worked.\n彼は私が一緒に働いた人だ。\nThe pen with which I write is broken.\n私が書くペンは壊れている。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n前置詞 + 関係代名詞\n2\nwhom は省略不可\n3\n口語では文末に置くことが多い"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_009_前置詞＋関係代名詞_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "前置詞＋関係代名詞   100\n\nＡ問題\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計４点）\n(1)   大阪は，私が生まれた街だ。\n\n   Osaka is the city   I was born.\n\n(2)   こちらが，私があなたに昨日話した店です。\n\n   This is the shop   I told you.\n\n２   次の問いに答えなさい。（各３点・計 24 点）\n(1)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 that を用いること。\n\n①   これは私が今までに見た中で最も美しい絵です。\n\n   This is the most beautiful picture   ever seen.\n\n②   これはまさにメアリーが欲しいと思っているバッグです。\n\n   This is the very   Mary wants.\n\n③   川のそばを散歩している女性と犬が見えますか。\n\n   Can you see the woman and her dog   by the river?\n\n④   これは彼女が持っているたった１枚のコートだ。\n\n   This is the   she has.\n\n(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 which, whom のどちらかを用いること。\n\n①   あなたは失くした財布を見つけましたか。\n\n   Have you found the purse   ?\n\f②   ケンが夕食に招待した女性はナンシーでした。\n\n   The lady   was Nancy.\n\n③   ケビンが一緒に走っている男子はジムです。\n\n   The boy   Kevin is running with is Jim.\n\n   The boy   Kevin is running is Jim.\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 20 点）\n(1)   それは，私の父が勤めている会社です。\n\n   That is the company   my father works.\n\n(2)   あなたは，トムが頼りにしている女の子を知っていますか。\n\n   Do you know the girl   Tom depends?\n\n(3)   神戸はあなたが引っ越す予定の市ですか。\n\n   Is Kobe the city   you are going to move?\n\n(4)   ここは，昨日交通事故が起きた場所です。\n\n   Here is the place   an traffic accident occurred yesterday.\n\n４   次の２つの文を，「前置詞＋関係代名詞」の形を用いて１つの文にしなさい。\n\n   （各６点・計 18 点）\n\n(1)   London is the city. Amy was grown up in it.\n\n   London is   .\n\n(2)   I want to go to the cafeteria. Nick talked about it yesterday.\n\n   I want to go to   yesterday.\n\n(3)   The ticket is sold. Do you know the price?\n\n   Do you know   ?\n\f５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   This is the knife with which they cut their wedding cake.\n\n(2)   There was no one from whom she could borrow money.\n\n(3)   Please look at the wall on which a lot of animals are painted.\n\n６   次の日本文を，「前置詞＋関係代名詞」の形を用いて英語で書きなさい。\n\n   （各８点・計 16 点）\n\n(1)   オーストラリアは私の父が生まれた国です。\n\n(2)   彼女は，私がよく一緒にテニスをするクラスメートです。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の３つの英文がほぼ同じ意味になるように，   に適する１語を書きなさい。\n\n(1)   Tom has no friend he can talk with.\n\n   Tom has no friend   he can talk   .\n\n   Tom has no friend   he can talk.\n\n(2)   This is the book I told you about yesterday.\n\n   This is the book   I told you   yesterday.\n\n   This is the book   I told you yesterday.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   They were playing a game (   ) Ken couldn’t understand.\n\n   ② of the rules of which   ② the rules of which\n\n   ③ which of the rules   ④ the rules which of\n\n(2)   She lives in the house (   ) is green.\n\n   ＝ She lives in the house (   ) roof is green.\n\n   ① which of the roof ／ which   ② of which the roof ／ which\n\n   ③ the roof of which ／ whose   ④ of the roof which ／ whose\n\n(3)   I have a pretty sister (   ) I am proud.\n\n   ① that   ② whom   ③ of that   ④ of whom\n\n９〈センター試験にチャレンジ〉 1 ～   2   に入れるのに最も適当なものを，それぞれ\n  下の①～④から一つずつ選べ。\n\n(1)   Sand is the material   1   glass is made.\n   〈16 年追試〉\n   ① from which   ② on which   ③ what   ④ which\n\n(2)   Susan used all her savings to pay for a demo tape, copies of   2   she later sent to\n   several music companies.\n   〈12 年追試〉\n   ① that   ② what   ③ which   ④ whose",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   Osaka is the city in which I was born.\n\n(2)   This is the shop about which I told you.\n\n２\n\n(1)\n\n①   that I have\n\n②   bag that\n\n③   that are walking\n\n④   only coat that\n\n(2)\n\n①   which you lost\n\n②   whom Ken invited to dinner\n\n③   whom   ※「関係代名詞３(「人を～」「物を～」の代わり)」\n\n   with whom   ※「前置詞＋関係代名詞」\n\nＢ問題\n\n３\n\n(1)   for which\n\n(2)   on whom\n\n(3)   to which\n\n(4)   at which\n\f４\n\n(1)   the city in which Amy was grown up\n\n(2)   the cafeteria about which Nick talked\n\n(3)   the price at which the ticket is sold\n\n５\n\n(1)   これは彼らがウェディングケーキを切ったナイフです。\n\n(2)   彼女がお金を借りられる人は誰もいなかった。\n\n(3)   多くの動物が描かれている壁を見てください。\n\n６\n\n(1)   [例] Australia is the country in which my father was born.\n\n(2)   [例] She is my classmate with whom I often play tennis.\n\nＣ問題\n\n７\n\n(1)   Tom has no friend he can talk with. ※関係代名詞の省略\n\n   Tom has no friend who [whom / that] he can talk with.\n\n   Tom has no friend with whom he can talk.\n\n   トムには話せる友人がいません。\n\n(2)   This is the book I told you about yesterday.   ※関係代名詞の省略\n\n   This is the book which [that] I told you about yesterday.\n\n   This is the book about which I told you yesterday.\n\n   これが，私があなたに昨日話した本です。\n\n８\n\n(1)   ② the rules of which\n   彼らは，ケンがルールをわからないゲームをしていた。\n\f(2)   ③ the roof of which ／ whose\n   彼女は，屋根が緑色の家に住んでいます。\n\n(3)   ④ of whom\n   私には，自慢のかわいい妹がいます。\n\n   ※関係代名詞の that は，「前置詞＋that」の形で用いることはできない\n９\n\n(1)   ① from which\n   砂はガラスを作る原材料である。\n\n(2)   ③ which\n   スーザンはデモテープのために貯金をすべて使い，あとでそのコピーをいくつかの音\n   楽会社に送った。\n   ※９章「カンマのついた関係代名詞②」も参照",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_009『前置詞＋関係代名詞』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_009『前置詞＋関係代名詞』（演習）.pdf",
+       "q_count": 52
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   9,10 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   前置詞＋関係代名詞\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   奈良はその作家が生まれた町だ。\n\n   Nara is the city   the writer was born.\n\n(2)   私が一緒にヨーロッパを旅行した女性はメアリーです。\n\n   The woman   I traveled in Europe is Mary.\n\n(3)   これは私があなたに昨日話した雑誌です。\n\n   This is the magazine   I told you yesterday.\n\n(4)   テーブルをふくことができる布がほしい。\n\n   I want a cloth   I can wipe the table.\n\n(5)   あれは誰でも快適に座れるソファです。\n\n   That is a sofa   anyone can sit comfortably.\n\n(6)   今朝私がメールを送った友達はナンシーです。\n\n   A   I sent an e-mail this morning is Nancy.\n\n(7)   トーマスさんは父が一緒に働いている人です。\n\n   Mr. Thomas is the   my father is working.\n\n(8)   あなたが話していたレストランはここですか。\n\n   Is this the   you were talking?\n\n   462",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   前置詞＋関係代名詞 －解答―\n\n１\n\n(1) in which\n\n(2) with whom\n\n(3) about which\n\n(4) with which\n\n(5) on which\n\n(6) friend to whom\n\n(7) man [person] with whom\n\n(8) restaurant about which",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_009『前置詞＋関係代名詞』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_009『前置詞＋関係代名詞』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 ９ 10   練習   次の英文を日本語に訳しなさい。\n\n   前置詞 + 関係代名詞   ⑴ The man of whom you spoke was absent today.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 大阪は、私が生まれた町だ。\n   ⑵ I have no friend with whom I can talk.\n  Osaka is the city   I was born.\n\n⑵ こちらが、私があなたに昨日話した店です。\n  This is the shop   I told you.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内に適する語（句）を\n   次の選択肢から選びなさい。\n⑶ 私は、ジャックと話していた女の子を知っている。\n  I know the girl   Jack was talking.   This is the very bird（   ）the professor was in\n   search.\n⑷ 彼はナンシーがファンレターを送った歌手です。\n  He is the singer   Nancy sent a fan letter.   ① which   ② of which   ③ for which\n\n   omitsu Kimura の\n  Tom\n\n 前置詞+関係代名詞\n\n たとえば the city in which I was born\n   「私が生まれた街」\n   ⎧ ① イミのカタマリが前置詞からスタート\n   ⎪\n   ⎩ ②「前置詞 + whom / which」で１つと考える",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_009『前置詞＋関係代名詞』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_009『前置詞＋関係代名詞』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch09_011",
+     "num": "011",
+     "name": "関係副詞の使い方①（where, when）",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-6",
+       "content": "『関係副詞の使い方①（where, when）』\n関係副詞 where / when は、場所・時を表し、「前置詞 + which」と書き換えられる。"
+      },
+      {
+       "title": "概要",
+       "content": "関係副詞 where / when は、場所・時を表し、「前置詞 + which」と書き換えられる。\nwhere（場所）\n場所 + where + S V\n= in/at/on which\nシグナル/特徴\n場所を補足\nwhen（時）\n時 + when + S V\n= in/on/at which\nシグナル/特徴\n時を補足"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "This is the town where I was born.\nここは私が生まれた町だ。\nI remember the day when we met.\n私たちが出会った日を覚えている。\nThat is the house where I lived as a child.\nあれは子供のころ住んでいた家だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwhere ＝ 場所\n2\nwhen ＝ 時\n3\n前置詞 + which で書き換え可"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_011_関係副詞の使い方①（where, when）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 副 詞 の 使 い 方 ① （ where, when）   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計４点）\n   これは私が住んでいた家です。\n\n   This is the house   I lived.\n\n   This is the house   I lived.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   奈良はその作家が生まれた町だ。\n\n   Nara is the city   the writer was born.\n\n(2)   私が一緒にヨーロッパを旅行した女性はメアリーです。\n\n   The woman   I traveled in Europe is Mary.\n\n(3)   これは私があなたに昨日話した雑誌です。\n\n   This is the magazine   I told you yesterday.\n\n(4)   テーブルをふくことができる布がほしい。\n\n   I want a cloth   I can wipe the table.\n\n(5)   トーマスさんは父が一緒に働いている人です。\n\n   Mr. Thomas is the   my father is working.\n\n(6)   あなたが話していたレストランはここですか。\n\n   Is this the   you were talking?\n\n(7)   レギュラー選手として選ばれた最後のメンバーは誰ですか。\n\n   Who is the   was chosen as a regular player?\n\n(8)   私がジャックについて知っていることは，彼の年齢だけである。\n\n   The only thing   about Jack is his age.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n\n(1)   ここは祖父が生まれた時から住んでいる村です。\n\n   This is the village   my grandfather has lived since he\n\n   was born.\n\n(2)   日本では４月は新学年が始まる月だ。\n\n   April is the month   a new school year starts in Japan.\n\n(3)   ここはリンダが働いているパン屋ですか。\n\n   Is this the bakery   Linda works?\n\n(4)   あなたは私たちが遠足に行った日を覚えていますか。\n\n   Do you remember the day   we went on an excursion?\n\n４   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   Do you know the day when the new term starts?\n\n(2)   I don’t know the exact time when the accident happened.\n\n(3)   The time may come when he’ll regret his words.\n\f５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各７点・計 14 点）\n\n(1)   私が先月滞在したホテルはとても快適でした。\n   ( last / I / very / month / where / the hotel / stayed / was / comfortable / . )\n\n(2)   ジャックは戦争が終わった年に生まれた。\n   ( was / the war / the year / Jack /when / in / ended / born / . )\n\n６   次の日本文を，where または when を用いて英語で書きなさい。\n   （各 10 点・計 20 点）\n\n(1)   これは私のおじが住んでいた家です。\n\n(2)   私は妻に初めて会った日を覚えている。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n   ＜where の先行詞になることがある，注意すべき語＞\n\n   case\n\n   point\n\n   situation\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選んだ選択肢を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   This is the case (   ) new rule apply.\n\n   ① at which   ② where   ③ on which   ④ whom\n\n(2)   I remember (   ) I met Ann for the first time.\n\n   ① where   ② who   ③ whose   ④ when\n\n(3)   This is (   ) the famous scientist was born.\n\n   ① the place of   ② what   ③ which   ④ where\n\n(4)   The day will come (   ) your dream will come true.\n\n   ① which   ② where   ③ when   ④ how",
+       "answer_text": "Ａ問題\n\n１\n\n   This is the house in which I lived.\n\n   This is the house where I lived.\n\n２\n\n(1)   in which [where]\n\n(2)   with whom\n\n(3)   about which\n\n(4)   with which\n\n(5)   man [person] with whom\n\n(6)   restaurant about which\n\n(7)   last member that\n\n(8)   that I know\n\nＢ問題\n\n３\n\n(1)   where [in which]\n\n(2)   when [in which]\n\n(3)   where [in which]\n\n(4)   when [on which]\n\f４\n\n(1)   あなたは新学期が始まる日を知っていますか。\n\n(2)   私は，事故が起きた正確な時間を知りません。\n\n(3)   彼は言ったことを後悔するときが来るかもしれません。\n\n５\n\n(1)   The hotel where I stayed last month was very comfortable.\n\n(2)   Jack was born in the year when the war ended.\n\n６\n\n(1)   [例] This is the house where my uncle lived.\n\n(2)   [例] I remember the day when I first met my wife.\n\nＣ問題\n\n７\n\n   case   場合\n\n   point   点\n\n   situation   状況\n\n８\n\n(1)   ② where\n   これは，新しい規則があてはまる場合である。\n\n(2)   ④ when\n   私は，はじめてアンに会ったときのことを覚えています。\n   ※“the time when” の先行詞“the time”と，\n   “the place where”の先行詞“the place”は，省略されることがある。\n   ※ここでは，when の先行詞，the time が省略されている。\n\f(3)   ④ where\n   ここが，その有名な科学者が生まれた場所です。\n   ※where の先行詞，the place が省略されている。\n\n(4)   ③ when\n   あなたの夢がかなう日がくるでしょう。\n   ※先行詞と関係副詞の when がはなれている場合もある。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_011『関係副詞の使い方①（where， when）』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_011『関係副詞の使い方①（where， when）』（演習）.pdf",
+       "q_count": 40
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   11,12 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係副詞の使い方①（where, when）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係副詞 where または when を用いること。\n\n(1)   ここは私の家族が住んでいた町です。\n\n   This is the town   my family lived.\n\n(2)   それはジョンが初めてベティーに会った日でした。\n\n   It was the day   John first met Betty.\n\n(3)   あなたがこの家具を買った店を教えてください。\n\n   Please tell me the shop   bought this furniture.\n\n(4)   そのイベントが開かれた日を覚えていますか。\n\n   Do you remember the   the event was held?\n\n(5)   おいしいベトナム料理が食べられるレストランを知っていますか。\n\n   Do you know the   we can eat delicious Vietnamese\n\n   food?\n\n(6)   あなたが生まれた年を書いてください。\n\n   Please write the   were born.\n\n(7)   ここは私がよく DVD を借りる店です。\n\n   This is the   often rent DVDs.\n\n(8)   あれは私の父が働いている病院です。\n\n   That is the   works.\n\n   468",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   関 係 副 詞 の使 い方 ①（where, when） －解 答 ―\n\n１\n\n(1) where\n\n(2) when\n\n(3) where you\n\n(4) day when\n\n(5) restaurant where\n\n(6) year when you\n\n(7) shop where I\n\n(8) hospital where my father",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_011『関係副詞の使い方①（where， when）』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_011『関係副詞の使い方①（where， when）』（習熟）.pdf",
+       "q_count": 9
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 11 12   練習   次の英文を日本語に訳しなさい。\n\n   関係副詞の使い方①（where, when）   ⑴ This is the church where we had our wedding.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ これは私が住んでいた家です。\n   ⑵ I remember the day when he came to Japan.\n  This is the house   I lived.\n\n⑵ 私はあなたに初めて会った日を覚えている。\n  I remember the day   I met you first.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内に適する語（句）を\n   次の選択肢から選びなさい。\n⑶ あなたが育った町について教えて。\n  Tell me the town   you grew up.   The day will come（   ）there will be no war.\n\n⑷ トムと一緒にテニスをした日を覚えていますか。   ① what   ② which   ③ when\n  Do you remember the day   you played\n  tennis with Tom?\n\n   omitsu Kimura の\n  Tom\n\n 関係副詞の使い方①\n\n たとえば   ¨ the city in which I was born\n   «\n   ª =the city where I was born\n\n  場所 + in which = 場所 + where\n  時   + on which =   時   + when",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_011『関係副詞の使い方①（where, when）』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_011『関係副詞の使い方①（where, when）』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch09_013",
+     "num": "013",
+     "name": "関係副詞whereと関係代名詞whichの使い分け",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-7",
+       "content": "『関係副詞whereと関係代名詞whichの使い分け』\nwhere は副詞、which は代名詞。後ろの文に欠けがあれば which、なければ where。"
+      },
+      {
+       "title": "概要",
+       "content": "where は副詞、which は代名詞。後ろの文に欠けがあれば which、なければ where。\nwhere（副詞）\n後ろが完全な文\nwhere + S V O（欠けなし）\nシグナル/特徴\n副詞\nwhich（代名詞）\n後ろに欠けあり\nwhich + V／which + S V\nシグナル/特徴\n代名詞（主語/目的語）"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "This is the house where I live.\nここは私が住む家だ。\nThis is the house which I bought.\nこれは私が買った家だ。\nTokyo is a city where many people live.\n東京は多くの人が住む都市だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n後ろの文に「欠け」があるか\n2\n完全 → where\n3\n欠けあり → which"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_013_関係副詞whereと関係代名詞whichの使い分け_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "第９章「関係詞」   得点\n\n   関 係 副 詞 where と 関 係 代 名 詞 which の 使 い 分 け   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計８点）\n(1)   ここは，私が休暇を過ごした場所です。\n\n   This is the place   I spent my holidays.\n\n   This is the place   I spent my holidays.\n\n(2)   ここは，私が去年訪れた場所です。\n\n   This is the place   I visited last year.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係副詞 where または when を用いること。（各３点・計 18 点）\n\n(1)   ここは私の家族が住んでいた町です。\n\n   This is the town   my family lived.\n\n(2)   それはジョンが初めてベティーに会った日でした。\n\n   It was the day   John first met Betty.\n\n(3)   おいしいベトナム料理が食べられるレストランを知っていますか。\n\n   Do you know the   we can eat delicious Vietnamese\n\n   food?\n\n(4)   あなたが生まれた年を書いてください。\n\n   Please write the   were born.\n\n(5)   ここは私がよく DVD を借りる店です。\n\n   This is the   often rent DVDs.\n\n(6)   あれは私の父が働いている病院です。\n\n   That is the   works.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n\n(1)   こちらはその祭りが開催される村の村長です。\n\n   This is the mayor of the village   the festival is held.\n\n(2)   ここは私が幼少期を過ごした町です。\n\n   This is the town   I spent my childhood.\n\n(3)   サラはブラウンさんが経営している美容院に行きました。\n\n   Sara went to the beauty shop   Mr. Brown runs.\n\n(4)   私がよくステーキを食べるレストランをお勧めします。\n\n   I recommend you the restaurant   I often eat steak.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 18 点）\n\n(1)   Let’s go to the coffee shop (   ) Mary’s father owns.\n\n   ① at which   ② where   ③ which\n\n(2)   The hotel (   ) we stayed in London is known for its good service.\n\n   ① with which   ② where   ③ which\n\n(3)   Do you know the country (   ) Jack really wants to visit?\n\n   ① which   ② whom   ③ where\n\n５   次の英文を日本語に訳しなさい。（各９点・計 18 点）\n\n(1)   These are pictures of temples which we visited on a school trip.\n\n(2)   Have you ever been to the shop where I bought this hat?\n\f６   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各９点・計 18 点）\n\n(1)   ここは急行列車が止まる駅です。\n   This is ( express / where / which / station / trains / stop / a ).\n\n(2)   この公園は毎日たくさんの人が訪れる場所です。\n   This park ( where / which /many / is / visit / a place / people ) every day.\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   I’m looking at the map of the town (   ) my friend Tom lives.\n\n   ① which is   ② where is   ③ which   ④ where\n\n(2)   The library (   ) I often go to stands on the hill.\n\n   ① which   ② of which   ③ where   ④ of where\n\n８ 〈センター試験にチャレンジ〉 1 に入れるのに最も適当なものを，下の①～④\n   から一つ選べ。\n\n   My teacher always tries to create a learning environment   1   all students can\n   express themselves freely.\n   〈15 年追試〉\n\n   ① that   ② what   ③ where   ④ which",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   This is the place in which I spent my holidays.\n\n   This is the place where I spent my holidays.\n\n(2)   This is the place which I visited last year.\n\n２\n\n(1)   where\n\n(2)   when\n\n(3)   restaurant where\n\n(4)   year when you\n\n(5)   shop where I\n\n(6)   hospital where my father\n\nＢ問題\n\n３\n\n(1)   where [in which]\n\n(2)   where [in which]\n\n(3)   which\n\n(4)   where [at which]\n\n４\n\n(1)   ③ which\n(2)   ② where\n(3)   ① which\n\f５\n\n(1)   これらは私たちが修学旅行で訪れた寺の写真です。\n\n(2)   あなたは，私がこの帽子を買った店に行ったことがありますか。\n\n６\n\n(1)   a station where express trains stop   ( which が不要 )\n\n(2)   is a place which many people visit   ( where が不要 )\n\nＣ問題\n\n７\n\n(1)   ④ where\n   私は友達のトムが住んでいる街の地図を見ています。\n\n(2)   ① which\n   私がよく行く図書館は，丘の上にたっている。\n８\n\n   ③ where\n   私の先生はいつもすべての生徒が自由に自分自身を表現できる学習環境を作ろうと\n   している。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_013『関係副詞whereと関係代名詞whichの使い分け』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_013『関係副詞whereと関係代名詞whichの使い分け』（演習）.pdf",
+       "q_count": 44
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   13,14 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係副詞 where と関係代 名詞 which の使い分け\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   where または which を用いること。\n\n(1)   ここは私たちがリズを出迎えた駅です。\n\n   This is the station   we welcomed Liz.\n\n(2)   ケイトは昨日オープンした書店に行った。\n\n   Kate went to the bookstore   opened yesterday.\n\n(3)   あなたが携帯電話をなくした場所はここですか。\n\n   Is this the place   you lost your cell phone?\n\n(4)   私がアメリカで最初に訪れたい場所はニューヨークです。\n\n   The place   I want to visit first in the U.S. is New York.\n\n(5)   私の母が経営しているカフェテリアに行きましょう。\n\n   Let’s go to the cafeteria   my mother runs.\n\n(6)   彼らが夕食を食べたレストランは駅の近くにあった。\n\n   The restaurant   they had dinner stood near the station.\n\n(7)   ナンシーが働いている病院は，いつもとても混んでいる。\n\n   The hospital   Nancy works at is always very crowded.\n\n(8)   私はいつか，ジョンの出身の国を訪れたいです。\n\n   I want to visit the country   John comes from someday.\n\n   472",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   関 係 副 詞 where と関 係 代 名 詞 which の使 い分 け －解 答 ―\n\n１\n\n(1) where\n\n(2) which\n\n(3) where\n\n(4) which\n\n(5) which\n\n(6) where\n\n(7) which\n\n(8) which",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_013『関係副詞whereと関係代名詞whichの使い分け』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_013『関係副詞whereと関係代名詞whichの使い分け』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 13 14   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n関係副詞whereと関係代名詞whichの使い分け\n   ⑴ This is the city（   ）I visited last year.\n   次の日本文にあう英文になるように、   に適する\n 例題   ［ where / which ］\n   語（句）を書きなさい。\n\n⑴ ここは、私が休暇を過ごした場所です。\n   ⑵ This is the city（   ）I met John last year.\n  This is the place   I spent my holidays.\n   ［ where / which ］\n\n⑵ ここは、私が昨年訪れた場所です。\n  This is the place   I visited last year.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内に適する語（句）を\n   次の選択肢から選びなさい。\n\n   Vietnam is the country（   ）I’ve wanted to visit\n   for a long time.\n\n   ① where   ② which   ③ in which\n   omitsu Kimura の\n  Tom\n\n 関係副詞whereと関係代名詞whichの使い分け\n\n  where   ⎧ the place in which he was born\n   ⎪\n   ⎩ =the place where he was born\n\n   in はいらない\n\n  which   the place which he visited\n\n ◦先にwhichを考える➡「 前 +which」の時はwhere",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_013『関係副詞whereと関係代名詞whichの使い分け』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_013『関係副詞whereと関係代名詞whichの使い分け』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch09_015",
+     "num": "015",
+     "name": "関係副詞の使い方②（why, how）",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-8",
+       "content": "『関係副詞の使い方②（why, how）』\nwhy は the reason に、how は the way に対して使う。how と the way は同時に使えない。"
+      },
+      {
+       "title": "概要",
+       "content": "why は the reason に、how は the way に対して使う。how と the way は同時に使えない。\nwhy（理由）\nthe reason + why + S V\n「〜する理由」\nシグナル/特徴\nthe reason why\nhow（方法）\nthe way / how (どちらか)\n「〜する方法」\nシグナル/特徴\nthe way how は不可"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Tell me the reason why you are late.\n遅刻した理由を教えて。\nThis is how I solved it.\nこれが私の解き方だ。\nI don't know the way he did it.\n彼のやり方を知らない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwhy ＝ the reason に対して\n2\nhow / the way（同時に使えない）\n3\n関係副詞"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_015_関係副詞の使い方②（why, how）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 副 詞 の 使 い 方 ② (why, how)   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   This is why\n\n②   This is how\n\n２   次の問いに答えなさい。\n\n(1)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   where または which を用いること。（各３点・計 24 点）\n\n①   ここは私たちがリズを出迎えた駅です。\n\n   This is the station   we welcomed Liz.\n\n②   ケイトは昨日オープンした書店に行った。\n\n   Kate went to the bookstore   opened yesterday.\n\n③   あなたが携帯電話をなくした場所はここですか。\n\n   Is this the place   lost your cell phone?\n\n④   私がアメリカで最初に訪れたい場所はニューヨークです。\n\n   The place   visit first in the U.S. is New York.\n\n⑤   私の母が経営しているカフェテリアに行きましょう。\n\n   Let’s go to the cafeteria   my mother runs.\n\n⑥   彼らが夕食を食べたレストランは駅の近くにあった。\n\n   The restaurant   had dinner stood near the station.\n\n⑦   ナンシーが働いている病院は，いつもとても混んでいる。\n\n   The hospital   Nancy works at is always very crowded.\n\n⑧   私はいつか，ジョンの出身の国を訪れたいです。\n\n   I want to visit the country   John comes from someday.\n\f(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係副詞 where または when を用いること。（各３点・計６点）\n\n①   あなたがこの家具を買った店を教えてください。\n\n   Please tell me the shop   bought this furniture.\n\n②   そのイベントが開かれた日を覚えていますか。\n\n   Do you remember the   the event was held?\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 15 点）\n\n(1)   こういうわけで，私はこの色を選びました。\n\n   I chose this color.\n\n(2)   こうやって，私たちはそこに何とか間に合いました。\n\n   we managed to get there in time.\n\n(3)   そうやって，彼は短時間でその技能を習得しました。\n\n   he learned the skill in a short time.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各５点・計 15 点）\n\n(1)   That’s (   ) we make a crane with origami.\n\n   ① way   ② how   ③ where\n\n(2)   I don’t know (   ) Bill refused to help us.\n\n   ① why   ② where   ③ how to\n\n(3)   I’ll show you (   ) we take a bath in Japan.\n\n   ① the way how   ② that   ③ the way\n\f５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   This is how I’ve increased my vocabulary.\n\n(2)   I don’t understand the reason why you’re angry with me.\n\n(3)   What was the reason why you were scolded by your parents?\n\n６   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各９点・計 18 点）\n\n(1)   そのようにして，私たちはクラブのメンバーを集めています。\n   ( members / we / gathered / how / that’s / have / for / the club / . )\n\n(2)   これが，彼らが事故を防げなかった理由だ。\n   ( couldn’t / why / the accident / is / the reason / they / this / prevent / . )\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の４つの英文がほぼ同じ意味になるように，   に適する１語を書きなさい。\n\n(1)   こういうわけで，私は彼女が好きです。\n\n   This is   I like her.\n\n   This is   I like her.\n\n   This is   I like her.\n\n   This is   I like her.\n\f(2)   こうやって私はその問題を解いた。\n\n   This is   I solved the problem.\n\n   This is   I solved the problem.\n\n   This is   I solved the problem.\n\n   This is   I solved the problem.\n\n８   次の２つの英文が同じ意味になるように，   に適する語(句)を書きなさい。\n\n   Ann is very kind. That is why I like her.\n\n   I like Ann.   she is very kind.\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   All the trains were canceled yesterday due to deep snow. That’s   1   I was not able\n   to attend the meeting.\n   〈15 年追試〉\n\n   ① because   ② for ③ so   ④ why",
+       "answer_text": "第９章「関係詞」   演習プリント\n\nＡ問題\n\n１\n\n①   This is why   こういう訳で\n\n②   This is how   こうやって\n\n２\n\n(1)\n\n①   where\n\n②   which\n\n③   where you\n\n④   which I want to\n\n⑤   which\n\n⑥   where they\n\n⑦   which\n\n⑧   which\n\n(2)\n\n①   where you\n\n②   day when\n\nＢ問題\n\n３\n\n(1)   This is why\n\n(2)   This is how\n\n(3)   That is how\n\f４\n\n(1)   ② how\n   つる\n   crane 「鶴」\n\n(2)   ① why\n(3)   ③ the way\n\n５\n\n(1)   こうやって，私は語彙を増やしています。\n\n(2)   私はあなたが怒っている理由がわかりません。\n\n(3)   あなたが両親に叱られた理由は何ですか。\n\n６\n\n(1)   That’s how we have gathered members for the club.\n\n(2)   This is the reason why they couldn’t prevent the accident.\n\nＣ問題\n\n７\n\n(1)   This is why I like her.\n\n   This is the reason I like her.\n\n   This is the reason why I like her.\n\n   This is the reason for which I like her.\n\n(2)   This is how I solved the problem.\n\n   This is the way I solved the problem.\n\n   This is the way that I solved the problem.   ※「the way how」は不可\n\n   This is the way in which I solved the problem.\n\f８\n\n   Ann is very kind. That is why I like her.\n   アンはとても親切だ。そういうわけで私は彼女が好きだ。\n   I like Ann. That is because she is very kind.\n   私はアンが好きだ。それは，彼女がとても親切だからだ。\n\n   ※「 ～. That is why …. 」と「 …. That is because ～. 」では，表現の順序が逆\n   になる。\n９\n\n   ④ why\n   昨日，すべての列車は深雪により運行を中止された。そういうわけで，私はミーティ\n   ングに出席できなかった。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_015『関係副詞の使い方②（why， how）』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_015『関係副詞の使い方②（why， how）』（演習）.pdf",
+       "q_count": 43
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   15,16 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係副詞の使い方②(why, how)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   why または how を用いること。\n\n(1)   こうやって，このスープを作りました。\n\n   This is   I made this soup.\n\n(2)   こういうわけで，私はあなたに賛成できません。\n\n   This is   I can’t agree with you.\n\n(3)   そうやって，私たちは知り合いました。\n\n   That is   we got to know each other.\n\n(4)   あなたはジョンが日本語を学びたい理由を知っていますか。\n\n   Do you know the   John wants to learn Japanese?\n\n(5)   あなたがその問題を解いた方法を教えてください。\n\n   Tell me   you solved the problem, please.\n\n(6)   この機械を操作する方法がわかりません。\n\n   I don’t   I can operate this machine.\n\n(7)   こうやって，ウェブサイト上でその情報を入手することができます。\n\n   you can get the information on the website.\n\n(8)   こういうわけで，父は私に新しいパソコンを買ってくれました。\n\n   my father bought me a new PC.\n\n   476",
+       "answer_text": "章「関係詞」   15,16\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   関係副詞 の使い方②(why, how) －解答―\n\n１\n\n(1) how\n\n(2) why\n\n(3) how\n\n(4) reason why\n\n(5) how\n\n(6) know how\n\n(7) This is how\n\n(8) This is why",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_015『関係副詞の使い方②（why， how）』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_015『関係副詞の使い方②（why， how）』（習熟）.pdf",
+       "q_count": 9
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 15 16   練習   次の英文を日本語に訳しなさい。\n\n   関係副詞の使い方②（why, how）   ⑴ Tell me the reason why you didnʼt come yesterday.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ こういうわけで、私は彼女が好きです。\n   ⑵ This is how I got this information.\n  This is   I like her.\n\n⑵ こうやって、私はその問題を解いた。\n  This is   I solved the problem.   入試レベルにチャレンジ\n   次の日本文にあう英文になるように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   そのようにして私はジャックと知り合いになった。\n   Thatʼs（ in which / came / know / to / Jack / how / I ）.\n\n   omitsu Kimura の\n  Tom\n\n 関係副詞の使い方②\n\n This is why / 〜   「こういう訳で / 〜」\n\n This is how / 〜   「こうやって / 〜」\n\n 「〜」の部分がメインの内容となる",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_015『関係副詞の使い方②（why, how）』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_015『関係副詞の使い方②（why, how）』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch09_017",
+     "num": "017",
+     "name": "カンマのついた関係代名詞①（who,whom）",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-9",
+       "content": "『カンマのついた関係代名詞①（who,whom）』\nカンマつき (非制限用法) の who/whom は、先行詞に補足説明を加える。「ところで〜」のニュアンス。"
+      },
+      {
+       "title": "概要",
+       "content": "カンマつき (非制限用法) の who/whom は、先行詞に補足説明を加える。「ところで〜」のニュアンス。\n, who（人の主格）\n先行詞 , who + V\n補足説明\nシグナル/特徴\n「ちなみに〜」\n, whom（人の目的格）\n先行詞 , whom + S V\n目的格の補足\nシグナル/特徴\n改まった文"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "My father, who is a doctor, is busy.\n私の父は医者で、忙しい。\nMr. Smith, whom I met yesterday, is kind.\n昨日会ったスミスさんは親切だ。\nTom, who lives in Tokyo, called me.\n東京に住むトムが電話してきた。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nカンマ + who/whom\n2\n補足説明（非制限用法）\n3\nthat は使えない"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_017_カンマのついた関係代名詞①（who,whom）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "カ ン マ の つ い た 関 係 代 名 詞 ① （ who, whom）   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計４点）\n\n(1)   She has two sons, who live in Tokyo.\n\n   彼女には息子が２人います。   東京に住んでいます。\n\n(2)   She has two sons who live in Tokyo.\n\n   彼女には，   息子がいます。\n\n２   次の問いに答えなさい。\n\n(1)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   why または how を用いること。（各３点・計 18 点）\n\n①   こうやって，このスープを作りました。\n\n   This is   I made this soup.\n\n②   あなたはジョンが日本語を学びたい理由を知っていますか。\n\n   Do you know the   John wants to learn Japanese?\n\n③   あなたがその問題を解いた方法を教えてください。\n\n   Tell me   you solved the problem, please.\n\n④   この機械を操作する方法がわかりません。\n\n   I don’t   I can operate this machine.\n\n⑤   こうやって，ウェブサイト上でその情報を入手することができます。\n\n   you can get the information on the website.\n\n⑥   こういうわけで，父は私に新しいパソコンを買ってくれました。\n\n   my father bought me a new PC.\n\f(2)   次の日本文にあう英文になるように，   に where または which の適する方を\n   書きなさい。（各３点・計９点）\n\n①   ここは，彼女が先月トムに会った場所です。\n\n   This is the place   she met Tom last month.\n\n②   ここは，彼女が先月訪れた場所です。\n\n   This is the place   she visited last month.\n\n③   ロンドンは，私が長い間訪れたかった街だ。\n\n   London is the city   I’ve wanted to visit for a long time.\n\nＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 20 点）\n(1)   ジャックは，私のおいですが，シアトルに住んでいます。\n\n   Jack,   is my nephew, lives in Seattle.\n\n(2)   ケビンは，私が彼に昨日会ったのですが，今日のパーティーに出席しないでしょう。\n\n   Kevin,   I met yesterday, won’t attend the party today.\n\n(3)   私のおばには２人の娘がいますが，両方とも結婚しています。\n\n   My aunt has two daughters,   of   are married.\n\n(4)   ジェーンからの電話を受けたところ，彼女は欠席について話した。\n\n   I received a telephone call from Jane,   told me about her absence.\n\n４   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1)   I welcomed Nancy at the airport, who came to Japan as an exchange student.\n\n(2)   Jim, to whom I lent my dictionary this morning, has been studying in the library.\n\n(3)   My father has three cameras, all of which he rarely uses.\n\f５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各８点・計 16 点）\n\n(1)   ブラウンさんは，隣りに住んでいるのですが，ボストンの出身です。\n   ( who / next / Mr. Brown / from /comes / door / lives / , / , ) Boston.\n\n(2)   昨日私はジュディーと話したが，彼女には長い間会っていなかった。\n   Yesterday I talked ( I / time / for / a / whom / with / Judy / hadn’t / long / seen / , ).\n\n６   次の日本文を，カンマのついた関係代名詞を用いて英語で書きなさい。\n\n   （各９点・計 18 点）\n\n(1)   ジムは，イングランドの出身ですが，僕たちのサッカーチームの一員です。\n\n(2)   私には外国人の友達が２人いるが，両方ともオーストラリアに住んでいる。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選んだ選択肢を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   She doesn’t know of Tanaka Taro (   ) is my favorite writer.\n\n   ① who   ② ,who   ③ whom   ④ ,whom\n\f(2)   Nancy’s real father (   ) lives in London, calls her every day.\n\n   ① who   ② ,who   ③ whom   ④ ,whom\n\n(3)   The singer, (   ) I wrote a letter, answered it immediately.\n\n   ① that   ② who   ③ to whom   ④ whose\n\n(4)   We can borrow DVDs from the library, (   ) I have already watched.\n\n   ① many of them   ② many of that   ③ many of those   ④ many of which\n\n(5)   Ken had three cousins, (   ).\n\n   ① all of whom became teachers   ② all of which became teachers\n   ③ all of who became teachers   ④ all of them became teachers\n\n(6)   This symphony, (   ) composer died 100 years ago, is real masterpiece.\n\n   ① that   ② what   ③ whom   ④ whose",
+       "answer_text": "第９章「関係詞」   演習プリント\n\nＡ問題\n\n１\n\n(1)   彼女には息子が２人います。そして[ちなみに]その息子たちは東京に住んでいます。\n\n(2)   彼女には，東京に住んでいる息子が２人います。\n\n   ※(1) → 彼女には息子は２人しかいない\n   (2) →「東京に住んでいる息子」は２人だが，その他にも「東京に住んでいない息\n   子」がいる可能性がある\n２\n(1)\n\n①   how\n\n②   reason why\n\n③   how\n\n④   know how\n\n⑤   This is how\n\n⑥   This is why\n\n(2)\n\n①   where\n\n②   which\n\n③   which\n\nＢ問題\n\n３\n\n(1)   who\n\n(2)   whom\n\f(3)   both ／ whom\n\n(4)   who\n\n４\n(1)   私は空港でナンシーを出迎えましたが，彼女は交換留学生として日本に来ました。\n\n   exchange student   「交換留学生」\n\n(2)   ジムは，今朝私の辞書を貸したのだが，ずっと図書館で勉強している。\n\n(3)   私の父は３台のカメラを持っているが，どれもめったに使わない。\n\n５\n(1)   Mr. Brown, who lives next door, comes from\n\n(2)   with Judy, whom I hadn’t seen for a long time\n\n６\n(1)   [例] Jim, who is [comes] from England, is a member of our soccer team.\n\n(2)   [例] I have two foreign friends, both of whom live in Australia.\n\nＣ問題\n７\n\n(1)   ② ,who\n   私のお気に入りの作家であるタナカタロウを，彼女は知りません。\n\n   ※ここでの Tanaka Taro(個人名)のように，先行詞が固有名詞などで，\n   「唯一のもの」を表すときは，「カンマ＋関係詞」の形を用いる\n\n(2)   ② ,who\n   ナンシーの実の父親はロンドンに住んでいるのですが，彼女に毎日電話をします。\n\n   ※先行詞が「唯一のもの」を表すときは，「カンマ＋関係詞」の形を用いる。ここで\n   は，「ナンシーの実の父親」は特定の唯一の人物なので，② ,who を使う。\n\n   ※① who を選ぶと，「ナンシーには実の父親が何人もいる可能性があって，\n   そのうちのロンドンに住んでいる父親が，ナンシーに毎日電話をする」という意味\n   になってしまうため，ここでは不適切。\n\f(3)   ③ to whom\n   その歌手は，私が手紙を書いて送った相手だが，すぐに返事をくれた。\n\n(4)   ④ many of which\n   図書館で DVD を借りることができるが，私はそのうちの多くをすでに見ている。\n\n   ※「カンマ＋   of which [whom] ～」の形に注意。\n   には most, all, some, many, much, both, either, neither, none などが入る\n\n(5)   ① all of whom became teachers\n   ケンにはいとこが３人いたが，その全員が教師になった。\n\n(6)   ④ whose\n   この交響曲は，作曲家は 100 年前に亡くなっているが，真の傑作だ。\n\n   ※whose も，カンマ+whose の形で用いることができる\n   ※① that と ② what は，カンマ＋that，カンマ＋what の形では用いない\n   〇「,who」「,whose」「,whom」\n   ×「,that」「,what」",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_017『カンマのついた関係代名詞①（who，whom）』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_017『カンマのついた関係代名詞①（who，whom）』（演習）.pdf",
+       "q_count": 55
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   17,18 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   カンマのついた関係代名詞①（who, whom）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 who または whom を用いること。\n\n(1)   これはメアリーからの手紙ですが，彼女はシアトルに住んでいます。\n\n   This letter is from Mary,   lives in Seattle.\n\n(2)   ジュディは，今朝バス停で会ったけれど，とても疲れているようだった。\n\n   Judy,   I met at the bus stop this morning, looked very tired.\n\n(3)   弟は，私が一緒に図書館に行ったけれど，本を１冊も借りなかった。\n\n   My brother,   I went to the library, borrowed no books.\n\n(4)   こちらはアンで，私の兄が長い間ずっと会いたがっています。\n\n   This is Ann,   my brother has wanted to see for a long time.\n\n(5)   私たちはジャックを待っているが，彼はたいてい時間通りに来ません。\n\n   We are waiting for Jack,   usually doesn’t come on time.\n\n(6)   ウィルソンさんには３人の息子がいますが，そのうちの２人は大学生です。\n\n   Mr. Wilson has three sons, two   are university students.\n\n(7)   ジャックはニューヨーク出身だが，日本語を流暢に話せる。\n\n   Jack,   from New York, can speak Japanese frequently.\n\n(8)   パーティーでたくさんの学生に会ったが，そのほとんどは留学に興味がなかった。\n\n   I met a lot of students at the party, few   were interested\n\n   in studying abroad.\n\n   480",
+       "answer_text": "章「関係詞」   17,18\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   カンマのついた関 係 代 名 詞 ①（who, whom） －解 答 ―\n\n１\n\n(1) who\n\n(2) whom\n\n(3) with whom\n\n(4) whom\n\n(5) who\n\n(6) of whom\n\n(7) who is [comes]\n\n(8) of whom",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_017『カンマのついた関係代名詞①（who，whom）』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_017『カンマのついた関係代名詞①（who，whom）』（習熟）.pdf",
+       "q_count": 9
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 17 18   練習   次の英文を日本語に訳しなさい。\n\nカンマのついた関係代名詞①（who, whom）   ⑴ John, who is from Canada, likes this place.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ こちらがジャックです。彼はシアトル出身です。\n   ⑵ Tom, who usually comes home at six, is not home.\n  This is Jack,   is from Seattle.\n\n⑵ 彼には娘がいる。その娘は大学生だ。\n  He has a daughter,   is   入試レベルにチャレンジ\n\n  a university student.   次の英文を日本語に訳しなさい。\n\n   He has two sons, both of whom live in Paris.\n\n   omitsu Kimura の\n  Tom\n\n カンマのついた関係代名詞①\n\n  人 （who～）\n   ,   「 人（ちなみに・そして〜）」\n   つけたし   つけたし\n 固有名詞など",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_017『カンマのついた関係代名詞①（who,whom）』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_017『カンマのついた関係代名詞①（who,whom）』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch09_019",
+     "num": "019",
+     "name": "カンマのついた関係代名詞②（which）",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-10",
+       "content": "『カンマのついた関係代名詞②（which）』\nカンマつきの which は、先行詞だけでなく前の文全体を受けることもできる。"
+      },
+      {
+       "title": "概要",
+       "content": "カンマつきの which は、先行詞だけでなく前の文全体を受けることもできる。\n, which + 動詞\n名詞 , which + V\n「ところで、それは…」\nシグナル/特徴\n補足説明\n前の文全体を受ける\n前文全体 , which …\n「そのことは…」\nシグナル/特徴\n全文を主語に"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He passed the exam, which surprised us.\n彼は試験に受かったが、それは私たちを驚かせた。\nShe didn't come, which was strange.\n彼女は来なかったが、それは奇妙だった。\nI bought a book, which was very expensive.\n本を買ったが、それはとても高かった。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nカンマ + which ＝ 補足\n2\n前文全体を受けられる\n3\nthat は不可"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_019_カンマのついた関係代名詞②（which）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "カ ン マ の つ い た 関 係 代 名 詞 ② （ which）   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計４点）\n(1)   She has a red car, which was made in Italy.\n\n   彼女は赤い車を持っているが，   イタリアでつくられたものだ。\n\n(2)   Ken kept silent, which made his sister angry.\n\n   ケンは黙っていた。   彼の姉を怒らせた。\n\n２   次の問いに答えなさい。\n(1) 次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 who または whom を用いること。（各３点・計 18 点）\n\n①   これはメアリーからの手紙ですが，彼女はシアトルに住んでいます。\n\n   This letter is from Mary,   lives in Seattle.\n\n②   ジュディは，今朝バス停で会ったけれど，とても疲れているようだった。\n\n   Judy,   I met at the bus stop this morning, looked very tired.\n\n③   弟は，私が一緒に図書館に行ったけれど，本を１冊も借りなかった。\n\n   My brother,   I went to the library, borrowed no books.\n\n④   ウィルソンさんには３人の息子がいますが，そのうちの２人は大学生です。\n\n   Mr. Wilson has three sons, two   are university students.\n\n⑤   ジャックはニューヨーク出身だが，日本語を流暢に話せる。\n\n   Jack,   from New York, can speak Japanese frequently.\n\n⑥   パーティーでたくさんの学生に会ったが，そのほとんどは留学に興味がなかった。\n   I met a lot of students at the party, few   were interested\n   in studying abroad.\n\f(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   why または how を用いること。（各３点・計６点）\n\n①   こういうわけで，私はあなたに賛成できません。\n\n   This is   I can’t agree with you.\n\n②   そうやって，私たちは知り合いました。\n\n   That is   we got to know each other.\n\nＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 20 点）\n(1)   彼は新車を買ったが，それはドイツ製だ。\n\n   He bought a new car,   was made in Germany.\n\n(2)   私は昨日ディズニーランドに行ったが，これで３度目だった。\n\n   I went to Disneyland yesterday,   was my third visit.\n\n(3)   グリーン先生は私たちに２つの質問をしたが，両方ともとても難しかった。\n\n   Mr. Green asked us two questions,   of   were very\n\n   difficult.\n\n(4)   ジャックはナンシーに何も言わなかった。それが彼女を悲しませた。\n\n   Jack told Nancy nothing,   her sad.\n\n４   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   I have never been to Tokyo Skytree, which is the tallest tower in Japan.\n\n(2)   Our team finally won the championship, which surprised everyone.\n\n(3)   Jack tried to solve the problem, which he found impossible.\n\f５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各８点・計 16 点）\n(1)   あの写真を見てください。それは私が去年の夏にブラジルで撮りました。\n   Please look at ( I / which / Brazil / in / that picture / took / , ) last summer.\n\n(2)   私はリズの E メールにしばらく返信しなかった。それが彼女をいらいらさせた。\n   I didn’t reply to Liz’s ( a while / which / irritated / made / e-mail / her / for / , ).\n\n６   次の日本文を，カンマのついた関係代名詞を用いて英語で書きなさい。\n   （各９点・計 18 点）\n(1)   彼女は埼玉に住んでいますが，埼玉は東京の隣です。\n\n(2)   彼はお母さんに誕生日プレゼントをあげたが，それは彼女をとても喜ばせた。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Tom moved to Iwate (   ) is next to Akita.\n\n   ① which   ② ,which   ③ that   ④ ,that\n\n(2)   My sister gave me two pens, (   ) I have used.\n\n   ① neither of them   ② neither of which   ③ both of what   ④ both of that\n\f(3)   I missed the train this morning, (   ) made me ten minutes\n\n   late for the school.\n\n   ① it   ② that   ③ which   ④ as\n\n(4) Ann said she could play the piano, (   ) was untrue.\n\n   ① which   ② what   ③ why   ④ how\n\n８ 〈センター試験にチャレンジ〉 1   ～   2   に入れるのに最も適当なものを，それぞ\n   れ下の①～④から一つずつ選べ。\n\n(1)   Last week I bought an imported car,   1   was something I had always wanted to do.\n   〈14 年追試〉\n\n   ① it   ② that   ③ what   ④ which\n\n(2)   Last night Cindy told me about her new job in Tokyo,   2   she appears to be\n   enjoying very much.\n   〈02 年追試〉\n\n   ① which   ② where   ③ what   ④ when",
+       "answer_text": "第９章「関係詞」\n\nＡ問題\n\n１\n\n(1)   彼女は赤い車を持っているが，それはイタリアでつくられたものだ。\n\n(2)   ケンは黙っていた。そしてそれが彼の姉を怒らせた。\n\n２\n\n(1)\n\n①   who\n\n②   whom\n\n③   with whom\n\n④   of whom\n\n⑤   who is [comes]\n\n⑥   of whom\n\n(2)\n\n①   why\n\n②   how\n\nＢ問題\n\n３\n\n(1)   which\n\n(2)   which\n\n(3)   both ／ which\n\n(4)   which made\n\f４\n\n(1)   私は東京スカイツリーに行ったことがない。それは日本で一番高い塔だ。\n\n(2)   私たちのチームがついに優勝したが，それはみんなを驚かせた。\n\n   win a [the] championship 「優勝する」\n\n(3)   ジャックはその問題を解こうとしたが，それは不可能だとわかった。\n\n５\n\n(1)   that picture, which I took in Brazil\n\n(2)   e-mail for a while, which made her irritated\n\n６\n\n(1)   [例] She lives in Saitama, which is next to Tokyo.\n\n(2)   [例] He gave his mother a birthday present, which made her very happy.\n\nＣ問題\n\n７\n\n(1)   ② , which\n   トムは秋田に引っ越しました。秋田は岩手の隣です。\n   ※先行詞が，固有名詞など「唯一のもの」を表すときは，「カンマ＋関係詞」の形を\n   用いる。関係代名詞 that は，カンマ＋that の形では用いないので，④ ,that は不\n   可。\n\n(2)   ② neither of which\n   姉[妹]が私にペンを２本くれたが，私はそのどちらも使っていない。\n   ※「カンマ＋   of which [whom] ～」の形になっている。   には，most, all,\n   some, many, much, both, either, neither, none などの数量代名詞が入る。\n\n(3)   ③ which\n   今朝電車を乗り過ごしてしまい，それで私は学校に 10 分遅刻してしまった。\n   ※「カンマ＋which」(非制限用法)では，前の文全体や，前の文の一部を，先行詞と\n   して用いることがある。ここでの which の先行詞は，前の文全体(I missed the\n   train this morning)。\n\f(4)   ① which\n   アンはピアノを弾けると言ったが，それは真実ではなかった。\n\n   ※ここでの which の先行詞は，前の文の一部(she could play the piano)。\n\n   ※② what，③ why，④ how は，「カンマ＋   」の形では使わない。\n   「カンマ＋   」で用いる関係詞   ：which, who, whom, whose, when, where\n   「カンマ＋   」で用いない関係詞 ：that, why, how, what\n８\n\n(1)   ④ which\n   先週，輸入車を買ったんだけど，それは私がいつも買いたいと思っていた\n   ものなんだ。\n\n(2)   ① which\n   昨夜シンディは東京での新しい仕事について私に話してくれたが，彼女はその仕事を\n   とても楽しんでいるようだ。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_019『カンマのついた関係代名詞②（which）』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_019『カンマのついた関係代名詞②（which）』（演習）.pdf",
+       "q_count": 56
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   19,20 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   カンマのついた関係代名詞 ②（which）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   ヘレンは原宿駅で降りたが，そこは若者でいっぱいだった。\n\n   Helen got off at Harajuku Station,   was filled with young people.\n\n(2)   大きな台風が近づいていた。それは悪い知らせだった。\n\n   A large typhoon was coming,   was bad news.\n\n(3)   私は英語の本を３冊持っているが，みんな読みやすい。\n\n   I have three English books,   of   are easy to read.\n\n(4)   私はシャーペンを２本なくしたが，そのうちの１本を兄の部屋で見つけた。\n\n   I lost two mechanical pencils, one   I found in my\n\n   brother’s room.\n\n(5)   ケビンはすぐに戻ってくると言ったが，それはうそだった。\n\n   Kevin told me that he would come back soon,   a lie.\n\n(6)   ボブは自転車を盗まれた。それが彼にはショックだった。\n\n   Bob had his bike stolen,   him shocked.\n\n(7)   トムは３か国語を話すが，その１つはスペイン語だ。\n\n   Tom speaks three languages, one of   Spanish.\n\n(8)   私のおじは神戸に住んでいるが，そこは日本で６番目に大きい人口を持つ。\n\n   My uncle lives in Kobe,   the sixth largest population in\n\n   Japan.\n\n   484",
+       "answer_text": "章「関係詞」   19,20\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   カンマのついた関 係 代 名 詞 ②（which） －解 答 ―\n\n１\n\n(1) which\n\n(2) which\n\n(3) all ／ which\n\n(4) of which\n\n(5) which was\n\n(6) which made\n\n(7) which is\n\n(8) which has",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_019『カンマのついた関係代名詞②（which）』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_019『カンマのついた関係代名詞②（which）』（習熟）.pdf",
+       "q_count": 9
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 19 20   練習   次の英文を日本語に訳しなさい。\n\n カンマのついた関係代名詞②（which）   ⑴ Tom said he worked in New York, which was a lie.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私は滋賀に住んでいます。滋賀は京都の隣です。\n   ⑵ He was drunk, which made a bad impression\n  I live in Shiga,   is next to Kyoto.\n   on the policeman.\n\n⑵ 私は黙っていた。そしてそれが妻を怒らせた。\n  I kept silent,   made my wife angry.\n\n   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   I tried to persuade him,（   ）I found a waste of time.\n\n   ① what   ② which   ③ who   ④ that\n\n   omitsu Kimura の\n  Tom\n\n カンマのついた関係代名詞②\n  ⎧ 物 （which～）\n   ,   「 物（ちなみに・そして〜）」\n  ⎪   つけたし   つけたし\n  ⎪\n  ⎪ 文全体または一部,（which～）\n  ⎩ \t\t\t\t   つけたし",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_019『カンマのついた関係代名詞②（which）』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_019『カンマのついた関係代名詞②（which）』（習得）.pdf",
+       "q_count": 10
+      }
+     }
+    },
+    {
+     "id": "ch09_021",
+     "num": "021",
+     "name": "カンマのついた関係副詞",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-11",
+       "content": "『カンマのついた関係副詞』\nカンマつきの where / when も補足説明用法で、「ところで〜」のニュアンスを加える。"
+      },
+      {
+       "title": "概要",
+       "content": "カンマつきの where / when も補足説明用法で、「ところで〜」のニュアンスを加える。\n, where\n場所 , where\n「ところでその場所では…」\nシグナル/特徴\n場所の補足\n, when\n時 , when\n「ちなみにそのとき…」\nシグナル/特徴\n時の補足"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He went to Paris, where he stayed for a week.\n彼はパリに行き、そこに1週間滞在した。\nI met her in 2010, when I was a student.\n私は2010年に彼女に会った、学生のときだ。\nLast year, when I was 20, I went abroad.\n昨年、20歳のとき海外に行った。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n, where / , when ＝ 非制限用法\n2\n場所・時の補足\n3\n「そして」「ところで」のニュアンス"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_021_カンマのついた関係副詞_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "カンマのついた関係副詞   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計４点）\n(1)   I moved to Osaka, where I lived for five years.\n\n   私は大阪に引っ越した。   ５年間暮らした。\n\n(2)   I got home at five, when it began to rain.\n\n   私は５時に帰宅した。   ，雨が降り始めた。\n\n２   次の問いに答えなさい。\n(1)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n①   ヘレンは原宿駅で降りたが，そこは若者でいっぱいだった。\n\n   Helen got off at Harajuku Station,   was filled with young people.\n\n②   大きな台風が近づいていた。それは悪い知らせだった。\n\n   A large typhoon was coming,   was bad news.\n\n③   私は英語の本を３冊持っているが，みんな読みやすい。\n\n   I have three English books,   of   are easy to read.\n\n④   私はシャーペンを２本なくしたが，そのうちの１本を兄の部屋で見つけた。\n\n   I lost two mechanical pencils, one   I found in my\n\n   brother’s room.\n\n⑤   ケビンはすぐに戻ってくると言ったが，それはうそだった。\n\n   Kevin told me that he would come back soon,   a lie.\n\n⑥   私のおじは神戸に住んでいるが，そこは日本で６番目に大きい人口を持つ。\n\n   My uncle lives in Kobe,   the sixth largest population in\n\n   Japan.\n\f(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 who または whom を用いること。（各３点・計９点）\n\n①   こちらはアンで，私の兄が長い間ずっと会いたがっています。\n\n   This is Ann,   my brother has wanted to see for a long time.\n\n②   私たちはジャックを待っているが，彼はたいてい時間通りに来ません。\n\n   We are waiting for Jack,   usually doesn’t come on time.\n\n③   パーティーでたくさんの学生に会ったが，そのほとんどは留学に興味がなかった。\n\n   I met a lot of students at the party, few   were interested\n\n   in studying abroad.\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n\n(1)   ケビンは昨日サンディエゴを去ったが，そこに 10 年間住んでいた。\n\n   Kevin left San Diego yesterday,   he had lived for ten years.\n\n(2)   私は先月ワシントンを訪れたが，その時桜は満開ではなかった。\n\n   I visited Washington, D. C. last month,   the cherry blossoms were\n\n   not at their peak.\n\n(3)   私は８時に電話を受けたが，その時お風呂に入るところだった。\n\n   I received a telephone call at eight,   was about to take a\n\n   bath.\n\n(4)   私たちは琵琶湖に行って，そこで遊覧船に乗った。\n\n   We went to Lake Biwa,   got on a pleasure boat.\n\f４   次の２つの文を，カンマのついた関係副詞を用いて１つの文にしなさい。\n\n   （各６点・計 18 点）\n\n(1)   We went to India.   We saw some statues of Buddha there.\n\n(2)   My cousin likes Australia.   He lived there for two years.\n\n(3)   My son was born in 2001.   A large amusement park opened that year.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各６点・計 12 点）\n\n(1)   私はこの夏ロンドンを訪れた。そしてそこで２階建てバスに乗った。\n   This summer I ( I / double-decker / London / a / got on / visited / where / bus / , ).\n\n(2)   私たちは６時にホールに着いた。その時ちょうどコンサートが始まった。\n   We ( to / the concert / at six / just /got / the hall / when / started / , ).\n\n６   次の日本文を，カンマのついた関係副詞を用いて英語で書きなさい。\n\n   （各８点・計 16 点）\n\n(1)   彼は北海道に引っ越したが，そこでスキーを習った。\n\n(2)   私たちは出かけようとしていたが，その時雨が降り始めた。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の２つの英文がほぼ同じ意味になるように，   に適する１語を書きなさい。\n\n   I visited Yokohama,   my friend Ken was born in.\n\n   I visited Yokohama,   my friend Ken was born.\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選んだ選択肢を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   This summer I went to Hokkaido, (   ) as cool as I had expected.\n\n   ① where wasn’t   ② when wasn’t   ③ where it wasn’t   ④ which it wasn’t\n\n(2)   My father came home at ten, (   ) my math homework.\n\n   ① which I was doing   ② when I was doing\n   ③ where I was doing   ④ at when I was doing\n\n９   次の英文を日本語に訳しなさい。\n\n(1)   New York, I went last year, is a big city.\n\n(2)   Last Sunday, when Tom saw Ann, was her birthday.",
+       "answer_text": "第９章「関係詞」\n\nＡ問題\n\n１\n\n(1)   私は大阪に引っ越した。そしてそこで５年間暮らした。\n\n(2)   私は５時に帰宅した。そしてその時，雨が降り始めた。\n\n２\n\n(1)\n\n①   which\n\n②   which\n\n③   all ／ which\n\n④   of which\n\n⑤   which was\n\n⑥   which has\n\n(2)\n\n①   whom\n\n②   who\n\n③   of whom\n\nＢ問題\n３\n(1)   where\n\n(2)   when\n\n(3)   when I\n\n(4)   where we\n\f４\n\n(1)   We went to India, where we saw some statues of Buddha.\n\n   statue of Buddha   「仏像」\n\n(2)   My cousin likes Australia, where he lived for two years.\n\n(3)   My son was born in 2001, when a large amusement park opened.\n\n５\n\n(1)   visited London, where I got on a double-decker bus\n\n(2)   got to the hall at six, when the concert just started\n\n６\n\n(1)   [例] He moved to Hokkaido, where he learned to ski.\n\n(2)   [例] We were about to go out, when it started raining [began to rain].\n\nＣ問題\n７\n   I visited Yokohama, which my friend Ken was born in.\n\n   I visited Yokohama, where my friend Ken was born.\n\n   私は横浜を訪れたのだが，そこは友人のケンが生まれた場所だ。\n\n８\n\n(1)   ③ where it wasn’t\n   この夏私は北海道に行ったが，そこは私が思っていたほど涼しくはなかった。\n\n(2)   ② when I was doing\n   私の父は 10 時に帰宅したが，その時私は数学の宿題をしていた。\n９\n\n(1)   ニューヨークに，私は去年行ったのだが，そこは大都市だ。\n\n(2)   先週の日曜日に，トムはアンに会ったのだが，その日は彼女の誕生日だった。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_021『カンマのついた関係副詞』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_021『カンマのついた関係副詞』（演習）.pdf",
+       "q_count": 36
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   21,22 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   カンマのついた関係副詞\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私は昨日渋谷に行ったが，そこで旧友に会った。\n\n   Yesterday I went to Shibuya,   saw an old friend of mine.\n\n(2)   ジェーンはボブに 10 時に電話したが，その時彼はぐっすり寝ていた。\n\n   Jane called Bob at ten,   was fast asleep.\n\n(3)   私たちはニューヨークに行った。そしてそこで２本のミュージカルを見た。\n\n   We went to New York,   saw two musicals.\n\n(4)   彼らは昨日上野に行ったが，その時には桜が散り始めていた。\n\n   They went to Ueno yesterday,   the cherry blossoms were\n\n   beginning to fall.\n\n(5)   メアリーはメトロポリタン美術館へ行ったが，\n   そこで大好きな絵を見ることができた。\n\n   Mary went to the Metropolitan Museum,   could see her\n\n   favorite paintings.\n\n(6)   ブラウンさんは夜遅く帰ってきたが，その時彼の子どもたちはすでに眠っていた。\n\n   Mr. Brown came home late at night,   were\n\n   already asleep.\n\n(7)   私は真夜中に駅に着いたが，その時最終電車はすでに出てしまったことがわかった。\n\n   I reached the station at midnight,   found that the last train\n\n   had already left.\n\n(8)   私のおじは上海から戻ってきたが，そこで２年間単身赴任していた。\n\n   My uncle came back from Shanghai,   worked\n\n   for two years away from his family.\n\n   488",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   カンマのついた関係副詞 －解答―\n\n１\n\n(1) where I\n\n(2) when he\n\n   be fast asleep 「ぐっすりと眠っている」\n\n(3) where we\n\n(4) when\n\n(5) where she\n\n(6) when his children\n\n(7) when I\n\n(8) where he had\n\n   away from one’s family   「家族と離れて，単身で」",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_021『カンマのついた関係副詞』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_021『カンマのついた関係副詞』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 21 22   練習   次の英文を日本語に訳しなさい。\n\n   カンマのついた関係副詞   ⑴ We moved to Kyoto, where we lived for six years.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 彼はニューヨークに引っ越し、そこでダンスを習った。\n   ⑵ We got home at six, when it began to rain.\n  He moved to New York,   he took\n  dancing lessons.\n\n⑵ 私は７時にナンシーの家に行ったが、彼女はまだ寝ていた。   入試レベルにチャレンジ\n\n  I went to Nancyʼs house at seven,   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n   she was still sleeping.\n   Wait till Friday,（   ）Iʼll tell you everything.\n\n   ① when   ② which   ③ what   ④ that\n\n   omitsu Kimura の\n  Tom\n\n カンマのついた関係副詞\n ¨ 場所，（where〜）\n   「（そして・ちなみにその場所で〜）」\n «\n ª 時，\n   （when〜）「 （そして・ちなみにその時で〜）」\n   whyとhoｗはカンマをつけて使うことはない！",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_021『カンマのついた関係副詞』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_021『カンマのついた関係副詞』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch09_023",
+     "num": "023",
+     "name": "関係代名詞whatの使い方①",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-12",
+       "content": "『関係代名詞whatの使い方①』\n関係代名詞 what は「〜のこと、〜のもの」を表し、先行詞を含む（the thing(s) that）。"
+      },
+      {
+       "title": "概要",
+       "content": "関係代名詞 what は「〜のこと、〜のもの」を表し、先行詞を含む（the thing(s) that）。\nwhat ＝ 先行詞含む\nwhat + S V\n「〜のこと／もの」\nシグナル/特徴\n先行詞なし\nthe thing(s) that の代わり\n= the thing(s) that\n意味は同じ\nシグナル/特徴\nwhat で簡潔に"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I don't know what he said.\n彼が何を言ったかわからない。\nTell me what you want.\nほしいものを教えて。\nWhat surprised me was his courage.\n私を驚かせたのは彼の勇気だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwhat ＝ 先行詞を含む\n2\n= the thing(s) that\n3\n「〜のこと／もの」"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_023_関係代名詞whatの使い方①_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 代 名 詞 what の 使 い 方 ①   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計４点）\n   私は彼がしたことを知らない。\n\n   I don’t know the thing   he did.\n\n   I don’t know   he did.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n(1)   私は昨日渋谷に行ったが，そこで旧友に会った。\n\n   Yesterday I went to Shibuya,   saw an old friend of mine.\n\n(2)   ジェーンはボブに 10 時に電話したが，その時彼はぐっすり寝ていた。\n\n   Jane called Bob at ten,   was fast asleep.\n\n(3)   私たちはニューヨークに行った。そしてそこで２本のミュージカルを見た。\n\n   We went to New York,   saw two musicals.\n\n(4)   私は真夜中に駅に着いたが，その時最終電車はすでに出てしまったことがわかった。\n\n   I reached the station at midnight,   found that the last train\n\n   had already left.\n\n(5)   私のおじは上海から戻ってきたが，そこで２年間単身赴任していた。\n\n   My uncle came back from Shanghai,   worked\n\n   for two years away from his family.\n\n(6)   ボブは自転車を盗まれた。それが彼にはショックだった。\n\n   Bob had his bike stolen,   him shocked.\n\n(7)   トムは３か国語を話すが，その１つはスペイン語だ。\n\n   Tom speaks three languages, one of   Spanish.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 20 点）\n\n(1)   トムはバックパックの中に持っていたものを私たちに見せた。\n\n   Tom showed us   in his backpack.\n\n(2)   私にはあなたが考えていることがわからない。\n\n   I don’t know   thinking about.\n\n(3)   彼女がずっと考えてきたことは，非常にすばらしい。\n\n   thinking about is extremely wonderful.\n\n(4)   私が最も興味があることは，フランスの歴史です\n\n   is French history.\n\n４   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n\n(1)   I think what he pointed out is quite right.\n\n(2)   What I want to say is that environmental problems are serious.\n\n(3)   Did you understand the meaning of what Mr. Brown said in class?\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各８点・計 16 点）\n\n(1)   私たちにとって大事なことは，互いに信頼し合うことだ。\n   ( important / is / is / to / other / us / what / trust / for / each / . )\n\f(2)   私はあなたが会議で言ったことに同意しません。\n   ( don’t / what / meeting / at / I / you / with / said / the / agree / . )\n\n６   次の日本文を，関係代名詞 what を用いて英語で書きなさい。（各９点・計 18 点）\n\n(1)   私がしたいことは，ヨーロッパを旅行することだ。\n\n(2)   これはあなたが探しているものですか。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n(1)   彼らは彼女の意見に反対したが，彼女は自分が正しいと思うことをやった。\n   They opposed her opinion, but ( she / was / thought / right / what / she / did ).\n\n(2)   あなたがいちばん重要だと思うことはなんですか。\n   ( important / do / the / you / most / what / is / think / thing / ? )\n\n(3)   これは私が，あなたが買うべきだと思うかばんです。\n   ( I / the / should / is / bag / you / this / which / think / buy / . )\n\n(4)   私が彼女の兄だと思っていた男性は，彼女の父親だとわかった。\n   ( was / be / father / brother / her / I / to / man / the / who / out / thought / her /\n   turned / . )\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   She doesn’t know (   ) about her.\n\n   ① I really think what   ② I really what think\n\n   ③ I think what really   ④ what I really think\n\n(2)   The student (   ) would fail the exam has passed.\n\n   ① whom we supposed   ② of whom we supposed\n\n   ③ who we supposed   ④ as we supposed",
+       "answer_text": "Ａ問題\n\n１\n\n   I don’t know the thing which he did.\n\n   I don’t know what he did.\n\n２\n\n(1)   where I\n\n(2)   when he\n\n   be fast asleep 「ぐっすりと眠っている」\n\n(3)   where we\n\n(4)   when I\n\n(5)   where he had\n\n   away from one’s family 「家族と離れて，単身で」\n\n(6)   which made\n\n(7)   which is\n\nＢ問題\n\n３\n\n(1)   what he had\n\n(2)   what you are\n\n(3)   What she has been\n\n(4)   What I am most interested in\n\f４\n\n(1)   彼が指摘したことは，まったく正しいと思います。\n\n(2)   私が言いたいことは，環境問題は深刻であるということだ。\n\n(3)   あなたはブラウン先生が授業で言ったことの意味を理解しましたか。\n\n５\n\n(1)   What is important for us is to trust each other.\n\n(2)   I don’t agree with what you said at the meeting.\n\n６\n\n(1)   [例] What I want to do is to travel in Europe.\n\n(2)   [例] Is this what you are looking for?\n\nＣ問題\n\n７\n※関係詞の直後に I think や I believe などの S＋V が入りこんで，\n「関係詞＋<S+V>＋(S＋)V」の形で，ひとつのカタマリの節になることがある\n\n(1)   They opposed her opinion, but she did what she thought was right.\n\n   「～こと・もの」\n\n   They opposed her opinion, but she did what <she thought> was right.\n\n(2)   What do you think is the most important thing?\n\n   What <do you think> is the most important thing?\n\n(3)   This is the bag which I think you should buy.\n\n   This is the bag [which <I think> you should buy].\n\f(4)   The man who I thought was her brother turned out to be her father.\n\n   The man [who <I thought> was her brother] turned out to be her father.\n   Ｓ   Ｖ\n\n８\n\n(1)   ④ what I really think\n   彼女について私が本当に考えていることを，彼女は知らない。\n\n(2)   ③ who we supposed\n   試験に落ちると我々が思っていたその生徒が，試験に通った。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_023『関係代名詞whatの使い方①』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_023『関係代名詞whatの使い方①』（演習）.pdf",
+       "q_count": 33
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   23,24 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞 what の使い方①\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 what を用いること。\n\n(1)   あなたの手に持っているものを見せなさい。\n\n   Show me   have in your hand.\n\n(2)   これは彼が探しているものです。\n\n   This is   is looking for.\n\n(3)   あなたは私が言ったことを覚えていますか。\n\n   Do you remember   said?\n\n(4)   彼が欲しいものは新しいギターです。\n\n   is a new guitar.\n\n(5)   私は，母が手紙に書いたことを理解できません。\n\n   I can’t understand   in her letter.\n\n(6)   あれは私が本当に買いたいものではない。\n\n   That is not   want to buy.\n\n(7)   講演者の言っていることが聞こえません。\n\n   I don’t hear   the speaker   .\n\n(8)   大事なことは，最善を尽くすということです。\n\n   is to do your best.\n\n   494",
+       "answer_text": "章「関係詞」   23,24\n――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞 what の使い方① －解答―\n\n１\n\n(1) what you\n\n(2) what he\n\n(3) what I\n\n(4) What he wants\n\n(5) what my mother wrote\n\n(6) what I really\n\n(7) what ／ is saying\n\n(8) What is important",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_023『関係代名詞whatの使い方①』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_023『関係代名詞whatの使い方①』（習熟）.pdf",
+       "q_count": 9
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 23 24   練習   次の英文を日本語に訳しなさい。\n\n   関係代名詞whatの使い方①   ⑴ They laughed at what I said.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私は、彼の言ったことが理解できない。\n   ⑵ This is what I have been thinking about.\n  I can’t understand   he said.\n\n⑵ 私の欲しいものは、もう一台の自転車だ。\n   I want is another bike.   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   先生が言うことを信じなさい。\n   （ what / tells / the teacher / believe / which ）you.\n\n   omitsu Kimura の\n  Tom\n\n 関係代名詞whatの使い方①\n\n the thing which = what「～こと・もの」\n 〔例〕 私は彼がしたことを知らない\n\n   I don’t know  the thing which he did .\n\n   I don’t know  what he did.",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_023『関係代名詞whatの使い方①』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_023『関係代名詞whatの使い方①』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch09_025",
+     "num": "025",
+     "name": "関係代名詞whatの使い方②(慣用表現)",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-13",
+       "content": "『関係代名詞whatの使い方②(慣用表現)』\nwhat is more（さらに）／what we call（いわゆる）／A is to B what C is to D（A の B に対する関係は C の D に対する関係と同じ）など慣用表現を覚える。"
+      },
+      {
+       "title": "概要",
+       "content": "what is more（さらに）／what we call（いわゆる）／A is to B what C is to D（A の B に対する関係は C の D に対する関係と同じ）など慣用表現を覚える。\nwhat is more\nwhat is more / what is worse\n「さらに／さらに悪いことに」\nシグナル/特徴\n文と文の接続\nwhat we call\nwhat we call 〜 / what is called\n「いわゆる〜」\nシグナル/特徴\n通称"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is rich, and what is more, kind.\n彼は金持ちで、さらに親切だ。\nHe is what we call a genius.\n彼はいわゆる天才だ。\nReading is to the mind what food is to the body.\n読書は心にとって、食べ物が体にとってのようなものだ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwhat is more ＝ さらに\n2\nwhat we call ＝ いわゆる\n3\nA is to B what C is to D"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_025_関係代名詞whatの使い方②(慣用表現)_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 代 名 詞 what の 使 い 方 ② (慣 用 表 現 )   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計 10 点）\n\n①   what S is\n\n②   and what is 比較級\n\n③   what is called (= what we call ～)\n\n④   what little money S have\n\n⑤   A is to B what C is to D\n\n２   次の問いに答えなさい。\n(1)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 what を用いること。（各３点・計 21 点）\n\n①   あなたの手に持っているものを見せなさい。\n\n   Show me   have in your hand.\n\n②   あなたは私が言ったことを覚えていますか。\n\n   Do you remember   said?\n\n③   彼が欲しいものは新しいギターです。\n\n   is a new guitar.\n\n④   あれは私が本当に買いたいものではない。\n\n   That is not   want to buy.\n\n⑤   講演者の言っていることが聞こえません。\n\n   I don’t hear   the speaker   .\n\n⑥   大事なことは，最善を尽くすということです。\n\n   is to do your best.\n\f(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計９点）\n①   彼らは昨日上野に行ったが，その時には桜が散り始めていた。\n\n   They went to Ueno yesterday,   the cherry blossoms were\n\n   beginning to fall.\n\n②   メアリーはメトロポリタン美術館へ行ったが，そこで大好きな絵を見ることができた。\n\n   Mary went to the Metropolitan Museum,   could see her\n\n   favorite paintings.\n\n③   ブラウンさんは夜遅く帰ってきたが，その時彼の子どもたちはすでに眠っていた。\n\n   Mr. Brown came home late at night,   were\n\n   already asleep.\n\nＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 20 点）\n(1)   その学校は 10 年前の学校とは異なっている。\n\n   The school is not   ten years ago.\n\n(2)   このコートはすてきだ。さらによいことには，値段が手ごろだ。\n\n   This coat is nice, and   , its price is reasonable.\n\n(3)   彼はいわゆる発明王です。\n\n   He is   is   a master of invention.\n\n(4)   私たちはその子どもたちに，少ないながらも持っていたすべての食べ物をあげた。\n\n   We gave   we had to the children.\n\n４   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   The parent bird gave its baby birds what little food it gathered.\n\f(2)   To my surprise, Jack was quite different from what he used to be.\n\n(3)   The explorer was exhausted, and what was worse, he had broken his left leg.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各５点・計 10 点）\n(1)   彼はいわゆる常識人だ。\n   (we / is / a / he / of / what / call / man / common sense / . )\n\n(2)   ペンとジャーナリストの関係は，剣と兵士の関係に等しい。\n   A pen ( is / the soldier / to / to / a sword / the journalist / what / is ).\n\n６   次の日本文を，関係代名詞 what を用いて英語で書きなさい。（各６点・計 12 点）\n(1)   私の祖母は，いわゆる生き字引です。\n\n(2)   私は１年前の私ではありません。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n＜「and what is 比較級」の表現＞\n\n①   and what is more\n\n②   and what is worse\n\f＜「what S is」の関連表現＞\n\n①   what S is\n\n②   what S was [used to be]\n\n③   what S should [ought to] be\n\n④   what S will be\n\n⑤   what S has\n\n⑥   what S really is\n\n⑦   what S appears [seems] to be\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選んだ選択肢を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   My grandfather is (   ) is called a self-made man.\n\n   ① who   ② what   ③ which   ④ that\n\n(2)   It was very cold, and (   ) was worse, it began to rain.\n\n   ① that   ② whatever   ③ but   ④ what\n\n９   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   その映画は思っていたものとは異なっていた。\n   The movie ( what / would / thought / not / was / be / I / it ).",
+       "answer_text": "Ａ問題\n\n１\n\n①   what S is   現在の S(の姿・状態)\n\n②   and what is 比較級   さらに～なことに\n\n③   what is called (= what we call ～)   いわゆる～\n\n④   what little money S have   少ないけれど S が持っているすべてのお金\n\n⑤   A is to B what C is to D   A と B の関係は C と D の関係と同じだ\n\n２\n\n(1)\n\n①   what you\n\n②   what I\n\n③   What he wants\n\n④   what I really\n\n⑤   what ／ is saying\n\n⑥   What is important\n\n(2)\n\n①   when\n\n②   where she\n\n③   when his children\n\fＢ問題\n\n３\n\n(1)   what it was\n\n(2)   what is better\n\n(3)   what ／ called\n\n   master of invention 「発明王」\n\n(4)   what little food\n\n４\n\n(1)   親鳥は，少ないながらも集めた食べ物をひな鳥にあげた。\n\n(2)   驚いたことに，ジャックは昔の彼とはまったく異なっていた。\n\n   to one’s surprise 「～が驚いたことに」\n\n(3)   探検家は疲れ果てていて，そしてさらに悪いことには左脚を骨折していた。\n\n５\n\n(1)   He is what we call a man of common sense.\n\n(2)   is to the journalist what a sword is to the soldier\n\n６\n\n(1)   [例] My grandmother is what we call [is called] a walking dictionary.\n\n(2)   [例] I am not what I was a year ago.\n\nＣ問題\n\n７\n\n＜「and what is 比較級」の表現＞\n\n①   and what is more   その上，さらに\n\n②   and what is worse   さらに悪いことには\n\f＜「what S is」の関連表現＞\n\n①   what S is   現在の S(の姿・状態)／S の人柄\n\n②   what S was [used to be]   昔の S(の姿・状態)\n\n③   what S should [ought to] be   S のあるべき姿・状態\n\n④   what S will be   未来の S(の姿・状態)\n\n⑤   what S has   S の財産(S が持っているもの)\n\n⑥   what S really is   S の真の姿\n\n⑦   what S appears [seems] to be   S の見かけの姿\n\n８\n\n(1)   ② what\n   私の祖父は，いわゆる自力で出世した人だ。\n\n(2)   ④ what\n   とても寒かった。さらに悪いことには，雨が降り始めた。\n\n９\n\n   The movie was not what I thought it would be.\n   ※what S would be に I thought が入りこんだ形。what S would be は，what S will\n   be「未来の S(の姿・状態)」の過去形で，過去からみた未来を表している。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_025『関係代名詞whatの使い方②(慣用表現)』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_025『関係代名詞whatの使い方②(慣用表現)』（演習）.pdf",
+       "q_count": 47
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   25,26 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞 what の使い方②(慣用表現)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 what を用いること。\n\n(1)   この町は 20 年前の町とは違う。\n\n   This town is not   it was twenty years ago.\n\n(2)   バスは来なくて，さらに悪いことに，雪が降り始めた。\n\n   The bus didn’t come, and   was   , it began to\n\n   snow.\n\n(3)   私はそのかわいそうな少女に，少ないながら持っていた水を全部あげた。\n\n   I gave the poor girl   water I had.\n\n(4)   彼はいわゆるベテランです。\n\n   He is   we   a veteran.\n\n(5)   ごはんと日本人の関係は，パンと欧米の人々の関係と同じだ。\n\n   Rice is to the Japanese   is to Western people.\n\n(6)   このカレーはとてもおいしくて，さらに良いことにあまり辛くない。\n\n   This curry tastes very good, and   , it’s not too hot.\n\n(7)   その幼い子は，１年前の彼女とは異なっています。\n\n   The little child is not   a year ago.\n\n(8)   私はディスカウントストアに行って，少ないけれど持っていたお金を全部使った。\n\n   I went to the discount store and spent   I had.\n\n   498",
+       "answer_text": "章「関係詞」   25,26\n――――――――――――――――――――――――――――――――――――――――――\n\n   関 係 代 名 詞 what の使 い方 ②(慣 用 表 現 ) －解 答 ―\n\n１\n\n(1) what\n\n(2) what ／ worse\n\n(3) what little\n\n(4) what ／ call\n\n(5) what bread\n\n(6) what is better\n\n(7) what she was\n\n(8) what little money",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_025『関係代名詞whatの使い方②(慣用表現)』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_025『関係代名詞whatの使い方②(慣用表現)』（習熟）.pdf",
+       "q_count": 9
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 25 26   練習   次の英文を日本語に訳しなさい。\n\n 関係代名詞whatの使い方②（慣用表現）   ⑴ He came late, and what was worse, he was drunk.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 彼は10年前の彼とは異なる。\n   ⑵ He is what we call a walking dictionary.\n  He is not   he was ten years ago.\n\n⑵ この本は役に立つ、その上、持ち運びやすい。\n  This book is useful, and   , it’s easy to carry.\n   入試レベルにチャレンジ\n⑶ 彼は少ないながらも、持っていた全てのお金をその女の子に\n   正しい英文になるように、カッコ内にあてはまる言葉を\n  与えた。   次の選択肢から選びなさい。\n  He gave the girl   little money he had\n   Nancy is now very different from（   ）she was\n  with him.\n   six years ago.\n⑷ 読書と心の関係は、食べ物と体の関係と同じだ。\n  Reading is to the mind   food is to the body.   ① who   ② which   ③ what\n\n   omitsu Kimura の\n  Tom\n\n 関係代名詞whatの使い方②\n\n ◦what S is 「現在のS（の姿・状態）」\n ◦and what is 比較級 「さらに～なことに」\n ◦what is called（=what we call～）「いわゆる～」\n ◦what little money S have\n  「少ないけれどSが持っているすべてのお金」\n ◦A is to B what C is to D.\n  「AとBの関係はCとDの関係と同じだ」",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_025『関係代名詞whatの使い方②(慣用表現)』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_025『関係代名詞whatの使い方②(慣用表現)』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch09_027",
+     "num": "027",
+     "name": "関係代名詞のas／but／than",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-14",
+       "content": "『関係代名詞のas／but／than』\nas / but / than も関係代名詞として使われる。"
+      },
+      {
+       "title": "概要",
+       "content": "as / but / than も関係代名詞として使われる。\nas\nsuch 〜 as / the same 〜 as\n「〜のような」「〜と同じ」\nシグナル/特徴\nas ＝ 関係代名詞\nbut / than\nbut ＝ that 〜 not / than ＝ より\nbut は否定の意味\nシグナル/特徴\nThere is no 〜 but …"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Such people as he is are rare.\n彼のような人は珍しい。\nShe has the same bag as I have.\n彼女は私と同じバッグを持っている。\nThere is no rule but has exceptions.\n例外のない規則はない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nas ＝ such / the same と\n2\nbut ＝ that 〜 not\n3\nthan ＝ 比較で関係代名詞"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_027_関係代名詞のas／but／than_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "関 係 代 名 詞 の as / but / than   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   such 名詞 as ～\n\n②   the same 名詞 as ～\n\n③   There is no 名詞 but ～\n\n④   more 名詞 than ～\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 what を用いること。（各３点・計 21 点）\n\n(1)   この町は 20 年前の町とは違う。\n\n   This town is not   it was twenty years ago.\n\n(2)   彼はいわゆるベテランです。\n\n   He is   call a veteran.\n\n(3)   ごはんと日本人の関係は，パンと欧米の人々の関係と同じだ。\n\n   Rice is to the Japanese   is to Western people.\n\n(4)   このカレーはとてもおいしくて，さらに良いことにあまり辛くない。\n\n   This curry tastes very good, and   , it’s not too hot.\n\n(5)   私はディスカウントストアに行って，少ないけれど持っていたお金を全部使った。\n\n   I went to the discount store and spent   I had.\n\n(6)   これは彼が探しているものです。\n\n   This is   is looking for.\n\n(7)   私は，母が手紙に書いたことを理解できません。\n\n   I can’t understand   in her letter.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   私はいつも遅く現れるような人は好きではない。\n\n   I don’t like   people   always show up late.\n\n(2)   私はあなたが持っているのと同じ自転車を買いたい。\n\n   I want to buy the   bike   you have.\n\n(3)   副作用のない薬はほとんどない。\n\n   There are   drugs   have side effects.\n\n(4)   彼らは必要としていたよりも多くの毛布をもらった。\n\n   They were given   blankets   they needed.\n\n４   (   )内にあてはまる語(句)を下の選択肢からそれぞれ選びなさい。\n\n   （各４点・計 12 点）\n\n(1) You don’t have to buy more salt (   ) you need for the cooking.\n\n(2)   There is no person (   ) has his or her weak points.\n\n(3)   They were in the same situation (   ) we were.\n\n   [ as / than / and / but ]\n\n５   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1)   There is no tunnel but has its end.\n\n(2)   The woman earned more money than she could spend.\n\n(3)   Judy lives alone in such a large house as has three bed rooms.\n\f６   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各 10 点・計 20 点）\n(1)   私は前になくしたのと同じ傘を買った。\n   I ( as / I / umbrella / lost / bought / before / same / the / had ).\n\n(2)   彼女は私に一度に食べきれないほどのイチゴをくれた。\n   She ( me / than / eat / gave / strawberries / could / I / more ) at one time.\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の問いに答えなさい。\n\n(1)   次の英語を日本語にしなさい。\n   as is often the case (with) ～\n   ＝ as is usual (with) ～\n\n(2)   次の英文を日本語に訳しなさい。\n   Ann was late for school, as is often the case with her.\n\n８   ( )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Everybody knows the fact.\n   ＝ There is no one (   ) knows the fact.\n\n   ① who   ② that   ③ than   ④ but\n\n(2)   My mother, (   ) was usual with her, got up very early.\n\n   ① which   ② who   ③ as   ④ it",
+       "answer_text": "第９章「関係詞」   演習プリント\n\nＡ問題\n\n１\n\n①   such 名詞 as ～   ～するような名詞\n\n②   the same 名詞 as ～   ～と同じ名詞\n\n③   There is no 名詞 but ～   ～しない名詞はない\n\n④   more 名詞 than ～   ～よりも多くの名詞\n\n２\n\n(1)   what\n\n(2)   what we\n\n(3)   what bread\n\n(4)   what is better\n\n(5)   what little money\n\n(6)   what he\n\n(7)   what my mother wrote\n\nＢ問題\n\n３\n\n(1)   such ／ as\n\n(2)   same ／ as\n\n(3)   few ／ but\n\n(4)   more ／ than\n\f４\n(1)   than\n\n(2)   but\n\n(3)   as\n５\n(1)   出口のないトンネルはない。\n\n(2)   その女性は，使える以上の(使い切れないほどの)お金を稼いだ。\n\n(3)   ジュディーは，３つの寝室があるような大きな家に１人で住んでいる。\n６\n(1)   bought the same umbrella as I had lost before\n\n(2)   gave me more strawberries than I could eat\n\nＣ問題\n７\n(1)\n\n   as is often the case (with) ～   (～には)よくあることだが\n\n   ＝ as is usual (with) ～\n\n(2)   彼女にはよくあることだが，アンは学校に遅刻した。\n\n８\n\n(1)   ④ but\n   その事実を知らない人はいない。\n\n(2)   ③ as\n   私の母は，いつものように，とても早く起きた。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_027『関係代名詞のas／but／than』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_027『関係代名詞のas／but／than』（演習）.pdf",
+       "q_count": 35
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   27,28 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   関係代名詞の as / but / than\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   自由時間がいくらかあるようなツアーを選ぶことができます。\n\n   You can choose   a tour as has some free time.\n\n(2)   私は兄が持っているのと同じラケットを買いました。\n\n   I bought the   racket as my brother has.\n\n(3)   失敗しない人はいない。\n\n   There is no man   makes mistakes.\n\n(4)   私は１日では食べきれないほどのごはんを炊いた。\n\n   I cooked more rice   I could eat in a day.\n\n(5)   それを知らない生徒はいません。\n\n   There is no   knows it.\n\n(6)   ジャックは今朝，トムと同じバスに乗った。\n\n   This morning Jack got on   bus as Tom did.\n\n(7)   私たちは期待した以上のお金を集めた。\n\n   We raised   we had expected.\n\n(8)   あなたは困っているときに助けてくれるような友人を持つべきだ。\n\n   You should have   will help you when you\n\n   are in need.\n\n   502",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n関係代名詞の as / but / than －解答―\n\n１\n\n(1) such\n\n(2) same\n\n(3) but\n\n(4) than\n\n(5) student but\n\n(6) the same\n\n(7) more money than\n\n   raise 「（寄付金など）を集める」\n\n(8) such friends [a friend] as",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_027『関係代名詞のas／but／than』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_027『関係代名詞のas／but／than』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 27 28   練習   次の英文を日本語に訳しなさい。\n\n   関係代名詞のas / but / than   ⑴ There are few parents but loves their child.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ あなたは自分のためになるような友人を選ぶべきだ。\n   ⑵ I have the same car as your father had.\n  You should choose such friends\n  can benefit you.\n\n⑵ 例外のないルールはない。   入試レベルにチャレンジ\n  There is no rule   has some exception.   次の英文を日本語に訳しなさい。\n\n   I bought more food than I could eat.\n⑶ 子供に必要以上のお金を与えてはいけません。\n  Don’t give your child more money\n   is needed.\n\n   omitsu Kimura の\n  Tom\n\n 関係代名詞のas / but / than\n\n ① as   ⎧◦such 名詞 as ～\t\t   「～するような 名 」\n   ⎪\n \t\t   ⎩◦the same 名詞 as ～   「～と同じ 名 」\n ② but   ◦There is no 名詞 but ～「～しない 名 はない」\n\n ③ than ◦more 名詞 than ～\t\t   「～よりも多くの 名 」",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_027『関係代名詞のas／but／than』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_027『関係代名詞のas／but／than』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch09_029",
+     "num": "029",
+     "name": "whoever、whichever、whateverの使い方",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-15",
+       "content": "『whoever、whichever、whateverの使い方』\nwhoever / whichever / whatever は「〜する人/物は誰/何でも」を表す。名詞節と副詞節の用法あり。"
+      },
+      {
+       "title": "概要",
+       "content": "whoever / whichever / whatever は「〜する人/物は誰/何でも」を表す。名詞節と副詞節の用法あり。\n名詞節\nwhoever ＝ anyone who\n「〜する人なら誰でも」\nシグナル/特徴\n主語/目的語に\n副詞節\nwhoever ＝ no matter who\n「誰が〜しようとも」\nシグナル/特徴\n譲歩の副詞節"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Whoever wants to come is welcome.\n来たい人は誰でも歓迎だ。\nWhatever you say, I won't change.\n君が何を言おうと、変わらない。\nTake whichever you like.\nどれでも好きなものを取って。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwhoever / whichever / whatever\n2\nanyone who / no matter who\n3\n名詞節と副詞節"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_029_whoever、whichever、whateverの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "whoever, whichever, whatever の 使 い 方   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計６点）\n\n①   whoever\n\n②   whichever\n\n③   whatever\n\n２   次の問いに答えなさい。\n\n(1)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 12 点）\n\n①   自由時間がいくらかあるようなツアーを選ぶことができます。\n\n   You can choose   a tour as has some free time.\n\n②   私は兄が持っているのと同じラケットを買いました。\n\n   I bought the   racket as my brother has.\n\n③   失敗しない人はいない。\n\n   There is no man   makes mistakes.\n\n④   私は１日では食べきれないほどのごはんを炊いた。\n\n   I cooked more rice   I could eat in a day.\n\n(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。ただし，\n   関係代名詞 what を用いること。（各３点・計９点）\n\n①   バスは来なくて，さらに悪いことに，雪が降り始めた。\n\n   The bus didn’t come, and   , it began to snow.\n\f②   私はそのかわいそうな少女に，少ないながら持っていた水を全部あげた。\n\n   I gave the poor girl   water I had.\n\n③   その幼い子は，１年前の彼女とは異なっています。\n\n   The little child is not   a year ago.\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n\n(1)   私たちのチームに加わりたい人は誰でも歓迎します。\n\n   We welcome   join our team.\n\n(2)   私たちは彼が言ったことは何でも信じた。\n\n   We believed   said.\n\n(3)   どちらでもあなたが食べたいほうを作りますよ。\n\n   I’ll cook   want to eat.\n\n(4)   その庭を訪れる人は誰でも，再び訪れるでしょう。\n\n   that garden will revisit it.\n\n４   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n\n(1)   May I lend whichever I want?\n\n(2)   The dog will bark at whoever passes by.\n\n(3)   Please order whatever you’d like for dinner.\n\f５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各７点・計 14 点）\n(1)   いずれにせよ，私たちはあなたの決定を尊重します。\n   We’ll ( the case / respect / your / whatever / may / decision / be ).\n\n(2)   その事故に責任のある人は誰でも正直に謝るべきです。\n   ( responsible / apologize / should / the accident / whoever / for / is ) honestly.\n\n６   次の日本文を，whoever または whichever を用いて英語で書きなさい。\n   （各９点・計 18 点）\n(1)   チケットを持っている人は誰でもこのサービスを受けられます。\n\n(2)   あなたがたが好きなものを何でもお取りください。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   I will give this comic books to (   ) wants it.\n\n   ① anyone   ② whom   ③ whomever   ④ whoever\n\n(2)   (   ) comes, he will not open the door.\n\n   ① Whichever   ② Whatever   ③ Whoever   ④ Whomever\n\f(3)   They will believe (   ) she says.\n\n   ① whatever   ② whoever   ③ wherever   ④ wherever\n\n(4)   (   ), he will always love her.\n\n   ① Whoever happens   ② Whatever happens\n\n   ③ Whomever happen   ④ Whichever happen\n\n(5) You can use (   ) you like.\n\n   ① whichever   ② whoever   ③ whomever   ④ however\n\n(6)   (   ) he chooses, he will like it.\n\n   ① Whoever   ② Whomever   ③ Whichever   ④ Whenever\n\n８   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n\n(1)   あなたが食べたい食べものを何でも食べていいですよ。\n\n   You can eat   you want to.\n\n(2)   彼が使っていないペンならどれでも使っていいですよ。\n\n   You may use   he is not using.\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Any of these books will help you find the information you need. You are welcome to take\n   1aaa book seems most interesting to you.\n   〈13 年追試〉\n   ① what ② which ③ whichever ④ whose",
+       "answer_text": "第９章「関係詞」\n\nＡ問題\n\n１\n\n①   whoever   ～はだれでも\n\n②   whichever   ～はどれでも\n\n③   whatever   ～は何でも\n\n２\n\n(1)\n\n①   such\n\n②   same\n\n③   but\n\n④   than\n\n(2)\n\n①   what was worse\n\n②   what little\n\n③   what she was\n\nＢ問題\n\n３\n\n(1)   whoever wants to\n\n(2)   whatever he\n\n(3)   whichever you\n\n(4)   Whoever visits\n\f４\n\n(1)   どちら(どれ)でも借りたいほうを借りていいですか。\n\n(2)   その犬は，通りすぎる人には誰にでも吠えるでしょう。\n\n(3)   あなたが夕食に食べたいものを何でも注文してください。\n\n５\n\n(1)   respect your decision whatever the case may be\n\n(2)   Whoever is responsible for the accident should apologize\n\n６\n\n(1)   [例] Whoever has the ticket can receive this service.\n\n(2)   [例] Please take whatever you like.\n\nＣ問題\n\n７\n\n(1)   ④ whoever\n   欲しい人にならだれにでもこの漫画をあげましょう。\n   ※whoever＝anyone who，whomever＝anyone whom\n   ※ここでは，カッコの後ろは wants it となっており，主格がないので whoever を選\n   ぶ。to につられて③ whomever を選ばないように。\n\n(2)   ③ Whoever\n   たとえ誰が来ても，彼はドアを開けないだろう。\n   ※whoever には，「たとえだれが～でも」という使い方もある\n\n(3)   ① whatever\n   彼女が言うことなら何でも，彼らは信じるだろう。\n\n(4)   ② Whatever happens\n   たとえ何が起ころうとも，彼は彼女をいつも愛するだろう。\n\n   ※whatever には，「たとえ何が[を]～でも」という使い方もある\n\f(5)   ① whichever\n   どちらでも好きな方を使ってよいですよ。\n\n(6)   ③ Whichever\n   たとえどちらを選んでも，彼は気に入るでしょう。\n   ※whichever には，「たとえどちらが[を]～でも」という使い方もある\n\n８\n\n(1) You can eat whatever food you want to.\n\n(2) You can use whichever pen he is not using.\n\n   ※whichever と whatever は，直後に名詞を置いて形容詞のように用いることもある\n\n９\n\n   ③ whichever\n   これらの本のどれでもあなたが必要な情報を探すのに役立つでしょう。一番興味深い\n   と思われるどの本でも自由に持って行ってください。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_029『whoever、whichever、whateverの使い方』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_029『whoever、whichever、whateverの使い方』（演習）.pdf",
+       "q_count": 61
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   29,30 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   whoever, whichever, whatever の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   このコンピューターを使う人は誰でも満足するでしょう。\n\n   uses this computer will be satisfied.\n\n(2)   どちらでも好きな方をお試しください。\n\n   Please try   you like.\n\n(3)   彼女が買うものは何でも高い。\n\n   she buys is expensive.\n\n(4)   その競技を楽しむ人は誰でも，ヘルメットをかぶったほうがよい。\n\n   enjoys the athletic game is recommended to wear a helmet.\n\n(5)   私たちは床の上にあるものは何でも拾い上げた。\n\n   We picked up   was on the floor.\n\n(6)   ボランティアに参加したい人は誰でも歓迎します。\n\n   We welcome   to participate in volunteer activities.\n\n(7)   どちらでも好きな方を選んでいいですよ。\n\n   You may   prefer.\n\n(8)   あなたたちが必要なものは何でも用意されています。\n   you   is equipped.\n\n   506",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   whoever, whichever, whatever の使 い方 －解 答 ―\n\n１\n\n(1) Whoever\n\n(2) whichever\n\n(3) Whatever\n\n(4) Whoever\n\n(5) whatever\n\n(6) whoever wants\n\n(7) choose whichever you\n\n(8) Whatever ／ need\n\n   equip 「備えつける」",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_029『whoever、whichever、whateverの使い方』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_029『whoever、whichever、whateverの使い方』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 29 30   練習   次の英文を日本語に訳しなさい。\n\nwhoever, whichever, whateverの使い方\n   ⑴ I’ll give you whatever you want.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私たちは、来たい人は誰でも歓迎します。\n   ⑵ Whoever comes will be welcome.\n  We welcome   wants to come.\n\n⑵ あなたの好きなほうをどちらでもとってください。\n  Take   you like.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内にあてはまる言葉を\n⑶ 私の持っているものは何でもあなたにあげましょう。   次の選択肢から選びなさい。\n\n  I’ll give you   I have.   Nancy helps（   ）needs her help.\n\n   ① that   ② those   ③ whoever   ④ whom\n\n   omitsu Kimura の\n  Tom\n\n whoever, whichever, whateverの使い方\n\n ① whoever\t\t   「～はだれでも」\n ② whichever   「～はどれでも」\n ③ whatever\t\t   「～は何でも」",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_029『whoever、whichever、whateverの使い方』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_029『whoever、whichever、whateverの使い方』（習得）.pdf",
+       "q_count": 12
+      }
+     }
+    },
+    {
+     "id": "ch09_031",
+     "num": "031",
+     "name": "whenever、wherever、howeverの使い方",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-16",
+       "content": "『whenever、wherever、howeverの使い方』\nwhenever / wherever / however は「いつ/どこで/どのように〜しても」の譲歩を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "whenever / wherever / however は「いつ/どこで/どのように〜しても」の譲歩を表す。\nwhenever / wherever\nwhenever / wherever\n「いつでも／どこでも」\nシグナル/特徴\n頻度・場所\nhowever\nhowever + 形容詞 + S V\n「どんなに〜でも」\nシグナル/特徴\n形容詞をはさむ"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Whenever you come, I'll be there.\nいつ来ても、そこにいます。\nWherever you go, I'll follow.\nどこへ行っても、ついていく。\nHowever hard it is, don't give up.\nどんなに大変でも、諦めるな。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nwhenever / wherever ＝ いつ／どこでも\n2\nhowever 形容詞 ＝ どんなに〜でも\n3\n副詞節"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_031_whenever、wherever、howeverの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "whenever, wherever, however の 使 い 方   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計６点）\n\n①   whenever\n\n②   wherever\n\n③   however 形容詞\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 30 点）\n(1)   このコンピューターを使う人は誰でも満足するでしょう。\n\n   uses this computer will be satisfied.\n\n(2)   どちらでも好きな方をお試しください。\n\n   Please try   you like.\n\n(3)   彼女が買うものは何でも高い。\n\n   she buys is expensive.\n\n(4)   彼女が昨日買ったものは高かった。\n\n   she bought yesterday was expensive.\n\n(5)   私たちは床の上にあるものは何でも拾い上げた。\n\n   We picked up   was on the floor.\n\n(6)   ボランティアに参加したい人は誰でも歓迎します。\n\n   We welcome   to participate in volunteer activities.\n\n(7)   それを知らない生徒はいません。\n\n   There is no   knows it.\n\n(8)   ジャックは今朝，トムと同じバスに乗った。\n\n   This morning Jack got on   bus as Tom did.\n\f(9)   私たちは期待した以上のお金を集めた。\n\n   We raised   we had expected.\n\n(10) あなたは困っているときに助けてくれるような友人を持つべきだ。\n\n   You should have   will help you when you\n\n   are in need.\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n\n(1)   いつでも好きなときに始めていいですよ。\n\n   You can start   .\n\n(2)   どれほど疲れていても，あなたはレポートを今日完成しなければなりません。\n\n   , you have to finish your report today.\n\n(3)   彼女はどこへ行ってもたくさんの写真を撮る。\n\n   She takes a lot of pictures   .\n\n(4)   どんなにたくさん食べても，彼はまったく太らない。\n\n   , he never gets fat.\n\n４   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   However fast a thief runs, he must be caught by a police dog.\n\n(2)   Whenever I called Mary, she was busy doing her homework.\n\n(3)   Let’s keep in touch with each other wherever we live.\n\f５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各６点・計 12 点）\n(1)   外で遊ぶときはいつでも，必ず帽子をかぶりなさい。\n   ( always / you / wear / outside / whenever / play / , ) your hat.\n\n(2)   どんなに眠くても，ライトを忘れずに消しなさい。\n   ( remember / however / to / are / turn / the light / off / sleepy / you / . )\n\n６   次の日本文を，whenever または however を用いて英語で書きなさい。\n   （各７点・計 14 点）\n(1)   いつでも好きなときにこの部屋をつかってください。\n\n(2)   どれほど忙しくても，後で私に電話をしてください。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1) You may call me (   ) it is convenient.\n\n   ① whatever   ② whoever   ③ whichever   ④ whenever\n\n(2)   We will meet them (   ) they come.\n\n   ① whichever   ② whenever   ③ whoever   ④ wherever\n\f(3) Yuki’s dog follows her (   ) she goes.\n\n   ① whatever   ② whoever   ③ whichever   ④ wherever\n\n(4)   (   ) my sister may go, she will be successful.\n\n   ① whoever   ② whichever   ③ wherever   ④ however\n\n(5)   (   ) sleepy you are , never fail to have breakfast every morning.\n\n   ① Whenever   ② However   ③ Whoever   ④ Whenever\n\n８ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Don’t listen to Joe   1   much he complains.\n   〈06 年追試〉\n   ① however   ② whatever   ③ so ④ how",
+       "answer_text": "Ａ問題\n\n１\n①   whenever   ～はいつでも\n\n②   wherever   ～はどこでも\n\n③   however 形容詞   たとえどれほど形容詞でも\n\n２\n(1)   Whoever\n\n(2)   whichever\n\n(3)   Whatever\n\n(4)   What\n\n(5)   whatever\n\n(6)   whoever wants\n\n(7)   student but\n\n(8)   the same\n\n(9)   more money than\n\n   raise 「（寄付金など）を集める」\n\n(10)   such friends [a friend] as\n\nＢ問題\n\n３\n\n(1)   whenever you like\n\n(2)   However tired you are\n\n(3)   wherever she goes\n\n(4)   However much he eats\n\f４\n(1)   どろぼうがどんなに速く走っても，警察犬に捕まるにちがいない。\n(2)   メアリーにいつ電話をしても，彼女は宿題をするのに忙しかった。\n(3)   どこに住んでいても，お互いに連絡を取り合いましょう。\n\n５\n(1) Whenever you play outside, always wear\n(2) Remember to turn off the light however sleepy you are.\n\n６\n(1)   [例] Please use this room whenever you like.\n(2)   [例] However busy you are, please call me later.\n\nＣ問題\n\n７\n\n(1)   ④ whenever\n   いつでもあなたの都合のいいときに，私に電話していいですよ。\n\n(2)   ② whenever\n   たとえいつ彼らが来ても，私たちは彼らに会うつもりだ。\n   ※whenever には，「たとえいつ～でも」という使い方もある\n\n(3)   ④ wherever\n   ユキの犬は，彼女が行くところにはどこにでもついていく。\n\n(4)   ③ wherever\n   私の姉[妹]はたとえどこに行っても成功するでしょう。\n   ※wherever には，「たとえどこへ～でも」という使い方もある\n\n(5)   ② However\n   たとえどれほど眠くても，毎朝必ず朝食を食べなさい。\n８\n\n   ① however\n   どんなにジョーが不満を言っても，彼に耳を傾けてはいけない。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_031『whenever、wherever、howeverの使い方』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_031『whenever、wherever、howeverの使い方』（演習）.pdf",
+       "q_count": 55
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   31,32 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   whenever, wherever, however の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   母は時間があるときはいつでも祖母の見舞いに行きます。\n\n   My mother goes to see my grandmother in the hospital   she\n\n   has time.\n\n(2)   この情報はあなたがどこにいても受け取れます。\n\n   You can get this information   you are.\n\n(3)   どれほど一生懸命に練習しようと，私はこの曲を演奏できないだろう。\n\n   hard I practice, I won’t be able to play this tune.\n\n(4)   お会いするといつでも，あなたはとても楽しそうですね。\n\n   I see you, you look very happy.\n\n(5)   どれほど眠くても，彼はその課題を成し遂げた。\n\n   he was, he accomplished the task.\n\n(6)   ポチはケビンが行くところにはどこでもついて行った。\n\n   Pochi followed Kevin   went.\n\n(7)   あなたが部屋を出るときはいつでもドアを閉め忘れないで。\n\n   Don’t forget to close the door   leave the room.\n\n(8)   どれほど遅く起きても，毎朝朝食をとるべきです。\n\n   , you should have breakfast every morning.\n\n   510",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   whenever, wherever, however の使 い方 －解 答 ―\n\n１\n\n(1) whenever\n\n(2) wherever\n\n(3) However\n\n(4) Whenever\n\n(5) However sleepy\n\n(6) wherever he\n\n(7) whenever you\n\n(8) However late you get up",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_031『whenever、wherever、howeverの使い方』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_031『whenever、wherever、howeverの使い方』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 31 32   練習   次の英文を日本語に訳しなさい。\n\nwhenever, wherever, howeverの使い方\n   ⑴ I will follow you wherever you go.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ いつでもあなたの好きなときに来てください。\n   ⑵ You may come whenever you like.\n  Please come   you like.\n\n⑵ あなたの行きたいところに連れて行こう。\n  I’ll take you   you want to go.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内にあてはまる言葉を\n⑶ どれほど疲れていても、彼女はいつも笑顔です。   次の選択肢から選びなさい。\n\n   tired she is, she always smiles.   （   ）busy you are, you should call her once a week.\n\n   ① Whoever   ② However   ③ Wherever\n\n   omitsu Kimura の\n  Tom\n\n whenever, wherever, howeverの使い方\n\n ① whenever   「～はいつでも」\n ② wherever   「～はどこでも」\n ③ however 形   「たとえどれほど 形 でも」",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_031『whenever、wherever、howeverの使い方』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_031『whenever、wherever、howeverの使い方』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch09_033",
+     "num": "033",
+     "name": "no matter ～ , の使い方",
+     "slides": [
+      {
+       "title": "第09章 関係詞 / 9-17",
+       "content": "『no matter ～ , の使い方』\nno matter who/what/when/where/how は whoever などの書き換え（譲歩）。"
+      },
+      {
+       "title": "概要",
+       "content": "no matter who/what/when/where/how は whoever などの書き換え（譲歩）。\nno matter + 疑問詞\nno matter what / who\n「何が／誰が〜しようと」\nシグナル/特徴\n譲歩節\nwhoever などへ書き換え\n= whatever / whoever\n意味は同じ\nシグナル/特徴\n副詞節限定"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "No matter what you say, I won't change.\n君が何を言おうと、変わらない。\nNo matter where you go, I'll find you.\nどこへ行っても見つける。\nNo matter how cold it is, he goes out.\nどんなに寒くても、彼は出かける。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nno matter + 疑問詞\n2\n= whoever / whatever 等\n3\n譲歩の副詞節のみ"
+      }
+     ],
+     "pptx_path": "../第09章/成果物/第09章_033_no matter ～ , の使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "no matter〜 , の 使 い 方   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計 10 点）\n\n①   No matter who ～,\n\n②   No matter what ～,\n\n③   No matter when ～,\n\n④   No matter where ～,\n\n⑤   No matter how 形容詞 ～,\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 27 点）\n\n(1)   母は時間があるときはいつでも祖母の見舞いに行きます。\n\n   My mother goes to see my grandmother in the hospital   she\n\n   has time.\n\n(2)   どれほど眠くても，彼はその課題を成し遂げた。\n\n   he was, he accomplished the task.\n\n(3)   ポチはケビンが行くところにはどこでもついて行った。\n\n   Pochi followed Kevin   went.\n\n(4)   あなたが部屋を出るときはいつでもドアを閉め忘れないで。\n\n   Don’t forget to close the door   leave the room.\n\n(5)   どれほど遅く起きても，毎朝朝食をとるべきです。\n\n   , you should have breakfast every morning.\n\n(6)   その競技を楽しむ人は誰でも，ヘルメットをかぶったほうがよい。\n\n   enjoys the athletic game is recommended to wear a helmet.\n\f(7)   どちらでも好きな方を選んでいいですよ。\n\n   You may   prefer.\n\n(8)   あなたたちが必要なものは何でも用意されています。\n   you   is equipped.\n\nＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n(1)   たとえどんなことがおきても，私は決して夢をあきらめません。\n\n   I never give up my dream no   happens.\n\n(2)   たとえどこに隠れても，すぐに見つけますよ。\n\n   No   you hide, I will find you soon.\n\n(3)   たとえ誰が電話をかけてきても，出てはいけません。\n\n   No   calls you, don’t answer it.\n\n(4)   たとえどれほど私の自転車が古く見えても，私は買いかえるつもりはない。\n\n   No   my bike looks, I’m not going to buy a new one.\n\n４   次の英文とほぼ同じ意味の英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 15 点）\n(1)   Whatever happens, don’t wake me.\n\n   happens, don’t wake me.\n\n(2)   Whenever Mr. Green got home, his son was fast asleep.\n\n   Mr. Tanaka got home, his son was fast asleep.\n\n(3)   However tired she was, Nancy took care of her younger sisters.\n\n   she was, Nancy took care of her younger\n\n   sisters.\n\f５   次の英文を日本語に訳しなさい。（各６点・計 12 点）\n\n(1)   No matter what he says, I can’t believe him.\n\n(2)   No matter how cold it was, the children played outside.\n\n６   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各８点・計 16 点）\n(1)   たとえあなたがいつ来ようと，一緒に行く用意はできています。\n   ( when / I’m / matter / come / ready / you / no / , ) to go with you.\n\n(2)   たとえどこに住もうとも，私はカードなしの生活は想像できない。\n   I can’t imagine life ( live / credit / no / where / without / cards / I / matter / , ).\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の英語を日本語にしなさい。\n\n   名詞節を導く用法   「譲歩」の副詞節を導く用法\n\n①   whoever   ～はだれでも   たとえだれが～でも\n\n②   whichever\n\n③   whatever\n\n   「時・場所」の副詞節を導く用法 「譲歩」の副詞節を導く用法\n\n④   whenever\n\n⑤   wherever\n\n⑥   however   ―\n\f８   次の英文とほぼ同じ意味の英文になるように，   に適する語(句)を書きなさい。\n   また，完成した英文を日本語に訳しなさい。\n\n(1)\n\n①   Whoever calls him, he doesn’t answer the phone.\n\n   calls him, he doesn’t answer the phone.\n\n②   Whichever you buy, please lend it to me.\n\n   you buy, please lend it to me.\n\n③   Whatever happens, I’ll keep that promise.\n\n   happens, I’ll keep that promise.\n\n④   Whenever I visit him, he is out.\n\n   I visit him, he is out.\n\n⑤   She will be welcomed wherever she goes.\n\n   She will be welcomed   she goes.\n\n⑥   However busy I am, I’ll help her.\n\n   busy I am, I’ll help her.\n\f(2)\n\n①   Give these DVDs to whoever wants it.\n\n   Give these DVDs to   wants it.\n\n②   You can choose whichever you like.\n\n   You can choose   you like.\n\n③   You can buy whatever you want.\n\n   You can buy   you want.\n\n④   You may come here whenever you like.\n\n   You may come here   you like.\n\n⑤   I visit my friend whenever I go to Tokyo.\n\n   I visit my friend   I go to Tokyo.\n\n⑥   You may go wherever you like.\n\n   You may go   you like.",
+       "answer_text": "Ａ問題\n１\n①   No matter who ～,   (＝whoever ～, )   たとえだれが～でも\n\n②   No matter what ～,   (＝whatever ～, )   たとえ何が～でも\n\n③   No matter when ～,   たとえいつ～でも\n\n④   No matter where ～,   たとえどこへ～でも\n\n⑤   No matter how 形容詞 ～,   たとえどれほど～形容詞でも\n２\n(1)   whenever\n\n(2)   However sleepy\n\n(3)   wherever he\n\n(4)   whenever you\n\n(5)   However late you get up\n\n(6)   Whoever\n\n(7)   choose whichever you\n\n(8)   Whatever ／ need\n\n   equip 「備えつける」\n\nＢ問題\n\n３\n\n(1)   matter what\n\n(2)   matter where\n\n(3)   matter who\n\n(4)   matter how old\n\f４\n\n(1)   No matter what\n\n(2)   No matter when\n\n(3)   No matter how tired\n\n５\n\n(1)   たとえ彼が何を言おうと，私は彼が信じられません。\n\n(2)   たとえどんなに寒くても，子どもたちは外で遊んだ。\n\n６\n\n(1)   No matter when you come, I’m ready\n\n(2)   without credit cards, no matter where I live\n\nＣ問題\n７\n   名詞節を導く用法   「譲歩」の副詞節を導く用法\n\n①   whoever   ～はだれでも   たとえだれが～でも\n\n②   whichever   ～はどれでも   たとえどれが～でも\n\n③   whatever   ～は何でも   たとえ何が～でも\n\n   「時・場所」の副詞節を導く用法 「譲歩」の副詞節を導く用法\n\n④   whenever   ～はいつでも   たとえいつ～でも\n\n⑤   wherever   ～はどこでも   たとえどこへ～でも\n\n⑥   however   ―   たとえどれほど～でも\n\n８\n\n(1)\n\n※「譲歩」の副詞節を導く用法：「no matter ～」で書き換え\n\n①   Whoever calls him, he doesn’t answer the phone.\n\n   No matter who calls him, he doesn’t answer the phone.\n\n   誰が電話をかけようと，彼は電話に出ない。\n\f②   Whichever you buy, please lend it to me.\n\n   No matter which you buy, please lend it to me.\n\n   どちらを買っても，私に貸してくださいね。\n\n③   Whatever happens, I’ll keep that promise.\n\n   No matter what happens, I’ll keep that promise.\n\n   何が起ころうと，私はその約束を守るつもりだ。\n\n④   Whenever I visit him, he is out.\n\n   No matter when I visit him, he is out.\n\n   いつ彼を訪ねても，彼は外出中だ。\n\n⑤   She will be welcomed wherever she goes.\n\n   She will be welcomed no matter where she goes.\n\n   彼女はどこへ行っても歓迎されるだろう。\n\n⑥   However busy I am, I’ll help her.\n\n   No matter how busy I am, I’ll help her.\n\n   どんなに忙しくても，私が彼女を手伝いましょう。\n\n(2)\n\n※名詞節を導く用法・「時・場所」の副詞節を導く用法：any などを使って書き換え\n\n①   Give these DVD to whoever wants it.\n\n   Give these DVD to anyone who wants it.\n\n   これらの DVD を誰でも欲しい人にあげなさい。\n\n②   You can choose whichever you like.\n\n   You can choose any one [ones] (that) you like.\n\n   あなたが好きな方をどちらでも選ぶことができる。\n\n③   You can buy whatever you want.\n\n   You can buy anything [any thing] (that) you want.\n\n   あなたがほしいものは何でも買ってよい。\n\f④   You may come here whenever you like.\n\n   You may come here at any time (when) you like.\n\n   あなたが来たいときにいつでもここに来て良い。\n\n⑤   I visit my friend whenever I go to Tokyo.\n\n   I visit my friend every time (that) I go to Tokyo.\n\n   私は東京に行くときはいつも，友人のところを訪れる。\n\n⑥   You may go wherever you like.\n\n   You may go to any place (that) you like.\n\n   あなたが行きたいところにどこでも行って良い。",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_033『no matter ～ ， の使い方』（演習）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_033『no matter ～ ， の使い方』（演習）.pdf",
+       "q_count": 44
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "9 章「関係詞」 第９章「関係詞」   33,34 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   no matter～, の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   たとえいつ来ても，彼は１杯のコーヒーを注文する。\n\n   No matter   he comes, he orders a cup of coffee.\n\n(2)   たとえどれほど暑くても，アイスクリームを食べ過ぎてはいけません。\n\n   No matter   it is, don’t eat too much ice cream.\n\n(3)   たとえどこで会おうとも，ジュディーはとても楽しそうだった。\n\n   Judy looked very happy, no matter   I saw her.\n\n(4)   たとえ誰が聞いても，あなたの電話番号を教えないでください。\n\n   No matter   asks, don’t give your phone number.\n\n(5)   たとえどれほど疲れていても，メアリーは毎日ピアノを練習した。\n\n   No matter   , Mary practiced the piano every day.\n\n(6)   たとえ私がいつ帰ってきても，ドアはカギがかかっていた。\n\n   No matter   , the door was kept locked.\n\n(7)   エマは何を着てもかわいらしい。\n\n   Emma looks pretty, no   wears.\n\n(8)   たとえどれほどお腹がすいていても，子どもたちは食べ物を分け合った。\n   The children shared food each other, no   .\n\n   514",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   no matter～, の使い方 －解答―\n\n１\n\n(1) when\n\n(2) how hot\n\n(3) where\n\n(4) who\n\n(5) how tired she was\n\n(6) when I came home\n\n(7) matter what she\n\n(8) matter how hungry they were",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_033『no matter ～ ， の使い方』（習熟）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_033『no matter ～ ， の使い方』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "関係詞 33 34   練習   次の英文を日本語に訳しなさい。\n\n   no matter 〜, の使い方   ⑴ No matter when you come, we will not let you in.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 誰が来ようとも、この扉を開ける気はない。\n   ⑵ You can use this credit card, no matter where you go.\n  No matter   may come,\n  I will not open this door.\n\n⑵ たとえ彼が何と言おうとも、彼を信じるな。   入試レベルにチャレンジ\n\n  No matter   he says, donʼt believe him.   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   No matter（   ）interesting it is,\n   this novel is not suitable for children.\n\n   ① how   ② when   ③ what   ④ who\n   omitsu Kimura の\n  Tom\n\n no matter 〜, の使い方\n\n ① No matter who 〜，   「たとえだれが〜でも」\n   （=whoever，）\n ② No matter what 〜， 「たとえ何が〜でも」\n   （=whatever，）\n ③ No matter when 〜， 「たとえいつ〜でも」\n ④ No matter where 〜，「たとえどこへ〜でも」\n ⑤ No matter how 形 〜，\n   「たとえどれほど 形 でも」",
+       "answer_text": "",
+       "problem_pdf": "../第09章/問題_h_eng_gra_09_033『no matter ～ , の使い方』（習得）.pdf",
+       "answer_pdf": "../第09章/解答_h_eng_gra_09_033『no matter ～ , の使い方』（習得）.pdf",
+       "q_count": 13
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語学習サイト</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --p: #1a237e; --a: #f57f17; --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { font-family: var(--font-family); background: #f5f5f5; color: #333; }
+    #page-login { display: none; min-height: 100vh; background: linear-gradient(135deg, var(--p) 0%, #283593 100%); justify-content: center; align-items: center; padding: 20px; }
+    .login-container { background: #fff; border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); width: 100%; max-width: 400px; padding: 40px; }
+    .login-header { text-align: center; margin-bottom: 32px; }
+    .login-header h1 { color: var(--p); font-size: 28px; margin-bottom: 8px; }
+    .login-header p { color: #999; font-size: 14px; }
+    .form-tabs { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 2px solid #e0e0e0; }
+    .form-tab { flex: 1; padding: 12px; text-align: center; cursor: pointer; background: #f5f5f5; border: none; border-bottom: 3px solid transparent; font-size: 14px; font-weight: 600; transition: all 0.3s; color: #666; }
+    .form-tab.active { color: var(--p); background: #fff; border-bottom-color: var(--p); }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; margin-bottom: 6px; font-weight: 500; font-size: 14px; color: #333; }
+    .form-input { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; font-family: var(--font-family); transition: border 0.3s; }
+    .form-input:focus { outline: none; border-color: var(--p); }
+    .error-msg { color: #f44336; font-size: 12px; margin-bottom: 12px; }
+    .btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: var(--font-family); }
+    .btn-primary { background: var(--p); color: #fff; width: 100%; }
+    .btn-primary:hover { background: #0d1b4d; }
+    .btn-primary:disabled { background: #ccc; cursor: not-allowed; }
+    .btn-outline { background: #f5f5f5; color: #333; border: 1px solid #ddd; }
+    .btn-outline:hover { background: #f0f0f0; }
+    .btn-secondary { background: var(--a); color: #fff; }
+    .btn-secondary:hover { background: #e65e00; }
+    #page-app { display: none; min-height: 100vh; background: #f5f5f5; }
+    .app-layout { display: flex; min-height: 100vh; flex-direction: column; }
+    .topnav { background: var(--p); color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); position: relative; z-index: 100; }
+    .topnav-brand { font-size: 20px; font-weight: 700; }
+    .topnav-user { display: flex; gap: 16px; align-items: center; }
+    .user-badge { background: rgba(255, 255, 255, 0.2); padding: 6px 12px; border-radius: 6px; font-size: 13px; }
+    .logout-btn { background: rgba(255, 255, 255, 0.1); color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
+    .main-container { display: flex; flex: 1; }
+    .sidebar { width: 240px; background: #fff; border-right: 1px solid #e0e0e0; overflow-y: auto; padding: 16px 0; }
+    .sidebar-group { margin-bottom: 20px; }
+    .sidebar-group-title { font-size: 12px; font-weight: 700; color: #999; padding: 0 16px; text-transform: uppercase; margin-bottom: 8px; }
+    .sidebar-item { padding: 10px 16px; cursor: pointer; transition: all 0.2s; border-left: 3px solid transparent; font-size: 14px; color: #666; }
+    .sidebar-item:hover { background: #f5f5f5; }
+    .sidebar-item.active { background: #f0f7ff; color: var(--p); border-left-color: var(--p); font-weight: 600; }
+    .main-content { flex: 1; padding: 20px; overflow-y: auto; }
+    .view { display: none; }
+    .view.active { display: block; }
+    .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px; }
+    .card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); transition: all 0.3s; }
+    .card:hover { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+    .card-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; color: var(--p); }
+    .card-stat { font-size: 32px; font-weight: 700; color: var(--a); margin-bottom: 8px; }
+    .card-text { font-size: 13px; color: #999; margin-bottom: 12px; }
+    .progress-bar { height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--a); transition: width 0.3s; }
+    .level-buttons { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .level-btn { padding: 16px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; color: #fff; transition: all 0.3s; font-size: 14px; }
+    .slide-container { background: #fff; border-radius: 8px; padding: 40px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); max-width: 800px; margin: 0 auto; }
+    .slide-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid #e0e0e0; }
+    .slide-title { font-size: 24px; font-weight: 700; color: var(--p); }
+    .slide-number { background: var(--a); color: #fff; padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+    .slide-content { margin-bottom: 32px; }
+    .slide-text { font-size: 16px; line-height: 1.6; margin-bottom: 16px; color: #333; }
+    .examples-list { background: #f9f9f9; border-left: 4px solid var(--a); padding: 16px; border-radius: 4px; margin-bottom: 16px; }
+    .example-item { margin-bottom: 12px; }
+    .example-item:last-child { margin-bottom: 0; }
+    .example-en { font-size: 15px; font-weight: 600; color: var(--p); margin-bottom: 4px; }
+    .example-ja { font-size: 14px; color: #666; }
+    .slide-nav { display: flex; gap: 12px; justify-content: center; margin-top: 32px; }
+    .quiz-container { background: #fff; border-radius: 8px; padding: 40px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); max-width: 800px; margin: 0 auto; }
+    .quiz-progress { margin-bottom: 32px; text-align: center; }
+    .quiz-progress-bar { height: 8px; background: #e0e0e0; border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
+    .quiz-progress-fill { height: 100%; background: var(--a); transition: width 0.3s; }
+    .quiz-progress-text { font-size: 13px; color: #999; }
+    .quiz-question { margin-bottom: 32px; }
+    .quiz-q-text { font-size: 18px; font-weight: 600; color: var(--p); margin-bottom: 20px; }
+    .quiz-choices { display: grid; gap: 12px; }
+    .choice, .quiz-choice { padding: 14px 16px; border: 2px solid #ddd; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 15px; background: #fff; user-select: none; }
+    .choice:hover, .quiz-choice:hover { border-color: var(--a); background: #fffbf5; transform: translateX(3px); }
+    .choice.selected, .quiz-choice.selected { border-color: var(--p); background: #e8edf8; color: var(--p); font-weight: 600; border-width: 2.5px; }
+    .session-card { cursor: pointer; }
+    .session-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); border-color: var(--p) !important; }
+    .quiz-buttons { display: flex; gap: 12px; margin-top: 32px; justify-content: center; }
+    .admin-header { font-size: 24px; font-weight: 700; color: var(--p); margin-bottom: 20px; }
+    .admin-section { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); }
+    .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .admin-table thead { background: #f5f5f5; }
+    .admin-table th { padding: 12px; text-align: left; font-weight: 600; color: #666; border-bottom: 2px solid #e0e0e0; }
+    .admin-table td { padding: 12px; border-bottom: 1px solid #e0e0e0; }
+    .admin-table tbody tr:hover { background: #f9f9f9; }
+    .action-btn { padding: 6px 12px; margin-right: 6px; font-size: 12px; }
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+    .modal.active { display: flex; }
+    .modal-content { background: #fff; border-radius: 8px; padding: 24px; max-width: 500px; width: 100%; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15); }
+    #toast { position: fixed; bottom: 20px; right: 20px; padding: 16px 24px; border-radius: 6px; color: #fff; font-size: 14px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 2000; animation: slideInUp 0.3s ease-out; }
+    #toast.success { background: #4caf50; }
+    #toast.error { background: #f44336; }
+    @keyframes slideInUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+</style>
+</head>
+<body>
+<div id="page-login">
+<div class="login-container">
+<div class="login-header">
+<h1>英語学習</h1>
+<p>IDとパスワードでログイン</p>
+</div>
+<div class="form-tabs">
+<button class="form-tab active" onclick="toggleForm('login')">ログイン</button>
+<button class="form-tab" onclick="toggleForm('register')">登録</button>
+</div>
+<div id="login-form">
+<div class="form-group">
+<label>ユーザーID</label>
+<input type="text" id="login-id" class="form-input" placeholder="example123">
+</div>
+<div class="form-group">
+<label>パスワード</label>
+<input type="password" id="login-pw" class="form-input" placeholder="••••••••">
+</div>
+<div id="login-error" class="error-msg"></div>
+<button class="btn btn-primary" onclick="doLogin()">ログイン</button>
+</div>
+<div id="register-form" style="display: none;">
+<div class="form-group">
+<label>ユーザーID</label>
+<input type="text" id="reg-id" class="form-input" placeholder="3〜20文字の英数字">
+</div>
+<div class="form-group">
+<label>お名前</label>
+<input type="text" id="reg-name" class="form-input" placeholder="田中太郎">
+</div>
+<div class="form-group">
+<label>パスワード</label>
+<input type="password" id="reg-pw" class="form-input" placeholder="••••••••">
+</div>
+<div class="form-group">
+<label>パスワード（確認）</label>
+<input type="password" id="reg-pw2" class="form-input" placeholder="••••••••">
+</div>
+<div id="reg-error" class="error-msg"></div>
+<button class="btn btn-primary" onclick="doRegister()">登録</button>
+</div>
+</div>
+</div>
+
+<div id="page-app">
+<div class="app-layout">
+<div class="topnav">
+<div class="topnav-brand">📚 英語学習サイト</div>
+<div class="topnav-user">
+<div class="user-badge"><span id="topnav-user-name">ユーザー</span> (<span id="topnav-user-role">student</span>)</div>
+<button class="btn btn-secondary btn-outline logout-btn" onclick="doLogout()">ログアウト</button>
+</div>
+</div>
+<div class="main-container">
+<div class="sidebar" id="sidebar"></div>
+<div class="main-content">
+<div id="view-dashboard" class="view">
+<h2 style="font-size: 24px; font-weight: 700; color: var(--p); margin-bottom: 20px;">ダッシュボード</h2>
+<div class="dashboard-grid" id="dashboard-stats"></div>
+<div class="level-buttons" id="dashboard-levels"></div>
+<div id="dashboard-content" style="margin-top:20px"></div>
+</div>
+<div id="view-slides" class="view">
+<div class="slide-container" id="slide-content"></div>
+</div>
+<div id="view-quiz" class="view">
+<div class="quiz-container">
+<div class="quiz-progress">
+<div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 0%"></div></div>
+<div class="quiz-progress-text" id="quiz-progress-text">1 / 10</div>
+</div>
+<div id="quiz-content"></div>
+</div>
+</div>
+<div id="view-results" class="view"></div>
+<div id="view-admin-users" class="view">
+<h2 class="-header">ユーザー管理</h2>
+<button class="btn btn-primary" onclick="openAddUserModal()" style="margin-bottom: 20px;">+ ユーザー追加</button>
+<div class="admin-section">
+<table class="admin-table">
+<thead><tr><th>ユーザーID</th><th>名前</th><th>役割</th><th>作成日</th><th>操作</th></tr></thead>
+<tbody id="admin-users-list"></tbody>
+</table>
+</div>
+</div>
+<div id="view-admin-progress" class="view">
+<h2 class="admin-header">進捗管理</h2>
+<div class="admin-section">
+<table class="admin-table">
+<thead><tr><th>ユーザーID</th><th>セッションID</th><th>スコア</th><th>合格</th><th>日時</th></tr></thead>
+<tbody id="admin-progress-list"></tbody>
+</table>
+</div>
+</div>
+<div id="view-admin-weaknesses" class="view">
+<h2 class="admin-header">弱点分析</h2>
+<div class="admin-section">
+<table class="admin-table">
+<thead><tr><th>ユーザーID</th><th>分野</th><th>エラー数</th><th>最終更新</th></tr></thead>
+<tbody id="admin-weaknesses-list"></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="modal-user" class="modal">
+<div class="modal-content">
+<div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid #e0e0e0">
+<span id="modal-user-title" style="font-size:16px;font-weight:700">ユーザー追加</span>
+<button onclick="closeModal()" style="background:0;border:0;font-size:1.4em;cursor:pointer;color:#999">×</button>
+</div>
+<div style="padding-top:16px">
+<div class="form-group"><label>ユーザーID</label><input type="text" id="modal-uid" class="form-input"></div>
+<div class="form-group"><label>お名前</label><input type="text" id="modal-name" class="form-input"></div>
+<div class="form-group"><label>パスワード</label><input type="password" id="modal-pw" class="form-input"></div>
+<div class="form-group"><label>役割</label><select id="modal-role" class="form-input"><option value="student">学習者</option><option value="admin">管理者</option></select></div>
+<div id="modal-error" class="error-msg"></div>
+<div style="display:flex;gap:8px;margin-top:16px">
+<button onclick="closeModal()" class="btn btn-outline" style="flex:1">キャンセル</button>
+<button id="modal-save-btn" class="btn btn-primary" style="flex:1">作成</button>
+</div>
+</div></div></div>
+
+<div id="toast" style="display: none;"></div>
+
+<script>
+'use strict';
+
+// ★ RenderのAPIサーバーのURL
+const API_BASE_URL = 'https://study-eng-h-gra.onrender.com';
+
+// ── Python FastAPI 通信処理 ──
+async function phpApi(action, params) {
+  let url = API_BASE_URL + '/' + encodeURIComponent(action);
+  if (params) {
+    let keys = Object.keys(params);
+    url += '?';
+    for (let i = 0; i < keys.length; i++) {
+      let val = typeof params[keys[i]] === 'object' ? JSON.stringify(params[keys[i]]) : params[keys[i]];
+      url += encodeURIComponent(keys[i]) + '=' + encodeURIComponent(val) + '&';
+    }
+    url = url.slice(0, -1);
+  }
+  try {
+    let res = await fetch(url);
+    if (!res.ok) { console.warn('API HTTP error', res.status); return null; }
+    let txt = await res.text();
+    try {
+      return JSON.parse(txt);
+    } catch (e) {
+      return txt === '"ok"' || txt === 'ok' ? true : null; 
+    }
+  } catch (e) { console.warn('API fetch error:', e); return null; }
+}
+
+const PASS_MARK = 90, QUIZ_Q_COUNT = 10;
+var state = {currentUser:null, currentLevel:'basic', currentSessionId:null, quizQuestions:[], quizAnswers:[], cachedUsers:null, cachedProgress:{}, cachedWeaknesses:{}};
+
+const CURRICULUM={"levels":[{"id":"basic","name":"基礎","color":"#4caf50"},{"id":"standard","name":"標準","color":"#2196f3"},{"id":"advanced","name":"応用","color":"#ff9800"},{"id":"exam","name":"受験","color":"#f44336"}],"sessions":{"basic":[{"id":"g_b1","num":1,"title":"【文法】基本5文型","isLevelTest":false,"slides":[{"title":"第1文型・第2文型：S+V と S+V+C","content":"■ 用語の定義\nS＝主語（Subject）：動作・状態の主体\nV＝動詞（Verb）：動作・状態を表す\nC＝補語（Complement）：Sの性質・状態を説明する\n\n■ 第1文型（S+V）\n公式：主語＋動詞だけで意味が完結する\n動詞は自動詞（目的語が不要な動詞）\n\n■ 第2文型（S+V+C）\n公式：S ＝ C の関係が成立する\n使う動詞：be動詞、become、look、seem、feel、taste、sound\n見分け方：「Sは（Cで）ある/なる/見える」と訳せる","examples":[{"en":"Birds sing beautifully. → S(Birds)+V(sing)","ja":"鳥は美しく歌う【第1文型】自動詞+副詞"},{"en":"She became a teacher. → S+V+C","ja":"彼女は教師になった【第2文型】S=C が成立"},{"en":"The soup tastes delicious. → S+V+C","ja":"スープは美味しい【第2文型】taste=感覚動詞"}]},{"title":"第3文型・第4文型：S+V+O と S+V+O+O","content":"■ O（目的語：Object）とは\n動詞の動作が向かう相手・もの\n名詞・代名詞・名詞句が入る\n\n■ 第3文型（S+V+O）最も基本的な文型\n公式：S が O を V する\n他動詞（目的語を必要とする動詞）を使う\n\n■ 第4文型（S+V+O₁+O₂）\n公式：S が O₁（人）に O₂（もの）を V する\n「give型」動詞：give, send, show, teach, tell, buy, make\n書き換え：V O₂ to/for O₁ の形に変換できる\n【to を使う】give, send, show, teach, tell, write\n【for を使う】buy, make, cook, get, find","examples":[{"en":"I study English every day. → S+V+O","ja":"私は毎日英語を勉強する【第3文型】"},{"en":"She gave me a present. = She gave a present to me.","ja":"彼女は私にプレゼントをくれた【第4文型→書き換え】"},{"en":"He bought her flowers. = He bought flowers for her.","ja":"彼は彼女に花を買った【第4文型 buy型→for】"}]},{"title":"第5文型：S+V+O+C と文型の見分け方","content":"■ 第5文型（S+V+O+C）\n公式：S が O を C の状態にする / O が C であると V する\n重要：O ＝ C の関係が成立する（第4文型と違いO₁≠O₂）\n\n使う動詞：\n・make（〜を…にする）\n・call（〜を…と呼ぶ）\n・name（〜を…と名付ける）\n・find（〜が…だとわかる）\n・keep（〜を…に保つ）\n・believe / consider（〜を…と考える）\n\n■ 5文型の見分けのコツ\nStep1: Vを見つける（述語動詞）\nStep2: Sを確認する（主語）\nStep3: V の後に名詞・代名詞があれば O\nStep4: O の後にさらに名詞/形容詞があれば C → 第5文型\n　　　　O の後に何もなければ → 第3文型","examples":[{"en":"They made her the leader. → O(her) = C(leader)","ja":"彼らは彼女をリーダーにした【第5文型】"},{"en":"I find this book interesting. → O(book) = C(interesting)","ja":"この本は面白いとわかる【第5文型】"},{"en":"Keep the room clean. → O(room) = C(clean)","ja":"部屋を清潔に保て【第5文型】命令文"}]}],"questions":[{"q":"I ___ a student.","ch":["am","is","are","be"],"a":0,"exp":"I はam","cat":"5文型"},{"q":"She ___ beautiful.（第2文型）","ch":["is","has","makes","calls"],"a":0,"exp":"S+V+CのVはbe動詞が多い","cat":"5文型"},{"q":"He gave ___ a present.（第4文型）","ch":["her","to her","she","hers"],"a":0,"exp":"S+V+O+OのO1は目的格","cat":"5文型"},{"q":"次のうち第3文型はどれか","ch":["I like dogs.","She is kind.","He gave me a gift.","We call him Ken."],"a":0,"exp":"S+V+Oが第3文型","cat":"5文型"},{"q":"They ___ him their leader.（第5文型）","ch":["made","gave","told","said"],"a":0,"exp":"make O C：OをCにする（第5文型）","cat":"5文型"},{"q":"'To swim' in 'To swim is fun' is a ___.","ch":["noun phrase","adjective phrase","adverb phrase","verb phrase"],"a":0,"exp":"主語になる句は名詞句","cat":"句の役割"},{"q":"第1文型（S+V）はどれか","ch":["Birds fly.","She seems happy.","I want water.","He told me the truth."],"a":0,"exp":"S+Vだけで完結する","cat":"5文型"},{"q":"'with red hair' の役割は","ch":["形容詞句","名詞句","副詞句","動詞句"],"a":0,"exp":"名詞を修飾するのは形容詞句","cat":"句の役割"},{"q":"She made me ___.（第5文型 目的語+補語）","ch":["happy","happiness","to happy","happily"],"a":0,"exp":"第5文型のCは形容詞が来ることが多い","cat":"5文型"},{"q":"He runs in the park. の 'in the park' は？","ch":["副詞句","名詞句","形容詞句","補語"],"a":0,"exp":"動詞を修飾するのは副詞句","cat":"句の役割"}]},{"id":"g_b2","num":2,"title":"【文法】時制・態・助動詞","isLevelTest":false,"slides":[{"title":"基本時制","content":"英語の時制は「いつの話か」を示します。\n\n現在形：習慣・事実\n過去形：過去の事実\n未来（will/be going to）：予定・意志\n現在進行形（be+Ving）：今まさに〜している\n現在完了形（have+pp）：過去〜今まで継続・経験・完了","examples":[{"en":"She studies every day.","ja":"彼女は毎日勉強する（習慣）"},{"en":"I have lived here for 5 years.","ja":"私はここに5年間住んでいる（継続）"},{"en":"He has visited Paris twice.","ja":"彼はパリに2回行ったことがある（経験）"}]},{"title":"受動態","content":"受動態：be動詞 + 過去分詞（pp）\n「〜される・〜された」\n\n能動態→受動態の変換手順：\n①目的語を主語に\n②動詞をbe+ppに\n③元の主語をby〜に（省略可）","examples":[{"en":"English is spoken here.","ja":"ここでは英語が話される"},{"en":"The cake was eaten by him.","ja":"そのケーキは彼に食べられた"},{"en":"This book is loved by many people.","ja":"この本は多くの人に愛されている"}]},{"title":"助動詞の基本","content":"助動詞は動詞の意味を補う語です。\n\ncan：能力・可能\nmust：義務・強い推量\nshould：義務・助言\nmay：許可・推量\nwill：未来・意志\nwould：丁寧な依頼・過去の習慣","examples":[{"en":"You must study hard.","ja":"一生懸命勉強しなければならない"},{"en":"Can you help me?","ja":"手伝ってもらえますか"},{"en":"She may be right.","ja":"彼女は正しいかもしれない"}]}],"questions":[{"q":"She ___ in Tokyo for 10 years.（継続）","ch":["has lived","lived","lives","will live"],"a":0,"exp":"for〜の継続はhave+pp（現在完了）","cat":"時制"},{"q":"The letter ___ by Tom.（受動態）","ch":["was written","wrote","is writing","has write"],"a":0,"exp":"受動態はbe+pp","cat":"受動態"},{"q":"You ___ tell lies.（禁止）","ch":["must not","cannot","should","may not"],"a":0,"exp":"must notは「〜してはならない」（禁止）","cat":"助動詞"},{"q":"I ___ here before.（経験）","ch":["have been","was","am","will be"],"a":0,"exp":"before+経験はhave+pp（現在完了）","cat":"時制"},{"q":"She ___ be sick. She looks pale.（推量）","ch":["may","must","will","can"],"a":0,"exp":"mayは「〜かもしれない」（推量）","cat":"助動詞"},{"q":"The window ___ broken.","ch":["was","is being","has","did"],"a":0,"exp":"受動態はbe+pp","cat":"受動態"},{"q":"I ___ to Paris twice.（経験）","ch":["have been","went","go","will go"],"a":0,"exp":"twiceと経験はhave+pp","cat":"時制"},{"q":"___ I use your pen?（許可を求める）","ch":["May","Must","Should","Will"],"a":0,"exp":"許可を求めるのはMay/Can","cat":"助動詞"},{"q":"He ___ play soccer when young.（過去の習慣）","ch":["would","should","must","may"],"a":0,"exp":"wouldは過去の習慣","cat":"助動詞"},{"q":"English ___ all over the world.（現在受動）","ch":["is spoken","speaks","spoke","has spoken"],"a":0,"exp":"現在の受動態はis/are+pp","cat":"受動態"}]},{"id":"g_b3","num":3,"title":"【文法】準動詞基礎","isLevelTest":false,"slides":[{"title":"不定詞の基本","content":"不定詞：to + 動詞の原形\n\n【名詞的用法】〜すること\n【形容詞的用法】〜するための（名詞を修飾）\n【副詞的用法】〜するために（目的）","examples":[{"en":"To learn English is fun.","ja":"英語を学ぶことは楽しい（名詞的）"},{"en":"I have a book to read.","ja":"読む本がある（形容詞的）"},{"en":"She studied hard to pass the exam.","ja":"試験に合格するために努力した（副詞的）"}]},{"title":"動名詞","content":"動名詞：動詞+ing（〜すること）\n\n動名詞は名詞と同じ働きをする\n\n注意：動名詞のみを目的語にとる動詞\nenjoy, finish, avoid, mind, give up など\n\n不定詞のみ：want, hope, decide, refuse など","examples":[{"en":"Swimming is good for health.","ja":"水泳は健康に良い（主語）"},{"en":"She enjoys cooking.","ja":"彼女は料理を楽しむ"},{"en":"He gave up smoking.","ja":"彼は喫煙をやめた"}]},{"title":"分詞（現在分詞・過去分詞）","content":"現在分詞（Ving）：能動・進行中\n過去分詞（pp）：受動・完了\n\n分詞は形容詞として名詞を修飾\n前置修飾：分詞+名詞\n後置修飾：名詞+分詞句","examples":[{"en":"the running boy","ja":"走っている少年（現在分詞）"},{"en":"a broken window","ja":"割れた窓（過去分詞）"},{"en":"The girl sitting by the window is Ann.","ja":"窓際に座っている女の子はアン"}]}],"questions":[{"q":"She wants ___ a doctor.","ch":["to be","being","be","been"],"a":0,"exp":"wantは不定詞を目的語にとる","cat":"準動詞"},{"q":"He enjoys ___ music.","ch":["listening to","to listen to","listen to","listened to"],"a":0,"exp":"enjoyは動名詞を目的語にとる","cat":"準動詞"},{"q":"I have a lot of homework ___.","ch":["to do","doing","done","do"],"a":0,"exp":"名詞を修飾する不定詞（形容詞的用法）","cat":"準動詞"},{"q":"She studied hard ___ the exam.（目的）","ch":["to pass","passing","passed","pass"],"a":0,"exp":"目的を表す不定詞（副詞的用法）","cat":"準動詞"},{"q":"He gave up ___ English.","ch":["studying","to study","studied","study"],"a":0,"exp":"give upは動名詞を目的語にとる","cat":"準動詞"},{"q":"Look at the ___ girl.（走っている）","ch":["running","run","ran","runs"],"a":0,"exp":"進行中の状態は現在分詞","cat":"準動詞"},{"q":"I avoided ___ him.","ch":["meeting","to meet","met","meet"],"a":0,"exp":"avoidは動名詞を目的語にとる","cat":"準動詞"},{"q":"The language ___ in Brazil is Portuguese.","ch":["spoken","speaking","speaks","speak"],"a":0,"exp":"受動の意味を表すのは過去分詞","cat":"準動詞"},{"q":"___ the book, he fell asleep.（分詞構文）","ch":["Reading","Read","Reads","To read"],"a":0,"exp":"分詞構文は現在分詞で始まる","cat":"準動詞"},{"q":"Do you mind ___ here?","ch":["waiting","to wait","waited","wait"],"a":0,"exp":"mindは動名詞を目的語にとる","cat":"準動詞"}]},{"id":"g_b4","num":4,"title":"【文法】関係詞・接続詞・比較","isLevelTest":false,"slides":[{"title":"関係代名詞の基礎","content":"関係代名詞は名詞（先行詞）を修飾する節を導きます。\n\nwho：人が先行詞（主格・目的格）\nwhich：物・事が先行詞\nthat：人・物どちらも可（主格・目的格）\nwhose：所有格（〜のwhich/who）","examples":[{"en":"The man who lives next door is kind.","ja":"隣に住む男性は親切だ"},{"en":"This is the book which I bought.","ja":"これは私が買った本だ"},{"en":"She is the girl whose father is a doctor.","ja":"彼女は父が医者の女の子"}]},{"title":"接続詞の基礎","content":"【等位接続詞】and, but, or, so\n同等の語・句・節を結ぶ\n\n【従位接続詞】because, when, if, although, that\n主節に副詞節や名詞節を加える","examples":[{"en":"I was tired, but I kept studying.","ja":"疲れていたが勉強し続けた"},{"en":"If it rains, we will stay home.","ja":"雨が降れば家にいる"},{"en":"I think that she is right.","ja":"私は彼女が正しいと思う"}]},{"title":"比較の基礎","content":"【原級】as + 形容詞 + as〜（同じくらい）\n【比較級】形容詞+er / more+形容詞 + than〜\n【最上級】the + 形容詞+est / the most+形容詞\n\n不規則変化：good→better→best\nbad→worse→worst","examples":[{"en":"He is as tall as Tom.","ja":"彼はトムと同じくらい背が高い"},{"en":"She is taller than Mary.","ja":"彼女はメアリーより背が高い"},{"en":"This is the most interesting book.","ja":"これは最も面白い本だ"}]}],"questions":[{"q":"The man ___ came here is my uncle.","ch":["who","which","whose","whom"],"a":0,"exp":"先行詞が人で主格はwho","cat":"関係詞"},{"q":"This is the book ___ I've been looking for.","ch":["which","who","whose","whom"],"a":0,"exp":"先行詞が物の場合はwhich/that","cat":"関係詞"},{"q":"He is as ___ as his brother.","ch":["tall","taller","tallest","more tall"],"a":0,"exp":"as〜asの原級比較","cat":"比較"},{"q":"___ you are tired, keep going.（譲歩）","ch":["Although","Because","If","When"],"a":0,"exp":"Althoughは「〜にもかかわらず」","cat":"接続詞"},{"q":"She is the ___ student in the class.","ch":["best","better","good","most good"],"a":0,"exp":"最上級にはthe+形容詞+est","cat":"比較"},{"q":"The girl ___ father is famous sings well.","ch":["whose","who","which","that"],"a":0,"exp":"所有格の関係代名詞はwhose","cat":"関係詞"},{"q":"I like coffee ___ tea.（どちらかといえば）","ch":["better than","more than","as well as","rather than"],"a":0,"exp":"〜よりも好き=better than","cat":"比較"},{"q":"___ it was raining, we went out.","ch":["Although","Because","If","That"],"a":0,"exp":"Althoughは逆接の従位接続詞","cat":"接続詞"},{"q":"This is the place ___ I was born.","ch":["where","which","that","who"],"a":0,"exp":"場所の先行詞にはwhereを使う（関係副詞）","cat":"関係詞"},{"q":"He runs ___ than anyone else.","ch":["faster","fast","fastest","more fast"],"a":0,"exp":"比較級はfasterが正しい不規則変化はない","cat":"比較"}]},{"id":"r_b1","num":5,"title":"【読解】英文解釈・直読直解","isLevelTest":false,"slides":[{"title":"英文の構造を見抜く","content":"英文を読む基本は「返り読みしない」こと。\n意味のかたまり（チャンク）ごとに前から理解します。\n\nチャンクの区切り方：\n① 主語のかたまり\n② 動詞のかたまり\n③ 目的語・補語のかたまり\n④ 修飾語のかたまり","examples":[{"en":"The boy / who lives next door / plays / the piano / every day.","ja":"その少年が / 隣に住んでいる / 弾く / ピアノを / 毎日"},{"en":"She decided / to study abroad / next year.","ja":"彼女は決めた / 留学することを / 来年"},{"en":"It is important / to read many books.","ja":"重要だ / 多くの本を読むことが"}]},{"title":"主節と従属節の識別","content":"【主節】文の中心となる節\n【従属節】主節に従属する節\n\n従属節を導く語：\n・接続詞：when, because, if, although, that\n・関係詞：who, which, where, when\n\n従属節を「カッコ」で囲むと主節が見えやすい","examples":[{"en":"When she arrived, / I was sleeping.","ja":"彼女が着いたとき / 私は寝ていた"},{"en":"I think [that he is honest].","ja":"私は思う [彼が正直だと]"},{"en":"The book [which I bought] / is interesting.","ja":"その本 [私が買った] / は面白い"}]},{"title":"スラッシュ読みで速読","content":"意味の区切りにスラッシュ（/）を入れて、前から理解する練習をします。\n\n目安の区切り：\n・接続詞・関係詞の前\n・長い修飾語の前後\n・カンマの位置\n\n1日300語の音読を継続することが大切です。","examples":[{"en":"Although it was raining, / she went out / without an umbrella.","ja":"雨が降っていたが / 彼女は外に出た / 傘なしで"},{"en":"The fact / that he lied / surprised us.","ja":"事実は / 彼が嘘をついたという / 私たちを驚かせた"},{"en":"She is / one of the most talented singers / I have ever heard.","ja":"彼女は / 最も才能ある歌手の一人だ / 私がこれまで聴いた"}]}],"questions":[{"q":"'When she arrived, I was sleeping.' の主節はどれか","ch":["I was sleeping","When she arrived","she arrived","When she"],"a":0,"exp":"whenは従位接続詞、主節はI was sleeping","cat":"英文解釈"},{"q":"'The book which I bought is interesting.' のwhich節は？","ch":["which I bought","The book","is interesting","I bought is"],"a":0,"exp":"which I boughtが関係詞節（形容詞節）","cat":"英文解釈"},{"q":"'It is important to read books.' のItは？","ch":["形式主語","指示代名詞","強調のit","本当の主語"],"a":0,"exp":"to read booksが真の主語、Itは形式主語","cat":"英文解釈"},{"q":"スラッシュを入れる適切な位置はどこか：'I think that she is right'","ch":["I think / that she is right","I / think that / she is right","I think that / she / is right","I think / that / she is / right"],"a":0,"exp":"thatの前でスラッシュ（名詞節の前）","cat":"直読直解"},{"q":"'Although it was raining, she went out.' の'Although'節の役割","ch":["副詞節","名詞節","形容詞節","主節"],"a":0,"exp":"Althoughは副詞節を導く従位接続詞","cat":"英文解釈"},{"q":"'The fact that he lied surprised us.' のthat節は？","ch":["同格のthat節","関係代名詞節","副詞節","形容詞節"],"a":0,"exp":"factと同格の名詞節（同格のthat）","cat":"英文解釈"},{"q":"直読直解とはどういう意味か","ch":["返り読みせず前から理解する","日本語訳を先に考える","文法を無視して読む","速く読むだけ"],"a":0,"exp":"英語の語順のまま理解することが直読直解","cat":"直読直解"},{"q":"'She decided to study abroad next year.' のto不定詞の用法","ch":["名詞的用法","形容詞的用法","副詞的用法","分詞"],"a":0,"exp":"decidedの目的語になっているので名詞的用法","cat":"英文解釈"},{"q":"チャンクの区切りとして適切でないのはどれ","ch":["動詞の途中","接続詞の前","関係詞の前","カンマの位置"],"a":0,"exp":"動詞（述語）は1つのかたまりなので途中では切らない","cat":"直読直解"},{"q":"'He is one of the best players I have ever seen.' のI have ever seenは？","ch":["関係代名詞節（playersを修飾）","副詞節","名詞節","形式主語の節"],"a":0,"exp":"目的格の関係代名詞thatが省略された関係詞節","cat":"英文解釈"}]},{"id":"w_b1","num":6,"title":"【英作文】基礎・発想の転換","isLevelTest":false,"slides":[{"title":"英作文の基本姿勢","content":"日本語を直訳しようとすると詰まります。\n\n【発想の転換】\n「子供に説明するように簡単な日本語に言い換える」\n\n例：「彼女は目が大きい」\n→「彼女は大きな目を持っている」\n→ She has big eyes.","examples":[{"en":"She has big eyes.","ja":"彼女は目が大きい（直訳しない）"},{"en":"It is cold today.","ja":"今日は寒い（Itは天気・状況を表すIt）"},{"en":"I am hungry.","ja":"お腹が空いた（「お腹」を直訳しない）"}]},{"title":"時制の選び方","content":"英語は「現実か仮想か」「現在か過去か」で時制が決まります。\n\n【現実】現在形・過去形・完了形\n【仮想（仮定法）】過去形・過去完了形\n\n今「〜している」→進行形\n〜したことがある→現在完了（経験）","examples":[{"en":"If I were a bird, I could fly.","ja":"鳥なら飛べるのに（仮定法：現実ではない）"},{"en":"I have been to Paris.","ja":"パリに行ったことがある（経験）"},{"en":"She is studying now.","ja":"彼女は今勉強しています（進行形）"}]},{"title":"名詞の単数・複数と冠詞","content":"英語では名詞を「数」で意識することが重要です。\n\n冠詞のルール：\na/an：初めて出てくる単数の可算名詞\nthe：特定のもの、すでに話に出たもの\n冠詞なし：不可算名詞・複数名詞の一般的な話\n\n可算名詞：本、机、犬など（数えられる）\n不可算名詞：水、情報、音楽など（数えられない）","examples":[{"en":"I have a dog. The dog is cute.","ja":"犬を飼っている。その犬はかわいい（a→the）"},{"en":"Water is important for life.","ja":"水は生命に重要（冠詞なし：一般論）"},{"en":"I need some information.","ja":"情報が必要（informationは不可算）"}]}],"questions":[{"q":"「彼女は髪が長い」の英訳として最も自然なのは","ch":["She has long hair.","She is long hair.","Her hair is long-haired.","She has a long hair."],"a":0,"exp":"have構文で表現（hairは不可算名詞でaは不要）","cat":"英作文基礎"},{"q":"「今日は寒い」の英訳","ch":["It is cold today.","Today is cold.","The weather is cold today.","Cold is today."],"a":0,"exp":"天候はIt is〜で表す","cat":"英作文基礎"},{"q":"初めて登場する単数可算名詞に付ける冠詞","ch":["a/an","the","冠詞なし","its"],"a":0,"exp":"初出の単数可算名詞にはa/an","cat":"冠詞"},{"q":"「私はパリに行ったことがある」","ch":["I have been to Paris.","I went to Paris.","I went to Paris.","I was in Paris."],"a":0,"exp":"経験はhave been to","cat":"時制"},{"q":"'information' はどんな名詞か","ch":["不可算名詞","可算名詞","固有名詞","集合名詞"],"a":0,"exp":"informationは不可算名詞（複数形なし）","cat":"名詞"},{"q":"「雨が降っている」","ch":["It is raining.","The rain is falling.","It rains now.","Rain is coming."],"a":0,"exp":"天候+今進行中なのでIt is raining","cat":"英作文基礎"},{"q":"「もし私が鳥なら飛べるのに」（現実ではない）","ch":["If I were a bird, I could fly.","If I am a bird, I can fly.","If I was a bird, I will fly.","Unless I were a bird, I could fly."],"a":0,"exp":"現実ではない仮定は仮定法過去","cat":"時制"},{"q":"'I need ___ information.'（情報が必要）","ch":["some","a","an","one"],"a":0,"exp":"不可算名詞にa/anは使えない、someを使う","cat":"冠詞"},{"q":"「その映画は面白かった」（特定の映画）","ch":["The movie was interesting.","A movie was interesting.","Movie was interesting.","That movie is interesting."],"a":0,"exp":"特定のものにはthe","cat":"冠詞"},{"q":"「彼女は今料理をしている」","ch":["She is cooking now.","She cooks now.","She has cooked now.","She was cooking now."],"a":0,"exp":"今まさに〜しているは現在進行形","cat":"時制"}]}],"standard":[{"id":"g_s1","num":1,"title":"【文法】仮定法","isLevelTest":false,"slides":[{"title":"仮定法過去","content":"現在の事実に反する仮定を表す。\n\n形：If + 主語 + 動詞の過去形〜, 主語 + would/could/might + 動詞原形\n\nbe動詞は主語に関わらずwereを使う（口語ではwasも可）\n\n日本語：「〜なら…なのに」","examples":[{"en":"If I had more time, I would travel.","ja":"もっと時間があれば旅行するのに"},{"en":"If she were a doctor, she could help.","ja":"彼女が医者なら助けられるのに"},{"en":"I wish I could speak French.","ja":"フランス語を話せたらなあ（I wish〜）"}]},{"title":"仮定法過去完了","content":"過去の事実に反する仮定を表す。\n\n形：If + 主語 + had + pp〜, 主語 + would/could + have + pp\n\n日本語：「〜していたら…だったのに」\n\nmixed conditionalに注意：\nIf + had+pp〜, would動詞原形（過去→現在への影響）","examples":[{"en":"If I had studied harder, I would have passed.","ja":"もっと勉強していたら合格していたのに"},{"en":"If she had come, we would have been happy.","ja":"彼女が来ていたら嬉しかったのに"},{"en":"I wish I had been there.","ja":"そこにいればよかった"}]},{"title":"倒置・省略を用いた仮定法","content":"Ifを省略して倒置する形式（書き言葉・フォーマル）\n\nIf I were you → Were I you\nIf I had known → Had I known\nIf it should rain → Should it rain\n\nwithout/but for〜「〜がなければ」も重要","examples":[{"en":"Were I you, I would refuse.","ja":"私があなたなら断るのに"},{"en":"Had I known the truth, I would have acted.","ja":"真実を知っていれば行動していたのに"},{"en":"Without your help, I would have failed.","ja":"あなたの助けがなければ失敗していた"}]}],"questions":[{"q":"If I ___ rich, I would travel the world.","ch":["were","am","was","be"],"a":0,"exp":"仮定法過去のbe動詞はwere（wereが正式）","cat":"仮定法"},{"q":"If she ___ harder, she would have passed.","ch":["had studied","studied","would study","has studied"],"a":0,"exp":"仮定法過去完了のIf節はhad+pp","cat":"仮定法"},{"q":"I wish I ___ fly.","ch":["could","can","would","should"],"a":0,"exp":"I wishは現在の願望→仮定法過去（could）","cat":"仮定法"},{"q":"___ I you, I wouldn't do that.（倒置）","ch":["Were","If","Was","Am"],"a":0,"exp":"If I were→Were Iと倒置","cat":"仮定法"},{"q":"Without your help, I ___ failed.","ch":["would have","will have","had","would"],"a":0,"exp":"Without〜は過去への影響→would have+pp","cat":"仮定法"},{"q":"If he ___ the truth, he would have helped.","ch":["had known","knew","knows","would know"],"a":0,"exp":"仮定法過去完了のIf節はhad+pp","cat":"仮定法"},{"q":"I wish I ___ there yesterday.（後悔）","ch":["had been","was","were","am"],"a":0,"exp":"過去の後悔はI wish+had+pp","cat":"仮定法"},{"q":"___ it rain tomorrow, we will cancel.（フォーマルな仮定）","ch":["Should","If","Would","Were"],"a":0,"exp":"Should〜は「万が一〜なら」（フォーマルな仮定）","cat":"仮定法"},{"q":"If I ___ you, I would accept the offer.","ch":["were","am","was","be"],"a":0,"exp":"If I were you（仮定法過去）","cat":"仮定法"},{"q":"Had she worked harder, she ___ passed.","ch":["would have","would","had","could"],"a":0,"exp":"倒置の仮定法過去完了→would have+pp","cat":"仮定法"}]},{"id":"g_s2","num":2,"title":"【文法】準動詞応用","isLevelTest":false,"slides":[{"title":"意味上の主語","content":"不定詞・動名詞の意味上の主語が文の主語と異なる場合：\n\n不定詞：for + 目的格 + to不定詞\nIt is kind of you to help.（of+目的格：性質を表す形容詞）\n\n独立不定詞：to be honest, to tell the truth, so to speak など","examples":[{"en":"It is easy for me to swim.","ja":"私には泳ぐことは簡単だ"},{"en":"It is kind of you to help me.","ja":"助けてくれるとは親切ですね"},{"en":"To be honest, I don't agree.","ja":"正直に言うと、賛成ではない"}]},{"title":"分詞構文","content":"分詞構文：接続詞+主語を分詞句に置き換えた形\n\n作り方：\n①接続詞と主節の主語を省略\n②動詞を現在分詞に変換\n③完了を表す場合：Having+pp\n④否定：Not+分詞\n\n意味：時・理由・条件・譲歩・付帯状況","examples":[{"en":"Walking along the street, I met Tom.","ja":"通りを歩いていたとき、トムに会った"},{"en":"Having finished homework, she went out.","ja":"宿題を終えてから、彼女は外出した"},{"en":"Not knowing the answer, he kept quiet.","ja":"答えを知らなかったので、彼は黙っていた"}]},{"title":"原形不定詞","content":"原形不定詞（toなし）を使う主な構文：\n\n使役動詞：make/have/let + O + 動詞原形\n知覚動詞：see/hear/feel + O + 動詞原形（進行はVing）\nhelp + O + （to）動詞原形\ncannot help Ving：〜せずにいられない","examples":[{"en":"She made him clean the room.","ja":"彼女は彼に部屋を掃除させた"},{"en":"I heard her sing.","ja":"私は彼女が歌うのを聞いた"},{"en":"I cannot help laughing.","ja":"笑わずにいられない"}]}],"questions":[{"q":"It is easy ___ me to understand.","ch":["for","of","to","by"],"a":0,"exp":"意味上の主語はfor+目的格（一般的な性質）","cat":"準動詞応用"},{"q":"It is kind ___ you to say so.","ch":["of","for","to","by"],"a":0,"exp":"人の性質（kind, clever）はof+目的格","cat":"準動詞応用"},{"q":"___ the book, I fell asleep.（読んでいたら眠くなった）","ch":["Reading","Read","Having read","To read"],"a":0,"exp":"同時進行の分詞構文は現在分詞","cat":"分詞構文"},{"q":"___ my homework, I went out.（宿題を終えてから）","ch":["Having finished","Finishing","Finished","To finish"],"a":0,"exp":"主節の動作より前の動作→Having+pp","cat":"分詞構文"},{"q":"She made him ___ the dishes.","ch":["wash","to wash","washing","washed"],"a":0,"exp":"makeは使役動詞→原形不定詞","cat":"原形不定詞"},{"q":"I saw her ___ in the park.","ch":["run","running","to run","ran"],"a":0,"exp":"知覚動詞+O+動詞原形（Vingも可）","cat":"原形不定詞"},{"q":"___ the truth, I made a mistake.","ch":["To tell","Telling","Told","Tell"],"a":0,"exp":"To tell the truth（独立不定詞）=正直に言うと","cat":"準動詞応用"},{"q":"I cannot help ___ when I see him.","ch":["laughing","laugh","to laugh","laughed"],"a":0,"exp":"cannot help Ving=〜せずにいられない","cat":"準動詞応用"},{"q":"___ knowing what to do, she cried.（否定の分詞構文）","ch":["Not","Without","Never","No"],"a":0,"exp":"分詞構文の否定はNot+分詞","cat":"分詞構文"},{"q":"He had his car ___.（修理してもらった）","ch":["repaired","repair","to repair","repairing"],"a":0,"exp":"have O pp：〜してもらう（受動の使役）","cat":"原形不定詞"}]},{"id":"g_s3","num":3,"title":"【文法】語法・前置詞・否定","isLevelTest":false,"slides":[{"title":"動詞の語法","content":"動詞によって取る目的語や構文が異なります。\n\n【to不定詞のみ】want, wish, hope, decide, refuse, promise\n【動名詞のみ】enjoy, finish, avoid, mind, give up, stop\n【両方可・意味同じ】like, love, hate, begin, start\n【両方可・意味異なる】remember, forget, try, stop","examples":[{"en":"Remember to call her.（忘れずに電話する）","ja":"電話することを覚えておく"},{"en":"I remember meeting her.（会ったことを覚えている）","ja":"以前彼女に会ったことを覚えている"},{"en":"Try to finish by noon.（〜しようとする）","ja":"正午までに終わらせようとする"}]},{"title":"前置詞のコアイメージ","content":"前置詞は意味の核（コアイメージ）で覚えると応用が効きます。\n\nin：囲まれた空間の内部\non：面への接触\nat：点・地点・時刻\nfor：方向・期間・理由\nwith：伴う・道具\nby：手段・期限・近接","examples":[{"en":"She lives in Japan.","ja":"日本（の中）に住む（in=内部）"},{"en":"Put it on the table.","ja":"テーブルの上に置く（on=接触）"},{"en":"I'll be there by 5.","ja":"5時までに行く（by=期限）"}]},{"title":"否定・強調・倒置","content":"【否定】\nnot A but B：AではなくB\nnot only A but also B：AだけでなくBも\nno longer/not anymore：もはや〜でない\nnever/hardly/scarcely：ほとんど〜ない\n\n【強調・倒置】\nIt is〜that...強調構文\n否定語（Never, Not only）が文頭→倒置","examples":[{"en":"It is Tom that I love.","ja":"私が愛しているのはトムだ（強調構文）"},{"en":"Never have I seen such a thing.","ja":"そんなものを見たことがない（倒置）"},{"en":"Not only did he fail, but he also quit.","ja":"彼は失敗しただけでなく辞めもした"}]}],"questions":[{"q":"I ___ to study abroad someday.","ch":["hope","enjoy","finish","avoid"],"a":0,"exp":"hopeはto不定詞を目的語にとる","cat":"動詞語法"},{"q":"She stopped ___ and started walking.","ch":["running","to run","run","ran"],"a":0,"exp":"stop Ving：〜するのをやめた（stop to不定詞は〜するために立ち止まる）","cat":"動詞語法"},{"q":"I ___ meeting her at the party last year.","ch":["remember","forget","stop","avoid"],"a":0,"exp":"remember Ving：過去に〜したことを覚えている","cat":"動詞語法"},{"q":"He lives ___ Tokyo.（東京に住んでいる）","ch":["in","at","on","by"],"a":0,"exp":"都市名にはin（広い空間の内部）","cat":"前置詞"},{"q":"I'll finish ___ noon.（正午までに）","ch":["by","until","to","at"],"a":0,"exp":"期限はby（until=〜まで継続）","cat":"前置詞"},{"q":"It is English ___ I am studying now.（強調構文）","ch":["that","which","what","who"],"a":0,"exp":"強調構文はIt is〜that...","cat":"強調・倒置"},{"q":"Not only ___ he fail, but he also gave up.","ch":["did","was","is","has"],"a":0,"exp":"否定語が文頭→助動詞+主語の倒置","cat":"強調・倒置"},{"q":"She is interested ___ music.","ch":["in","on","at","for"],"a":0,"exp":"be interested in〜（〜に興味がある）","cat":"前置詞"},{"q":"I ___ eating breakfast.（朝食を食べることを楽しむ）","ch":["enjoy","want","hope","decide"],"a":0,"exp":"enjoyは動名詞を目的語にとる","cat":"動詞語法"},{"q":"Never ___ I seen such a beautiful place.（倒置）","ch":["have","had","was","did"],"a":0,"exp":"Neverが文頭→have I（現在完了の倒置）","cat":"強調・倒置"}]},{"id":"r_s1","num":4,"title":"【読解】スキミング・スキャニング","isLevelTest":false,"slides":[{"title":"スキミング（大意把握）","content":"スキミング：文章全体をざっと読んで大意を把握するテクニック。\n\n方法：\n①最初と最後のパラグラフを読む\n②各パラグラフの最初の文（トピックセンテンス）を読む\n③キーワードを拾いながら高速で読む\n\n目標：400〜500語を2〜3分で大意把握","examples":[{"en":"The main point is usually in the first sentence of each paragraph.","ja":"要点は通常各段落の最初の文にある"},{"en":"Look for repeated words as they signal key themes.","ja":"繰り返される語はテーマのシグナル"},{"en":"Don't read every word — focus on the big picture.","ja":"すべての語を読まず全体像をつかむ"}]},{"title":"スキャニング（情報検索）","content":"スキャニング：特定の情報を素早く見つけるテクニック。\n\n方法：\n①何を探すか明確にしてから読む\n②数字・固有名詞・キーワードに目を走らせる\n③見つかったらその周辺を丁寧に読む\n\n使う場面：設問の答えを本文中から探す","examples":[{"en":"When answering questions, find keywords from the question in the text first.","ja":"設問のキーワードを本文から先に探す"},{"en":"Numbers and proper nouns are easy to spot while scanning.","ja":"数字と固有名詞はスキャニングで見つけやすい"},{"en":"Look at the question before reading to know what to scan for.","ja":"本文を読む前に設問を確認する"}]},{"title":"設問タイプ別対策","content":"長文問題の主な設問タイプ：\n\n【内容一致問題】\n本文と一致するもの・しないものを選ぶ\n→ キーワードで本文を検索し、周辺を精読\n\n【空所補充】\n文脈から最も適切な語・句を選ぶ\n→ 前後の流れ（接続表現）に注目\n\n【下線部言い換え】\n下線部と同じ意味の表現を選ぶ\n→ 同義語・言い換え表現の知識が必要","examples":[{"en":"The passage says..., so the answer is...","ja":"本文には〜とあるので答えは〜"},{"en":"The word 'significant' in line 5 means...","ja":"5行目の'significant'は〜を意味する"},{"en":"Choose the best word to fill in the blank.","ja":"空所に最も適切な語を選べ"}]}],"questions":[{"q":"スキミングの主な目的は","ch":["文章全体の大意を素早く把握する","特定の情報を探す","文法的に正確に読む","すべての語を理解する"],"a":0,"exp":"スキミングはざっと読んで全体像をつかむ","cat":"読解技術"},{"q":"スキャニングの主な目的は","ch":["特定の情報を素早く見つける","大意を把握する","文を精読する","全文を覚える"],"a":0,"exp":"スキャニングは特定情報の検索","cat":"読解技術"},{"q":"各パラグラフの要点が書かれる傾向があるのは","ch":["最初の文（トピックセンテンス）","最後の文","中間部","全文に均等に散らばる"],"a":0,"exp":"トピックセンテンスは通常最初の文","cat":"読解技術"},{"q":"内容一致問題の解き方として最も効果的なのは","ch":["設問のキーワードで本文を検索する","本文全体を精読してから設問を解く","選択肢をすべて本文と照合する","勘で答える"],"a":0,"exp":"設問キーワードでスキャニング後、周辺を精読","cat":"読解技術"},{"q":"スキャニング中に特に目を向けるべきものは","ch":["数字・固有名詞・キーワード","接続詞","冠詞","すべての動詞"],"a":0,"exp":"数字・固有名詞はスキャニングで発見しやすい","cat":"読解技術"},{"q":"空所補充問題で特に注目すべき要素は","ch":["前後の接続表現と文脈","文章の冒頭","数字","固有名詞"],"a":0,"exp":"空所の前後の流れ・接続表現が手がかり","cat":"読解技術"},{"q":"長文を読む前にすべきことは","ch":["設問に目を通してから読む","最後から読む","全文を2回読む","単語を辞書で調べる"],"a":0,"exp":"設問を先に確認して何を探すかを明確にする","cat":"読解技術"},{"q":"'significant' の言い換えとして適切なのは","ch":["important","small","recent","various"],"a":0,"exp":"significantは「重要な・著しい」","cat":"語彙"},{"q":"スキミングで最も読むべき部分は","ch":["最初と最後のパラグラフ、各段落の冒頭文","文章の中間部","接続詞の前","数字の周辺"],"a":0,"exp":"最初・最後・各段落頭でスキミング","cat":"読解技術"},{"q":"下線部言い換え問題で必要な力は","ch":["同義語・パラフレーズの知識","スキャニング技術","文法知識","スピード"],"a":0,"exp":"言い換え（パラフレーズ）の知識が必要","cat":"読解技術"}]},{"id":"w_s1","num":5,"title":"【英作文】重要構文と文脈表現","isLevelTest":false,"slides":[{"title":"英作文の基本構文100","content":"英作文では「使える基本構文」を暗記することが大切です。\n\n重要構文の例：\n・It is 形容詞 for O to V\n・So 形容詞 that〜\n・too 形容詞 to V\n・Not A but B\n・The more〜, the more〜","examples":[{"en":"It is important for us to protect the environment.","ja":"私たちが環境を守ることは重要だ"},{"en":"She was so tired that she couldn't move.","ja":"彼女は疲れすぎて動けなかった"},{"en":"He was too busy to help me.","ja":"彼は忙しすぎて私を助けられなかった"}]},{"title":"文脈を踏まえた自然な英文","content":"英作文では「誰が誰に何を伝えるか」を意識します。\n\n自然な英文の条件：\n①文法的に正しい\n②文脈に合っている\n③英語らしい表現（直訳を避ける）\n\n「〜することができる」→ can + 動詞原形（be able toも可）\n「〜しなければならない」→ must / have to","examples":[{"en":"Many people find it difficult to balance work and life.","ja":"仕事と生活のバランスをとることを難しいと感じる人が多い"},{"en":"It goes without saying that health is important.","ja":"健康が重要なのは言うまでもない"},{"en":"What is important is to keep trying.","ja":"大切なのは挑戦し続けることだ"}]},{"title":"頻出構文の応用","content":"大学入試で頻出する英作文構文：\n\n・not only A but also B\n・either A or B / neither A nor B\n・Both A and B\n・The reason why〜 is that〜\n・It is not until〜 that〜（〜して初めて〜）","examples":[{"en":"Not only students but also teachers must study.","ja":"生徒だけでなく教師も勉強しなければならない"},{"en":"It is not until you lose your health that you appreciate it.","ja":"健康を失って初めてありがたさがわかる"},{"en":"The reason why I study English is that I want to travel.","ja":"英語を勉強する理由は旅行したいからだ"}]}],"questions":[{"q":"彼女は疲れすぎて眠れなかった。→ She was ___ tired ___ sleep.","ch":["too / to","so / that","such / that","very / to"],"a":0,"exp":"too〜to V：〜すぎて…できない","cat":"英作文構文"},{"q":"'So tired that she couldn't move' を書き換えると","ch":["too tired to move","very tired and couldn't move","tired so much to move","such tired that"],"a":0,"exp":"so〜that=too〜to","cat":"英作文構文"},{"q":"'It is not until A that B' の意味","ch":["Aして初めてBする","AだけどBでない","AのときBする","AかBか"],"a":0,"exp":"It is not until A that B＝Aして初めてBする","cat":"英作文構文"},{"q":"'Not only he but also she ___ here.'（動詞の一致）","ch":["is","are","were","have"],"a":0,"exp":"not only A but also BはBに動詞を一致させる","cat":"英作文構文"},{"q":"「健康が重要なのは言うまでもない」","ch":["It goes without saying that health is important.","Health is important without saying.","Needless to say, important is health.","It is needless to say health is important."],"a":0,"exp":"It goes without saying that〜／Needless to say, 〜","cat":"英作文構文"},{"q":"'The more you practice, ___ you become.'","ch":["the better","better","more good","the more good"],"a":0,"exp":"The more〜, the more〜（比例表現）","cat":"英作文構文"},{"q":"'I want to travel' を 'The reason why〜' で始めると","ch":["The reason why I study is that I want to travel.","The reason why I study is because I want to travel.","The reason is why I want to travel.","The reason is to travel."],"a":0,"exp":"The reason why〜 is that〜（becauseは不可）","cat":"英作文構文"},{"q":"「どちらも〜でない」はどの構文か","ch":["neither A nor B","either A or B","both A and B","not A or B"],"a":0,"exp":"neither A nor B：AもBも〜でない","cat":"英作文構文"},{"q":"'too busy to help' を so〜that構文に書き換えると","ch":["so busy that he couldn't help","so busy that he helped","such busy that couldn't","too busy that he not help"],"a":0,"exp":"too〜to V = so〜that+couldn't V","cat":"英作文構文"},{"q":"'What is important is ___.'（大切なのは〜すること）","ch":["to keep trying","keeping trying","you keep trying","try"],"a":0,"exp":"What is important is to V（to不定詞が補語）","cat":"英作文構文"}]}],"advanced":[{"id":"g_a1","num":1,"title":"【文法】高度な語法・イディオム","isLevelTest":false,"slides":[{"title":"二重目的語構文と語法","content":"第4文型（S+V+O1+O2）をとる動詞の整理：\n\ngive, send, show, teach, tell, offer →「give型」\nbuy, make, get, find, cook →「buy型」\n※buy型はfor O（toではない）\n\n第5文型の注意：\npersuade O to V / force O to V / enable O to V\nexpect O to V / allow O to V","examples":[{"en":"She gave me a book. / She gave a book to me.","ja":"give型はto Oでも言い換え可"},{"en":"He bought me a present. / He bought a present for me.","ja":"buy型はfor Oで言い換え"},{"en":"They allowed me to enter.","ja":"彼らは私が入ることを許可した（第5文型）"}]},{"title":"頻出イディオム（動詞中心）","content":"入試頻出イディオム（動詞を含む）：\n\ntake part in〜：〜に参加する\nmake up one's mind：決心する\nlook forward to Ving：〜を楽しみにする\ntake it for granted that〜：〜を当然と思う\ncome across〜：〜に偶然出会う\nlook into〜：〜を調査する","examples":[{"en":"She looked forward to meeting him.","ja":"彼女は彼に会うのを楽しみにしていた"},{"en":"I came across an old friend.","ja":"旧友に偶然出会った"},{"en":"Don't take it for granted that they will help.","ja":"彼らが助けてくれると当然と思うな"}]},{"title":"形容詞・名詞を含むイディオム","content":"入試頻出イディオム（形容詞・名詞）：\n\nbe aware of〜：〜を知っている・気づいている\nbe capable of Ving：〜する能力がある\nbe responsible for〜：〜に責任がある\nin spite of〜：〜にもかかわらず\nfor the sake of〜：〜のために\non condition that〜：〜という条件で","examples":[{"en":"She is capable of speaking 3 languages.","ja":"彼女は3言語を話す能力がある"},{"en":"In spite of the rain, they played.","ja":"雨にもかかわらず彼らはプレーした"},{"en":"I'll help you on condition that you try hard.","ja":"一生懸命やるという条件で助けよう"}]}],"questions":[{"q":"She looked forward to ___ him again.","ch":["seeing","see","saw","to see"],"a":0,"exp":"look forward to Ving（toは前置詞）","cat":"イディオム"},{"q":"He took it for ___ that she would come.","ch":["granted","given","sure","assumed"],"a":0,"exp":"take it for granted that〜","cat":"イディオム"},{"q":"They ___ part in the contest.","ch":["took","made","did","had"],"a":0,"exp":"take part in〜：〜に参加する","cat":"イディオム"},{"q":"She is capable ___ solving this.","ch":["of","to","for","in"],"a":0,"exp":"be capable of Ving","cat":"イディオム"},{"q":"'give型' 動詞のto Oへの書き換えで正しいのは","ch":["She gave a book to me.","She gave a book for me.","She gave me to a book.","She gave for me a book."],"a":0,"exp":"give型→to O（buy型→for O）","cat":"語法"},{"q":"In spite ___ the rain, we continued.","ch":["of","for","to","with"],"a":0,"exp":"in spite of〜（前置詞句）","cat":"イディオム"},{"q":"He made ___ his mind to study abroad.","ch":["up","out","over","off"],"a":0,"exp":"make up one's mind：決心する","cat":"イディオム"},{"q":"They enabled him ___ achieve his dream.","ch":["to","of","for","in"],"a":0,"exp":"enable O to V（第5文型）","cat":"語法"},{"q":"I came ___ an interesting article.","ch":["across","over","up","through"],"a":0,"exp":"come across〜：〜に偶然出会う","cat":"イディオム"},{"q":"She is responsible ___ the project.","ch":["for","of","to","in"],"a":0,"exp":"be responsible for〜","cat":"イディオム"}]},{"id":"r_a1","num":2,"title":"【読解】論理展開とディスコースマーカー","isLevelTest":false,"slides":[{"title":"ディスコースマーカーとは","content":"ディスコースマーカー：文章の論理的なつながりを示す語句。\n\n主な種類：\n【順接・追加】Furthermore, In addition, Moreover, Besides\n【逆接・対比】However, On the other hand, Nevertheless, Yet\n【因果】Therefore, As a result, Consequently, Thus\n【例示】For example, For instance, Such as, Namely\n【言い換え】In other words, That is to say, Put differently","examples":[{"en":"The drug is effective. However, it has side effects.","ja":"その薬は効果的だ。しかし副作用がある（逆接）"},{"en":"He failed the exam. Therefore, he studied harder.","ja":"彼は失敗した。そのため、より努力した（因果）"},{"en":"Many animals are endangered, for example, tigers.","ja":"多くの動物が絶滅危惧だ、例えばトラ（例示）"}]},{"title":"論理展開のパターン","content":"英語の説明文・論説文でよく使われる論理展開：\n\n①主張→理由→具体例（Claim → Reason → Example）\n②問題提起→原因→解決策\n③一般論→例外・反論→結論（再主張）\n④比較対照（A is〜, while B is〜）\n\nパラグラフの構造：\nトピックセンテンス＋サポート文＋まとめ","examples":[{"en":"Exercise is beneficial. First, it improves health. For example, running strengthens the heart.","ja":"運動は有益だ。まず健康を改善する。例えばランニングは心臓を強化する"},{"en":"Although many disagree, social media has its benefits.","ja":"多くの人が反対するが、SNSにはメリットがある（逆接→主張）"},{"en":"In conclusion, technology has transformed our lives.","ja":"結論として、テクノロジーは私たちの生活を変えた"}]},{"title":"筆者の主張を読み取る","content":"説明文・論説文では筆者の主張を正確に把握することが最重要です。\n\n主張の見つけ方：\n①最初と最後のパラグラフに注目\n②However, Therefore の後に来る文\n③繰り返し登場するキーワード\n④In conclusion, In short, Thus などの後の文\n\n反論・例外は主張を強調するための道具","examples":[{"en":"The key message often appears after 'However' or 'Therefore'.","ja":"主張はHoweverやThereforeの後に来ることが多い"},{"en":"Repeated keywords signal the central theme.","ja":"繰り返されるキーワードが中心テーマ"},{"en":"'In conclusion,' signals the final main point.","ja":"'In conclusion'の後が最終的な主張"}]}],"questions":[{"q":"'The weather was bad. ___, we went hiking.' （逆接）","ch":["Nevertheless","Therefore","Furthermore","For example"],"a":0,"exp":"Neverthelessは「それにもかかわらず」（逆接）","cat":"ディスコースマーカー"},{"q":"'She studied hard. ___, she passed.' （結果）","ch":["As a result","However","For instance","In contrast"],"a":0,"exp":"As a resultは「その結果」（因果関係）","cat":"ディスコースマーカー"},{"q":"'He is kind. ___, he is very smart.' （追加）","ch":["Moreover","However","Therefore","Nevertheless"],"a":0,"exp":"Moreoverは「さらに」（追加）","cat":"ディスコースマーカー"},{"q":"筆者の主張が来やすい場所はどこか","ch":["Howeverの後、In conclusionの後","文章の中間","具体例の直後","括弧内"],"a":0,"exp":"逆接・結論のマーカーの後に主張が来ることが多い","cat":"論理展開"},{"q":"'For example' の役割は","ch":["具体例を示す","逆接を示す","因果を示す","追加を示す"],"a":0,"exp":"For exampleは例示のディスコースマーカー","cat":"ディスコースマーカー"},{"q":"'In other words' の機能は","ch":["言い換え","逆接","因果","強調"],"a":0,"exp":"In other wordsは「言い換えると」","cat":"ディスコースマーカー"},{"q":"論説文の基本構造（Claim→Reason→Exampleの順）のExampleの役割","ch":["主張を具体的に裏付ける","主張を否定する","新しい主張を出す","結論を示す"],"a":0,"exp":"Exampleは主張・理由を具体的に支持する","cat":"論理展開"},{"q":"'Although many disagree, ...' の構造は","ch":["反論→主張","主張→反論","主張→具体例","結論→理由"],"a":0,"exp":"Althoughで反論を先に出し、後に主張を述べる","cat":"論理展開"},{"q":"'Furthermore' と 'However' の違いは","ch":["Furthermoreは追加、Howeverは逆接","Furthermoreは逆接、Howeverは追加","両方とも因果","両方とも例示"],"a":0,"exp":"Furthermore=追加、However=逆接","cat":"ディスコースマーカー"},{"q":"'In conclusion' の後に来るのは","ch":["最終的な主張・まとめ","具体例","反論","新しいトピック"],"a":0,"exp":"In conclusionは結論を示す","cat":"論理展開"}]},{"id":"w_a1","num":3,"title":"【英作文】整序・自由英作文基礎","isLevelTest":false,"slides":[{"title":"無生物主語構文","content":"英語では無生物（物・事）を主語にする表現が自然な場合があります。\n\n日本語：「〜のせいで…した」→英語：「〜が…させた」\n\nよく使う動詞：\nenable O to V（〜がOに…させる）\nprevent O from Ving（〜がOが…するのを防ぐ）\ncause O to V（〜がOに…させる）\nmake O 形容詞（〜がOを…にする）","examples":[{"en":"Heavy traffic made me late.","ja":"渋滞のせいで遅刻した（私が遅刻した、ではなく渋滞が主語）"},{"en":"This book enabled me to understand the concept.","ja":"この本のおかげで概念を理解できた"},{"en":"The rain prevented me from going out.","ja":"雨のせいで外出できなかった"}]},{"title":"整序英作文の解き方","content":"整序英作文（語句を並べ替えて英文を作る）のポイント：\n\n①まず動詞を探す（文の核）\n②主語になり得る語を探す\n③熟語・慣用句のかたまりを先に作る\n④修飾語の位置を考える（形容詞→名詞前、副詞→動詞後）\n⑤全体の意味を確認する","examples":[{"en":"[I / have / ever / met / the / most / person / kind] → the kindest person I have ever met","ja":"これまで会った中で最も親切な人"},{"en":"[she / was / so / that / tired / move / could / not] → She was so tired that she could not move.","ja":"so〜that構文を先に見抜く"},{"en":"[it / to / me / took / finish / an hour] → It took me an hour to finish.","ja":"It takes O 時間 to V のかたまり"}]},{"title":"自由英作文の型","content":"自由英作文の基本構造（3段落構成）：\n\n【第1段落】主張（My opinion is that...）\n【第2段落】理由＋具体例（First, ... For example, ...）\n【第3段落】結論（In conclusion, ...）\n\n使いやすい表現：\n・I believe that〜\n・One reason is that〜 / Another reason is that〜\n・In conclusion, I think that〜","examples":[{"en":"I believe that studying abroad is beneficial.","ja":"留学は有益だと思う（主張）"},{"en":"One reason is that it improves language skills.","ja":"一つの理由は語学力が上がること（理由）"},{"en":"In conclusion, everyone should try it.","ja":"結論として、誰もが挑戦すべきだ（結論）"}]}],"questions":[{"q":"「渋滞のせいで私は遅刻した」（無生物主語）","ch":["Heavy traffic made me late.","I was late because of heavy traffic.（直訳も可だが）","Late was caused by traffic.","The traffic did me late."],"a":0,"exp":"無生物主語：Heavy traffic made me late.","cat":"英作文応用"},{"q":"「雨のせいで外出できなかった」（prevent構文）","ch":["The rain prevented me from going out.","The rain stopped me to go out.","I couldn't go out by rain.","Rain prevented me to go out."],"a":0,"exp":"prevent O from Ving（fromを忘れずに）","cat":"英作文応用"},{"q":"整序問題で最初に探すべきものは","ch":["動詞（文の核）","形容詞","副詞","冠詞"],"a":0,"exp":"動詞を先に特定し、主語→目的語の順に組み立てる","cat":"整序英作文"},{"q":"'It took me ___ to finish.' に入るのは","ch":["an hour","for an hour","one hours","the hour"],"a":0,"exp":"It takes O 時間 to V（時間はan hour / 数+hour(s)）","cat":"英作文応用"},{"q":"'This book ___ me to understand.' に入る動詞は","ch":["enabled","prevented","caused","made"],"a":0,"exp":"enable O to V：〜がOに…させる（肯定的）","cat":"英作文応用"},{"q":"自由英作文の第2段落で使う接続表現は","ch":["One reason is that〜","I believe that〜","In conclusion〜","My opinion is〜"],"a":0,"exp":"第2段落は理由と具体例→One reason is that〜","cat":"英作文応用"},{"q":"整序：[was / so / she / tired / that / couldn't / she / move]","ch":["She was so tired that she couldn't move.","She was so that tired she couldn't move.","She so tired was that couldn't she move.","So she was tired that she move couldn't."],"a":0,"exp":"so〜that構文：so+形容詞+that+S+V","cat":"整序英作文"},{"q":"「この薬は私が回復するのを助けた」（enable/helpを使って）","ch":["This medicine helped me recover.","This medicine helped me to recover. (両方可)","This medicine made me recover.","All of the above can work."],"a":2,"exp":"help O (to) V, enable O to V, make O V どれも使える","cat":"英作文応用"},{"q":"'I believe that' の後に続くものは","ch":["主語+動詞の節","動名詞","to不定詞","形容詞"],"a":0,"exp":"that節（S+V）が続く","cat":"英作文応用"},{"q":"「理由は一つ目は〜、二つ目は〜」の英語表現","ch":["One reason is〜 Another reason is〜","First reason〜 Second reason〜","Because one〜 Because two〜","First of all one〜"],"a":0,"exp":"One reason is〜, Another reason is〜が自然","cat":"英作文応用"}]}],"exam":[{"id":"g_e1","num":1,"title":"【文法】実戦問題演習","isLevelTest":false,"slides":[{"title":"複数知識を組み合わせる問題","content":"入試の文法問題は複数の文法事項が絡み合います。\n\n【問題を解くプロセス】\n①文全体の構造を把握（S,V,O,Cを確認）\n②問われている箇所の品詞・構文を特定\n③選択肢の違いを確認\n④文脈・意味から絞り込む\n\n難関大では「なぜ正しいか」を説明できる深い理解が必要","examples":[{"en":"Not until he retired did he realize how happy he had been.","ja":"退職して初めて、いかに幸せだったかわかった（倒置+仮定法的完了）"},{"en":"It is essential that every student be present.","ja":"全生徒が出席することが不可欠だ（should省略の仮定法現在）"},{"en":"No sooner had she arrived than it started raining.","ja":"着くやいなや雨が降り始めた（no sooner〜than）"}]},{"title":"正誤判定問題","content":"英文中の誤りを見つける問題のポイント：\n\n【チェックリスト】\n①動詞の形（時制・態・原形 vs 不定詞 vs 分詞）\n②主語と動詞の一致（単複・人称）\n③代名詞の格（主格・目的格・所有格）\n④前置詞の選択\n⑤比較表現の形","examples":[{"en":"Each of the students are responsible. → is","ja":"Eachは単数扱い"},{"en":"She is more taller than her sister. → taller","ja":"比較級にmoreは不要"},{"en":"I was surprised at learning the news. → hearing","ja":"learnではなくhearが自然（surprisedのat+Ving）"}]},{"title":"連立完成・整序作文","content":"連立完成（同じ意味の2文を完成させる）のポイント：\n\n互いに書き換える重要構文：\n・so〜that = too〜to\n・because = owing to / due to\n・if = unless（条件）\n・when = the moment / as soon as\n・It was not until〜 = Only after〜\n\n整序作文：熟語のまとまりを先に見つける","examples":[{"en":"As soon as she arrived, she called.","ja":"= No sooner had she arrived than she called."},{"en":"Because of the rain, we stayed home.","ja":"= It was because of the rain that we stayed home."},{"en":"It is not until you try that you know.","ja":"= Only after trying do you know."}]}],"questions":[{"q":"Not until he retired ___ he realize his mistake.（倒置）","ch":["did","had","was","has"],"a":0,"exp":"Not until〜+倒置（did+S+V）","cat":"受験文法"},{"q":"'Each of the students ___ responsible.'","ch":["is","are","were","have been"],"a":0,"exp":"Eachは単数扱い→isが正解","cat":"受験文法"},{"q":"'She is ___ taller than her sister.'（誤りを含む選択）","ch":["（moreを削除）taller than","more taller than","much more tall than","more tall than"],"a":0,"exp":"比較級はtaller（onewordのerのみ）、moreは不要","cat":"受験文法"},{"q":"'As soon as she arrived, she called.' を書き換えると","ch":["No sooner had she arrived than she called.","No sooner she arrived than she called.","Hardly she arrived when she called.","The moment she arrived but she called."],"a":0,"exp":"No sooner had S pp than S V（倒置あり）","cat":"受験文法"},{"q":"'It is essential that every student ___ present.'（should省略の仮定法）","ch":["be","is","was","were"],"a":0,"exp":"that節内でshould省略→動詞原形（仮定法現在）","cat":"受験文法"},{"q":"'Because of the rain' を強調構文に書き換えると","ch":["It was because of the rain that we stayed.","Because was the rain that we stayed.","It is rain that we stayed because of.","What caused us to stay was rain.（意味は同じ）"],"a":0,"exp":"It is〜that強調構文","cat":"受験文法"},{"q":"'I was surprised ___ the news.'（前置詞選択）","ch":["at","by","with","of"],"a":0,"exp":"be surprised at〜（驚く）","cat":"受験文法"},{"q":"'Hardly had I left ___ it started raining.'","ch":["when","than","until","before"],"a":0,"exp":"Hardly had S pp when S V（No sooner〜thanに同じ）","cat":"受験文法"},{"q":"'too busy to attend' を so〜that構文に","ch":["so busy that he couldn't attend","so busy that he could attend","too busy that he attended","such busy that couldn't attend"],"a":0,"exp":"too〜to = so〜that+否定","cat":"受験文法"},{"q":"'Only after trying do you know.' の 'do you know' は","ch":["否定語句が文頭にきたことによる倒置","疑問文の語順","強調構文","通常の語順"],"a":0,"exp":"Only afterが文頭→倒置（do+主語+V）","cat":"受験文法"}]},{"id":"r_e1","num":2,"title":"【読解】難関大長文・要約","isLevelTest":false,"slides":[{"title":"難解な長文の読み方","content":"難関大の長文（800〜1000語以上）を読む戦略：\n\n①問題文を先に読んで何を問われているか把握\n②第1段落で筆者の主張・テーマを把握\n③各段落のトピックセンテンスを素早く読む\n④詳細が必要な箇所のみ精読\n⑤最終段落でまとめを確認\n\n未知語は文脈から推測する","examples":[{"en":"Read the questions first to know what to look for.","ja":"設問を先に読んで何を探すか決める"},{"en":"Guess unknown words from context clues.","ja":"未知語は文脈から推測する"},{"en":"The final paragraph often contains the conclusion.","ja":"最終段落に結論が来ることが多い"}]},{"title":"要約問題の解き方","content":"字数制限のある要約問題：\n\n【手順】\n①本文全体を読んで主要なポイントを箇条書きにする\n②不要な具体例・繰り返しを省く\n③主張→理由→結論の流れを保つ\n④指定字数内に収める\n⑤本文と同じ語・フレーズを使わず言い換える\n\nパラフレーズの技術が鍵","examples":[{"en":"Replace specific examples with general statements.","ja":"具体例を一般論に置き換える"},{"en":"Use synonyms and different sentence structures.","ja":"同義語・異なる文構造を使う"},{"en":"Maintain the logical flow: claim → reason → conclusion.","ja":"主張→理由→結論の流れを維持"}]},{"title":"記述問題・和訳の攻略","content":"記述・和訳問題のポイント：\n\n【和訳のルール】\n①文の構造（S,V,O,C）を正確に把握\n②修飾関係を整理する（どの語がどの語を修飾するか）\n③日本語として自然な表現に\n④カタカナ語の使いすぎに注意\n\n【記述説明問題】\n①「〜とはどういうことか」→指示語・抽象語を具体化する\n②字数内に必要な情報を盛り込む","examples":[{"en":"The concept refers to the idea that...","ja":"「その概念」の指示内容を具体的に説明"},{"en":"The author argues that... because...","ja":"筆者の主張＋根拠を日本語でまとめる"},{"en":"In 50 words or fewer, explain why...","ja":"字数内で理由を説明"}]}],"questions":[{"q":"難関大長文を読む際、最初にすべきことは","ch":["設問を先に読んで方向性を把握する","第1文から精読する","最後の段落から読む","単語を全て辞書で調べる"],"a":0,"exp":"設問を先読みして何を探すかを明確にする","cat":"読解戦略"},{"q":"未知語の意味を推測するときに使うのは","ch":["文脈・前後の語句","辞書","文法知識のみ","飛ばして読む"],"a":0,"exp":"未知語は文脈クルー（context clues）から推測","cat":"読解戦略"},{"q":"要約問題で「省く」べきものは","ch":["具体例・繰り返しの情報","筆者の主張","理由","結論"],"a":0,"exp":"要約では具体例より主張・理由・結論を残す","cat":"要約"},{"q":"パラフレーズとは何か","ch":["本文の表現を変えて同じ意味を表す","本文をそのままコピーする","本文を短縮する","本文に自分の意見を加える"],"a":0,"exp":"パラフレーズ=同義語や異なる構文で言い換え","cat":"要約"},{"q":"和訳問題で最初にすべきことは","ch":["文のS,V,O,Cを把握する","単語を日本語に置き換える","和訳を直感で書く","後ろから訳す"],"a":0,"exp":"構造（SVOC）を把握してから訳す","cat":"和訳"},{"q":"記述問題「〜とはどういうことか」で必要なことは","ch":["指示語・抽象語を具体化する","本文を丸ごと書き写す","自分の意見を述べる","英語のまま説明する"],"a":0,"exp":"指示語・抽象語の内容を具体化・説明する","cat":"記述"},{"q":"要約問題で使ってはいけないこと（原則）","ch":["本文と全く同じフレーズのコピー","同義語の使用","要旨のまとめ","文構造の変更"],"a":0,"exp":"要約は原則として言い換え（パラフレーズ）が必要","cat":"要約"},{"q":"難関大の長文では抽象的テーマが多い。その理解に必要なのは","ch":["背景知識とテーマ別語彙","速読のみ","文法知識のみ","暗記"],"a":0,"exp":"抽象テーマ（哲学・科学・社会）の背景知識が必要","cat":"読解戦略"},{"q":"各段落の最初の文（トピックセンテンス）を読む理由は","ch":["各段落の要点を素早く把握するため","動詞を探すため","単語を覚えるため","接続詞を確認するため"],"a":0,"exp":"トピックセンテンスに段落の主要メッセージが含まれる","cat":"読解戦略"},{"q":"字数制限のある要約で大切なことは","ch":["主張→理由→結論の流れを保ちつつ字数内に収める","できるだけ多くの情報を詰め込む","字数ちょうどに合わせる","筆者の文体を真似る"],"a":0,"exp":"論理の流れを維持しながら字数制限内にまとめる","cat":"要約"}]},{"id":"w_e1","num":3,"title":"【英作文】難関大対策・自由英作文","isLevelTest":false,"slides":[{"title":"難関大の和文英訳","content":"難関大の和文英訳の特徴：\n\n①直訳できない日本語表現が多い\n②複雑な構文・語彙が要求される\n③「採点者を唸らせる」洗練された英語\n\n攻略法：\n・和文和訳（簡単な日本語に言い換え）してから英訳\n・無生物主語・受動態・形式主語などを活用\n・暗記した構文・例文を応用","examples":[{"en":"The very fact that you tried matters most.","ja":"試みたというまさにその事実が最も重要だ"},{"en":"What makes this problem difficult is the lack of data.","ja":"この問題を難しくしているのはデータ不足だ（What主語）"},{"en":"There is no telling what will happen next.","ja":"次に何が起こるかわからない（There is no Ving）"}]},{"title":"自由英作文の実戦","content":"自由英作文（意見論述）の実戦的ポイント：\n\n①主張は明確に・最初に述べる\n②理由は2〜3つ、具体例とともに\n③反論を想定して答えるとさらに評価が上がる\n④結論は主張の言い換え\n\n時間配分：\n構想5分→執筆15分→見直し5分（計25分が目安）","examples":[{"en":"I strongly believe that technology improves education.","ja":"テクノロジーは教育を改善すると強く信じる（明確な主張）"},{"en":"Admittedly, some argue that... However, I maintain that...","ja":"確かに〜という意見もある。しかし私は〜と主張する（反論への対応）"},{"en":"For these reasons, I conclude that...","ja":"これらの理由から、私は〜と結論づける"}]},{"title":"推敲とリライト","content":"英文を推敲するチェックリスト：\n\n①文法的誤りがないか（時制・単複・冠詞）\n②論理の流れは自然か\n③同じ語・表現を繰り返していないか\n④指定字数内に収まっているか\n⑤採点基準（文法・内容・論理）を満たしているか\n\nリライト：一度書いた英文をより洗練させる練習が重要","examples":[{"en":"Before: People should study English. It is important.","ja":"改善前：英語を勉強すべきだ。それは重要だ（冗長）"},{"en":"After: English proficiency has become essential in today's globalized world.","ja":"改善後：今日のグローバル化した世界では英語能力が不可欠になった"},{"en":"Check: grammar → content → logic → word count","ja":"チェック順：文法→内容→論理→字数"}]}],"questions":[{"q":"'What makes this problem difficult is...' の構造","ch":["What節が主語","疑問詞what","関係代名詞what","感嘆文"],"a":0,"exp":"what節（名詞節）が主語の文","cat":"受験英作文"},{"q":"'There is no telling what will happen.' の意味","ch":["何が起こるかわからない","何が起こるか教える方法はある","何が起こるかわかる","教えることがない"],"a":0,"exp":"There is no Ving＝〜することが（不）可能だ（否定）","cat":"受験英作文"},{"q":"自由英作文で最初に書くべきものは","ch":["明確な主張（I believe that〜）","具体例","反論","結論"],"a":0,"exp":"主張を最初に明確に述べるのが基本","cat":"受験英作文"},{"q":"'Admittedly, some argue that...' の後に来るのは","ch":["筆者の反論（However, I maintain that...）","さらに同意の意見","具体例","結論"],"a":0,"exp":"Admittedlyで反論を認め、Howeverで自分の主張","cat":"受験英作文"},{"q":"和文英訳の最初のステップとして適切なのは","ch":["日本語を簡単な表現に言い換える","すぐに英語を書く","文法書を参照する","単語を調べる"],"a":0,"exp":"和文和訳（簡単な日本語に変換）してから英訳","cat":"受験英作文"},{"q":"推敲で最初にチェックすべきものは","ch":["文法的誤り（時制・単複・冠詞）","内容の豊かさ","字数","論理の流れ"],"a":0,"exp":"文法チェックが最優先（減点を防ぐ）","cat":"受験英作文"},{"q":"'For these reasons, I conclude that...' はどの段落で使うか","ch":["結論段落","序論段落","本論第1段落","本論第2段落"],"a":0,"exp":"For these reasonsは結論段落の冒頭","cat":"受験英作文"},{"q":"高い評価を得る自由英作文に含まれると良いものは","ch":["反論への対応（Admittedly〜, However〜）","多くの具体例","長い文","難しい単語"],"a":0,"exp":"反論を想定して対応するとより説得力が増す","cat":"受験英作文"},{"q":"リライトの目的は","ch":["より洗練された英文に改善する","全体を書き直す","字数を増やす","難しい語に変える"],"a":0,"exp":"リライトは英文の質を高めるための推敲","cat":"受験英作文"},{"q":"自由英作文の時間配分（25分の場合）として推奨されるのは","ch":["構想5分→執筆15分→見直し5分","構想0分→執筆25分","構想10分→執筆15分","執筆20分→見直し5分"],"a":0,"exp":"構想5分→執筆15分→見直し5分が標準的配分","cat":"受験英作文"}]}]}};
+
+// ── ユーザーデータと進行データ処理 ──
+async function getUsers(){
+  if(state.cachedUsers)return state.cachedUsers;
+  var res=await phpApi('getUsers');
+  var users = (res && res.ok && res.users) ? res.users : {};
+  
+  // もしデータベースにadminがいない場合、自動的に作成して保存する
+  if (!users['admin']) {
+    users['admin'] = { name: '管理者', password: 'admin123', role: 'admin', created: new Date().toLocaleDateString('ja-JP') };
+    phpApi('saveUser', { uid: 'admin', name: '管理者', password: 'admin123', role: 'admin', created: users['admin'].created });
+  }
+  
+  state.cachedUsers = users;
+  return users;
+}
+async function saveUser(uid,data){
+  state.cachedUsers=null;
+  return await phpApi('saveUser',{uid:uid,name:data.name,password:data.password,role:data.role||'student',created:data.created||''});
+}
+async function deleteUserApi(uid){
+  state.cachedUsers=null;
+  delete state.cachedProgress[uid];
+  delete state.cachedWeaknesses[uid];
+  return await phpApi('deleteUser',{uid:uid});
+}
+async function getProgress(uid){
+  if(state.cachedProgress[uid])return state.cachedProgress[uid];
+  var res=await phpApi('getProgress',{uid:uid});
+  if(res&&res.ok&&res.progress){state.cachedProgress[uid]=res.progress;return res.progress;}
+  return {};
+}
+async function saveProgress(uid,sid,score,passed){
+  if(!state.cachedProgress[uid])state.cachedProgress[uid]={};
+  state.cachedProgress[uid][sid]={score:score,passed:passed,date:new Date().toLocaleDateString('ja-JP')};
+  await phpApi('saveProgress',{uid:uid,sid:sid,score:String(score),passed:String(passed)});
+}
+async function getWeaknesses(uid){
+  if(state.cachedWeaknesses[uid])return state.cachedWeaknesses[uid];
+  var res=await phpApi('getWeaknesses',{uid:uid});
+  if(res&&res.ok&&res.weaknesses){state.cachedWeaknesses[uid]=res.weaknesses;return res.weaknesses;}
+  return {};
+}
+async function saveWeaknesses(uid,w){
+  state.cachedWeaknesses[uid]=w;
+  await phpApi('saveWeaknesses',{uid:uid,data:JSON.stringify(w)});
+}
+
+function showToast(msg,type){var t=document.getElementById('toast');t.textContent=msg;t.style.display='block';t.className='toast show'+(type==='error'?' toast-error':type==='success'?' toast-success':'');setTimeout(function(){t.className='toast';t.style.display='none';},3000);}
+
+function showView(id){document.querySelectorAll('.view').forEach(function(v){v.style.display='none';});var el=document.getElementById(id);if(el)el.style.display='block';}
+function toggleForm(t){document.getElementById('login-form').style.display=t==='login'?'block':'none';document.getElementById('register-form').style.display=t==='register'?'block':'none';document.querySelectorAll('.form-tab').forEach(function(tab){tab.classList.toggle('active',tab.textContent.includes(t==='login'?'ログイン':'登録'));});}
+
+// ── 初期化処理 ──
+async function init(){
+  var ping=await phpApi('ping');
+  if(!ping){
+    console.warn('API接続エラー');
+    showToast('⚠️ サーバーAPIに接続できません。Renderの設定を確認してください。','error');
+  }
+  
+  await getUsers();
+  var uid=localStorage.getItem('grm_session');
+  if(uid){
+    var users=state.cachedUsers||{};
+    if(users[uid]){
+      state.currentUser={id:uid,name:users[uid].name,role:users[uid].role||'student'};
+      startApp();
+      return;
+    }
+  }
+  document.getElementById('page-login').style.display='flex';
+  document.getElementById('page-app').style.display='none';
+}
+
+// ── ログイン・登録処理 ──
+async function doLogin(){
+  var i=document.getElementById('login-id').value.trim();
+  var p=document.getElementById('login-pw').value;
+  var e=document.getElementById('login-error');
+  e.textContent='接続中...';
+  var users=await getUsers();
+  if(!users[i]||users[i].password!==p){e.textContent='IDまたはパスワードが違います';return;}
+  e.textContent='';
+  state.currentUser={id:i,name:users[i].name,role:users[i].role||'student'};
+  localStorage.setItem('grm_session',i);
+  startApp();
+}
+
+async function doRegister(){
+  var id=document.getElementById('reg-id').value.trim();
+  var name=document.getElementById('reg-name').value.trim();
+  var pw=document.getElementById('reg-pw').value;
+  var pw2=document.getElementById('reg-pw2').value;
+  var e=document.getElementById('reg-error');
+  if(!id||!/^[a-zA-Z0-9_]{3,20}$/.test(id)){e.textContent='IDは3〜20文字の英数字・アンダーバーで入力してください';return;}
+  if(!name){e.textContent='お名前を入力してください';return;}
+  if(pw.length<4){e.textContent='パスワードは4文字以上にしてください';return;}
+  if(pw!==pw2){e.textContent='パスワードが一致しません';return;}
+  e.textContent='確認中...';
+  var users=await getUsers();
+  if(users[id]){e.textContent='このIDはすでに使用されています';return;}
+  e.textContent='';
+  var created=new Date().toLocaleDateString('ja-JP');
+  await saveUser(id,{name:name,password:pw,role:'student',created:created});
+  showToast('登録しました！ログインしてください','success');
+  toggleForm('login');
+  document.getElementById('login-id').value=id;
+}
+
+function doLogout(){
+  localStorage.removeItem('grm_session');
+  state.currentUser=null;
+  state.cachedUsers=null;
+  state.cachedProgress={};
+  state.cachedWeaknesses={};
+  document.getElementById('page-login').style.display='flex';
+  document.getElementById('page-app').style.display='none';
+}
+
+// ── アプリ起動 ──
+function startApp(){
+  document.getElementById('page-login').style.display='none';
+  document.getElementById('page-app').style.display='flex';
+  document.getElementById('topnav-user-name').textContent=state.currentUser.name;
+  document.getElementById('topnav-user-role').textContent=state.currentUser.role==='admin'?'管理者':'学習者';
+  renderSidebar();
+  renderDashboard();
+  showView('view-dashboard');
+}
+
+// ── サイドバーとダッシュボード処理 ──
+function renderSidebar(){
+  var sb=document.getElementById('sidebar');
+  var isAdmin=state.currentUser.role==='admin';
+  var html='<div class="sidebar-group"><div class="sidebar-group-title">学習</div>';
+  html+='<div class="sidebar-item active" onclick="renderDashboard();showView(\'view-dashboard\')">🏠 ダッシュボード</div>';
+  for(var i=0;i<CURRICULUM.levels.length;i++){
+    var lv=CURRICULUM.levels[i];
+    html+='<div class="sidebar-item" onclick="selectLevelByIndex('+i+')" style="border-left-color:'+lv.color+';padding-left:12px">● '+lv.name+'</div>';
+  }
+  html+='</div>';
+  if(isAdmin){
+    html+='<div class="sidebar-group"><div class="sidebar-group-title">管理者</div>';
+    html+='<div class="sidebar-item" onclick="renderAdminUsers();showView(\'view-admin-users\')">👥 ユーザー管理</div>';
+    html+='<div class="sidebar-item" onclick="renderAdminProgress();showView(\'view-admin-progress\')">📊 進捗管理</div>';
+    html+='<div class="sidebar-item" onclick="renderAdminWeaknesses();showView(\'view-admin-weaknesses\')">⚠️ 弱点分析</div>';
+    html+='</div>';
+  }
+  sb.innerHTML=html;
+}
+
+async function renderDashboard(){
+  var stats=document.getElementById('dashboard-stats');
+  var levels=document.getElementById('dashboard-levels');
+  var u=state.currentUser.id;
+  var p=await getProgress(u);
+  var w=await getWeaknesses(u);
+  var total=0,passed=0;
+  Object.keys(p).forEach(function(k){total++;if(p[k].passed)passed++;});
+  var pct=total>0?Math.round((passed/total)*100):0;
+  var html='<div class="card"><div class="card-title">完了セッション</div><div class="card-stat">'+total+'</div><div class="card-text">合格: '+passed+' / '+total+'</div><div class="progress-bar"><div class="progress-fill" style="width:'+pct+'%"></div></div></div>';
+  html+='<div class="card"><div class="card-title">合格率</div><div class="card-stat">'+pct+'%</div><div class="card-text">'+passed+'セッション合格</div></div>';
+  var wkeys=Object.keys(w);var topWeak='—';
+  if(wkeys.length>0){var maxCat=wkeys[0];for(var i=1;i<wkeys.length;i++){if(w[wkeys[i]]>w[maxCat])maxCat=wkeys[i];}topWeak=maxCat+'（'+w[maxCat]+'エラー）';}
+  html+='<div class="card"><div class="card-title">最大弱点</div><div class="card-stat" style="font-size:20px">'+topWeak+'</div><div class="card-text">最もミスの多い分野</div></div>';
+  stats.innerHTML=html;
+  var lhtml='';
+  for(var i=0;i<CURRICULUM.levels.length;i++){
+    var lv=CURRICULUM.levels[i];
+    lhtml+='<button class="level-btn" style="background:'+lv.color+'" onclick="selectLevelByIndex('+i+')">' +lv.name+ '（'+CURRICULUM.sessions[lv.id].length+'セッション）</button>';
+  }
+  levels.innerHTML=lhtml;
+}
+
+function selectLevelByIndex(idx){
+  var lv=CURRICULUM.levels[idx];
+  if(!lv)return;
+  state.currentLevel=lv.id;
+  showLevelSessions(lv.id);
+  showView('view-dashboard');
+}
+
+async function showLevelSessions(levelId){
+  var sessions=CURRICULUM.sessions[levelId];
+  var lv=CURRICULUM.levels.find(function(l){return l.id===levelId;});
+  var u=state.currentUser.id;
+  var p=await getProgress(u);
+  var html='<h2 style="margin-bottom:20px;color:'+lv.color+'">'+lv.name+'レベル</h2><div class="sessions-grid">';
+  for(var i=0;i<sessions.length;i++){
+    var s=sessions[i];
+    var sp=p[s.id];
+    var badge=sp?(sp.passed?'✅ 合格':'❌ 未合格'):'未受講';
+    var badgeColor=sp?(sp.passed?'#4caf50':'#f44336'):'#999';
+    var bgBadge=sp?(sp.passed?'#e8f5e9':'#ffebee'):'#f0f0f0';
+    html+='<div class="session-card" onclick="startSession(\''+s.id+'\')" style="cursor:pointer;border:2px solid #e0e0e0;border-radius:10px;padding:16px;transition:all 0.2s;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,0.06)">';
+    html+='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">';
+    html+='<span style="font-size:12px;font-weight:700;color:'+badgeColor+';background:'+bgBadge+';padding:3px 12px;border-radius:12px">'+badge+'</span>';
+    html+='<span style="font-size:11px;color:#aaa;font-weight:600">▶ クリックで開始</span>';
+    html+='</div>';
+    html+='<div style="font-weight:700;font-size:15px;margin-bottom:6px;color:#1a237e">'+s.num+'. '+s.title+'</div>';
+    html+='<div style="font-size:13px;color:#666">📖 スライド '+s.slides.length+'枚　✏️ 問題 '+s.questions.length+'問</div>';
+    if(sp)html+='<div style="font-size:12px;color:#999;margin-top:6px">最終スコア: '+sp.score+'%（'+sp.date+'）</div>';
+    html+='</div>';
+  }
+  html+='</div>';
+  document.getElementById('dashboard-content').innerHTML=html;
+}
+
+// ── スライド・クイズ処理 ──
+function findSession(sid){
+  var levels=Object.keys(CURRICULUM.sessions);
+  for(var i=0;i<levels.length;i++){
+    var arr=CURRICULUM.sessions[levels[i]];
+    for(var j=0;j<arr.length;j++){if(arr[j].id===sid)return arr[j];}
+  }
+  return null;
+}
+
+function startSession(sid){
+  var session=findSession(sid);
+  if(!session)return;
+  state.currentSessionId=sid;
+  state.quizAnswers=[];
+  renderSlides(session);
+  showView('view-slides');
+}
+
+function renderSlides(session){
+  var el=document.getElementById('view-slides');
+  var total=session.slides.length;
+  var slidesHtml='<div style="max-width:860px;margin:0 auto">'
+    +'<button class="btn btn-outline" style="margin-bottom:12px" onclick=\"renderDashboard();showLevelSessions(state.currentLevel);showView(\'view-dashboard\')\">← レベル一覧に戻る</button>';
+  for(var i=0;i<total;i++){
+    var s=session.slides[i];
+    var exHtml='';
+    for(var j=0;j<s.examples.length;j++){
+      exHtml+='<div class="example-item"><div class="example-en">'+s.examples[j].en+'</div><div class="example-ja">'+s.examples[j].ja+'</div></div>';
+    }
+    var display=i===0?'block':'none';
+    slidesHtml+='<div class="slide-page" id="slide-'+i+'" style="display:'+display+'">'
+      +'<div class="slide-header">'
+      +'<h2>'+s.title+'</h2>'
+      +'<div style="font-size:13px;color:rgba(255,255,255,0.8)">'+session.title+' — スライド '+(i+1)+'/'+total+'</div>'
+      +'</div>'
+      +'<div class="slide-body"><div class="slide-content">'+s.content.replace(/\n/g,'<br>')+'</div>'
+      +'<div class="examples-list">'+exHtml+'</div></div>'
+      +'<div class="slide-nav">';
+    if(i>0){
+      slidesHtml+='<button class="btn btn-outline" onclick="showSlide('+(i-1)+')">← 前へ</button>';
+    } else {
+      slidesHtml+='<button class="btn btn-outline" onclick=\"renderDashboard();showLevelSessions(state.currentLevel);showView(\'view-dashboard\')\">← 戻る</button>';
+    }
+    var pct=Math.round(((i+1)/total)*100);
+    slidesHtml+='<div style="font-size:13px;color:#666;align-self:center">'+(i+1)+' / '+total+'</div>';
+    if(i<total-1){
+      slidesHtml+='<button class="btn btn-primary" onclick="showSlide('+(i+1)+')">次へ →</button>';
+    } else {
+      slidesHtml+='<button class="btn btn-primary" onclick="startQuiz()">クイズへ →</button>';
+    }
+    slidesHtml+='</div></div>';
+  }
+  slidesHtml+='</div>';
+  el.innerHTML=slidesHtml;
+}
+
+function showSlide(n){
+  document.querySelectorAll('.slide-page').forEach(function(s,i){s.style.display=i===n?'block':'none';});
+}
+
+function startQuiz(){
+  var session=findSession(state.currentSessionId);
+  if(!session)return;
+  var pool=session.questions.slice();
+  for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=pool[i];pool[i]=pool[j];pool[j]=tmp;}
+  state.quizQuestions=pool.slice(0,Math.min(QUIZ_Q_COUNT,pool.length));
+  state.quizAnswers=new Array(state.quizQuestions.length).fill(-1);
+  renderQuiz();
+  showView('view-quiz');
+}
+
+function renderQuiz(){
+  var total=state.quizQuestions.length;
+  var topHtml='<div style="max-width:700px;margin:0 auto">'
+    +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">'
+    +'<button class="btn btn-outline" onclick="startSession(\''+state.currentSessionId+'\')">← スライドに戻る</button>'
+    +'<h2 style="margin:0">クイズ（全'+total+'問）</h2>'
+    +'</div>';
+  var bodyHtml='';
+  for(var i=0;i<total;i++){
+    var q=state.quizQuestions[i];
+    bodyHtml+='<div class="quiz-question" id="qq-'+i+'">'
+      +'<div class="quiz-q-text">Q'+(i+1)+'. '+q.q+'</div>'
+      +'<div class="quiz-choices">';
+    for(var j=0;j<q.ch.length;j++){
+      bodyHtml+='<div class="quiz-choice" id="qc-'+i+'-'+j+'" onclick="selectAnswer('+i+','+j+')">'
+        +'<span style="display:inline-block;width:24px;height:24px;border-radius:50%;background:#e0e0e0;text-align:center;line-height:24px;font-size:12px;font-weight:700;margin-right:10px">'+String.fromCharCode(65+j)+'</span>'
+        +q.ch[j]+'</div>';
+    }
+    bodyHtml+='</div></div>';
+  }
+  var bottomHtml='<div style="display:flex;justify-content:center;gap:12px;margin-top:28px;padding-top:16px;border-top:1px solid #eee">'
+    +'<button class="btn btn-outline" onclick="startSession(\''+state.currentSessionId+'\')">← スライドに戻る</button>'
+    +'<button class="btn btn-primary" style="min-width:120px" onclick="submitQuiz()">採点する ✓</button>'
+    +'</div></div>';
+  var el=document.getElementById('quiz-content');
+  if(!el){el=document.getElementById('view-quiz');}
+  el.innerHTML=topHtml+bodyHtml+bottomHtml;
+  
+  var fill=document.getElementById('quiz-progress-fill');
+  var txt=document.getElementById('quiz-progress-text');
+  if(fill)fill.style.width='0%';
+  if(txt)txt.textContent='0 / '+total;
+}
+
+function selectAnswer(qi,ci){
+  state.quizAnswers[qi]=ci;
+  for(var j=0;j<state.quizQuestions[qi].ch.length;j++){
+    var el=document.getElementById('qc-'+qi+'-'+j);
+    if(el){
+      el.className='quiz-choice'+(j===ci?' selected':'');
+      var circle=el.querySelector('span');
+      if(circle){circle.style.background=j===ci?'var(--p)':'#e0e0e0';circle.style.color=j===ci?'#fff':'#333';}
+    }
+  }
+  var answered=state.quizAnswers.filter(function(a){return a!==-1;}).length;
+  var total=state.quizQuestions.length;
+  var fill=document.getElementById('quiz-progress-fill');
+  var txt=document.getElementById('quiz-progress-text');
+  if(fill)fill.style.width=Math.round((answered/total)*100)+'%';
+  if(txt)txt.textContent=answered+' / '+total;
+  var next=document.getElementById('qq-'+(qi+1));
+  if(next)next.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+async function submitQuiz(){
+  var c=state.quizAnswers.filter(function(a,i){return a===state.quizQuestions[i].a;}).length;
+  var t=state.quizQuestions.length;
+  var unanswered=state.quizAnswers.indexOf(-1);
+  if(unanswered>=0){showToast('Q'+(unanswered+1)+'が未回答です','error');return;}
+  var s=Math.round((c/t)*100);
+  var passed=s>=PASS_MARK;
+  var u=state.currentUser.id;
+  var sid=state.currentSessionId;
+  var w=await getWeaknesses(u);
+  for(var i=0;i<state.quizAnswers.length;i++){
+    if(state.quizAnswers[i]!==state.quizQuestions[i].a){
+      var cat=state.quizQuestions[i].cat;
+      w[cat]=(w[cat]||0)+1;
+    }
+  }
+  await saveProgress(u,sid,s,passed);
+  await saveWeaknesses(u,w);
+  var bgColor=passed?'#4caf50':'#f44336';
+  var msgBg=passed?'#e8f5e9':'#ffebee';
+  var msgColor=passed?'#2e7d32':'#c62828';
+  var wrongs=[];
+  for(var i=0;i<state.quizAnswers.length;i++){
+    if(state.quizAnswers[i]!==state.quizQuestions[i].a){
+      wrongs.push('<div style="padding:8px;border-bottom:1px solid #eee"><div style="color:#333;font-weight:600">'+state.quizQuestions[i].q+'</div><div style="color:#f44336">あなたの答え: '+state.quizQuestions[i].ch[state.quizAnswers[i]]+'</div><div style="color:#4caf50">正解: '+state.quizQuestions[i].ch[state.quizQuestions[i].a]+'（'+state.quizQuestions[i].exp+'）</div></div>');
+    }
+  }
+  var wrongHtml=wrongs.length>0?'<div style="margin-top:16px;text-align:left"><h4 style="margin-bottom:8px">間違えた問題：</h4>'+wrongs.join('')+'</div>':'';
+  var h='<div style="max-width:600px;margin:0 auto"><div style="color:#fff;padding:20px;border-radius:10px 10px 0 0;text-align:center;background:'+bgColor+'"><h2 style="margin:0">'+(passed?'🎉 合格!':'❌ 不合格')+'</h2></div><div style="background:#fff;padding:24px;box-shadow:0 2px 4px rgba(0,0,0,.1)"><div style="text-align:center;font-size:48px;font-weight:700;color:'+bgColor+'">'+s+'%</div><div style="text-align:center;font-size:14px;color:#666;margin-bottom:12px">'+c+'問正解 / '+t+'問中</div><div style="text-align:center;font-size:16px;font-weight:700;padding:12px;border-radius:8px;margin:12px 0;background:'+msgBg+';color:'+msgColor+'">'+(passed?'合格おめでとう！':'もう一度挑戦してください（合格ライン: 90%）')+'</div>'+wrongHtml+'<div style="display:flex;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap"><button class=\"btn btn-outline\" onclick=\"startSession(\''+state.currentSessionId+'\')\">← スライドに戻る</button><button class=\"btn btn-primary\" onclick=\"renderDashboard();showLevelSessions(state.currentLevel);showView(\'view-dashboard\')\">📊 レベル一覧</button></div></div></div>';
+  document.getElementById('view-results').innerHTML=h;
+  showView('view-results');
+}
+
+// ── 管理者機能 ──
+async function renderAdminUsers(){
+  var users=await getUsers();
+  var html='';
+  var keys=Object.keys(users);
+  for(var i=0;i<keys.length;i++){
+    var uid=keys[i];var u=users[uid];
+    html+='<tr><td>'+uid+'</td><td>'+u.name+'</td><td>'+(u.role==='admin'?'管理者':'学習者')+'</td><td>'+(u.created||'')+'</td><td><button class="btn btn-outline action-btn" data-uid="'+uid+'" onclick="adminAction(this,0)">編集</button><button class="btn action-btn" style="background:#f44336;color:#fff" data-uid="'+uid+'" onclick="adminAction(this,1)">削除</button></td></tr>';
+  }
+  document.getElementById('admin-users-list').innerHTML=html;
+}
+
+async function renderAdminProgress(){
+  var users=await getUsers();
+  var html='';
+  var uids=Object.keys(users);
+  for(var i=0;i<uids.length;i++){
+    var uid=uids[i];
+    var p=await getProgress(uid);
+    var sids=Object.keys(p);
+    for(var j=0;j<sids.length;j++){
+      var sid=sids[j];var sp=p[sid];
+      html+='<tr><td>'+uid+'</td><td>'+sid+'</td><td>'+sp.score+'%</td><td>'+(sp.passed?'✅ 合格':'❌ 不合格')+'</td><td>'+(sp.date||'')+'</td></tr>';
+    }
+  }
+  document.getElementById('admin-progress-list').innerHTML=html||'<tr><td colspan="5">データなし</td></tr>';
+}
+
+async function renderAdminWeaknesses(){
+  var users=await getUsers();
+  var html='';
+  var uids=Object.keys(users);
+  for(var i=0;i<uids.length;i++){
+    var uid=uids[i];
+    var w=await getWeaknesses(uid);
+    var cats=Object.keys(w);
+    for(var j=0;j<cats.length;j++){
+      html+='<tr><td>'+uid+'</td><td>'+cats[j]+'</td><td>'+w[cats[j]]+'</td><td>—</td></tr>';
+    }
+  }
+  document.getElementById('admin-weaknesses-list').innerHTML=html||'<tr><td colspan="4">データなし</td></tr>';
+}
+
+async function openEditUserModal(uid){
+  state.editingUid=uid;
+  var users=await getUsers();
+  var u=users[uid];
+  document.getElementById('modal-user-title').textContent='ユーザー編集';
+  document.getElementById('modal-uid').value=uid;
+  document.getElementById('modal-uid').disabled=true;
+  document.getElementById('modal-name').value=u.name;
+  document.getElementById('modal-pw').value='';
+  document.getElementById('modal-role').value=u.role||'student';
+  document.getElementById('modal-error').textContent='';
+  document.getElementById('modal-save-btn').onclick=saveUserModal;
+  document.getElementById('modal-user').classList.add('active');
+}
+
+function openAddUserModal(){
+  state.editingUid=null;
+  document.getElementById('modal-user-title').textContent='ユーザー追加';
+  document.getElementById('modal-uid').value='';
+  document.getElementById('modal-uid').disabled=false;
+  document.getElementById('modal-name').value='';
+  document.getElementById('modal-pw').value='';
+  document.getElementById('modal-role').value='student';
+  document.getElementById('modal-error').textContent='';
+  document.getElementById('modal-save-btn').onclick=saveUserModal;
+  document.getElementById('modal-user').classList.add('active');
+}
+
+async function saveUserModal(){
+  var uid=state.editingUid||document.getElementById('modal-uid').value.trim();
+  var name=document.getElementById('modal-name').value.trim();
+  var pw=document.getElementById('modal-pw').value;
+  var role=document.getElementById('modal-role').value;
+  var e=document.getElementById('modal-error');
+  if(!state.editingUid&&!/^[a-zA-Z0-9_]{3,20}$/.test(uid)){e.textContent='IDは3〜20文字の英数字';return;}
+  if(!name){e.textContent='名前を入力してください';return;}
+  var users=await getUsers();
+  var created=(users[uid]&&users[uid].created)||new Date().toLocaleDateString('ja-JP');
+  var password=pw||((users[uid]&&users[uid].password)||'password');
+  await saveUser(uid,{name:name,password:password,role:role,created:created});
+  closeModal();
+  await renderAdminUsers();
+  showToast(state.editingUid?'ユーザーを更新しました':'ユーザーを追加しました','success');
+}
+
+async function deleteUser(uid){
+  if(!confirm('このユーザーを削除してもよろしいですか？'))return;
+  await deleteUserApi(uid);
+  await renderAdminUsers();
+  showToast('ユーザーを削除しました','success');
+}
+
+function adminAction(btn,type){
+  var uid=btn.getAttribute('data-uid');
+  if(!uid)return;
+  if(type===0)openEditUserModal(uid);
+  else deleteUser(uid);
+}
+function closeModal(){document.getElementById('modal-user').classList.remove('active');}
+
+window.addEventListener('load',init);
+document.addEventListener('keydown',function(e){if(e.key==='Enter'){var lf=document.getElementById('login-form');if(lf&&lf.style.display!=='none')doLogin();}if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>

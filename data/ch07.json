@@ -1,0 +1,516 @@
+{
+ "meta": {
+  "version": "3.0",
+  "passMark": 85
+ },
+ "chapters": [
+  {
+   "id": "ch07",
+   "num": 7,
+   "title": "仮定法",
+   "color": "#e91e63",
+   "items": [
+    {
+     "id": "ch07_001",
+     "num": "001",
+     "name": "「仮定法」とは？",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-1",
+       "content": "『「仮定法」とは？』\n仮定法は「事実に反すること（あり得ないこと）」を述べる構文。動詞の時制を1つずらす。"
+      },
+      {
+       "title": "概要",
+       "content": "仮定法は「事実に反すること（あり得ないこと）」を述べる構文。動詞の時制を1つずらす。\n直説法\n事実をそのまま述べる\nIf 現在形, 現在/未来形\nシグナル/特徴\n通常の条件文\n仮定法\n事実に反する\nIf 過去形, would V (仮定法過去)\nシグナル/特徴\n時制を1つ過去にずらす"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "If it rains tomorrow, I will stay home. (直説法)\n明日雨なら家にいる。\nIf I were rich, I would buy a car. (仮定法)\nもし金持ちなら車を買うのに。\nIf I had wings, I could fly.\nもし翼があれば飛べるのに。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n仮定法は事実に反する仮定\n2\n時制を1つずらす\n3\nbe 動詞は were が原則"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_001_「仮定法」とは？_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「仮定法」とは︖   100\n\nＡ問題\n１   下線部に注意して，次の英文を日本語に訳しなさい。（２点）\n\n   I will fly to you.   あなたのもとに飛んでいくよ。\n   ※ありえる内容\n\n   I would fly to you. あなたのもとに   。\n   ※ありえない内容\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   外国に行くつもりです。（※外国に行くことが，現実にありえる場合）\n\n   I   go abroad.\n\n(2)   外国へ行けたらなあ。（※外国に行くことが，現実にはありえない場合）\n\n   I   go abroad.\n\n(3)   ナンシーは３歳でピアノが弾けた。\n\n   Nancy   play the piano at three.\n\n(4)   私は，彼女が皿を洗うのを手伝うでしょう。\n\n   I   help her wash the dishes.\n\n(5)   彼の立場ならば，私は彼女が皿を洗うのを手伝うだろうに。\n\n   In his place, I   help her wash the dishes.\n\n(6)   私は週末によくギターを弾いたものだった。\n\n   I   often play the guitar on weekends.\n\n(7)   私は彼のプロポーズに応じるつもりです。\n\n   I   accept his proposal.\n\n(8)   あなたの立場ならば，私は彼のプロポーズに応じるだろうに。\n\n   In your place, I   accept his proposal.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各 10 点・計 20 点）\n\n(1)   In her place, you (   ) for that.\n\n   [ wouldn’t apologize / didn’t apologize ]\n\n(2) A man of responsibility (   ) it up halfway.\n\n   [ wouldn’t give / didn’t give ]\n\n４   次の英文を日本語に訳しなさい。（各 10 点・計 30 点）\n\n(1)   I would go to the North Pole.\n\n(2)   In her place, I would call the police immediately.\n\n(3)   An intelligent man wouldn’t say such unreasonable things.\n\n５   次の日本文を英語で書きなさい。（各 12 点・計 24 点）\n\n(1)   お金持ちの人ならばその貧しい子どもたちを助けるだろう。\n\n(2)   彼のように速く走れたらなあ。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   I know she is innocent; otherwise I (   ) her.\n\n   ① had helped   ② helped   ③ would help   ④ wouldn’t help\n\n(2)   I don’t know his phone number; otherwise I (   ) him.\n\n   ① couldn’t call   ② could call   ③ had not call   ④ would not have called\n\n７   次の英文を日本語に訳しなさい。\n\n(1)   To hear her speak in English, you would think her an American.\n\n(2)   To see us walking together, they would take me for your father.\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n   I’m so hungry that (   ) hundreds of hamburgers.\n\n   ① can eat   ② ate   ③ have eaten   ④ could eat",
+       "answer_text": "第７章「仮定法」\n\nＡ問題\n\n１\n\n   I will fly to you.   あなたのもとに飛んでいくよ。\n   ※ありえる内容\n\n   I would fly to you. あなたのもとに飛んでいければなあ。\n   ※ありえない内容\n\n２\n\n(1)   will\n\n(2)   would\n\n(3)   could   ※助動詞の過去形\n\n(4)   will\n\n(5)   would\n\n(6)   would ※過去の習慣\n\n(7)   will\n\n(8)   would\n\nＢ問題\n３\n(1)   wouldn’t apologize\n\n(2)   wouldn’t give\n\n４\n\n(1)   北極点に行けたらなぁ。\n\n   the North Pole 「北極点」\n\n(2)   彼女の立場ならば，すぐに警察に電話をするだろう。\n\n(3)   知的な人ならば，そんな不合理なことは言わないだろう。\n\f５\n\n(1)   [例] A rich person would save [help] the poor children.\n\n(2)   [例] I would run fast like him.\n\nＣ問題\n６\n\n※otherwise「そうでなければ」の後ろは，ふつう仮定法を使う。\n\n(1)   ④ wouldn’t help\n   彼女が無実だと私は知っている。そうでなければ，私は彼女を助けないだろう。\n\n(2)   ② could call\n   私は彼の電話番号を知らない。そうでなければ，彼に電話できるのに。\n\n７\n\n※to 不定詞に仮定の意味が含まれることもある。\n\n(1)   彼女が英語で話すのを聞くと，アメリカ人だと思うだろう。\n\n(2)   私たちが一緒に歩いているところを見れば，彼らは私を君の父親と間違うだろう。\n\n８\n\n   ④ could eat\n   私はとてもお腹がすいているので，ハンバーガーを数百個でも食べられるくらいだ。",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_001『「仮定法」とは？』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_001『「仮定法」とは？』（演習）.pdf",
+       "q_count": 31
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   1,2 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「仮定法」とは？\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼からの結婚の申し込みを受けるだろう。\n\n   I   receive his proposal of marriage.\n\n(2)   彼からの結婚の申し込みを受けられたらなぁ。\n\n   I   receive his proposal of marriage.\n\n(3)   彼女の立場ならば，彼に住所を教えないだろう。\n\n   In her place, I   tell him my address.\n\n(4)   正直な人ならば，そんなバカなことはしないだろう。\n\n   An honest man   do such a foolish thing.\n\n(5)   あなたの立場ならば，私はすぐに宿題をするだろう。\n\n   In your place, I   do the homework at once.\n\n(6)   英語がうまく話せたらなぁ。\n\n   I   speak English well.\n\n(7)   鳥のように飛べたらなぁ。\n\n   I   fly like a bird.\n\n   318",
+       "answer_text": "章「仮定法」   1,21-2\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) will\n\n(2) would\n\n(3) would not [wouldn’t]\n\n(4) would not [wouldn’t]\n\n(5) would\n\n(6) would\n\n(7) would",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_001『「仮定法」とは？』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_001『「仮定法」とは？』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 1 2   練習   次の英文を日本語に訳しなさい。\n\n   「仮定法」とは？   ⑴ A true friend wouldn’t say such a thing.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ あなたのもとに飛んでいくよ。\n   ⑵ An honest man wouldn’t make an excuse.\n I   fly to you.\n\n⑵ あなたのもとに飛んでいければなあ。\n I   fly to you.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n⑶ 彼の立場ならば、私はその話を信じるだろう。\n In his place, I   believe the story.   彼女の立場ならば、私はあなたのプロポーズに応じているのに。\n   In her place, I（   ）your proposal.\n\n   ① accepted   ② would be accepted   ③ would accept\n\n   omitsu Kimura の\n Tom\n\n「仮定法」とは？\n\n「ありえない」内容を過去形であらわす\n〔例〕 I will fly to you   あなたのもとに 飛んでいくよ\n   ありえる   ありえる\n\n   I would fly to you   あなたのもとに 飛んでいければなあ\n   ありえない   ありえない",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_001『「仮定法」とは？』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_001『「仮定法」とは？』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch07_003",
+     "num": "003",
+     "name": "「I wish＋仮定法」などの表現",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-2",
+       "content": "『「I wish＋仮定法」などの表現』\nI wish + 仮定法は「〜だったらいいのに（実際はそうでない）」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "I wish + 仮定法は「〜だったらいいのに（実際はそうでない）」を表す。\nI wish + 仮定法過去\nI wish + S 過去形 / would V\n現在の願望（実現困難）\nシグナル/特徴\n「〜ならいいのに」\nI wish + 仮定法過去完了\nI wish + S had V-en\n過去への後悔\nシグナル/特徴\n「〜だったらよかったのに」"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I wish I were taller.\nもっと背が高ければいいのに。\nI wish I had studied harder.\nもっと勉強しておけばよかった。\nIf only I knew his number!\n彼の電話番号を知っていればなあ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nI wish + 仮定法過去 ＝ 現在の願望\n2\nI wish + 過去完了 ＝ 過去の後悔\n3\nIf only も同じ意味"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_003_「I wish＋仮定法」などの表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 I wish＋ 仮 定 法 」 な ど の 表 現   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各３点・計６点）\n   空を飛べたらなあ。\n\n   I could fly in the sky.\n\n   I   I could fly in the sky.\n\n   If   I could fly in the sky.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 30 点）\n\n(1)   彼からの結婚の申し込みを受けるつもりです。\n\n   I   receive his proposal of marriage.\n\n(2)   彼からの結婚の申し込みを受けられたらなぁ。\n\n   I   receive his proposal of marriage.\n\n(3)   正直な人ならば，そんなバカなことはしないだろう。\n\n   An honest man   do such a foolish thing.\n\n(4)   あなたの立場ならば，私はすぐに宿題をするだろう。\n\n   In your place, I   do the homework at once.\n\n(5)   鳥のように飛べたらなぁ。\n\n   I   fly like a bird.\n\n   I   I   fly like a bird.\n\n   If   I   fly like a bird.\n\n(6)   真の友人ならば，そんなことはしないだろう。\n\n   A true friend   such a thing.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 18 点）\n(1)   それが夢だったらなぁ。\n\n   I wish it   a dream.\n\n(2)   この村にもっと観光名所があったらいいのに。\n\n   I wish   more tourist attractions in this village.\n\n(3)   一度，月を歩けたらなぁ。\n\n   I wish I   just once.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 12 点）\n\n(1)   １日ゆっくりできたらなぁ。\n\n   If only I (   ) it easy all day.\n\n   ① could take   ② could have taken   ③ take\n\n(2)   大きな家が買えるぐらい稼げたらなぁ。\n\n   I wish I (   ) enough money to buy a big house.\n\n   ① could be earned   ② could earn   ③ earn\n\n５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   I wish I could use magic.\n\n(2)   I wish you were here.\n\n(3)   I wish there were no examinations.\n\f６   次の日本文を，(   )内の指示に従って英語で書きなさい。（各８点・計 16 点）\n\n(1)   車が運転できればなぁ。（wish を用いて）\n\n(2)   彼の記録を超えることができればなぁ。（If only を用いて）\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1) Yuki wishes she (   ) faster.\n\n   ① runs   ② is running   ③ ran   ④ run\n\n(2)   I know my father is busy, but I wish he (   ) come to the\n   school festival tomorrow.\n\n   ① will   ② has   ③ would   ④ had\n\n(3)   “May I open the window?”\n   “I’d rather you (   ).”\n\n   ① hadn’t   ② didn’t   ③ won’t   ④ shouldn’t\n\n(4)   I’d rather you (   ) me with my homework.\n   I want to do it all by myself.\n\n   ① didn’t help   ② helped   ③ weren’t helping   ④ will help\n\f８ 〈センター試験にチャレンジ〉   1 に入れるのに最も適当なものを，下の①～④から\n  一つ選べ。\n\n  Kenji told me his trip to London was wonderful. I wish I   1   in the travel.\n   〈11 年本試・改〉\n  ① had participated   ② have participated ③ participate   ④ will participate",
+       "answer_text": "Ａ問題\n\n１\n   空を飛べたらなあ。\n\n   I could fly in the sky.\n\n   I wish I could fly in the sky.\n\n   If only I could fly in the sky.\n２\n\n(1)   will\n\n(2)   would\n\n(3)   would not [wouldn’t]\n\n(4)   would\n\n(5)   could\n\n   wish ／ could\n\n   only ／ could\n\n(6)   would not [wouldn’t] do\n\nＢ問題\n３\n(1)   were\n\n(2)   there were\n\n(3)   could walk on the moon\n\n４\n\n(1)   ① could take\n(2)   ② could earn\n\f５\n\n(1)   魔法が使えたらなぁ。\n\n(2)   あなたがここにいてくれたらなぁ。\n\n(3)   試験がなければいいのになぁ。\n\n６\n\n(1)   [例] I wish I could drive a car.\n\n(2)   [例] If only I could go beyond [surpass] his record.\n\nＣ問題\n\n７\n\n(1)   ③ ran\n   ユキは，もっと速く走れたらいいのにと思っている。\n   ※「S wish＋仮定法」の形。I 以外が主語になることもある。\n\n(2)   ③ would\n   父が忙しいのはわかっているが，明日文化祭に来てくれればいいのになぁ。\n\n(3)   ② didn’t\n   「窓を開けてもいいですか。」「できれば開けないでほしいのですが。」\n   ※ I would rather you＋過去形「あなたが(できれば)～してくれるとよいのに」は，\n   丁寧な依頼を表す。\n\n(4)   ① didn’t help\n   私の宿題を手伝わないでほしいです。自分ひとりでやりたいのです。\n   ※ I would rather you didn’t ～ 「～しないでほしい」\n\n８\n   ① had participated\n   ケンジは，ロンドンへの旅行はとても素晴らしかったと私に語った。\n   私もその旅行に参加すればよかったのになあと思う。\n   ※７章「過去についての仮定（仮定法過去完了）」の授業も参照",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_003『「I wish＋仮定法」などの表現』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_003『「I wish＋仮定法」などの表現』（演習）.pdf",
+       "q_count": 48
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   3,4 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「I wish＋仮定法」などの表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私が幼い子供だったらなぁ。\n\n   I wish I   a little child.\n\n(2)   雨が止んでくれるといいなぁ。\n\n   If only it   raining.\n\n(3)   何か国語も話せたらなぁ。\n\n   I wish I   many kinds of languages.\n\n(4)   彼の理論が理解できるだけの頭脳があればなぁ。\n\n   If only I   good brains to understand his theory.\n\n(5)   今，ニューヨークにいたらなぁ。\n\n   I wish I   in New York now.\n\n(6)   もっと海外に行く機会があればいいのに。\n\n   I wish there   more opportunities to go abroad.\n\n(7)   昔に戻れたらなぁ。\n\n   I wish I   to the old days.\n\n   322",
+       "answer_text": "章「仮定法」   3,43-4\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) were\n\n(2) would stop\n\n(3) could speak\n\n(4) had\n\n(5) were\n\n(6) were\n\n(7) could go back",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_003『「I wish＋仮定法」などの表現』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_003『「I wish＋仮定法」などの表現』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 3 4   練習   次の英文を日本語に訳しなさい。\n\n   「I wish ＋ 仮定法」などの表現   ⑴ I wish I could speak English.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 空を飛べたらなあ。\n   ⑵ If only I were a member of the rich family.\n I wish I   fly in the sky.\n\n⑵ 私が鳥ならばなあ。\n   入試レベルにチャレンジ\n I wish I   a bird.\n   次の日本文にあう英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n⑶ たくさんお金があったらいいのに。\n   １日に30時間あったらいいのに。\n If only I   a lot of money.\n   I wish（   ）thirty hours in a day.\n\n   ① there were   ② there had been   ③ there were not\n\n   omitsu Kimura の\n Tom\n\n「I wish+仮定法」などの表現\n\n〔例〕 I could fly in the sky.   空を飛べたらなあ\n   ありえない\n   → I wish I could fly in the sky.\n\n   「この先は   ありえないこと\n   ありえない内容」   つまり仮定法\n   という予告",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_003『「I wish＋仮定法」などの表現』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_003『「I wish＋仮定法」などの表現』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch07_005",
+     "num": "005",
+     "name": "Iｆを使った仮定法（仮定法過去）",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-3",
+       "content": "『Iｆを使った仮定法（仮定法過去）』\n仮定法過去：If S 過去形, S would/could V。現在の事実に反する仮定。"
+      },
+      {
+       "title": "概要",
+       "content": "仮定法過去：If S 過去形, S would/could V。現在の事実に反する仮定。\n仮定法過去\nIf S 過去形 …\n条件節（過去形を使う）\nシグナル/特徴\nbe 動詞は were\n現在の事実に反する仮定\n, S would/could/might V\n結論節（助動詞過去 + 原形）\nシグナル/特徴\nwould / could / might"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "If I were you, I would apologize.\nもし私があなたなら、謝るだろう。\nIf I had time, I could help you.\n時間があれば手伝えるのに。\nIf he knew the truth, he would be angry.\n彼が真実を知ったら怒るだろう。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIf 過去形, would/could V\n2\n現在の事実に反する仮定\n3\nbe 動詞は were"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_005_Iｆを使った仮定法（仮定法過去）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "If を 使 っ た 仮 定 法 （ 仮 定 法 過 去 ）   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計４点）\n\n   もし私が鳥ならば，君のところに飛んでいくのに。\n   If I   a bird, I   fly to you.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 36 点）\n(1)   私が幼い子供だったらなぁ。\n\n   I wish I   a little child.\n\n(2)   雨が止んでくれるといいなぁ。\n\n   If only it   raining.\n\n(3)   何か国語も話せたらなぁ。\n\n   I wish   many kinds of languages.\n\n(4)   彼の理論が理解できるだけの頭脳があればなぁ。\n\n   If only   good brains to understand his theory.\n\n(5)   彼女の立場ならば，彼に住所を教えないだろう。\n\n   In her place, I   him my address.\n\n(6)   彼女に電話をかけることができたらなぁ。\n\n   I   call her.\n\n   I   I   call her.\n\n   If   I   call her.\n\n(7)   もし私が彼女の電話番号を知っていたら，彼女に電話をかけることができるのに。\n\n   If I   her phone number, I   call her.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 20 点）\n\n(1)   もしトムがここにいたら，私たちを救ってくれるのに。\n\n   If   , he would save us.\n\n(2)   もしあなたが鍵を見つければ，その箱を開けることができるのに。\n\n   If   , you could open the box.\n\n(3)   もし私がその機能の操作方法を知っていたら，このような場合に何をすべきか彼女に\n\n   教えてあげられるのに。\n\n   how to operate the function,\n\n   what to do in this case.\n\n４   (   )内にあてはまる語(句)の組み合わせを選びなさい。（各５点・計 15 点）\n\n(1)   If I (   ) a computer, I (   ) do my work.\n\n   ① don’t have ／ couldn’t   ② didn’t have ／ couldn’t\n\n   ③ not having ／ couldn’t\n\n(2)   If the sunlight (   ) into this room, I (   )\n\n   out the washing here.\n\n   ① poured ／ would hang   ② would pour ／ hang\n\n   ③ poured ／ will hang\n\n(3)   If I (   ) this area, I (   ) you anywhere.\n\n   ① know a lot about ／ guide   ② knew a lot about ／ could guide\n\n   ③ would know ／ could guide\n\f５   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1)   If the bookshelf weren’t so heavy, I could move it alone.\n\n(2)   If I were a little younger, I could swim faster than you.\n\n(3)   If you studied harder, you might pass the exam.\n\n６   次の日本文を, if を用いて英語で書きなさい。（各５点・計 10 点）\n\n(1)   もし私があなただったら，私は決してその約束を忘れないのに。\n\n(2)   もしその小説が図書館にあったなら，私はそれをすぐに借りるのに。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   ２つの英文が似たような意味になるように，   に適する語(句)を書きなさい。\n\n(1)   I can’t buy the car because I don’t have enough money.\n\n   If I   enough money, I could buy the car.\n\n(2)   We can’t go on a picnic because it is rainy today.\n\n   If it   fine today, we   on a picnic.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   If Emi were interested in the story, she (   )\n   staring out of the window.\n\n   ① will be   ② would have been   ③ wouldn’t be   ④ wouldn’t have\n\n(2)   Tom (   ) her if he had time, but he is really busy now.\n\n   ① helps   ② helped   ③ would help   ④ have helped\n\n(3)   If it (   ) raining soon, let’s go out for a walk together.\n\n   ① would stop   ② will stop   ③ stopped   ④ stops",
+       "answer_text": "If を 使 っ た 仮 定 法 （ 仮 定 法 過 去 ） ― 解 答 ―\n\nＡ問題\n１\n   もし私が鳥ならば，君のところに飛んでいくのに。\n   If I were a bird, I would fly to you.\n２\n(1)   were\n\n(2)   would stop\n\n(3)   I could speak\n\n(4)   I had\n\n(5)   would not [wouldn’t] tell\n\n(6)   could\n\n   wish ／ could\n\n   only ／ could\n\n(7)   knew ／ could\n\nＢ問題\n３\n(1)   Tom were here\n\n(2)   you found the key\n\n(3)   If I knew ／ I could tell her\n４\n\n(1)   ② didn’t have ／ couldn’t\n(2)   ① poured ／ would hang\n   hang out「（洗濯物などを）干す」\n   the washing 「洗濯物」\n\n(3)   ② knew a lot about ／ could guide\n\f５\n\n(1)   本棚がそれほど重くなければ，私は一人で動かすことができるだろうに。\n\n(2)   もし私がもう少し若かったならば，君より速く泳げるのに。\n\n(3)   あなたがもっと勉強するなら，試験に合格できるかもしれないのに。\n\n６\n\n(1)   [例] If I were you, I would never forget the promise.\n\n(2)   [例] If the novel were in the library, I would borrow it soon.\n\nＣ問題\n\n７\n\n(1)   If I had enough money, I could buy the car.\n\n(2)   If it were fine today, we could go on a picnic.\n\n８\n\n(1)   ③ wouldn’t be\n   その話に興味があるのなら，エミは窓の外をじっと見ていたりしないだろう。\n   ※進行形になっていることに注意\n\n(2)   ③ would help\n   トムは，もし時間があれば彼女を手伝うだろうが，彼は今本当に忙しい。\n\n(3)   ④ stops\n   もしもうすぐ雨がやんだら，一緒に散歩に行きましょう。\n   ※「実際にありそうなこと」は，仮定法ではなく直接法で表す。\n   条件を表す副詞節の中なので，未来のことだが現在形④ stops が適切。",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_005『Iｆを使った仮定法（仮定法過去）』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_005『Iｆを使った仮定法（仮定法過去）』（演習）.pdf",
+       "q_count": 44
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   5,6 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   If を使った仮定法 （仮 定法過去）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   もし私があなたならば，彼からの結婚の申し込みを受け入れるのに。\n\n   If I   you, I   accept his proposal of marriage.\n\n(2)   もし車を持っていたら，あなたと一緒に海へドライブするのに。\n\n   If I   a car, I   drive to the sea with you.\n\n(3)   もしその山がもっと高ければ，子供は登ることができないだろうに。\n\n   If the mountain   more higher, a child   it.\n\n(4)   もし私が君の立場なら，彼女の意見に賛成しないのに。\n\n   If I   in your place, I   with her opinion.\n\n(5)   もし彼女の住所を知っているなら，すぐにこれを送るのに。\n\n   If I   her address, I   this to her soon.\n\n(6)   もし時間があれば，あなたたちと一緒に行くことができるのに。\n\n   If   time, I   with you.\n\n(7)   もしその魚が新鮮ならば，生で食べられるのに。\n\n   If the fish   fresh, it   raw.\n\n   326",
+       "answer_text": "章「仮定法」   5,65-6\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) were ／ would\n\n(2) had ／ would\n\n(3) were ／ couldn’t climb\n\n(4) were ／ wouldn’t agree\n\n(5) knew ／ would send\n\n(6) I had ／ could go\n\n(7) were ／ could be eaten",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_005『Iｆを使った仮定法（仮定法過去）』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_005『Iｆを使った仮定法（仮定法過去）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 ５ ６   練習   次の英文を日本語に訳しなさい。\n\n   Ifを使った仮定法（仮定法過去）   ⑴ If I knew her phone number, I could call her.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ もし私が鳥ならば、君のところに飛んでいくのに。\n   ⑵ If the car were not so expensive, I would buy it.\n If I   a bird,\n\n I   fly to you.\n\n   入試レベルにチャレンジ\n⑵ もし十分なお金があれば、その本を買うのに。\n   正しい英文になるように、カッコ内に適する語（句）の\n If I   enough money,   組み合わせを選びなさい。\n\n I   buy the book.   If I（   ）a lot of money, I（   ）abroad.\n\n   ① had ／ can go   ② would have ／ went\n   ③ had ／ could go\n\n   omitsu Kimura の\n Tom\n\n Ifを使った仮定法（仮定法過去）\n\n〔例〕 I would fly to you.   君のところに飛んでいくのに\n   予告\n   → If I were a bird , I would fly to you.\n   「If S 過去形～,」➡ 仮定法過去の文がくる",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_005『Iｆを使った仮定法（仮定法過去）』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_005『Iｆを使った仮定法（仮定法過去）』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch07_007",
+     "num": "007",
+     "name": "倒置の仮定法（Ifの省略）",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-4",
+       "content": "『倒置の仮定法（Ifの省略）』\nIf は省略でき、その場合 be / had / should を主語の前に出す（倒置）。"
+      },
+      {
+       "title": "概要",
+       "content": "If は省略でき、その場合 be / had / should を主語の前に出す（倒置）。\n通常の仮定法\nIf S were / had V-en / should V\n通常の語順\nシグナル/特徴\nIf が文頭\nIf 省略 → 倒置\nWere S / Had S V-en / Should S V\nIf を省略して倒置\nシグナル/特徴\n文語的・改まった文"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Were I rich, I would travel the world.\nもし金持ちなら世界中を旅するのに。\nHad I known, I would have helped.\n知っていたら助けたのに。\nShould you need help, please call me.\nもし助けが必要なら、電話してください。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nWere / Had / Should が文頭に\n2\nIf を省略して倒置\n3\n文語的"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_007_倒置の仮定法（Ifの省略）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "倒 置 の 仮 定 法 （ If の 省 略 ）   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計８点）\n   もし私が鳥だったら，空を飛べるのに。\n   If I   a bird, I   fly in the sky.\n\n   I a bird, I   fly in the sky.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 32 点）\n\n(1)   もし彼女の住所を知っているなら，すぐにこれを送るのに。\n\n   If I   her address, I   this to her soon.\n\n(2)   もしその山がもっと高ければ，子供は登ることができないだろうに。\n\n   If the mountain   more higher, a child   it.\n\n(3)   もし私に時間があれば，あなたたちと一緒に行くことができるのに。\n\n   If   time, I   with you.\n\n(4)   もしその魚が新鮮ならば，生で食べられるのに。\n\n   If the fish   fresh, it   raw.\n\n(5)   もし私があなたならば，彼女の意見に賛成するのに。\n\n   If I   you, I   with her opinion.\n\n   I you, I   with her opinion.\n\n(6)   もし私があなたの立場ならば，彼女の意見に賛成するのに。\n\n   If I   place, I   with her opinion.\n\n(7)   あなたの立場ならば，彼女の意見に賛成するのに。\n\n   In   ,I   with her opinion.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   (   ) you, I would give her a hand.\n\n   ① I were   ② If were I   ③ Were I   ④ Were if I\n\n(2)   (   ) a detective in fact, he would find out a key to a mystery.\n\n   ① Were the actor   ② Were if the actor   ③ The actor were\n\n４   次の英文を日本語に訳しなさい。（各８点・計 24 点）\n\n(1)   Were I you, I wouldn’t believe such a doubtful story.\n\n(2)   Were I satisfied, I wouldn’t complain about their response.\n\n(3)   Were he a member of my favorite baseball team, I would be very happy.\n\n５   次の日本文を英語で書きなさい。ただし，if を用いないこと。（各 10 点・計 20 点）\n\n(1)   もし私があなただったら，空港で彼を迎えるだろうに。\n\n(2)   もし彼女が正直なら，彼女は真実を話すだろう。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n(1)   もし私があなただったら，その申し出を断るだろう。\n   ( the / decline / , / I / you / offer / were / I / would / . )\n\n(2)   もし私が彼女の立場だったら，そんな間違いはしないだろう。\n   ( make / I / her / mistake / in / , / couldn’t / such / were / I / a / place / . )\n\n(3)   もし私がお金持ちだったら，その車を買うことができるのに。\n   I could ( the / I / were / buy / car / rich ).\n\n(4)   もし私があなたの立場だったら，ナンシーに謝るのに。\n   I ( were / to / your / would / in / apologize / I / place / Nancy ).\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n   You might have won the first prize (   ) harder.\n\n   ① if you were practicing   ② had you practiced\n\n   ③ were you practicing   ④ if you didn’t practiced",
+       "answer_text": "倒 置 の 仮 定 法 （ If の 省 略 ） ― 解 答 ―\n\nＡ問題\n\n１\n\n   もし私が鳥だったら，空を飛べるのに。\n\n   If I were a bird, I could fly in the sky.\n\n   Were I a bird, I could fly in the sky.\n\n２\n\n(1)   knew ／ would send\n\n(2)   were ／ couldn’t climb\n\n(3)   I had ／ could go\n\n(4)   were ／ could be eaten\n\n(5)   were ／ would agree\n\n   Were ／ would agree\n\n(6)   were in your ／ would agree\n\n(7)   your place ／ would agree\n\nＢ問題\n３\n\n(1)   ③ Were I\n(2)   ① Were the actor\n\n４\n\n(1)   もし私があなただったら，そんなあやしい話を信じないのに。\n\n(2)   もし私が満足していれば，彼らの応対に不平を言ったりしないだろうに。\n\n(3)   もし彼が私のお気に入りの野球チームのメンバーだったら，私はとてもうれしいのに。\n\f５\n\n(1)   [例] Were I you, I would welcome him at the airport.\n\n(2)   [例] Were she honest, she would tell the truth.\n\nＣ問題\n\n６\n\n(1)   Were I you, I would decline the offer.\n\n(2)   Were I in her place, I couldn’t make such a mistake.\n\n(3)   I could buy the car were I rich.\n\n(4)   I would apologize to Nancy were I in your place.\n\n   ※(3)・(4)のように，仮定法の If が省略されて倒置が起こった状態で，主節の後ろ\n   に If 節が置かれることもある。\n\n７\n\n   ② had you practiced\n   You might have won the first prize had you practiced harder.\n\n   もっと一生懸命に練習していたら，優勝できたかもしれないのに。",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_007『倒置の仮定法（Ifの省略）』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_007『倒置の仮定法（Ifの省略）』（演習）.pdf",
+       "q_count": 29
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   7,8 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   倒置の仮定法 （If の省 略 ）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   ただし，if は用いないこと。\n\n(1)   もし私が料理が得意だったら，あなたに美味しい料理を作ってあげられるのに。\n\n   good at cooking, I could make delicious dishes for you.\n\n(2)   もし私がひまだったら，したいことは何でもできるだろうに。\n\n   free, I could do everything I want to do.\n\n(3)   もし私が君ならば，彼を一人にしておくだろうに。\n\n   you, I would leave him alone.\n\n(4)   もし私があなたの立場ならば，その子供たちのことを悲しく思うだろうに。\n\n   in your place, I would feel very sad about the children.\n\n(5)   もし彼がここにいたら，私に最初に何をすべきか教えてくるだろうに。\n\n   here, he would tell me what I should do first.\n\n(6)   もし彼女がもっと賢かったら，そのような間違いをしないだろうに。\n\n   cleverer, she wouldn’t make such a mistake.\n\n   330",
+       "answer_text": "章「仮定法」   7,87-8\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) Were I\n\n(2) Were I\n\n(3) Were I\n\n(4) Were I\n\n(5) Were he\n\n(6) Were she",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_007『倒置の仮定法（Ifの省略）』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_007『倒置の仮定法（Ifの省略）』（習熟）.pdf",
+       "q_count": 6
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 7 8   練習   次の英文を日本語に訳しなさい。\n\n   倒置の仮定法（Ifの省略）   ⑴ Were I you, I would write to Nancy.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ もし私が鳥だったら、空を飛べるのに。\n   ⑵ Were I rich, I could buy the car.\n   I a bird, I could fly in the sky.\n\n⑵ もし僕が君だったら、ナンシーに謝るのにな。\n   I you, I would apologize to Nancy.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内に適する語（句）の\n   組み合わせを選びなさい。\n\n   （   ）in your place, I would not help her.\n\n   ① I were   ② Were I   ③ If were I   ④ Were if I\n\n   omitsu Kimura の\n Tom\n\n 倒置の仮定法（Ifの省略）\n\n 倒置＝『疑問文の並び順』にすること\n\n〔例〕 もし私が鳥だったら\n   If I were a bird, ➡ Were I a bird,\n \t\t   ① Ifを消す\n \t\t   ② 疑問文の並び順",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_007『倒置の仮定法（Ifの省略）』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_007『倒置の仮定法（Ifの省略）』（習得）.pdf",
+       "q_count": 10
+      }
+     }
+    },
+    {
+     "id": "ch07_009",
+     "num": "009",
+     "name": "過去についての仮定（仮定法過去完了）",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-5",
+       "content": "『過去についての仮定（仮定法過去完了）』\n仮定法過去完了：If S had V-en, S would have V-en。過去の事実に反する仮定。"
+      },
+      {
+       "title": "概要",
+       "content": "仮定法過去完了：If S had V-en, S would have V-en。過去の事実に反する仮定。\n仮定法過去完了\nIf S had V-en …\n条件節（過去完了形）\nシグナル/特徴\n過去のあのとき〜だったら\n過去の事実に反する仮定\n, S would/could/might have V-en\n結論節\nシグナル/特徴\n助動詞過去 + have V-en"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "If I had studied, I would have passed.\n勉強していれば合格していたのに。\nIf she had known, she would have come.\n知っていれば来ていたのに。\nIf I had had time, I could have helped.\n時間があれば手伝えたのに。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIf 過去完了, would have V-en\n2\n過去の事実に反する仮定\n3\n「〜していたら、〜していたのに」"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_009_過去についての仮定（仮定法過去完了）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "過去についての仮定（仮定法過去完了）   100\n\nＡ問題\n１   下線部に注意して，次の英文を日本語に訳しなさい。（２点）\n   If I had known it, I would have helped her.\n   そのことを知っていたら，彼女を   のに。\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 32 点）\n(1)   彼女がそこに着いたとき，その映画はすでに始まっていた。\n\n   The movie   when she   there.\n\n(2)   もし私が料理が得意だったら，あなたに美味しい料理を作ってあげられるのに。\n\n   I good at cooking, I could make delicious dishes for you.\n\n(3)   もし私がひまだったら，したいことは何でもできるだろうに。（※if を使わずに）\n\n   free, I could do everything I want to do.\n\n(4)   もし私が君ならば，彼を一人にしておくだろうに。（※if を使わずに）\n\n   you, I   leave him alone.\n\n(5)   もし車を持っていたら，あなたと一緒に海へドライブするのに。\n\n   If I   a car, I   to the sea with you.\n\n(6)   もし車を持っていたら，あなたと一緒に海へドライブしたのに。\n\n   If I   a car, I   to the sea with you.\n\n(7)   もし私が君の立場だったら，彼を助けないのに。\n\n   If I   in your place, I   him.\n\n(8)   もしそれを知っていたら，彼を助けなかったのに。\n\n   If I   it, I   him.\n\n(9)   もしあなたがその試験のために勉強していたら，合格できていただろうに。\n\n   you studied for the exam, you   it.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各６点・計 18 点）\n\n(1)   もしジャックが棚に寄りかかったりしなければ，その花瓶は落ちなかっただろうに。\n\n   If Jack had not leaned on the shelf, the vase\n\n   down.\n\n(2)   もし私がシンデレラだったら，王子様と踊れていたのに。\n\n   If I had been Cinderella, I   with the prince.\n\n(3)   もし彼が私の秘密に気づいていたら，彼は私を頼ったりしなかっただろう。\n\n   Had he noticed my secret, he   on me.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 18 点）\n\n(1)   (   ) I had had a driver’s license, I could have driven the sports car.\n\n   ① Had   ② If   ③ Were\n\n(2)   (   ) I known that you weren’t here, I wouldn’t have come.\n\n   ① Had   ② If   ③ Were\n\n(3)   If he (   ) sick, he could have played soccer with us.\n\n   ① has not been   ② have not been   ③ had not been\n\n５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   If my mother had not woken me up, I would have slept all day long.\n\n(2)   If I had spent all my money, I could not have returned my home.\n\n(3)   Had I had a daughter, I would have given her my rings.\n\f６   次の日本文を，if を用いて英語で書きなさい。（各６点・計 12 点）\n\n(1)   もし私がその事実を知っていたら，あなたたちに教えていたのに。\n\n(2)   あなたが母親に手紙を書いていれば，彼女はあなたを心配することはなかった\n   でしょうに。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Keita studied very hard, but he (   ) harder.\n\n   ① studied   ② will have studied   ③ could have studied   ④ could not study\n\n(2) Ayako (   ). If she hadn’t studied so hard, she still would have\n   passed it.\n\n   ① didn’t pass the exam   ② failed the exam\n   ③ should pass the exam   ④ passed the exam easily\n\n８ 〈センター試験にチャレンジ〉次の問いに答えよ。\n\n(1)   1   に入れるのに最も適当なものを，それぞれ下の①～④から一つ選べ。\n\n   If I hadn’t broken up with Hannah last month, I   1   going out with her for two\n   years.\n   〈10 年本試〉\n   ① had been   ② have been   ③ will have been   ④ would have been\n\f(2)   (A)と(B)の組み合わせとして最も適当なものを，下の①～④から一つ選べ。\n\n   If I (A ) you were here before I left home, I ( B ) your book with me.\n   〈14 年追試〉\n   ① A: didn’t know B: have brought   ② A: had known B: would have brought\n   ③ A: hadn’t known B: would bring   ④ A: knew   B:had brought\n\n(3)   次の対話において，下の①～⑥の語句を並びかえて空所を補い，最も適当な文を完成\n   させよ。\n\n   Yuki：Have we met before? You look very familiar to me.\n   Anne：I don’t think so. If we had met,\n   sure!\n   〈15 年本試・改〉\n   ① for   ② have   ③ I   ④ recognized   ⑤ would   ⑥ you",
+       "answer_text": "Ａ問題\n１\n   If I had known it, I would have helped her.\n   そのことを知っていたら，彼女を助けたのに。\n２\n(1)   had already started ／ arrived ※第１章 時制 19・20 過去完了形\n\n(2)   Were\n\n(3)   Were I\n\n(4)   Were I ／ would\n\n(5)   had ／ would drive\n\n(6)   had had ／ would have driven\n\n(7)   were ／ wouldn’t help\n\n(8)   had known ／ wouldn’t have helped\n\n(9)   Had ／ could have passed\n\nＢ問題\n３\n(1)   would not have fallen\n   lean 「寄りかかる」\n(2)   could have danced\n\n(3)   would not have depended\n\n４\n\n(1)   ② If\n(2)   ① Had\n(3)   ③ had not been\n\f５\n(1)   もし母が起こしてくれなかったら，私は１日中眠っていただろう。\n\n(2)   もし私がお金を全部使っていたら，家に帰ってくることができなかっただろう。\n\n(3)   もし私に娘がいたら，彼女に私の指輪をあげていただろう。\n\n６\n(1)   [例] If I had known the fact, I would have told you.\n\n(2)   [例] If you had written to your mother, she would not have worried about you.\n\nＣ問題\n７\n\n(1)   ③ could have studied\n   ケイタはとても一生懸命勉強した，でも(やろうと思えば)もっと一生懸命勉強できた\n   だろう。\n\n(2)   ④ passed the exam easily\n   アヤコは簡単にその試験に受かった。もしそれほど一生懸命に勉強していなかったと\n   しても，やはり受かっていただろう。\n\n   ※If she hadn’t studied so hard, she still would have passed it.が仮定法過去完了だ\n   が，「試験に受かった」のは「過去の事実」であると見抜くことがポイント。\n８\n\n(1)   ④ would have been\n   もし先月ハンナと別れていなかったら，２年間付き合っていることになっただろう。\n\n(2)   ② A: had known B: would have brought\n   もし家を出る前にあなたがここにいると知っていたなら，\n   あなたの本を持ってきたのに。\n(3)   Yuki ：Have we met before? You look very familiar to me.\n   Anne：I don’t think so. If we had met,\n   ③   ⑤   ②   ④   ⑥   ①   sure!\n\n   (I would have recognized you for)\n\n   ユキ「以前に私たち会ったことある？あなたはとても見覚えがあるようなの。」\n   アン「そうは思わないわ。もし会ったことがあるなら，きっとあなたのことが\n   分かったわ。」",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_009『過去についての仮定（仮定法過去完了）』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_009『過去についての仮定（仮定法過去完了）』（演習）.pdf",
+       "q_count": 62
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   9,10 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   過去についての仮定 （仮定法過 去 完了）\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   もう少し早く出発していたならば，私はその列車に間に合っていただろう。\n\n   If I   a little earlier, I   the train.\n\n(2)   もし私が犬を飼っていたら，毎朝散歩に連れていっただろうに。\n\n   If I   a dog, I   it for a walk\n\n   every morning.\n\n(3)   彼女の気持ちを知っていたら，私は彼女をそんなところへ連れて行かなかった。\n\n   her feelings, I   her to such a\n\n   place.\n\n(4)   もし私が 10 万円持っていたら，そのコンピュータを買えただろうに。\n\n   If I   a hundred thousand yen, I\n\n   the computer.\n\n(5)   もし私がお金持ちだったならば，あなたが望んだものを買ってあげられたのに。\n\n   rich, I   what you wanted.\n\n(6)   私が彼の電話番号を知っていたら，電話をかけられたのに。\n\n   If I   his phone number, I   him.\n\n(7)   あなたがそのチケットを手に入れていたら，\n   彼女の最後の舞台を見ることができただ\n\n   ろうに。\n\n   the ticket, you   her last stage.\n\n   334",
+       "answer_text": "習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   過 去 についての仮 定 （仮 定 法 過 去 完 了 ） ―解 答 ―\n\n１\n\n(1) had left ／ would have caught\n\n(2) had kept ／ would have taken\n\n(3) Had I known [If I had known] ／ wouldn’t have taken\n\n(4) had had ／ could have bought\n\n(5) Had I been [If I had been] ／ could have bought\n\n(6) had known ／ could have called\n\n(7) Had you got [If you had got] ／ could have seen",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_009『過去についての仮定（仮定法過去完了）』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_009『過去についての仮定（仮定法過去完了）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 9 10   練習   次の英文を日本語に訳しなさい。\n\n   過去についての仮定（仮定法過去完了）   ⑴ If I had had enough money, I could have bought the car.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ そのことを知っていたら、彼女を助けたのに。\n   ⑵ If I had known your address, I would have written to you.\n  If I   it , I\n  her.\n\n   入試レベルにチャレンジ\n⑵ もしあなたが試験のために勉強していたら、合格していただろう。\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n  If you   for the exam,\n\n  you   it.   （   ）I arrived at the airport 10 minutes earlier,\n   I could have caught the plane.\n\n   ① If   ② Had   ③ Were\n\n   omitsu Kimura の\n  Tom\n\n 過去についての仮定（仮定法過去完了）\n  ⎧ 現在についての「ありえない」こと ➡ 仮定法過去\n  ⎪\n  ⎩ 過去についての「ありえない」こと ➡ 仮定法過去完了\n\n〔例〕 そのことを知っていたら、彼女を助けたのに。\n   If I had known it, I would have helped her.\n   「If S had 過去分詞 ～,」➡ 仮定法過去完了の文がくる\n   過去完了形",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_009『過去についての仮定（仮定法過去完了）』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_009『過去についての仮定（仮定法過去完了）』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch07_011",
+     "num": "011",
+     "name": "未来についての仮定（should／were to）",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-6",
+       "content": "『未来についての仮定（should／were to）』\n未来への仮定は If S should V / If S were to V を使う。実現可能性が低い未来。"
+      },
+      {
+       "title": "概要",
+       "content": "未来への仮定は If S should V / If S were to V を使う。実現可能性が低い未来。\nIf S should V\nIf S should V\n「万一〜なら」（実現可能性低）\nシグナル/特徴\n結論は will / would 両方可\nIf S were to V\nIf S were to V\n「仮に〜したら」（仮定の強調）\nシグナル/特徴\n結論は would / could"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "If you should see him, give him this.\n万一彼に会ったら、これを渡して。\nIf I were to win the lottery, I would buy a house.\nもし宝くじに当たったら家を買うだろう。\nIf it were to rain, the game would be canceled.\n万一雨が降ったら、試合は中止だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nshould ＝ 万一\n2\nwere to ＝ 仮定の強調\n3\n未来の仮定"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_011_未来についての仮定（should／were to）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "未 来 に つ い て の 仮 定 （ should / were to）   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計４点）\n\n①   If S   原形 ～,   万が一～するならば，\n\n②   If S   原形 ～,   ～するならば，\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 28 点）\n(1)   私が彼の電話番号を知っていたら，電話をかけられたのに。\n\n   If I   his phone number, I   him.\n\n(2)   私が彼の電話番号を知っていたら，電話をかけられるのに。\n\n   If I   his phone number, I   him.\n\n(3)   もし私がお金持ちならば，あなたが望むものを買ってあげられるのに。\n   ※if を使わずに\n\n   rich, I   what you want.\n\n(4)   もし私がお金持ちだったならば，あなたが望んだものを買ってあげられたのに。\n   ※if を使わずに\n\n   rich, I   what you wanted.\n\n(5)   もう少し早く出発していたならば，私はその列車に間に合っていただろう。\n\n   If I   a little earlier, I   the train.\n\n(6)   あなたがそのチケットを手に入れていたら，彼女の最後の舞台を見ることができただ\n   ろうに。\n\n   the ticket, you   her last stage.\n\n(7)   彼女の気持ちを知っていたら，私は彼女をそんなところへ連れて行かなかったのに。\n\n   her feelings, I   her to such a place.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各９点・計 18 点）\n\n(1)   (   ) a new island be discovered, the rich man will surely buy it.\n\n   ① Should   ② Had   ③ Were   ④ If\n\n(2)   (   ) a mistake, her teacher would order her to start over\n\n   from the beginning.\n\n   ① She should make   ② If she were made   ③ If she should make\n\n４   次の英文を日本語に訳しなさい。（各 10 点・計 30 点）\n\n(1)   If a small change should happen, she wouldn’t miss it.\n\n(2)   Should Tom return here, please tell him to come over to me.\n\n(3)   Even if the sea water were to dry up, I would go fishing to the sea.\n\n５   次の日本文を, (   )内の語を用いて英語で書きなさい。（各 10 点・計 20 点）\n\n(1)   もしあなたが私のことを覚えていてくれたら，私はとても幸せです。( if , should )\n\n(2)   仮に彼女がクラブを辞めたらあなたたちはどう思いますか？ ( if , were )\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   If you were to catch that disease, it (   ) impossible for you\n\n   to get well completely.\n\n   ① would not be   ② would be   ③ wasn’t   ④ was\n\n(2)   (   ), all animals couldn’t live.\n\n   ① If the sun will disappear   ② The sun were to disappear\n\n   ③ Were the sun to disappear   ④ Were the sun disappeared\n\n７   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n(1)   万が一明日彼女がその会議に参加するならば，その書類を渡して。\n   ( tomorrow / give / the documents / should / to / if / attend / her / she / , / the /\n   meeting /. )\n\n(2)   万が一ケイコに会ったら，私に電話するように伝えて下さい。\n   ( her / Keiko / please / see / to / , / should / ask / call / you / me / . )\n\n(3)   トムは万が一失敗しても，彼はまた試みるだろう。\n   ( again / , / Tom / fail / try / he / if / should / will / . )",
+       "answer_text": "Ａ問題\n\n１\n\n①   If S should 原形 ～,   万が一～するならば，\n\n②   If S were to 原形 ～,   ～するならば，\n\n２\n\n(1)   had known ／ could have called\n\n(2)   knew ／ could call\n\n(3)   Were I ／ could buy\n\n(4)   Had I been ／ could have bought\n\n(5)   had left ／ could have caught\n\n(6)   Had you got [If you had got] ／ could have seen\n\n(7)   Had I known [If I had known] ／ wouldn’t have taken\n\nＢ問題\n\n３\n\n(1)   ① Should\n(2)   ③ If she should make\n   start over from the beginning   「最初からやり直す」\n４\n\n(1)   万が一小さな変化が生じても，彼女がそれを見逃さないだろう。\n\n(2)   万が一トムがここに戻って来たら，私のところに来るように伝えてください。\n\n(3)   仮に海水が干上がってしまったとしても，私は海に釣りに行くつもりだ。\n\f５\n\n(1)   [例] If you should remember me, I will be very happy.\n\n(2)   [例] What would you think if she were to quit the club?\n\nＣ問題\n\n６\n\n(1)   ② would be\n   仮にあなたがその病気にかかったら，完治するのは不可能でしょう。\n\n(2)   ③ Were the sun to disappear\n   仮に太陽が消滅するならば，すべての動物は生きられないだろう。\n\n   ※If the sun were to disappear …の，if が省略されて倒置がおこっている\n\n７\n\n(1)   If she should attend the meeting tomorrow, give the documents to her.\n\n(2)   Should you see Keiko, please ask her to call me.   ※if の省略・倒置にも注意\n\n(3)   If Tom should fail, he will try again.\n\n   ※should を使った仮定法では，\n   ・動詞の原形を用いた命令形 →(1)(2)\n   ・will / can / may など助動詞の現在形を用いた直接法   →(3)\n   などが主節にくることもある",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_011『未来についての仮定（should／were to）』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_011『未来についての仮定（should／were to）』（演習）.pdf",
+       "q_count": 36
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   11,12 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   未来についての仮定 （should / were to）\n\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n\n(1)   万が一あなたの気が変われば，私たちに知らせてください。\n\n   If you   change your mind, please let us know.\n\n(2)   万が一あなたがその知らせを聞いたら驚くだろう。\n\n   If you   hear the news, you   be surprised.\n\n(3)   万が一試験に失敗したらあなたはどうするつもりですか？\n\n   What   you do, if you   fail the exam?\n\n(4)   もし万が一あなたが本を出版するならば，\n   私がその本を最初に読む人になるつもりだ。\n\n   If you   publish a book, I   be the first person\n\n   to read it.\n\n(5)   万が一明日晴れるのならば，私は海に泳ぎに行くつもりだ。\n\n   it be fine tomorrow, I   go swimming in the\n\n   sea.\n\n(6)   仮に月が地球に落ちてきたとしても，私はその女性を信じたりしないだろう。\n\n   Even if the moon   fall down to the earth, I\n\n   trust the lady.\n\n(7)   万が一彼が事業を始めると決めたら，\n   あなたたちは彼の計画に賛成してくれますか？\n\n   you agree with his plan, if he   decide to start\n\n   up a business?\n\n   338",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n   未 来 についての仮 定 （should / were to） ―解 答 ―\n\n１\n\n(1) should\n\n(2) should ／ would [will]\n\n(3) would [will] ／ should\n\n(4) should ／ would [will]\n\n(5) Should ／ will\n\n(6) were to ／ wouldn’t\n\n(7) Would ／ would [will]",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_011『未来についての仮定（should／were to）』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_011『未来についての仮定（should／were to）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 11 12   練習   次の英文を日本語に訳しなさい。\n\n 未来についての仮定（should / were to）   ⑴ What would you tell him, if he should come?\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ もし万が一、雪が降るならば、家にいるつもりだ。\n   ⑵ If I were to die tomorrow, what would become of my family?\n  If it   snow,\n\n  I   stay at home.\n\n⑵ 仮に太陽が西から昇るとしても、私は彼に会うつもりはない。   入試レベルにチャレンジ\n  Even if the sun   rise in the west,   正しい英文になるように、カッコ内に適する語（句）を選びなさい。\n\n  I   meet him.   （   ）she change her mind, she will call me.\n\n⑶ もし万が一、明日彼が来るならば、この手紙を渡してください。\n  If he   come here tomorrow,   ① Should   ② Had   ③ Were   ④ If\n\n  please give this letter to him.\n   omitsu Kimura の\n  Tom\n\n 未来についての仮定（should / were to）\n\n ① If S should 原形～,「万が一～するならば」\n   →ありえるけれど「可能性が低い」未来\n   〔例〕 If it should snow, I would/will stay at home.\n\n ② If S were to 原形～,「～するならば」\n   →ほとんどありえない未来\n   〔例〕 Even if the sun were to rise in the west,\n   I wouldn’t meet him.",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_011『未来についての仮定（should／were to）』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_011『未来についての仮定（should／were to）』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch07_013",
+     "num": "013",
+     "name": "仮定法過去完了＋仮定法過去",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-7",
+       "content": "『仮定法過去完了＋仮定法過去』\n「過去にこうしていれば、今こうなのに」は 仮定法過去完了 + 仮定法過去 を組み合わせる。"
+      },
+      {
+       "title": "概要",
+       "content": "「過去にこうしていれば、今こうなのに」は 仮定法過去完了 + 仮定法過去 を組み合わせる。\n条件節\nIf S had V-en …\n過去の事実に反する仮定\nシグナル/特徴\n過去完了\n結論節\n, S would V\n現在の結果（仮定法過去）\nシグナル/特徴\n助動詞過去 + 原形"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "If I had studied harder, I would be a doctor now.\nもっと勉強していたら、今は医者だろう。\nIf she had married him, she would be happier now.\n彼と結婚していたら、今もっと幸せだろう。\nIf I had taken that job, I would be rich now.\nあの仕事に就いていたら、今は金持ちだろう。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIf 過去完了, would V (現在)\n2\n過去の仮定 → 現在の結果\n3\nミックス仮定法"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_013_仮定法過去完了＋仮定法過去_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "仮定法過去完了＋仮定法過去   100\n\nＡ問題\n１   下線部に注意して，次の英文を日本語に訳しなさい。（各２点・計８点）\n\n(1)   If I had had breakfast, I wouldn’t be hungry now.\n\n   もし   ，今   。\n\n(2)   If I had worked harder in my youth, I would be rich now.\n\n   もし   ，今ごろ   。\n\n２   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計 24 点）\n(1)   もし私が 10 万円持っていたら，そのコンピュータを買えるのに。\n\n   If I   a hundred thousand yen, I   buy the computer.\n\n(2)   もし私が 10 万円持っていたら，そのコンピュータを買えただろうに。\n\n   If I had   a hundred thousand yen, I could   bought\n   the computer.\n\n(3)   万が一あなたがその知らせを聞いたら驚くだろう。\n\n   If you   hear the news, you   be surprised.\n\n(4)   万が一試験に失敗したらあなたはどうするつもりですか？\n\n   What   you do, if you   fail the exam?\n\n(5)   万が一明日晴れるのならば，私は海に泳ぎに行くつもりだ。\n\n   it be fine tomorrow, I   go swimming in the sea.\n\n(6)   仮に月が地球に落ちてきたとしても，私はその女性を信じたりしないだろう。\n\n   Even if the moon   to fall down to the earth, I\n   trust the lady.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各７点・計 28 点）\n\n(1)   もし間違った列車に乗っていなければ，彼は今頃そこに着いているだろう。\n\n   If he   the wrong train, he\n\n   there now.\n\n(2)   もし彼女の手紙を読んでいなかったら，私は今，１人で暮らしていないだろう。\n\n   If I   her letter, I   now.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 24 点）\n\n(1)   If you had taken the medicine, you (   ) fine now.\n\n   ① would be   ② would have been   ③ have been\n\n(2)   If we (   ) early in the morning, we could avoid this traffic jam.\n\n   ① left   ② have left   ③ had left\n\n(3)   If I had had money enough to buy a plane ticket to New York, I\n\n   (   ) in Japan now.\n\n   ① would live   ② lived   ③ wouldn’t live\n\n５   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   もし彼女が腕時計を失くしていなかったら，今頃，遅れていないだろう。\n\n(2)   もしあの時，彼が私に嘘をついていたら，私たちは今，親友ではないだろう。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   If Tom had seen her then, he (   ) happier now.\n\n   ① have been ② is ③ will be   ④ would be\n\n(2)   If she had taken care of herself last year, she (   ) sick now.\n\n   ① would be   ② would not be   ③ was not   ④ is\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   If Jim were more careful, he (   ) a mistake like that.\n\n   ① would have made   ② wouldn’t have made   ③ made   ④ will make\n\n(2)   If I knew how to solve the problem, I (   ) her a long time ago.\n\n   ① told   ② had told   ③ would tell   ④ would have told\n\n(3)   If I (   ) you, I would not have said such a thing.\n   ① am   ② will be   ③ were   ④ have been\n\f８ 〈センター試験にチャレンジ〉   1 に入れるのに最も適当なものを，\n\n  下の①～④から一つ選べ。\n\n  If it had not been for her father’s advice, Maiko   1   in trouble now.\n   〈12 年追試〉\n  ① will be   ② will have been   ③ would be   ④ would have",
+       "answer_text": "Ａ問題\n１\n\n(1)   If I had had breakfast, I wouldn’t be hungry now.\n\n   もし朝ご飯を食べていたら，今お腹がすいていないだろう。\n\n(2)   If I had worked harder in my youth, I would be rich now.\n\n   もし若い時にもっと一生懸命働いていたら，今ごろきっとお金持ちになっているのに。\n\n２\n\n(1)   had ／ could\n\n(2)   had ／ have\n\n(3)   should ／ would [will]\n\n(4)   would [will] ／ should\n\n(5)   Should ／ will\n\n(6)   were ／ wouldn’t\n\nＢ問題\n\n３\n\n(1)   had not [hadn’t] taken ／ would get [arrive]\n\n(2)   had not [hadn’t] read ／ would not [wouldn’t] live alone\n\n４\n\n(1)   ① would be\n(2)   ③ had left\n(3)   ③ wouldn’t live\n\f５\n\n(1)   [例] If she had not [hadn’t] lost her watch, she would not [wouldn’t] be late now.\n\n(2)   [例] If he had told me a lie [a lie to me] at that time, we would not [wouldn’t] be\n\n   good friends now.\n\nＣ問題\n６\n\n(1)   ④ would be\n   もしトムがそのとき彼女に会っていれば，今彼はもっと幸せでしょうに。\n\n(2)   ② would not be\n   もし彼女が去年体を大事にしていたら，今頃病気になっていないだろうに。\n   ※still，now，today など現在を表す言葉や，last year など過去を表す言葉に注目\n\n７\n※If S had 過去分詞 ～, S would 原形 …「もしあの時～だったら，今…なのに」\n\n※If S 過去形 ～, S would have 過去分詞 …「もし今 S が～ならば，あの時…だったのに」\n の組み合わせで，仮定法過去・仮定法過去完了が使われることもある\n\n(1)   ② wouldn’t have made\n   もしジムがもっと注意深ければ，そんな間違いはしなかっただろうに。\n\n(2)   ④ would have told\n   もし私がその問題の解決方法を知っていれば，ずっと前に彼女に教えていただろう。\n\n(3)   ③ were\n   もし私があなたなら，そんなことは言わなかっただろう。\n\n８\n\n   ③ would be\n   もし彼女の父親の助言がなかったら，マイコは今トラブルに見舞われているだろう。",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_013『仮定法過去完了＋仮定法過去』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_013『仮定法過去完了＋仮定法過去』（演習）.pdf",
+       "q_count": 55
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   13,14 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   仮定法過去完了＋仮定法過去\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   もし昨夜十分な睡眠時間があったら，今頃，眠くないだろう。\n\n   If I   enough time to sleep last night, I\n\n   sleepy now.\n\n(2)   もし彼女が７時に家を出ていたら，今，間に合っているだろう。\n\n   If she   home at seven, she   in time now.\n\n(3)   もし私がお金を全部使っていたら，今，困っていただろう。\n\n   If I   all my money, I   in trouble now.\n\n(4)   もし彼女が上司のアドバイスを受け入れていたら，今頃，彼女は仕事で成功している\n\n   だろう。\n\n   If she   her boss’s advice, she\n\n   at her job now.\n\n(5)   語り合う機会がもっとあったら，今頃，私たちはもっとお互いに理解し合っている\n\n   だろう。\n\n   If we   more chance to talk together, we\n\n   each other more now.\n\n(6)   もし手術が失敗していたら，私の祖父は今頃生きていないだろう。\n\n   If the operation   , my grandfather\n\n   alive now.\n\n(7)   もし私の夢が諦められていたら，今，私の人生は満たされていないだろう。\n\n   If my dream   given up, my life\n\n   fulfilled.\n\n   342",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) had had ／ wouldn’t be\n\n(2) had left ／ would be\n\n(3) had spent ／ would be\n\n(4) had taken ／ would succeed\n\n(5) had had ／ would understand\n\n(6) had failed ／ wouldn’t be\n\n(7) had been ／ wouldn’t be",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_013『仮定法過去完了＋仮定法過去』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_013『仮定法過去完了＋仮定法過去』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 13 14   練習   次の英文を日本語に訳しなさい。\n\n   仮定法過去完了 ＋ 仮定法過去   ⑴ If he had taken the train, he would not be alive now.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ もし朝ご飯を食べていたら、今お腹がすいていないだろう。\n   ⑵ If you had taken my advice, you would be happier now.\n  If I   breakfast,\n\n  I   hungry now.\n\n   入試レベルにチャレンジ\n⑵ 若いときにもっと一生懸命働いていたら、\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n  今ごろもっとお金持ちになっているのに。\n  If I   harder in my youth,   If she had got married to you,\n   she（   ）happier now.\n  I   richer now.\n\n   ① would be   ② would have been\n   ③ was   ④ has been\n\n   omitsu Kimura の\n  Tom\n\n 仮定法過去完了＋仮定法過去\n\n 「もしあの時～だったら、今…なのに」\n If S had 過去分詞 ～, S would 原形 …\n   過去の仮定   現在の仮定\n\n 〔例〕 If I had had breakfast, I wouldn’t be hungry now.\n   過去の仮定   現在の仮定",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_013『仮定法過去完了＋仮定法過去』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_013『仮定法過去完了＋仮定法過去』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch07_015",
+     "num": "015",
+     "name": "「If it were not for」などの表現",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-8",
+       "content": "『「If it were not for」などの表現』\nIf it were not for / If it had not been for は「〜がなければ／〜がなかったら」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "If it were not for / If it had not been for は「〜がなければ／〜がなかったら」を表す。\nIf it were not for\nIf it were not for 〜\n「〜がなければ」（現在）\nシグナル/特徴\n= But for / Without\nIf it had not been for\nIf it had not been for 〜\n「〜がなかったら」（過去）\nシグナル/特徴\n= Had it not been for"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "If it were not for water, we couldn't live.\n水がなければ生きていけない。\nIf it had not been for your help, I would have failed.\nあなたの助けがなかったら失敗していた。\nBut for your advice, I would be lost.\nあなたの助言がなければ私は迷っていた。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIf it were not for ＝ 〜がなければ\n2\nIf it had not been for ＝ 〜がなかったら\n3\nBut for / Without で書き換え"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_015_「If it were not for」などの表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 If it were not for」 な ど の 表 現   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   If it were not for 名詞,\n\n②   If it had not been for 名詞,\n\n   ※ ①②はどちらも，「Without 名詞」または「But for 名詞」で書きかえられる。\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 33 点）\n\n(1)   もし彼女が７時に家を出ていたら，今，間に合っているだろう。\n\n   If she   home at seven, she   in time now.\n\n(2)   もし昨夜十分な睡眠時間があったら，今頃，眠くないだろう。\n\n   If I   enough time to sleep last night, I\n   sleepy now.\n\n(3)   もし彼女が上司のアドバイスを受け入れていたら，今頃，彼女は仕事で成功している\n   だろう。\n\n   If she   her boss’s advice, she\n   at her job now.\n\n(4)   もし手術が失敗していたら，私の祖父は今頃生きていないだろう。\n\n   If the operation   , my grandfather\n   alive now.\n\n(5)   万が一あなたの気が変われば，私たちに知らせてください。\n\n   If you   change your mind, please let us know.\n\n(6)   仮に太陽が西から昇るとしても，私は彼に会うつもりはない。\n\n   Even if the sun   to rise in the west, I   meet him.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各５点・計 15 点）\n\n(1)   もし携帯電話がなかったらお互いどうやって連絡をとるのだろうか。\n\n   How would we make contact with each other if it   for cell\n\n   phones?\n\n(2)   もしチームメイトたちのサポートがなかったら，私は目標を達成できていなかっただ\n\n   ろう。\n\n   If   my teammates’ support, I could not have\n\n   achieved my goal.\n\n(3)   もしこのコートがなかったら，私は寒さで震えていただろう。\n\n   Had   , I would have been shivering with\n\n   cold.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 18 点）\n\n(1)   もし家族がいなければ，彼はアイスランドに移住するだろう。\n\n   (   ) for his family, he would move to Iceland.\n\n   ① If were not   ② Without   ③ If it were not\n\n(2)   もし救命ボートがなかったら，船客は皆その事故で亡くなっていただろう。\n\n   (   ) for the lifeboats, all of the passengers would have been\n\n   killed in the accident.\n\n   ① It had not been   ② Without   ③ Had it not been\n\n(3)   もしエアコンが私の部屋になかったら，この夏を乗り切れられないだろう。\n\n   (   ) for the air-conditioner in my room, I could not survive\n\n   this summer.\n\n   ① Were it not   ② Without   ③ It were not\n\f５   次の英文を日本語に訳しなさい。（各７点・計 14 点）\n\n(1)   If it were not for music, my life would be boring.\n\n(2)   Had it not been for the security camera, the police wouldn’t have found the\n\n   robber.\n\n６   次の日本文を，if を用いて英語で書きなさい。（各８点・計 16 点）\n\n(1)   もし両親の助けがなければ，私は成功しないだろう。\n\n(2)   もしこの地図がなかったら，私は道に迷っていただろう。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の４つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n(1)   空気と水がなければ，人間は生きられない。\n\n   If   the air and water, man could not live.\n\n   Were   the air and water, man could not live.\n\n   But   the air and water, man could not live.\n\n   the air and water, man could not live.\n\n(2)   あなたの助言がなかったら，私たちの計画は失敗していただろう。\n\n   If   your advice, our project would have failed.\n\n   Had   your advice, our project would have failed.\n\n   But   your advice, our project would have failed.\n\n   your advice, our project would have failed.\n\f８   次の問いに答えなさい。\n\n(1)   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。\n\n   もしもう少し我慢していれば，彼は成功したのに。\n   ( if / more / little / a / patience / with ), he would have succeed.\n\n(2)   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n   If it had been a little more effort, he could have passed the exam.\n\n   a little more effort, he could have passed the exam.\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   1   his advice, we would never have finished the work on time.\n   〈08 年本試〉\n   ① Accepted   ② Excluding   ③ Not for   ④ Without",
+       "answer_text": "Ａ問題\n\n１\n\n①   If it were not for 名詞,   もし名詞がなければ   ※仮定法過去\n\n②   If it had not been for 名詞,   もし名詞がなかったならば   ※仮定法過去完了\n\n２\n\n(1)   had left ／ would be\n\n(2)   had had ／ wouldn’t be\n\n(3)   had taken ／ would succeed\n\n(4)   had failed ／ wouldn’t be\n\n(5)   should\n\n(6)   were ／ wouldn’t\n\nＢ問題\n\n３\n\n(1)   were not\n\n(2)   it had not been for\n\n(3)   it not been for this coat\n\n４\n\n(1)   ③ If it were not\n(2)   ③ Had it not been\n(3)   ① Were it not\n\f５\n\n(1)   もし音楽がなければ，私の人生は退屈でしょう。\n\n(2)   もし防犯カメラがなかったら，警察は強盗を見つけていなかっただろう。\n\n６\n\n(1)   [例] If it were not for my parents’ help, I would not [wouldn’t] succeed.\n\n(2)   [例] If it had not been for this map, I would have lost my way.\n\nＣ問題\n\n７\n\n(1)   If it were not for the air and water, man could not live.\n\n   Were it not for the air and water, man could not live.\n\n   But for the air and water, man could not live.\n\n   Without the air and water, man could not live.\n\n(2)   If it had not been for your advice, our project would have failed.\n\n   Had it not been for your advice, our project would have failed.\n\n   But for your advice, our project would have failed.\n\n   Without your advice, our project would have failed.\n\n８\n\n(1)   With a little more patience, he would have succeed.   ( if が不要 )\n\n   ※with A「A があれば，A があったら」\n\n(2)   With a little more effort, he could have passed the exam.\n\n   もう少し努力していれば，彼女は試験に受かっていただろうに。\n\n９\n\n   ④ Without\n   彼の助言がなかったら，私たちは決して時間内に仕事を終えなかっただろう。",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_015『「If it were not for」などの表現』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_015『「If it were not for」などの表現』（演習）.pdf",
+       "q_count": 39
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   15,16 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「If it were not for」などの表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   もしあなたのサポートがなければ，\n   私はこの作品を仕上げることができないでしょう。\n\n   If it   for your support, I could not complete the work.\n\n   →   your support, I could not complete the work.\n\n   （前置詞を使って書き換える）\n\n(2)   もしこの博物館がなかったら，私たちの街は寂れていたでしょう。\n\n   If it   for this museum, our town would have been\n\n   deserted.\n\n   →   this museum, our town would have been deserted.\n\n   （前置詞を使って書き換える）\n\n(3)   もしテレビゲームがなければ，日曜日は，家で何もすることがないだろう。\n\n   If it   for video games, I would have nothing to do at\n\n   home on Sundays.\n\n(4)   もし太陽がなければ，すべての生物は地球上で生きていられないだろう。\n\n   Were   for the sun, all living things could not live on\n\n   the earth.\n\n(5)   もし安全帽がなければ，あなたは頭にケガをしていただろう。\n\n   Had   for the safety hat, you would have been injured\n\n   on your head.\n\n   346",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n   「If it were not for」などの表現 ―解 答―\n\n１\n\n(1) were not\n\n   Without [But for]\n\n(2) had not been\n\n   Without [But for]\n\n   deserted 「寂れた，人気のない」\n\n(3) were not\n\n(4) it not\n\n(5) it not been",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_015『「If it were not for」などの表現』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_015『「If it were not for」などの表現』（習熟）.pdf",
+       "q_count": 5
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 15 16   練習   次の英文を日本語に訳しなさい。\n\n 「If it were not for」などの表現   ⑴ If it were not for your advice, our project would fail.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ もし水がなければ、人間は生きられないでしょう。\n   ⑵ Had it not been for your home run, our team would not\n  If it   for water, man could not live.\n   have won.\n  ➡   water, man could not live.\n （前置詞を使って書き換える）\n\n⑵ もし交通渋滞がなかったら、私たちは間に合ったでしょう。   入試レベルにチャレンジ\n  If it   for the traffic jam,   次の日本文にあう英文になるように、カッコ内にあてはまる言葉を\n  we would have been in time.   次の選択肢から選びなさい。\n\n  ➡   the traffic jam,   空気と水がなければ、人間は生きられない。\n  we would have been in time.   （   ）for the air and water, man could not live.\n （前置詞を使って書き換える）\n   ① Without   ② It were not   ③ Were it not\n\n   omitsu Kimura の\n  Tom\n\n 「If it were not for」などの表現\n\n ①「もし（名詞）がなければ」\n   （仮定法過去）\n   If it were not for\n   （名詞）,\n\n ②「もし（名詞）がなかったならば」\n   （仮定法過去完了）\n   If it had not been for（名詞）,\n   ➡いずれもWithout（名詞）、またはBut for（名詞）、で書きかえられる",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_015『「If it were not for」などの表現』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_015『「If it were not for」などの表現』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch07_017",
+     "num": "017",
+     "name": "「as if(as though)＋仮定法」の表現",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-9",
+       "content": "『「as if(as though)＋仮定法」の表現』\nas if (as though) + 仮定法 ＝「まるで〜のように」。事実に反する内容を導く。"
+      },
+      {
+       "title": "概要",
+       "content": "as if (as though) + 仮定法 ＝「まるで〜のように」。事実に反する内容を導く。\nas if + 仮定法過去\nas if + S 過去形 / would V\n現在のことを「まるで〜のように」\nシグナル/特徴\n事実に反する\nas if + 仮定法過去完了\nas if + S had V-en\n過去のことを「まるで〜だったかのように」\nシグナル/特徴\n本動詞より前の時制"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He talks as if he knew everything.\n彼は何でも知っているかのように話す。\nShe acts as if she had seen a ghost.\n彼女はまるで幽霊を見たかのようにふるまう。\nHe looks as if he were tired.\n彼は疲れているように見える。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nas if / as though + 仮定法\n2\n現在 ＝ 仮定法過去\n3\n過去 ＝ 仮定法過去完了"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_017_「as if(as though)＋仮定法」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 as if (as though)＋ 仮 定 法 」 の 表 現   100\n\nＡ問題\n１   次の   に適する１語を書きなさい。\n   （各２点・計４点）\n\n   as   ＋ 仮定法   まるで～のように\n\n   ≒ as   ＋ 仮定法\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n\n(1)   もしあなたのサポートがなければ，私はこの作品を仕上げることができないでしょう。\n\n   If it   for your support, I could not complete this work.\n\n   →   your support, I could not complete this work.\n   （前置詞を使って書き換える）\n\n(2)   もしこの博物館がなかったら，私たちの街は寂れていたでしょう。\n\n   If it   for this museum, our town would have been\n   deserted.\n\n   →   this museum, our town would have been deserted.\n   （前置詞を使って書き換える）\n\n(3)   もし太陽がなければ，すべての生物は地球上で生きていられないだろう。\n\n   Were   for the sun, all living things could not live on\n   the earth.\n\n(4)   もし安全帽がなければ，あなたは頭にケガをしていただろう。\n\n   Had   for the safety hat, you would have been injured\n   on your head.\n\n(5)   もし私がお金を全部使っていたら，今，困っていただろう。\n\n   If I   all my money, I   in trouble now.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各 10 点・計 20 点）\n\n(1)   彼女はそれらの犬をまるで自分の子どものように世話をした。\n\n   She took care of those dogs as if they (   ) her own children.\n\n   ① are   ② were   ③ have been\n\n(2)   ナンシーはまるで世界中を旅していたかのように話す。\n\n   Nancy talks as though she (   ) all around the world.\n\n   ① travels   ② would travel   ③ had traveled   ④ was traveled\n\n４   次の英文を日本語に訳しなさい。（各 10 点・計 30 点）\n\n(1)   I feel comfortable as if I were in my own house.\n\n(2)   He smiled at us as though nothing had happened.\n\n(3)   Her voice sounds as if she were an announcer.\n\n５   次の日本文を英語で書きなさい。（各 11 点・計 22 点）\n\n(1)   私はまるで外国に来たかのように感じた。\n\n(2)   彼はまるで学生であるかのように若く見えます。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n   She treated me like her own child.\n\n   She treated me   I were her own child.\n\n７   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n(1)   トムは怒っているように見える。\n   ( angry / he / looks / if / Tom / as / is /. )\n\n(2)   トムはまるで怒っているかのように見える。\n   ( angry / he / looks / if / Tom / as / were /. )\n\n８   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n(1)   カオリは，何か聞きたそうな目で英語の先生を見た。\n   ( English / looked / something / to / as / teacher / Kaori / at / ask / her / if / . )\n\n(2)   その鳥は，魔法のように現れた。\n   ( as / by / bird / the / appeared / if / magic /. )",
+       "answer_text": "第７章「仮定法」\n\nＡ問題\n\n１\n\n   as if   ＋ 仮定法   まるで～のように\n\n   ≒ as though ＋ 仮定法\n\n２\n\n(1)   were not\n\n   Without [But for]\n\n(2)   had not been\n\n   Without [But for]\n\n   deserted 「寂れた，人気のない」\n\n(3)   it not\n\n(4)   it not been\n\n(5)   had spent ／ would be\n\nＢ問題\n\n３\n\n(1)   ② were\n(2)   ③ had traveled\n４\n\n(1)   私はまるで自分自身の家にいるかのように心地良く感じる。\n\n(2)   彼はまるで何事もなかったかのように私たちに微笑みかけた。\n\n(3)   彼女の声は，まるで彼女がアナウンサーであるかのように聞こえる。\n\f５\n\n(1)   [例] I felt as if [though] I had come to a foreign country.\n\n(2)   [例] He looks young as if [though] he were a student.\n\nＣ問題\n６\n   She treated me as if [though] I were her own child.\n\n   彼女は，まるで私が彼女の実の子であるかのように扱った。\n\n７\n\n(1)   Tom looks as if he is angry.\n   ※as if [though] の後に，仮定法ではなく直接法が続くこともある。この場合，話し\n   手は，「実際に“Tom is angry.”だ。(＝実際にトムは怒っている。)」と思っている\n(2)   Tom looks as if he were angry.\n   ※話し手は，「“Tom is angry.”に見えるが，実際には“Tom isn’t angry.”だ。(＝トム\n   は怒っているように見えるが，実際にはトムは怒っていない。)」と思っている\n\n８\n\n※as if の後ろの S＋V が省略され，to 不定詞・分詞・副詞句などが続くこともある\n\n(1)   Kaori looked at her English teacher as if to ask something.\n\n   ※Kaori looked at her English teacher as if (she wanted) to ask something.の\n   she wanted が省略されている\n\n(2)   The bird appeared as if by magic.\n\n   ※The bird appeared as if (it had appeared) by magic.の\n   it had appeared が省略されている",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_017『「as if(as though)＋仮定法」の表現』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_017『「as if(as though)＋仮定法」の表現』（演習）.pdf",
+       "q_count": 23
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   17,18 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「as if (as though) ＋仮定法」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼女はまるで医者であるかのように話す。\n\n   She speaks as if she   a doctor.\n\n(2)   彼はまるで自分の目で見てきたかのように話した。\n\n   He spoke as though he   it with his own eyes.\n\n(3)   私はまるで自分が有名俳優であるかのように感じた。\n\n   I felt as if I   a famous actor.\n\n(4)   その人形はまるで生きているように見える。\n\n   The doll looks as though it   alive.\n\n(5)   その男は，長年私を知っていたかのように，私に話しかけた。\n\n   The man spoke to me as if he   me for many years.\n\n(6)   彼らはまるで私が小さな子供であるかのように扱う。\n\n   They treat me as if I   a little child.\n\n(7)   私の祖父は戦争について，まるで昨日起こったかのように語った。\n\n   My grandfather talked about the war as though it   out\n\n   yesterday.\n\n(8)   彼女はまるで女王様のようにふるまった。\n\n   She behaved as though she   a queen.\n\n   350",
+       "answer_text": "7 章「仮定法」   17,18\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) were\n\n(2) had seen\n\n(3) were\n\n(4) were\n\n(5) had known\n\n(6) were\n\n(7) had broken\n\n(8) were",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_017『「as if(as though)＋仮定法」の表現』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_017『「as if(as though)＋仮定法」の表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 17 18   練習   次の英文を日本語に訳しなさい。\n\n 「as if（as though）＋ 仮定法」の表現   ⑴ She talks as though she knew about the accident.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 彼はまるですべてを知っているかのように話す。\n   ⑵ He treated me as if I were his own child.\n  He speaks as if he   everything.\n\n⑵ まるで別世界に来たような気がした。\n  I felt as if I   to another world.   入試レベルにチャレンジ\n   次の日本文にあう英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   彼女はまるで幽霊を見たかのような顔をしている。\n   She looks as if she（   ）a ghost.\n\n   ① sees   ② would see   ③ was seen   ④ had seen\n\n   omitsu Kimura の\n  Tom\n\n 「as if\n   （as though）+仮定法」の表現\n\n as if + 仮定法\n   ⎩\n   「まるで～のように」\n   ⎪\n as though + 仮定法\n   ⎧\n\n 〔例〕 He speaks as if he knew everything.\n   「彼はまるですべてを知っているかのように話す」",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_017『「as if(as though)＋仮定法」の表現』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_017『「as if(as though)＋仮定法」の表現』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch07_019",
+     "num": "019",
+     "name": "「It is time＋仮定法過去」の表現",
+     "slides": [
+      {
+       "title": "第07章 仮定法 / 7-10",
+       "content": "『「It is time＋仮定法過去」の表現』\nIt is time + 仮定法過去 ＝「もう〜してもよい時間だ（まだしていない）」。"
+      },
+      {
+       "title": "概要",
+       "content": "It is time + 仮定法過去 ＝「もう〜してもよい時間だ（まだしていない）」。\nIt is time + S 過去形\nIt is time S V-ed\n「もう〜していい頃だ」\nシグナル/特徴\n実際はまだしていない\n「もう〜する時間だ」\nIt is high / about time\n強調・婉曲表現\nシグナル/特徴\nもうそろそろ〜"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "It is time you went to bed.\nもう寝る時間だよ。\nIt is high time you started studying.\nそろそろ勉強を始める時間だ。\nIt is about time we left.\nもうそろそろ出る時間だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIt is time + 仮定法過去\n2\n「もう〜していい頃」\n3\nhigh / about time で強調"
+      }
+     ],
+     "pptx_path": "../第07章/成果物/第07章_019_「It is time＋仮定法過去」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 It is time＋ 仮 定 法 過 去 」 の 表 現   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計６点）\n①   It is time   ＋ 仮定法過去   Sは\n\n②   It is about time ＋ 仮定法過去   Sは\n\n③   It is high time   ＋ 仮定法過去   Sは\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 33 点）\n(1)   彼女はまるで医者であるかのように話す。\n\n   She speaks as if she   a doctor.\n\n(2)   彼はまるで自分の目で見てきたかのように話した。\n\n   He spoke as though he   it with his own eyes.\n\n(3)   その人形はまるで生きているように見える。\n\n   The doll looks   though it   alive.\n\n(4)   その男は，長年私を知っていたかのように，私に話しかけた。\n\n   The man spoke to me   he   me for\n   many years.\n\n(5)   彼らは私をまるで小さな子供であるかのように扱う。\n\n   They treat me   I   a little child.\n\n(6)   もし私の夢が諦められていたら，今，私の人生は満たされていないだろう。\n\n   If my dream   given up, my life\n   fulfilled now.\n\n(7)   もしテレビゲームがなければ，日曜日は，家で何もすることがないだろう。\n\n   If it   for video games, I would have nothing to do at\n   home on Sundays.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   It is about time you (   ).\n\n   ① carry it out   ② carried it out   ③ will be carried it out\n\n(2)   It is time a new bicycle (   ).\n\n   ① is bought   ② were bought   ③ will be bought\n\n４   次の英文を日本語に訳しなさい。（各９点・計 27 点）\n\n(1)   It is time I said good-bye.\n\n(2)   It’s high time you came to a conclusion.\n\n(3)   It is about time she became independent of her parents.\n\n５   次の日本文を英語で書きなさい。（各９点・計 18 点）\n\n(1)   彼はとっくにその本を読み終わっている頃だ。\n\n(2)   そろそろ君らはこれらのルールを理解してもいい頃だ。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n   It is time you told her the truth.\n\n   It is time for you   her the truth.\n\f７   下線部に注意して，次の日本文を英語で書きなさい。\n\n(1)   あなたは寝る時間だ。\n\n(2)   あなたはそろそろ寝るべき時間だ。\n\n(3)   あなたはとっくに寝るべき時間だ。\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   It is about time you (   ) your car.\n\n   ① had washed   ② washed ③ wash   ④ are washing\n\n(2)   It’s about time my brother (   ) home.\n\n   ① come   ② has come   ③ had come   ④ came\n\n(3)   It is (   ) time you made a decision.\n\n   ① long   ② high ③ tall   ④ large\n\n９   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   トムのコンピューターは，もう３週間壊れたままになっている。もうそろそろ\n   修理してもらったらどうかと思うよ。\n   Tom’s computer has been broken for three weeks. I think ( had / repaired /\n\n   about / it’s / he / time / it ).",
+       "answer_text": "Ａ問題\n\n１\n\n①   It is time   ＋ 仮定法過去   S は～するべき頃だ\n\n②   It is about time ＋ 仮定法過去   S はそろそろ～するべき頃だ\n\n③   It is high time ＋ 仮定法過去   S はとっくに～するべき頃だ\n\n２\n\n(1)   were\n\n(2)   had seen\n\n(3)   as ／ were\n\n(4)   as if [though] ／ had known\n\n(5)   as if [though] ／ were\n\n(6)   had been ／ wouldn’t be\n\n(7)   were not\n\nＢ問題\n\n３\n\n(1)   ② carried it out\n(2)   ② were bought\n\n４\n\n(1)   そろそろ(私は)さよならを言う時間だ。\n\n(2)   あなた(たち)はとっくに結論に達している頃だ。\n\n(3)   そろそろ彼女は両親から独立してもいい頃だ。\n\f５\n\n(1)   [例] It is high time he finished reading the book.\n\n(2)   [例] It is about time you understood these rules.\n\nＣ問題\n\n６\n\n   It is time for you to tell her the truth.\n   あなたは，彼女に真実を話すべき頃だ。\n\n   ※to 不定詞を使って，同じような内容を表現できる\n\n７\n\n(1)   [例] It is time you went to bed.\n\n(2)   [例] It is about time you went to bed.\n\n(3)   [例] It is high time you went to bed.\n\n８\n\n(1)   ② washed\n   あなたはそろそろあなたの車を洗う時期だ。\n\n(2)   ④ came\n   そろそろ兄[弟]が帰ってきてもいい時間だ。\n\n(3)   ② high\n   あなたはもうとっくに決断すべき頃だ。\n\n９\n\n   I think it’s about time he had it repaired.",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_019『「It is time＋仮定法過去」の表現』（演習）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_019『「It is time＋仮定法過去」の表現』（演習）.pdf",
+       "q_count": 41
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "7 章「仮定法」 第７章「仮定法」   19,20 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「It is time＋仮定法過去」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   朝食を食べ終わる時間ですよ。\n\n   It is time we   having breakfast.\n\n(2)   そろそろ新しいコンピュータを買ってもいい頃だよ。\n\n   It is about time you   a new computer.\n\n(3)   トムはとっくに床屋へ行くべき頃だ。\n\n   It is high time Tom   to a barbershop.\n\n(4)   そろそろ自転車を点検する時期ですよ。\n\n   It is about time you   your bike.\n\n(5)   クリスマスカードを書く時期だ。\n\n   It is time I   Christmas cards.\n\n(6)   私の息子はとっくにお休みを言う時間だ。\n\n   It’s high time my son   good night.\n\n(7)   そろそろ子どもたちを起こす時間だ。\n\n   It’s about time I   my children.\n\n   354",
+       "answer_text": "――――――――――――――――――――――――――――――――――――――――――\n\n   「It is time＋仮定法過 去」の表現 ―解 答―\n\n１\n\n(1) finished\n\n(2) bought\n\n(3) went\n\n   barbershop   「床屋，理髪店」\n\n(4) inspected\n\n(5) wrote\n\n(6) said\n\n(7) woke up",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_019『「It is time＋仮定法過去」の表現』（習熟）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_019『「It is time＋仮定法過去」の表現』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "仮定法 19 20   練習   次の英文を日本語に訳しなさい。\n\n 「It is time ＋ 仮定法過去」の表現   ⑴ It’s about time I got up.\n   次の日本文にあう例文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 寝る時間ですよ。\n   ⑵ It’s high time they made a decision.\n  It is time you   to bed.\n\n⑵ 試験勉強を始める時間ですよ。\n  It is time you   to study for the exam.   入試レベルにチャレンジ\n   次の日本文にあう英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   It is about time he（   ）her the truth.\n\n   ① tells   ② told   ③ is telling\n\n   omitsu Kimura の\n  Tom\n\n 「It is time +仮定法過去」の表現\n\n 「Sは～するべき頃だ」\n   仮定法過去\n 〔例〕 It is time you went to bed.「あなたは寝る時間よ」\n\n  ⎧ It is about time + 仮定法過去「Sはそろそろ～するべき頃だ」\n  ⎩ It is high time + 仮定法過去「Sはとっくに～するべき頃だ」\n   などのカタチもある",
+       "answer_text": "",
+       "problem_pdf": "../第07章/問題_h_eng_gra_07_019『「It is time＋仮定法過去」の表現』（習得）.pdf",
+       "answer_pdf": "../第07章/解答_h_eng_gra_07_019『「It is time＋仮定法過去」の表現』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

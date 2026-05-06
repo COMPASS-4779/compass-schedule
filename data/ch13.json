@@ -1,0 +1,766 @@
+{
+ "meta": {
+  "version": "3.0",
+  "passMark": 85
+ },
+ "chapters": [
+  {
+   "id": "ch13",
+   "num": 13,
+   "title": "代名詞",
+   "color": "#7b1fa2",
+   "items": [
+    {
+     "id": "ch13_001",
+     "num": "001",
+     "name": "「代名詞」とは？",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-1",
+       "content": "『「代名詞」とは？』\n代名詞は名詞の代わりとなる語。人称代名詞・指示代名詞・不定代名詞・再帰代名詞などがある。"
+      },
+      {
+       "title": "概要",
+       "content": "代名詞は名詞の代わりとなる語。人称代名詞・指示代名詞・不定代名詞・再帰代名詞などがある。\n人称代名詞\nI / you / he / she …\n主格・所有格・目的格・所有代名詞\nシグナル/特徴\n格変化に注意\n指示代名詞 / 不定代名詞\nthis / that / one / some 等\n場面に応じて使い分け\nシグナル/特徴\n文脈で意味確定"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He gave me his book.\n彼は私に彼の本をくれた。\nThis is mine.\nこれは私のものだ。\nSome are red, others are blue.\n赤いのもあれば青いのもある。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n人称・指示・不定・再帰\n2\n格変化（主・所有・目的）\n3\n文脈で意味確定"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_001_「代名詞」とは？_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「代名詞」とは︖   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各１点・計 22 点）\n\n＜人称代名詞＞\n   主格   所有格   目的格   所有代名詞\n   単数   １人称   I   my   me   mine\n\n   ２人称   you\n\n   ３人称   he\n\n   ３人称   she\n\n   ３人称   it   ×\n\n   複数   １人称   we\n\n   ２人称   you\n\n   ３人称   they\n\n＜指示代名詞＞\n   単数   複数\n   近くのもの・人   this\n\n   遠くのもの・人   that\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 28 点）\n(1)   私はいつも朝食にパンを食べます。\n\n   usually   bread for breakfast.\n\n(2)   彼女はいつも朝食にパンを食べます。\n\n   usually   bread for breakfast.\n\n(3)   彼らはいつも朝食にパンを食べます。\n\n   usually   bread for breakfast.\n\f(4)   トムは昨日ペンを買いました。彼は明日それを使うでしょう。\n\n   Tom bought a pen yesterday.   will use   tomorrow.\n\n(5)   彼女は私に本をくれましたが，私はそれをなくしてしまいました。\n\n   gave   a book, but   lost   .\n\n(6)   メアリーは私の友人の１人です。\n\n   Mary is one   .\n\n   Mary is a   .\n\nＢ問題\n３   (   )内から適当な代名詞を選びなさい。（各５点・計 20 点）\n\n(1)   Someone was knocking at the door. I didn’t know who ( he / it / she ) was.\n(2) You, Bob, and I are good friends. I hope ( they / he / we ) will go to the same\n   university next year.\n(3)   Jane was walking with her dog. ( They / She / It ) looked like a stuffed dog.\n\n(4)   How about playing tennis tomorrow? ― ( This / That / They ) sounds good.\n\n４   下線部の代名詞が何を表しているか，英語で答えなさい。（各 10 点・計 30 点）\n\n(1)   Jack and I went to see the soccer game. We cheered for Japan’s national\n   soccer team.\n\n(2)   She saw her brother in the shop, but he was not aware of her.\n\n(3)   Let’s go fishing in the lake. ― That’s a good idea.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の (   )内の語(句)を正しく並べかえなさい。\n   ( I / you / she / , / and ) must attend the meeting tomorrow.\n\n６   次の日本文を英語で書きなさい。\n\n(1)   これらは私の本です。\n\n   あれらは彼女の本です。\n\n(2)   これは私の辞書です。\n\n   これは私の新しい辞書です。\n\n   この新しい辞書は私のものです。\n\n   この私の新しい辞書は便利です。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Nancy and (   ) went to see the movie yesterday.\n\n   (   ) so exciting.\n\n   ① I ／ They were   ② he ／ They were   ③ I ／ It was ④ he ／ It were\n\n(2) Yuki is a good friend of (   ).\n\n   ① our   ② mine   ③ him   ④ their\n\n(3)   I’m going to go to her birthday party this weekend. How about (   )?\n\n   ―― (   ) too.\n\n   ① yours ／ I   ② yours ／ Me   ③ you ／ I   ④ you ／ Me",
+       "answer_text": "Ａ問題\n\n１\n＜人称代名詞＞\n   主格   所有格   目的格   所有代名詞\n\n   単数   １人称   I   my   me   mine\n\n   ２人称   you   your   you   yours\n\n   ３人称   he   his   him   his\n\n   ３人称   she   her   her   hers\n\n   ３人称   it   its   it   ×\n\n   複数   １人称   we   our   us   ours\n\n   ２人称   you   your   you   yours\n\n   ３人称   they   their   them   theirs\n\n＜指示代名詞＞\n   単数   複数\n   近くのもの・人   this   these\n\n   遠くのもの・人   that   those\n\n２\n\n(1)   I ／ have [eat]\n\n(2)   She ／ has [eats]\n\n(3)   They ／ have [eat]\n\n(4)   He ／ it\n\n(5)   She ／ me ／ I ／ it\n\n(6)   of my friends   ※12 章「『A の B』の表し方」\n\n   friend of mine\n\fＢ問題\n\n３\n\n(1)   it\n\n(2)   we\n\n(3)   It\n\n(4)   That\n\n４\n\n(1)   Jack and I\n\n(2)   her brother\n\n(3)   (Let’s) go fishing in the lake\n\nＣ問題\n\n５\n\n   You, she and I must attend the meeting tomorrow.\n\n   あなたと彼女と私は，明日その会議に参加しなければなりません。\n\n   ※基本的に人称代名詞の並び順は，２人称＞３人称＞１人称の順になる\n\n６\n\n(1)   These are my books.\n\n   Those are her books.\n\n(2)   This is my dictionary.\n\n   This is my new dictionary.\n\n   This new dictionary is mine.\n\n   This new dictionary of mine is useful.\n\n   ※“this my new dictionary”は不可\n\f７\n\n(1)   ③ I ／ It was\n   ナンシーと私は，昨日その映画を見に行きました。\n   それはとてもわくわくしました。\n\n(2)   ② mine\n   ユキは私の良い友人です。\n\n(3)   ④ you ／ Me\n   「私は今週末，彼女の誕生日パーティーに行く予定です。あなたはどうですか。」\n   「私もです。」",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_001『「代名詞」とは？』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_001『「代名詞」とは？』（演習）.pdf",
+       "q_count": 30
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "文法   13通常学習編\n   章 代名詞 第13章 代名詞\n   分確認テスト   1,2\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   代名詞 とは？\n\n   次   日本文   あう英文   よう   ，   適   代   詞   書   さい。\n\n(1)   ケビン   ニュー   ーク   出身   。そ   大都市   。\n\n   Kevin is from New York.   is a large city.\n\n(2)   母   私   白いセーター   買っ   く   ま   。私   そ   も気   入っ   いま   。\n\n   My mother bought me a white sweater. I like   very much.\n\n(3)   ン   ボブ   野球チーム   い   。   人   も上手   選手   。\n\n   John and Bob belong to the same baseball team.   Both of   are\n\n   good players.\n\n(4)   私   昨日，新   い   ャーペン   買っ   ，家   置い   まっ   。\n\n   I bought a new mechanical pencil yesterday, but I left   at home.\n\n(5)   今度   日曜日   海岸   遊び   行   ませ   。\n\n   Shall we go to the beach to play   Sunday?\n\n   720",
+       "answer_text": "高校英文法 13\n   章「代名詞」   1,21-2\n   第13章「代名詞」\n――――――――――――――――――――――――――――――――――――――――――\n\n   「代名詞」とは？ －解答－\n\n１\n\n(1) It\n\n(2) it\n\n(3) them\n\n(4) it\n\n(5) this",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_001『「代名詞」とは？』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_001『「代名詞」とは？』（習熟）.pdf",
+       "q_count": 5
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 1 2   練習   下線部の代名詞が何を表しているか、英語で答えなさい。\n\n   「代名詞」とは？   ⑴ He gave me a ring, but I lost it.\n\n 例題   下線部の代名詞が何を表しているか、英語で答えなさい。\n\n⑴ ジャックはアメリカ出身です。彼は野球が好きです。\n   ⑵ Tom has been lying to Nancy for years.\n Jack comes from America.   He loves baseball.\n   It is known to everybody except her.\n\n⑵ そのリンゴは腐っています。食べてはいけません。\n The apple is rotten.   You mustn’t eat it.   入試レベルにチャレンジ\n   下線部の代名詞が何を表しているか、英語で答えなさい。\n\n   We have the right to express our opinions freely.\n   This is called freedom of speech.\n\n   omitsu Kimura の\n Tom\n\n「代名詞」とは？   文の一部や全体を表すこともある\n\n →それまでにでた名詞の代わり\n ⎧ ① I, We, You, He, She, They（人を表す）\n ⎪\n ⎩ ② This, That, It（モノなどを表す）",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_001『「代名詞」とは？』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_001『「代名詞」とは？』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch13_003",
+     "num": "003",
+     "name": "訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-2",
+       "content": "『訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）』\n一般の you（人々）／天気・時間・距離の it。日本語にしないことが多い。"
+      },
+      {
+       "title": "概要",
+       "content": "一般の you（人々）／天気・時間・距離の it。日本語にしないことが多い。\n一般の you\nyou ＝ 人は一般に\n「（誰でも）〜する」\nシグナル/特徴\n訳さないこともある\n天気・時間の it\nit ＝ 天気・時間・距離\n「（状況の）〜」\nシグナル/特徴\nIt is rainy / It is 5 o'clock"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "You can't be too careful.\n用心するに越したことはない。\nIt is sunny today.\n今日は晴れだ。\nIt is 5 o'clock.\n5時だ。\nIt is far from here.\nここから遠い。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n一般の you ＝ 人々\n2\n天気・時間・距離の it\n3\n訳出は文脈次第"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_003_訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "訳に注意したい代名詞\n   （ 一 般 の you / 天 気 ・ 時 間 ・ 距 離 の it な ど ）   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。（２点）\n\n   明日はとても寒くなるでしょう。\n\n   will be very cold tomorrow.\n\n２   次の日本文にあう英文になるように，   に適する代名詞を書きなさい。\n   （各４点・計 32 点）\n\n(1)   ケビンはニューヨークの出身です。それは大都市です。\n\n   Kevin is from New York.   is a large city.\n\n(2)   母が私に白いセーターを買ってくれました。私はそれがとても気に入っています。\n\n   My mother bought me a white sweater. I like   very much.\n\n(3)   ジョンとボブは同じ野球チームにいる。２人とも上手な選手だ。\n\n   John and Bob belong to the same baseball team. Both of   are good\n\n   players.\n\n(4)   私は昨日，新しいシャーペンを買ったが，家に置いてきてしまった。\n\n   I bought a new mechanical pencil yesterday, but I left   at home.\n\n(5)   福岡の人口は，佐賀の人口よりも多い。\n\n   The population of Fukuoka is larger than   of Saga.\n\n(6)   ユウタは私の同級生です。彼はサッカーが得意です。\n\n   Yuta is my classmate.   is good at soccer.\n\n(7)   彼女のこのかばんは，彼女の母親から贈られた。\n\n   This bag of   was presented by   mother.\n\fＢ問題\n\n３   次の英文を日本語に訳しなさい。（各 10 点・計 30 点）\n\n(1)   What day is it today? ― It’s Thursday.\n\n(2)   We had unexpectedly much snow last month.\n\n(3)   They sell imported furniture on the fourth floor in that department.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各 12 点・計 36 点）\n\n(1)   たくさんの人たちがその事故でけがをしたそうだ。\n   ( injured / a number / people / in / they / were / say / that / of ) the accident.\n\n(2)   ここから空港までバスで約２時間かかる。\n   ( takes / to / two hours / from / by / the airport / it / here / about ) bus.\n\n(3)   映画が始まる前に，スマートフォンの電源を切ってください。\n   ( your / you / switch / before / to / have / smartphones / off ) the movie starts.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の英文を日本語に訳しなさい。また，似たような意味の英文になるように，   に\n   適する語(句)を書きなさい。\n\n(1)   They say that he is one of the greatest scientists in this country.\n\n   It   one of the greatest scientists in this country.\n\n(2)   They say that he was one of the greatest scientists in this country.\n\n   It   one of the greatest scientists in this country.\n\n(3)   They said that he was one of the greatest scientists in this country.\n\n   It   one of the greatest scientists in this country.\n\n(4)   They said that he had been one of the greatest scientists in this country.\n\n   It   one of the greatest scientists in this country.\n\n６   ( )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   (   ) have to be 20 or over to drink alcohol in this country.\n\n   ① He   ② You   ③ She   ④ It\n\f(2)   (   ) say Kyoto is a beautiful city.\n\n   ① It   ② She   ③ He   ④ They\n\n(3)   (   ) have had great weather this week.\n\n   ① We   ② It   ③ He   ④ She",
+       "answer_text": "訳に注意したい代名詞\n   （ 一 般 の you / 天 気 ・ 時 間 ・ 距 離 の it な ど ） ― 解 答 ―\n\nＡ問題\n\n１\n\n   明日はとても寒くなるでしょう。\n\n   It will be very cold tomorrow.\n\n２\n\n(1)   It\n\n(2)   it\n\n(3)   them\n\n(4)   it\n\n(5)   that\n\n(6)   He\n\n(7)   hers ／ her\n\nＢ問題\n\n３\n\n(1)   今日は何曜日ですか。― 木曜日です。\n\n(2)   先月は思いのほかたくさんの雪が降った。\n\n(3)   輸入家具はあのデパートの４階で売っている。\n\n４\n\n(1)   They say that a number of people were injured in\n\n(2)   It takes about two hours from here to the airport by\n\n(3) You have to switch off your smartphones [switch your smartphones off] before\n\fＣ問題\n\n５\n\n(1)   They say that he is one of the greatest scientists in this country.\n\n   彼は，この国で最も偉大な科学者の１人だと言われている。\n\n   It is said that he is one of the greatest scientists in this country.\n\n(2)   They say that he was one of the greatest scientists in this country.\n\n   彼は，この国で最も偉大な科学者の１人だったと言われている。\n\n   It is said that he was one of the greatest scientists in this country.\n\n(3)   They said that he was one of the greatest scientists in this country.\n\n   彼は，この国で最も偉大な科学者の１人だと言われていた。\n\n   It was said that he was one of the greatest scientists in this country.\n\n(4)   They said that he had been one of the greatest scientists in this country.\n\n   彼は，この国で最も偉大な科学者の１人だったと言われていた。\n\n   It was said that he had been one of the greatest scientists in this country.\n\n６\n\n(1)   ② You\n   この国では，飲酒するには 20 歳以上でなくてはなりません。\n\n(2)   ④ They\n   京都は美しい都市だと言われている。\n\n(3)   ① We\n   今週はとても良い天気が続いている。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_003『訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_003『訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）』（演習）.pdf",
+       "q_count": 32
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "文法   13通常学習編\n   章 代名詞 第13章 代名詞\n   分確認テスト   3,4\n――――――――――――――――――――――――――――――――――――――――――――――――\n   訳 に注 意 したい代 名 詞\n   一般の you / 天気・時間・距離の it\n\n１   次   日本文   あう英文   よう   ，   適す   代名詞   書   さい。\n\n(1)   今週中   レポート   提出し   く   さい。\n\n   must hand in your report by the end of this week.\n\n(2)   私   高校   留学生   います。\n\n   have some foreign students in our high school.\n\n(3)   暗く   っ   います   。\n\n   is getting dark, isn’t   ?\n\n(4)   あ   店   生鮮食品   酒   売っ   い   。\n\n   sell fresh food and alcohol at that store.\n\n(5)   ナンシー   ケイト   仲   よく   い   言わ   います。\n\n   say that Nancy and Kate are not good friends.\n\n(6)   私   今年   冬   あま   寒く   い   思います。\n\n   think   is not so cold this winter.\n\n(7)   彼   大学   卒業す   ６年   っ   。\n\n   took   six years to graduate from university.\n\n   724",
+       "answer_text": "13 章「代名詞」   3,4 3-4\n――――――――――――――――――――――――――――――――――――――――――\n   訳 に注 意 したい代 名 詞 －解 答 －\n   （一般の you / 天気・時間・距離の it など）\n\n１\n\n(1) You\n\n(2) We\n\n(3) It ／ it\n\n(4) They\n\n(5) They\n\n(6) I ／ it\n\n(7) It ／ him",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_003『訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_003『訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 3 4   練習   次の英文を日本語に訳しなさい。\n\n訳に注意したい代名詞 （一般のyou / 天気・時間・距離のitなど）\n   ⑴ It is getting warmer and warmer.\n\n 例題   次の英文を日本語に訳しなさい。\n\n⑴ You can’t use smartphones while walking.\n   ⑵ Take a taxi. It is a long way to the railway station.\n\n⑵ It’s very hot today, isn’t it?\n   入試レベルにチャレンジ\n   次の英文を日本語に訳しなさい。\n\n   They say that Tom has passed the university entrance\n   examination.\n\n   omitsu Kimura の\n   Tom\n\n  訳に注意したい代名詞\n   ⎧ 一般の人→You, We, They\n   ⎪\n   ⎩「天気、時間、距離など」を表す it\n\n  →訳に出さない方が、より自然な表現になる",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_003『訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_003『訳に注意したい代名詞（一般のyou ／ 天気・時間・距離のitなど）』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch13_005",
+     "num": "005",
+     "name": "「It is 時間」の慣用表現",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-3",
+       "content": "『「It is 時間」の慣用表現』\n「It is + 時間」は時を表す決まった表現。「〜してから時間が経つ」の表現も含む。"
+      },
+      {
+       "title": "概要",
+       "content": "「It is + 時間」は時を表す決まった表現。「〜してから時間が経つ」の表現も含む。\nIt is + 時間\nIt is 〇 o'clock\n「〇時です」\nシグナル/特徴\n時刻\nsince + 動作\nIt is 〇 years since 〜\n「〜してから〇年になる」\nシグナル/特徴\nsince の後ろは過去形"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "It is 8 o'clock.\n8時だ。\nIt is ten years since he died.\n彼が亡くなって10年になる。\nIt has been a long time.\nひさしぶりだ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIt is + 時間\n2\nIt is 〇 years since 〜\n3\nsince 以下は過去形"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_005_「It is 時間」の慣用表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 It is 時 間 」 の 慣 用 表 現   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（２点）\n\n①   It is 時間 since S V ～   ～して…だ\n\n②   It is 時間 before S V ～\n\n２   次の問いに答えなさい。\n\n(1)   次の日本文にあう英文になるように，   に適する代名詞を書きなさい。\n   （各２点・計 24 点）\n\n①   今週中にレポートを提出してください。\n\n   must hand in your report by the end of this week.\n\n②   私たちの高校には留学生がいます。\n\n   have some foreign students in our high school.\n\n③   だんだんと暗くなっていますね。\n\n   is getting dark, isn’t   ?\n\n④   あの店では生鮮食品と酒を売っている。\n\n   sell fresh food and alcohol at that store.\n\n⑤   ナンシーとケイトは仲がよくないと言われています。\n\n   say that Nancy and Kate are not good friends.\n\n⑥   彼は大学を卒業するのに６年かかった。\n\n   took   six years to graduate from university.\n\n⑦   彼は私に何本かのペンをくれましたが，私はそれらをなくしてしましました。\n\n   gave   some pens, but   lost   .\n\f(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 12 点）\n   彼が亡くなってから６年だ。\n\n   is six years since he died.\n\n   He   six years ago.\n\n   Six years   since he died.\n\n   He   for six years.\n\nＢ問題\n\n３   次の英文とほぼ同じ意味の英文になるように，   に適する語(句)を書きなさい。\n\n   （各８点・計 32 点）\n\n(1)   They will soon reach an agreement.\n\n   It will not   they reach an agreement.\n\n(2)   Six years have passed since we became good friends.\n\n   It is   we became good friends.\n\n(3)   My parents have been married for twenty years.\n\n   It is   since my parents   married.\n\n４   次の英文を日本語に訳しなさい。（各 10 点・計 30 点）\n\n(1)   It is only a month since Kevin came to Boston.\n\n(2)   It was not long before I finished my report.\n\n(3)   It will be a long time before Emma gets a driver’s license.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の問いに答えなさい。\n\n(1) 次の   に適する語(句)を書きなさい。\n\n   It will not be long   S V ～.   まもなく[すぐに]～するだろう。\n\n ＝ S will V ～   [before long].\n\n(2)   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n   It will not be long before your dream   .\n\n   Your dream will come true   .\n\n６   次の日本文を，４通りの英語で書きなさい。\n\n   トムが亡くなってから３年だ。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   It will not be long (   ) winter (   ).\n   ① before ／ will come   ② before ／ comes\n   ③ after ／ will come   ④ after ／ comes\n\n(2)   It is eight months (   ) Ken came to London.\n\n   ① before   ② when   ③ until   ④ since",
+       "answer_text": "「 It is 時 間 」 の 慣 用 表 現 ― 解 答 ―\n\nＡ問題\n\n１\n\n①   It is 時間 since S V ～   ～して…だ\n\n②   It is 時間 before S V ～   ～するまでに…だ\n\n２\n\n(1)\n\n①   You\n\n②   We\n\n③   It ／ it\n\n④   They\n\n⑤   They\n\n⑥   It ／ him\n\n⑦   He ／ me ／ I ／ them\n\n(2)   It   ※１章「『…してから何年になる』の表現」\n\n   died\n\n   have passed\n\n   has been dead\n\nＢ問題\n３\n(1)   be long before\n\n(2)   six years since\n\n(3)   twenty years ／ got\n\f４\n\n(1)   ケビンがボストンに来てからたった１か月だ。\n\n(2)   私はまもなく[すぐに]レポートを終わらせた。\n\n(3)   エマは運転免許証をなかなか取れないだろう[取るのに長い時間がかかるだろう]。\n\nＣ問題\n\n５\n\n(1)   It will not be long before S V ～.   まもなく[すぐに]～するだろう。\n\n ＝ S will V ～ soon [before long].\n\n(2)   It will not be long before your dream comes true.\n\n   Your dream will come true soon [before long].\n\n６\n\n   It is [has been] three years since Tom died.\n\n   Tom died three years ago.\n\n   Three years have passed since Tom died.\n\n   Tom has been dead for three years.\n\n   (順不同)   ※１章「『…してから何年になる』の表現」も参照\n\n７\n\n(1)   ② before ／ comes\n   まもなく冬になるでしょう。\n\n   ※① before ／ will come は不可\n   「時」を表す副詞節中では，未来のことでも現在形で表す\n\n(2)   ④ since\n   ケンがロンドンに来てから８ヶ月になる。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_005『「It is 時間」の慣用表現』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_005『「It is 時間」の慣用表現』（演習）.pdf",
+       "q_count": 29
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "文法   13通常学習編\n   章 代名詞 第13章 代名詞\n   分確認テスト   5,6\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   It is 時間 の慣用表現\n\n   次   日本文   あう英文   う   ，   適す   語(句)を書   さい。\n\n(1)   中国語を習い始   年   ます。\n\n   is three years   I started learning Chinese.\n\n(2)   そ   部屋を片付け終わ   ま   時間   まし   。\n\n   was two hours   I finished cleaning up the room.\n\n(3)   ジェーン   間   く空席を見   け   。\n\n   It wasn’t   Jane found a vacant seat.\n\n(4)   あ   ロンドン   最後   会   ，５年   ます。\n\n   is five years   I saw you   in\n\n   London.\n\n(5)   医者   診   うま   長い時間   ろう。\n\n   It will be   time   I see the doctor.\n\n(6)   私   パリ   引   越し   ，10 年   ます。\n\n   It is   we moved to Paris.\n\n(7)   間   く開会式   始ま   し   う。\n\n   be long   the opening ceremony   .\n\n   728",
+       "answer_text": "高校英文法13\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   「It is 時間」の慣用表現 －解答－\n\n１\n\n(1) It ／ since\n\n(2) It ／ before\n\n(3) long before\n\n(4) It ／ since ／ last\n\n(5) a long ／ before\n\n(6) ten years since\n\n(7) It won’t [will not] ／ before ／ starts [begins]",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_005『「It is 時間」の慣用表現』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_005『「It is 時間」の慣用表現』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 5 6   練習   次の英文を日本語に訳しなさい。\n\n   「It is 時間」の慣用表現   ⑴ It is six years since he died.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ ジャックが高校を卒業してから５年になる。\n   ⑵ It was not long before he got well.\n It is five years   Jack graduated from\n high school.\n\n⑵ 彼が宿題を終わらせるまでに３時間かかった。   入試レベルにチャレンジ\n\n It was three hours   he finished   ２つの英文が同じ意味になるように、   に適する語（句）を\n   書きなさい。\n his homework.\n   The announcement says that we will soon arrive at Kyoto.\n\n   ⇒The announcement says that it won’t be long\n   we arrive at Kyoto.\n\n   omitsu Kimura の\n Tom\n\n「It is 時間」の慣用表現\n\n It is 時 since SV〜. 「～して…だ」\n It is 時 before SV〜.「～するまでに…だ」",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_005『「It is 時間」の慣用表現』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_005『「It is 時間」の慣用表現』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch13_007",
+     "num": "007",
+     "name": "仮主語のit（It is 形容詞 ～ のパターン）",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-4",
+       "content": "『仮主語のit（It is 形容詞 ～ のパターン）』\nIt is + 形容詞 + to V は仮主語の構文。「Vすることは…だ」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "It is + 形容詞 + to V は仮主語の構文。「Vすることは…だ」を表す。\nIt is 形容詞 to V\nIt is 形容詞 (for 人) to V\n「Vすることは…だ」\nシグナル/特徴\nto V が真主語\nIt is 形容詞 that 〜\nIt is 形容詞 that S V\n「〜は…だ」\nシグナル/特徴\nthat 節が真主語"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "It is important to study English.\n英語を勉強するのは大事だ。\nIt is true that she came.\n彼女が来たのは本当だ。\nIt is necessary for you to attend.\nあなたが出席する必要がある。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIt は仮主語\n2\nto V / that 節が真主語\n3\nfor / of 人 + to V も多い"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_007_仮主語のit（It is 形容詞 ～ のパターン）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "仮 主 語 の it（ It is 形 容 詞 〜 の パ タ ー ン ）   100\n\nＡ問題\n１   次の   に適する１語を書きなさい。\n   （各２点・計４点）\n\n   ～は(形容詞)だ   It is 形容詞   動詞の原形\n\n   It is 形容詞   SV ～\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 48 点）\n\n(1)   中国語を習い始めて３年になります。\n\n   is three years   I started learning Chinese.\n\n(2)   その部屋を片付け終わるまでに２時間かかりました。\n\n   was two hours   I finished cleaning up the room.\n\n(3)   ジェーンは間もなく空席を見つけた。\n\n   It wasn’t   Jane found a vacant seat.\n\n(4)   医者に診てもらうまで長い時間がかかるだろう。\n\n   It will be a   time   I see the doctor.\n\n(5)   私たちがパリに引っ越してから，10 年になります。\n\n   It is   we moved to Paris.\n\n(6)   私は今年の冬はあまり寒くないと思います。\n\n   think   is not so cold this winter.\n\n(7)   私が彼とうまくやっていくのは難しい。\n\n   It is difficult   to get along with him.\n\n(8)   そうすることをためらうなんて，彼はなんて愚かなんだ。\n\n   It is foolish   to hesitate to do so.\n\f(9)   強風で電車が止まっているのは本当だ。\n\n   It is   the trains have been stopped due to strong winds.\n\n(10) 有名なロックバンドが来日すると言われている。\n\n   It   that the famous rock band will come to Japan.\n\n   The famous rock band   to Japan.\n\n   say that the famous rock band will come to Japan.\n\nＢ問題\n３   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n(1)   It is important to have nutritious meals and to keep early hours.\n\n(2)   It’s careless of you not to wear a hat in the strong sunshine.\n\n(3)   It was fortunate that the rain stopped just before the match.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各９点・計 27 点）\n(1)   ご親切に博物館へのいちばんの近道を教えてくれてどうもありがとうございます。\n   ( way / very nice / to / to / of / the shortest / show / it’s / you / me ) the museum.\n\n(2)   準備運動をしないで泳ぎ始めることは危険です。\n   ( start / without / it / swimming / is / to / warm-up / dangerous ) exercises.\n\n(3)   彼らがその結果にがっかりしたことはやや驚きだ。\n   ( that / were / rather / at / they / the result / surprising / it / disappointed / is / . )\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n①   It is likely that\n\n②   It is certain that\n\n③   It is no wonder that\n\n④   It is a pity [shame] that\n\n６   次の英文を日本語に訳しなさい。\n\n(1)   It is certain that Ann will not come.\n\n(2)   It’s not certain that Ann will come.\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   It is kind (   ) you (   ) help me with my homework.\n\n   ① for ／ to   ② to ／ of   ③ of ／ to   ④ on ／ for\n\n(2)   It is necessary (   ) Ken (   ) see a doctor.\n\n   ① to ／ may   ② that ／ should   ③ for ／ can   ④ which ／ must\n\n(3)   It is (   ) that his team will win the first prize.\n\n   ① alike   ② like   ③ likely   ④ unlike\n\f８ 〈センター試験にチャレンジ〉   1 ～   3 に入れるのに最も適当なものを，\n   それぞれ下の①～④から一つずつ選べ。\n(1)   Could you call me back if   1   not convenient for you to talk now?\n   〈06 年本試〉\n   ① we are ② it is ③ you are ④ I am\n\n(2)   It   2   for Mary to learn that her bike had been stolen.\n   〈07 年本試〉\n   ① has shocked ② shocked ③ was shocked ④ was shocking\n\n(3)   ( A ) so considerate ( B ) him to come and see his grandmother\n   in the hospital every day.   3\n   〈16 年本試〉\n   ① A: He is B: for   ② A: He is   B: of\n   ③ A: It is   B: for   ④ A: It is   B: of",
+       "answer_text": "Ａ問題\n\n１\n\n   ～は(形容詞)だ   It is 形容詞 to 動詞の原形.\n\n   It is 形容詞 that S V ～.\n\n２\n\n(1)   It ／ since\n\n(2)   It ／ before\n\n(3)   long before\n\n(4)   long ／ before\n\n(5)   ten years since\n\n(6)   I ／ it\n\n(7)   for me   ※４章「『It is…for(of) 人 to 動詞』」のパターン」\n\n(8)   of him   ※４章「『It is…for(of) 人 to 動詞』」のパターン」\n\n(9)   true that   ※10 章「名詞節を導く that」\n\n(10) is said ※２章「『人は〜すると言われている』のパターン」\n\n   is said to come\n\n   They   ※11 章「訳に注意したい代名詞」\n\nＢ問題\n\n３\n\n(1)   栄養のある食事をとることと，早寝早起きをすることは大切だ。\n\n   nutritious 「栄養のある」\n\n(2)   強い日差しの中で帽子をかぶらないなんて，あなたはうっかりしていますね。\n\f(3)   試合の直前に雨が止んだのは幸運だった。\n\n４\n\n(1)   It’s very nice of you to show me the shortest way to\n\n(2)   It is dangerous to start swimming without warm-up\n\n(3)   It is rather surprising that they were disappointed at the result.\n\nＣ問題\n\n５\n\n①   It is likely that   ～しそうである，たぶん～するだろう\n\n②   It is certain that   ～は確実だ，きっと～する\n\n③   It is no wonder that   ～は当然だ\n\n④   It is a pity [shame] that   ～は残念だ\n\n６\n\n(1)   アンが来ないのは確実だ。\n\n(2)   アンが来ることは確実ではない。\n\n７\n\n(1)   ③ of ／ to\n   私の宿題を手伝ってくれるなんて，あなたは優しいですね。\n\n(2)   ② that ／ should\n   ケンは医者にみてもらう必要がある。\n\n   ３章「that 節の中の should」も参照\n\n(3)   ③ likely\n   たぶん彼のチームが優勝するだろう。\n\f８\n\n(1)   ② it is\n   もし今を話するのに都合がよくないなら，後で電話をかけなおしてくれませんか？\n\n(2)   ④ was shocking\n   メアリーは自分のバイクが盗まれたことを知ってショックを受けた。\n\n(3)   ④ A: It is B: of\n   毎日病院へ祖母の見舞いに来るなんて，彼はとても思いやりがある。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_007『仮主語のit（It is 形容詞 ～ のパターン）』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_007『仮主語のit（It is 形容詞 ～ のパターン）』（演習）.pdf",
+       "q_count": 54
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "文法   13通常学習編\n   章 代名詞 第13章 代名詞\n   分確認テスト   7,8\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   仮主語の it   It is 形容詞～のパターン\n\n１   次   日本文   あう英文   よう   ，   適す   語(句)を書   さい。\n\n(1)   こ   数学   問題を解く   簡単   す。\n\n   is   to solve this mathematics problem.\n\n(2)   私   こ   本を１日   読む   難しい。\n\n   is   for me   this book in a day.\n\n(3)   あ   明日，い   もよ   早く起   必要   あ   。\n\n   is   you get up earlier than usual\n\n   tomorrow.\n\n(4)   親切   も，あ   傘を使わせ   く   あ   う。\n\n   It’s nice   to   me use your umbrella.\n\n(5)   メアリー   そ   大   犬を怖   当然   。\n\n   is   Mary is afraid of the big dog.\n\n(6)   ボブ   １人   高い山   登   も危険   。\n\n   It is   Bob to   a high mountain alone.\n\n(7)   ジャック   昨日学校   来   不思議   。\n\n   that Jack   to school yesterday.\n\n   732",
+       "answer_text": "高校英文法13\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n仮 主 語 の it （It is 形 容 詞 ～のパターン） －解 答 －\n\n１\n\n(1) It ／ easy\n\n(2) It ／ hard [difficult] ／ to read\n\n(3) It ／ necessary that\n\n(4) of you ／ let\n\n(5) It ／ natural that\n\n(6) very dangerous for ／ climb\n\n(7) It is strange ／ didn’t come",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_007『仮主語のit（It is 形容詞 ～ のパターン）』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_007『仮主語のit（It is 形容詞 ～ のパターン）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 7 8   練習   次の英文を日本語に訳しなさい。\n\n   仮主語のit （It is 形容詞～のパターン）   ⑴ It is a good habit to keep early hours.\n\n 例題   次の英文を日本語に訳しなさい。\n\n⑴ It is important to follow the rule.\n   ⑵ It is dangerous that children swim in the river.\n\n⑵ It is necessary that you should take this medicine.\n   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内の語（句）を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   腕時計を図書館に忘れるなんて、あなたもうっかりして\n   いましたね。\n\n   It was（ leave / you / your watch / to / of / that / careless ）\n   in the library.\n\n   omitsu Kimura の\n  Tom\n\n  仮主語のit（It is 形容詞～のパターン）\n   ⎩\n  It is 形容詞 to 動詞の原形 ．   ⎪\n  仮S   S   ⎪\n   「～は（形容詞）だ」\n   ⎪\n   ⎪\n  It is 形容詞 that SV〜．   ⎧\n  仮S   S",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_007『仮主語のit（It is 形容詞 ～ のパターン）』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_007『仮主語のit（It is 形容詞 ～ のパターン）』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch13_009",
+     "num": "009",
+     "name": "仮主語itの慣用表現（「It costs 費用」など）",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-5",
+       "content": "『仮主語itの慣用表現（「It costs 費用」など）』\nIt costs 費用 / It takes 時間 / It seems / It happens など仮主語の慣用表現。"
+      },
+      {
+       "title": "概要",
+       "content": "It costs 費用 / It takes 時間 / It seems / It happens など仮主語の慣用表現。\nIt takes / It costs\nIt takes 時間 to V\n「Vするのに〜時間かかる」\nシグナル/特徴\nIt costs 費用 も同じ構造\nIt seems / It happens\nIt seems / happens that\n「〜のようだ／たまたま〜だ」\nシグナル/特徴\n節を導く"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "It takes me an hour to read this.\nこれを読むのに1時間かかる。\nIt costs 1000 yen to enter.\n入場するのに1000円かかる。\nIt seems that he is sick.\n彼は病気らしい。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIt takes 時間 / It costs 費用\n2\nIt seems / It happens that\n3\n仮主語の慣用構文"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_009_仮主語itの慣用表現（「It costs 費用」など）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "仮 主 語 it の 慣 用 表 現 （「 It costs 費 用 」 な ど ）   100\n\nＡ問題\n１   次の   に適する１語を書きなさい。\n   （各２点・計８点）\n\n① ～がかかる   It   金 to V.\n\n   It   時間 to V.\n\n② ～かどうかは重要ではない   It   no difference whether ～.\n\n   It doesn’t   whether ～.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 40 点）\n\n(1)   この数学の問題を解くのは簡単です。\n\n   is   to solve this mathematics problem.\n\n(2)   私がこの本を１日で読むのは難しい。\n\n   is   for me   this book in a day.\n\n(3)   あなたは明日，いつもより早く起きる必要がある。\n\n   is   you get up earlier than usual tomorrow.\n\n(4)   親切にも，あなたの傘を使わせてくれてありがとう。\n\n   It’s nice   to   me use your umbrella.\n\n(5)   メアリーがその大きな犬を怖がるのは当然だ。\n\n   is   Mary is afraid of the big dog.\n\n(6)   ジャックが昨日学校に来なかったのは不思議だ。\n\n   that Jack   to school yesterday.\n\n(7)   あなたにロンドンで最後に会ってから，５年になります。\n\n   is five years   I saw you   in London.\n\f(8)   間もなく開会式が始まるでしょう。\n\n   be long   the opening ceremony   .\n\n(9)   問題は，彼がそれを知っていたかどうかだ。\n\n   The problem is   he knows that or not.\n\nＢ問題\n\n３   次の英文を日本語に訳しなさい。（各７点・計 28 点）\n\n(1)   It will cost about a million yen to renovate the bathroom.\n\n(2)   It makes no difference to me whether you are satisfied with this content or not.\n\n(3)   How long does it take to walk from here to the university?\n\n(4)   It doesn’t matter whether Tom agrees to the plan or not.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各８点・計 24 点）\n(1)   その荷物を祖母の家に配達してもらうのに 800 円かかった。\n\n   ( have / to / to / cost / the package / it / delivered / 800 yen ) my grandmother’s\n   house.\n\n(2)   自転車で私の家から駅まで行くのにあまり時間はかかりません。\n   ( from / very / go / it / long / to / to / take / the station / doesn’t ) my house by bike.\n\f(3)   あなたたちがその事実を知っていようが知っていまいが，私にはたいした問題\n   ではない。\n\n   ( to / you / the fact / matters / know / little / it / me / whether ) or not.\n\n Ｃ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の英文とほぼ同じ意味の英文になるように，(   )内の語(句)を正しく\n   並べかえなさい。\n   It cost about two million yen to buy the new car.\n\n   ( million / about / cost / new / two / the / car / yen / me / . )\n\n６   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n(1)   この時計を修理してもらうのに，いくらかかりますか。\n\n   ( it / much / watch / repair / cost / how / this / does / to / ? )\n\n(2)   彼らがこの仕事を終えるのに，３日間かかりました。\n\n   ① ( three / finish / took / work / to / it / days / this / them / . )\n\n   ② ( days / work / them / it / this / three / finish / took / for / to / . )\n\f７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n   I don’t (   ) whether Tom comes or not.\n\n   ≒ It doesn’t matter whether Tom comes or not.\n\n   ① attention   ② prefer   ③ fear   ④ care\n\n８ 〈センター試験にチャレンジ〉 1 に入れるのに最も適当なものを，下の①～④\n  から一つ選べ。\n\n   The mechanics said that it would cost   1   700 dollars to fix my car.\n   〈05 年本試〉\n   ① on me   ② me   ③ to me   ④ for me",
+       "answer_text": "Ａ問題\n１\n① ～がかかる   It costs 金 to V.\n\n   It takes 時間 to V.\n\n② ～かどうかは重要ではない   It makes no difference whether ～.\n\n   It doesn’t matter whether ～.\n\n２\n\n(1)   It ／ easy\n\n(2)   It ／ hard [difficult] ／ to read\n\n(3)   It ／ necessary that\n\n(4)   of you ／ let\n\n(5)   It ／ natural that\n\n(6)   It is strange ／ didn’t come\n\n(7)   It ／ since ／ last\n\n(8)   It won’t [will not] ／ before ／ starts [begins]\n\n(9)   whether ※10 章「名詞節を導く whether と if の違い」\n\nＢ問題\n３\n(1)   浴室を改装するには，約 100 万円かかるだろう。\n\n   renovate 「（住宅などを）改装する」\n\n(2)   あなた(たち)がこの内容に満足していようがいまいが，私には重要ではない。\n\n(3)   ここから大学まで歩いてどのくらいかかりますか。\n\n(4)   トムがその計画に賛成するかどうかは，重要ではない。\n\f４\n\n(1)   It cost 800 yen to have the package delivered to\n\n(2)   It doesn’t take very long to go to the station from\n\n(3)   It matters little to me whether you know the fact\n\nＣ問題\n\n５\n\n   The new car cost me about two million yen.\n\n６\n\n(1)   How much does it cost to repair this watch?\n\n(2)   ① It took them three days to finish this work.\n\n   ② It took three days for them to finish this work.\n\n   It takes 人 時間 to ～ ＝ It takes 時間 for 人 to ～\n\n７\n\n   ④ care\n   トムが来るかどうかは，重要ではない。\n８\n\n   ② me\n   私の車を修理するには 700 ドルかかるだろうと整備士は言った。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_009『仮主語itの慣用表現（「It costs 費用」など）』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_009『仮主語itの慣用表現（「It costs 費用」など）』（演習）.pdf",
+       "q_count": 32
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "文法   13通常学習編\n   章 代名詞 第13章 代名詞\n   分確認テスト   9,10\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n  仮主語 it の慣用表現   It costs 費用\n\n   次   日本文   あう英文   う   ，   適す   語(句)を書   さい。\n\n(1)   私   髪をカットし   も   う   5000 円   っ   。\n\n   It   5,000 yen   have my hair   .\n\n(2)   私   図書館   こ   本を借   週間以上   っ   。\n\n   It   me more than two weeks   this book\n\n   from the library.\n\n(3)   あ   疲   い   う   いまい   ，私   関係   い。\n\n   It makes   difference   me   you\n\n   are tired or not.\n\n(4)   こ   パソコンを修理し   も   う   いく   う   。\n\n   will it   to have this PC   ?\n\n(5)   そ   答え   正しい   正しく   い   ，私   重要   い。\n\n   doesn’t   whether the answer is\n\n   correct or   .\n\n(6)   ニュー   ーク   サンフ   ンシスコま   飛行機   く   い時間   ます   。\n\n   does   to fly from New York to San\n\n   Francisco?\n\n(7)   ア   ス   部屋   掃除を終え   時間   っ   。\n\n   almost an hour for Alice   cleaning\n\n   her room.\n\n   736",
+       "answer_text": "高校英文法13\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n仮 主 語 it の慣 用 表 現 （「It costs 費 用 」など） －解 答 －\n\n１\n\n(1) cost ／ to ／ cut\n\n(2) took ／ to borrow\n\n(3) no ／ to ／ whether\n\n(4) How much ／ cost ／ repaired\n\n(5) It ／ matter to us ／ not\n\n(6) How long ／ it take\n\n(7) It took ／ to finish",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_009『仮主語itの慣用表現（「It costs 費用」など）』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_009『仮主語itの慣用表現（「It costs 費用」など）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 9 10   練習   次の英文を日本語に訳しなさい。\n\n 仮主語it の慣用表現（「It costs 費用」など）   ⑴ It will cost much to have the car repaired.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ その自転車を修理してもらうのに2,000円かかった。\n   ⑵ It doesn’t matter to me whether he’ll come or not.\n  It   2,000yen to have the bike repaired.\n\n⑵ 沖縄に行くのに飛行機で３時間かかった。\n  It   three hours to go to Okinawa   入試レベルにチャレンジ\n  by plane.   正しい英文になるように、カッコ内の語（句）を並び替えなさい。\n\n   大阪から東京まで飛ぶのにどれくらい時間がかかりますか。\n⑶ トムが行くか行かないかは、私には関係ない。\n   （ does / fly / how / it / long / take / to ）from Osaka to Tokyo?\n  It   no difference to me\n  whether Tom goes or not.\n\n  = It doesn’t   to me whether Tom\n   goes or not.\n\n   omitsu Kimura の\n  Tom\n\n 形式主語itの慣用表現（「It costs 費用」\n   など）\n\n「～がかかる」 ⎧ It costs 金 to V.\n   ⎪\n   ⎩ It takes 時 to V.\n\n「～かどうかは ⎧ It makes no difference whether～．\n   ⎪\n重要ではない」 ⎩ It doesn’t matter whether～．",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_009『仮主語itの慣用表現（「It costs 費用」など）』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_009『仮主語itの慣用表現（「It costs 費用」など）』（習得）.pdf",
+       "q_count": 5
+      }
+     }
+    },
+    {
+     "id": "ch13_011",
+     "num": "011",
+     "name": "It seems that ／ It happens thatなどの構文",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-6",
+       "content": "『It seems that ／ It happens thatなどの構文』\nIt seems that / It happens that は「〜のようだ／〜が起こる」を表す。S seems to V に書き換えられる。"
+      },
+      {
+       "title": "概要",
+       "content": "It seems that / It happens that は「〜のようだ／〜が起こる」を表す。S seems to V に書き換えられる。\nIt seems that\nIt seems that S V\n「〜のようだ」\nシグナル/特徴\nS happens to V も同様\nS seems to V\nS seems to V\n書き換え可\nシグナル/特徴\n意味は同じ"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "It seems that he is busy.\n彼は忙しそうだ。\nHe seems to be busy.\n（同上）\nIt happens that I know him.\nたまたま彼を知っている。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nIt seems / happens that\n2\nS seems / happens to V\n3\n書き換えに慣れる"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_011_It seems that ／ It happens thatなどの構文_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "It seems that / It happens that などの構文   100\n\nＡ問題\n１   次の日本語にあう英語になるように，   に適する１語を書きなさい。\n   （各２点・計４点）\n\n①   ～するように思われる   It   that S V ～.\n\n②   たまたま～する   It   that S V ～.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 42 点）\n\n(1)   私の髪をカットしてもらうのに 5000 円かかった。\n\n   It   5,000 yen   have my hair   .\n\n(2)   私が図書館でこの本を借りるのに２週間以上かかった。\n\n   It   me more than two weeks   this book\n\n   from the library.\n\n(3)   あなたが疲れていようがいまいが，私には関係ない。\n\n   It makes   difference   me   you\n\n   are tired or not.\n\n(4)   このパソコンを修理してもらうのにいくらかかるだろうか。\n\n   will it   to have this PC   ?\n\n(5)   その答えが正しいか正しくないかは，私たちには重要ではない。\n\n   doesn’t   whether the answer is\n\n   correct or   .\n\n(6)   ニューヨークからサンフランシスコまでは飛行機でどれくらい時間がかかりますか。\n\n   does   to fly from New York to San\n\n   Francisco?\n\f(7)   ボブが１人で高い山に登るのはとても危険だ。\n\n   It is   Bob to   a high mountain alone.\n\n(8)   彼はお金持ちだったように思われる。\n\n   He seems to   rich.\n\n   It seems   he   rich.\n\nＢ問題\n\n３   次の英文とほぼ同じ意味の英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 30 点）\n\n(1)   Nancy seemed to be disappointed yesterday.\n\n   It   Nancy   disappointed yesterday.\n\n(2)   Jack happened to meet Kevin on his way home.\n\n   It   Jack   Kevin on his way home.\n\n(3)   It seemed that Tom had been sick for a week.\n\n   Tom seemed   sick for a week.\n\n４   次の英文を日本語に訳しなさい。（各８点・計 24 点）\n\n(1)   It seems that everyone was surprised at the teacher’s sudden appearance.\n\n(2)   It happened that the seat was occupied by an elderly man.\n\n(3)   It seems like it will rain later tonight.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n①   It appears that\n\n②   It occurs to 人 that\n\n③   It never occurred to 人 that\n\n④   It chances that\n\n⑤   It follows that\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   It (   ) me that I would meet with a traffic accident.\n\n   ① occurred   ② occurred for   ③ never occurred of   ④ never occurred to\n\n(2)   It (   ) that there is something wrong with Ann.\n\n   ① takes   ② costs   ③ appears   ④ occurs\n\n(3)   It happened that Ken met his friend Yuki in the library the day before yesterday.\n\n   ≒ It (   ) that Ken met his friend Yuki in the library\n\n   the day before yesterday.\n\n   ① followed   ② chanced   ③ seemed   ④ appeared",
+       "answer_text": "Ａ問題\n\n１\n\n①   ～するように思われる   It seems that S V～.\n\n②   たまたま～する   It happens that S V～.\n\n２\n\n(1)   cost ／ to ／ cut\n\n(2)   took ／ to borrow\n\n(3)   no ／ to ／ whether\n\n(4)   How much ／ cost ／ repaired\n\n(5)   It ／ matter to us ／ not\n\n(6)   How long ／ it take\n\n(7)   very dangerous for ／ climb\n\n(8)   have been ※４章「不定詞の完了形」\n\n   that ／ was\n\nＢ問題\n\n３\n\n(1)   seemed that ／ was\n\n(2)   happened that ／ met\n\n(3)   to have been\n\n４\n\n(1)   その先生が突然現れ，みんな驚いたように思われる。\n\f(2)   たまたまその席は年配の男性に座られていた。\n\n(3)   今夜遅く雨が降りそうだ。\n\nＣ問題\n\n５\n\n①   It appears that   ～のように思われる，～のようだ\n\n②   It occurs to 人 that   ～とふと思う，～が人の心にうかぶ\n\n③   It never occurred to 人 that   ～と思いもよらなかった\n\n④   It chances that   たまたま～する\n\n⑤   It follows that   ～ということになる\n\n６\n\n(1)   ④ never occurred to\n   交通事故に遭うなんて思いもよらなかった。\n\n(2)   ③ appears\n   アンは具合が悪いようだ。\n\n(3)   ② chanced\n   ケンはたまたま，一昨日に図書館で友達のユキに会った。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_011『It seems that ／ It happens thatなどの構文』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_011『It seems that ／ It happens thatなどの構文』（演習）.pdf",
+       "q_count": 36
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "文法   13通常学習編\n   章 代名詞 第13章 代名詞\n   分確認テスト   11,12\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   It seems that / It happens that   の構文\n\n１   次   日本文   あう英文   う   ，   適   語(句)   書   さい。\n\n(1)   そ   作家   若い   も貧   う   思わ   。\n\n   It   that the writer   very poor when he\n\n   young.\n\n(2)   私   フリーマーケット   ，長い間欲   希少品   ま   ま見   け   。\n\n   It   that I   the rare item I had wanted for a\n\n   long time at the flea market.\n\n(3)   今夜   雪   降   そう   。\n\n   It seems   it will   tonight.\n\n(4)   そ   店   い   も混   い   う   思わ   。\n\n   that the shop   always crowded.\n\n(5)   ま   ま故障   そ   電車   遅   。\n\n   that the train   delayed\n\n   of a breakdown.\n\n(6)   外   強風   吹い   い   う   。\n\n   that a strong wind   outside.\n\n(7)   彼   ま   ま同   タイプ   靴   い   い   。\n\n   It   they had the same type of   .\n\n   740",
+       "answer_text": "高校英文法 13\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n It seems that / It happens that などの構 文 －解 答 －\n\n１\n\n(1) seems ／ was ／ was\n\n(2) happened ／ found\n\n(3) like [that] ／ snow\n\n(4) It seems ／ is\n\n(5) It happened ／ was ／ because\n\n(6) It seems ／ is blowing\n\n(7) happened that ／ shoes",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_011『It seems that ／ It happens thatなどの構文』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_011『It seems that ／ It happens thatなどの構文』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 11 12   練習   次の英文を日本語に訳しなさい。\n\nIt seems that / It happens thatなどの構文\n   ⑴ It seems that nobody knew the truth.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 彼は金持ちだったように思われる。\n   ⑵ It happened that we were in London then.\n  It   that he was rich.\n\n⑵ 昨日たまたま旧友に会った。\n  It   that I met an old friend of mine   入試レベルにチャレンジ\n\n  yesterday.   次の日本語にあうように、カッコ内の英語を並び替えなさい。\n\n   今年の夏は暑くなりそうだ。\n   It seems（ will / like / this summer / be / hot / it ）.\n\n   omitsu Kimura の\n  Tom\n\n It seems that / It happens thatなどの構文\n\n 「～するように思われる」   It seems that SV～．\n 「たまたま～する」\t\t\t   It happens that SV～．",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_011『It seems that ／ It happens thatなどの構文』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_011『It seems that ／ It happens thatなどの構文』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch13_013",
+     "num": "013",
+     "name": "仮目的語のit（find it ～ to doなどのパターン）",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-7",
+       "content": "『仮目的語のit（find it ～ to doなどのパターン）』\nfind it 〜 to V / make it 〜 to V など、it が仮目的語のパターン。"
+      },
+      {
+       "title": "概要",
+       "content": "find it 〜 to V / make it 〜 to V など、it が仮目的語のパターン。\nfind it 〜 to V\nfind it 形容詞 to V\n「Vするのが〜だとわかる」\nシグナル/特徴\nit ＝ 仮目的語\nmake / think it 〜\nmake / think / believe it\n「Vするのを…にする／思う」\nシグナル/特徴\nto V が真目的語"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I find it difficult to sing.\n歌うのは難しいと思う。\nHe made it a rule to walk daily.\n毎日歩くことを習慣にした。\nI think it foolish to argue.\n議論するのは愚かだと思う。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nit ＝ 仮目的語\n2\nto V が真目的語\n3\nfind / make / think + it 形容詞 + to V"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_013_仮目的語のit（find it ～ to doなどのパターン）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "仮目的語の it（find it 〜 to do などのパターン）   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   find it   形 to 動詞の原形   ～するのは形とわかる\n\n②   think it 形 to 動詞の原形\n\n③   make it 形 to 動詞の原形\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 40 点）\n(1)   その作家は若いときはとても貧しかったように思われる。\n\n   It   that the writer   very poor when he\n\n   young.\n\n(2)   彼女は病気だったように思われる。\n\n   It   she   ill.\n\n   ＝ She   to   ill.\n\n(3)   私はフリーマーケットで，長い間欲しかった希少品をたまたま見つけた。\n\n   It   that I   the rare item I had wanted for a\n\n   long time at the flea market.\n\n(4)   今夜は雪が降りそうだ。\n\n   It seems   it will   tonight.\n\n(5)   たまたま故障でその電車は遅れた。\n\n   that the train   delayed\n\n   of a breakdown.\n\n(6)   外では強風が吹いているようだ。\n\n   that a strong wind   outside.\n\f(7)   彼らはたまたま同じタイプの靴をはいていた。\n\n   It   they wore the same type of   .\n\n(8)   アリスが部屋の掃除を終えるのにほぼ１時間かかった。\n\n   almost an hour for Alice   cleaning\n\n   her room.\n\nＢ問題\n\n３   次の英文を日本語に訳しなさい。（各８点・計 32 点）\n\n(1)   I found it exciting to communicate with people from all over the world.\n\n(2)   I take it for granted that we are good friends even after graduation.\n\n(3)   I think it hard to read English books without looking up in a dictionary.\n\n(4)   I take it for granted that I help my parents with housework every day.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各８点・計 24 点）\n(1)   サムは朝食前に 30 分間ジョギングをすることにしている。\n   Sam ( a / for / to / it / before / an hour / makes / jog / rule / half ) breakfast.\n\n(2)   夏には，１日に数回シャワーを浴びるのは当然だと思います。\n   ( take / I / it / to / a few / think / natural / times / showers / a day ) in summer.\n\f(3)   ケンタは毎日 20 個以上の英単語を覚えることは簡単だとわかった。\n\n   Kenta ( to / learn / easy / found / English words / or / twenty / it / more )\n   every day.\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の英語を日本語にしなさい。\n\n①   make it clear that\n\n②   make it possible that\n\n③   take it for granted that\n\n④   depend on it that\n\n⑤   rely on it that\n\n⑥   owe it to A that\n\n⑦   see to it that\n\n６   次の英文を日本語に訳しなさい。\n\n(1)   Ken considers it important to study English.\n\n(2)   I believe it right to help others.\n\n(3)   Mr. Green found it difficult for Tom to answer the question.\n\n(4) Ann thought it surprising that her brother had finished his homework by himself.\n\f７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   I owe it (   ) my grandparents that I was able to study abroad.\n\n   ① for   ② to   ③ on   ④ with\n\n(2)   I(   ) that my father will come to pick me up by car.\n\n   ① depend it on   ② depend on it   ③ depend it to   ④ depend to it\n\n(3)   Please (   ) the door is locked when you leave home.\n\n   ① watch it to that   ② watch to it that   ③ see it to that   ④ see to it that\n\n８ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Even if immigrants work very hard in their new country, they might   1   it difficult\n   to adapt themselves to the new culture.\n   〈15 年追試〉\n   ① find   ② hear ③ look   ④ say",
+       "answer_text": "Ａ問題\n\n１\n\n①   find it   形 to 動詞の原形   ～するのは形とわかる\n\n②   think it 形 to 動詞の原形   ～するのは形と思う\n\n③   make it 形 to 動詞の原形   ～するのを形にする\n\n２\n\n(1)   seems ／ was ／ was\n\n(2)   seems that ／ was\n\n   seems ／ have been\n\n(3)   happened ／ found\n\n(4)   like [that] ／ snow\n\n(5)   It happened ／ was ／ because\n\n(6)   It seems ／ is blowing\n\n(7)   happened that ／ shoes\n\n(8)   It took ／ to finish\n\nＢ問題\n\n３\n\n(1)   世界中の人々とコミュニケーションをとるのはとてもおもしろいとわかった。\n\n(2)   私たちが卒業後も仲の良い友達であることは当然だと思う。\n\n(3)   辞書を見ないで英語の本を読むのは難しいと思う。\n\n(4)   両親の家事を毎日手伝うのは当然だと思う。\n\f４\n\n(1)   makes it a rule to jog for half an hour before\n\n(2)   I think it natural to take showers a few times a day\n\n(3)   found it easy to learn twenty English words or more\n\n   [twenty or more English words]\n\nＣ問題\n\n５\n\n①   make it clear that   ～を明らかにする\n\n②   make it possible that   ～をできるようにする\n\n③   take it for granted that   ～を当然のことだと思う\n\n④   depend on it that   ～を当てにする\n\n⑤   rely on it that   ～を当てにする\n\n⑥   owe it to A that   ～は A のおかげだ\n\n⑦   see to it that   ～になるように注意する，取り計らう\n\n６\n\n(1)   ケンは，英語を勉強するのは大切だと考えています。\n\n(2)   私は，他人を助けるのは正しいことだと信じています。\n\n(3)   グリーン先生は，トムがその質問に答えるのは難しいとわかった。\n   ※ここでは，for Tom が to answer the question の意味上の主語\n(4)   アンは，弟が自力で宿題を終えたことに驚いた。\n   ※ここでは，it ＝ that 以下\n\f７\n\n(1)   ② to\n   私が留学できたのは，祖父母のおかげです。\n\n(2)   ② depend on it\n   私は，父が車で迎えに来てくれるのを当てにしています。\n\n(3)   ④ see to it that\n   家を出るときは，玄関のカギを閉めるように注意してくださいね。\n８\n\n   ① find\n   たとえ移民が新たな国でとても熱心に働いたとしても，新しい文化に適応するのは難\n   しいと思うだろう。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_013『仮目的語のit（find it ～ to doなどのパターン）』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_013『仮目的語のit（find it ～ to doなどのパターン）』（演習）.pdf",
+       "q_count": 50
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "文法   13通常学習編\n   章 代名詞 第13章 代名詞\n   分確認テスト   13,14\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   仮 目 的 語 の it find it ～ to 動 詞   のパターン\n\n１   次   日本文   あう英文   よう   ，   適す   語(句)   書   さい。\n\n(1)   私   そ   問題   解   方   説明す   難しい   わ   っ   。\n\n   I   it difficult   how to solve the problem.\n\n(2)   私   夕食   食べす   いほう   いい   思う。\n\n   I   it   not   too much dinner.\n\n(3)   ケビン   毎朝６時   起   こ   し   い   。\n\n   Kevin   it   get up at six every morning.\n\n(4)   私   姉   宿題   手伝っ   当然   思っ   。\n\n   I took   for   my sister helped me with my\n\n   homework.\n\n(5)   ャック   異文化   理解す   こ   重要   わ   っ   。\n\n   Jack   it   understand different cultures.\n\n(6)   私   食習慣   変え   こ   簡単   い   思う。\n\n   I don’t think   to   our eating habits.\n\n(7)   ミ   さ   定時   オフィ   出   こ   し   い   。\n\n   Mr. Smith   rule   the office on time.\n\n   744",
+       "answer_text": "高校英文法13\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   仮 目 的 語 の it （find it ～ to 動 詞 などのパターン） －解 答 －\n\n１\n\n(1) found ／ to explain\n\n(2) think ／ better ／ to eat [have]\n\n(3) makes ／ a rule to\n\n(4) it ／ granted that\n\n(5) found ／ important to\n\n(6) it easy ／ change\n\n   eating habits   「食習慣」\n\n(7) makes it a ／ to leave [get out of]",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_013『仮目的語のit（find it ～ to doなどのパターン）』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_013『仮目的語のit（find it ～ to doなどのパターン）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 13 14   練習   次の英文を日本語に訳しなさい。\n\n仮目的語のit（find it ～ to do などのパターン）   ⑴ I found it easy to drive a car.\n\n 例題   下線部の代名詞が何を表しているか、英語で答えなさい。\n\n⑴ 私はこの仕事をすべて終わらせるのは難しいと思った。\n   ⑵ I make it a rule to get up early.\n  I found it difficult to do all this work.\n\n⑵ 今日は雪だから、外に出ないほうがいいと思う。   入試レベルにチャレンジ\n\n  I think it better not to go out because it is snowing.   正しい英文になるように、カッコ内の語（句）を並び替えなさい。\n\n   私は、ナンシーがパーティーに参加するのは\n   当然だと思っていた。\n   I（ that / took / for / it / granted ）Nancy joined the party.\n\n   omitsu Kimura の\n  Tom\n\n 仮目的語のit\n\n find it（形容詞） to 動詞の原形 「～するのは 形 とわかる」\n think it（形容詞）to 動詞の原形 「～するのは 形 と思う」\n make it（形容詞）to 動詞の原形 「～するのを 形 にする」",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_013『仮目的語のit（find it ～ to doなどのパターン）』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_013『仮目的語のit（find it ～ to doなどのパターン）』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch13_015",
+     "num": "015",
+     "name": "that／thoseの使い方",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-8",
+       "content": "『that／thoseの使い方』\nthat / those は前述の名詞や、相手から離れたものを指す。比較のときに反復を避けるためにも使う。"
+      },
+      {
+       "title": "概要",
+       "content": "that / those は前述の名詞や、相手から離れたものを指す。比較のときに反復を避けるためにも使う。\n前述の名詞\nthat ＝ あれ／前述\n「離れたもの／前出のもの」\nシグナル/特徴\nthose ＝ 複数形\n比較で反復回避\n比較で名詞反復を避ける\n「Aは Bのそれより…」\nシグナル/特徴\nthe climate of Tokyo / that of Osaka"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "The climate of Tokyo is milder than that of Hokkaido.\n東京の気候は北海道より温暖だ。\nThose who study hard pass.\n一生懸命勉強する人は合格する。\nHer eyes are like those of her mother.\n彼女の目は母のそれに似ている。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nthat / those ＝ 前述・離れた物\n2\n比較で名詞の反復を避ける\n3\nthose who 〜 ＝ 〜する人々"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_015_that／thoseの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "that / those の 使 い 方   100\n\nＡ問題\n１   下線部の代名詞が何を表しているか，英語で答えなさい。（２点）\n\n   東京の人口はニューヨークの人口よりも多い。\n\n   The population of Tokyo is larger than that of New York.\n\n   ＝\n\n２   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計 42 点）\n\n(1)   私はその問題の解き方を説明するのは難しいとわかった。\n\n   I   it difficult   how to solve the problem.\n\n(2)   私は夕食は食べすぎないほうがいいと思う。\n\n   I   it   not   too much dinner.\n\n(3)   ケビンは毎朝６時に起きることにしている。\n\n   Kevin   it   get up at six every\n\n   morning.\n\n(4)   私は姉が宿題を手伝ってくれるのは当然だと思った。\n\n   I took   for   my sister helped me with my\n\n   homework.\n\n(5)   私は食習慣を変えることは簡単ではないと思う。\n\n   I don’t think   to   our eating habits.\n\n(6)   その店はいつも混んでいるように思われる。\n\n   that the shop   always crowded.\n\n(7)   彼女はそこでトムに会ったと言ったが，それは嘘だった。\n\n   She said she had met Tom there, but   was a lie.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各４点・計８点）\n(1)   東京の気候は，モスクワの気候よりも穏やかだ。\n\n   The climate of Tokyo is milder than   of Moscow.\n\n(2)   ここでの給料は，彼女の国よりも高い。\n\n   Salaries are higher here than   in her country.\n\n４   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n\n(1)   The price of the bag displayed on the shelf is higher than that of my car.\n\n(2)   The captain’s attitude was that of an excellent leader.\n\n(3)   The strawberries in this box look sweeter than those in that basket.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各９点・計 27 点）\n(1)   ラクビーのルールは，他のスポーツのルールよりも難しい。\n   The rules ( of / of / are / any / those / difficult / rugby / other / more / sports / than ).\n\n(2)   大阪のおせち料理の種類は東京のおせち料理の種類と異なる。\n\n   ( New Year dishes / Osaka / those / different / the kinds / in / are / of / from )\n   in Tokyo.\n\n(3)   そのパーティーに出席していた人は，彼らのおもてなしに感動したようだった。\n   ( present / moved / their hospitality / to / seemed / at / by / those / the party / be /. )\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   次の英語を日本語にしなさい。\n\n①   those who ～\n\n②   those present\n\n③   those concerned\n\n④   those involved\n\n⑤   those around 人\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Tom is loved by (   ) around him.\n\n   ① them   ② whose   ③ those   ④ the\n\n(2)   (   ) watched the baseball game was very excited.\n\n   ① That which   ② That who   ③ Those that   ④ Those who\n\n８   〈センター試験にチャレンジ〉文中の空欄に入れるのに最も適当なものを，下の①～\n   ④から一つ選べ。\n\n   The ( A ) of treatment at the hospital is much lower for ( B   ) who have health\n   insurance.\n   〈14 年本試〉\n   ① A: cost B: them   ② A: cost B: those\n   ③ A: fare B: them   ④ A: fare B: those",
+       "answer_text": "Ａ問題\n\n１\n\n   The population of Tokyo is larger than that of New York.\n\n   ＝ the population\n\n２\n\n(1)   found ／ to ／ explain\n\n(2)   think ／ better ／ to ／ eat [have]\n\n(3)   makes ／ a ／ rule ／ to\n\n(4)   it ／ granted ／ that\n\n(5)   it ／ easy ／ change\n\n   eating habits 「食習慣」\n\n(6)   It ／ seems ／ is\n\n(7)   it\n\nＢ問題\n３\n(1)   that\n\n(2)   those\n\n４\n\n(1)   棚に飾られているそのバッグの値段は私の車の値段よりも高い。\n\n(2)   その主将[キャプテン]の態度は優れたリーダーの態度だった。\n\n(3)   この箱の中のイチゴはあのかご[バスケット]の中のイチゴよりも甘そうだ。\n\f５\n\n(1)   of rugby are more difficult than those of any other sports\n\n(2)   The kinds of New Year dishes in Osaka are different from those\n\n   New Year dishes 「おせち料理」\n\n(3)   Those present at the party seemed to be moved by their hospitality.\n\nＣ問題\n\n６\n\n①   those who ～   ～する[～である]人々\n\n②   those present   出席者\n\n③   those concerned   関係者\n\n④   those involved   関係者\n\n⑤   those around 人   人の周囲の人々\n\n７\n\n(1)   ③ those\n   トムは周囲の人々に愛されています。\n\n(2)   ④ Those who\n   その野球の試合を見た人々は，とてもわくわくしていました。\n８\n\n   ② A: cost B: those\n   その病院の治療費は，健康保険に入っている人にとっては，ずっと安い。\n\n   まず(A)について，fare は「(バス・電車などの)運賃」なので，ここでは，\n   ③ A: fare B: them，④ A: fare B: those は文脈に合わないので不適切。\n   treatment 「治療」から，cost of treatment「治療費」の表現が適切だとわかる。\n\n   次に(B)については，those who「～な人々」という表現がポイント。\n   残った① A: cost B: them，② A: cost B: those のうち，\n   those who have health insurance「健康保険に入っている人々」という表現になる，\n   ② A: cost B: those が適切だと判断できる。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_015『that／thoseの使い方』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_015『that／thoseの使い方』（演習）.pdf",
+       "q_count": 36
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   that / those の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を下の選択肢から選んで\n   書きなさい。同じ語(句)を何回用いてもよい。\n\n(1)   日本の気候はフィンランドの気候よりも温暖だ。\n\n   The climate of Japan is milder than   of Finland.\n\n(2)   母は私にスカートを買ってくれたが，私はそれが好きではない。\n\n   My mother bought me a skirt, but I don’t like   .\n\n(3)   向こうでごみを拾っている子供たちをごらんなさい。\n\n   Look at   children picking up trash over there.\n\n(4)   この庭の木々は隣りの庭の木々よりも高い。\n\n   The trees in this yard are taller than   in the next yard.\n\n(5)   埼玉県の人口は北海道の人口よりも多い。\n\n   The population of Saitama Prefecture is larger than   of Hokkaido.\n\n(6)   その事故で負傷した人たちは直ちに病院に搬送された。\n\n   injured in the accident were transferred to the hospital\n\n   immediately.\n\n(7)   息子の部屋の温度は居間の温度よりもはるかに低い。\n\n   The temperature of my son’s room is much lower than   of the living\n\n   room.\n\n   [ it / they / that / those ]\n\n   750",
+       "answer_text": "高校英文法13\n   第13章「代名詞」\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   that / those の使い方 －解答－\n\n１\n\n(1) that\n\n(2) it\n\n(3) those\n\n(4) those\n\n(5) that\n\n(6) Those\n\n(7) that",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_015『that／thoseの使い方』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_015『that／thoseの使い方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 15 16   練習   次の英文を日本語に訳しなさい。\n\n   that / thoseの使い方   ⑴ The climate of Tokyo is milder than that of Tatebayashi.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 神奈川の人口は大阪の人口よりも多い。\n   ⑵ Kaoriʼs dishes are better than those in restaurants.\n  The population of Kanagawa is larger\n  than   of Osaka.\n\n⑵ トムの振る舞いは紳士でなかった。   入試レベルにチャレンジ\n  Tomʼs behavior was not   of a gentleman.   日本語に合う英文になるように、   に適する語（句）を\n   次の選択肢から選びなさい。\n\n⑶ ここでの給料は、彼の国よりも低い。   会議に出席していた人たちは、その計画に反対した。\n  Salaries are lower here than   in his   present at the meeting\n  country.   objected to the plan.\n\n   ① That   ② Those   ③ The   ④ They\n\n   omitsu Kimura の\n  Tom\n\n that / thoseの使い方\n\n →「くり返しをさける」使い方\n 〔例〕 The population of Tokyo is larger than\n   that of New York .\n   =the population of New York",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_015『that／thoseの使い方』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_015『that／thoseの使い方』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch13_017",
+     "num": "017",
+     "name": "one／onesの使い方",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-9",
+       "content": "『one／onesの使い方』\none は前述の単数名詞を、ones は複数名詞を指す代名詞。「同じ種類の別のもの」。"
+      },
+      {
+       "title": "概要",
+       "content": "one は前述の単数名詞を、ones は複数名詞を指す代名詞。「同じ種類の別のもの」。\none (単数)\na + 形容詞 + one\n「同じ種類のもの」\nシグナル/特徴\n前出名詞の置き換え\nones (複数)\nthe ones / those\n複数形で指示\nシグナル/特徴\nthe ones I bought"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I lost my pen, so I bought a new one.\nペンをなくしたので新しいのを買った。\nThese shoes are old; I need new ones.\nこの靴は古い。新しいのが必要だ。\nWhich one do you like?\nどれが好き？"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\none ＝ 単数の同種\n2\nones ＝ 複数の同種\n3\nit（特定）と区別"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_017_one／onesの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "one / ones の 使 い 方   100\n\nＡ問題\n１   下線部の代名詞が何を表しているか，英語で答えなさい。（２点）\n\n   私は本が好きで，また新しい１冊を買いました。\n\n   I love books and bought a new one.\n   ＝\n\n２   次の問いに答えなさい。\n\n(1)   次の日本文にあう英文になるように，   に適する語(句)を下の選択肢から選んで\n   書きなさい。同じ語(句)を何回用いてもよい。（各２点・計 12 点）\n\n   [ it / they / that / those ]\n\n①   日本の気候はフィンランドの気候よりも穏やかだ。\n\n   The climate of Japan is milder than   of Finland.\n\n②   母は私にスカートを買ってくれたが，私はそれが好きではない。\n\n   My mother bought me a skirt, but I don’t like   .\n\n③   向こうでごみを拾っている子供たちをごらんなさい。\n\n   Look at   children picking up trash over there.\n\n④   この庭の木々は隣りの庭の木々よりも高い。\n\n   The trees in this yard are taller than   in the next yard.\n\n⑤   埼玉県の人口は北海道の人口よりも多い。\n\n   The population of Saitama Prefecture is larger than   of Hokkaido.\n\n⑥   息子の部屋の温度は居間の温度よりもはるかに低い。\n\n   The temperature of my son’s room is much lower than   of the living\n\n   room.\n\f(2)   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計 22 点）\n①   ジャックは異文化を理解することは重要だとわかった。\n\n   Jack   it   understand different cultures.\n\n②   ジャックにとって異文化を理解することは重要だ。\n\n   It is   Jack   understand different cultures.\n\n③   スミスさんは定時にオフィスを出ることにしている。\n\n   Mr. Smith   rule\n\n   the office on time.\n\nＢ問題\n３   次の英文を日本語に訳しなさい。（各８点・計 24 点）\n\n(1)   Which T-shirt do you think suits me, this one or that one?\n\n(2)   I know new computers are expensive, but I don’t want to buy a used one.\n\n(3)   I ’m sorry, but I don’t like these skirts.   ―― Well, how about that one with\n\n   blue dots?\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各 10 点・計 40 点）\n\n(1)   ジャックは２本のラケットを持っていて，私に１本を使わせてくれた。\n   Jack had ( and / one / ones / me / two / allowed / rackets / to use ).\n\n(2)   あなたはアメリカ映画とフランス映画で，どちらのほうが好きですか。\n   Which ( you / or / better / American movies / do / one / ones / French / like / , )?\n\f(3)   このシャツは小さすぎるので，大きいものを見せてください。\n   This shirt is ( small / please / too / a / show / so / one / me / larger / this / , ).\n\n(4)   弟がはさみをなくしたので，新しいものをあげました。\n   My brother ( gave / so / new / scissors / him / lost / ones / that / I / , ).\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   My father has a pair of blue glasses and I’m going to give him (   )\n   for his birthday.\n   ① one   ② that   ③ yellow one   ④ yellow ones\n\n(2)   Tom lent me his favorite book last week.\n   I haven’t finished reading (   ) yet.\n   ① one   ② ones   ③ it   ④ them\n\n(3)   My sister bought a black bag and I bought a white (   ).\n\n   ① it   ② this   ③ one   ④ ones\n\n(4)   Nancy’s computer had broken, so she bought (   ).\n\n   ① a one new   ② a new one   ③ a new ones   ④ ones new\n\f(5)   Which do you like better red wine or (   )?\n\n   ① white one   ② white ones   ③ white wine   ④ one of white\n\n(6)   This movie is more exciting than (   ) which I watched last week.\n\n   ① one   ② the one   ③ ones   ④ the ones\n\n６ 〈センター試験にチャレンジ〉 1   ～   2   に入れるのに最も適当なものを，それぞ\n   れ下の①～④から一つずつ選べ。\n\n(1)   I recently bought a coffee maker with a timer. It’s very convenient.\n   Do you have   1   at home?\n   〈13 年追試〉\n   ① it   ② one   ③ them   ④ these\n\n(2)   Susie has got some yellow socks, but I’ve got   2   .\n   〈07 年追試〉\n   ① blue ones   ② blue them   ③ ones blue   ④ them blue",
+       "answer_text": "Ａ問題\n１\n   I love books and bought a new one.\n   ＝ book\n\n２\n\n(1)\n\n①   that\n\n②   it\n\n③   those\n\n④   those\n\n⑤   that\n\n⑥   that\n\n(2)\n\n①   found ／ important ／ to\n\n②   important ／ for ／ to\n\n③   makes ／ it ／ a ／ to ／ leave\n\nＢ問題\n\n３\n\n(1)   どっちのＴシャツが私に似合うと思いますか。これですか，それともあれ\n\n   ですか。\n\n(2)   新しいコンピュータが高いのはわかりますが，中古のものは買いたくありません。\n\n(3)   すみませんが，これらのスカートは好きではありません。― では，あの青い水玉の\n\n   はいかがですか。\n\f４\n\n(1)   two rackets and allowed me to use one   ( ones が不要 )\n\n(2)   do you like better, American movies or French ones   ( one が不要 )\n\n(3)   too small, so please show me a larger one   ( this が不要 )\n\n(4)   lost scissors, so I gave him new ones   ( that が不要 )\n\nＣ問題\n\n５\n\n(1)   ④ yellow ones\n   私の父は青い眼鏡を持っていて，私は彼の誕生日に黄色い眼鏡をあげるつもりです。\n   ※ones は修飾語と一緒に使われる。\n\n(2)   ③ it\n   トムは先週，お気に入りの本を私に貸してくれました。\n   私はまだそれを読み終わっていません。\n\n(3)   ③ one\n   私の姉[妹]は黒いかばんを，私は白いかばんを買いました。\n\n(4)   ② a new one\n   コンピューターが壊れたので，ナンシーは新しいコンピューターを買った。\n\n(5)   ③ white wine\n   あなたは，赤ワインと白ワインのどちらが好きですか。\n   ※① white one は不可。数えられない名詞は one で受けることができない。\n\n(6)   ② the one\n   この映画は，先週見た映画よりもわくわくします。\n   ※① one は不可。\n   one や ones を後ろから関係代名詞節などで限定するときには，the をつける。\n\f６\n\n(1)   ② one\n   最近，タイマー付きのコーヒーメーカーを買った。とても便利だよ。君の家にはある\n   の？\n\n(2)   ① blue ones\n   スージーは黄色の靴下を買ったけど，僕は青いのを買った。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_017『one／onesの使い方』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_017『one／onesの使い方』（演習）.pdf",
+       "q_count": 60
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   one / ones の使い方\n\n１   次の英文の   に最も適する語(句)を下の選択肢から選んで書きなさい。\n   同じ語(句)を何回用いてもよい。\n\n(1)   ボブはジャケットをいくつか持っていたが，新しいのを買った。\n\n   Though Bob has some jackets, he bought a new   .\n\n(2)   私のスマートフォンは壊れてしまった。それはもう使えない。\n\n   My smartphone has been broken.   I can’t use   any more.\n\n(3)   その白い靴と黄色い靴では，どちらのほうが好きですか。\n\n   Which do you like better, the white shoes or yellow   ?\n\n(4)   私は赤ワインよりも白ワインが好きです。\n\n   I prefer white wine to red   .\n\n(5)   あなたは車を３台持っているので，今日の午後，１台を使わせてください。\n\n   As you have three cars, please let me use   in this afternoon.\n\n(6)   ジャックはテーブルの上にペンを見つけたが，彼のものではなかった。\n\n   Jack found a pen on the table, but   wasn’t his.\n\n(7)   クッキーが２枚あります。どっちを取っていいですか。\n\n   There are two cookies.   Which   can I take?\n\n   [ it / one / ones / wine / pen ]\n\n   754",
+       "answer_text": "高校英文法13\n   章「代名詞」   17,18\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   one / ones の使い方 －解答－\n\n１\n\n(1) one\n\n(2) it\n\n(3) ones\n\n(4) wine\n\n(5) one\n\n(6) it\n\n(7) one",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_017『one／onesの使い方』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_017『one／onesの使い方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 17 18   練習   次の英文を日本語に訳しなさい。\n\n   one / onesの使い方   ⑴ I want a watch, but I have no money to buy one.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私は本が好きで、また新しい１冊を買いました。\n   ⑵ I don’t like these socks. I’ll take those ones instead.\n  I love books and bought a new   .\n\n⑵ メガネが壊れたので、新しいのを買う必要がある。\n  My glasses have been broken,   入試レベルにチャレンジ\n  so I have to buy new   .   正しい英文になるように、   に適する語（句）を\n   次の選択肢から選びなさい。\n\n   She likes Thai rice better than   .\n\n   ① Japanese one   ② Japanese it\n   ③ Japanese   ④ the Japanese one\n\n   omitsu Kimura の\n  Tom\n\n one / onesの使い方\n\n →数えられる名詞のくり返しをさける\n  〔例〕 どちらのクルマがお好みですか？\n   このクルマですか？あのクルマですか?\n   Which car do you like, this one or that one?\n   =car   =car",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_017『one／onesの使い方』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_017『one／onesの使い方』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch13_019",
+     "num": "019",
+     "name": "another／other／othersの使い方",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-10",
+       "content": "『another／other／othersの使い方』\nanother（別のもう1つ）／other（他の）／others（他の人/物）／the other（残りの1つ）／the others（残り全部）。"
+      },
+      {
+       "title": "概要",
+       "content": "another（別のもう1つ）／other（他の）／others（他の人/物）／the other（残りの1つ）／the others（残り全部）。\nanother / other\nanother ＝ もう一つ別の\n不特定\nシグナル/特徴\nan + other\nthe other / the others\nthe other(s) ＝ 残り\n特定\nシグナル/特徴\n2 つのうちの残り or 全残り"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I want another cup of coffee.\nもう1杯コーヒーがほしい。\nI have two pens. One is red, the other is blue.\nペンが2本ある。一方は赤、もう一方は青。\nSome like cats; others like dogs.\n猫が好きな人もいれば犬が好きな人もいる。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nanother ＝ もう一つ別の\n2\nthe other ＝ 残りの1つ\n3\nthe others ＝ 残り全部"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_019_another／other／othersの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "another / other / others の 使 い 方   100\n\nＡ問題\n１   次の日本語を英語にしなさい。（各３点・計９点）\n\n①   (２つの中で)１つと残りの「もう１つ」 one and\n\n②   １つと(全く別の)「もう１つ」   one and\n\n③   残りすべて\n\n２   次の日本文にあう英文になるように，   に最も適する語(句)を下の選択肢から\n   選んで書きなさい。同じ語(句)を何回用いてもよい。（各３点・計 30 点）\n\n   [ it / one / ones / another / other / others / those / wine / pen ]\n\n(1)   ボブはジャケットをいくつか持っていたが，新しいのを買った。\n\n   Though Bob had some jackets, he bought a new   .\n\n(2)   私のスマートフォンは壊れてしまった。それはもう使えない。\n\n   My smartphone has been broken. I can’t use   any more.\n\n(3)   その白い靴と黄色い靴では，どちらのほうが好きですか。\n\n   Which do you like better, the white shoes or yellow   ?\n\n(4)   私は赤ワインよりも白ワインが好きです。\n\n   I prefer white wine to red   .\n\n(5)   あなたは車を３台持っているので，今日の午後，１台を使わせてください。\n\n   As you have three cars, please let me use   in this afternoon.\n\n(6)   その事故で負傷した人たちは直ちに病院に搬送された。\n\n   who were injured in the accident were transferred to the hospital\n\n   immediately.\n\f(7)   ボブには兄弟が２人いる。１人は兄で，もう１人は弟だ。\n\n   Bob has two brothers.   is elder and the   is younger.\n\n(8)   ブラウンさんはまだ仕事をしている。他の人たちはすでに退社した。\n\n   Mr. Brown is still working. The   have already left the office.\n\n(9)   コーヒーをもう１杯お願いします。\n\n   I’d like   cup of coffee, please.\n\nＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 28 点）\n\n(1)   One of them is from New York, and the (   ) are from Boston.\n\n   ① other   ② another   ③ others\n\n(2)   Some were watching TV. (   ) were playing smartphone games.\n\n   ① The other   ② Others   ③ Another\n(3)   I have three cards in my hand. One is the queen of spades, (   ) is the\n   king of diamonds, and (   ) the ace of hearts.\n   ① another ／ the other   ② another ／ other   ③ the other ／ another\n\n４   次の英文を日本語に訳しなさい。（各 11 点・計 33 点）\n\n(1)   Would you like another piece of cake?\n\n(2)   I have two uncles. One is in Osaka, and the other is in Fukuoka.\n\n(3)   This car is made in Japan, and the others are made in Germany.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n①   A is one thing, and B is another\n\n②   one after another\n\n６   下線部に注意して，次の英文を日本語に訳しなさい。\n\n(1)   He has two daughters. One is a scientist, and the other is a writer.\n\n(2)   Some of the students passed the exam, but the others failed.\n\n(3)   One of the students passed the exam, but another didn’t.\n\n(4)   Some like English, but others don’t.\n\n(5)   Some like English, some like math, and others like science.\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1) You have to learn to get along with (   ).\n\n   ① some   ② another   ③ other   ④ others\n\f(2)   Saying is (   ) thing, and doing is quite (   ).\n\n   ① one ／ the others   ② the one ／ others\n\n   ③ one ／ another   ④ the one ／ another\n\n(3)   Some people like reading books, while (   ) don’t.\n\n   ① another   ② other   ③ others   ④ the other\n\n(4)   The students came out of the classroom (   ).\n\n   ① one after the other   ② one after the another\n\n   ③ one after others   ④ one after another\n\n８ 〈センター試験にチャレンジ〉 1   ～   4   に入れるのに最も適当なものを，それぞ\n   れ下の①～④から一つずつ選べ。\n\n(1)   Of the seven people here now, one is from China, three are from the US, and   1\n   from France.\n   〈13 年本試〉\n   ① other ② others ③ the other ④ the others\n\n(2)   There are two people who I think are cut out for the job. As you know, one of them is\n   Barbara. Can you guess   2   ?\n   〈09 年追試〉\n   ① another ② others ③ the other ④ the others\n\n(3)   The government recognizes that the number of children ( A ) falling on one hand,\n   while life expectancy is increasing ( B ).   3\n   〈15 年追試〉\n   ① A: are B: on another   ② A: are B: on the other\n   ③ A: is B: on another   ④ A: is B: on the other\n\n(4)   How long have you and Keiko known   4   ?\n   〈06 年追試〉\n   ① each other   ② together   ③ another ④ other one",
+       "answer_text": "第 13 章「代名詞」\n\nＡ問題\n\n１\n\n① one and the other\n\n② one and another\n\n③ the others\n\n２\n\n(1)   one\n\n(2)   it\n\n(3)   ones\n\n(4)   wine ※数えられない名詞は one で受けられない\n\n(5)   one\n\n(6)   those\n\n(7)   One ／ other\n\n(8)   others\n\n(9)   another\n\nＢ問題\n\n３\n\n(1)   ③ others\n(2)   ② Others\n(3)   ① another ／ the other\n\f４\n(1)   ケーキをもう１切れ[１つ]どうですか。\n\n(2)   私には２人のおじがいます。１人は大阪にいて，もう１人は福岡にいます。\n\n(3)   この車は日本製で，他の車はドイツ製です。\n\nＣ問題\n\n５\n\n①   A is one thing, and B is another   A と B は別のものである\n\n②   one after another   次々と\n\n６\n\n(1)   彼には娘が２人いる。一方は科学者で，もう一方は作家だ。\n\n(2)   その生徒たちのうち，何人かは試験に通ったが，残りは全員落ちた。\n\n(3)   その生徒たちのうち，ある生徒はその試験に通ったが，別の生徒は落ちた。\n\n(4)   英語が好きな人もいれば，そうでない人もいる。\n\n(5)   英語が好きな人もいれば，数学が好きな人もいれば，科学が好きな人もいる。\n\n７\n\n(1)   ④ others\n   あなたは，他人とうまくやっていけるようになる必要があります。\n   ※others 「他人」\n\n(2)   ③ one ／ another\n   言うことと実行することは，まったく別物だ。\n\n(3)   ③ others\n   本を読むことが好きな人もいますが，そうでない人もいます。\n\n(4)   ④ one after another\n   生徒たちが次々と教室から出てきた。\n\f８\n\n(1)   ④ the others\n   今ここにいる７人のうち，１人は中国出身，３人はアメリカ出身で，残りはフランス\n   出身です。\n\n(2)   ③ the other\n   私がその仕事にぴったりだと思う人は２人いる。知っての通り，１人はバーバラ。も\n   う１人が誰かわかる？\n   be cut out for ～ 「～に適している，向いている」\n\n(3)   ④ A: is B: on the other\n   子供の数が減っている一方で，他方では平均寿命が上がっているのを政府は認識して\n   いる。\n\n(4)   ① each other\n   あなたとケイコは知り合ってどのくらいになるの？\n   ※each other「お互いに」",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_019『another／other／othersの使い方』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_019『another／other／othersの使い方』（演習）.pdf",
+       "q_count": 76
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   another / other / others の使い方\n\n１   次の英文の   に最も適する語(句)を下の選択肢から選んで書きなさい。\n\n(1)   私は傘を２本持っている。１本使っていいよ。\n\n   I have two umbrellas. You can use   .\n\n(2)   コーヒーをもう１杯お願いします。\n\n   I’d like   cup of coffee, please.\n\n(3)   ボブには兄弟が２人いる。１人は兄で，もう１人は弟だ。\n\n   Bob has two brothers.   is elder and the   is younger.\n\n(4)   ブラウンさんはまだ仕事をしている。他の人たちはすでに退社した。\n\n   Mr. Brown is still working.   The   have already left the office.\n\n(5)   朝食にご飯を食べる人もいれば，パンを食べる人もいる。\n\n   Some people have rice, and   have bread for breakfast.\n\n(6)   この機械を何らかの方法で調べてください。\n\n   Please check this machine in one way or   .\n\n(7)   この２匹の犬はそっくりです。私には区別ができません。\n\n   These two dogs look alike. I can’t tell   from the   .\n\n  [ one / ones / another / other / others ]\n\n   758",
+       "answer_text": "高校英文法13\n   章「代名詞」   19,20\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\nanother / other / others の使い方 －解答－\n\n１\n\n(1) one\n\n(2) another\n\n(3) One ／ other\n\n(4) others\n\n(5) others\n\n(6) another\n\n(7) one ／ other",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_019『another／other／othersの使い方』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_019『another／other／othersの使い方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 19 20   練習   次の英文を日本語に訳しなさい。\n\nanother / other / othersの使い方   ⑴ We remained in the room, but the others went out.\n   日本語に合う英文になるように、   に適する語（句）を\n 例題\n   次の選択肢から選びなさい。\n\n⑴「ナンシーと妹さんってよく似てるね」\n   ⑵ Will you show me another bag?\n 「そうだね、私は２人を区別できないよ」\n “Nancy and her sister are so alike.”\n “Yes, I can’t tell one from   .”\n\n ［ another / the other ］   入試レベルにチャレンジ\n⑵ この帽子は好きではありません。他のを見せてくれませんか。   正しい英文になるように、   に適する語（句）を次の選択肢から\n  I don’t like this hat. Could you show me   ?   選びなさい。\n\n ［ another / the other ］   Some people like baseball, while   do not.\n\n⑶ ２～３人の生徒はその数学の問題を解いたが、他の生徒たち\n  は解けなかった。   ① the other   ② others   ③ the others   ④ another\n  A few students solved the math problem,\n  but   couldn’t.\n\n ［ the other / the others ］\n   omitsu Kimura の\n  Tom\n\n  another / other / othersの使い方\n  ①「もう１つ」 限定   限定   限定\n   one and the other\t\t「（２つの中で）１つと残りのもう１つ」\n   one and another\t\t「１つと（全く別の）もう１つ」\n\n  ②「残りすべて」 the others\n   限定",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_019『another／other／othersの使い方』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_019『another／other／othersの使い方』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch13_021",
+     "num": "021",
+     "name": "both／either／neither／noneの使い方",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-11",
+       "content": "『both／either／neither／noneの使い方』\nboth（両方）／either（どちらか）／neither（どちらも〜ない）／none（どれも〜ない）。"
+      },
+      {
+       "title": "概要",
+       "content": "both（両方）／either（どちらか）／neither（どちらも〜ない）／none（どれも〜ない）。\nboth / either\nboth ＝ 両方 / either ＝ どちらか\n2つを対象\nシグナル/特徴\nBoth are / Either is\nneither / none\nneither ＝ どちらも〜ない / none ＝ 3つ以上で誰も\n否定\nシグナル/特徴\nNeither is / None of"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Both of them are kind.\n彼らは両方とも親切だ。\nEither is fine.\nどちらでもいい。\nNeither answer is correct.\nどちらの答えも正しくない。\nNone of us went.\n誰も行かなかった。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nboth / either / neither ＝ 2つ\n2\nnone ＝ 3つ以上\n3\n動詞の単複に注意"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_021_both／either／neither／noneの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "both / either / neither / none の 使 い 方   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各３点・計９点）\n\n①   both   (２つのうち)両方とも～だ\n\n②   either   (２つのうち)\n\n③   neither   (２つのうち)\n\n④   none   (３つ以上で)\n\n２   次の日本文にあう英文になるように，   に最も適する語(句)を下の選択肢から\n\n   選んで書きなさい。同じ語(句)を何回用いてもよい。（各４点・計 28 点）\n\n   [ it / one / ones / another / other / others ]\n\n(1)   私は傘を２本持っている。１本使っていいよ。\n\n   I have two umbrellas. You can use   .\n\n(2)   朝食にご飯を食べる人もいれば，パンを食べる人もいる。\n\n   Some people have rice, and   have bread for breakfast.\n\n(3)   この機械を何らかの方法で調べてください。\n\n   Please check this machine in one way or   .\n\n(4)   この２匹の犬はそっくりです。私には区別ができません。\n\n   These two dogs look alike. I can’t tell   from the   .\n\n(5)   ジャックはテーブルの上にペンを見つけたが，彼のものではなかった。\n\n   Jack found a pen on the table, but   wasn’t his.\n\n(6)   クッキーが２枚あります。どっちを取っていいですか。\n\n   There are two cookies. Which   can I take?\n\fＢ問題\n３   次の英文を日本語に訳しなさい。（各９点・計 27 点）\n(1)   My grandfather has two cars, but neither has been used recently.\n\n(2)   None of my family has been to a foreign country.\n\n(3)   Have you ever seen either of these two students? ― Well, I’ve met both.\n\n４   次の日本文にあう英文になるように，(  )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各 12 点・計 36 点）\n(1)   私の両親はともに大阪で生まれました。\n   ( parents / either / both / were / in / my / born / of ) Osaka.\n\n(2)   あなたたちのどちらかが，明日この書類を持ってきてくれませんか。\n   ( bring / either / neither / paper / will / of / this / you ) tomorrow?\n\n(3)   いくつかの考えが提示されたが，どれも採用されなかった。\n   Some ideas ( none / neither / but / of / adopted / presented / were / them / was / , ).\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n\n   私は彼らのどちらも知らない。\n   I   know   of them.\n\n   I know   of them.\n\f６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Tom’s parents were sitting on (   ) side of him.\n\n   ① both   ② either   ③ those   ④ any\n\n(2)   I’d like tickets for the concert, please. ― I'm sorry, we’ve got (   ) left.\n\n   ① either   ② neither   ③ none   ④ both\n\n(3)   Would you lend me this book or that book? ― Sure. (   ) will do.\n\n   ① neither   ② none   ③ each   ④ either\n\n７ 〈センター試験にチャレンジ〉 1 ～ 2 に入れるのに最も適当なものを，\n   それぞれ下の①～④から一つずつ選べ。\n\n(1)   “I heard Daiki’s sisters are twins. Have you met them?”\n   “No, I haven’t met   1   of them yet.”\n   〈12 年本試〉\n   ① each ② either ③ every   ④ neither\n\n(2)   Many British people speak (   A   ) Spanish nor French, (   B   ) Japanese. 2\n   〈16 年追試〉\n   ① A: either B: even   ② A: either B: let alone\n   ③ A: neither B: even   ④ A: neither B: let alone",
+       "answer_text": "Ａ問題\n\n１\n\n①   both   (２つのうち)両方とも～だ\n\n②   either   (２つのうち)どちらか～だ\n\n③   neither   (２つのうち)どちらも～ない\n\n④   none   (３つ以上で)どれも～ない\n\n２\n\n(1)   one\n\n(2)   others\n\n(3)   another\n\n(4)   one ／ other\n\n(5)   it\n\n(6)   one\n\nＢ問題\n\n３\n\n(1)   祖父は２台の車を持っていますが，どちらも最近使われていません。\n\n(2)   私の家族は誰も外国に行ったことがありません。\n\n(3)   これらの２人の生徒のどちらかに会ったことがありますか。\n\n   ― ええと，２人ともに会ったことがあります。\n\n４\n\n(1)   Both of my parents were born in   ( either が不要)\n\f(2)   Will either of you bring this paper   ( neither が不要 )\n\n(3)   were presented, but none of them was adopted   ( neither が不要 )\n\nＣ問題\n\n５\n\n   I don’t know either of them.\n\n   I know neither of them.\n\n   ※not ～ either ＝ neither\n\n６\n\n(1)   ② either\n   トムの両親は，彼の両側に座っていた。\n\n   ※either は肯定文で使われて，「どちらも」という意味になることもある\n\n(2)   ③ none\n   そのコンサートのチケットをお願いします。― すみません，売り切れなんです。\n   ※none は，前に出た名詞をうけて，「not＋名詞」の意味になることもある\n\n(3)   ④ either\n   この本かあの本を貸していただけませんか。― もちろん。どちらでも良いですよ。\n   ※either will do   「どちらでも良い」\n\n７\n\n(1)   ② either\n   「ダイキの姉妹は双子だって聞いたよ。会ったことある？」\n   「ううん，どちらにも会ったことがないよ。」\n\n(2)   ④ A: neither B: let alone\n   多くのイギリス人はスペイン語もフランス語も，ましてや日本語など話さない。\n   let alone 「～はもちろん，まして～なんて」",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_021『both／either／neither／noneの使い方』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_021『both／either／neither／noneの使い方』（演習）.pdf",
+       "q_count": 43
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   both / either / neither / none の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私は，ジャック，ボブ，ナンシーが来るのを待った。しかし，誰もここに来なかった。\n\n   I waited for Jack, Bob and Nancy to come. But   of them came\n\n   here.\n\n(2)   私たちのクラスには留学生が２人います。どちらもアメリカ人ではありません。\n\n   We have two foreign   in our class.   is\n\n   American.\n\n(3)   ペンか鉛筆で名前を書いてください。どちらでもいいです。\n\n   Please write your name   a pen or a pencil.\n\n   is fine.\n\n(4)   私の両親はともにゴルフが得意だ。\n\n   of my parents   good at playing golf.\n\n(5)   メンバーの誰も，そのスケジュールの変更を知らなかった。\n\n   of the members   the changes in schedule.\n\n(6)   ２つのうちどちらかをお選びください。\n\n   Please choose   of the two.\n\n(7)   私は２冊の本を借りたが，どちらもまだ読んでいない。\n\n   I borrowed two books,   of which I have read yet.\n\n   762",
+       "answer_text": "高校英文法13\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   both / either / neither / none の使 い方 －解 答 －\n\n１\n\n(1) None\n\n(2) students ／ Neither\n\n(3) with ／ Either\n\n(4) Both ／ are\n\n(5) None ／ knew\n\n(6) either\n\n(7) neither",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_021『both／either／neither／noneの使い方』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_021『both／either／neither／noneの使い方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 21 22   練習   次の英文を日本語に訳しなさい。\n\nboth / either / neither / noneの使い方\n   ⑴ Either of you may go there.\n   日本語に合う英文になるように、   に適する語（句）を\n 例題\n   次の選択肢から選びなさい。\n\n⑴ 兄弟の両方ともが有名な俳優です。\n   ⑵ Neither of my friends has come yet.\n   of the two brothers are famous actors.\n\n⑵ 兄弟のどちらかが有名な俳優です。\n   of the two brothers is a famous actor.\n   入試レベルにチャレンジ\n ［ Both / Either ］   正しい英文になるように、   に適する語（句）を次の選択肢から\n   選びなさい。\n\n⑶ 兄弟のどちらも、泳ぎが得意ではない。\n   I can’t recommend you any of the three movies,\n   of the two brothers is good at swimming.\n   because I find   of them interesting.\n⑷ 3人兄弟の誰もが、泳ぎが得意ではない。\n   of the three brothers are good at   ① neither   ② none   ③ both\n\n  swimming.\n\n ［ Neither / None ］\n   omitsu Kimura の\n  Tom\n\n both / either / neither / noneの使い方\n  ⎧ both   （２つのうち）両方とも～だ\n  ⎪\n  ⎪ either （２つのうち）どちらか～だ\n  ⎩ neither （２つのうち）どちらも～ない\n   none   （３つ以上で）どれも～ない",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_021『both／either／neither／noneの使い方』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_021『both／either／neither／noneの使い方』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch13_023",
+     "num": "023",
+     "name": "each／everyの使い方",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-12",
+       "content": "『each／everyの使い方』\neach（それぞれ）／every（〜ごとに、すべての）。each は単独で使えるが、every は必ず名詞と一緒。"
+      },
+      {
+       "title": "概要",
+       "content": "each（それぞれ）／every（〜ごとに、すべての）。each は単独で使えるが、every は必ず名詞と一緒。\neach\neach + 単数名詞 / each of 〜\n「それぞれ」\nシグナル/特徴\n個別を強調\nevery\nevery + 単数名詞\n「すべての」（全体）\nシグナル/特徴\nevery の後は単数"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Each student has a book.\n各生徒は本を持っている。\nEvery student must attend.\nすべての生徒が出席しなければならない。\nEach of us has a key.\n私たちはそれぞれ鍵を持っている。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\neach ＝ それぞれ（個別）\n2\nevery ＝ すべての（全体）\n3\n後ろは単数名詞・単数動詞"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_023_each／everyの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "each / every の 使 い 方   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   each   (※後ろに of が使える)\n\n②   every   (※後ろに of が使えない)\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 34 点）\n(1)   その２台の車のうち，両方とも日本製です。\n\n   of the two cars   made in Japan.\n\n(2)   その２台の車のうち，どちらかが日本製です。\n\n   of the two cars   made in Japan.\n\n(3)   その２台の車のうち，どちらも日本製ではありません。\n\n   of the two cars   made in Japan.\n\n(4)   その３台の車のうち，どれもが日本製ではありません。\n\n   of the three cars   made in Japan.\n\n(5)   それらの車はどれも日本製です。\n\n   of the cars is made in Japan.\n\n(6)   その店のどの車も売りにでています。\n\n   car in the store is on sale.\n\n(7)   私は，ジャック，ボブ，ナンシーが来るのを待った。しかし，誰もここに来なかった。\n\n   I waited for Jack, Bob and Nancy to come. But   of them came\n\n   here.\n\n(8)   私の両親はともにゴルフが得意だ。\n\n   of my parents   good at playing golf.\n\f(9)   私たちのクラスには留学生が２人います。どちらもアメリカ人ではありません。\n\n   We have two foreign   in our class.   is\n\n   American.\n\n(10) ペンか鉛筆で名前を書いてください。どちらでもいいです。\n\n   Please write your name   a pen or a pencil.\n\n   is fine.\n\nＢ問題\n３   次の英文を日本語に訳しなさい。（各 10 点・計 40 点）\n\n(1)   Each of us has to take measures against the problem.\n\n(2)   I’m sure that every Japanese has heard this story.\n\n(3) You have to take this medicine every eight hours.\n\n(4)   I visit my grandparents every ten days.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各 11 点・計 22 点）\n\n(1)   これらの傘はどれも晴雨兼用です。\n   ( be / in / each / every / these / can / umbrellas / of / used ) all weather.\n\n(2)   どの労働者も午後に 15 分の休憩を取ります。\n   ( fifteen-minute / all / every / in / takes / worker / a / break ) the afternoon.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n①   each other\n\n②   every five hours\n\n③   every ～ hours\n\n④   every ten minutes\n\n⑤   every ～ minutes\n\n⑥   every other day\n\n⑦   every other ～\n\n６   ( )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，完成した英文を日本語に訳しなさい。\n(1)   The festival takes place once (   ) four years.\n   ① another   ② other   ③ every   ④ each\n\n(2)   (   ) student in this class (   ) the teacher.\n   ① All ／ know   ② All ／ knows\n   ③ Every ／ know   ④ Every ／ knows\n\n(3)   (   ) to get enough sleep.\n   ① every of children need   ② every of child needs\n   ③ every children need   ④ every child needs\n\n(4)   Tom cleans his room (   ).\n   ① each other day   ② each another day\n   ③ every other day   ④ every another day",
+       "answer_text": "Ａ問題\n\n１\n\n①   each   それぞれの   (※後ろに of が使える)\n\n②   every   どの～もすべて   (※後ろに of が使えない)\n\n２\n\n(1)   Both ／ are\n\n(2)   Either ／ is\n\n(3)   Neither ／ is\n\n(4)   None ／ are\n\n(5)   Each\n\n(6)   Every\n\n(7)   none\n\n(8)   Both ／ are\n\n(9)   students ／ Neither\n\n(10)   with ／ Either\n\nＢ問題\n\n３\n\n(1)   私たちそれぞれがその問題に対策を講じなければならない。\n\n(2)   日本人なら誰でも，この話を聞いたことがあると思います。\n\n(3)   あなたはこの薬を８時間ごとに飲まなければなりません。\n\n(4)   私は 10 日ごとに[10 日に一度]，祖父母を訪ねます。\n\f４\n(1)   Each of these umbrellas can be used in   ( every が不要 )\n\n   in all weather 「晴雨兼用で，全天候で」\n\n(2)   Every worker takes a fifteen-minute break in   ( all が不要 )\n\nＣ問題\n\n５\n\n①   each other   お互い   ※副詞ではなく代名詞\n\n②   every five hours   ５時間ごとに，５時間間隔で\n\n③   every ～ hours   ～時間ごとに   ※every＋数＋複数名詞「～ごとに」\n\n④   every ten minutes   10 分ごとに，10 分間隔で\n\n⑤   every ～ minutes   ～分ごとに   ※every＋数＋複数名詞「～ごとに」\n\n⑥   every other day   １日おきに，２日に一度\n\n⑦   every other ～   １つおきの～   ※every other＋名詞「１つおきの～で」\n\n６\n\n(1)   ③ every\n   その祭りは４年に一度開催されます。\n\n(2)   ④ Every／knows\n   このクラスのどの生徒も，その先生のことを知っています。\n\n(3)   ④ every child needs\n   どの子も十分な睡眠をとる必要がある。\n   ※every は「every＋単数名詞」の形で使う。\n   each と違い，後ろに of を使えないので，② every of child needs は不可\n\n(4)   ③ every other day\n   トムは１日おきに，部屋を掃除しています。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_023『each／everyの使い方』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_023『each／everyの使い方』（演習）.pdf",
+       "q_count": 45
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   each / every の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   それぞれのグループがリーダーを選ぼうとしている。\n\n   of the groups is going to select a leader.\n\n(2)   夜行バスでどの人もシートベルトをしめた。\n\n   person fastened his or her seatbelt on the night bus.\n\n(3)   シャトルバスは 30 分おきに来ます。\n\n   The shuttle bus comes   thirty minutes.\n\n(4)   私はそれぞれの質問に答えるようにと言われた。\n\n   I was told to answer   the questions.\n\n(5)   向こうにある車はどれもすべて日本製です。\n\n   car over there   made in Japan.\n\n(6)   メンバーそれぞれにその結果の責任がある。\n\n   of the members   responsible for the result.\n\n(7)   夏季オリンピックは４年に１度開催される。\n\n   The Summer Olympics are held once   four   .\n\n   766",
+       "answer_text": "高校英文法 13\n   第13章「代名詞」\n   章「代名詞」   23-24\n――――――――――――――――――――――――――――――――――――――――――\n\n   each / every の使い方 －解答－\n\n１\n\n(1) Each\n\n(2) Every [Each]\n\n(3) every\n\n(4) each of\n\n(5) Every ／ is\n\n(6) Each ／ is\n\n(7) every ／ years",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_023『each／everyの使い方』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_023『each／everyの使い方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 23 24   練習   次の英文を日本語に訳しなさい。\n\n   each / every の使い方   ⑴ Each of you has to work hard.\n   次の日本文にあう英文になるように、   に適する語（句）を\n 例題\n   書きなさい。\n\n⑴ その車はどれも日本製です。\n   ⑵ Every person has a right to live in peace.\n   of the cars is made in Japan.\n\n⑵ その店のどの車も売りにでています。\n   car in the store is on sale.   入試レベルにチャレンジ\n   次の日本語に合う英文になるように、   に適する語（句）を\n   次の選択肢から選びなさい。\n\n   私は両親に、３か月に１度電話をします。\n   I call my parents once   .\n\n   ① every three month   ② every three months\n   ③ every third months\n\n   omitsu Kimura の\n  Tom\n\n each / every の使い方\n\n each   「それぞれの」\n   \t\t   →うしろに of が使える\n every 「どの～もすべて」→うしろに of が使えない",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_023『each／everyの使い方』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_023『each／everyの使い方』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch13_025",
+     "num": "025",
+     "name": "some／anyの使い方",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-13",
+       "content": "『some／anyの使い方』\nsome は肯定文、any は否定文・疑問文・条件文で使うのが基本。ただし例外あり。"
+      },
+      {
+       "title": "概要",
+       "content": "some は肯定文、any は否定文・疑問文・条件文で使うのが基本。ただし例外あり。\nsome\n肯定文／勧誘・依頼の疑問文\n「いくらか／いくつかの」\nシグナル/特徴\nWould you like some 〜?\nany\n否定文・疑問文・条件文\n「いくらか／少しでも」\nシグナル/特徴\nany ＝ どんな〜でも (肯定)"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I have some money.\nお金が少しある。\nDo you have any money?\nお金はありますか。\nAny student can answer.\nどの生徒でも答えられる。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nsome ＝ 肯定文\n2\nany ＝ 否定・疑問・条件\n3\nWould you like some? は例外"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_025_some／anyの使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "some / any の 使 い 方   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計４点）\n\n＜some と any の使い方＞\n①   some   主に肯定文で使う\n\n②   any   主に   ・   で使う\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 36 点）\n\n(1)   それぞれのグループがリーダーを選ぼうとしている。\n\n   of the groups is going to select a leader.\n\n(2)   夜行バスでどの人もシートベルトをしめた。\n\n   person fastened his or her seatbelt on the night bus.\n\n(3)   シャトルバスは 30 分おきに来ます。\n\n   The shuttle bus comes   thirty minutes.\n\n(4)   私はそれぞれの質問に答えるようにと言われた。\n\n   I was told to answer   the questions.\n\n(5)   夏季オリンピックは４年に１度開催される。\n\n   The Summer Olympics are held once   four   .\n\n(6)   メンバーの誰も，そのスケジュールの変更を知らなかった。\n\n   of the members   the changes in schedule.\n\n(7)   ２つのうちどちらかをお選びください。\n\n   Please choose   of the two.\n\n(8)   私は２冊の本を借りたが，どちらもまだ読んでいない。\n\n   I borrowed two books,   of which I have read yet.\n\f(9)   彼女はたくさんのお金が必要だ。\n\n   She needs   .\n\n(10)   彼女はいくらかのお金が必要だ。\n\n   She needs   .\n\nＢ問題\n３   次の英文を日本語に訳しなさい。（各９点・計 36 点）\n\n(1)   I want to eat some chocolate. Is there any left in the box?\n\n(2) You should not believe any of her words.\n\n(3)   Some of famous hotels are under construction now.\n\n(4)   My father gave me these books but I haven’t read any of these yet.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各 12 点・計 24 点）\n\n(1)   ジャックはボトルの中の水をいくらか私にくれた。\n   Jack ( in / the water / the bottle / some / any / me / gave / of ).\n\n(2)   あなたはそのチームのメンバーの誰かと話したことがありますか。\n   Have you ever ( of / of / with / any / each / the team / talked / the members )?\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n＜most／almost／all の使い方＞\n\n①   most 名詞\n\n②   almost all 名詞\n\n③   most of the [所有格] 名詞\n\n④   almost all (of) the [所有格] 名詞\n\n⑤   all 名詞\n\n⑥   all (of) the [所有格] 名詞\n\n６   次の英文を日本語に訳しなさい。\n\n(1)   I want some water.\n\n(2)   I want to visit Hokkaido some day next month.\n\n(3)   I bought some oranges yesterday.\n\n(4)   Would you like some tea?\n\n７   次の英文を日本語に訳しなさい。\n\n(1) Any book will do as long as it is interesting for you.\n\n(2) You can use any of these pens.\n\f(3)   Some students like math.\n\n(4)   Some of the students like math.\n\n８   ( )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   (   ) the students in our class passed the exam.\n\n   ① all   ② almost   ③ most   ④ almost all of\n\n(2)   Would you like (   ) more (   )?\n\n   ① any ／ coffees   ② some ／ coffee\n\n   ③ any of ／ coffee   ④ some of ／ coffee\n\n(3)   (   ) will do as long as it (   ).\n\n   ① All computer ／ works   ② Almost computer ／ works\n\n   ③ Any computer ／ works   ④ Every computer ／ works",
+       "answer_text": "Ａ問題\n\n１\n＜some と any の使い方＞\n①   some   主に肯定文で使う\n\n②   any   主に否定文・疑問文で使う\n\n２\n\n(1)   Each\n\n(2)   Every [Each]\n\n(3)   every\n\n(4)   each of\n\n(5)   every ／ years\n\n(6)   None ／ knew\n\n(7)   either\n\n(8)   neither\n\n(9)   much [a lot of] money   ※12 章「数えられない名詞」\n\n(10)   some money   ※12 章「数えられない名詞」\n\nＢ問題\n\n３\n\n(1)   私はいくらかチョコレートが食べたいです。箱にいくらか残っていますか。\n\n(2)   あなたは彼女の言葉を１つも信じるべきではない。\n\n(3)   有名なホテルのいくつかが今，建設中です。\n\n(4)   父がこれらの本をくれたのですが，まだ１冊も読めていません。\n\f４\n\n(1)   gave me some of the water in the bottle   ( any が不要 )\n\n(2)   talked with any of the members of the team   ( each が不要 )\n\nＣ問題\n\n５\n\n＜most／almost／all の使い方＞\n\n①   most 名詞   ほとんどの～，大部分の～\n\n②   almost all 名詞   ほとんどの～，大部分の～\n\n③   most of the [所有格] 名詞   ～のほとんど，～の大部分\n\n④   almost all (of) the [所有格] 名詞   ～のほとんど，～の大部分\n\n⑤   all 名詞   すべての～\n\n⑥   all (of) the [所有格] 名詞   ～のすべて\n※most と almost は，①②では形容詞として，③④では代名詞として使われている\n※all は，⑤では形容詞として，⑥では代名詞として使われている\n\n６\n(1)   いくらかの水がほしいです。\n\n   ※some＋数えられない名詞「いくらかの～」\n\n(2)   来月のいつか，北海道に行きたい。\n\n   ※some＋数えられる名詞の単数形「ある～」   some day「いつか，ある日」\n\n(3)   昨日いくつかのオレンジを買った。\n\n   ※some＋数えられる名詞の複数形「いくつかの～」\n\n(4)   紅茶をいかがですか？\n   ※肯定の答えを予想して，何かを頼む・勧めるとき，疑問文でも some を使うことが\n   ある\n\f７\n(1)   あなたにとって興味深いのであれば，どんな本でも良い。\n\n(2)   これらのペンの，どれでも使っていいですよ。\n\n   ※any of ～「～のどれでも」\n\n(3)   何人かの生徒は，数学が好きです。[数学が好きな生徒もいます。]\n\n(4)   その生徒たちの何人かは，数学が好きです。\n\n８\n\n(1)   ④ almost all of\n   私たちのクラスの生徒のほとんどが，その試験を通過しました。\n\n(2)   ② some ／ coffee\n   もっとコーヒーをいかがですか？\n\n(3)   ③ Any computer ／ works\n   動くのであれば，どんなコンピューターでも良い。",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_025『some／anyの使い方』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_025『some／anyの使い方』（演習）.pdf",
+       "q_count": 47
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   some / any の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   オムレツを作るためにその卵をいくつか使います。\n\n   I’ll use   of the eggs to make an omelet.\n\n(2)   私はあの人たちの誰も知りません。\n\n   I don’t know   of those people.\n\n(3)   ケビンは朝食にそのパンをいくらか食べた。\n\n   Kevin ate   of the   for breakfast.\n\n(4)   たとえあったとしても，クッキーはほとんど残っていないでしょう。\n\n   There will be few cookies left, if   .\n\n(5)   オレンジのいくつかが数日で傷んだ。\n\n   of the   went bad in a few days.\n\n(6)   あなたはこれらの DVD のどれかを見たことがありますか。\n\n   Have you ever watched   these DVDs?\n\n(7)   私の友達の何人かが手伝ってくれるといいなあ。\n\n   I hope   of   will help me.\n\n   770",
+       "answer_text": "高校英文法 13\n   第13章「代名詞」\n   章「代名詞」   25-26\n――――――――――――――――――――――――――――――――――――――――――\n\n   some / any の使い方 －解答－\n\n１\n\n(1) some\n\n(2) any\n\n(3) some ／ bread\n\n(4) any\n\n(5) Some ／ oranges\n\n   go bad 「傷む，腐る」\n\n(6) any of\n\n(7) some ／ my friends",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_025『some／anyの使い方』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_025『some／anyの使い方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 25 26   練習   次の英文を日本語に訳しなさい。\n\n   some / any の使い方   ⑴ Some of the members are against the plan.\n   日本語に合う英文になるように、   に適する語（句）を\n 例題\n   次の選択肢から選びなさい。\n\n⑴ メンバーのうち数人は、試験に合格した。\n   ⑵ There aren’t any in my class who have been to Okinawa.\n   of the members have passed the exam.\n\n⑵ この人たちのうちの誰かを知っていますか。\n  Do you know   of these people?\n   入試レベルにチャレンジ\n   次の日本語に合う英文になるように、   に適する語（句）を\n［ some / any ］   次の選択肢から選びなさい。\n\n   いくらか牛乳が残っていたら、\n   少し飲ませてもらってもいいですか。\n\n   If there is any milk left, please give me   .\n\n   ［ some / any ］\n\n   omitsu Kimura の\n  Tom\n\n some / any の使い方\n\n →数えられない名詞にも使える\n → ⎧ some = 主に肯定文\n   ⎪\n   ⎩ any = 主に否定文・疑問文",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_025『some／anyの使い方』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_025『some／anyの使い方』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch13_027",
+     "num": "027",
+     "name": "something／nothingの慣用表現",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-14",
+       "content": "『something／nothingの慣用表現』\nsomething / nothing と形容詞をつなげる場合、形容詞は後ろに置く（something nice）。"
+      },
+      {
+       "title": "概要",
+       "content": "something / nothing と形容詞をつなげる場合、形容詞は後ろに置く（something nice）。\nsomething + 形容詞\nsomething nice / good\n形容詞は後置\nシグナル/特徴\n通常と語順が逆\nnothing + 形容詞\nnothing special / important\n「特に〜なものはない」\nシグナル/特徴\n二重否定にしない"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I want something cold to drink.\n何か冷たい飲み物がほしい。\nThere is nothing special about it.\n特に何もない。\nAnything good?\n何かいいことある？"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n-thing + 形容詞 (後置)\n2\nsomething / nothing / anything\n3\n形容詞は後ろ"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_027_something／nothingの慣用表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "something / nothing の 慣 用 表 現   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   have nothing to do with A\n\n②   There is something wrong with A\n\n   (＝Something is wrong with A)\n\n③   do nothing but 動詞の原形\n\n④   nothing but A (＝only A)\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 33 点）\n(1)   オムレツを作るためにその卵をいくつか使います。\n\n   I’ll use   of the eggs to make an omelet.\n\n(2)   私はあの人たちの誰も知りません。\n\n   I don’t know   of those people.\n\n(3)   ケビンは朝食にそのパンをいくらか食べた。\n\n   Kevin ate   of the   for breakfast.\n\n(4)   たとえあったとしても，クッキーはほとんど残っていないでしょう。\n\n   There will be few cookies left, if   .\n\n(5)   オレンジのいくつかが数日で傷んだ。\n\n   of the   went bad in a few days.\n\n(6)   向こうにある車はどれもすべて日本製です。\n\n   car over there   made in Japan.\n\n(7)   メンバーそれぞれにその結果の責任がある。\n\n   of the members   responsible for the result.\n\fＢ問題\n３   次の英文を日本語に訳しなさい。（各８点・計 32 点）\n\n(1)   She insisted that she had nothing to do with the project.\n\n(2)   Don’t be so serious. It is nothing but a joke.\n\n(3)   This puzzle is anything but easy.\n\n(4)   Nothing was wrong with the machine.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各９点・計 27 点）\n\n(1)   ジェーンは彼を見送った後，泣いてばかりいた。\n   Jane ( seeing / but / after / did / him / cry / nothing / off ).\n\n(2)   自転車がどこか調子が悪かったので，私はそれを修理してもらった。\n   I had my bike ( as / it / there / something / with / repaired / was / wrong ).\n\n(3)   見渡す限り山だった。\n   ( as / but / was / far / nothing / I / there / mountains / as / could ) see.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n①   for nothing\n\n②   There is nothing like A\n\n③   There is nothing better than A\n\n④   something of a 名詞\n\n⑤   not much of a 名詞\n\n＜A と～の関係がある／ない＞\n\n①   have nothing to do with A\n\n②   have little to do with A\n\n③   have a little to do with A\n\n④   have something to do with A\n\n⑤   have a lot to do with A\n\n⑥   have much to do with A\n\n６   次の英文を日本語に訳しなさい。\n\n(1)   There is nothing better than keeping early hours.\n\n(2) Ann is something of a writer.\n\n(3)   Tom is not much of a soccer player.\n\f７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   I have (   ) to do with the man.\n\n   ① no   ② nothing   ③ for nothing   ④ nothing but\n\n(2)   She seems to have (   ) to do with the accident.\n\n   ① any   ② many   ③ some   ④ something\n\n８ 〈センター試験にチャレンジ〉次の対話の   において，二人目の発言が最も適当\n   な応答となるように文を作るには，(A)と(B)をどのように選んで組み合わせればよい\n   か，下の①～⑧のうちから一つ選べ。\n\n   Jeremy：Why didn’t Bob buy that car?\n   Tim：I don’t remember exactly, but\n   〈15 年追試〉\n   (A) he had something   (A) doing about   (A) it consuming too much gasoline.\n   (B) it had something   (B) to do with   (B) it spending too much gasoline.\n\n   ①   (A)→(A)→(A)   ② (A)→(A)→(B)   ③   (A)→(B)→(A)\n   ④   (A)→(B)→(B)   ⑤ (B)→(A)→(A)   ⑥   (B)→(A)→(B)\n   ⑦   (B)→(B)→(A)   ⑧ (B)→(B)→(B)",
+       "answer_text": "Ａ問題\n１\n①   have nothing to do with A   A とは何の関係もない\n\n②   There is something wrong with A   A はどこか調子が悪い\n\n   (＝Something is wrong with A)\n\n③   do nothing but 動詞の原形   ～ばかりする\n\n④   nothing but A (＝only A)   A にすぎない\n\n２\n(1)   some\n\n(2)   any\n\n(3)   some ／ bread\n\n(4)   any\n\n(5)   Some ／ oranges\n\n   go bad 「傷む，腐る」\n\n(6)   Every [Each] ／ is\n\n(7)   Each ／ is\n\nＢ問題\n３\n(1)   彼女はそのプロジェクトと何の関係もないと言い張った。\n\n(2)   そんなに真剣にならないで。ただの冗談ですよ。\n\n(3)   このパズルは決してやさしくない。\n\n   anything but ～   「決して～ではない」\n\n(4)   その機械はどこも悪く[何の異常も]なかった。\n\f４\n(1)   did nothing but cry after seeing him off\n\n(2)   repaired as there was something wrong with it\n\n(3)   There was nothing but mountains as far as I could\n\n   as far as ～   「～の限り」\n\nＣ問題\n５\n①   for nothing   無料で／無駄に\n\n②   There is nothing like A   A ほどよいものはない\n\n③   There is nothing better than A   A ほどよいものはない\n\n④   something of a 名詞   ちょっとした～／かなりの～\n\n⑤   not much of a 名詞   たいした～ではない\n\n＜A と～の関係がある／ない＞\n\n①   have nothing to do with A   A とは何の関係もない\n\n②   have little to do with A   A とはほとんど関係がない\n\n③   have a little to do with A   A と少し関係がある\n\n④   have something to do with A   A と何らかの関係がある\n\n⑤   have a lot to do with A   A と大いに関係がある\n\n⑥   have much to do with A   A と大いに関係がある\n\n６\n(1)   早寝早起きよりも良いものはない。\n\n(2)   アンはちょっとした作家だ。\n\n(3)   トムはたいしたサッカー選手でははい。\n\n７\n\n(1)   ② nothing\n   私はその男性とは何の関係もありません。\n\f(2)   ④ something\n   彼女はその事故に何かしら関係があるようだ。\n\n８\n\n   ⑦ (B)→(B)→(A)\n   it had something to do with it consuming too much gasoline.\n\n   have something to do with ～ 「～と関係がある」\n\n   ジェレミー「なぜボブはあの車を買わなかったの？」\n   ティム「正確には覚えてないけど，その車の燃費がよくないことと関係があった\n   んだよ。」",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_027『something／nothingの慣用表現』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_027『something／nothingの慣用表現』（演習）.pdf",
+       "q_count": 52
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   something / nothing の慣用表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   この電子体温計はどこか調子が悪い。\n\n   There is   wrong   this digital thermometer.\n\n(2)   祖母は午前中，テレビを見てばかりいる。\n\n   My grandmother   but   TV in the\n\n   morning.\n\n(3)   私はそのうわさと関係ありません。\n\n   I have   to do   the rumor.\n\n(4)   それは冗談にすぎない。\n\n   It is   but a joke.\n\n(5)   私はおなかの調子が悪いと思う。\n\n   I’m afraid that   is   with my stomach.\n\n(6)   ジャックはこのメールとは無関係です。\n\n   Jack   to do   this e-mail.\n\n   774",
+       "answer_text": "高校英文法13\n   章「代名詞」   27,28\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n  something / nothing の慣 用表現 －解 答－\n\n１\n\n(1) something ／ with\n\n(2) does nothing ／ watch\n\n(3) nothing ／ with\n\n(4) nothing\n\n(5) something ／ wrong\n\n(6) has nothing ／ with",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_027『something／nothingの慣用表現』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_027『something／nothingの慣用表現』（習熟）.pdf",
+       "q_count": 6
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 27 28   練習   次の英文を日本語に訳しなさい。\n\nsomething / nothing の慣用表現   ⑴ He does nothing but complain.\n   日本語に合う英文になるように、   に適する語（句）を\n 例題\n   次の選択肢から選びなさい。\n\n⑴ 私はその件と何の関係もない。   ⑵ Something is wrong with my computer.\n  I have   to do with the matter.\n\n⑵ この車はどこか調子が悪い。\n  There is   wrong with this car.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内の語（句）を並び替えなさい。\n\n ［ something / nothing ］   He（ a child / is / but / nothing ）.\n\n   omitsu Kimura の\n  Tom\n\n something / nothing の慣用表現\n\n have nothing to do with A\n 「Aとは何の関係もない」\n\n There is something wrong with A.\n 「Aのどこか調子悪い」\n （=Something is wrong with A.）\n\n do nothing but 動詞の原形   「～ばかりする」\n nothing but A\n   （=only A）\n   \t\t   「Aにすぎない」",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_027『something／nothingの慣用表現』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_027『something／nothingの慣用表現』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch13_029",
+     "num": "029",
+     "name": "再帰代名詞の使い方",
+     "slides": [
+      {
+       "title": "第13章 代名詞 / 13-15",
+       "content": "『再帰代名詞の使い方』\n再帰代名詞 (-self / -selves) は「〜自身」を表す。動詞の目的語と主語が同じ場合に使う。"
+      },
+      {
+       "title": "概要",
+       "content": "再帰代名詞 (-self / -selves) は「〜自身」を表す。動詞の目的語と主語が同じ場合に使う。\n再帰用法\nS V oneself\n「自分自身を/に V」\nシグナル/特徴\n主語＝目的語\n強調用法 / 慣用句\nby oneself / for oneself\n「ひとりで／自力で」\nシグナル/特徴\n慣用句"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "I cut myself.\n自分を切ってしまった。\nHe did it by himself.\n彼はひとりでそれをした。\nShe herself said so.\n彼女自身がそう言った。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n-self / -selves ＝ 〜自身\n2\n再帰用法／強調用法\n3\nby oneself / for oneself"
+      }
+     ],
+     "pptx_path": "../第13章/成果物/第13章_029_再帰代名詞の使い方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "再帰代名詞の使い方   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   help oneself to A\n\n②   make oneself at home\n\n③   beside oneself with A\n\n④   in itself\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 42 点）\n(1)   この電子体温計はどこか調子が悪い。\n\n   There is   wrong   this digital thermometer.\n\n(2)   祖母は午前中，テレビを見てばかりいる。\n\n   My grandmother   but   TV in the morning.\n\n(3)   私はそのうわさと関係ありません。\n\n   I have   to do   the rumor.\n\n(4)   それは冗談にすぎない。\n\n   It is   but a joke.\n\n(5)   私はおなかの調子が悪いと思う。\n\n   I’m afraid that   is   with my stomach.\n\n(6)   ジャックはこのメールとは無関係です。\n\n   Jack   to do   this e-mail.\n\n(7)   あなたはこれらの DVD のどれかを見たことがありますか。\n\n   Have you ever watched   these DVDs?\n\n(8)   私の友達の何人かが手伝ってくれるといいなあ。\n\n   I hope   of   will help me.\n\fＢ問題\n３   次の英文を日本語に訳しなさい。（各５点・計 20 点）\n\n(1)   Help yourself to more pizza and sushi, please.\n\n(2) At first, the new class teacher introduced himself to the class.\n\n(3) Yuki was beside herself with sorrow at that time.\n\n(4)   The summer festival is a big event in itself.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各 10 点・計 30 点）\n\n(1)   ケビンは怒りで我を忘れそうだった。\n   Kevin ( anger / almost / beside / with / was / himself / oneself ).\n\n(2)   どうぞご自由に飲みものを召し上がり，おくつろぎください。\n   Please ( the drinks / make / at / to / help / and / home / myself / yourself / yourself ).\n\n(3)   私たちはハロウィンパーティーで楽しく過ごすのを楽しみにしています。\n\n   ( are / ourselves / itself / forward / we / at / to / looking / enjoying ) the Halloween\n   party.\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の   に適する語(句)を書きなさい。\n\n   ＜再帰代名詞＞\n   主格   所有格   目的格   所有代名詞   再帰代名詞\n\n   単数   １人称   I   my   me   mine\n\n   ２人称   you   your   you   yours\n\n   ３人称   he   his   him   his\n\n   ３人称   she   her   her   hers\n\n   ３人称   it   its   it   ―\n\n   複数   １人称   we   our   us   ours\n\n   ２人称   you   your   you   yours\n\n   ３人称   they   their   them   theirs\n\n６   次の英語を日本語にしなさい。\n\n①   enjoy oneself\n\n②   between ourselves\n\n③   in spite of oneself\n\n④   by oneself\n\n⑤   for oneself\n\n⑥   to oneself\n\n⑦   make oneself understood\n\n⑧   make oneself heard\n\f７   次の英文を日本語に訳しなさい。\n\n(1)   I myself went to see him.\n\n(2) Ann is kindness itself.\n\n(3)   I like traveling overseas by myself.\n\n(4)   Between ourselves, what he said is a lie.\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   His suggestion is not so bad (   ).\n   ① in itself   ② for himself   ③ by himself   ④ to itself\n\n(2)   Welcome to our dance party. Please enjoy (   ) tonight.\n   ① you   ② for you   ③ yourselves   ④ for yourselves\n\n(3)   It was difficult for me to make (   ) in Spanish.\n   ① to myself understanding   ② to myself understood\n   ③ myself understanding   ④ myself understood\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Would you blame   1   if you were in my situation?\n   〈06 年追試〉\n   ① you   ②I   ③ yourself   ④ myself",
+       "answer_text": "Ａ問題\n\n１\n\n①   help oneself to A   A を自由にとって飲む・食べる\n\n②   make oneself at home   くつろぐ\n\n③   beside oneself with A   A で我を忘れる\n\n④   in itself   それ自体\n\n２\n\n(1)   something ／ with\n\n(2)   does nothing ／ watch\n\n(3)   nothing ／ with\n\n(4)   nothing\n\n(5)   something ／ wrong\n\n(6)   has nothing ／ with\n\n(7)   any of\n\n(8)   some ／ my friends\n\nＢ問題\n\n３\n\n(1)   もっとピザとすしを自由にとってください。\n\n(2)   まず始めに，新しい担任の先生がクラス（のみんな）に自己紹介をしました。\n\n(3)   ユキはその時，悲しみで我を忘れていました。\n\n(4)   夏祭りはそれ自体が大きな催しです。\n\f４\n\n(1)   was almost beside himself with anger   ( oneself が不要 )\n\n(2)   help yourself to the drinks and make yourself at home\n\n   ( myself が不要 )\n\n(3)   We are looking forward to enjoying ourselves at   ( itself が不要 )\n\nＣ問題\n\n５\n   主格   所有格   目的格   所有代名詞   再帰代名詞\n\n   単数   １人称   I   my   me   mine   myself\n\n   ２人称   you   your   you   yours   yourself\n\n   ３人称   he   his   him   his   himself\n\n   ３人称   she   her   her   hers   herself\n\n   ３人称   it   its   it   ―   itself\n\n   複数   １人称   we   our   us   ours   ourselves\n\n   ２人称   you   your   you   yours   yourselves\n\n   ３人称   they   their   them   theirs   themselves\n\n６\n\n①   enjoy oneself   楽しく過ごす\n\n②   between ourselves   ここだけの話だが\n\n③   in spite of oneself   思わず\n\n④   by oneself   ひとりで(＝alone)／独力で\n\n⑤   for oneself   独力で\n\n⑥   to oneself   自分だけに\n\n⑦   make oneself understood （自分の考え・言葉を）人に理解してもらう，わからせる\n\n⑧   make oneself heard   （自分の声・話を）人に聞かせる，聞いてもらう\n\f７\n\n(1)   私自身が彼に会いに行ったのです。\n   ※再帰代名詞の基本の使い方は，以下の２つ。\n   ・動詞や前置詞の目的語になる\n   ・名詞や代名詞を強調する（ここでは，I を myself が強調している）\n(2)   アンはとても親切です。\n   ※抽象名詞＋itself ≒ very＋形容詞   「とても～だ，～そのものだ」\n(3)   私はひとりで海外旅行に行くのが好きだ。\n\n(4)   ここだけの話だが，彼の言ったことは嘘だ。\n\n８\n\n(1)   ① in itself\n   彼の提案自体は，それほど悪くはなかった。\n\n(2)   ③ yourselves\n   私たちのダンスパーティーへようこそ。今夜は楽しんでください。\n\n(3)   ④ myself understood\n   スペイン語で話を理解してもらうのは難しかった。\n９\n\n   ③ yourself\n   もしあなたが私の状況なら，自分を責める？",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_029『再帰代名詞の使い方』（演習）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_029『再帰代名詞の使い方』（演習）.pdf",
+       "q_count": 52
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "高校英文法13通常学習編\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   再帰代名詞の使い方\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   お体を大切にしてください。\n\n   Please take care of   .\n\n(2)   私自身でその参加費用を払った。\n\n   I   paid the attendance fee.\n\n(3)   順番に自己紹介をしてくれませんか。\n\n   Will you   in turns?\n\n(4)   飲み物を自由に取ってください。\n\n   Please help   the drinks.\n\n(5)   ジェーンはロビーのソファでくつろいだ。\n\n   Jane made   at   on the sofa in the lobby.\n\n(6)   私たちは興奮して我を忘れた。\n\n   We were   with excitement.\n\n(7)   彼らはバスケットボールをして楽しく過ごしたものだった。\n\n   They used to   playing basketball.\n\n   778",
+       "answer_text": "高校英文法13\n   章「代名詞」   29,30\n   習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   再帰代名詞の使い方 －解答－\n\n１\n\n(1) yourself\n\n(2) myself\n\n(3) introduce yourself\n\n(4) yourself to\n\n(5) herself ／ home\n\n(6) beside ourselves\n\n(7) enjoy themselves",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_029『再帰代名詞の使い方』（習熟）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_029『再帰代名詞の使い方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "代名詞 29 30   練習   次の英文を日本語に訳しなさい。\n\n   再帰代名詞の使い方   ⑴ He was beside himself with joy.\n   次の日本文にあう英文になるように、   に適する語（句）\n 例題\n   を書きなさい。\n\n⑴ 自己紹介をしてください。\n   ⑵ The car in itself is very good.\n  Please introduce   .\n\n⑵「お手伝いいたしましょうか」\n 「いいえ、自分でやりたいんです」\n   入試レベルにチャレンジ\n   Would you like me to help you?\n   次の日本語に合う英文になるように、カッコ内の語（句）を並び替えなさい。\n   No, Iʼd rather do it   .   ただし、余計な１語が含まれています。\n\n⑶ 自由にテーブルのサラダをとってください。   そのパーティーはとても楽しかった。\n  Please help   to the salad on the table.   I （ the party / enjoyed / at / myself / me ）.\n\n⑷ 靴を脱いでくつろいでください。\n  Take off your shoes and make   at home.\n   omitsu Kimura の\n  Tom\n\n 再帰代名詞の使い方\n\n →形は oneself 〔例〕myself, ourselvesなど\n →訳は「〜自身」\n →慣用表現の一部として使われることが多い\n   help oneself to A   「Aを自由にとって飲む・食べる」\n   make oneself at home 「くつろぐ」\n   beside oneself with A   「Aで我を忘れる」\n   in itself   「それ自体」",
+       "answer_text": "",
+       "problem_pdf": "../第13章/問題_h_eng_gra_13_029『再帰代名詞の使い方』（習得）.pdf",
+       "answer_pdf": "../第13章/解答_h_eng_gra_13_029『再帰代名詞の使い方』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

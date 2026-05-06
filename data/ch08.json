@@ -1,0 +1,1016 @@
+{
+ "meta": {
+  "version": "3.0",
+  "passMark": 85
+ },
+ "chapters": [
+  {
+   "id": "ch08",
+   "num": 8,
+   "title": "比較",
+   "color": "#3f51b5",
+   "items": [
+    {
+     "id": "ch08_001",
+     "num": "001",
+     "name": "「比較」とは？",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-1",
+       "content": "『「比較」とは？』\n比較は形容詞・副詞の形を変えて、2つ以上のものを比べる表現。原級・比較級・最上級の3つがある。"
+      },
+      {
+       "title": "概要",
+       "content": "比較は形容詞・副詞の形を変えて、2つ以上のものを比べる表現。原級・比較級・最上級の3つがある。\n比較級\n形容詞 + -er / more 形容詞\n「より〜だ」\nシグナル/特徴\nthan 〜\n最上級\nthe + -est / the most 形容詞\n「最も〜だ」\nシグナル/特徴\nin / of の範囲指定"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Tom is taller than Mike.\nトムはマイクより背が高い。\nTom is the tallest in his class.\nトムはクラスで一番背が高い。\nThis is more interesting than that.\nこちらのほうが面白い。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n比較級 + than\n2\nthe 最上級 + in/of\n3\n原級 ＝ as 〜 as"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_001_「比較」とは？_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「比較」とは︖   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計８点）\n①   Tom is very tall.   トムは   背が高い。\n\n②   Tom is taller than his mother.   トムは   背が高い。\n\n③   Tom is the tallest in his family.   トムは   背が高い。\n\n④   Tom is as tall as his father.   トムは   背が高い。\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 32 点）\n(1)   マイクはとても賢いです。\n\n   Mike is   .\n\n(2)   マイクはジョンよりも賢いです。\n\n   Mike is   than John.\n\n(3)   マイクはこのクラスで一番賢いです。\n\n   Mike is   in this class.\n\n(4)   マイクはリンダと同じくらい賢いです。\n\n   Mike is   Linda.\n\n(5)   彼女の家は，とても大きい。\n\n   Her house is   .\n\n(6)   彼女の家は，私の家よりも大きい。\n\n   Her house is   my house.\n\n(7)   彼女の家は，彼の家と同じくらい大きい。\n\n   Her house is   his house.\n\n(8)   彼女の家は，名古屋で一番大きい。\n\n   Her house is   in Nagoya.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各 10 点・計 30 点）\n\n(1)   Today is (   ) yesterday.\n\n   ① cool   ② cooler than   ③ the coolest\n\n(2)   The bookshelf is (   ) my room.\n\n   ① the heaviest in   ② heavier than   ③ as heavy as\n\n(3)   This watch is (   ) of the three.\n\n   ① as cheap as   ② cheaper than   ③ the cheapest\n\n４   次の英文を日本語に訳しなさい。（10 点）\n\n   Generally speaking, men are stronger than women.   As for my family, my\n\n   mother is as strong as my father.\n\n５   次の日本文を英語で書きなさい。（各 10 点・計 20 点）\n\n(1)   あのラケットは，このラケットよりも新しい。\n\n(2)   父の自転車は，私のものと同じくらい古い。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n６   次の   に適する語(句)を書きなさい。\n\n＜不規則な変化をする語＞\n   原級   比較級   最上級\n\ngood, well\n\nbad, ill, badly\n\nmany, much\n\nlittle\n\n＜意味の違いで比較級・最上級の形が異なる語＞\n\n原級   意味   比較級   最上級\n\nlate   [時間]遅い／遅く\n\n   [順序]後の／後で\n\nfar   [距離]遠い／遠く\n\n   [程度]はるかに\n\nold   [年齢]年をとった\n\n   [長幼]年上の\n\n   （兄   brother ，長女   daughter）\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   The (   ) half of that movie is more exciting than the former half.\n\n   ① lately   ② latter   ③ later   ④ late\n\f(2)   Have you read her (   ) novel?\n\n   ① recently   ② today   ③ latest   ④ late\n\n(3)   We have to discuss the matter (   ).\n\n   ① far   ② more far   ③ farther   ④ further",
+       "answer_text": "Ａ問題\n１\n①   Tom is very tall.   トムはとても背が高い。\n\n②   Tom is taller than his mother.   トムはお母さんよりも背が高い。\n\n③   Tom is the tallest in his family.   トムは家族で一番背が高い。\n\n④   Tom is as tall as his father.   トムはお父さんと同じくらい背が高い。\n\n２\n(1)   very clever [smart]\n\n(2)   cleverer [smarter]\n\n(3)   the cleverest [smartest]\n\n(4)   as clever [smart] as\n\n(5)   very big\n\n(6)   bigger than\n\n(7)   as big as\n\n(8)   the biggest\n\nＢ問題\n３\n\n(1)   ② cooler than\n(2)   ① the heaviest in\n(3)   ③ the cheapest\n\f４\n\n   一般的に言うと，男性は女性よりも強い。私の家族に関して言うと，\n\n   母は父と同じくらい強い。\n\n５\n\n(1)   [例] That racket is newer than this one.\n\n(2)   [例] My father’s bike is as old as mine.\n\nＣ問題\n６\n\n＜不規則な変化をする語＞\n   原級   比較級   最上級\n\ngood, well   better   best\n\nbad, ill, badly   worse   worst\n\nmany, much   more   most\n\nlittle   less   least\n\n＜意味の違いで比較級・最上級の形が異なる語＞\n\n原級   意味   比較級   最上級\n\nlate   [時間]遅い／遅く   later   latest\n\n   [順序]後の／後で   latter   last\n\nfar   [距離]遠い／遠く   farther   farthest\n\n   [程度]はるかに   further   furthest\n\nold   [年齢]年をとった   older   oldest\n\n   [長幼]年上の   elder   eldest\n\n   （兄 elder brother ，長女   eldest daughter）\n\f７\n\n(1)   ② latter\n   あの映画は，前半よりも後半の方がわくわくする。\n   ※the latter「後半の，後者の」 the former「前半の，前者の」\n\n(2)   ③ latest\n   あなたは彼女の小説の最新作を読みましたか。\n\n(3)   ④ further\n   私たちはその問題について，さらに議論する必要がある。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_001『「比較」とは？』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_001『「比較」とは？』（演習）.pdf",
+       "q_count": 41
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「比較」とは？\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   富士山はとても高い。\n\n   Mt. Fuji is   .\n\n(2)   富士山は日本のどの山よりも高い。\n\n   Mt. Fuji is   than any other mountain in Japan.\n\n(3)   富士山は日本で一番高い山だ。\n\n   Mt. Fuji is   mountain in Japan.\n\n(4)   マイクはとても賢いです。\n\n   Mike is   .\n\n(5)   マイクはジョンよりも賢いです。\n\n   Mike is   than John.\n\n(6)   マイクはこのクラスで一番賢いです。\n\n   Mike is   in this class.\n\n(7)   マイクはリンダと同じくらい賢いです。\n\n   Mike is   Linda.\n\n   360",
+       "answer_text": "8 章「比較」 第８章「比較」   1,2\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) very high\n\n(2) higher\n\n(3) the highest\n\n(4) very clever [smart]\n\n(5) cleverer [smarter]\n\n(6) the cleverest [smartest]\n\n(7) as clever [smart] as",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_001『「比較」とは？』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_001『「比較」とは？』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 1 2   練習   次の英文を日本語に訳しなさい。\n\n   「比較」とは？   ⑴ This car is bigger than that car.\n\n 例題   次の英文を日本語に訳しなさい。\n\n⑴ Nancy is very tall.\n   ⑵ This TV animation is as interesting as“Doraemon”.\n\n⑵ Nancy is taller than her father.\n\n   入試レベルにチャレンジ\n⑶ Nancy is the tallest in her family.   次の英文を日本語に訳しなさい。\n\n   My house is the biggest in Osaka.\n\n⑷ Nancy is as tall as her brother.\n\n   omitsu Kimura の\n  Tom\n\n 「比較」とは?\n\n 「Nancy is tall」←わかるけど、もっとわかりやすく！\n   「〜と比べて」を具体的にかく！\n  ① taller   ② tallest   ③ as tall\n  ～より高い   一番高い   同じくらい高い\n\n   N   N   N",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_001『「比較」とは？』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_001『「比較」とは？』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch08_003",
+     "num": "003",
+     "name": "「比較級（-er ／ more ～）」の表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-2",
+       "content": "『「比較級（-er ／ more ～）」の表現』\n比較級は短い語に -er、長い語に more を付ける。基本形は「比較級 + than」。"
+      },
+      {
+       "title": "概要",
+       "content": "比較級は短い語に -er、長い語に more を付ける。基本形は「比較級 + than」。\n短い形容詞\n形容詞 + -er\ntall → taller\nシグナル/特徴\n1〜2音節の語\n長い形容詞\nmore + 形容詞\ninteresting → more interesting\nシグナル/特徴\n3音節以上"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is taller than I (am).\n彼は私より背が高い。\nThis book is more interesting than that one.\nこの本はあれより面白い。\nShe runs faster than her brother.\n彼女は弟より速く走る。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n短い語：-er\n2\n長い語：more 〜\n3\nthan のあとは主格 (he, I) が原則"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_003_「比較級（-er ／ more ～）」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 比 較 級 （ -er / more〜 ）」 の 表 現   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計８点）\n\n   ＜原級＞   ＜比較級＞   ＜原級＞   ＜比較級＞\n①   tall   taller   ④   difficult   more difficult\n\n②   fast   ⑤   interesting\n\n③   big   ⑥   famous\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 32 点）\n(1)   富士山はとても高い。\n\n   Mt. Fuji is   .\n\n(2)   富士山は日本のどの山よりも高い。\n\n   Mt. Fuji is   than any other mountain in Japan.\n\n(3)   富士山は日本で一番高い山だ。\n\n   Mt. Fuji is   mountain in Japan.\n\n(4)   トムは，ケンよりも若い。\n\n   Tom is   Ken.\n\n(5)   トムは，家族で一番若い。\n\n   Tom is   in his family.\n\n(6)   トムは，ユキと同じくらい若い。\n\n   Tom is   Yuki.\n\n(7)   数学は理科よりも興味深い。\n\n   Math is   science.\n\n(8)   数学は英語と同じくらい興味深い。\n\n   Math is   English.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 15 点）\n(1)   彼女の方が彼よりも信頼できそうだ。\n\n   She seems   him.\n\n(2)   このグループの歌は，そのグループの歌より人気があります。\n\n   The songs of this group are   those of that group.\n\n(3)   どんな食べ物でもないよりましだ。\n\n   Any food is   none.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各５点・計 20 点）\n\n(1)   I’ve failed the exam.   My parents are (   ) than I am.\n\n   [ more disappointed / disappointeder ]\n\n(2)   This magazine is (   ) than useless.\n\n   [ worse / badder ]\n\n(3)   Bob has (   ) than you have.\n\n   [ mucher money / more money ]\n\n(4)   In this shop, cakes that are (   ) than normal sell well.\n\n   [ more larger / larger ]\n\n５   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1)   Fact is stranger than fiction.\n\n(2)   He pleyed the guitar better than last time.\n\n(3)   Nothing is more valuable than health.\n\f６   次の日本文を英語で書きなさい。（各５点・計 10 点）\n\n(1)   この自転車は，あの自転車よりも大きく見える。\n\n(2)   君の方が私よりもそれをうまくできる。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英文を日本語に訳しなさい。\n\n(1)   She is younger than my mother.\n\n(2)   She is not younger than my mother.\n\n８   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   このコンピューターはあのコンピューターよりも値段が高い。\n\n   computer is   than   one.\n\n(2)   あのコンピューターはこのコンピューターほど値段が高くはない。\n\n   computer is   than   one.\n\n(3)   あのコンピューターはこのコンピューターよりも値段が安い。\n\n   computer is   than   one.\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Solving the problem was more difficult than   1   .\n   〈06 年本試〉\n   ① we had thought   ② our thinking   ③ our thoughts   ④ we did\n\f10〈センター試験にチャレンジ〉次の問いの会話の   において，二人目の発言が最も\n   適当な応答となるように文を作るには，(A)と(B)をどのように選んで組み合わせれば\n   よいか，下の①～⑧のうちから一つ選べ。\n\n  Lisa：I’ve heard that some Japanese people spend a lot of money on comic books.\n  Akira：Yes.\n   〈14 年追試〉\n\n  (A) More money   (A) is spent on comic books   (A) much more for movies.\n  (B) The amount of money   (B) purchased comic books   (B) than on movies.\n\n  ①   (A)→(A)→(A)   ② (A)→(A)→(B)   ③   (A)→(B)→(A)\n  ④   (A)→(B)→(B)   ⑤ (B)→(A)→(A)   ⑥   (B)→(A)→(B)\n  ⑦   (B)→(B)→(A)   ⑧ (B)→(B)→(B)",
+       "answer_text": "Ａ問題\n\n１\n\n   ＜原級＞   ＜比較級＞   ＜原級＞   ＜比較級＞\n①   tall   taller   ④   difficult   more difficult\n\n②   fast   faster   ⑤   interesting   more interesting\n\n③   big   bigger   ⑥   famous   more famous\n\n２\n\n(1)   very high\n\n(2)   higher\n\n(3)   the highest\n\n(4)   younger than\n\n(5)   the youngest\n\n(6)   as young as\n\n(7)   more interesting than\n\n(8)   as interesting as\n\nＢ問題\n３\n(1)   more reliable than\n\n(2)   more popular than\n\n(3)   better than\n\f４\n\n(1)   more disappointed\n\n(2)   worse\n\n   be worse than useless 「役に立たないというより有害である, 有害無益」\n\n(3)   more money\n\n(4)   larger\n\n５\n\n(1)   事実は小説よりも奇なり。（ことわざ）\n\n(2)   彼は前回よりも上手にギターを演奏した。\n\n(3)   健康よりも貴重なものは何もない。\n\n６\n\n(1)   [例] This bike looks bigger [larger] than that one.\n\n(2)   [例] You can do it better than I.\n\nＣ問題\n\n７\n\n(1)   彼女は，私の母よりも若い。   ※彼女の年齢＜私の母の年齢\n\n(2)   彼女は，私の母よりも若いということはない。   ※私の母の年齢≦彼女の年齢\n   [彼女は私の母と同い年か，それよりも年上だ。]\n\n８\n\n(1)   This computer is more expensive than that one.\n\n(2)   That computer is less expensive than this one.\n\n   ※less＋原級＋than「…ほど～ではない」（＝not so [as]＋原級＋as…）\n\n(3)   That computer is cheaper than this one.\n\f９\n\n   ① we had thought\n   その問題を解決することは私たちが思っていたより難しかった。\n\n10\n   ② (A)→(A)→(B)\n   More money is spent on comic books than on movies.\n\n   spend A on B 「A を B に費やす」➔   A is spent on B (受け身)\n   purchase「～を購入する」\n\n   リサ「日本人には，漫画にたくさんお金を費やしている人もいるって聞いたよ。」\n   アキラ「うん。映画よりも漫画に多くのお金が費やされているよ。」",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_003『「比較級（-er ／ more ～）」の表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_003『「比較級（-er ／ more ～）」の表現』（演習）.pdf",
+       "q_count": 47
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「比較級 （-er / more〜） 」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私の父は，叔父よりも懸命に働いている。\n\n   My father works   my uncle.\n\n(2)   私の祖母は，母よりもゆっくりと話す。\n\n   My grandmother speaks   my mother.\n\n(3)   ナンシーは，私よりもうまく歌う。\n\n   Nancy sings   I.\n\n(4)   今日の天気は昨日よりも悪い。\n\n   Today’s weather is   yesterday’s.\n\n(5)   トムは実際よりも背が高く見えます。\n\n   Tom looks   he really is.\n\n(6)   彼の病気は君が考えるより深刻だ。\n\n   His illness is   you think.\n\n(7)   私は今朝，いつもより早く起きた。\n\n   I got up   usual this morning.\n\n(8)   結果よりも過程が大切だと思います。\n\n   I think that the process is   the results.\n\n   364",
+       "answer_text": "8 章「比較」 第８章「比較」 3,4\n――――――――――――――――――――――――――――――――――――――――――\n\n   「比較級 （-er / more〜） 」の表現 ―解 答―\n\n１\n\n(1) harder than\n\n(2) more slowly than\n\n(3) better than\n\n(4) worse than\n\n(5) taller than\n\n(6) more serious than\n\n(7) earlier than\n\n(8) more important than",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_003『「比較級（-er ／ more ～）」の表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_003『「比較級（-er ／ more ～）」の表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ３ ４   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   「比較級（ーer / more〜）」の表現   ⑴ This book is（   ）than that.\n   次の日本文にあう英文になるように、   に適する\n 例題   ［ usefuler / more useful ］\n   語（句）を書きなさい。\n\n⑴ 外国人のなかでは、京都は東京より有名だ。\n   ⑵ Mary looks（   ）than her sister.\n  Among the foreigners, Kyoto is\n  than Tokyo.   ［ younger / more young ］\n\n⑵ ジャックは私より速く走る。   ⑶ This lecture is（   ）than that.\n\n  Jack runs   than I.   ［ gooder / better ］\n\n⑶ 数学は英語より難しい。   ⑷ Your plan is（   ）than mine.\n  Math is   than English.\n   ［ badder / worse ］\n\n   入試レベルにチャレンジ\n   次の英文を日本語に訳しなさい。\n   omitsu Kimura の\n Tom\n   He looks younger than he really is.\n\n「比較級（ーer / more〜）」の表現\n\n「…よりももっと〜」\n 短め   長め\n tall   → taller   interesting → more interesting\n fast → faster   difficult   → more difficult\n big   → bigger   famous   → more famous",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_003『「比較級（-er ／ more ～）」の表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_003『「比較級（-er ／ more ～）」の表現』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch08_005",
+     "num": "005",
+     "name": "「比較級（-er ／ more ～）」の強調",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-3",
+       "content": "『「比較級（-er ／ more ～）」の強調』\n比較級を強調するときは much / far / a lot / even を使う。very は使わない。"
+      },
+      {
+       "title": "概要",
+       "content": "比較級を強調するときは much / far / a lot / even を使う。very は使わない。\n比較級の強調\nmuch / far / a lot + 比較級\n「ずっと〜」\nシグナル/特徴\nvery は不可\nmuch / far / even\neven / still + 比較級\n「さらに〜」\nシグナル/特徴\n前述との比較"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is much taller than I.\n彼は私よりずっと背が高い。\nThis is far more difficult than that.\nこれはあれよりずっと難しい。\nShe is even smarter.\n彼女はさらに賢い。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nmuch / far / a lot で強調\n2\nvery は使わない\n3\neven / still ＝ さらに"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_005_「比較級（-er ／ more ～）」の強調_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 比 較 級 （ -er / more〜 ）」 の 強 調   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各３点・計６点）\n\n① この車は，とても大きい。   This car is   big.\n\n② この車は，あの車よりはるかに大きい。 This car is   bigger than that one.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   私の祖母は，母よりもゆっくりと話す。\n\n   My grandmother speaks   my mother.\n\n(2)   ナンシーは，私よりもうまく歌う。\n\n   Nancy sings   I.\n\n(3)   今日の天気は昨日よりも悪い。\n\n   Today’s weather is   yesterday’s.\n\n(4)   トムは実際よりも背が高く見えます。\n\n   Tom looks   he really is.\n\n(5)   結果よりも過程が大切だと思います。\n\n   I think that the process is   the results.\n\n(6)   アマゾン川は，とても長い。\n\n   The Amazon is   .\n\n(7)   アマゾン川は，ミシシッピ川よりも長い。\n\n   The Amazon is   the Mississippi.\n\n(8)   アマゾン川は，ミシシッピ川よりもはるかに長い。\n\n   The Amazon is   the Mississippi.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各６点・計 18 点）\n\n(1)   彼女の作った食事は，このレストランのものよりはるかに美味しい。\n\n   The meal she cooked is   that of this\n\n   restaurant.\n\n(2)   このベッドは，あれよりもはるかに柔らかく快適です。\n\n   This bed is   that one.\n\n(3)   彼は，他の学生よりもはるかに知的である。\n\n   He is   any other student.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 18 点）\n\n(1)   The country plays an (   ) role than the other countries.\n\n   [ more much important / much more important ]\n\n(2)   This church is (   ) than the house where my grandparents live.\n\n   [ much older / more older ]\n\n(3)   What he does is (   ) than what you do.\n\n   [ much more necessary / much necessary ]\n\n５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   Things are much more different now than ten years ago.\n\n(2)   The time to do something fun is much shorter than to do unpleasant thing.\n\n(3)   Jim knows much more about Japanese cultures than I do.\n\f６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   あの学校の校庭は，私の学校の校庭よりもはるかに広く見える。\n\n(2)   その先生は，他の先生よりもずっと大きな声で話します。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   ( )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(  )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   This winter is (   ) colder than last winter.\n\n   ① any   ② little   ③ many   ④ much\n\n(2)   There was (   ) more water in this pond three years ago than now.\n\n   ① any   ② little   ③ many   ④ much\n\n８   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私の兄は，私の母よりもずっと背が高い。\n\n   My brother is   my mother.\n\n(2)   私の兄は，私の父よりも少し背が高い。\n\n   My brother is   my father.\n\n(3)   私の兄は，私の姉よりも８センチ背が高い。\n\n   My brother is   my sister.\n\n   My brother is   my sister   eight centimeters.\n\n(4)   私の兄は，私の祖父と同じ背の高さだ。\n\n   My brother is   taller than my grandfather.",
+       "answer_text": "Ａ問題\n\n１\n\n① この車は，とても大きい。   This car is very big.\n\n② この車は，あの車よりはるかに大きい。 This car is much bigger than that one.\n\n２\n\n(1)   more slowly than\n\n(2)   better than\n\n(3)   worse than\n\n(4)   taller than\n\n(5)   more important than\n\n(6)   very long\n\n(7)   longer than\n\n(8)   much longer than\n\nＢ問題\n\n３\n\n(1)   much more delicious than\n\n(2)   much softer and more comfortable than\n\n(3)   much more intelligent than\n\n４\n\n(1)   much more important\n\n(2)   much older\n\n(3)   much more necessary\n\f５\n\n(1)   物事は，10 年前よりはるかに異なっている。\n\n(2)   何か楽しいことをする時間は，嫌なことをするときよりもはるかに短い。\n\n(3)   ジムは，私よりもはるかに日本文化について知っています。\n\n６\n(1)   [例] The schoolyard of that school looks much wider [larger] than that of my\n\n   school.\n\n(2)   [例] The teacher speaks much more loudly than any other teacher.\n\nＣ問題\n７\n\n(1)   ④ much\n   今年の冬は，去年の冬よりもはるかに寒い。\n\n(2)   ④ much\n   この池には，３年前は今よりもずっとたくさんの水があった。\n\n８\n(1)   My brother is much taller than my mother.\n\n(2)   My brother is a little taller than my father.\n\n(3)   My brother is eight centimeters taller than my sister.\n\n   My brother is taller than my sister by eight centimeters.\n\n(4)   My brother is no taller than my grandfather.",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_005『「比較級（-er ／ more ～）」の強調』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_005『「比較級（-er ／ more ～）」の強調』（演習）.pdf",
+       "q_count": 35
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「比較級 （-er / more〜） 」の強調\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   ナンシーはアンよりもはるかに強い。\n\n   Nancy is   Ann.\n\n(2)   このスープはあれよりもはるかに辛い。\n\n   This soup is   that one.\n\n(3)   その日本人音楽家は日本でよりもアメリカではるかに有名だ。\n\n   The Japanese musician is   in the U.S.A.\n\n   than in Japan.\n\n(4)   この花々はあの花々よりもはるかに美しい。\n\n   These flowers are   those.\n\n(5)   私のイヤフォンは，あなたのものよりはるかにはっきりと聞こえる。\n\n   My earphones sound   yours.\n\n(6)   トムは彼の友人たちよりもはるかに慎重に話します。\n\n   Tom talks   his friends.\n\n(7)   彼女のドレスは，私のものよりはるかに高価に見えます。\n\n   Her dress looks   mine.\n\n(8)   彼女のハンドバッグは，私のバックパックよりもはるかに重い。\n\n   Her handbag is   my backpack.\n\n   368",
+       "answer_text": "8 章「比較」 第８章「比較」   5,6\n――――――――――――――――――――――――――――――――――――――――――\n\n   「比較級 （-er / more〜） 」の強調 ―解 答―\n\n１\n\n(1) much stronger than\n\n(2) much hotter than\n\n(3) much more famous\n\n(4) much more beautiful than\n\n(5) much more clearly than\n\n(6) much more carefully than\n\n(7) much more expensive than\n\n(8) much heavier than",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_005『「比較級（-er ／ more ～）」の強調』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_005『「比較級（-er ／ more ～）」の強調』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ５ ６   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   「比較級（ーer / more〜）」の強調   ⑴ The Amazon is（   ）than the Mississippi.\n   次の日本文にあう英文になるように、   に適する\n 例題   ［ more longer / much longer ］\n   語（句）を書きなさい。\n\n⑴ この車はあの車よりはるかに大きい。\n   ⑵ Saturn is（   ）than Mars.\n  This car is   than that one.\n   ［ much bigger / a lot of bigger ］\n\n⑵ ジャックは私よりはるかに速く走る。\n  Jack runs   than I.   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   This movie looks（   ）than that one.\n\n   ① many more interesting\n   ② much more interesting\n   ③ very more interesting\n\n   omitsu Kimura の\n Tom\n\n「比較級（ーer / more〜）」の強調\n\n 短め tall → taller   長め famous → more famous\n   もっと高い   もっと有名だ\n\n   （強めると）   （強めると）\n\n   much taller   much more famous\n   もっと   もっと高い   もっと   もっと有名だ",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_005『「比較級（-er ／ more ～）」の強調』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_005『「比較級（-er ／ more ～）」の強調』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch08_007",
+     "num": "007",
+     "name": "「比較級 and 比較級」などの表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-4",
+       "content": "『「比較級 and 比較級」などの表現』\n「比較級 and 比較級」で「ますます〜」、「the 比較級, the 比較級」で「〜すればするほど〜」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "「比較級 and 比較級」で「ますます〜」、「the 比較級, the 比較級」で「〜すればするほど〜」を表す。\n比較級 and 比較級\n比較級 and 比較級\n「ますます〜」\nシグナル/特徴\nmore and more 形容詞\nthe 比較級, the 比較級\nThe 比較級, the 比較級\n「〜すればするほど〜」\nシグナル/特徴\n対の構造"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "It is getting colder and colder.\nますます寒くなっている。\nThe more, the better.\n多ければ多いほどよい。\nThe harder you study, the better grades you get.\n勉強すればするほど、よい成績が取れる。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n比較級 and 比較級 ＝ ますます\n2\nThe 比較級, the 比較級 ＝ すればするほど\n3\n対の構造に注意"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_007_「比較級 and 比較級」などの表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 比 較 級 and 比 較 級 」 な ど の 表 現   100\n\nＡ問題\n１   次の   に適する日本語を書きなさい。（２点）\n\n①   比較級 and 比較級   ますます～だ\n\n②   The 比較級 ～, the 比較級 …\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   ナンシーはアンよりもはるかに強い。\n\n   Nancy is   Ann.\n\n(2)   その日本人音楽家は日本でよりもアメリカではるかに有名だ。\n\n   The Japanese musician is   in the U.S.A.\n\n   than in Japan.\n\n(3)   この花々はあの花々よりもはるかに美しい。\n\n   These flowers are   those.\n\n(4)   トムは彼の友人たちよりもはるかに慎重に話します。\n\n   Tom talks   his friends.\n\n(5)   彼女のハンドバッグは，私のバックパックよりもはるかに重い。\n\n   Her handbag is   my backpack.\n\n(6)   私の父は，おじよりも懸命に働いている。\n\n   My father works   my uncle.\n\n(7)   彼の病気は君が考えるより深刻だ。\n\n   His illness is   you think.\n\n(8)   私は今朝，いつもより早く起きた。\n\n   I got up   usual this morning.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 20 点）\n(1)   今日，私たちの世界はますます狭くなってきている。\n\n   Today our world is getting   .\n\n(2)   父の冒険談はますますおもしろくなっていった。\n\n   My father’s adventure story was getting   exciting.\n\n(3)   ジョンからの手紙を読めば読むほど，私は彼の気持ちがわからなくなる。\n\n   I read the letter from John,\n\n   I understand his feelings.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   （各７点・計 21 点）\n(1)   聞けば聞くほど，興味を引かれるようになる。\n   The ( more / I / , / I / more / interested / the / become / hear ).\n\n(2)   彼が怒るにつれて，彼の声はますます大きくなった。\n   As he got angry, ( grew / and / bigger / his voice / bigger ).\n\n(3)   最近，コミュニケーション能力はますます不可欠になってきている。\n\n   These days, ( more / communicate / essential / more / to / the ability / has\n\n   / become / and ).\n\f５   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n\n(1)   The more you talk about the matter, the worse your situation will be.\n\n(2)   The prices of vegetables are rising higher and higher every week.\n\n(3)   The older we grow, the weaker our bodies become.\n\n６   次の日本文を英語で書きなさい。（各６点・計 12 点）\n\n(1)   ますます暑くなってきている。\n\n(2)   私は彼女を知れば知るほど，彼女が好きになる。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   最近，彼女から電話が来ることがますます多い。\n\n   She calls me   often these days.\n\n(2)   最近，彼女から電話が来ることがますます少ない。\n\n   She calls me   often these days.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   The more (   ), the more you can study.\n\n   ① time you have   ② you have time\n\n   ③ times you’ll have   ④ you’ll have times\n\n(2)   The younger (   ), the more effective the medicine.\n\n   ① there is a patient   ② a patient   ③ that a patient   ④ it is a patient\n\n(3)   The sooner you do it, (   ).\n\n   ① you the better   ② you are the better\n\n   ③ the better are you   ④ the better",
+       "answer_text": "Ａ問題\n\n１\n\n①   比較級 and 比較級   ますます～だ\n\n②   The 比較級 ～, the 比較級 …   ～すればするほど，ますます…だ\n\n２\n\n(1)   much stronger than\n\n(2)   much more famous\n\n(3)   much more beautiful than\n\n(4)   much more carefully than\n\n(5)   much heavier than\n\n(6)   harder than\n\n(7)   more serious than\n\n(8)   earlier than\n\nＢ問題\n３\n(1)   smaller and smaller [narrower and narrower]\n\n(2)   more and more\n\n(3)   The more ／ the less\n\n４\n\n(1)   more I hear, the more interested I become\n\n(2)   his voice grew bigger and bigger\n\n(3)   the ability to communicate has become more and more essential\n\f５\n\n(1)   その件についてあなたが話せば話すほど，ますますあなたの立場は悪くなっていく\n   だろう。\n(2)   野菜の値段は毎週，ますます高くなっている。\n\n(3)   (人は)年をとればとるほど，体はどんどん弱くなる。\n\n６\n\n(1)   [例] It is getting hotter and hotter.\n\n(2)   [例] The more I know her, the more I love [like] her.\n\nＣ問題\n\n７\n\n(1)   more and more\n\n(2)   less and less\n\n   ※less and less ～「ますます～でなくなる」\n\n８\n\n(1)   ① time you have\n   時間があればあるほど，たくさんの勉強ができる。\n\n   ※「the＋比較級＋名詞」の順番になることに注意\n\n(2)   ② a patient\n   患者が若ければ若いほど，その薬はよりよく効く。\n   ※「The 比較級 ～, the 比較級 …」の表現で，be 動詞が省略されることがある\n   ※ The younger a patient (is), the more effective the medicine (is).\n\n(3)   ④ the better\n   それをやるのは，早ければ早いほどいいよ。\n   ※「The 比較級 ～, the 比較級 …」の表現で，「主語＋動詞」の it is は，\n   省略されることがある\n   ※ The sooner you do it, the better (it is).",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_007『「比較級 and 比較級」などの表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_007『「比較級 and 比較級」などの表現』（演習）.pdf",
+       "q_count": 38
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「比較級 and 比較級」などの表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   ジャックはますます背が高く伸びている。\n\n   Jack is growing   .\n\n(2)   ますます多くの聴衆が集まり始めた。\n\n   audiences began to gather.\n\n(3)   稼げば稼ぐほど，消費も増える。\n\n   you earn,   you spend.\n\n(4)   春が来た。ますます暖かくなってきている。\n\n   Spring has come.   It’s getting   .\n\n(5)   私はますますその小説を読むのに夢中になっていった。\n\n   I became   absorbed in reading the novel.\n\n(6)   多ければ多いほど幸せだ。\n\n   , the happier.\n\n(7)   トムは練習すればするほど，ますます野球が上手くなった。\n\n   Tom practiced,   he played baseball.\n\n(8)   彼女は集中すればするほど，彼女の演技がよくなった。\n\n   concentrated she was,   her\n\n   performance became.\n\n   372",
+       "answer_text": "8 章「比較」 第８章「比較」   7,8\n――――――――――――――――――――――――――――――――――――――――――\n\n   「比 較 級 and 比 較 級 」などの表 現 ―解 答 ―\n\n１\n\n(1) taller and taller\n\n(2) More and more\n\n(3) The more ／ the more\n\n(4) warmer and warmer\n\n(5) more and more\n\n(6) The more\n\n   The more (＋SV), the 形容詞の比較級 (＋SV).\n\n(7) The more ／ the better\n\n(8) The more ／ the better",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_007『「比較級 and 比較級」などの表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_007『「比較級 and 比較級」などの表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ７ ８   練習   次の英文を日本語に訳しなさい。\n\n 「比較級 and 比較級」などの表現   ⑴ After that, she became more and more beautiful.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 風は、ますます弱まっていった。\n   ⑵ The sooner, the better.\n  The wind was getting   .\n\n⑵ 最近ますます多くの人が英語を話せるようになっている。\n   people can speak English these days.   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n⑶ 持てば持つほど、ますます欲しくなる。\n   この本は読めば読むほど、興味がわいてくる。\n   you have,   you want.\n   The（ this book / more / read / the / , / interesting /\n   more / it / I / becomes ）\n   .\n\n   omitsu Kimura の\n Tom\n\n「比較級 and 比較級」などの表現\n\n 比較級 and 比較級\n「ますます～だ」\n〔例〕 It is getting warmer and warmer.\n   ますますあたたかい\n\n The 比較級～, the比較級….\n「〜すればするほど、ますます…」\n〔例〕 The more you study, the more you know.",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_007『「比較級 and 比較級」などの表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_007『「比較級 and 比較級」などの表現』（習得）.pdf",
+       "q_count": 5
+      }
+     }
+    },
+    {
+     "id": "ch08_009",
+     "num": "009",
+     "name": "「no more … than ～」などの表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-5",
+       "content": "『「no more … than ～」などの表現』\nno more … than ～ ＝「～と同様…でない」、no less … than ～ ＝「～と同様に…」。"
+      },
+      {
+       "title": "概要",
+       "content": "no more … than ～ ＝「～と同様…でない」、no less … than ～ ＝「～と同様に…」。\nno more … than\nA is no more X than B (is)\n「A は B と同様 X でない」\nシグナル/特徴\n両方とも否定\nno less … than\nA is no less X than B (is)\n「A は B に劣らず X だ」\nシグナル/特徴\n両方とも肯定"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "A whale is no more a fish than a horse is.\n鯨は馬と同様、魚ではない。\nShe is no less beautiful than her sister.\n彼女は姉に劣らず美しい。\nHe is no more a doctor than I am.\n彼は私と同様、医者ではない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nno more … than ＝ どちらも否定\n2\nno less … than ＝ どちらも肯定\n3\n鯨と馬の例文が頻出"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_009_「no more … than ～」などの表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 no more … than〜 」 な ど の 表 現   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計４点）\n(1)   クジラは馬と同じく，魚ではない。\n\n   A whale is no   a fish than a horse is.\n\n(2)   クジラは馬と同じく，哺乳類です。\n\n   A whale is no   a mammal than a horse is.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 18 点）\n(1)   ジャックはますます背が高く伸びている。\n\n   Jack is growing   .\n\n(2)   ますます多くの聴衆が集まり始めた。\n\n   audiences began to gather.\n\n(3)   稼げば稼ぐほど，消費も増える。\n\n   you earn,   you spend.\n\n(4)   春が来た。ますます暖かくなってきている。\n\n   Spring has come.   It’s getting   .\n\n(5)   トムは練習すればするほど，ますます野球が上手くなった。\n\n   Tom practiced,   he played baseball.\n\n(6)   このスープはあれよりもはるかに辛い。\n\n   This soup is   that one.\n\n(7)   彼女のドレスは，私のものよりはるかに高価に見えます。\n\n   Her dress looks   mine.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各６点・計 18 点）\n\n(1)   ナンシーはあなたと同じく自己中心的ではない。\n\n   Nancy behaves   selfishly than you do.\n\n(2)   ケンはトムと同じく，そのサッカーチームに所属している。\n\n   Ken is   a member of the soccer team than Tom is.\n\n(3)   少なすぎる食事というのは，食べ過ぎと同じく健康的ではない。\n\n   Eating too little is   healthy than eating too much is.\n\n４   次の日本文にあう英文になるように，   に適する語(句)の組み合わせを選びなさ\n   い。（各８点・計 16 点）\n\n(1)   Ａ組の合唱は私たちのクラスと同じく素晴らしい。\n\n   The chorus of class A is   wonderful than that of our\n\n   class   .\n\n   ① no more ／ is   ② no less ／ is\n\n   ③ no more ／ is not   ④ no less ／ is not\n\n(2)   彼の事業の成功は，私の試験の失敗と同じく不思議ではない。\n\n   His success in business is   strange than my failure of the\n\n   exam   .\n\n   ① no more ／ is   ② no less ／ is\n\n   ③ no more ／ is not   ④ no less ／ is not\n\f５   次の英文を日本語に訳しなさい。（各８点・計 24 点）\n\n(1)   Emily is no more active than I am.\n\n(2)   He is no less a police officer than his father is.\n\n(3)   The man is no more young than I am.\n\n６   次の日本文を，no…than～ を用いて英語で書きなさい。（各 10 点・計 20 点）\n\n(1)   私はあなたと同じく，空を飛べない。\n\n(2)   私はあなたと同じく，この学校の生徒です。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n(1)   Neither Ken nor Yumi can play the piano.\n\n   Yumi can   play the piano than Ken can.\n\n(2)   Ken is no more to blame than Yumi is.\n\n   Ken is   to blame   Yumi is.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Reading good books is (   ) important than making good friends.\n\n   ① not less   ② no less   ③ much less   ④ far less\n\n(2)   I can (   ) swim than my brother can.\n\n   ① more or less   ② not less   ③ not more   ④ no more\n\n(3)   He is not an expert at baseball (   ) than you are.\n\n   ① no more   ② any more   ③ much more   ④ so much\n\n(4)   We can (   ) live without sunshine than without water.\n\n   ① so less   ② not less   ③ no more   ④ much more",
+       "answer_text": "Ａ問題\n１\n\n(1) A whale is no more a fish than a horse is.\n\n(2) A whale is no less a mammal than a horse is.\n\n２\n(1)   taller and taller\n\n(2)   More and more\n\n(3)   The more ／ the more\n\n(4)   warmer and warmer\n\n(5)   The more ／ the better\n\n(6)   much hotter than\n\n(7)   much more expensive than\n\nＢ問題\n３\n(1)   no more\n\n(2)   no less\n\n(3)   no more\n\n４\n(1)   ② no less ／ is\n\n(2)   ① no more ／ is\n\f５\n\n(1)   エミリーは私と同じく，活発[積極的]ではない。\n\n(2)   彼は父親と同じく，警察官です。\n\n(3)   その男は私と同じく，若くはない。\n\n６\n\n(1)   [例] I can no more fly in the sky than you can.\n\n(2)   [例] I am no less a student of this school than you are.\n\nＣ問題\n\n７\n\n(1)   Neither Ken nor Yumi can play the piano.   ケンもユミもピアノが弾けない。\n\n   Yumi can no more play the piano than Ken can. ケン同様ユミもピアノが弾けない。\n\n(2)   Ken is no more to blame than Yumi is.\n\n   Ken is not to blame any more than Yumi is.\n\n   ケンはユミと同じく，責任がない。\n\n   ※A is no more B than C is D ＝ A is not B any more than C is D\n８\n\n(1)   ② no less\n   良い本を読むことは，良い友人をつくるのと同じく，大切なことだ。\n\n(2)   ④ no more\n   私は兄[弟]と同じく，泳げない。\n\n(3)   ② any more\n   彼はあなたと同じく，野球の専門家ではない。\n\n(4)   ③ no more\n   私たちは水がないと生きられないのと同様に，太陽の光がないと生きられない。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_009『「no more … than ～」などの表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_009『「no more … than ～」などの表現』（演習）.pdf",
+       "q_count": 49
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「no more … than〜」などの表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私は彼と同じく，中国人ではない。\n\n   I am   a Chinese than he is.\n\n(2)   彼女は私と同じく，英語のネイティブスピーカーではない。\n\n   She is   a native speaker of English than I am.\n\n(3)   彼女は母親と同じく魅力的だ。\n\n   She is   charming than her mother is.\n\n(4)   この問題はあの問題と同じく，易しくはない。\n\n   This question is   easy   that one.\n\n(5)   よい眠りというのは，よい食事と同じく大切だ。\n\n   Good sleep is   important   good food is.\n\n(6)   クジラは馬と同じく哺乳類です。\n\n   A whale is   a mammal   a horse   .\n   かなづち\n(7)   私は金槌と同じく泳げません。\n\n   I can   swim   a hammer   .\n\n   376",
+       "answer_text": "8 章「比較」 第８章「比較」  9,10\n――――――――――――――――――――――――――――――――――――――――――\n\n   「no more … than〜」などの表現 ―解 答―\n\n１\n\n(1) no more\n\n(2) no more\n\n(3) no less\n\n(4) no more ／ than\n\n(5) no less ／ than\n\n(6) no less ／ than ／ is\n\n(7) no more ／ than ／ can",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_009『「no more … than ～」などの表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_009『「no more … than ～」などの表現』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ９ １０   練習   次の英文を日本語に訳しなさい。\n\n 「no more…than～」などの表現   ⑴ A whale is no more a fish than a horse is.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私はあなたと同じく、アメリカ人ではない。\n   ⑵ Mika is no less beautiful than Kyoko is.\n  I am   an American than you are.\n\n⑵ 私はあなたと同じく、ボクサーではない。\n  I am   a boxer than you are.\n   入試レベルにチャレンジ\n⑶ 私はあなたと同じく、魚ではない。\n   次の日本文にあう英文になるように、   に適する\n  I am   a fish than you are.   語（句）の組み合わせを選びなさい。\n\n⑷ クジラはあなたと同じく、魚ではない。   私の父は、祖父と同じく科学者ではありません。\n  A whale   a fish than you are.   My father is   a scientist than my\n   grandfather   .\n⑸ 私はあなたと同じく、日本人です。\n  I am   a Japanese than you are.\n   ① no more / is\n   ② no less / is\n   ③ no more / is not\n   omitsu Kimura の\n  Tom\n   ④ no less / is not\n\n「no more…than～」などの表現\n\n「～と同じく…ではない」\n〔例〕 I am no more a fool（ than you are ）\n   ～よりもバカではないよ   わかりやすい例\n   イイタイコト   説得力を増す",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_009『「no more … than ～」などの表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_009『「no more … than ～」などの表現』（習得）.pdf",
+       "q_count": 11
+      }
+     }
+    },
+    {
+     "id": "ch08_011",
+     "num": "011",
+     "name": "「not more than ／ not less than」の書き換え",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-6",
+       "content": "『「not more than ／ not less than」の書き換え』\nnot more than ＝「多くとも」、not less than ＝「少なくとも」。書き換えに注意。"
+      },
+      {
+       "title": "概要",
+       "content": "not more than ＝「多くとも」、not less than ＝「少なくとも」。書き換えに注意。\nnot more than\nnot more than 〇\n「多くとも〇／〇以下」\nシグナル/特徴\n= at most\nnot less than\nnot less than 〇\n「少なくとも〇／〇以上」\nシグナル/特徴\n= at least"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He has not more than ten books. (= at most 10)\n彼は本を多くとも10冊持っている。\nShe earns not less than 5 million yen. (= at least)\n彼女は少なくとも500万円稼ぐ。\nHe is not more diligent than his brother.\n彼は兄ほど勤勉ではない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nnot more than ＝ at most\n2\nnot less than ＝ at least\n3\nno more / no less と区別"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_011_「not more than ／ not less than」の書き換え_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 not more than / not less than」 の 書 き 換 え   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   not more than\n\n②   not less than\n\n③   at most\n\n④   at least\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 26 点）\n(1)   私は彼と同じく，中国人ではない。\n\n   I am   a Chinese than he is.\n\n(2)   私は彼と同じく，日本人だ。\n\n   I am   a Japanese than he is.\n\n(3)   彼女は私と同じく，英語のネイティブスピーカーではない。\n\n   She is   a native speaker of English   I am.\n\n(4)   よい眠りというのは，よい食事と同じく大切だ。\n\n   Good sleep is   important   good food   .\n\n(5)   クジラは馬と同じく哺乳類です。\n\n   A whale is   a mammal   a horse   .\n\n(6)   私はますますその小説を読むのに夢中になっていった。\n\n   I became   absorbed in reading the novel.\n\n(7)   彼女は集中すればするほど，演技がよくなった。\n\n   concentrated she was,   her\n\n   performance became.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各６点・計 18 点）\n\n(1)   その動物は，陸上ではせいぜい３分間しか行動できなかった。\n\n   The animal could act not   three minutes on land.\n\n(2)   そのイベント会場には，少なくとも 1000 人が集まっていた。\n\n   There were not   a thousand people gathering at the event site.\n\n(3)   アンは花の写真を少なくとも 200 枚は撮った。\n\n   Ann took not   two hundred photos of flowers.\n\n４   次の英文と同じ意味になるように，(   )内にあてはまる語(句)を選択肢から選びな\n   さい。（各６点・計 12 点）\n\n(1)   It takes at most fifteen minutes to get there.\n\n   → It takes (   ) fifteen minutes to get there.\n\n   ① not more than   ② not less than\n\n   ③ no more than   ④ no less than\n\n(2)   There were at least ten people waiting in front of the restaurant.\n\n   → There were (   ) ten people waiting in front of\n\n   the restaurant.\n\n   ① not more than   ② not less than\n\n   ③ no more than   ④ no less than\n\n５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   She has not more than three pairs of shoes.\n\f(2)   There are not less than forty students studying in the library.\n\n(3)   He has sung not more than two or three songs.\n\n６   次の日本文を, not･･･than～ を用いて英語で書きなさい。（各９点・計 18 点）\n\n(1)   駅はここからせいぜい１km のところだ。\n\n(2)   この腕時計は少なくとも 20000 円します。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の問いに答えなさい。\n\n(1)   次の英語を日本語にしなさい。\n\n①   not more than ～   ＝ at most\n\n②   not less than ～   ＝ at least\n\n③   no more than ～   ＝ as few [little] as\n\n④   no less than ～   ＝ as many [much] as\n\n(2)   次の英文を日本語に訳しなさい。\n\n①   I have not more than 2,000 yen.\n\n②   I have not less than 2,000 yen.\n\n③   I have no more than 2,000 yen.\n\n④   I have no less than 2,000 yen.\n\f(3)   次の英語を日本語にしなさい。\n\n＜at＋最上級の表現＞\n\n①   at most\n\n②   at least\n\n③   at best\n\n④   at worst\n\n⑤   at latest\n\n⑥   at earliest\n\n(4)   次の   に適する語(句)を書きなさい。\n\n＜no＋比較級＋than～の書き換え＞\n\n①   no fewer than ～も(～と同じくらい多い)   ＝ as   as\n\n②   no bigger than ～の大きさしかない(～と同じくらい小さい) ＝ as   as\n\n③   no better than ～も同然で(～と同じくらいひどい)   ＝ as   as\n\n④   no later than   つい～(～と同じくらい最近)   ＝ as   as\n\n(5)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   彼の音楽プレイヤーは，マッチ箱くらいの大きさしかない。\n\n   His music player is   than a matchbox.\n\n   His music player is   as a matchbox.\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   (   ) two million people visited the amusement park last month.\n\n   ① not any more   ② no more   ③ no less than   ④ no less\n\f(2)   I was surprised that Tom had a lot of comic books. There were\n\n   (   ) three hundred comic books in his room.\n\n   ① at most   ② no more than   ③ not less than   ④ not more than\n\n(3)   Ken is very thin. He weights (   ) than forty kilograms.\n\n   ① not other   ② no more   ③ no less   ④ not less\n\n(4)   There were (   ) thirty people in the museum.\n\n   ① not more than   ② not other   ③ no any   ④ less not",
+       "answer_text": "第８章「比較」\n\nＡ問題\n\n１\n\n①   not more than   せいぜい\n\n②   not less than   少なくとも\n\n③   at most   せいぜい\n\n④   at least   少なくとも\n\n２\n\n(1)   no more\n\n(2)   no less\n\n(3)   no more ／ than\n\n(4)   no less ／ than ／ is\n\n(5)   no less ／ than ／ is\n\n(6)   more and more\n\n(7)   The more ／ the better\n\nＢ問題\n\n３\n\n(1)   more than\n\n(2)   less than\n\n(3)   less than\n４\n\n(1)   ① not more than\n(2)   ② not less than\n\f５\n\n(1)   彼女はせいぜい３足しか靴を持っていない。\n\n(2)   図書館では少なくとも 40 人の生徒が勉強しています。\n\n(3)   彼はせいぜい２，３曲しか歌っていない。\n６\n(1)   [例] The station is not more than 1 km [one kilometer] (away) from here.\n\n(2)   [例] This watch costs not less than 20000 [twenty thousand] yen.\n\nＣ問題\n７\n(1)\n\n①   not more than ～   せいぜい～   ＝ at most   ※「～より多くはない」\n\n②   not less than ～   少なくとも～   ＝ at least   ※「～より少なくはない」\n\n③   no more than ～   ～しかない   ＝ as few [little] as   ※「少なさ」を強調\n\n④   no less than ～   ～もある   ＝ as many [much] as ※「多さ」を強調\n\n(2)\n\n①   I have not more than 2,000 yen.   私はせいぜい 2,000 円しか持っていない。\n\n②   I have not less than 2,000 yen.   私は少なくとも 2,000 円は持っている。\n\n③   I have no more than 2,000 yen.   私はたった 2,000 円しか持っていない。\n\n④   I have no less than 2,000 yen.   私は 2,000 円も持っている。\n\n(3)\n\n①   at most   多くても ／ せいぜい\n\n②   at least   少なくとも\n\n③   at best   よくても ／ せいぜい\n\n④   at worst   最悪の場合でも\n\n⑤   at latest   遅くとも\n\n⑥   at earliest   早くとも\n\f(4)\n\n①   no fewer than   ～も(～と同じくらい多い)   ＝ as many as\n\n②   no bigger than   ～の大きさしかない(～と同じくらい小さい)   ＝ as small as\n\n③   no better than   ～も同然で(～と同じくらいひどい)   ＝ as bad as\n\n④   no later than   つい～(～と同じくらい最近)   ＝ as recently as\n\n(5)\n   His music player is no bigger than a matchbox.\n   His music player is as small as a matchbox.\n\n８\n\n(1)   ③ no less than\n   先月 200 万人もの客がその遊園地を訪れた。\n\n(2)   ③ not less than\n   トムがたくさん漫画を持っていて，私は驚いた。彼の部屋には，少なくとも 300 冊の\n   漫画があった。\n\n(3)   ② no more\n   ケンはとても痩せている。彼はたったの 40 キログラムしかない。\n\n(4)   ① not more than\n   その美術館には，せいぜい 30 人しかいなかった。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_011『「not more than ／ not less than」の書き換え』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_011『「not more than ／ not less than」の書き換え』（演習）.pdf",
+       "q_count": 72
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「not more than / not less than」の書き換え\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   この犬はせいぜい５つの単語しか覚えることはできない。\n\n   This dog can remember at   five words.\n\n   → This dog can remember   five words.\n\n(2)   この犬は少なくとも５つの単語を覚えることができる。\n\n   This dog can remember at   five words.\n\n   → This dog can remember   five words.\n\n(3)   私の先生は少なくとも４つの言語を話すことができる。\n\n   My teacher can speak   four languages.\n\n(4)   彼女はせいぜい２冊の本を買うお金しか持っていなかった。\n\n   She only had money to buy   two books.\n\n(5)   私は英語のテストで少なくとも３か所を間違えた。\n\n   I made   three mistakes in the English test.\n\n(6)   トムは月にせいぜい 1000 円しか使わない。\n\n   Tom spends   1000 yen in a month.\n\n   380",
+       "answer_text": "8 章「比較」 第８章「比較」   11,12\n――――――――――――――――――――――――――――――――――――――――――\n\n 「not more than / not less than」の書 き換 え ―解 答 ―\n\n１\n\n(1) most\n\n   not more than\n\n(2) least\n\n   not less than\n\n(3) not less than [at least]\n\n(4) not more than [at most]\n\n(5) not less than [at least]\n\n(6) not more than [at most]",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_011『「not more than ／ not less than」の書き換え』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_011『「not more than ／ not less than」の書き換え』（習熟）.pdf",
+       "q_count": 6
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 １１ １２   練習   次の英文を日本語に訳しなさい。\n\n「not more than / not less than」の書き換え\n   ⑴ He has not more than five books.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私はせいぜい1000円しか持っていない。\n   ⑵ Tom speaks not less than six languages.\n  I have at most 1000 yen.\n  →I have   1000 yen.\n\n⑵ 私は少なくとも1000円持っている。\n   入試レベルにチャレンジ\n  I have at least 1000 yen.\n   ２つの英文が同じ意味になるように、   に適する\n  →I have   1000 yen.   語（句）を次の選択肢から選びなさい。\n\n   He saved at least one million yen.\n   →He saved   one million yen.\n\n   ① not more than\n   ② not less than\n   ③ no more than\n   ④ no less than\n\n   omitsu Kimura の\n  Tom\n\n 「not more than / not less than」の書き換え\n\n  not more than（= at most）\n   「せいぜい」\n  not less than（= at least）「少なくとも」",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_011『「not more than ／ not less than」の書き換え』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_011『「not more than ／ not less than」の書き換え』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch08_013",
+     "num": "013",
+     "name": "thanではなくtoを用いる比較級",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-7",
+       "content": "『thanではなくtoを用いる比較級』\nラテン語起源の比較級 (superior, inferior, senior, junior) は than ではなく to を使う。"
+      },
+      {
+       "title": "概要",
+       "content": "ラテン語起源の比較級 (superior, inferior, senior, junior) は than ではなく to を使う。\nthan 不可\nsuperior to / inferior to\n「〜より優れた／劣った」\nシグナル/特徴\nラテン語起源\nto を使う\nsenior to / junior to\n「〜より年上／年下」\nシグナル/特徴\nto が必要"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is superior to me in math.\n彼は数学で私より優れている。\nShe is two years senior to me.\n彼女は私より2歳年上だ。\nHis work is inferior to hers.\n彼の仕事は彼女のものに劣る。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nsuperior / inferior + to\n2\nsenior / junior + to\n3\nthan は使わない"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_013_thanではなくtoを用いる比較級_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "than で は な く to を 用 い る 比 較 級   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   superior to ～\n\n②   inferior to ～\n\n③   senior to ～\n\n④   junior to ～\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 30 点）\n\n(1)   この犬はせいぜい５つの単語しか覚えることはできない。\n\n   This dog can remember at   five words.\n\n   → This dog can remember   five words.\n\n(2)   この犬は少なくとも５つの単語を覚えることができる。\n\n   This dog can remember at   five words.\n\n   → This dog can remember   five words.\n\n(3)   私の先生は少なくとも４つの言語を話すことができる。\n\n   My teacher can speak   four languages.\n\n(4)   彼女はせいぜい２冊の本を買うお金しか持っていなかった。\n\n   She only had money to buy   two books.\n\n(5)   彼女は母親と同じく魅力的だ。\n\n   She is   charming than her mother is.\n   かなづち\n(6)   私は金槌と同じく泳げません。\n\n   I can   swim   a hammer   .\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各４点・計 16 点）\n\n(1)   このコンピューターは処理速度の点で私のものより優れている。\n\n   This computer is superior   in processing speed.\n\n(2)   彼の英語を話す能力はあなたより劣っています。\n\n   His ability to speak English is inferior   .\n\n(3)   この先生方は私たちの学校の先輩です。\n\n   These teachers are senior   in our school.\n\n(4)   私は量よりも質を好む。\n\n   I prefer quality   quantity.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各４点・計 12 点）\n\n(1)   His behaviors are socially inferior (   ).\n\n   ① to   ② to hers   ③ than her\n\n(2)   Bob is younger than I, but he is senior (   ) at the office.\n\n   ① to me   ② to   ③ than I\n\n(3)   I want to buy that PC because it is (   ) any other PCs in\n\n   all respects.\n\n   ① superior to   ② senior to   ③ inferior to\n\n５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   Humans are said to be superior to the other animals in intelligence.\n\n(2)   This bike is inferior to that one in safety.\n\f(3)   She looks young, but she is senior to me by at least five years.\n\n６   次の英文の内容から判断して，\n   「Nancy と Tom のどちらがより年上／年下であるか」\n   を英語で答えなさい。なお，senior / junior to を用いて２通りの英語で答えること。\n   （各８点・計 16 点）\n\n   Nancy is a second-year junior high school student now. Tom will graduate from\n\n   junior high school this March.\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n\n①   prefer A to B ～\n\n②   A is preferable to B ～\n\n８   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   あなたの辞書は，私の辞書よりもすぐれている。\n\n   Your dictionary is   to mine.\n\n   → Your dictionary is   than mine.\n\n(2)   私の絵はあなたの絵よりも劣っている。\n\n   My picture is   to yours.\n\n   → My picture is   as yours.\n\n(3)   私は理科よりも数学が好きだ。\n\n   I   math to science.\n\n   → I like math   than science.\n\f(4)   トムはジャックよりも５歳年上だ。\n\n   Tom is five years   to Jack.\n\n   → Tom is five years   than Jack.\n\n(5)   トムはジャックよりも５歳年下だ。\n\n   Tom is five years   to Jack.\n\n   → Tom is five years   than Jack.\n\n９   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   I prefer playing the piano (   ) the violin.\n\n   ① to play   ② to playing   ③ of play   ④ of playing\n\n(2)   I think that writing an essay (   ) taking an exam.\n\n   ① better to   ② is better to   ③ prefer to   ④ is preferable to",
+       "answer_text": "Ａ問題\n\n１\n\n①   superior to ～   ～よりすぐれている\n\n②   inferior to ～   ～より劣っている\n\n③   senior to ～   ～より年上だ\n\n④   junior to ～   ～より年下だ\n\n２\n\n(1)   most\n\n   not more than\n\n(2)   least\n\n   not less than\n\n(3)   not less than [at least]\n\n(4)   not more than [at most]\n\n(5)   no less\n\n(6)   no more ／ than ／ can\n\nＢ問題\n\n３\n\n(1)   to mine\n\n   processing speed 「処理速度」\n\n(2)   to yours\n\n(3)   to us\n\n(4)   to\n\f４\n\n(1)   ② to hers\n(2)   ① to me\n(3)   ① superior to\n\n５\n\n(1)   人間は知能の点で，ほかの動物よりもすぐれていると言われています。\n\n(2)   この自転車は安全性の点で，あの自転車に劣っている。\n\n(3)   彼女は若く見えるが，少なくとも５歳以上は私より年上です。\n\n６\n   Nancy is junior to Tom.\n   Tom is senior to Nancy.\n\nＣ問題\n７\n①   prefer A to B ～   B よりも A を好む\n\n②   A is preferable to B ～   B よりも A が好ましい\n\n８\n\n(1) Your dictionary is superior to mine.\n\n   → Your dictionary is better than mine.\n\n(2)   My picture is inferior to yours.\n\n   → My picture is not as good as yours.\n\n(3)   I prefer math to science.\n\n   → I like math better than science.\n\n(4)   Tom is five years senior to Jack.\n\n   → Tom is five years older than Jack.\n\n(5)   Tom is five years junior to Jack.\n\n   → Tom is five years younger than Jack.\n\f９\n\n(1)   ② to playing\n   私はヴァイオリンを弾くことよりも，ピアノを弾くことのほうが好きだ。\n\n(2)   ④ is preferable to\n\n   試験を受けるよりは，レポートを書くほうがましだ。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_013『thanではなくtoを用いる比較級』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_013『thanではなくtoを用いる比較級』（演習）.pdf",
+       "q_count": 46
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   than ではなく to を用いる比較級\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私の車はそのほかの車よりも優れている。\n\n   My car is superior   the other cars.\n\n(2)   このドレスは，質の点であのドレスより劣っている。\n\n   This dress is inferior   that one in quality.\n\n(3)   私の姉は，私より３歳年上だ。\n\n   My sister is senior   by three years.\n\n   My sister is three years senior   .\n\n(4)   ナンシーは私よりも数学と理科が優れている。\n\n   Nancy is superior   in math and science.\n\n(5)   これはデザインの面であれよりも劣って見える。\n\n   This appears inferior   that in design.\n\n(6)   ジャックは私のバスケットチームの後輩です。\n\n   Jack   in the basketball team.\n\n(7)   彼らは私の美術部の先輩です。\n\n   They   in the art club.\n\n   384",
+       "answer_text": "8 章「比較」 第８章「比較」 13-14習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) to\n\n(2) to\n\n(3) to me\n\n   to me\n\n(4) to me\n\n(5) to\n\n(6) is junior to me\n\n(7) are senior to me",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_013『thanではなくtoを用いる比較級』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_013『thanではなくtoを用いる比較級』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 １３ １４   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   thanではなくtoを用いる比較級   ⑴ Your work is superior（   ）mine.\n   次の日本文にあう英文になるように、   に適する\n 例題   ［ than / for / to ］\n   語（句）を書きなさい。\n\n⑴ あなたの辞書は、私の辞書よりも優れている。\n   ⑵ My picture is inferior（   ）yours.\n  Your dictionary is superior   mine.\n   ［ than / for / to ］\n\n⑵ トムはジャックより年上だ。\n  Tom is senior   Jack.\n   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   Ayane is not good at math.\n   But she is superior（   ）in English.\n\n   ① to me   ② than I   ③ to I\n\n   omitsu Kimura の\n  Tom\n\n  thanではなくtoを用いる比較級\n\n  ・superior to〜 「～よりすぐれている」\n  ・inferior to〜 「～より劣っている」\n  ・senior to〜   「～より年上だ」\n  ・junior to〜   「～より年下だ」",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_013『thanではなくtoを用いる比較級』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_013『thanではなくtoを用いる比較級』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch08_015",
+     "num": "015",
+     "name": "比較級の重要表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-8",
+       "content": "『比較級の重要表現』\n比較級の重要表現：no longer ＝「もはや〜ない」、much less / still less ＝「ましてや〜ない」。"
+      },
+      {
+       "title": "概要",
+       "content": "比較級の重要表現：no longer ＝「もはや〜ない」、much less / still less ＝「ましてや〜ない」。\nno longer\nno longer / not … any longer\n「もはや〜ない」\nシグナル/特徴\n状態の終了\nmuch less / still less\nmuch less / still less\n「まして〜ない」\nシグナル/特徴\n否定文に続けて"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is no longer a child.\n彼はもはや子供ではない。\nI cannot speak French, much less German.\nフランス語は話せない、ましてドイツ語は無理だ。\nShe doesn't know him, still less his family.\n彼女は彼を知らない、まして家族なんて。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nno longer ＝ もはや〜ない\n2\nmuch / still less ＝ まして〜ない\n3\n否定文の後で使う"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_015_比較級の重要表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "比較級の重要表現   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計８点）\n\n①   know better than to 原形\n\n②   no longer ～\n\n③   more or less\n\n④   all the 比較級 because ～\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   私の車はそのほかの車よりも優れている。\n\n   My car is superior   the other cars.\n\n(2)   このドレスは，質の点であのドレスより劣っている。\n\n   This dress is inferior   that one in quality.\n\n(3)   私の姉は，私より３歳年上だ。\n\n   My sister is senior   by three years.\n\n   My sister is three years senior   .\n\n(4)   ナンシーは私よりも数学と理科で優れている。\n\n   Nancy is superior   in math and science.\n\n(5)   ジャックは私のバスケットチームの後輩です。\n\n   Jack   in the basketball team.\n\n(6)   私は英語のテストで少なくとも３か所を間違えた。\n\n   I made   three mistakes in the English test.\n\n(7)   トムは月にせいぜい 1000 円しか使わない。\n\n   Tom spends   1,000 yen in a month.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計９点）\n(1)   アンはナンシーと議論するほど愚かではなかった。\n\n   Ann   argue with Nancy.\n\n(2)   政府はもはや市民をコントロールできるほど強くない。\n\n   The government is   to control the citizens.\n\n(3)   その地域の騒音公害は，多かれ少なかれ問題になってきている。\n\n   Noise pollution in the area has   a problem.\n\n４   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1) Any adult knows better than to say such a thing.\n\n(2)   My mother got all the angrier because I kept silent.\n\n(3)   Tom seems to have been more or less surprised at the news.\n\n５   正しい英文になるように，(   )内の語(句)を並べかえなさい。（各６点・計 24 点）\n\n(1) You ( no / are / young / longer ).\n\n(2)   Everyone looks up to Kevin ( better / he / all / because / behaves / the )\n\n   modestly.\n\n(3)   Sam ( better / knows / to / forget / than ) the appointment.\n\f(4)   Laura ( more / less / or / can / speak ) Japanese.\n\n６   次の日本文を英語で書きなさい。（各 10 点・計 20 点）\n\n(1)   その法律はもはや効力がない。\n\n(2)   彼には欠点があるから，私はより一層彼が好きだ。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n７   次の英語を日本語にしなさい。\n\n①   none the 比較級 because\n\n②   none the 比較級 for A\n\n③   less than A\n\n④   , much less ～\n   ＝, still less ～\n\n⑤   couldn’t be better\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1) Ann said that she loved Tom (   ) his faults.\n\n   ① all the more because   ② no more with all\n\n   ③ none the less for   ④ no less than\n\f(2) Ann likes Tom (   ).\n\n   ① all better because   ② none better for his faults\n\n   ③ all better for his faults   ④ all the better for his faults\n\n(3)   It was fine yesterday. The weather couldn’t have been (   ) for our\n\n   sports day.\n\n   ① worst   ② worse   ③ better   ④ best\n\n９   次の問いに答えなさい。\n\n(1)   正しい英文になるように，(   )内の語(句)を並べかえなさい。\n\n①   彼女はほとんど英語を話せない。ましてスペイン語はなおさらだ。\n\n   She can ( less / English / Spanish / , / hardly / much / speak ).\n\n②   彼は 30 分もしないうちに宿題を終わらせた。\n\n   He ( an / homework / hour / in /than / his / finished / less / half ).\n\n(2)   次の英文を日本語に訳しなさい。\n\n   She doesn’t have enough money to buy a pencil, much less a book.\n\n(3)   次の英文とほぼ同じ意味の英文になるように，(   )内の語(句)を並べかえなさい。\n\n   I am no longer interested in comic books.\n\n   ( comic books / longer / am / interested / any / I / not / in / . )\n\f10 〈センター試験にチャレンジ〉 1 ～ 2 に入れるのに最も適当なものを，\n   それぞれ下の①～④から一つずつ選べ。\n\n(1)   Did you make your grandfather angry again? You should   1   that.\n   〈15 年本試〉\n   ① know better than   ② knows less than   ③ make do with   ④ make up with\n\n(2)   They used to be good friends, but they aren’t   2   .\n   〈06 年追試〉\n   ① no longer   ② moreover   ③ anymore   ④ so long",
+       "answer_text": "Ａ問題\n\n１\n\n①   know better than to 原形   ～するほどおろかではない\n\n②   no longer ～   もはや～ない\n\n③   more or less   多かれ少なかれ\n\n④   all the 比較級 because ～   ～のためにより一層\n\n２\n\n(1)   to\n\n(2)   to\n\n(3)   to me\n\n   to me\n\n(4)   to me\n\n(5)   is junior to me\n\n(6)   not less than [at least]\n\n(7)   not more than [at most]\n\nＢ問題\n\n３\n\n(1)   knew better than to\n\n(2)   no longer strong enough\n\n(3)   become more or less\n\f４\n\n(1)   大人ならだれもそんなことを言うほど愚かではない。\n\n(2)   私が黙っていたので，母はより一層怒った。\n\n(3)   トムは多かれ少なかれその知らせに驚いたようだ。\n\n５\n(1)   are no longer young\n\n(2)   all the better because he behaves\n\n   modestly 「謙虚に」\n\n(3)   knows better than to forget\n\n(4)   can more or less speak\n\n６\n(1)   [例] The law is no longer effective.\n\n(2)   [例] I like him all the better because he has faults [weak points].\n\nＣ問題\n７\n①   none the 比較級 because   ～だからといって，少しも…ない\n\n②   none the 比較級 for A   A だからといって，少しも…ない\n\n③   less than A   A 足らずの／A より少ない\n\n④   , much less ～   ～は言うまでもなく／ましてや～ない\n   ＝, still less ～\n\n⑤   couldn’t be better   最高である\n\n８\n\n(1)   ③ none the less for\n   トムの欠点にもかかわらず彼を愛している，とアンは言った。\n\n   ※none the less for 「～にもかかわらず」\n\f(2)   ④ all the better for his faults\n\n   トムには欠点があるのでより一層，アンは彼のことが好きである。\n\n(3)   ③ better\n   昨日はよく晴れていた。私たちの運動会には，最高の日だった。\n\n９\n\n(1)\n\n①   She can hardly speak English, much less Spanish.\n\n②   He finished his homework in less than half an hour.\n\n(2)   [例] 彼女は鉛筆を買う十分なお金さえない。まして本を買うお金などなおさらない。\n\n(3)   I am not interested in comic books any longer.\n\n   私はもはや漫画に興味がない。\n\n   ※no longer ～ ≒ not ～ any longer 「もはや～でない」\n\n10\n\n(1)   ① know better than\n   またおじいちゃんを怒らせたの？わきまえるべきよ。\n\n(2)   ③ anymore\n   彼らはかつて親友だったが，今はもう違う。\n   ※no more ～ ≒ not ～ any more ≒ not ～ anymore 「もはや～でない」",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_015『比較級の重要表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_015『比較級の重要表現』（演習）.pdf",
+       "q_count": 60
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   比較級の重要表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私は彼女とケンカをするほど愚かではない。\n\n   I know   to quarrel with her.\n\n(2)   あなたはもはや中学生ではない。\n\n   You are   a junior high school student.\n\n(3)   彼女の両親は多かれ少なかれ彼女を心配している。\n\n   Her parents are   worried about her.\n\n(4)   彼女はお金を稼ぎたかったので，より一生懸命働く。\n\n   She works all   because she wants to earn money.\n\n(5)   あなたは，パーティーに T シャツで来るなんてことをしないだけの判断力を持つ\n\n   べきだ。\n\n   You should   to come to the party in T-shirt.\n\n(6)   私はもうこれ以上歩けない。\n\n   I am   able to walk.\n\n(7)   彼は多かれ少なかれ私に微笑んでいた。\n\n   He was   smiling at me.\n\n(8)   彼女は親切なので，私はより一層好きになる。\n\n   I like her all   she is kind.\n\n   388",
+       "answer_text": "8 章「比較」 第８章「比較」 15-16習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) better than\n\n(2) no longer\n\n(3) more or less\n\n(4) the harder\n\n(5) know better than\n\n(6) no longer\n\n(7) more or less\n\n(8) the better because",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_015『比較級の重要表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_015『比較級の重要表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 １５ １６   練習   次の英文を日本語に訳しなさい。\n\n   比較級の重要表現   ⑴ You should know better than to do such a thing.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 彼はそんなことをするほど愚かではない。\n   ⑵ I like Tom all the better for it.\n  He knows   to do such a thing.\n\n⑵ 私はもう子供ではない。\n  I am   a child.\n   入試レベルにチャレンジ\n\n⑶ 仕事は多かれ少なかれ片付いた。   正しい英文になるように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n  The job has   finished.\n   A visit to the moon is（ longer / impossible / no / not ）.\n⑷ 彼女は照れ屋なので、いっそう好きになる。\n  I like her all   because she is shy.\n\n   omitsu Kimura の\n  Tom\n\n  比較級の重要表現\n\n  ・know better than to 原形 「～するほどおろかではない」\n  ・no longer   「もはや～ない」\n  ・more or less   「多かれ少なかれ」\n  ・all the 比較級 because～ 「～のためにより一層」",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_015『比較級の重要表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_015『比較級の重要表現』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch08_017",
+     "num": "017",
+     "name": "「最上級（the-est ／ the most ～）」の表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-9",
+       "content": "『「最上級（the-est ／ the most ～）」の表現』\n最上級は the + -est / the most 〜 + in/of。「最も〜だ」を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "最上級は the + -est / the most 〜 + in/of。「最も〜だ」を表す。\n短い形容詞\nthe 形容詞-est\ntall → the tallest\nシグナル/特徴\n1〜2音節\n長い形容詞\nthe most 形容詞\ninteresting → the most interesting\nシグナル/特徴\n3音節以上"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is the tallest in his class.\n彼はクラスで一番背が高い。\nThis is the most interesting book of all.\nこれがすべての中で最も面白い本だ。\nMt. Fuji is the highest mountain in Japan.\n富士山は日本一高い山だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nthe + -est / the most\n2\nin + 場所 / of + 複数\n3\n原級／比較級と区別"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_017_「最上級（the-est ／ the most ～）」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "第８章「比較」   得点\n\n   「 最 上 級 (the -est / the most〜 )」 の 表 現   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計８点）\n\n   ＜原級＞   ＜最上級＞   ＜原級＞   ＜最上級＞\n①   tall   the tallest   ④   difficult   the most difficult\n\n②   small   ⑤   interesting\n\n③   big   ⑥   famous\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   私は彼女とケンカをするほど愚かではない。\n\n   I know   to quarrel with her.\n\n(2)   あなたはもはや中学生ではない。\n\n   You are   a junior high school student.\n\n(3)   彼女の両親は多かれ少なかれ彼女を心配している。\n\n   Her parents are   worried about her.\n\n(4)   彼女はお金を稼ぎたいので，より一生懸命働く。\n\n   She works all   because she wants to earn money.\n\n(5)   彼は多かれ少なかれ私に微笑んでいた。\n\n   He was   smiling at me.\n\n(6)   彼女は親切なので，私はより一層好きになる。\n\n   I like her all   she is kind.\n\n(7)   これはデザインの点であれよりも劣って見える。\n\n   This appears inferior   that in design.\n\n(8)   彼らは私の美術部の先輩です。\n\n   They   in the art club.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 12 点）\n(1)   父は今朝，家族の中で一番早起きをした。\n\n   My father got up   my family this morning.\n\n(2)   この会社の中で彼女が最も魅力的な女性の１人です。\n\n   She is   in this office.\n\n(3)   私たちの中で，トムが一番速く泳げます。\n\n   Tom can   us all.\n\n(4)   昨日は私にとって最も悪い日でした。\n\n   Yesterday was   for me.\n\n４   次の英文を日本語に訳しなさい。（各４点・計 12 点）\n\n(1)   He practices hardest in the team.\n\n(2)   Nancy is the most active girl in her class.\n\n(3)   The old lady walked most slowly in the group.\n\f５   正しい英文になるように，(   )内の語(句)を並べかえなさい。（各７点・計 28 点）\n\n(1)   This is ( this year / movie / of / the / best ) for me.\n\n(2)   This document was ( most / important / in / the / this / room ).\n\n(3)   ( three / most / valuable / of / the / the / which / is ) watches?\n\n(4)   Spring is ( that / like / the season / I / the best ).\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   これが若者の中で一番人気のある歌です。\n\n(2)   あなたはどの季節が一番好きですか。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Of the three brothers, Tom was (   ) singer.\n\n   ① the better   ② a better ③ the best   ④ a best\n\n(2)   (   ) all teachers in the school, Ms. Morita speaks English the best.\n\n   ① In   ② Of   ③ Out   ④ As\n\f(3)   One of (   ) in Japan is Nara.\n\n   ① most interesting place   ② most interesting places\n\n   ③ the most interesting places   ④ the most interesting place\n\n８   次の日本文を英語で書きなさい。\n\n   彼女は日本で最も偉大な作家の一人だと言われている。",
+       "answer_text": "Ａ問題\n\n１\n\n   ＜原級＞   ＜最上級＞   ＜原級＞   ＜最上級＞\n①   tall   the tallest   ④   difficult   the most difficult\n\n②   small   the smallest   ⑤   interesting   the most interesting\n\n③   big   the biggest   ⑥   famous   the most famous\n\n２\n\n(1)   better than\n\n(2)   no longer\n\n(3)   more or less\n\n(4)   the harder\n\n(5)   more or less\n\n(6)   the better because\n\n(7)   to\n\n(8)   are senior to me\n\nＢ問題\n\n３\n\n(1)   (the) earliest in\n\n(2)   one of the most attractive women\n\n(3)   swim (the) fastest of\n\n(4)   the worst day\n\f４\n\n(1)   彼はチームの中で最も一生懸命に練習する。\n\n(2)   ナンシーはクラスの中で一番活発な女の子です。\n\n(3)   その老婦人はそのグループの中で最もゆっくりと歩いた。\n\n５\n\n(1)   the best movie of this year\n\n(2)   the most important in this room\n\n(3)   Which is the most valuable of the three\n\n(4)   the season that I like the best\n\n６\n\n(1)   [例] This is the most popular song among [in] young people.\n\n(2)   [例] Which season do you like the best?\n\nＣ問題\n\n７\n\n(1)   ③ the best\n   ３人の兄弟の中で，トムが最も歌が上手かった。\n\n(2)   ② of\n   その学校の教師の中で，森田先生が一番上手に英語を話す。\n\n(3)   ③ the most interesting places\n   日本で最も興味深い場所の一つは奈良である。\n\n８\n\n   [例] It is said that she is one of the greatest writers in Japan.",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_017『「最上級（the-est ／ the most ～）」の表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_017『「最上級（the-est ／ the most ～）」の表現』（演習）.pdf",
+       "q_count": 42
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「最上級 (the -est / the most〜) 」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   これは私の街で一番古い寺です。\n\n   This is   temple in my town.\n\n(2)   これはこの本の中で一番美しい写真です。\n\n   This is   picture in this book.\n\n(3)   彼女は３人の中でもっとも   い走者だ。\n\n   She is   runner of the three.\n\n(4)   このカメラは私のものの中で一番高価なものです。\n\n   This camera is   of mine.\n\n(5)   これは今年一番面白い小説だ。\n\n   This is   novel of the year.\n\n(6)   あれは私が捕った中で一番大きい魚だ。\n\n   That is   fish that I have caught.\n\n(7)   日本で一番高い山は何ですか。\n\n   What is   in Japan?\n\n(8)   私は，すべての科目の中で一番難しい教科は国語だと思います。\n\n   I think   subject of all is Japanese.\n\n   394",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   17-18習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   最 上 級 (the -est / the most〜) の表 現 ―解 答 ―\n\n１\n\n(1) the oldest\n\n(2) the most beautiful\n\n(3) the fastest\n\n(4) the most expensive\n\n(5) the most interesting\n\n(6) the biggest\n\n(7) the highest mountain\n\n(8) the most difficult",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_017『「最上級（the-est ／ the most ～）」の表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_017『「最上級（the-est ／ the most ～）」の表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 １７ １８   練習   次の英文を日本語に訳しなさい。\n\n 「最上級（the ーest / the most ～）」の表現\n   ⑴ I am the youngest of the three.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ ケンはアメリカで最も有名な日本人俳優だ。\n   ⑵ Which is the most expensive of the three cars?\n  Ken is   Japanese actor in America.\n\n⑵ この建物は東京で一番高い。\n  This building is   in Tokyo.   ⑶ Kanazawa is one of the most beautiful cities in Japan.\n\n⑶ 物理はすべての科目の中で一番難しい科目です。\n  Physics is   of all the subjects.\n   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n   omitsu Kimura の\n  Tom\n   Nancy is（ in / the best / of / her class / swimmer ）.\n\n 「最上級（the –est / the most ～）」の表現\n\n 「（…の中で）もっとも～」\n  短め tall   → the tallest\n   small → the smallest\n   big   → the biggest\n\n  長め interesting → the most interesting\n   difficult   → the most difficult\n   famous   → the most famous",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_017『「最上級（the-est ／ the most ～）」の表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_017『「最上級（the-est ／ the most ～）」の表現』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch08_019",
+     "num": "019",
+     "name": "「最上級（the -est ／ the most ～）」の強調",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-10",
+       "content": "『「最上級（the -est ／ the most ～）」の強調』\n最上級を強調するときは much / by far / the very を使う。"
+      },
+      {
+       "title": "概要",
+       "content": "最上級を強調するときは much / by far / the very を使う。\nby far / much\nby far / much + 最上級\n「断然〜」\nシグナル/特徴\nthe の前に置く\nthe very\nthe very + 最上級\n「まさに最も〜」\nシグナル/特徴\nthe と最上級の間"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "This is by far the best book.\nこれが断然一番の本だ。\nHe is much the tallest in the class.\n彼はクラスで断然背が高い。\nShe is the very best singer.\n彼女はまさに最高の歌手だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nby far / much で強調\n2\nthe very + 最上級\n3\nthe の位置に注意"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_019_「最上級（the -est ／ the most ～）」の強調_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "第８章「比較」   得点\n\n 「 最 上 級 (the -est / the most 〜 )」 の 強 調   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計６点）\n(1)   彼の家は，とても大きい。\n   His house is   big.\n\n(2)   彼の家は，大阪の中でずば抜けて大きい。\n\n   His house is   the biggest in Osaka.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 32 点）\n(1)   これは私の街で一番古い寺です。\n   This is   temple in my town.\n\n(2)   このカメラは私のものの中で一番高価なものです。\n\n   This camera is   of mine.\n\n(3)   日本で一番高い山は何ですか。\n\n   What is   ?\n\n(4)   この本は，あの本よりも面白い。\n\n   This book is   that book.\n\n(5)   この本は，あの本よりもはるかに面白い。\n\n   This book is   that book.\n\n(6)   この本は，すべての中で一番面白い。\n\n   This book is   of all.\n\n(7)   この本は，すべての中でずば抜けて面白い。\n\n   This book is   of all.\n\n(8)   私はもうこれ以上歩けない。\n\n   I am   able to walk.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各７点・計 21 点）\n\n(1)   この辞書はすべての中ではるかに使い易い。\n\n   This dictionary is   of all.\n\n(2)   この赤い靴がずば抜けてあなたに良く似合っている。\n\n   These red shoes suit you   .\n\n(3)   あの星はすべての星の中ではるかに遠くにある。\n\n   That star is   of all stars.\n\n４   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n\n(1)   He is said to be by far the best cook in Japan.\n\n(2)   Our teacher said that his argument was by far the most important of all.\n\n(3)   Ann was chosen as the very best person for the job.\n\n５   正しい英文になるように，(   )内の語(句)を並べかえなさい。（各 10 点・計 20 点）\n\n(1)   The cherry tree is ( by / highest / in / my garden / far / the ).\n\n(2)   The man has ( best / camera / the / very / his bag / in ).\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   She was (   ) the most talented basketball player in those days.\n\n   ① very   ② very much   ③ by far   ④ as far as\n\n(2)   Ken is (   ) volleyball player in his team.\n\n   ① too far the best   ② quite the best   ③ very the best   ④ the very best\n\n(3)   Tom is (   ) in his class.\n\n   ① much best   ② much the best   ③ the much best   ④ very the best",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   His house is very big.\n\n(2)   His house is by far the biggest in Osaka.\n\n２\n\n(1)   the oldest\n\n(2)   the most expensive\n\n(3)   the highest mountain in Japan\n\n(4)   more interesting than\n\n(5)   much more interesting than\n\n(6)   the most interesting\n\n(7)   by far the most interesting\n\n(8)   no longer\n\nＢ問題\n３\n(1)   by far the easiest to use\n\n(2)   by far the best [the very best]\n\n(3)   by far the farthest\n\n４\n\n(1)   彼は，日本でずば抜けて良い料理人だと言われている。\n\n(2)   先生は，彼の主張はすべての中でずば抜けて重要なものだと言った。\n\n(3)   アンはその仕事にずば抜けて適切な人物として選出されました。\n\f５\n\n(1)   by far the highest in my garden\n\n(2)   the very best camera in his bag\n\nＣ問題\n\n６\n\n(1)   ③ by far\n   彼女は当時，ずば抜けて才能のあるバスケットボール選手だった。\n   ※very も最上級を強調するが，「the very＋最上級」の語順になることに注意\n\n(2)   ④ the very best\n   ケンはチームの中でずば抜けてバレーボールが上手い。\n\n(3)   ② much the best\n   トムはクラスの中でずば抜けて優れた生徒だ。\n\n   ※④ very the best は，「the very best」なら可",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_019『「最上級（the -est ／ the most ～）」の強調』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_019『「最上級（the -est ／ the most ～）」の強調』（演習）.pdf",
+       "q_count": 33
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「最上級 (the -est / the most〜) 」の強調\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   このドレスはこの店の中でずば抜けて高価だ。\n\n   This dress is   in this shop.\n\n(2)   このロープは４本の中でずば抜けて長い。\n\n   This rope is   of the four.\n\n(3)   ジョンは，私たちのチームでずば抜けて一番よい選手だ。\n\n   John is   player in our team.\n\n(4)   彼の絵はすべての絵の中で一番良い。\n\n   His picture is   of all.\n\n(5)   この映画は今年，ずば抜けて興味深い映画だ。\n\n   This movie is   movie in this year.\n\n(6)   これはドイツの中でずば抜けて古い城だ。\n\n   This is   castle in German.\n\n(7)   私の姉はリレーチームの中でずば抜けてよいランナーだ。\n\n   My sister is   runner in the relay team.\n\n   398",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   19-20習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   最 上 級 (the -est / the most〜) の強 調 ―解 答 ―\n\n１\n\n(1) by far the most expensive\n\n(2) by far the longest\n\n(3) by far the best [the very best]\n\n(4) by far the best [the very best]\n\n(5) by far the most interesting\n\n(6) by far the oldest\n\n(7) by far the best [the very best]",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_019『「最上級（the -est ／ the most ～）」の強調』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_019『「最上級（the -est ／ the most ～）」の強調』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 １９ ２０   練習   次の英文を日本語に訳しなさい。\n\n 「最上級（the ーest / the most ～）」の強調\n   ⑴ This is by far the best of all his works.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ この映画はすべての中でずば抜けて面白い。\n   ⑵ This is the very best dictionary of all.\n  This movie is   of all.\n\n⑵ トムはクラスの中でずば抜けて速く走る。\n  Tom runs   in his class.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   Nancy is（ very / in her class / the / student / best / most ）.\n\n   omitsu Kimura の\n  Tom\n\n 「最上級（the ーest / the most ～）」の強調\n\n  →「はるかに／ずば抜けて一番～だ」\n   by farをtheの前におく\n\n 〔例〕 by far the largest car\n   by far the most beautiful city",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_019『「最上級（the -est ／ the most ～）」の強調』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_019『「最上級（the -est ／ the most ～）」の強調』（習得）.pdf",
+       "q_count": 4
+      }
+     }
+    },
+    {
+     "id": "ch08_021",
+     "num": "021",
+     "name": "「X番目に～だ」「もっとも～でない」の表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-11",
+       "content": "『「X番目に～だ」「もっとも～でない」の表現』\n「〇番目に〜」は the 序数 + 最上級。「もっとも〜でない」は the least + 形容詞。"
+      },
+      {
+       "title": "概要",
+       "content": "「〇番目に〜」は the 序数 + 最上級。「もっとも〜でない」は the least + 形容詞。\nthe 序数 + 最上級\nthe 序数 + 最上級\n「〇番目に最も〜」\nシグナル/特徴\nsecond / third 〜\nthe least 〜\nthe least 形容詞\n「最も〜でない」\nシグナル/特徴\nthe most の反対"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Mt. Kita is the second highest mountain in Japan.\n北岳は日本で2番目に高い山だ。\nThis is the least expensive option.\nこれが最も安い選択肢だ。\nHe is the least diligent student.\n彼は最も勤勉でない生徒だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nthe 序数 + 最上級\n2\nthe least + 形容詞\n3\nthe most の反対"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_021_「X番目に～だ」「もっとも～でない」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 X 番 目 に 〜 だ 」「 も っ と も 〜 で な い 」の 表 現   100\n\nＡ問題\n\n１   次の英語を日本語にしなさい。（各２点・計６点）\n\n①   the second largest city\n\n②   the third largest city\n\n③   the least expensive wallet\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   これはこの本の中で一番美しい写真です。\n\n   This is   picture in this book.\n\n(2)   彼女は３人の中でもっとも速い走者だ。\n\n   She is   runner of the three.\n\n(3)   このドレスはこの店の中でずば抜けて高価だ。\n\n   This dress is   in this shop.\n\n(4)   このロープは４本の中でずば抜けて長い。\n\n   This rope is   of the four.\n\n(5)   ジョンは，私たちのチームでずば抜けて一番よい選手だ。\n\n   John is   player in our team.\n\n(6)   彼の絵はすべての絵の中で一番良い。\n\n   His picture is   of all.\n\n(7)   これは，今年ずば抜けて興味深い映画だ。\n\n   This movie is   movie in this year.\n\n(8)   これはドイツの中でずば抜けて古い城だ。\n\n   This is   castle in German.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n(1)   トムは，クラスで一番背が高い男の子です。\n\n   Tom is   in his class.\n\n(2)   トムは，クラスで２番目に背が高い男の子です。\n\n   Tom is   in his class.\n\n(3)   トムは，クラスで３番目に背が高い男の子です。\n\n   Tom is   in his class.\n\n(4)   トムは，クラスで４番目に背が高い男の子です。\n\n   Tom is   in his class.\n\n(5)   これは，この店の中で一番高くないかばんです。\n\n   This is   expensive bag in this store.\n\n(6)   数学は，すべての科目の中でもっとも難しい科目です。\n\n   Math is   of all the subjects.\n\n(7)   数学は，すべての科目の中でもっとも難しくない科目です。\n\n   Math is   of all the subjects.\n\n４   次の英文を日本語に訳しなさい。（各５点・計 15 点）\n\n(1)   Which is the least expensive bag in this store?\n\n(2)   That is said to be the third oldest temple in our country.\n\n(3)   Jim is a student that lives the second closest to the school in his class.\n\f５   正しい英文になるように，(   )内の語(句)を並べかえなさい。（各６点・計 24 点）\n\n(1)   This is ( the / least / question / this test / in / difficult ).\n\n(2)   The girl crossed the road ( children / carefully / least / the three / of ).\n\n(3)   Bob’s younger brother is ( in / child / second / the / shortest / that line ).\n\n(4)   Do you ( is / fifth / city / the / what / know / largest / in ) Japan?\n\n６   次の日本文を英語で書きなさい。（10 点）\n\n   彼女はそのチームの中で，泳ぐのが２番目に速い。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい\n\n(1)   This department store is (   ) one in Tokyo.\n\n   ① the next larger   ② second larger   ③ the largest next   ④ the second largest\n\n(2)   This is (   ) expensive car in this store.\n\n   ① least   ② less   ③ the least   ④ the less\n\f８   次の日本文にあう英文になるように，(   )内の語(句)を並べかえなさい。\n\n(1)   アンは決して嘘をつくような人ではない。\n\n   Ann ( would / lie / last / tell / who / the / person / is / a ).\n\n(2)   アンは決して友人を裏切るような人間ではない。\n\n   Ann ( person / be / last / her / would / to / the / betray ) friends.\n\n(3)   アンは私が大阪で会うとは思ってもみなかった人だった。\n\n   Ann ( see / was / expected / person / Osaka / to / in / the / I / last ).",
+       "answer_text": "「X 番目に〜だ」\n\nＡ問題\n\n１\n\n①   the second largest city   ２番目に大きな都市\n\n②   the third largest city   ３番目に大きな都市\n\n③   the least expensive wallet   もっとも高くない財布\n\n２\n\n(1)   the most beautiful\n\n(2)   the fastest\n\n(3)   by far the most expensive\n\n(4)   by far the longest\n\n(5)   by far the best [the very best]\n\n(6)   by far the best [the very best]\n\n(7)   by far the most interesting\n\n(8)   by far the oldest\n\nＢ問題\n３\n(1)   the tallest boy\n\n(2)   the second tallest boy\n\n(3)   the third tallest boy\n\n(4)   the fourth tallest boy\n\n(5)   the least\n\n(6)   the most difficult (subject)\n\n(7)   the least difficult (subject)\n\f４\n\n(1)   この店で最も高くないかばんはどれですか。\n\n(2)   あれは私たちの国で３番目に古い寺と言われています。\n\n(3)   ジムはクラスの中で２番目に学校の近くに住む生徒です。\n\n５\n\n(1)   the least difficult question in this test\n\n(2)   least carefully of the three children\n\n(3)   the second shortest child in that line\n\n(4)   know what is the fifth largest city in\n\n６\n\n   [例] She is the second fastest swimmer in the team.\n\nＣ問題\n\n７\n\n(1)   ④ the second largest\n   この百貨店は，東京で２番目に大きい。\n\n(2)   ③ the least\n   これがこの店の中で最も高くない車だ。\n８\n\n(1) Ann is the last person who would tell a lie.\n\n   ※the last A＋関係代名詞節「最も～し(そうに)ない，決して～し(そうに)ない A」\n\n(2) Ann would be the last person to betray her friends.\n\n   ※the last A to do「最も～し(そうに)ない A，決して～し(そうに)ない A」\n\n(3) Ann was the last person I expected to see in Osaka.\n\n   ※the last A to do「最も～し(そうに)ない A，決して～し(そうに)ない A」",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_021『「X番目に～だ」「もっとも～でない」の表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_021『「X番目に～だ」「もっとも～でない」の表現』（演習）.pdf",
+       "q_count": 38
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「X 番目に〜だ」「もっとも〜でない」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   トムが私たちのチームで２番目に若いメンバーだ。\n\n   Tom is   in our team.\n\n(2)   その化学工場はこの地域で３番目に大きな工場です。\n\n   The chemical plant is   in this region.\n\n(3)   北海道にある天塩川は日本で４番目に長い川です。\n\n   The Teshio river in Hokkaido is   in Japan.\n\n(4)   ジョンが作った計画はすべての中で一番難しくない。\n\n   The plan made by John is   of all.\n\n(5)   これは彼の作品の中でもっとも知られていない小説だ。\n\n   This is   in his works.\n\n(6)   山梨県にある北岳は日本で２番目に高い山です。\n\n   Mt. Kita in Yamanashi Prefecture is\n\n   in Japan.\n\n(7)   父は家族の中で３番目に早く起きます。\n\n   My father gets up   in my family.\n\n(8)   今日は今年４番目に寒い日です。\n\n   Today is   in this year.\n\n   402",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章  比較\n   分確認テスト   21-22 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   X 番目   〜だ   も   も〜   い の表 現 ―解 答 ―\n\n１\n\n(1) the second youngest member\n\n(2) the third biggest [largest] plant\n\n(3) the fourth longest river\n\n(4) the least difficult\n\n(5) the least famous novel\n\n(6) the second highest mountain\n\n(7) the third earliest\n\n(8) the fourth coldest day",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_021『「X番目に～だ」「もっとも～でない」の表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_021『「X番目に～だ」「もっとも～でない」の表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ２１ ２２   練習   次の英文を日本語に訳しなさい。\n\n「X番目に～だ」\n   「もっとも～でない」の表現\n   ⑴ Osaka is the second largest city in Japan.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ ナンシーはクラスの中で二番目に背が高い女の子です。\n   ⑵ This is the least useful dictionary of all.\n  Nancy is   in her class.\n\n⑵ これが、この店の中でもっとも高くない財布です。\n  This is the   wallet in this store.\n   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内の英語を並び替えなさい。\n\n   Tom is（ tallest / class / the / in / his / third / boy / . ）\n\n   omitsu Kimura の\n  Tom\n\n 「X番目に～だ」\n   「もっとも～でない」の表現\n\n  ①「X番目に～だ」   〔例〕 the second largest city\n   the third largest city\n   the fourth largest city\n  ②「もっとも～でない」  the least～\n   〔例〕 the least difficult\n   the least expensive",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_021『「X番目に～だ」「もっとも～でない」の表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_021『「X番目に～だ」「もっとも～でない」の表現』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch08_023",
+     "num": "023",
+     "name": " 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-12",
+       "content": "『 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現』\n形は比較級でも the が付くもの (the + 比較級 of the two)、最上級でも the が付かないものがある。"
+      },
+      {
+       "title": "概要",
+       "content": "形は比較級でも the が付くもの (the + 比較級 of the two)、最上級でも the が付かないものがある。\n比較級なのに the\nthe 比較級 of the two\n「2つのうち〜なほう」\nシグナル/特徴\nof the two が決め手\n最上級なのに the なし\n副詞の最上級は the なし可\nHe runs fastest.\nシグナル/特徴\n副詞は the 省略可"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is the taller of the two brothers.\n彼は2人の兄弟のうち背が高いほうだ。\nThis is the more difficult of the two questions.\nこれは2つの問題のうち難しいほうだ。\nHe runs (the) fastest in his class.\n彼はクラスで一番速く走る。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nof the two ＝ the + 比較級\n2\n副詞の最上級は the 省略可\n3\n形よりも文意で判断"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_023_ 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 比 較 級 な の に the が つ く 」\n   「 最 上 級 な の に the が つ か な い 」表 現\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各３点・計６点）\n(1)   ナンシーは，２人の女の子の中でより背が高い方だ。\n\n   Nancy is   taller of the two girls.\n\n(2)   彼がここに居てくれると，私は一番幸せだ。\n\n   I feel   when he is here.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 36 点）\n(1)   トムが私たちのチームで２番目に若いメンバーだ。\n\n   Tom is   in our team.\n\n(2)   その化学工場はこの地域で３番目に大きな工場です。\n\n   The chemical plant is   in this region.\n\n(3)   北海道にある天塩川は日本で４番目に長い川です。\n\n   The Teshio river in Hokkaido is   in Japan.\n\n(4)   ジョンが作った計画はすべての中で一番難しくない。\n\n   The plan made by John is   of all.\n\n(5)   これは彼の作品の中でもっとも知られていない小説だ。\n\n   This is   in his works.\n\n(6)   山梨県にある北岳は日本で２番目に高い山です。\n\n   Mt. Kita in Yamanashi Prefecture is\n\n   in Japan.\n\n(7)   これは今年一番面白い小説だ。\n\n   This is   novel of this year.\n\f(8)   あれは私が捕った中で一番大きい魚だ。\n\n   That is   fish that I have caught.\n\n(9)   私の姉はリレーチームの中でずば抜けてよいランナーだ。\n\n   My sister is   runner in the relay team.\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 20 点）\n(1)   彼女の傘は，２本のうちカラフルなほうです。\n\n   Her umbrella is   of the two.\n\n(2)   太平洋は，その地点が最も深い。\n\n   The Pacific Ocean is   at that point.\n\n(3)   私は右肩にもっとも痛みを感じました。\n\n   I felt   in my right shoulder.\n\n(4)   タマは，２匹の猫のうち小さい方だ。\n\n   Tama is   of the two cats.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   She has lost (   ) of the two pairs of earrings.\n\n   [ the smallest / smaller / the smaller ]\n\n(2) Ann looks (   ) in the red dress.\n\n   [ the most beautiful / most beautiful / the more beautiful ]\n\n５   次の日本文を英語で書きなさい。（各 11 点・計 22 点）\n\n(1)   私は２つのカメラのうち高いほうを買いたい。\n\n(2)   彼女は踊っているとき，もっとも喜びを感じる。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   My father bought (   ) of the two bags.\n\n   ① the cheapest   ② cheaper   ③ the cheaper   ④ cheapest\n\n(2)   This place is at its (   ) in summer.\n\n   ① most   ② better   ③ best   ④ good\n\n(3)   This lake is (   ) at this point.\n\n   ① the deepest   ② deepest   ③ the deeper   ④ deeper\n\n(4)   This lake is (   ) in America.\n\n   ① the deepest   ② deepest   ③ the deeper   ④ deeper",
+       "answer_text": "「比較級なのに the がつく」\n\nＡ問題\n\n１\n\n(1)   the\n\n(2)   happiest\n\n２\n\n(1)   the second youngest member\n\n(2)   the third biggest [largest] plant\n\n(3)   the fourth longest river\n\n(4)   the least difficult\n\n(5)   the least famous novel\n\n(6)   the second highest mountain\n\n(7)   the most interesting\n\n(8)   the biggest\n\n(9)   by far the best [the very best]\n\nＢ問題\n３\n(1)   the more colorful\n\n(2)   deepest\n\n   the Pacific Ocean 「太平洋」\n\n(3)   most painful\n\n(4)   the smaller\n\f４\n\n(1)   the smaller\n\n   earring   「イヤリング」\n\n(2)   most beautiful\n\n５\n\n(1)   [例] I want to buy the more expensive of the two cameras.\n\n(2)   [例] She feels most pleasure [happiest] when she is dancing.\n\nＣ問題\n\n６\n\n(1)   ③ the cheaper\n   私の父は，２つのかばんのうち安い方を買った。\n\n(2)   ③ best\n   この場所は，夏が一番よい。\n\n   ※at one’ best「(～の)最も良い状態で」\n\n(3)   ② deepest\n   この湖は，この地点が一番深い。\n\n(4)   ① the deepest\n   この湖は，アメリカで一番深い。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_023『 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_023『 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現』（演習）.pdf",
+       "q_count": 39
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n   「比 較 級 なのに the がつく」\n   「最 上 級 なのに the がつかない」表 現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私の兄は，２人の野球選手のうち背の高いほうです。\n\n   My brother is   of the two baseball players.\n\n(2)   私は２種類のコーヒーのうちマイルドのほうが好きです。\n\n   I like   of the two kinds of coffee.\n\n(3)   私は寝ている時が一番幸せだ。\n\n   I’m   when I’m sleeping.\n\n(4)   嵐は午前中が一番激しかった。\n\n   The storm was   in the morning.\n\n(5)   私は２つのモデルのうち安いほうを買った。\n\n   I bought   of the two models.\n\n(6)   私の車は，駐車場にある２台のうち大きいほうです。\n\n   My car is   of the two in the garage.\n\n(7)   瞳が，彼女の顔の中で一番美しい。\n\n   Eyes are   in her face.\n\n(8)   この朝食では，ゆで卵が一番おいしい。\n\n   A boiled egg is   in this breakfast.\n\n   406",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   23-24 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n   比較級   の the   く\n   最上級 の   the   い 表 現 ―解 答 ―\n\n１\n\n(1) the taller\n\n(2) the milder\n\n(3) happiest\n\n(4) most violent\n\n(5) the cheaper\n\n(6) the bigger\n\n(7) most beautiful\n\n(8) most delicious",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_023『 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_023『 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "較 23 24 比較\n   比較 23\n   23 24\n   24\n   練習\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   練習\n   練習\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n   次の選択肢から選びなさい。\n   次の選択肢から選びなさい。\n   「比較級なのにtheがつく」\n   「比較級なのにtheがつく」\n   「比較級なのにtheがつく」\n   「最上級なのにtheがつかない」\n   「最上級なのにtheがつかない」\n   表現\n   「最上級なのにtheがつかない」 表現\n   表現   ⑴ Nancy is⑴\n   （\n   ⑴ Nancy\n   Nancy is\n   is（\n   （   ）of the two.\n   ））of\n   of the\n   the two.\n   two.\n   次の日本文にあう英文になるように、\n   次の日本文にあう英文になるように、\n   に適する\n   次の日本文にあう英文になるように、   に適する\n   に適する\n例題   例題\n   例題   ［ the tallest\n   ［ /the\n   ［  the\n   taller\n   tallest\n   / the\n   tallest // taller\n   taller\n   taller//］\n   the taller\n   the taller ］\n   ］\n   語（句）を書きなさい。\n   語（句）を書きなさい。\n   語（句）を書きなさい。\n\n私は２匹の猫のうち、小さいほうを選んだ。\n   ⑴ 私は２匹の猫のうち、小さいほうを選んだ。\n   ⑴ 私は２匹の猫のうち、小さいほうを選んだ。\n   ⑵ This lake\n   ⑵isThis\n   ⑵  This\n   （ lake\n   lake is\n   is（\n   （   ）at this point.\n   ）at\n   ） at this\n   this point.\n   point.\n I chose the II chose\n   chose the\n   the   of the two cats.\n   of the\n   of  the two\n   two cats.\n   cats.\n   ［ the deepest\n   ［［ the\n   the\n   / deepest\n   deepest///the\n   deepest   deepest\n   deeper\n   deepest // the\n   the\n   ］ deeper\n   deeper ］\n   ］\n\nあなたがここに居てくれると、私は一番幸せよ。\n   ⑵ あなたがここに居てくれると、私は一番幸せよ。\n   ⑵ あなたがここに居てくれると、私は一番幸せよ。\n I feel   II feel\n   feel   when you are\n   when\n   here.\n   when  you are\n   you  are here.\n   here.   入試レベルにチャレンジ\n   入試レベルにチャレンジ\n   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n   次の選択肢から選びなさい。\n   次の選択肢から選びなさい。\n\n   Jack is（   Jack is\n   Jack is（\n   （   ）of the two）\n   ）boys.\n   of the\n   of the two\n   two boys.\n   boys.\n\n   ① smaller ①\n   ① smaller\n   smaller\n   ② smallest ②\n   ② smallest\n   smallest\n   ③ the smaller\n   ③ the\n   ③   the smaller\n   smaller\n   ④ the smallest\n   ④ the\n   ④  the smallest\n   smallest\n\n   omitsu Kimuraoの   mititssuu K\n   moom   Kim\n   imuurraaのの\nTom   TTom\n\n 比較級なのにtheがつく」\n   「比較級なのにtheがつく」\n   「比較級なのにtheがつく」\n 最上級なのにtheがつかない」\n   「最上級なのにtheがつかない」\n   表現\n   「最上級なのにtheがつかない」表現\n   表現\n\n① the 比較級\n   ① the\n   ① the\n   of the\n   比較級\n   比較級twoof\n   of the\n   the\n   「２つの中でより〜な」\n   two 「２つの中でより〜な」\n   two 「２つの中でより〜な」\n  〔例〕 Calol〔例〕\n   〔例〕\n   is theCalol\n   Calol\n   prettier\n   is the\n   is  the\n   of the\n   prettier\n   two of\n   prettier girls\n   of the\n   the\n   . two\n   two girls\n   girls..\n\n②「自分の中での一番」にはtheをつけない\n   ②「自分の中での一番」にはtheをつけない\n   ②「自分の中での一番」にはtheをつけない\n  〔例〕 I feel〔例〕\n   〔例〕\n   happiest\n   II feel\n   feelwhen\n   happiest\n   you are\n   happiest when\n   here.\n   when  you are\n   you are here.\n   here.\n   他と比べていない\n   他と比べていない\n   他と比べていない",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_023『 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_023『 「比較級なのにtheがつく」「最上級なのにtheがつかない」表現』（習得）.pdf",
+       "q_count": 28
+      }
+     }
+    },
+    {
+     "id": "ch08_025",
+     "num": "025",
+     "name": "最上級の重要表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-13",
+       "content": "『最上級の重要表現』\n最上級の重要表現：one of the 最上級「最も〜なものの一つ」、never … 比較級「いままでで一番〜」。"
+      },
+      {
+       "title": "概要",
+       "content": "最上級の重要表現：one of the 最上級「最も〜なものの一つ」、never … 比較級「いままでで一番〜」。\none of the 最上級\none of the 最上級 + 複数名詞\n「最も〜のひとつ」\nシグナル/特徴\n複数名詞に注意\nnever + 比較級\nI have never seen a 比較級 …\n「これほど〜なものは見たことがない」\nシグナル/特徴\n現在完了 + 比較級"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is one of the best players in the world.\n彼は世界で最高の選手の一人だ。\nI have never seen a more beautiful sunset.\nこんなに美しい夕日を見たことがない。\nIt is the most exciting game I have ever seen.\nこれまで見た中で最も興奮した試合だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\none of the 最上級 + 複数名詞\n2\nnever … 比較級 ＝ 過去最高\n3\never ＝ これまで"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_025_最上級の重要表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "第８章「比較」   得点\n\n   最上級の重要表現   100\n\nＡ問題\n１   次の   に適する語(句)を書きなさい。（各２点・計６点）\n\n①   make the most of A\n\n②   make the best of A\n\n③   最上級＋現在完了形   今まで\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 36 点）\n(1)   私の兄は，２人の野球選手のうち背の高いほうです。\n\n   My brother is   of the two baseball players.\n\n(2)   私の兄は，クラスの中で２番目に背が高い男の子です。\n\n   My brother is   in his class.\n\n(3)   私は２種類のコーヒーのうちマイルドのほうが好きです。\n\n   I like   of the two kinds of coffee.\n\n(4)   私は寝ている時が一番幸せだ。\n\n   I’m   when I’m sleeping.\n\n(5)   嵐は午前中が一番激しかった。\n\n   The storm was   in the morning.\n\n(6)   私の車は，駐車場にある２台のうち大きいほうです。\n\n   My car is   of the two in the garage.\n\n(7)   この朝食では，ゆで卵が一番おいしい。\n\n   A boiled egg is   in this breakfast.\n\n(8)   父は家族の中で３番目に早く起きます。\n\n   My father gets up   in my family.\n\f(9)   今日は今年４番目に寒い日です。\n\n   Today is   in this year.\n\n(10)   これは，この店の中でもっとも高くない時計だ。\n\n   This is   watch in this store.\n\n(11)   これは，この店で２番目に安い時計だ。\n\n   This is   watch in this store.\n\n(12)   私は，２つの時計のうち安い方を買った。\n\n   I bought   of the two watch.\n\nＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   （各４点・計 12 点）\n\n(1)   このチャンスは年に１回しか来ない，だからそれを最大限にいかすべきだ。\n\n   This chance only comes once in a year, so you\n\n   it.\n\n(2)   私の可能性を最大限にいかしてみせます。\n\n   I’ll never fail   my potential.\n\n(3)   フランスは私が今までに訪れた国の中でもっとも気に入っている国です。\n\n   France is my most favorite county among counties\n\n   .\n\f４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各４点・計 12 点）\n\n(1)   Bob is (   ) student that I have ever known.\n\n   ① clever   ② the cleverer   ③ the cleverest\n\n(2)   It is a fine day. Let’s (   ) of it.\n\n   ① make the best   ② make the most   ③ make the least\n\n(3)   What is the most exciting movie (   )?\n\n   ① that you have ever seen   ② that have you ever seen\n\n   ③ which have you ever seen\n\n５   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   I’ll make the most of this opportunity for improving my English skill.\n\n(2)   Shinjuku is the largest station that I have ever been to.\n\n(3)   He regretted not having made the most of his friend’s advice.\n\n６   次の日本文を英語で書きなさい。（各８点・計 16 点）\n\n(1)   これは私が今までに聞いた中で一番美しい歌です。\n\n(2)   トムは短い休暇を最大限にいかそうとしました。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   It is the most surprising story I (   ).\n\n   ① ever heard   ② have ever heard   ③ have never heard   ④ once heard\n\n(2)   This is our first trip to America, so we’re going to (   ) it.\n\n   ① make way for ② make off with ③ make the most of   ④ make sense of\n\n(3)   There was little time left, but she (   ) of it.\n\n   ① made the most   ② made the more   ③ made the less   ④ made the better",
+       "answer_text": "第８章「比較」\n\nＡ問題\n１\n①   make the most of A   A を最大限にいかす\n\n②   make the best of A   A でベストをつくす\n\n③   最上級＋現在完了形   今まで～した中で一番\n２\n(1)   the taller\n\n(2)   the second tallest boy\n\n(3)   the milder\n\n(4)   happiest\n\n(5)   most violent\n\n(6)   the bigger\n\n(7)   most delicious\n\n(8)   the third earliest\n\n(9)   the fourth coldest day\n\n(10)   the least expensive\n\n(11)   the second cheapest\n\n(12)   the cheaper\n\nＢ問題\n３\n(1)   should make the most of\n\n(2)   to make the most of\n\n(3)   that I have ever visited\n\f４\n\n(1)   ③ the cleverest\n(2)   ② make the most\n(3)   ① that you have ever seen\n   先行詞が最上級で修飾されているときには，\n   関係代名詞は which ではなく that を使うことが多い。\n５\n\n(1)   私は英語力を向上させるためにこの機会を最大限にいかすつもりです。\n\n(2)   新宿は私が今までに行ったことがある中で一番大きな駅です。\n\n(3)   彼は友達のアドバイスを最大限にいかせなかったことを後悔した。\n\n６\n\n(1)   [例] This is the most beautiful song that I have ever heard [listened to].\n\n(2)   [例] Tom tried to make the most of his short holidays.\n\nＣ問題\n\n７\n\n(1)   ② have ever heard\n   それは私が今まで聞いた中で，最も驚くべき話だ。\n\n(2)   ③ make the most of\n   これが初のアメリカ旅行なので，私たちは存分に楽しむつもりだ。\n\n(3)   ① made the most\n   時間はほとんど残されていなかったが，彼女は最大限にいかした。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_025『最上級の重要表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_025『最上級の重要表現』（演習）.pdf",
+       "q_count": 50
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   最上級の重要表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   あなたは自分の時間を最大限にいかすべきです。\n\n   You should make   of your time.\n\n(2)   これは私がプレーした中で一番ワクワクするゲームだ。\n\n   This is the most exciting game that   .\n\n(3)   彼は絶好の機会を最大限にいかすべきだった。\n\n   He should have made   the good chance.\n\n(4)   これは私たちが住んだ中でもっとも大きな家です。\n\n   This is the biggest house that   .\n\n(5)   これは今まで母が作った中でもっとも美味しい料理だ。\n\n   This is the most delicious dish that   .\n\n(6)   彼は私が今まで会った中で，一番良い選手だ。\n\n   He is   player that   .\n\n(7)   あなたの能力を最大限にいかすべきです。\n\n   You had better   your abilities.\n\n   410",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   25-26 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) the most\n\n(2) I have ever played\n\n(3) the most of\n\n(4) we have ever lived in\n\n(5) my mother has ever made\n\n(6) the best ／ I have ever seen [met]\n\n(7) make the most of",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_025『最上級の重要表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_025『最上級の重要表現』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ２５ ２６   練習   次の英文を日本語に訳しなさい。\n\n   最上級の重要表現   ⑴ You should make the most of this chance.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私たちはこのいいチャンスを最大限いかすべきだ。\n   ⑵ This is the most interesting book that I have ever read.\n  We should make   of this good chance.\n\n⑵ それは私が今まで見た映画の中でいちばんいい映画だ。\n   入試レベルにチャレンジ\n  This is the best movie that   .\n   正しい英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   Once you get the good chance,\n   you should（   ）of it.\n\n   ① make the best\n   ② make the most\n\n   omitsu Kimura の\n   ③ make the least\n  Tom\n\n  最上級の重要表現\n   良いチャンス\n\n  ① make the most of A 「Aを最大限にいかす」\n   （make the best of A「A（=悪い状況）でベストをつくす」）\n  ② 最上級＋現在完了形   「今まで～した中で一番」\n   〔例〕 This is the best movie that I have ever watched.",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_025『最上級の重要表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_025『最上級の重要表現』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch08_027",
+     "num": "027",
+     "name": "「同じくらい～（as ～ as）」 の表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-14",
+       "content": "『「同じくらい～（as ～ as）」 の表現』\nas 〜 as は原級比較。「同じくらい〜」を表す。最初の as は副詞、2つめは接続詞。"
+      },
+      {
+       "title": "概要",
+       "content": "as 〜 as は原級比較。「同じくらい〜」を表す。最初の as は副詞、2つめは接続詞。\nas 〜 as\nas 形容詞/副詞 as 〜\n「〜と同じくらい…」\nシグナル/特徴\n原級（変化なし）\n原級比較\nas + 形容詞 + 名詞 + as\n「同じくらい〜な…」\nシグナル/特徴\n形容詞＋名詞をはさむ"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is as tall as I (am).\n彼は私と同じくらい背が高い。\nShe is as beautiful a woman as her mother.\n彼女は母親と同じくらい美しい女性だ。\nI read as many books as he (does).\n私は彼と同じくらい多くの本を読む。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nas 形容詞/副詞 as\n2\n原級（変化なし）\n3\nas 形容詞 a 名詞 as の語順"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_027_「同じくらい～（as ～ as）」 の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 同 じ く ら い 〜 (as〜 as)」 の 表 現   100\n\nＡ問題\n１   次の英文を日本語に訳しなさい。（各２点・計８点）\n\n①   Ken is very tall.   ケンは   背が高い。\n\n②   Ken is taller than his mother.   ケンは   背が高い。\n\n③   Ken is the tallest in his family.   ケンは   背が高い。\n\n④   Ken is as tall as his father.   ケンは   背が高い。\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   あなたは自分の時間を最大限にいかすべきです。\n\n   You should make   of your time.\n\n(2)   これは私がプレーした中で一番ワクワクするゲームだ。\n\n   This is the most exciting game that   .\n\n(3)   彼は絶好の機会を最大限にいかすべきだった。\n\n   He should have made   the good chance.\n\n(4)   これは私たちが住んだ中でもっとも大きな家です。\n\n   This is   that   .\n\n(5)   これは今まで母が作った中でもっとも美味しい料理だ。\n\n   This is the most delicious dish that   .\n\n(6)   私は２つのモデルのうち安いほうを買った。\n\n   I bought   of the two models.\n\n(7)   瞳が，彼女の顔の中で一番美しい。\n\n   Eyes are   in her face.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 12 点）\n(1)   彼は私の兄と同じくらい若いです。\n\n   He is   my brother.\n\n(2)   私はユミコと同じくらいの DVD を持っている。\n\n   I have   Yumiko.\n\n(3)   サユリは姉と同じくらい上手にピアノを弾くことができる。\n\n   Sayuri plays the piano   her sister.\n\n４   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n(1)   This dictionary is as heavy as that bag.\n\n(2)   She is as talented a person as her mother.\n\n(3)   I want you to stay here as long as they stay.\n\n５   正しい英文になるように，(   )内の語(句)を並べかえなさい。（各７点・計 21 点）\n(1)   Nancy feels ( happy / princess / as / as / a ).\n\n(2)   The satellite ( the moon / located / far / as / is / as ).\n\n(3)   This morning ( cold / yesterday / as / was / as ).\n\n６   次の日本文を英語で書きなさい。（各７点・計 14 点）\n\n(1)   毎日，ボブはその先生と同じくらい早く学校に来る。\n\f(2)   アンは，彼女のお姉さんと同じくらい美しい女性です。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n\n①   as many ～\n\n②   as much ～\n\n③   like so many ～\n\n④   as good as ～   ≒ all but [almost]\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n(1)   The problem is as (   ) as solved.\n   ① much   ② soon   ③ good   ④ far\n\n(2)   I drank two cups of coffee and (   ) milk this morning.\n   ① as many   ② as much   ③ as any   ④ so many\n\n(3) Yumi always keeps her promise.\n   ＝ Yumi is always (   ).\n   ① as good as her word   ② as so many her word\n   ③ as many as her word   ④ as much as her words\n\n９   次の英文を日本語に訳しなさい。\n\n   They were swimming in the sea like so many dolphins.",
+       "answer_text": "Ａ問題\n\n１\n\n①   Ken is very tall.   ケンはとても背が高い。\n\n②   Ken is taller than his mother.   ケンはお母さんよりも背が高い。\n\n③   Ken is the tallest in his family.   ケンは家族で一番背が高い。\n\n④   Ken is as tall as his father.   ケンはお父さんと同じくらい背が高い。\n\n２\n\n(1)   the most\n\n(2)   I have ever played\n\n(3)   the most of\n\n(4)   the biggest house ／ we have ever lived in\n\n(5)   my mother has ever made\n\n(6)   the cheaper\n\n(7)   most beautiful\n\nＢ問題\n３\n(1)   as [so] young as\n\n(2)   as [so] many DVDs as\n\n(3)   as [so] well as\n\n４\n\n(1)   この辞書はあのカバンと同じくらい重い。\n\n(2)   彼女は母親と同じように才能がある人だ。\n\n(3)   私はあなた(たち)に，彼らがいるのと同じくらい長くここにいて欲しい。\n\f５\n(1)   as happy as a princess\n\n(2)   is located as far as the moon\n\n   satellite   「衛星」\n\n(3)   was as cold as yesterday\n\n６\n(1)   [例] Everyday, Bob comes to school as early as the teacher.\n\n(2)   [例] Ann is as beautiful a woman as her sister.\n\nＣ問題\n７\n①   as many ～   [先行する名詞を受けて](それと)同数の～\n\n②   as much ～   [先行する名詞を受けて](それと)同量の～\n\n③   like so many ～   さながら～のように\n\n④   as good as ～   ほとんど～も同様[同然]   ≒ all but [almost]\n８\n\n(1)   ③ good\n   その問題は解決したも同然だ。\n\n(2)   ② as much\n   私は今朝，コーヒーを２杯と，同量の牛乳を飲んだ。\n   as much ～「[先行する名詞を受けて](それと)同量の～」\n   ここでは，coffee と milk はどちらも数えられない名詞なので，\n   ① as many「[先行する名詞を受けて](それと)同数の～」は不可\n\n(3)   ① as good as her word\n   ユミはいつも約束を守る。\n\n   be as good as one’s word [promise] 「必ず約束を守る」\n９\n\n   彼らはまるでイルカのように海で泳いでいた。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_027『「同じくらい～（as ～ as）」 の表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_027『「同じくらい～（as ～ as）」 の表現』（演習）.pdf",
+       "q_count": 41
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「同じくらい〜 (as〜as) 」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   この豪華なドレスはその宝石と同じくらい高価です。\n\n   This gorgeous dress is   the jewel.\n\n(2)   ケビンはＪリーガーと同じくらい上手にサッカーができる。\n\n   Kevin can play football   a J-leaguer.\n\n(3)   彼女は，服と同じくらいたくさんの帽子を持っている。\n\n   She has   her clothes.\n\n(4)   父の頭はダイアモンドと同じくらいかたいに違いない。\n\n   My father’s head must be   a diamond.\n\n(5)   彼女は有名なダンサーと同じくらい高くジャンプができる。\n\n   She can jump   the famous dancer.\n\n(6)   彼の父親はあなたの父親と同じくらい素晴らしい人物です。\n\n   His father is   your father.\n\n(7)   この腕時計は，居間の時計と同じくらい進んでいる。\n\n   This watch is   the clock in the living room.\n\n   416",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   27-28 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   同 く い〜 (as〜as)   表現 ―解 答―\n\n１\n\n(1) as [so] expensive as\n\n(2) as [so] well as\n\n(3) as [so] many hats as\n\n(4) as [so] hard as\n\n(5) as [so] high as\n\n(6) as [so] nice a person as\n\n(7) as [so] fast as",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_027『「同じくらい～（as ～ as）」 の表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_027『「同じくらい～（as ～ as）」 の表現』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ２７ ２８   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   「同じくらい～（as ～ as）」の表現   ⑴ You are as beautiful as Venus.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ 私はあなたと同じくらいお金持ちです。\n   ⑵ He can play baseball as well as Ichiro.\n  I am   you.\n\n⑵ この建物は東京タワーと同じくらい高い。\n  This building is   Tokyo Tower.   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内の英語を並び替えなさい。\n⑶ トムは私と同じくらいの本を持っている。\n   Tom is（ nice / person / as / a / as ）his brother.\n  Tom has   I.\n\n   omitsu Kimura の\n  Tom\n\n 「同じくらい～（as ～ as）」の表現\n\n  as 形容詞（を含むカタマリ）as 「同じくらい～」\n （so）\n 〔例〕 I am as rich as you.\n   I have as many books as you.\n   イミのカタマリ",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_027『「同じくらい～（as ～ as）」 の表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_027『「同じくらい～（as ～ as）」 の表現』（習得）.pdf",
+       "q_count": 5
+      }
+     }
+    },
+    {
+     "id": "ch08_029",
+     "num": "029",
+     "name": "「～ほど…でない」の表現（not so … as ～)",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-15",
+       "content": "『「～ほど…でない」の表現（not so … as ～)』\nnot so … as 〜 ＝「〜ほど…でない」。原級比較の否定形。"
+      },
+      {
+       "title": "概要",
+       "content": "not so … as 〜 ＝「〜ほど…でない」。原級比較の否定形。\nnot so … as\nnot so 形容詞 as 〜\n「〜ほど…でない」\nシグナル/特徴\nやや堅い\nnot as … as\nnot as 形容詞 as 〜\n口語的\nシグナル/特徴\n意味は同じ"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is not so tall as his brother.\n彼は兄ほど背が高くない。\nThis book is not as interesting as that one.\nこの本はあの本ほど面白くない。\nIt's not so cold today as yesterday.\n今日は昨日ほど寒くない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nnot so/as … as ＝ ほど〜ない\n2\n比較級で書き換え可\n3\n原級比較の否定"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_029_「～ほど…でない」の表現（not so … as ～)_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 〜 ほ ど … で な い 」 の 表 現 (not so… as〜 )   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計８点）\n(1)   私はあなたと同じくらいお金持ちだ。\n\n   I am   you.\n\n(2)   私はあなたほどはお金持ちではない。\n\n   I am   you.\n\n(3)   トムは私と同じくらいの本を持っている。\n\n   Tom has   I.\n\n(4)   トムは私ほどは本を持っていない。\n\n   Tom doesn’t have   I.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 30 点）\n(1)   この豪華なドレスはその宝石と同じくらい高価です。\n\n   This gorgeous dress is   the jewel.\n\n(2)   ケビンはＪリーガーと同じくらい上手にサッカーができる。\n\n   Kevin can play football   a J-leaguer.\n\n(3)   彼女は，服と同じくらいたくさんの帽子を持っている。\n\n   She has   her clothes.\n\n(4)   父の頭はダイアモンドと同じくらいかたいに違いない。\n\n   My father’s head must be   a diamond.\n\n(5)   彼女は有名なダンサーと同じくらい高くジャンプができる。\n\n   She can jump   the famous dancer.\n\f(6)   彼の父親はあなたの父親と同じくらい素晴らしい人物です。\n\n   His father is   your father.\n\n(7)   この腕時計は，居間の時計と同じくらい進んでいる。\n\n   This watch is   the clock in the living room.\n\n(8)   彼は私が今まで会った中で，一番良い選手だ。\n\n   He is   player that   .\n\n(9)   あなたの能力を最大限にいかすべきです。\n\n   You had better   your abilities.\n\nＢ問題\n３   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n(1) Ann’s hair is not so short as mine.\n\n(2)   The singer is not so popular as before.\n\n(3)   We couldn’t arrive there as soon as we had thought.\n\n４   正しい英文になるように，(   )内の語(句)を並べかえなさい。（各８点・計 32 点）\n\n(1)   The climate of Tokyo ( not / is / cold / so / that / of / as ) Moscow.\n\n(2)   Fishing in the sea ( exciting / expected / as / I / not / so / was ).\n\n(3)   My brother is not studying ( should / math / be / hard / as / he / so ).\n\n(4)   This bag is ( are / so / the bag / as / heavy / that / you / not ) carrying now.\n\f５   次の日本文を英語で書きなさい。（９点）\n\n   私のメガネは見た目ほど高価ではありませんでした。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   This picture is not so beautiful as that one.\n\n   ＝ This picture is (   ) than that one.\n\n   ① not beautiful   ② none the less beautiful\n\n   ③ no less beautiful   ④ less beautiful\n\n(2)   This camera is (   ) mine.\n\n   ① not as expensive so   ② less expensive as\n\n   ③ not so expensive than   ④ not so expensive as\n\n７   正しい英文になるように，(   )内の語(句)を並べかえなさい。\n\n(1)   My sister works longer but doesn’t earn ( money / as / do / so / I / much ).\n\n(2)   Mayumi is ( looks / she / as / not / old / as ).",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   as [so] rich as\n\n(2)   not so rich as\n\n(3)   as [so] many books as\n\n(4)   so many books as\n\n２\n\n(1)   as [so] expensive as\n\n(2)   as [so] well as\n\n(3)   as [so] many hats as\n\n(4)   as [so] hard as\n\n(5)   as [so] high as\n\n(6)   as [so] nice a person as\n\n(7)   as [so] fast as\n\n   fast 「（時計が）進んでいる」\n\n(8)   the best ／ I have ever seen [met]\n\n(9)   make the most of\n\nＢ問題\n\n３\n\n(1)   アンの髪は，私のほど短くはない。\n\n(2)   その歌手は以前ほどの人気はない。\n\n(3)   私たちは思ったほど早くそこに着けなかった。\n\f４\n\n(1)   is not so cold as that of\n   Moscow   「モスクワ」\n(2)   was not so exciting as I expected\n\n(3)   math so hard as he should be\n\n(4)   not so heavy as the bag that you are\n\n５\n\n[例] My glasses were not so expensive as they looked.\n\nＣ問題\n\n６\n\n(1)   ④ less beautiful\n   この絵はあの絵ほど美しくはない。\n\n   ※ not so [as]＋原級＋as …「…ほど～ではない」\n   ＝ less＋原級＋than …\n\n(2)   ④ not so expensive as\n   このカメラは，私のカメラほど高くはない。\n\n７\n\n(1)   My sister works longer but doesn’t earn so much money as I do.\n   妹は私よりも長時間働いていますが，お金は私ほど稼いでいません。\n\n(2)   Mayumi is not as old as she looks.\n   マユミは，見た目ほど年をとってはいない。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_029『「～ほど…でない」の表現（not so … as ～)』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_029『「～ほど…でない」の表現（not so … as ～)』（演習）.pdf",
+       "q_count": 32
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「〜ほど…でない」の表現 (not so…as〜)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   この山は富士山ほど高くない。\n\n   This mountain is   Mt. Fuji.\n\n(2)   私の母は，サムの母親ほど若くない。\n\n   My mother is   Sam’s.\n\n(3)   私の姉は，ナンシーほどたくさんの服を持っていない。\n\n   My sister doesn’t have   Nancy.\n\n(4)   私は父ほどうまく泳げません。\n\n   I can’t swim   my father.\n\n(5)   私はジャックほど多くの言語を話せません。\n\n   I can’t speak   Jack.\n\n(6)   このカメラは見た目ほど高価ではありません。\n\n   This camera is   it looks.\n\n(7)   その婦人は見た目ほどお金持ちではなかった。\n\n   The lady was   she appeared.\n\n(8)   彼女は，母親ほど早起きをしなかった。\n\n   She didn’t get up   her mother.\n\n   420",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章  比較\n   分確認テスト   29-30 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   〜ほ …   い   表現(   …a 〜) ―解 答 ―\n\n１\n\n(1) not so high as\n\n(2) not so young as\n\n(3) so many clothes as\n\n(4) so well as\n\n(5) so many languages as\n\n(6) not so expensive as\n\n(7) not so rich as\n\n(8) so early as",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_029『「～ほど…でない」の表現（not so … as ～)』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_029『「～ほど…でない」の表現（not so … as ～)』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ２９ ３０   練習   次の英文を日本語に訳しなさい。\n\n「～ほど…でない」の表現（not so…as ～）   ⑴ I can’t play the piano so well as Carol.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ この建物は東京タワーほど高くない。\n   ⑵ This car is not so expensive as that.\n  This building is   Tokyo Tower.\n\n⑵ 私はあなたほどはお金持ちではない。\n  I am   you.\n   入試レベルにチャレンジ\n   次の英文を日本語に訳しなさい。\n⑶ トムは私ほどは本を持っていない。\n  Tom doesn’t have   I.   Jack is not so young as he looks.\n\n   omitsu Kimura の\n  Tom\n\n 「～ほど…でない」の表現（not so…as ～）\n\n  not so … as ～   「～ほど…でない」\n 〔例〕 I am not so rich as you.\n   I don’t have so many books as you.",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_029『「～ほど…でない」の表現（not so … as ～)』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_029『「～ほど…でない」の表現（not so … as ～)』（習得）.pdf",
+       "q_count": 5
+      }
+     }
+    },
+    {
+     "id": "ch08_031",
+     "num": "031",
+     "name": "倍数の表し方（twice as … as ～ など）",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-16",
+       "content": "『倍数の表し方（twice as … as ～ など）』\n倍数表現は「twice / 3 times / half + as 〜 as」を使う。"
+      },
+      {
+       "title": "概要",
+       "content": "倍数表現は「twice / 3 times / half + as 〜 as」を使う。\n倍数 + as 〜 as\ntwice as 形容詞 as\n「〜の2倍…」\nシグナル/特徴\ntwice / three times\n倍数表現\nhalf as 形容詞 as\n「〜の半分…」\nシグナル/特徴\nhalf + as"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "This box is twice as heavy as that one.\nこの箱はあの箱の2倍重い。\nHe has three times as many books as I.\n彼は私の3倍多く本を持っている。\nShe is half as old as her father.\n彼女は父の半分の年齢だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\ntwice / 3 times + as 〜 as\n2\nhalf + as 〜 as\n3\n倍数は最初に置く"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_031_倍数の表し方（twice as … as ～ など）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "第８章「比較」   得点\n\n   倍 数 の 表 し 方 (twice as… as〜 な ど )   100\n\nＡ問題\n１   次の日本語を英語にしなさい。（各３点・計 12 点）\n\n①   ～と同じくらい…だ\n\n②   ～の２倍…だ\n\n③   ～の３倍…だ\n\n④   ～の４倍…だ\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 24 点）\n(1)   この山は富士山ほど高くない。\n   This mountain is   Mt. Fuji.\n\n(2)   私の母は，サムの母親と同じくらい若い。\n\n   My mother is   Sam’s.\n\n(3)   私の母は，サムの母親ほど若くない。\n\n   My mother is   Sam’s.\n\n(4)   私の姉は，ナンシーと同じくらいの服を持っている。\n\n   My sister   Nancy.\n\n(5)   私の姉は，ナンシーほどたくさんの服を持っていない。\n\n   My sister   Nancy.\n\n(6)   私は父ほどうまく泳げません。\n\n   I can’t swim   my father.\n\n(7)   その婦人は見た目ほどお金持ちではなかった。\n\n   The lady was   she appeared.\n\n(8)   彼女は，母親ほど早起きをしなかった。\n\n   She didn’t get up   her mother.\n\fＢ問題\n\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 12 点）\n(1)   私の弁当箱はあなたのと比べて２倍大きい。\n\n   My lunch box   yours.\n\n(2)   この電池はあの電池と比べて４倍長持ちする。\n\n   This battery lasts   .\n\n(3)   この建物は隣の建物と比べて３倍多くの人を収容できます。\n\n   This building can accommodate\n\n   the next one.\n\n４   次の日本文にあう英文になるように， (   )内にあてはまる語(句)を選択肢から\n   選びなさい。（各５点・計 10 点）\n\n(1)   私たちは彼のグループと比べて３倍の数の缶を集めた。\n\n   We collected (   ) as his group did.\n\n   ① three times cans   ② three times many cans\n\n   ③ three times as many cans   ④ three times as much cans\n\n(2)   私の町の陸上競技場は，国立競技場の約半分の大きさです。\n\n   The athletics stadium in my city is (   ) as the national\n\n   stadium.\n\n   ① about half as large   ② about half large\n\n   ③ half about as large   ④ as about half large\n\f５   次の英文を日本語に訳しなさい。（各８点・計 24 点）\n\n(1)   He ate twice as many hamburgers as you did.\n\n(2)   My brother knows more than ten times as many English words as I do.\n\n(3)   This route is half as long as the one you planed.\n\n６   次の日本文を英語で書きなさい。（各９点・計 18 点）\n\n(1)   この車は，他の車と比べて２倍の速さで走ることができる。\n\n(2)   私は，あなたと比べて半分のページを読みました。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   次の日本語を英語に，英語を日本語にしなさい。\n\n＜倍数表現：分数・小数＞\n\n①   ～の２分の１…だ\n\n②   ～の３分の１…だ\n\n③   ～の３分の２…だ\n\n④   ～の４分の１…だ\n\n⑤   ～の４分の３…だ\n\n⑥   ～の 1.5 倍…だ\n\f＜名詞を使った倍数表現＞\n\n   times the 名詞 of ～   ＝   times as … as ～\n\n ①   three times the size of ～   ～の３倍大きい\n＝   three times as   as ～\n\n②   four times the weight of ～   ～の４倍\n\n＝   four times as   as ～\n\n③   five times the length of ～\n\n＝   five times as   as ～\n\n④   twice the speed of ～\n\n＝   twice as   as ～\n\n⑤   one-tenth the height of ～\n\n＝   one-tenth as   as ～\n\n⑥   two thirds the depth of ～\n\n＝   two thirds as   as ～\n\n⑦   ten times the amount of ～\n\n＝   ten times as   as ～\n\n⑧   one and a half times the number of ～\n\n＝   one and a half times as   as ～\n\n(2)   次の２つの英文がほぼ同じ意味になるように，   に適する語(句)を書きなさい。\n\n①   私の部屋は弟の部屋の２倍の大きさだ。\n\n   My room is   my brother’s one.\n\n   My brother’s room is   mine.\n\n②   この山はあの山の３倍の高さがある。\n\n   This mountain is   that one.\n\n   This mountain is   of that one.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   He has (   ) that I have.\n\n   ① twice the number of DVDs   ② twice numbers of DVDs\n\n   ③ twice as many as DVD   ④ as twice many DVDs as\n\n(2)   Japan is (   ) Germany.\n\n   ① about large as   ② about the size of\n\n   ③ about as larger as   ④ about size of\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   Our school ground is twice   1   this soccer field.\n   〈08 年追試〉\n   ① as large as   ② as the size of   ③ larger than   ④ more the size of",
+       "answer_text": "倍 数 の 表 し 方 (twice as… as〜 な ど ) ― 解 答 ―\n\nＡ問題\n１\n①   ～と同じくらい…だ   as … as ～\n\n②   ～の２倍…だ   twice as … as ～\n\n③   ～の３倍…だ   three times as … as ～\n\n④   ～の４倍…だ   four times as … as ～\n２\n(1)   not so high as\n\n(2)   as [so] young as\n\n(3)   not so young as\n\n(4)   has as [so] many clothes as\n\n(5)   doesn’t have so many clothes as\n\n(6)   so well as\n\n(7)   not so rich as\n\n(8)   so early as\n\nＢ問題\n３\n(1)   is twice as big as\n\n(2)   four times as long as that one\n\n(3)   three times as many people as\n   accommodate 「（人を）収容できる」\n４\n\n(1)   ③ three times as many cans\n(2)   ① about half as large\n\f５\n\n(1)   彼はあなたの２倍，ハンバーガーを食べました。\n\n(2)   兄[弟]は，私より 10 倍以上多くの英単語を知っています。\n\n(3)   このルートは，あなたが計画したものと比べて半分の長さだ。\n\n   route   「ルート，道筋」\n\n６\n\n(1)   [例] This car can run twice as fast as the others [other cars].\n\n(2)   [例] I read half as many pages as you did.\n\nＣ問題\n\n７\n\n(1)\n\n＜倍数表現：分数・小数＞\n\n①   ～の２分の１…だ   half as … as ～\n\n②   ～の３分の１…だ   one third [one-third] as … as ～\n\n③   ～の３分の２…だ   two thirds [two-thirds] as … as ～\n\n④   ～の４分の１…だ   a quarter as … as ～\n\n⑤   ～の４分の３…だ   three quarters as … as ～\n\n⑥   ～の 1.5 倍…だ   one and a half times as … as ～\n\n＜名詞を使った倍数表現＞\n ①   three times the size of ～   ～の３倍大きい\n＝   three times as big as ～\n\n②   four times the weight of ～   ～の４倍重い\n\n＝   four times as heavy as ～\n\n③   five times the length of ～   ～の５倍長い\n\n＝   five times as long as ～\n\f④   twice the speed of ～   ～の２倍速い\n\n＝   twice as fast as ～\n\n⑤   one-tenth the height of ～   ～の 10 分の１の高さ\n\n＝   one-tenth as high as ～\n\n⑥   two thirds the depth of ～   ～の３分の２の深さ\n\n＝   two thirds as deep as ～\n\n⑦   ten times the amount of ～   ～の 10 倍[量が]多い\n\n＝   ten times as much as ～\n\n⑧   one and a half times the number of ～   ～の 1.5 倍[数が]多い\n\n＝   one and a half times as many as ～\n\n(2)\n\n①   My room is twice as large as my brother’s one.\n\n   My brother’s room is half as large as mine.\n\n②   This mountain is three times as high as that one.\n\n   This mountain is three times the height of that one.\n\n８\n\n(1)   ① twice the number of DVDs\n   彼は，私の２倍の数の DVD を持っている。\n\n(2)   ② about the size of\n   日本はドイツとほぼ同じ大きさです。\n   Japan is about the size of Germany. ＝ Japan is about as large as Germany.\n９\n\n   ① as large as\n   私たちの学校のグラウンドはこのサッカー場の２倍の広さだ。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_031『倍数の表し方（twice as … as ～ など）』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_031『倍数の表し方（twice as … as ～ など）』（演習）.pdf",
+       "q_count": 64
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   倍数の表し方 (twice as…as〜)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   トムの足は一番下の弟と比べて２倍大きい。\n\n   Tom’s feet are   his youngest brother’s.\n\n(2)   １人の走者は，もう１人の走者より３倍長く走らなければなりません。\n\n   One runner has to   another runner.\n\n(3)   この部屋は私の部屋よりも４倍広い。\n\n   This room is   mine.\n\n(4)   ナンシーは私の２倍の   さで本を読んでいます。\n\n   Nancy reads the book   I do.\n\n(5)   私のスマートフォンは父のものと比べて半分の軽さです。\n\n   My smartphone is   my father’s.\n\n(6)   この水泳用プールは子供用プールと比べて３倍の深さです。\n\n   This swimming pool is   the pool for children.\n\n(7)   その国立公園は，東京ドームの約 100 倍の大きさだそうです。\n\n   The national park is said to be about one\n\n   Tokyo Dome.\n\n   424",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   31-32習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   倍数   表 方 (twice as…as〜) ―解 答―\n\n１\n\n(1) twice as big [large] as\n\n(2) three times as long as\n\n(3) four times as large [wide] as\n\n(4) twice as fast as\n\n(5) half as light as\n\n(6) three times as deep as\n\n(7) hundred times as large as",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_031『倍数の表し方（twice as … as ～ など）』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_031『倍数の表し方（twice as … as ～ など）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ３１ ３２   練習   次の英文を日本語に訳しなさい。\n\n   倍数の表し方（twice as…as ～など）   ⑴ This road is three times as wide as that.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ この建物は東京タワーの２倍の高さだ。\n   ⑵ This tree is half as tall as that.\n  This building is   Tokyo Tower.\n\n⑵ 新しい教室は、昔よりも３倍広い。\n  The new classroom is   \t\t   入試レベルにチャレンジ\n  the old one.\n   次の日本文にあう英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   トムは私の５倍の切手を収集している。\n   Tom has collected（   ）as I have.\n\n   ① five times stamps\n   ② five times many stamps\n   ③ five times as many stamps\n   ④ five times as much stamps\n\n   omitsu Kimura の\n  Tom\n\n  倍数の表し方（twice as…as ～など）\n\n 「～の２倍…だ」twice as … as ～\n 「～の３倍…だ」three times as … as ～\n 「～の４倍…だ」four times as … as ～",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_031『倍数の表し方（twice as … as ～ など）』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_031『倍数の表し方（twice as … as ～ など）』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch08_033",
+     "num": "033",
+     "name": "強調のas … as",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-17",
+       "content": "『強調のas … as』\nas … as ever / as … as any は「だれにも劣らず…」と最上級的に強調する。"
+      },
+      {
+       "title": "概要",
+       "content": "as … as ever / as … as any は「だれにも劣らず…」と最上級的に強調する。\nas … as ever\nas 形容詞 as ever lived\n「これまでの誰にも劣らず〜」\nシグナル/特徴\n歴史的最上級\nas … as any\nas 形容詞 as any 〜\n「どの〜にも劣らず…」\nシグナル/特徴\n比較対象を限定"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is as great a scientist as ever lived.\n彼はかつてないほど偉大な科学者だ。\nShe is as kind as any person I know.\n彼女は私が知る誰にも劣らず親切だ。\nHe is as smart as anyone in the class.\n彼はクラスの誰にも劣らず賢い。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nas … as ever lived ＝ 歴史的最上級\n2\nas … as any ＝ 誰にも劣らず\n3\n原級で最上級的意味"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_033_強調のas … as_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "強 調 の as… as   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各３点・計９点）\n\n①   as many as ～\n\n②   as often as ～\n\n③   as early as ～\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 21 点）\n\n(1)   トムの足は一番下の弟と比べて２倍大きい。\n\n   Tom’s feet are   his youngest brother’s.\n\n(2)   １人の走者は，もう１人の走者より３倍長く走らなければなりません。\n\n   One runner has to run   another runner.\n\n(3)   この部屋は私の部屋よりも４倍広い。\n\n   This room is   mine.\n\n(4)   その国立公園は，東京ドームの約 100 倍の大きさだそうです。\n\n   The national park is said to be about one\n\n   Tokyo Dome.\n\n(5)   このカメラは見た目ほど高価ではありません。\n\n   This camera is   it looks.\n\n(6)   私はジャックと同じくらい多くの言語を話せます。\n\n   I   Jack.\n\n(7)   私はジャックほど多くの言語を話せません。\n\n   I   Jack.\n\fＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各５点・計 15 点）\n(1)   彼女は去年 20 回もその国を訪れた。\n\n   She visited the country   twenty times last year.\n\n(2)   その部屋には，100 人もの人がいた。\n\n   There were   one hundred people in the room.\n\n(3)   この寺は早くも７世紀に建てられた。\n\n   This temple was built in   7th century.\n\n４   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各７点・計 21 点）\n\n(1)   There are (   ) one thousand of paintings in this museum.\n\n   [ as many as / as much as ]\n\n(2)   She usually pays (   ) 1500 yen for lunch.\n\n   [ as many as / as much as ]\n\n(3)   The war began in (   ) sixteenth century.\n\n   [ as soon as / as early as ]\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各８点・計 16 点）\n\n(1)   私の姉は 20 足もの靴を持っている。\n   My sister ( of / as / twenty / as / shoes / many / pairs / has ).\n\n(2)   私たちはこの畑で毎年 10 トンのジャガイモを生産している。\n   We ( as / as / of / produce / potatoes / much / in / 10 tons / the farm ) every year.\n\f６   次の日本文を英語で書きなさい。（各９点・計 18 点）\n\n(1)   ナンシーは週に５回も泳ぎに行っている。\n\n(2)   メアリーが日本に来てから２年もたちました。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英語を日本語にしなさい。\n\n①   as much as ～\n\n②   as recently as ～\n\n③   as few as ～\n\n④   as little as ～\n\n⑤   as 原級 as ever lived ～\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   She is as great a writer (   ).\n\n   ① as has never lived   ② who never lived\n\n   ③ than has ever lived   ④ as ever lived\n\n(2)   “Mariko moved to Osaka long time ago, didn’t she?”\n\n   “No, it was (   ) last year. ”\n\n   ① as early as   ② early as   ③ as recently as   ④ recently as\n\f(3)   They are paid (   ) eight thousand yen per hour.\n\n   ① as many as   ② as much as   ③ as often as   ④ as early as\n\n(4)   Ken reads as many books (   ) in his class.\n\n   ① than anybody   ② so anybody   ③ as nobody   ④ as anybody\n\n(5) As (   ) as 15 students passed the exam.\n\n   ① few   ② little   ③ small   ④ much\n\n９ 〈センター試験にチャレンジ〉   1   に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   This morning the weather was fine, so I walked as   1   as the park.\n   〈06 年本試〉\n\n   ① far ② well   ③ good   ④ long",
+       "answer_text": "Ａ問題\n\n１\n\n①   as many as ～   ～もの多くの\n\n②   as often as ～   ～ほど何回も\n\n③   as early as ～   早くも～に\n\n２\n\n(1)   twice as big [large] as\n\n(2)   three times as long as\n\n(3)   four times as large [wide] as\n\n(4)   hundred times as large as\n\n(5)   not so expensive as\n\n(6)   can speak as [so] many languages as\n\n(7)   can’t speak so many languages as\n\nＢ問題\n３\n(1)   as often as\n\n(2)   as many as\n\n(3)   as early as\n\n４\n(1)   as many as\n\n(2)   as much as\n\n(3)   as early as\n\f５\n\n(1)   has as many as twenty pairs of shoes\n\n(2)   produce as much as 10 tons of potatoes in the farm\n\n６\n\n(1)   [例] Nancy goes swimming as often as five times a week.\n\n(2)   [例] As many as two years have passed since Mary came to Japan.\n\nＣ問題\n\n７\n\n①   as much as ～   ～もの多くの\n\n②   as recently as ～   つい～(ほどの最近に)\n\n③   as few as ～   わずか～の／～しか…ない\n\n④   as little as ～   わずか～の／～しか…ない\n\n   ※as many [few] as ～は「数」，as much [little] as ～は「量」を強調する\n\n⑤   as 原級 as ever lived ～   今までにないほど…／並外れて…\n\n８\n\n(1)   ④ as ever lived\n   彼女は並外れて偉大な作家である。\n\n(2)   ③ as recently as\n   「マリコが大阪に引っ越したのは，ずいぶん前のことだよね。」\n   「いや，つい去年のことだよ。」\n\n(3)   ② as much as\n   彼らは時給８千円ももらっている。\n\n(4)   ④ as anybody\n   ケンはクラスの誰にも劣らないほど，たくさんの本を読む。\n\f(5)   ① few\n   その試験に合格した生徒は，わずか 15 人だった。\n   as few as ～「わずか～の／～しか…ない」は，数えられる名詞に使う\n   as little as ～「わずか～の／～しか…ない」は，数えられない名詞に使う\n   ここでは，students が数えられる名詞なので，② little は不可\n\n９\n\n   ① far\n   今朝は天気がよかったので，公園まで歩いた。",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_033『強調のas … as』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_033『強調のas … as』（演習）.pdf",
+       "q_count": 56
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   強調の as…as\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼女は昨日５冊も本を読んだ。\n\n   She read   five books yesterday.\n\n(2)   アンは今月２度もその美術館を訪れた。\n\n   Ann visited the museum   twice in this month.\n\n(3)   トムは早くも６時にそこについた。\n\n   Tom has arrived there at   six o’clock.\n\n(4)   このディスクの中には 250 枚もの写真が入っています。\n\n   There are   250 photos in this disc.\n\n(5)   彼は早くも 25 歳で大きな家を買った。\n\n   He bought a large house   twenty five years old.\n\n(6)   父は夜４回も目を覚ました。\n\n   My father woke up   four times at night.\n\n(7)   300 人もの負傷者が病院に運ばれた。\n\n   three hundred injured people were brought to the\n\n   hospital.\n\n(8)   １回のシャワーには，50 リットルもの水が使われます。\n\n   fifty liters of water will be used for a shower.\n\n   428",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   33-34習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) as many as\n\n(2) as often as\n\n(3) as early as\n\n(4) as many as\n\n(5) as early as\n\n(6) as often as\n\n(7) As many as\n\n(8) As much as",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_033『強調のas … as』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_033『強調のas … as』（習熟）.pdf",
+       "q_count": 8
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ３３ ３４   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   強調のas…as   ⑴ There are（   ）one hundred students\n\n 例題\n   次の日本文にあう英文になるように、   に適する   in the classroom.\n   語（句）を書きなさい。\n   ［ as many as / as much as ］\n⑴ トムは５か国語も話すことができます。\n  Tom can speak   five languages.\n   ⑵ He visited Kyoto（   ）ten times last year.\n\n⑵ 彼女が病気になってから２年もたちました。   ［ as many as / as often as ］\n\n   two years have passed since she fell ill.\n   ⑶ This castle was built in（   ）11th century.\n\n   ［ as soon as / as early as ］\n\n   入試レベルにチャレンジ\n   次の日本文にあう英文になるように、カッコ内にあてはまる言葉を\n   次の選択肢から選びなさい。\n\n   トムは１時間に100ドルも使った。\n   Tom spent（   ）100 dollars in an hour.\n\n   omitsu Kimura の\n  Tom   ① as many as   ② as much as   ③ as well as\n\n  強調のas…as\n\n  ・as many as ～ 「～もの多くの」\n  ・as often as ～ 「～ほど何回も」\n  ・as early as ～ 「早くも～に」",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_033『強調のas … as』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_033『強調のas … as』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch08_035",
+     "num": "035",
+     "name": "「できるだけ～」の表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-18",
+       "content": "『「できるだけ～」の表現』\n「できるだけ〜」は as … as possible / as … as one can で表す。"
+      },
+      {
+       "title": "概要",
+       "content": "「できるだけ〜」は as … as possible / as … as one can で表す。\nas … as possible\nas 形容詞/副詞 as possible\n「できるだけ〜」\nシグナル/特徴\n客観的\nas … as S can\nas 形容詞/副詞 as S can\n「できるだけ〜」\nシグナル/特徴\n主語の能力"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Run as fast as possible.\nできるだけ速く走れ。\nI will help you as much as I can.\nできるだけ手伝います。\nSpeak as clearly as you can.\nできるだけはっきり話してください。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nas … as possible\n2\nas … as S can\n3\n意味は同じ"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_035_「できるだけ～」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「できるだけ〜」の表現   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計６点）\n\n   できるだけ早くここに来てください。\n\n   Please come here   possible.\n\n   Please come here   you can.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 28 点）\n\n(1)   彼女は昨日５冊も本を読んだ。\n\n   She read   five books yesterday.\n\n(2)   アンは今月２度もその美術館を訪れた。\n\n   Ann visited the museum   twice in this month.\n\n(3)   トムは早くも６時にそこについた。\n\n   Tom arrived there at   six o’clock.\n\n(4)   300 人もの負傷者が病院に運ばれた。\n\n   three hundred injured people were brought to the\n\n   hospital.\n\n(5)   ナンシーは私の２倍の速さで本を読んでいます。\n\n   Nancy reads the book   I do.\n\n(6)   私のスマートフォンは父のものと比べて半分の軽さです。\n\n   My smartphone is   my father’s.\n\n(7)   この水泳用プールは子供用プールと比べて３倍の深さです。\n\n   This swimming pool is   the pool for children.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各８点・計 16 点）\n\n(1)   I packed my suitcase (   ).\n\n   ① as tight as I can   ② as tight as I could   ③ as tight as I possible\n\n(2)   Nancy’s father ordered her to make contact with him (   ).\n\n   ① as often as she possible   ② as often as he possible\n\n   ③ as often as possible\n\n４   次の英文を日本語に訳しなさい。（各 10 点・計 30 点）\n\n(1) You had better make up your mind as carefully as possible.\n\n(2)   Let’s talk about this matter as calmly as we can.\n\n(3)   I am looking forward to seeing you as soon as possible.\n\n５   次の日本文を，as…as を用いて２通りの英語で書きなさい。（各５点・計 20 点）\n\n(1)   私はできるだけ速く駅に歩いて行った。\n\n(2)   彼はできるだけ多くの本を読むべきだ。\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   Ken saved (   ) he could to visit his grandfather in London.\n\n   ① money as a lot as   ② as a lot of money as\n\n   ③ as much money as   ④ money as possible as\n\n(2)   Drive (   ).\n\n   ① as carefully as you can   ② as carefully as you possible\n\n   ③ as carefully so you can   ④ so carefully as you possible\n\n(3)   I killed (   ) at the library because I didn’t want to go home.\n\n   ① many time as we killed   ② as much as time\n\n   ③ as much time as possible   ④ time as much as possible",
+       "answer_text": "Ａ問題\n１\n   Please come here as soon as possible.\n\n   Please come here as soon as you can.\n\n２\n\n(1)   as many as\n\n(2)   as often as\n\n(3)   as early as\n\n(4) As many as\n\n(5)   twice as fast as\n\n(6)   half as light as\n\n(7)   three times as deep as\n\nＢ問題\n\n３\n\n(1)   ② as tight as I could\n(2)   ③ as often as possible\n\n４\n\n(1)   あなたはできるだけ慎重に決断したほうがいい。\n\n   make up one’s mind 「決断する」\n\n(2)   この件についてできるだけ冷静に話し合いましょう。\n\n(3)   できるだけ早くあなたに会えることを楽しみにしています。\n\f５\n\n(1)   [例] I walked to the station as fast as possible.\n\n   I walked to the station as fast as I could.\n\n(2)   [例] He should read as many books as possible.\n\n   He should read as many books as he can.\n\nＣ問題\n６\n\n(1)   ③ as much money as\n   ケンはロンドンの祖父を訪ねるため，できるだけたくさんのお金を貯めた。\n\n(2)   ① as carefully as you can\n   できるだけ注意深く運転をしなさい。\n\n(3)   ③ as much time as possible\n   私は家に帰りたくなかったので，図書館でできる限りの時間をつぶした。\n   kill time 「時間をつぶす」",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_035『「できるだけ～」の表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_035『「できるだけ～」の表現』（演習）.pdf",
+       "q_count": 35
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「できるだけ〜」の表現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   あなたはできるだけ早く電子メールに返信するべきです。\n\n   You should reply the e-mail   possible.\n\n   You should reply the e-mail   you can.\n\n(2)   あなたはできるだけ多くの人と会わなければなりません。\n\n   You must meet   you can.\n\n(3)   できるだけ明確に質問に答えてください。\n\n   Please answer the question   possible.\n\n(4)   彼はできるだけ広くヨーロッパを旅した。\n\n   He traveled in Europe   he could.\n\n(5)   できるだけゆっくり話してくださいますか。\n\n   Would you speak   you can?\n\n(6)   その鳥は雨の中をできるだけ低く飛んだ。\n\n   The bird flew in the rain   possible.\n\n   432",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   35-36習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n１\n\n(1) as soon as\n\n   as soon as\n\n(2) as many people as\n\n(3) as clearly as\n\n(4) as widely as\n\n(5) as slowly as\n\n(6) as low as",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_035『「できるだけ～」の表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_035『「できるだけ～」の表現』（習熟）.pdf",
+       "q_count": 6
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 35 36   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   「できるだけ〜」の表現   ⑴ Please come here as soon as possible.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ できるだけ早く駅にむかって。\n   ⑵ Read as many books as you can.\n  Go to the station   possible.\n\n⑵ できるだけ多くの本を読むべきだ。\n  You should read   you can.   入試レベルにチャレンジ\n   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   Nancy drove the car（   ）.\n\n   ① as carefully as she can\n   ② as carefully as she could\n   ③ as carefully as she possible\n\n   omitsu Kimura の\n  Tom\n\n 「できるだけ〜」の表現\n\n   as 〜 as possible   ª\n   ¨「できるだけ〜」\n   =as 〜 as S can\n   〔例〕 Please come here as soon as possible.\n   ¨\n   ª Please come here as soon as you can.",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_035『「できるだけ～」の表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_035『「できるだけ～」の表現』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch08_037",
+     "num": "037",
+     "name": "「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-19",
+       "content": "『「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現』\n「A というよりむしろ B」は not so much A as B / B rather than A の2通り。"
+      },
+      {
+       "title": "概要",
+       "content": "「A というよりむしろ B」は not so much A as B / B rather than A の2通り。\nnot so much A as B\nnot so much A as B\n「A というよりむしろ B」\nシグナル/特徴\nB が真\nB rather than A\nB rather than A\n「A よりむしろ B」\nシグナル/特徴\nB を前面に"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is not so much a scholar as a writer.\n彼は学者というよりむしろ作家だ。\nShe is a teacher rather than a doctor.\n彼女は医者というより教師だ。\nNot so much intelligence as effort matters.\n頭の良さというよりむしろ努力が大事だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nnot so much A as B ＝ A より B\n2\nB rather than A\n3\nB が前に出る"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_037_「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 A と い う よ り は む し ろ B」 の 表 現\n   (not so much A as B / B rather than A)   100\n\nＡ問題\n１   次の英語を日本語にしなさい。（各２点・計４点）\n\n①   not so much A as B\n\n②   B rather than A\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 30 点）\n\n(1)   あなたはできるだけ早く電子メールに返信するべきです。\n\n   You should reply the e-mail   possible.\n\n   You should reply the e-mail   you can.\n\n(2)   できるだけ明確に質問に答えてください。\n\n   Please answer the question   possible.\n\n(3)   彼はできるだけ広くヨーロッパを旅した。\n\n   He traveled in Europe   he   .\n\n(4)   できるだけゆっくり話してくださいますか。\n\n   Would you speak   can?\n\n(5)   このディスクの中には 250 枚もの写真が入っています。\n\n   There are   250 photos in this disc.\n\n(6)   彼は早くも 25 歳で大きな家を買った。\n\n   He bought a large house   twenty five years old.\n\n(7)   父は昨晩４回も目を覚ました。\n\n   My father woke up   four times last night.\n\n(8)   １回のシャワーには，50 リットルもの水が使われます。\n\n   fifty liters of water will be used for a shower.\n\fＢ問題\n\n３   (   )内にあてはまる語(句)を次の選択肢から選びなさい。（各６点・計 12 点）\n\n(1)   She is unfriendly (   ) quiet.\n\n   ① rather   ② not so much than   ③ rather than\n\n(2)   The story of this movie is (   ) a tragedy as a comedy.\n\n   ① not very much   ② not so much   ③ so not much\n\n４   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1)   The man said it was not so much wine as water.\n\n(2)   They were soldiers rather than policemen.\n\n(3)   This dictionary is essential rather than useful.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各８点・計 16 点）\n\n(1)   グリーン先生は，私たちの先生というよりお姉さんだ。\n   Ms. Green ( not / as / our teacher / so / much / our sister / is ).\n\n(2)   ブラウン氏は，学者というよりむしろ哲学者だった。\n   Mr. Brown ( than / a philosopher / rather / was / a scholar ).\n\f６   次の日本文を，２通りの英語で書きなさい。（各 5 点・計 20 点）\n\n(1)   彼女は，作家というよりはむしろ政治家だ。\n\n(2)   これは，携帯電話というよりはむしろコンピューターだ。\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の問いに答えなさい。\n\n(1)   次の日本語を英語にしなさい。\n\n①   A というよりはむしろ B   not so   A as B\n\n   B   than A\n\n   B than A\n\n②   A と同様に B も   A as   as B\n\n   A   B\n\n(2)   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n   トムは賢いというよりはずる賢い。\n\n   Tom is   wise   crafty.\n\n   Tom is crafty   wise.\n\n   Tom is   crafty   wise.\n\f８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   This problem is not (   ) food problem as environmental problem.\n   ① so many   ② so little   ③ so much   ④ very much\n\n(2)   I'd (   ) walk than wait for a bus.\n   ① better   ② further   ③ either   ④ rather\n\n(3)   She cannot (   ) write her own name in English.\n   ① any more than   ② any less than\n   ③ so much as   ④ more than\n\n(4)   Her husband went out (   ) so much as saying goodbye to her.\n   ① nothing   ② without   ③ doing   ④ even\n\n(5)   He as well as I (   ) interested in the subject.\n   ① am   ② is   ③ are   ④ be\n\n(6)   Not only I but also he (   ) interested in the subject.\n   ① am   ② is   ③ are   ④ be\n\n９ 〈センター試験にチャレンジ〉 1 に入れるのに最も適当なものを，下の①～④から\n   一つ選べ。\n\n   “What are your plans for the summer?”\n   “I think I’ll go to Okinawa this year 1   Hokkaido.”\n   〈10 年追試〉\n\n   ① for a change   ② in case of   ③ in spite of ④ rather than",
+       "answer_text": "「 A と い う よ り は む し ろ B」 の 表 現\n   (not so much A as B / B rather th an A) ― 解 答 ―\n\nＡ問題\n\n１\n\n①   not so much A as B   A というよりはむしろ B\n\n②   B rather than A   A というよりはむしろ B\n\n２\n\n(1)   as soon as\n\n   as soon as\n\n(2)   as clearly as\n\n(3)   as widely as ／ could\n\n(4)   as slowly as you\n\n(5)   as many as\n\n(6)   as early as\n\n(7)   as often as\n\n(8)   As much as\n\nＢ問題\n３\n\n(1)   ③ rather than\n(2)   ② not so much\n\n４\n\n(1)   その男は，それはワインというよりは水だと言った。\n\n(2)   彼らは警官というよりむしろ兵士だった。\n   soldier 「兵士」\n(3)   この辞書は，有用というよりむしろ必須のものだ。\n\f５\n\n(1)   is not so much our teacher as our sister\n\n(2)   was a philosopher rather than a scholar\n\n６\n\n(1)   [例] She is a writer not so much as a politician.\n\n   She is a politician rather than a writer.\n\n(2)   [例] This is not so much a cellphone as a computer.\n\n   This is a computer rather than a cellphone.\n\nＣ問題\n\n７\n\n(1)\n\n①   A というよりはむしろ B   not so much A as B\n\n   B rather than A\n\n   more B than A\n\n②   A と同様に B も   A as well as B\n\n   not only A but also B\n\n(2)\n\n   Tom is not so much wise as crafty.\n\n   Tom is crafty rather than wise.\n\n   Tom is more crafty than wise.\n\f８\n\n(1)   ③ so much\n   この問題は，食糧問題というよりも環境問題だ。\n\n(2)   ④ rather\n   私はバスを待つよりもむしろ歩きたい。\n   ※would rather A than B 「B よりもむしろ A したい」\n\n(3)   ③ so much as\n   彼女は英語で自分の名前さえ書くことができない。\n   ※cannot so much as do   「～さえできない」\n\n(4)   ② without\n   彼女の夫は，彼女にさよならとさえ言わないまま出かけた。\n   ※without so much as doing「～さえもしないで」\n\n(5)   ② is\n   私だけではなく彼も，その科目に興味がある。\n   ※A as well as B が主語になる場合，動詞は A にあわせる\n\n(6)   ② is\n   私だけではなく彼も，その科目に興味がある。\n\n９\n\n   ④ rather than\n   「夏のあなたの計画はどうなの？」\n   「今年は北海道よりむしろ沖縄に行こうと思っているよ。」\n   for a change 「気分転換に」\n   in case of 「～の場合には」\n   in spite of 「～にもかかわらず」",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_037『「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_037『「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現』（演習）.pdf",
+       "q_count": 65
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n   「A というよりはむしろ B」の表 現\n   (not so much A as B / B rather than A)\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   彼女は作家というよりはジャーナリストだ。\n\n   She is not so   a writer as a journalist.\n\n   She is a journalist   than a writer.\n\n(2)   私は，問題なのは私たちの対戦相手というより私たちのチームワークだと思います。\n\n   I think the problem is our teamwork   our opponent.\n\n   I think the problem is   our opponent\n\n   our teamwork.\n\n(3)   ジョンソン先生は，私たちの先生というよりお兄さんだ。\n\n   Mr. Johnson   our teacher   our brother.\n\n(4)   それはパンというよりは石だった。\n\n   That   than bread.\n\n(5)   この観点からすると，ペンギンは鳥というより魚だ。\n\n   Penguin is   a fish from this point of view.\n\n   436",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章  比較\n   分確認テスト   37-38 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n   A   いう   む ろB   表現\n   (not so much A as B / B rather than A) ―解 答 ―\n\n１\n\n(1) much\n\n   rather\n\n(2) rather than\n\n   not so much ／ as\n\n(3) is not so much ／ as\n\n(4) was a stone rather\n\n(5) not so much a bird as",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_037『「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_037『「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現』（習熟）.pdf",
+       "q_count": 5
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 37 38   練習   次の英文を日本語に訳しなさい。\n\n「AというよりはむしろB」\n   （ notBsorather\n   much A as B /\n   than A   ）の表現\n   ⑴ This is not so much a novel as a poem.\n   次の日本文にあう英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ この本は小説というよりノンフィクションだ。\n   ⑵ He is a realist rather than a romantist.\n  This book is not so   a novel\n  as a nonfiction.\n\n⑵ 彼女は女優というよりは歌手だ。   入試レベルにチャレンジ\n  She is a singer   than an actress.   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n   He is（   ）an athlete as a comedian.\n\n   ① not very much\n   ② not so much\n   ③ not so many\n\n   omitsu Kimura の\n  Tom\n\n 「AというよりはむしろB」の表現\n\n  not so much A as B「Aというよりは むしろB 」\n （= B rather than A）\n 〔例〕 He is not so much a teacher as a comedian .\n   =He is a comedian rather than a teacher.",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_037『「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_037『「AというよりはむしろB（not so much A as B ／ B rather than A）」の表現』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    },
+    {
+     "id": "ch08_039",
+     "num": "039",
+     "name": "「Nothing is ～」「No other … is ～」で始まる比較表現",
+     "slides": [
+      {
+       "title": "第08章 比較 / 8-20",
+       "content": "『「Nothing is ～」「No other … is ～」で始まる比較表現』\nNothing is 〜 / No other 〜 is … で始める文は、原級・比較級でも最上級的意味を表す。"
+      },
+      {
+       "title": "概要",
+       "content": "Nothing is 〜 / No other 〜 is … で始める文は、原級・比較級でも最上級的意味を表す。\nNothing is …\nNothing is 比較級 than X\n「X より〜なものはない」\nシグナル/特徴\n最上級的\nNo other 〜 is …\nNo other 〜 is as 原級 as X\n「X ほど〜なものはない」\nシグナル/特徴\n原級でも最上級的"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "Nothing is more important than health.\n健康より大切なものはない。\nNo other mountain in Japan is as high as Mt. Fuji.\n日本で富士山ほど高い山はない。\nNo one runs faster than Tom.\nトムより速く走る人はいない。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nNothing is + 比較級\n2\nNo other + 名詞 + as 原級 as\n3\n否定 + 比較／原級 ＝ 最上級"
+      }
+     ],
+     "pptx_path": "../第08章/成果物/第08章_039_「Nothing is ～」「No other … is ～」で始まる比較表現_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "「 Nothing is〜 」「 No other… is〜 」 で 始 ま る 比 較 表 現   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計４点）\n   時は人生でもっとも貴重だ。\n\n   Time is the most precious thing in life.\n   Nothing is   as time in life.\n\n   Nothing is   than time in life.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各３点・計 33 点）\n(1)   彼女は作家というよりはジャーナリストだ。\n\n   She is not so   a writer as a journalist.\n\n   She is a journalist   than a writer.\n\n(2)   私は，問題なのは私たちの対戦相手というより私たちのチームワークだと思います。\n\n   I think the problem is our teamwork   our opponent.\n\n   I think the problem is   our opponent\n\n   our teamwork.\n\n(3)   ジョンソン先生は，私たちの先生というよりお兄さんだ。\n\n   Mr. Johnson   our teacher   our brother.\n\n(4)   この観点からすると，ペンギンは鳥というより魚だ。\n\n   Penguin is   a fish from this point of view.\n\n(5)   あなたはできるだけ多くの人と会わなければなりません。\n\n   You must meet   you   .\n\n(6)   その鳥は雨の中をできるだけ低く飛んだ。\n\n   The bird flew in the rain   possible.\n\fＢ問題\n\n３   次の英文と同じ意味を表す英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計 16 点）\n(1)   Honshu is the largest island in Japan.\n\n   → No other island in Japan is   Honshu.\n\n   → No other island in Japan is   Honshu.\n\n(2)   The Japanese history is the most interesting to me.\n\n   → Nothing is   the Japanese history to me.\n\n   → Nothing is   the Japanese history to me.\n\n４   次の英文と同じ意味を表す英文を選択肢から選びなさい。（各５点・計 10 点）\n\n(1)   No other person is so kind as my grandmother.\n\n   ① My grandmother is the kindest person of all.\n\n   ② There is a person more kind than my grandmother.\n\n   ③ My grandmother is not so kind as other person.\n\n(2)   No other food is more delicious than curry that my mother makes.\n\n   ① Curry that my mother makes is not such a delicious food.\n\n   ② There is food more delicious than curry that my mother makes.\n\n   ③ Curry that my mother makes is the most delicious of all foods.\n\n５   次の英文を日本語に訳しなさい。（各７点・計 21 点）\n\n(1)   For a man, nothing is so difficult as woman’s mind.\n\n(2)   No other planet is bigger than Jupiter.\n\n(3)   Nothing is more terrible than his behavior.\n\f６   次の日本文を，(   )内の指示に従って英語で書きなさい。（各８点・計 16 点）\n\n(1)   世界中で彼よりも有名な選手はいません。(more を用いて)\n\n(2)   ダイアモンドと同じくらいかたいものはない。(so を用いて)\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n７   次の英文と同じ意味を表す英文になるように，   に適する語(句)を書きなさい。\n\n   Nature is the most beautiful of all things.\n\n   → Nothing is   as nature.\n\n   → Nothing is   than nature.\n\n   → There is   as nature.\n\n   → There is   than nature.\n\n   → Nature is   than   else.\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   No other city is larger than Tokyo in Japan.\n\n   ＝ Tokyo is larger than (   ) other city in Japan.\n\n   ① a   ② no   ③ some   ④ any\n\n(2)   Friendship is more important than any other thing.\n\n   ＝ (   ) is more important than friendship.\n\n   ① Something   ② Anything   ③ Nothing   ④ Anybody\n\f(3)   He is a more successful entrepreneur than (   ) I’ve ever known.\n\n   ① no one   ② anyone   ③ each one   ④ everyone\n\n(4)   Sayuri is taller than (   ) in her class.\n\n   ① every other girl   ② all the other girl\n\n   ③ any other girls   ④ any other girl\n\n(5) At (   ) time in my life have I been happier than I am today.\n\n   ① some   ② other   ③ no   ④ any\n\n９ 〈センター試験にチャレンジ〉次の問いの会話の   において，二人目の発言が最\n   も適当な応答となるように文を作るには，(A)と(B)をどのように選んで組み合わせれ\n   ばよいか，下の①～⑧のうちから一つ選べ。\n\n   George：Sometimes I feel that I am not a very good musician.\n   Robin：Come on!\n   〈16 年本試〉\n   (A) No one is   (A) more talented   (A) in all the other people.\n   (B) You are   (B) the most talented   (B) than you.\n\n   ①   (A)→(A)→(A)   ② (A)→(A)→(B)   ③   (A)→(B)→(A)\n   ④   (A)→(B)→(B)   ⑤ (B)→(A)→(A)   ⑥   (B)→(A)→(B)\n   ⑦   (B)→(B)→(A)   ⑧ (B)→(B)→(B)",
+       "answer_text": "Ａ問題\n\n１\n\n   時は人生でもっとも貴重だ。\n\n   Time is the most precious thing in life.\n\n   Nothing is so precious as time in life.\n\n   Nothing is more precious than time in life.\n\n２\n\n(1)   much\n\n   rather\n\n(2)   rather than\n\n   not so much ／ as\n\n(3)   is not so much ／ as\n\n(4)   not so much a bird as\n\n(5)   as many people as ／ can\n\n(6)   as low as\n\nＢ問題\n\n３\n\n(1)   [順不同] larger than\n\n   so large as\n\n(2)   [順不同] more interesting than\n\n   so interesting as\n\f４\n\n(1)   ① My mother is the kindest person of all.\n(2)   ③ Curry that my mother makes is the most delicious of all foods.\n\n５\n\n(1)   男性にとって，女心ほど難しいものはない。\n\n(2)   木星より大きい惑星はない。\n\n   Jupiter 「木星」\n\n(3)   彼のふるまいよりひどいものはない。\n\n６\n\n(1)   [例] No other player in the world is more famous than he.\n\n(2)   [例] Nothing is so hard as diamond.\n\nＣ問題\n\n７\n\n   Nothing is so beautiful as nature.\n\n   Nothing is more beautiful than nature.\n\n   There is nothing so beautiful as nature.\n\n   There is nothing more beautiful than nature.\n\n   Nature is more beautiful than anything else.\n\n   ※There is nothing so [as] ＋ 原級 ＋ as A   「A ほど～なものはない」\n   There is nothing ＋ 比較級 ＋ than A   「A より～なものはない」\n\n   ※A is 比較級 + than any other 単数名詞   「A は他のどんな…よりも～だ」\n   anybody [anyone] else   「A は他のどんな人よりも～だ」\n   anything else   「A は他のどんなものよりも～だ」\n\f８\n\n(1)   ④ any\n   日本で東京よりも大きな都市はない。\n\n(2)   ③ Nothing\n   友情よりも大切なものはない。\n\n(3)   ② anyone\n   彼は，私が知っている誰よりも成功した企業家だ。\n\n(4)   ④ any other girl\n   サユリはクラスの中で一番背が高い女の子だ。\n\n(5)   ③ no\n   私の人生で，今日より幸せなときはなかった。\n   ※否定の副詞句が文頭にきているので，\n   have I been の部分は倒置が起こっていることにも注意\n\n９\n   ② (A)→(A)→(B)\n   No one is more talented than you.\n\n   ジョージ「時々，僕は自分があまりよいミュージシャンでない気がするんだ。」\n   ロビン「何言ってるんだ！君より才能がある人なんていないよ。」",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_039『「Nothing is ～」「No other … is ～」で始まる比較表現』（演習）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_039『「Nothing is ～」「No other … is ～」で始まる比較表現』（演習）.pdf",
+       "q_count": 56
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "8 章「比較」   第８章「比較」\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   「Nothing is〜」「No other…is〜」で始 まる比 較 表 現\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   ナンシーの笑顔はすべてのものの中でもっとも魅力的だ。\n\n   Nancy’s smile is the   of all things.\n\n   → Nothing is   as Nancy’s smile.\n\n   → Nothing is   than Nancy’s smile.\n\n(2)   東京スカイツリーは日本で一番高い塔だ。\n\n   The Tokyo Skytree is the   tower in Japan.\n\n   → No other tower in Japan is   as the Tokyo Skytree.\n\n   → No other tower in Japan is   than the Tokyo Skytree.\n\n(3)   命と同じくらい貴重なものはない。\n\n   Nothing is   as our lives.\n\n   440",
+       "answer_text": "文法  8章通常学習編\n   比較 第８章 比較\n   分確認テスト   39-40習熟プリント\n――――――――――――――――――――――――――――――――――――――――――\n\n   Nothing is〜   No other…is〜   始ま   比 較 表 現 ―解 答 ―\n\n１\n\n(1) most attractive [charming]\n\n   so attractive [charming]\n\n   more attractive [charming]\n\n(2) highest\n\n   so high\n\n   higher\n\n(3) so precious",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_039『「Nothing is ～」「No other … is ～」で始まる比較表現』（習熟）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_039『「Nothing is ～」「No other … is ～」で始まる比較表現』（習熟）.pdf",
+       "q_count": 3
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "比較 ３９ ４０   練習   カッコ内にあてはまる言葉を次の選択肢から選びなさい。\n\n「Nothing is～」\n   「No other…is～」で始まる比較表現\n   ⑴ Nothing is so important as friendship in life.\n   次の英文と同じ意味を表す英文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ Nature is the most beautiful of all things.\n   ⑵ No other city is larger than Tokyo in Japan.\n   →Nothing is   as nature.\n   →Nothing is   than nature.\n\n⑵ Mt. Fuji is the highest mountain in Japan.\n   →No other mountain in Japan is   as Mt. Fuji.   入試レベルにチャレンジ\n\n   →No other mountain in Japan is   than Mt. Fuji.   同じ意味を表す英文を選びなさい。\n\n   Nothing is so important as health.\n\n   ① Health is not such a important thing.\n   ② There is nothing so important than health.\n   ③ Health is the most important of all things.\n\n   omitsu Kimura の\n  Tom\n\n 「Nothing is～」\n   「No other…is～」で始まる比較表現\n\n 〔例〕 時は人生でもっとも貴重だ\n   Time is the most precious thing in life.\n   ⎧ = Nothing is so precious as time in life.\n   ⎩ = Nothing is more precious than time in life.",
+       "answer_text": "",
+       "problem_pdf": "../第08章/問題_h_eng_gra_08_039『「Nothing is ～」「No other … is ～」で始まる比較表現』（習得）.pdf",
+       "answer_pdf": "../第08章/解答_h_eng_gra_08_039『「Nothing is ～」「No other … is ～」で始まる比較表現』（習得）.pdf",
+       "q_count": 7
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

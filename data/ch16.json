@@ -1,0 +1,416 @@
+{
+ "meta": {
+  "version": "3.0",
+  "passMark": 85
+ },
+ "chapters": [
+  {
+   "id": "ch16",
+   "num": 16,
+   "title": "文の構造",
+   "color": "#5e35b1",
+   "items": [
+    {
+     "id": "ch16_001",
+     "num": "001",
+     "name": "品詞について",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-1",
+       "content": "『品詞について』\n品詞は「単語の役割の分類」。名詞・代名詞・動詞・形容詞・副詞・前置詞・接続詞・冠詞・間投詞の9つ。"
+      },
+      {
+       "title": "概要",
+       "content": "品詞は「単語の役割の分類」。名詞・代名詞・動詞・形容詞・副詞・前置詞・接続詞・冠詞・間投詞の9つ。\n主な品詞\n名詞 / 動詞 / 形容詞 / 副詞\n文を組み立てる中核\nシグナル/特徴\n意味のある語\n役割\n前置詞 / 接続詞 / 冠詞\n関係や働きを示す\nシグナル/特徴\n機能語"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He (代) reads (動) a (冠) book (名).\n彼は本を読む。\nThe (冠) book (名) on (前) the (冠) desk (名) is (動) mine (代).\n机の上の本は私のだ。\nI (代) am (動) a (冠) student (名).\n私は学生だ。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n品詞 ＝ 単語の分類\n2\n9つの品詞\n3\n役割で見分ける"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_001_品詞について_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "品詞について   100\n\nＡ問題\n\n１   次の英文の下線部が名詞・動詞・形容詞・副詞のどの働きをしているか答えなさい。\n   （各２点・計４点）\n   私は恋愛映画がとても好きだ。\n   I   like   romantic   movies   very much.\n\n   名詞   (   )   形容詞   (   )   副詞\n\n２   次の英文の下線部が名詞・動詞・形容詞・副詞のどの働きをしているか答えなさい。\n   （各２点・計 18 点）\n\n(1)   My brother bought a new book.\n   (   )\n\n(2)   Tom is a famous writer.\n   (   )\n\n(3)   Kaori can play the piano very well.\n   (   ) (   )\n\n(4)   His sister looks sad.\n   (   )\n\n(5)   Mariko and Ken went to the museum.\n   (   )\n\n(6)   I was reading a book in my room.\n   (   )   (   )\n\n(7)   She lived in Tokyo when she was young.\n   (   )\n\fＢ問題\n\n３   次の英文とほぼ同じ意味の英文になるように，   に適する語(句)を書きなさい。\n   （各４点・計８点）\n\n(例) Jane works hard.   ( hard = 副詞 )\n\n   Jane is a hard worker. ( hard = 形容詞 )\n\n(1)   Bob runs fast.\n\n   Bob is a   .\n\n(2)   Mary gets up early.\n\n   Mary is an   .\n\n４   次の英文の下線部が名詞・動詞・形容詞・副詞のどの働きをしているか答えなさい。\n   （各 10 点・計 70 点）\n\n(1)   Jack ①is playing ②baseball ③with his friends.\n   ①(   )   ②(   )   ③(   )\n\n(2)   Those boys looked ①tired ②yesterday morning.\n\n   ①(   )   ②(   )\n\n(3)   David ①cannot write any kanji ②yet.\n\n   ①(   )   ②(   )\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の英文の下線部が名詞・動詞・形容詞・副詞のどの働きをしているか答えなさい。\n   また，英文を日本語に訳しなさい。\n(1)   ① I woke up in the early morning.\n   (   )\n\n   ② I got up early in the morning.\n   (   )\n\n(2)   ① I’ll book a direct flight to London.\n   (   )\n\n   ② I have never read such an interesting book.\n   (   )\n\n(3)   ① Tom was sitting close to his father.\n   (   )\n\n   ② Ann is my close friend.\n   (   )\n\n   ③ Would you close the window?\n   (   )\n\f(4)   ① You have to call her right now.\n   (   )\n\n   ② Everyone has the right to work.\n   (   )\n\n   ③ We managed to right our ship.\n   (   )\n\n   ④ If you have a question, please raise your right hand.\n   (   )",
+       "answer_text": "Ａ問題\n\n１\n\n   I   like   romantic   movies   very much.\n\n   名詞   動詞   形容詞   名詞   副詞\n\n２\n\n(1)   名詞\n\n(2)   形容詞\n\n(3)   動詞 ／ 副詞\n\n(4)   形容詞\n\n(5)   名詞\n\n(6)   動詞 ／ 副詞\n\n(7)   副詞\n\nＢ問題\n\n３\n\n(1)   fast runner\n\n(2)   early riser\n\n   early riser 「早起きの人」\n\n４\n\n(1)   ①動詞   ②名詞   ③副詞\n\n(2)   ①形容詞   ②形容詞\n\n(3)   ①動詞   ②副詞\n\fＣ問題\n\n５\n\n(1)   ①形容詞\n\n   私は早朝に目覚めた。\n\n   ②副詞\n\n   私は朝早くに起きた。\n\n(2)   ①動詞\n\n   ロンドン行への直行便を予約しようと思います。\n\n   ②副詞\n\n   私はこれまで，こんなに面白い本を読んだことがありません。\n\n(3)   ①副詞\n\n   トムは父親の近くに座っていました。\n\n   ②形容詞\n\n   アンは私の親友です。\n\n   ③動詞\n\n   窓を閉めていただけませんか。\n\n(4)   ①副詞\n\n   あなたは今すぐに彼女に電話しなければなりません。\n\n   ②名詞\n\n   誰もがみな，勤労の権利をもっている。\n\n   ③動詞\n\n   私たちはなんとか船を立て直した。\n\n   ④形容詞\n\n   もし質問があれば，右手を挙げて下さい。",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_001『品詞について』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_001『品詞について』（演習）.pdf",
+       "q_count": 41
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "16 章「５文型」 第16章「５文型」   1,2 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   品詞について\n\n１   次の英文の下線部が名詞・動詞・形容詞・副詞のどの働きをしているか答えなさい。\n\n(1) Ms. Smith is a friendly English teacher.\n   (   )\n\n(2) They are known as beautiful mountains.\n   (   )\n\n(3) It is unfortunate that all the tickets were sold out.\n   (   )\n\n(4) Obviously, this method must be effective.\n   (   )\n\n(5) I missed the seven o’clock bus this morning.\n   (   )\n\n(6) I was absent from school yesterday because I had a high fever.\n   (   )\n\n(7) My sister likes to read comic books.\n   (   )\n\n   908",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\n   品詞について －解 答－\n\n１\n\n(1) 名詞\n\n(2) 形容詞\n\n(3) 形容詞\n\n(4) 副詞\n\n(5) 動詞\n\n(6) 副詞\n\n(7) 名詞",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_001『品詞について』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_001『品詞について』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 1 2   練習\n   次の文の下線部が、名詞・動詞・形容詞・副詞の\n   どの働きをしているか答えなさい。\n   品詞について   ⑴ Bob and his sons went to the park.\n   次の文の下線部が、名詞・動詞・形容詞・副詞の\n 例題\n   どの働きをしているか答えなさい。\n\n⑴ Nancy is a famous musician.   ⑵ My brother looks happy.\n\n⑵ My mother bought a map.   ⑶ Tom was playing the guitar in his room.\n\n⑶ Tom can run very fast.   入試レベルにチャレンジ\n   次の文の下線部が、名詞・動詞・形容詞・副詞の\n   どの働きをしているか答えなさい。\n\n   He lived in New York when he was young.\n\n   omitsu Kimura の\n  Tom\n\n  品詞について\n\n 〔例〕 私は恋愛映画がとても好きだ\n\n   I   like romantic movies very much.\n  名詞 動詞   形容詞   名詞   副詞",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_001『品詞について』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_001『品詞について』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch16_003",
+     "num": "003",
+     "name": "文の要素（主語、目的語、補語、修飾語）",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-2",
+       "content": "『文の要素（主語、目的語、補語、修飾語）』\n文の要素は S（主語）／V（動詞）／O（目的語）／C（補語）／M（修飾語）。"
+      },
+      {
+       "title": "概要",
+       "content": "文の要素は S（主語）／V（動詞）／O（目的語）／C（補語）／M（修飾語）。\nS / V / O / C\nS V O C\n「誰が／する／何を／何だ」\nシグナル/特徴\n文の中核\nM（修飾語）\nM ＝ 修飾語\n副詞・前置詞句など\nシグナル/特徴\n省いても文が成立"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He (S) loves (V) music (O).\n彼は音楽を愛する。\nShe (S) is (V) happy (C).\n彼女は幸せだ。\nHe (S) studies (V) hard (M).\n彼は熱心に勉強する。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nS/V/O/C ＝ 文の中核\n2\nM ＝ 修飾語\n3\n省ける語が修飾語"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_003_文の要素（主語、目的語、補語、修飾語）_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "文の要素（主語、目的語、補語、修飾語）   100\n\nＡ問題\n１   次の   にあてはまるものを，主語・目的語・補語・修飾語から選んで書きなさい。\n   （各２点・計８点）\n   (S)   「～が／～は」   名詞\n\n   (O)   「～を／～に」   名詞\n\n   (C)   「～だ／～である」   名詞／形容詞\n\n   (M)   意味をつけ加える   形容詞／副詞\n\n２   次の英文の下線部が名詞・動詞・形容詞・副詞のどの働きをしているか答えなさい。\n   （各２点・計 14 点）\n\n(1)   Ms. Smith is a friendly English teacher.\n   (   )\n\n(2)   They are known as beautiful mountains.\n   (   )\n\n(3)   It is unfortunate that all the tickets were sold out.\n   (   )\n\n(4)   Obviously, this method must be effective.\n   (   )\n\n(5)   I missed the seven o’clock bus this morning.\n   (   )\n\n(6)   I was absent from school yesterday because I had a high fever.\n   (   )\n\n(7)   My sister likes to read comic books.\n   (   )\n\fＢ問題\n\n３   次の英文の下線部が主語(S)，目的語(O)，補語(C), 修飾語(M)のどれにあたるかを\n   答えなさい。（各５点・計 30 点）\n\n(1)   ①   Kevin has been studying ②Japanese history ③very hard.\n\n   ①(   ) ②(   ) ③(   )\n\n(2)   ①   Tokyo is ②the largest city ③in Japan.\n\n   ①(   ) ②(   ) ③(   )\n\n４   次の英文の目的語(O)もしくは補語(C)に下線を引き，また，その要素も答えなさい。\n   （各８点・計 48 点）\n\n(1)   Lucky is my dog. I walk it every morning.\n\n   (   )   (   )\n\n(2)   Tom visited Kyoto last month. He saw his friends there.\n\n   (   )   (   )\n\n(3)   That woman is sixty years old. However, she looks young.\n\n   (   )   (   )\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の英文の下線部が主語(S)，目的語(O)，補語(C), 修飾語(M)のどれにあたるかを\n   答えなさい。また，英文を日本語に訳しなさい。\n\n(1)   ① I can’t stand the smell.\n   (   )\n\n   ② He was standing there.\n   (   )\n\n(2)   ① Mr. Sasaki entered the classroom.\n   (   )\n\n   ② Mr. Sasaki go into the classroom.\n   (   )\n\n(3)   She resembles her grandmother.\n   (   )\n\n(4)   ① Tom gave a new bag to me.\n   (   )\n\n   ② Tom gave me a new bag.\n   (   )\n\f(5)   My sister calls me Ken.\n\n   (   )\n\n(6)   ① Yuki is the girl playing tennis.\n   (   )\n\n   ② Playing tennis is fun.\n   (   )\n\n(7)   In her twenties, she lived in London.\n   (   )   (   )\n\n(8) Yuki has a brother who lives in London.\n   (   )",
+       "answer_text": "Ａ問題\n\n１\n\n   主語   (S)   「～が／～は」   名詞\n\n   目的語   (O)   「～を／～に」   名詞\n\n   補語   (C)   「～だ／～である」   名詞／形容詞\n\n   修飾語   (M)   意味をつけ加える   形容詞／副詞\n\n２\n\n(1)   名詞\n\n(2)   形容詞\n\n(3)   形容詞\n\n(4)   副詞\n\n(5)   動詞\n\n(6)   副詞\n\n(7)   名詞\n\nＢ問題\n３\n(1)   ①主語(S)   ②目的語(O)   ③修飾語(M)\n\n(2)   ①主語(S)   ②補語(C)   ③修飾語(M)\n\n４\n\n(1)   my dog 補語(C) ／   it 目的語(O)\n\n(2)   Kyoto 目的語(O) ／   his friends 目的語(O)\n\n(3)   sixty years old 補語(C) ／   young 補語(C)\n\fＣ問題\n\n５\n\n(1)   ①目的語(O)\n\n   私はそのにおいに耐えられません。\n   ここでの stand は他動詞で，「～を我慢する，～に耐える」という意味。\n   後ろに目的語が必要。\n   ②修飾語(M)\n\n   彼はそこに立っていました。\n\n   ここでの stand は自動詞で，「立つ」という意味。\n\n(2)   ①目的語(O)\n\n   佐々木先生は教室に入りました。\n\n   補語(C)ではなく目的語(O)。\n\n   ②修飾語(M)\n\n   佐々木先生は教室に入りました。\n\n   enter ＝ go into\n\n(3)   目的語(O)\n\n   彼女は祖母に似ています。\n\n   補語(C)ではなく目的語(O)。resemble は「～に似ている」という意味の他動詞。\n\n(4)   ①修飾語(M)\n\n   トムは私に新しいかばんをくれました。\n\n   ②目的語(O)\n\n   トムは私に新しいかばんをくれました。\n\n(5)   補語(C)\n\n   私の姉[妹]は，私をケンと呼びます。\n\n   ここでは，me が目的語(O)，Ken は補語(C)\n\f(6)   ①修飾語(M)\n\n   テニスをしている女の子がユキです。\n\n   ここでの playing tennis は現在分詞で，「テニスをしている」という意味\n\n   ②主語(S)\n\n   テニスをすることは楽しいです。\n\n   ここでの playing tennis は動名詞で，「テニスをすること」という意味\n\n(7)   修飾語(M) ／   修飾語(M)\n\n   20 代の頃，彼女はロンドンに住んでいました。\n\n(8)   修飾語(M)\n\n   ユキには，ロンドンに住んでいる兄がいます。",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_003『文の要素（主語、目的語、補語、修飾語）』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_003『文の要素（主語、目的語、補語、修飾語）』（演習）.pdf",
+       "q_count": 40
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "16 章「５文型」 第16章「５文型」   3,4 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   文の要素（主語，目的語，補語，修飾語）\n\n１   次の英文の下線部が，主語(S)，目的語(O)，補語(C)，修飾語(M)のうちのどの要素に\n   あたるかを答えなさい。\n\n(1) It is getting dark outside.\n   (   )\n\n(2) Playing tennis is a lot of fun.\n   (   )\n\n(3) Those tomatoes have turned red.\n   (   )\n\n(4) Judy brought up her nephew instead of her sister.\n   (   )\n\n(5) I want to have a cup of coffee.\n   (   )\n\n(6) Kevin is the fastest runner of the four.\n   (   )\n\n(7) The doctor told me to take medicine after meals.\n   (   )\n\n   912",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\n文 の要 素 （主 語 ，目 的 語 ，補 語 ，修 飾 語 ） －解 答 －\n\n１\n\n(1) 補語(C)\n\n(2) 主語(S)\n\n(3) 補語(C)\n\n(4) 目的語(O)\n\n(5) 目的語(O)\n\n(6) 修飾語(M)\n\n(7) 補語(C)",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_003『文の要素（主語、目的語、補語、修飾語）』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_003『文の要素（主語、目的語、補語、修飾語）』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 ３ ４   練習   各文の指示に従って、当てはまる語（句）に下線を引きなさい。\n\n   文の要素（主語、目的語、補語、修飾語）   ⑴ We cleaned our classroom.   （Oのカタマリ）\n\n 例題   次の英文の目的語（O）か補語（C）を抜き出しなさい。\n\n⑴ ナンシーは背が高い。   ⑵ To play football is a lot of fun.   （Sのカタマリ）\n Nancy is tall.\n\n   ⑶ If it rains tomorrow, the game will be canceled.（Mのカタマリ）\n⑵ 彼は、先月新しい車を買いました。\n He bought a new car last month.\n   入試レベルにチャレンジ\n   次の英文を、日本語に訳しなさい。\n\n   Tom said to me that he was hungry.\n\n   omitsu Kimura の\n Tom\n\n 文の要素\n\n 主語（S）\t\t   「～が/～は」名詞\n 目的語（O） 「～を/～に」名詞\n 補語（C）\t\t   「～だ/～である」名詞 / 形容詞\n 修飾語（M） 意味をつけ加える   形容詞 / 副詞",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_003『文の要素（主語、目的語、補語、修飾語）』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_003『文の要素（主語、目的語、補語、修飾語）』（習得）.pdf",
+       "q_count": 5
+      }
+     }
+    },
+    {
+     "id": "ch16_005",
+     "num": "005",
+     "name": "５文型とは？",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-3",
+       "content": "『５文型とは？』\n5 文型は SV / SVC / SVO / SVOO / SVOC。すべての英文はこの5つに分類できる。"
+      },
+      {
+       "title": "概要",
+       "content": "5 文型は SV / SVC / SVO / SVOO / SVOC。すべての英文はこの5つに分類できる。\n5つの基本文型\nSV / SVC / SVO\n1〜3文型\nシグナル/特徴\n目的語0〜1個\n意味の違い\nSVOO / SVOC\n4〜5文型\nシグナル/特徴\n目的語2個 or O+C"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He runs. (SV)\n彼は走る。\nHe is happy. (SVC)\n彼は幸せだ。\nHe reads books. (SVO)\n彼は本を読む。\nHe gave me a book. (SVOO)\n彼は私に本をくれた。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\n5文型に分類\n2\n目的語の数で見分け\n3\n文型を理解すると訳せる"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_005_５文型とは？_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "５文型とは︖   100\n\nＡ問題\n１   次の文型をそれぞれ，S，V，O，C を用いて表しなさい。（各２点・計８点）\n\n①   第１文型   SV\n\n②   第２文型\n\n③   第３文型\n\n④   第４文型\n\n⑤   第５文型\n\n２   次の問いに答えなさい。\n\n(1)   次の英文の下線部が，主語(S)，目的語(O)，補語(C)，修飾語(M)のうちの\n   どの要素にあたるかを答えなさい。（各２点・計 14 点）\n①   It is getting dark outside.\n   (   )\n\n②   Playing tennis is a lot of fun.\n   (   )\n\n③   Those tomatoes have turned red.\n   (   )\n\n④   Judy brought up her nephew instead of her sister.\n   (   )\n\n⑤   I want to have a cup of coffee.\n   (   )\n\n⑥   Kevin is the fastest runner of the four.\n   (   )\n\n⑦   The doctor told me to take medicine after meals.\n   (   )\n\f(2)   次の英文の下線部が，主語(S)，動詞(V)，目的語(O)，補語(C)，修飾語(M)の\n   うちのどの要素にあたるかを，例にならって答えなさい。（各２点・計 38 点）\n   [例]   This book   was   interesting.\n   (S)   (V)   (C)\n\n①   He   smiled   at me.\n   (   ) (   )   (   )\n\n②   My sister   looks   sad.\n   (   )   (   )   (   )\n\n③   Yuki   plays   tennis every Monday.\n   (   ) (   )   (   ) (   )\n\n④   Saori   gave   me   this bag   yesterday.\n   (   ) (   )   (   ) (   )   (   )\n\n⑤   My friends   call   me   Ken.\n   (   )   (   )   (   )   (   )\n\nＢ問題\n３   次の英文と同じ文型の英文を選択肢から選びなさい。（各８点・計 16 点）\n\n(1) Akemi has a large vocabulary in English.\n\n   ① I had my hair cut yesterday.\n\n   ② Jack had a high fever last night.\n\n   ③ My father bought me an interesting book.\n\n(2)   Bob felt tired after the match.\n\n   ① Mary always looks happy.\n\n   ② I wanted a glass of water.\n\n   ③ The news of the accident made us sad.\n\f４   次の日本文にあう英文になるように，(  )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各８点・計 24 点）\n\n(1)   私は雨の日は駅までバスで行く。\n   ( go / a / take / on / the station / I / bus / to / rainy / by ) day.\n\n(2)   ナンシーは私に彼女のメールアドレスを教えてくれた。\n   Nancy ( for / her / me / address / told / e-mail ).\n\n(3)   私たちは祖母の名前にちなんで，その犬にモモと名づけた。\n   ( our dog / we / after / is / named / Momo ) our grandmother.\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   例にならって，次の英文の主語(S)，動詞(V)，目的語(O)，補語(C)，修飾語(M)を\n   下に書き入れなさい。また，その文が第何文型かを答えなさい。（各４点・計 24 点）\n\n(例) Jane bought her daughter a picture book.   第   ４   文型\n   S   V   O   O\n\n(1)   ① My father made me lunch.   第   文型\n\n   ② That news made us happy.   第   文型\n\n(2)   ① Ms. Green and I often disagree.   第   文型\n\n   ② Ms. Green opposed my suggestion.   第   文型\n\n(3)   ① Ann sold her used books for 1,000 yen.   第   文型\n\n   ② His books always sell well.   第   文型\n\f(4)   ① He was running at the park then.   第   文型\n\n   ② My grandparents run their own restaurant.   第   文型\n\n(5)   ① The last train has left.   第   文型\n\n   ② I left the window open.   第   文型\n\n(6)   ① My brother likes to play the violin.   第   文型\n\n   ② To solve this problem seems difficult.   第   文型\n\n   ③ I went to Tokushima to join the famous festival.   第   文型\n\n   ④ Her dream is to be a scientist.   第   文型",
+       "answer_text": "Ａ問題\n\n１\n\n①   第１文型   SV\n\n②   第２文型   SVC\n\n③   第３文型   SVO\n\n④   第４文型   SVOO\n\n⑤   第５文型   SVOC\n\n２\n\n(1)\n\n①   補語(C)\n\n②   主語(S)\n\n③   補語(C)\n\n④   目的語(O)\n\n⑤   目的語(O)\n\n⑥   修飾語(M)\n\n⑦   目的語(O)\n\n(2)\n\n①   He   smiled   at me.\n   (S)   (V)   (M)\n\n②   My sister   looks   sad.\n   (S)   (V)   (C)\n\n③   Yuki   plays   tennis   every Monday.\n   (S)   (V)   (O)   (M)\n\f④   Saori   gave   me   this bag   yesterday.\n   (S)   (V)   (O)   (O)   (M)\n\n⑤   My friends   call   me   Ken.\n   (S)   (V)   (O)   (C)\n\nＢ問題\n\n３\n\n(1)   ② (SVO の第３文型)\n(2)   ① (SVC の第２文型)\n\n４\n\n(1)   I go to the station by bus on a rainy day   ( take が不要 )\n\n(2)   told me her e-mail address   ( for が不要 )\n\n(3)   We named our dog Momo after   ( is が不要 )\n\nＣ問題\n\n５\n\n(1)   ① My father made me lunch. 第４文型\n   S   V O   O\n   父は，私に昼食を作ってくれた。\n\n   ② That news made us happy. 第５文型\n   S   V O C\n   その知らせで，私たちは嬉しくなった。\n\n(2)   ① Ms. Green and I often disagree.   第１文型\n   S   M   V\n\n   グリーンさんと私は，しばしば意見が合わない。\n\n   ② Ms. Green opposed my suggestion.   第３文型\n   S   V   O\n   グリーンさんは，私の提案に反対した。\n\f(3)   ① Ann sold her used books for 1,000 yen.   第３文型\n   S V   O   M\n\n   アンは古本を 1000 円で売った。※sold は，他動詞 sell「～を売る」の過去形\n\n   ② His books always sell well.   第１文型\n   S   M   V M\n\n   彼の本はいつもよく売れる。※sell は，自動詞「売れる」\n\n(4)   ① He was running at the park then.   第１文型\n   S   V   M   M\n\n   彼はそのとき公園を走っていた。\n   ※was running の run は，「走る」という意味の自動詞\n\n   ② My grandparents run their own restaurant.   第３文型\n   S   V   O\n\n   私の祖父母は，自分たちのレストランを営んでいる。\n   ※run は，「～を経営する，～を営む」という意味の他動詞\n\n(5)   ① The last train has left.   第１文型\n   S   V\n\n   終電は出てしまった。\n\n   ② I left the window open.   第５文型\n   S V   O   C\n   私は窓を開けたままにしておいた。\n\n(6)   ① My brother likes to play the violin.   第３文型\n   S   V   O\n\n   私の兄はヴァイオリンを弾くのが好きだ。※to 不定詞が目的語\n\n   ② To solve this problem seems difficult.   第２文型\n   S   V   C\n   この問題を解決するのは難しいように思われる。※to 不定詞が主語\n\n   ③ I went to Tokushima to join the famous festival.   第１文型\n   S V   M   M\n   私はその有名な祭りに参加するために，徳島に行った。※to 不定詞が修飾語\n\n   ④ Her dream is to be a scientist.   第２文型\n   S   V   C\n   彼女の夢は科学者になることだ。※to 不定詞が補語",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_005『５文型とは？』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_005『５文型とは？』（演習）.pdf",
+       "q_count": 50
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "16 章「５文型」 第16章「５文型」   5,6 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   ５文型とは？\n\n１   例にならって，次の英文の主語(S)，動詞(V)，目的語(O)，補語(C)を下に書き入れな\n   さい。また，その文が第何文型かを答えなさい。\n\n(例) Jane bought her daughter a picture book.   第   ４   文型\n   S   V   O   O\n   第１文型：SV\n   第２文型：SVC\n   第３文型：SVO\n   第４文型：SVOO\n   第５文型：SVOC\n\n(1) I like watching movies.   第   文型\n\n(2) It was raining very hard last night.   第   文型\n\n(3) I bought a notebook for my sister yesterday.   第   文型\n\n(4) Please call me Liz.   第   文型\n\n(5) I was glad to know the truth.   第   文型\n\n(6) The girl gave me something to eat.   第   文型\n\n   916",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\n   ５文型とは？ －解答－\n\n１\n\n(1) I like watching movies.   第３文型\n   S V   O\n\n(2) It was raining very hard last night.   第１文型\n   S   V\n\n(3) I bought a notebook for my sister yesterday.   第３文型\n   S   V   O\n\n(4) Please call me Liz.   第５文型\n   V O   C\n\n(5) I was glad to know the truth.   第２文型\n   S V C\n\n(6) The girl gave me something to eat.   第４文型\n   S   V O   O",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_005『５文型とは？』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_005『５文型とは？』（習熟）.pdf",
+       "q_count": 6
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 ５ ６   練習   次の英文が、第何文型か答えなさい。\n\n   ５文型とは？   ⑴ This knife cuts very well.\n\n 例題   次の英文が、第何文型か答えなさい。\n\n⑴ She smiled at me.\n   ⑵ What’s wrong with you?\n   S   V   M\n\n⑵ My brother looks happy.\n   S   V   C\n   ⑶ Tom left Tokyo for New York.\n⑶ Tom plays tennis every Sunday.\n   S   V   O   M\n\n⑷ Nancy gave me a watch yesterday.   ⑷ I’ll send you a letter when I get to Paris.\n   S   V O   O   M\n\n⑸ My friends call me Becky.\n   S   V O   C\n   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n   omitsu Kimura の\n  Tom   ただし、余計な１語が含まれています。\n\n   トムは昨日、公園でサッカーをした。\n  ５文型とは？\n   Tom（ did / in / played / park / soccer / the ）yesterday.\n  第１文型（SV） 「Sが～する」/「Sがある・いる」\n  第２文型（SVC） 「SはCだ」\n   （S=C）\n  第３文型（SVO） 「SはOを～する」\n   （Mをともなうことが多い）\n\n  第４文型   「Sは 人 に 物 を“与える”」\n   （SVOO）\n  第５文型（SVOC）\n   「SはV + OはC」",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_005『５文型とは？』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_005『５文型とは？』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    },
+    {
+     "id": "ch16_007",
+     "num": "007",
+     "name": "ＳＶＣの形をとる動詞",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-4",
+       "content": "『ＳＶＣの形をとる動詞』\nSVC を作る動詞：be 動詞／become / get / look / seem / sound など。「S＝C」の関係。"
+      },
+      {
+       "title": "概要",
+       "content": "SVC を作る動詞：be 動詞／become / get / look / seem / sound など。「S＝C」の関係。\nbe / become\nS + be / become / get + C\n「Sは C である／になる」\nシグナル/特徴\n状態や変化\nlook / seem / sound\nlook / seem / sound + C\n「〜のように見える／聞こえる」\nシグナル/特徴\n知覚動詞"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is a teacher.\n彼は教師だ。\nShe became famous.\n彼女は有名になった。\nHe looks tired.\n彼は疲れて見える。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nbe / become / get + C\n2\nlook / seem / sound + C\n3\nS = C の関係"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_007_ＳＶＣの形をとる動詞_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "SVC の 形 を 取 る 動 詞   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計 10 点）\n(1)   ナンシーは美しい少女だ。   Nancy   a beautiful girl.\n\n(2)   彼は歌手になった。   He   a singer.\n\n(3)   彼女はとても幸せそうに見える。   She   very happy.\n\n(4)   今日は気分がよい。   I   good today.\n\n(5)   その車の値段は高いままだった。 The price of the car   expensive.\n\n２   例にならって，次の英文の主語(S)，動詞(V)，目的語(O)，補語(C)を下に書き入れ\n   なさい。また，その文が第何文型かを答えなさい。（各４点・計 24 点）\n\n(例) Jane bought her daughter a picture book.   第   ４   文型\n   S   V   O   O\n   第１文型：SV\n   第２文型：SVC\n   第３文型：SVO\n   第４文型：SVOO\n   第５文型：SVOC\n\n(1)   I like watching movies.   第   文型\n\n(2)   It was raining very hard last night.   第   文型\n\n(3)   I bought a notebook for my sister yesterday.   第   文型\n\n(4)   Please call me Liz.   第   文型\n\n(5)   I was glad to know the truth.   第   文型\n\n(6)   The girl gave me something to eat.   第   文型\n\fＢ問題\n\n３   次の英文の補語(C)にあたる語(句)に下線を引きなさい。また，文全体を日本語に\n   訳しなさい。（各 11・計 33 点）\n\n(1)   This dish on the table seems delicious.\n\n(2)   The children kept quiet during the ceremony.\n\n(3)   Jack’s dream is to become a professional soccer player.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   ただし，余計な１語が含まれています。（各 11 点・計 33 点）\n\n(1)   私はバスで気分が悪くなった。\n   ( sick / feeling / bus / I / on / felt / the / . )\n\n(2)   私たちは明かりがつくまで座ったままでいた。\n   ( seated / we / light / until / seating / the / remained ) came on.\n\n(3)   私の祖父は実際の年齢よりも若く見える。\n   My grandfather ( younger / actual / is / than / age / looks / his ).\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n＜go＋形容詞の表現＞\n\n①   go bad\n\n②   go wrong\n\n③   go flat\n\n④   go mad\n\n⑤   go blind\n\n６   次の英文の補語(C)にあたる語(句)に下線を引きなさい。また，英文全体を日本語に\n   訳しなさい。\n(1)   The girl was sitting still for hours.\n\n(2)   My grandfather turned sixty years old last April.\n\n(3)   She appeared very relaxed.\n\n(4)   This chocolate tastes bitter.\n\n(5)   My brother stayed awake until 11 last night.\n\n(6) All of these apples went bad.\n\f７ 〈センター試験にチャレンジ〉 1 ～ 2 に入れるのに最も適当なものを，\n  それぞれ下の①～④から一つずつ選べ。\n\n(1)   We keep many roses throughout the house, so every room   1   .\n   〈15 年追試〉\n   ① is smelled sweet   ② is smelled sweetly   ③ smells sweet   ④ smells sweetly\n\n(2)   After the car hit the boy, he   2   unconscious for two days.\n   〈07 年本試〉\n   ① remained   ② remembered   ③ removed ④ rescued",
+       "answer_text": "Ａ問題\n１\n(1)   ナンシーは美しい少女だ。   Nancy is a beautiful girl.\n\n(2)   彼は歌手になった。   He became a singer.\n\n(3)   彼女はとても幸せそうに見える。   She looks very happy.\n\n(4)   今日は気分がよい。   I feel good today.\n\n(5)   その車の値段は高いままだった。   The price of the car remained [kept] expensive.\n\n２\n\n(1)   I like watching movies.   第３文型\n   S V   O\n\n(2)   It was raining very hard last night.   第１文型\n   S   V\n\n(3)   I bought a notebook for my sister yesterday.   第３文型\n   S V   O\n\n(4)   Please call me Liz.   第５文型\n   V O C\n\n(5)   I was glad to know the truth.   第２文型\n   S V C\n\n(6)   The girl gave me something to eat.   第４文型\n   S   V O   O\n\nＢ問題\n３\n(1)   This dish on the table seems delicious.\n\n   テーブルの上のこの料理はおいしそうだ。\n   seem など「～に見える」型の動詞は，SVC の形をとる。\n   (ここでは，This dish ＝ delicious)\n\f(2)   The children kept quiet during the ceremony.\n\n   子どもたちは式の間，静かにしていた。\n   keep など「～のままだ」型の動詞は，SVC の形をとる。\n   (ここでは，The children ＝ quiet)\n(3)   Jack’s dream is to become a professional soccer player.\n\n   ジャックの夢はプロのサッカー選手になることだ。\n   become など「～になる」型の動詞は，SVC の形をとる。\n   (ここでは，Jack’s dream ＝ to become a professional soccer player)\n\n４\n\n(1)   I felt sick on the bus.   ( feeling が不要 )\n\n(2)   We remained seated until the light   ( seating が不要 )\n\n(3)   looks younger than his actual age   ( is が不要 )\n\nＣ問題\n\n５\n\n＜go＋形容詞の表現＞\n\n①   go bad   腐る\n\n②   go wrong   故障する，上手くいかない\n\n③   go flat   パンクする\n\n④   go mad   気が狂う\n\n⑤   go blind   失明する\n\n６\n\n(1)   The girl was sitting still for hours.\n\n   その少女は，何時間もじっと座っていた。\n   ここでの still は形容詞で，「じっとして，静かに」などの意味。\n   lie, sit, stand などの動詞は，「be 動詞」と同じような役割をはたし，\n   SVC の形をとる。\n\f(2)   My grandfather turned sixty years old last April.\n\n   私の祖父は，去年の４月に 60 歳になった。\n   SVC の形をとる「～になる」型の動詞には，become, get の他に，grow, get, turn, go\n   などがある。\n(3)   She appeared very relaxed.\n   彼女はとてもくつろいでいるように見えた。\n   SVC の形をとる「～に見える」型の動詞には，look, seem の他に，appear などもあ\n   る。\n(4)   This chocolate tastes bitter.\n\n   このチョコレートは苦い。\n   SVC の形をとる「～に感じる」型の動詞には，feel, smell の他に，taste, sound な\n   どもある。\n(5)   My brother stayed awake until 11 last night.\n\n   私の兄[弟]は昨晩 11 時まで起きていました。\n\n   「～のままだ」型の動詞には，remain, keep の他に，stay などもある。\n\n(6) All of these apples went bad.\n\n   これらのリンゴはすべて腐ってしまった。\n\n７\n\n(1)   ③ smells sweet\n   私たちはたくさんのバラを家中に置いているので、どの部屋も甘い香りがします。\n\n(2)   ① remained\n   車が男の子をはねた後、その男の子は２日間意識不明だった。",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_007『ＳＶＣの形をとる動詞』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_007『ＳＶＣの形をとる動詞』（演習）.pdf",
+       "q_count": 40
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "16 章「５文型」 第16章「５文型」   7,8 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   SVC の形を取る動詞\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   今日は気分がよい。\n\n   I   good today.\n\n(2)   ナンシーはついに映画スターになった。\n\n   Nancy finally   a movie star.\n\n(3)   あなたは昨日，忙しいように見えました。\n\n   You   yesterday.\n\n(4)   残念ながら，この石鹸は臭いがよくありません。\n\n   I’m sorry but this soap doesn’t   .\n\n(5)   ボブはその結果に怒っているようだ。\n\n   Bob   at the result.\n\n(6)   だんだんと暖かくなってきていますね。\n\n   It is   and warmer, isn’t it?\n\n(7)   その高級アイスクリームの値段は高いままだった。\n\n   The price of the premium ice cream   .\n\n   920",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\n   SVC の形を取る動詞 －解答－\n\n１\n\n(1) feel\n\n(2) became\n\n(3) looked [seemed] busy\n\n(4) smell good\n\n(5) seems [looks] angry\n\n(6) getting [becoming] warmer\n\n(7) remained [kept] expensive [high]",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_007『ＳＶＣの形をとる動詞』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_007『ＳＶＣの形をとる動詞』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 ７ ８   練習   次の英文を、日本語に訳しなさい。\n\n   SVCの形を取る動詞   ⑴ You look pale.\n   次の日本文にあう例文になるように、   に適する\n 例題\n   語（句）を書きなさい。\n\n⑴ ナンシーはとても美しい少女だ。\n   ⑵ He kept silent for a while.\n Nancy   a very beautiful girl.\n\n⑵ 彼は映画スターになった。\n He   a movie star.   ⑶ It is getting warmer and warmer.\n\n⑶ トムはとても幸せそうに見える。\n Tom   very happy.\n   入試レベルにチャレンジ\n   正しい英文になるように、カッコ内に適する語（句）を次の選択肢から\n⑷ ちょっと寒く感じた。\n   選びなさい。\n I   a bit cold.\n   This flower smells quite（   ）.\n\n   omitsu Kimura の   ① sweetness   ② sweet   ③ sweetly\n Tom\n\n SVCの形を取る動詞\n\n ① be動詞\t\t\t   「～だ / ～である」\n ②「～になる」型\t\t   become, get など\n ③「～に見える」型\t\t   look, seem など\n ④「～に感じる」型\t\t   feel, smell など\n ⑤「～のままだ」型\t\t   remain, keep など",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_007『ＳＶＣの形をとる動詞』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_007『ＳＶＣの形をとる動詞』（習得）.pdf",
+       "q_count": 15
+      }
+     }
+    },
+    {
+     "id": "ch16_009",
+     "num": "009",
+     "name": "ＳＶＭとＳＶＣとＳＶＯの見分け方",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-5",
+       "content": "『ＳＶＭとＳＶＣとＳＶＯの見分け方』\nSVM（修飾語）／SVC（補語）／SVO（目的語）の見分け方は、後ろの語が「S＝？」になるかで判別。"
+      },
+      {
+       "title": "概要",
+       "content": "SVM（修飾語）／SVC（補語）／SVO（目的語）の見分け方は、後ろの語が「S＝？」になるかで判別。\nSVC（S＝C）\nS V C で S = C\n「Sは C だ」\nシグナル/特徴\n形容詞・名詞\nSVO（S≠O）\nS V O で S ≠ O\n「Sは Oを Vする」\nシグナル/特徴\n名詞のみ"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He is a doctor. (SVC: he = doctor)\n彼は医者だ。\nHe has a dog. (SVO: he ≠ dog)\n彼は犬を持っている。\nHe runs in the park. (SVM)\n彼は公園を走る。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nS = C なら SVC\n2\nS ≠ O なら SVO\n3\nM は省略可"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_009_ＳＶＭとＳＶＣとＳＶＯの見分け方_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "SVM と SVC と SVO の ⾒ 分 け ⽅   100\n\nＡ問題\n１   次の英文の下線部が，主語(S)，動詞(V)，目的語(O)，補語(C)，修飾語(M)のうち\n   のどれかを答えなさい。（各２点・計 20 点）\n\n(1)   ①   They ②danced ③happily.\n   ①(   )   ②(   )   ③(   )\n(2)   ①   She ②looked ③happy.\n   ①(   ) ②(   )   ③(   )\n(3)   ①He ②sang ③a song ④happily.\n\n   ①(   )   ②(   )   ③(   )   ④(   )\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 14 点）\n(1)   今日は気分がよい。\n\n   I   good today.\n\n(2)   ナンシーはついに映画スターになった。\n\n   Nancy finally   a movie star.\n\n(3)   あなたは昨日，忙しいように見えました。\n\n   You   yesterday.\n\n(4)   残念ながら，この石鹸は臭いがよくありません。\n\n   I’m sorry but this soap doesn’t   .\n\n(5)   ボブはその結果に怒っているようだ。\n\n   Bob   at the result.\n\n(6)   だんだんと暖かくなってきていますね。\n\n   It is   and warmer, isn’t it?\n\f(7)   その高級アイスクリームの値段は高いままだった。\n\n   The price of the premium ice cream   .\n\nＢ問題\n\n３   次の英文の下線部が目的語(O)，補語(C)，修飾語(M)のうちのどれかを答えなさい。\n   （各７点・計 42 点）\n\n(1)   ①Among vegetables I like ②pumpkin the best.\n   ①(   )   ②(   )\n\n(2)   When we were walking on the beach, the sun set ①behind the mountain.\n   ①(   )\n\n   We had never seen ②such a wonderful sunset.\n\n   ②(   )\n\n(3)   I will visit ①Kyoto next week.\n   ①(   )\n\n   The leaves of the trees in the temple are turning ②red.\n\n   ②(   )\n\n４   次の日本文を英語で書きなさい。また，その英文は第１文型(SV)，第２文型(SVC)，\n\n   第３文型(SVO)のうちのどれかを答えなさい。（各８点・計 24 点）\n\n(1)   この部屋の家賃はとても高い。\n\n   第   文型\n\n(2)   数羽の鳥が空高く飛んでいる。\n\n   第   文型\n\n(3)   これらのナイフはよく切れます。\n\n   第   文型\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n\n５   次の英文を日本語に訳しなさい。また，その英文が第１文型(SV)，第２文型(SVC)，\n   第３文型(SVO)のうちのどれかを答えなさい。\n\n(1)   We achieved the goal of winning the first prize at last.\n\n   第   文型\n\n(2)   I will arrive home at about nine.\n\n   第   文型\n\n(3)   A big dog was fast asleep under the tree.\n\n   第   文型\n\n(4)   She would never lie to us.\n\n   第   文型\n\n(5) Your plan sounds nice to me.\n\n   第   文型\n\n(6)   We have to discuss the matter further.\n\n   第   文型\n\n(7)   Having enough money, Tom was able to buy a new bag for Ann.\n\n   第   文型\n\n(8)   Keeping early hours is good for your health.\n\n   第   文型\n\n(9)   My little brother stopped crying.\n\n   第   文型",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   ①主語(S)   ②動詞(V)   ③修飾語(M)\n\n(2)   ①主語(S)   ②動詞(V)   ③補語(C)\n\n(3)   ①主語(S)   ②動詞(V)   ③目的語(O)   ④修飾語(M)\n\n２\n\n(1)   feel\n\n(2)   became\n\n(3)   looked [seemed] busy\n\n(4)   smell good\n\n(5)   seems [looks] angry\n\n(6)   getting [becoming] warmer\n\n(7)   remained [kept] expensive [high]\n\nＢ問題\n\n３\n\n(1)   ①修飾語(M)   ②目的語(O)\n\n(2)   ①修飾語(M)   ②目的語(O)\n\n(3)   ①目的語(O)   ②補語(C)\n\n４\n\n(1)   The rent of this room is very high.   第２文型\n\n(2)   Some birds are flying high (up) in the sky.   第１文型\n\n(3)   These knives cut well.   第１文型\n\fＣ問題\n\n５\n\n(1)   私たちはついに，優勝するという目標を達成した。   第３文型\n\n(2)   私は９時頃に家に着くでしょう。   第１文型\n\n   arrive は自動詞\n\n(3)   大きなイヌが，木の下でぐっすりと眠っていた。   第２文型\n\n(4)   彼女は私たちに決して嘘をつかないだろう。   第１文型\n\n(5)   あなたの計画は良さそうですね。   第２文型\n\n(6)   私たちはその問題をもっと深く議論する必要がある。   第３文型\n\n(7)   十分にお金を持っていたので，トムはアンに新しいかばんを買うことができた。\n\n   第３文型\n   分詞構文なので，Having enough money,の部分は修飾語(M)。\n   また buy は，「buy 物 for 人」の語順のときは，第３文型。\n(8)   早寝早起きは，健康に良い。   第２文型\n\n(9)   私の弟は泣き止んだ。   第３文型\n   「My little brother ＝ crying」という関係は成り立たないので，\n   第２文型ではなく第３文型。crying「泣くこと」が stop の目的語になっている。",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_009『ＳＶＭとＳＶＣとＳＶＯの見分け方』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_009『ＳＶＭとＳＶＣとＳＶＯの見分け方』（演習）.pdf",
+       "q_count": 57
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "ｙんんん\n   16 章「５文型」 第16章「５文型」   9,10 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   SVM と SVC と SVO の見分け方\n\n１   次の英文の   に適する語(句)を下から選び，必要ならば適する形に変えて書き\n   なさい。また，その文型は第１文型(SV)，第２文型(SVC)，第３文型(SVO)のうちの\n   どれかを答えなさい。\n\n(1) My sister Nancy is   a shower now.   第   文型\n\n(2)   Mom, I   a new pair of shoes.   第   文型\n\n(3)   Generally a puppy   large in a year.   第   文型\n\n(4)   All of your teammates are   around the gym.   第   文型\n\n(5)   The new foreign student mostly cannot   Japanese. 第   文型\n\n(6)   Your idea doesn’t   interesting.   第   文型\n\n(7)   This type of table didn’t   well.   第   文型\n\n  [ become / take / want / sell / sound / speak / run ]\n\n   924",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\nSVM と SVC と SVO の見分け方 －解答－\n\n１\n\n(1) taking   第３文型\n\n(2) want   第３文型\n\n(3) becomes   第２文型\n\n(4) running   第１文型\n\n(5) speak   第３文型\n\n(6) sound   第２文型\n\n(7) sell   第１文型",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_009『ＳＶＭとＳＶＣとＳＶＯの見分け方』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_009『ＳＶＭとＳＶＣとＳＶＯの見分け方』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 ９ １０   練習   次の英文が、第何文型か答えなさい。\n\n   SVMとSVCとSVOの見分け方   ⑴ They danced happily.\n\n 例題   次の英文が、第何文型か答えなさい。\n\n⑴ Nancy is swimming in the pool.   ⑵ He looked happy.\n\n⑵ He became a great scholar.   ⑶ She was singing a song happily.\n\n   入試レベルにチャレンジ\n⑶ Tom speaks English.\n   次の英文を、日本語に訳しなさい。\n\n   His new novel is selling very well.\n\n   omitsu Kimura の\n  Tom\n\n  SVMとSVCとSVOの見分け方\n\n  SVM   →Mを取り除いても意味が成り立つ\n  SVC   →「S=C」が成り立つ\n  SVO   →「SはOを～する」",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_009『ＳＶＭとＳＶＣとＳＶＯの見分け方』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_009『ＳＶＭとＳＶＣとＳＶＯの見分け方』（習得）.pdf",
+       "q_count": 6
+      }
+     }
+    },
+    {
+     "id": "ch16_011",
+     "num": "011",
+     "name": "ＳＶＯＯとは？",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-6",
+       "content": "『ＳＶＯＯとは？』\nSVOO（第4文型）は「Sは O₁に O₂を Vする」。give / send / show / teach などが代表動詞。"
+      },
+      {
+       "title": "概要",
+       "content": "SVOO（第4文型）は「Sは O₁に O₂を Vする」。give / send / show / teach などが代表動詞。\nS V O₁ O₂\nS V 人 物\n「人に物を Vする」\nシグナル/特徴\n授与動詞\n代表動詞\ngive / send / show / teach\n代表的な SVOO 動詞\nシグナル/特徴\n目的語が2つ"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He gave me a book.\n彼は私に本をくれた。\nShe showed him the way.\n彼女は彼に道を教えた。\nI taught her English.\n私は彼女に英語を教えた。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nS V O₁ O₂ ＝ 第4文型\n2\ngive / send / show / teach\n3\n人に物を渡す"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_011_ＳＶＯＯとは？_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "SVOO と は ︖   100\n\nＡ問題\n１   次の英文の下線部が，主語(S)，動詞(V)，目的語(O)，補語(C)，修飾語(M)のうち\n   のどれかを答えなさい。また，文全体を日本語に訳しなさい。（各２点・計 20 点）\n(1)   ①   Tom ②gave ③Yumi ④a book.\n   ①(   )   ②(   )   ③(   )   ④(   )\n\n   トムは   。\n\n(2)   ①   Tom ②bought ③Yumi ④a book.\n   ①(   )   ②(   )   ③(   )   ④(   )\n\n   トムは   。\n\n２   次の英文の   に適する語(句)を下から選び，必要ならば適する形に変えて書き\n   なさい。また，その文型は第１文型(SV)，第２文型(SVC)，第３文型(SVO)のうち\n   のどれかを答えなさい。（各２点・計 28 点）\n   [ become / take / want / sell / sound / speak / run ]\n\n(1)   My sister Nancy is   a shower now.   第   文型\n\n(2)   Mom, I   a new pair of shoes.   第   文型\n\n(3)   Generally, a puppy   large in a year.   第   文型\n\n(4) All of your teammates are   around the gym.   第   文型\n\n(5)   The new foreign student mostly cannot   Japanese. 第   文型\n\n(6) Your idea doesn’t   interesting.   第   文型\n\n(7)   This type of table didn’t   well.   第   文型\n\fＢ問題\n３   次の英文の目的語(O)にあたる語(句)に下線を引きなさい。（各７点・計 28 点）\n\n(1)   She never tells me her occupation.\n\n(2)   I’ll send my younger brother a Christmas present.\n\n(3)   Bill found me an empty seat in the hall.\n\n(4)   It may cost us more than one million dollars.\n\n４   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n   ただし，余計な１語が含まれています。（各８点・計 24 点）\n\n(1)   コーヒーを１杯おごりますよ。\n\n   ( buy / will / cup / you / your / I / coffee / of / a / . )\n\n(2)   ジャックはみんなの前で彼女にバラの花束をあげた。\n\n   Jack ( her / herself / roses / in / of / of / gave / a bunch / front ) everyone.\n\n(3)   ここで私にあなた方の会員証を見せてください。\n\n   Please ( me / your / cards / show / you / here / membership ).\n\fＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n５   次の英語を日本語にしなさい。\n\n＜SVOO の形をとる動詞＞\n①   offer A B\n\n②   take A B\n\n③   allow A B\n\n④   leave A B\n\n⑤   wish A B\n\n⑥   cause A B\n\n⑦   lend A B\n\n⑧   loan A B\n\n⑨   cost A B\n\n⑩   owe A B\n\n⑪   It takes A B to V\n\n⑫   It costs A B to V\n\n＜SVOO の形をとらない，注意すべき動詞＞\n①   say\n\n②   explain\n\n③   suggest\n\n④   introduce\n\n⑤   admit\n\f＜SVOO の形をとる do の使い方＞\n\n①   do A good\n\n   ＝ do good to A\n\n②   do A harm\n\n   ＝ do harm to A\n\n③   do A damage\n\n   ＝ do damage to A\n\n④   do A favor\n\n６   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   This book (   ) me 2,000 yen.\n\n   ① spent   ② spend   ③ cost   ④ costed\n\n(2)   It will (   ) us about three hours to drive to Sendai from here.\n\n   ① cause   ② cost   ③ take   ④ owe\n\n(3)   Please explain (   ).\n\n   ① me the reason   ② the reason to me   ③ for me the reason   ④ the reason me\n\n(4)   Drinking and smoking will (   ) you more harm than good.\n\n   ① cost   ② do   ③ loan   ④ make",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   ①主語(S)   ②動詞(V)   ③目的語(O)   ④目的語(O)\n\n   トムはユミに本をあげた。\n\n(2)   ①主語(S)   ②動詞(V)   ③目的語(O)   ④目的語(O)\n\n   トムはユミに本を買った。\n\n２\n\n(1)   taking   第３文型\n\n(2)   want   第３文型\n\n(3)   becomes 第２文型\n\n(4)   running 第１文型\n\n(5)   speak   第３文型\n\n(6)   sound   第２文型\n\n(7)   sell   第１文型\n\nＢ問題\n\n３\n\n(1)   She never tells me her occupation.\n\n(2)   I’ll send my younger brother a Christmas present.\n\n(3)   Bill found me an empty seat in the hall.\n\n(4)   It may cost us more than one million dollars.\n\f４\n\n(1)   I will buy you a cup of coffee.   ( your が不要 )\n\n(2)   gave her a bunch of roses in front of   ( herself が不要 )\n\n(3)   show me your membership cards here   ( you が不要 )\n\nＣ問題\n\n５\n\n＜SVOO の形をとる動詞＞\n①   offer A B   A に B を提供する\n\n②   take A B   A が B を必要とする，A に B がかかる\n\n③   allow A B   A に B を与える\n\n④   leave A B   A に B を残しておく\n\n⑤   wish A B   A に B を祈る\n\n⑥   cause A B   A に B をもたらす，A に B を引き起こす\n\n⑦   lend A B   A に B を貸す\n\n⑧   loan A B   A に B(お金)を貸す\n\n⑨   cost A B   A に B を払わせる\n\n⑩   owe A B   A に B を借りている／B は A のおかげだ\n\n⑪   It takes A B to V   A が V するのに B(時間)がかかる\n\n⑫   It costs A B to V   A が V するのに B(お金)がかかる\n\n＜「A に B を～する」という意味だが，SVOO の形をとらない動詞＞\n\n①   say   言う\n\n②   explain   説明する\n\n③   suggest   提案する\n\n④   introduce   紹介する\n\n⑤   admit   認める\n\f＜SVOO の形をとる do の使い方＞\n①   do A good   A のためになる\n\n   ＝ do good to A\n\n②   do A harm   A の害になる，A に損害を与える\n\n   ＝ do harm to A\n\n③   do A damage   A に損害を与える\n\n   ＝ do damage to A\n\n④   do A favor   A の頼みを聞き入れる\n\n６\n\n(1)   ③ cost\n   この本を買うのに 2000 円かかった。\n\n   cost は，過去形・過去分詞形も cost\n\n(2)   ③ take\n   ここから仙台まで，車で約３時間かかるでしょう。\n\n(3)   ② the reason to me\n   私にその理由を説明してください。\n\n   explain は SVOO をとらないので，① me the reason，④ the reason me は不可\n\n(4)   ② do\n   飲酒と喫煙は，ためになるというよりも害になる。",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_011『ＳＶＯＯとは？』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_011『ＳＶＯＯとは？』（演習）.pdf",
+       "q_count": 73
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "16 章「５文型」 第16章「５文型」   11,12 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   SVOO とは？\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私は彼女に手紙の書き方を教えた。\n\n   I   her   a letter.\n\n(2)   私に何か飲むものをくれませんか。\n\n   Will   give   something to drink?\n\n(3)   明日あなたに荷物を送ります。\n\n   I’ll   a package tomorrow.\n\n(4)   その男の人は地図で私たちに道順を示してくれた。\n\n   The man   the route on the map.\n\n(5)   ナンシーは父親に野菜スープを作ってあげた。\n\n   Nancy   vegetable   .\n\n(6)   あなたに毛布を取ってきましょう。\n\n   I’ll   a blanket.\n\n(7)   メアリーは息子に誕生日プレゼントとしてテニスラケットを買ってあげた。\n\n   Mary   a tennis racket as his birthday present.\n\n   928",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\n   SVOO とは？ －解答－\n\n１\n\n(1) told [taught] ／ how to write\n\n(2) you ／ me\n\n(3) send you\n\n(4) showed us\n\n(5) made her father ／ soup\n\n(6) get [bring] you\n\n(7) bought her son",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_011『ＳＶＯＯとは？』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_011『ＳＶＯＯとは？』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 １１ １２   練習   次の英文を、日本語に訳しなさい。\n\n   SVOOとは？   ⑴ Nancy showed us a picture.\n\n 例題   次の英文を、日本語に訳しなさい。\n\n⑴ Tom gave Nancy a watch.\n   ⑵ My mother made me a cup of coffee.\n\n⑵ John bought Mary a ring.\n   ⑶ He got me a ticket.\n\n   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   時間を教えてくれませんか。\n   （ time / you / say / can / me / tell / the ）, please?\n   omitsu Kimura の\n  Tom\n\n  SVOOとは？\n\n ・give型「 人 に 物 を与える」\n  → 人 に 物 が確実に渡っている / tell, show, send など\n\n ・buy型 「 人 に 物 を買う」\n  → 人 に 物 が渡るとは限らない / make, get, find など",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_011『ＳＶＯＯとは？』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_011『ＳＶＯＯとは？』（習得）.pdf",
+       "q_count": 5
+      }
+     }
+    },
+    {
+     "id": "ch16_013",
+     "num": "013",
+     "name": "ＳＶＯＯの書きかえ",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-7",
+       "content": "『ＳＶＯＯの書きかえ』\nSVOO は「S V O₂ to/for O₁」（SVO + 修飾句）に書き換えられる。動詞によって to / for を使い分け。"
+      },
+      {
+       "title": "概要",
+       "content": "SVOO は「S V O₂ to/for O₁」（SVO + 修飾句）に書き換えられる。動詞によって to / for を使い分け。\nto + 人\ngive / send / show + 物 + to + 人\n「人に物を渡す」\nシグナル/特徴\n対象が必要\nfor + 人\nbuy / make / find + 物 + for + 人\n「人のために物を作る／買う」\nシグナル/特徴\n利益・恩恵"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "He gave a book to me.\n彼は私に本をくれた。\nShe bought a book for me.\n彼女は私に本を買ってくれた。\nShow the picture to him.\n彼に写真を見せて。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\ngive / send / show ＋ to\n2\nbuy / make / find ＋ for\n3\n動詞で前置詞を区別"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_013_ＳＶＯＯの書きかえ_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "SVOO の 書 き か え   100\n\nＡ問題\n１   次の   に適する１語を書きなさい。（各２点・計６点）\n\n＜SVOO の書きかえ＞\n①  give 型 (tell, show, send など)\n   [例]   give 人 物   →   give 物   人\n②   buy 型 (make, get, find など)\n   [例]   buy 人 物   →   buy 物   人\n③   ask 型\n   [例]   ask 人 物   →   ask 物   人\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 22 点）\n(1)   私は彼女に手紙の書き方を教えた。\n\n   I   her   a letter.\n\n(2)   私に何か飲むものをくれませんか。\n\n   Will   give   something to drink?\n\n(3)   その男の人は地図で私たちに道順を示してくれた。\n\n   The man   the route on the map.\n\n(4)   ナンシーは父親に野菜スープを作ってあげた。\n\n   Nancy   vegetable   .\n\n(5)   あなたに毛布を取ってきましょう。\n\n   I’ll   a blanket.\n\n(6)   メアリーは息子に誕生日プレゼントとしてテニスラケットを買ってあげた。\n\n   Mary   a tennis racket as his birthday present.\n\n(7)   質問をしてもよろしいでしょうか。\n\n   I   a question?\n\fＢ問題\n\n３   次の英文と同じ意味の英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 18 点）\n(1)   Bob didn’t tell me the truth.\n\n   Bob didn’t tell the truth   .\n\n(2)   Mika gave us some cookies she baked last night.\n\n   Mika gave some cookies she baked last night   .\n\n(3)   Mr. Suzuki bought his son the latest notebook computer.\n\n   Mr. Suzuki bought the latest notebook computer   .\n\n４   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各６点・計 30 点）\n(1)   トムはユミに本をあげた。\n\n   Tom   Yumi a book.\n\n   Tom   a book   Yumi.\n\n(2)   トムはユミに本を買った。\n\n   Tom   a book.\n\n   Tom   Yumi.\n\n５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   （各８点・計 24 点）\n(1)   お願いがあるのですが。\n   ( ask / you / may / I / favor / of / a / ? )\n\n(2)   私にあなたのノートを貸してくれてどうもありがとう。\n   ( of / your / you / to / it / me / lend / is / kind / notebook / very / . )\n\f(3)   ジャックは友達にコンサートのチケットをとってあげた。\n   ( for / got / friends / tickets / his / Jack / concert / . )\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n６   次の英語を日本語にしなさい。\n\n＜SVOO をとる「give」型の動詞＞\n①   teach\n\n②   sell\n\n③   pay\n\n④   lend\n\n⑤   offer\n\n⑥   pass\n\n＜SVOO をとる「buy」型の動詞＞\n①   choose\n\n②   leave\n\n③   cook\n\n④   sing\n\n⑤   play   演奏する\n\n７   (   )内にあてはまらない語(句)を，次の選択肢からすべて選びなさい。\n\n(1)   My father brought (   ).\n\n   ① me a new book   ② a new book to me\n\n   ③ a new book for me   ④ a new book of me\n\f(2)   This bag cost (   ).\n\n   ① me 12,000 yen   ② 12,000 yen to me\n\n   ③ me for 12,000 yen   ④ 12,000 yen of me\n\n(3)   That official trip took (   ).\n\n   ① four days for my father   ② four days of my father\n\n   ③ my father four days   ④ four days to my father\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1) Ann played the violin (   ) us.\n\n   ① of   ② for   ③ as   ④ on\n\n(2)   Tom teaches (   ) every day.\n\n   ≒ Tom teaches (   ) every day.\n\n   ① his sister to English ／ English to his sister\n\n   ② English his sister ／ English for his sister\n\n   ③ English to his sister ／ English of his sister\n\n   ④ his sister English ／ English to his sister",
+       "answer_text": "Ａ問題\n\n１\n\n①   give 人 物   →   give 物 to 人\n\n②   buy 人 物   →   buy 物 for 人\n\n③   ask 人 物   →   ask 物 of 人\n\n２\n\n(1)   told [taught] ／ how to write\n\n(2)   you ／ me\n\n(3)   showed us\n\n(4)   made her father ／ soup\n\n(5)   get [bring] you\n\n(6)   bought her son\n\n(7)   May ／ ask you ※３章「may の基本用法」も参照\n\nＢ問題\n３\n(1)   to me\n\n(2)   to us\n\n(3)   for his son\n\n４\n\n(1)   gave\n\n   gave ／ to\n\n(2)   bought Yumi\n\n   bought a book for\n\f５\n\n(1)   May I ask a favor of you?\n\n(2)   It is very kind of you to lend me your notebook.\n\n(3)   Jack got concert tickets for his friends.\n\nＣ問題\n\n６\n\n＜SVOO をとる「give」型の動詞＞\n\n①   teach   教える\n\n②   sell   売る\n\n③   pay   支払う\n\n④   lend   貸す\n\n⑤   offer   提供する\n\n⑥   pass   手渡す\n\n＜SVOO をとる「buy」型の動詞＞\n\n①   choose   選ぶ\n\n②   leave   残す\n\n③   cook   料理する\n\n④   sing   歌う\n\n⑤   play   演奏する\n\f７\n\n(1)   ④ a new book of me\n   ① me a new book を選ぶと，SVOO の第４文型になる。\n   ② a new book to me，③ a new book for me を選ぶと，SVO の第３文型。\n\n   bring は，意味に応じて，to と for をどちらも使うことができる。\n   「新しい本」が「私」のところに届いている場合には，\n   ② a new book to me「父は私に新しい本を持ってきた」となる。\n   「新しい本」が「私」のところに届いているかどうかにかかわらず，\n   父が私のために本を持ってきた，ということを表す場合には，\n   ③ a new book for me「父は私のために新しい本を持ってきた」となる。\n\n(2)   ② 12,000 yen to me，③ me for 12,000 yen，④ 12,000 yen of me\n\n   このかばんは 12,000 円しました。\n\n   cost「(お金が)かかる」，take「(時間が)かかる」，save「省く」などの文は，\n   SVOO から SVO に書き換えることができない\n\n(3)   ① four days for my father，② four days of my father，④ four days to my father\n   父はその出張に４日かかりました。\n\n８\n\n(1)   ② for\n   アンは私たちのためにヴァイオリンを演奏してくれた。\n\n(2)   ④ his sister English ／ English to his sister\n   トムは毎日姉[妹]に英語を教えます。",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_013『ＳＶＯＯの書きかえ』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_013『ＳＶＯＯの書きかえ』（演習）.pdf",
+       "q_count": 54
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "16 章「５文型」 第16章「５文型」   13,14 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   SVOO の書きかえ\n\n１   次の日本文にあう英文になるように，   に適する語(句)をそれぞれ書きなさい。\n\n(1)   パスポートを見せてください。\n\n   Please   me your passport.\n\n   Please   your passport   .\n\n(2)   スミスさんは娘にＴシャツを買ってあげた。\n\n   Ms. Smith   her daughter a T-shirt.\n\n   Ms. Smith   a T-shirt   .\n\n(3)   佐藤さんは毎週末，ボブに日本語を教える。\n\n   Mr. Sato   Bob Japanese on weekends.\n\n   Mr. Sato   Japanese   on weekends.\n\n(4)   父はベンに犬小屋を作ってやった。\n\n   My father   a doghouse.\n\n   My father   a doghouse   .\n\n(5)   トムは私によい仕事を見つけてくれた。\n\n   Tom   job.\n\n   Tom   me.\n\n   932",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\n   SVOO の書きかえ －解答－\n\n１\n\n(1) show\n\n   show ／ to me\n\n(2) bought\n\n   bought ／ for her daughter\n\n(3) teaches\n\n   teaches ／ to Bob\n\n(4) made Ben\n\n   made ／ for Ben\n\n(5) found me a good\n\n   found a good job for",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_013『ＳＶＯＯの書きかえ』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_013『ＳＶＯＯの書きかえ』（習熟）.pdf",
+       "q_count": 5
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 １３ １４   練習\n   正しい英文になるように、   に適する語（句）を\n   書きなさい。\n   SVOOの書きかえ   ⑴ May I ask a favor   you?\n   次の二つの英文が同じ意味になるように、   に適する\n 例題\n   語（句）を下の選択肢から選びなさい。\n\n   ⑵ He sent a letter   Nancy.\n⑴ Tom gave Nancy a watch.\n  =Tom gave a watch   Nancy.\n\n ［ for / to ］   ⑶ Tom found a seat   me.\n\n⑵ John bought Mary a ring.\n   入試レベルにチャレンジ\n  =John bought a ring   Mary.\n   次の二つの英文が同じ意味になるように、   に適する\n ［ for / to ］   語（句）を書きなさい。\n\n   He cooked me a nice meal.\n   =He cooked a nice meal   me.\n\n   omitsu Kimura の\n  Tom\n\n  SVOOの書きかえ\n\n  ① give型（tell, show, send など） 人 に届く\n   ↓\n\n   〔例〕give 人 物 → give 物 to 人\n\n  ② buy型（make, get, fine など） 人 に届かないこともある\n   ↓\n\n   〔例〕buy 人 物 → buy 物 for 人\n\n  ③ askだけ\n   〔例〕ask 人 物 → ask 物 of 人",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_013『ＳＶＯＯの書きかえ』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_013『ＳＶＯＯの書きかえ』（習得）.pdf",
+       "q_count": 8
+      }
+     }
+    },
+    {
+     "id": "ch16_015",
+     "num": "015",
+     "name": "ＳＶＯＣの訳のパターン",
+     "slides": [
+      {
+       "title": "第16章 文型 / 16-8",
+       "content": "『ＳＶＯＣの訳のパターン』\nSVOC（第5文型）は「Sは O を C にする／と思う」。call / make / find / keep などが代表動詞。"
+      },
+      {
+       "title": "概要",
+       "content": "SVOC（第5文型）は「Sは O を C にする／と思う」。call / make / find / keep などが代表動詞。\nmake / call\nS V O C：「Oを Cにする」\nmake 人 happy など\nシグナル/特徴\n状態の変化\nfind / think / keep\nfind / think / keep + O + C\n「Oを Cと思う／の状態に保つ」\nシグナル/特徴\n認識・維持"
+      },
+      {
+       "title": "例文 (Examples)",
+       "content": "We call him Tom.\n私たちは彼をトムと呼ぶ。\nShe made me happy.\n彼女は私を幸せにした。\nI found the book interesting.\nその本はおもしろいと思った。\nKeep the room clean.\n部屋をきれいに保って。"
+      },
+      {
+       "title": "まとめ",
+       "content": "1\nS V O C ＝ 第5文型\n2\ncall / make / find / keep\n3\nO = C の関係"
+      }
+     ],
+     "pptx_path": "../第16章/成果物/第16章_015_ＳＶＯＣの訳のパターン_内容.pptx",
+     "stages": {
+      "enshu": {
+       "label": "演習",
+       "problem_text": "SVOC の 訳 の パ タ ー ン   100\n\nＡ問題\n１   次の日本文にあう英文になるように，   に適する１語を書きなさい。\n   （各２点・計 12 点）\n(1)   彼女は私をケンと呼ぶ。   She   me   .\n\n(2)   トムは彼女を幸せにした。   Tom   her   .\n\n(3)   私は彼が素敵な人だと思っている。I   a nice person.\n\n２   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 36 点）\n\n(1)   パスポートを見せてください。\n\n   Please   me your passport.\n\n   Please   your passport   .\n\n(2)   スミスさんは娘にＴシャツを買ってあげた。\n\n   Ms. Smith   her daughter a T-shirt.\n\n   Ms. Smith   a T-shirt   .\n\n(3)   佐藤さんは毎週末，ボブに日本語を教える。\n\n   Mr. Sato   Bob Japanese on weekends.\n\n   Mr. Sato   Japanese   on weekends.\n\n(4)   父はベンに犬小屋を作ってやった。\n\n   My father   a doghouse.\n\n   My father   a doghouse   .\n\n(5)   トムは私によい仕事を見つけてくれた。\n\n   Tom   job.\n\n   Tom   me.\n\f(6)   明日あなたに荷物を送ります。\n\n   I’ll   a package tomorrow.\n\n   I’ll   you tomorrow.\n\n(7)   トムはとても幸せそうに見える。\n\n   Tom   .\n\n(8)   彼はしばらく黙っていた。\n\n   He   for a while.\n\nＢ問題\n３   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n   （各２点・計 10 点）\n\n(1)   私たちはそのイヌをポチと呼んでいる。\n\n   We   the   Pochi.\n\n(2)   私は彼女が正直だと信じている。\n\n   I   her   .\n\n(3)   その話を聞いて私たちは不安になった。\n\n   The story   nervous.\n\n４   次の英文を日本語に訳しなさい。（各６点・計 18 点）\n\n(1) You must keep your room clean.\n\n(2)   Our group named the robot James.\n\n(3)   I found the TV program very boring.\n\f５   次の日本文にあう英文になるように，(   )内の語(句)を正しく並べかえなさい。\n\n   ただし，余計な１語が含まれています。（各８点・計 24 点）\n\n(1)   その食欲をそそる匂いで私は空腹を感じます。\n   ( makes / appetizing / I / smell / the / hungry / me / . )\n\n(2)   私たちはケビンを私たちのチームの主将に選んだ。\n   We ( Kevin / our / elected / us / captain / of / team ).\n\n(3)   その客の主張は不当だと思います。\n   I ( customer’s / that / unreasonable / claim / the / think ).\n\nＣ問題\n※   Ｃ問題には，応用的な内容や，映像授業を補足する知識が含まれます。より深く学習\n   したい人はチャレンジしてみてください。\n６   次の英語を日本語にしなさい。\n\n＜SVOC をとる動詞＞\n①   get A B\n\n②   keep A B\n\n③   leave A B\n\n④   choose A B\n\n⑤   suppose A B\n\n⑥   consider A B\n\n⑦   find A B\n\f７   次の英文を日本語に訳しなさい。\n\n(1)   The fact got her angry.\n\n(2)   I found my father angry.\n\n(3)   I found Tom his pen.\n\n８   (   )内にあてはまる語(句)を次の選択肢から選びなさい。\n   また，選択した語(句)を(   )内に補って，完成した英文を日本語に訳しなさい。\n\n(1)   We consider (   ).\n\n   ① an excellent teacher on Mr. Green   ② Mr. Green for an excellent teacher\n\n   ③ Mr. Green an excellent teacher   ④ an excellent teacher for Mr. Green\n\n(2)   We chose (   ).\n\n   ① her our representative   ② her to our representative\n\n   ③ our representative as her   ④ our representative to her\n\n９ 〈センター試験にチャレンジ〉次の対話において，下の①～⑥の語句を並びかえて\n   空所を補い，最も適当な文を完成させよ。\n\n   Ben：Hey, where did your energy go? You were so cheerful this morning.\n   Jim：I don’t know. I guess listening to   .\n   〈16 年追試・改〉\n   ① boring ② lecture ③ made ④ me ⑤ the ⑥ tired",
+       "answer_text": "Ａ問題\n\n１\n\n(1)   彼女は私をケンと呼ぶ。   She calls me Ken.\n\n(2)   トムは彼女を幸せにした。   Tom made her happy.\n\n(3)   私は彼が素敵な人だと思っている。   I think him a nice person.\n\n２\n\n(1)   show\n\n   show ／ to me\n\n(2)   bought\n\n   bought ／ for her daughter\n\n(3)   teaches\n\n   teaches ／ to Bob\n\n(4)   made Ben\n\n   made ／ for Ben\n\n(5)   found me a good\n\n   found a good job for\n\n(6)   send you\n\n   send a package to\n\n(7)   looks very happy   ※第２文型(SVC)\n\n(8)   kept [remained] silent   ※第２文型(SVC)\n\fＢ問題\n\n３\n\n(1)   call ／ dog\n\n(2)   believe ／ honest\n\n(3)   made us\n\n４\n\n(1)   部屋をきれいにしておかなければいけません。\n\n(2)   私たちのグループはそのロボットをジェームスと名付けた。\n\n(3)   そのテレビ番組はとても退屈だとわかった。\n\n５\n\n(1)   The appetizing smell makes me hungry.   ( I が不要 )\n\n(2)   elected Kevin captain of our team   ( us が不要 )\n\n(3)   think the customer’s claim unreasonable   ( that が不要 )\n\nＣ問題\n\n６\n\n＜SVOC をとる動詞＞\n①   get A B   A を B にする\n\n②   keep A B   A を B のままにしておく\n\n③   leave A B   A を B のままにしておく\n\n④   choose A B   A を B に選ぶ\n\n⑤   suppose A B   A を B と思う，考える\n\n⑥   consider A B   A を B と考える\n\n⑦   find A B   A が B とわかる，気づく\n\f７\n\n(1)   その事実は彼女を怒らせた。\n\n(2)   私は父が怒っていることに気づいた。\n\n(3)   私はトムに彼のペンを見つけてあげた。\n\n   「Tom ＝ his pen」がなりたたないので，この文は SVOO の第４文型\n８\n\n(1)   ③ Mr. Green an excellent teacher\n   私たちはグリーン先生を，きわめて優秀な教師だと考えています。\n\n(2)   ① her our representative\n   私たちは彼女を代表に選んだ。\n９\n   Ben：Hey, where did your energy go? You were so cheerful this morning.\n   Jim：I don’t know. I guess listening to ⑤   ①   ②   ③   ④   ⑥   .\n\n   ( the boring lecture made me tired )\n\n   boring 「退屈させるような（＝つまらない）」\n   tired 「疲れている」\n\n   ベン「おい，君の元気はどこにいっちゃたんだ？今朝はとても元気だったのに。」\n   ジム「わからないよ。きっとつまらない講義で疲れちゃったんだと思う。」",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_015『ＳＶＯＣの訳のパターン』（演習）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_015『ＳＶＯＣの訳のパターン』（演習）.pdf",
+       "q_count": 48
+      },
+      "shujuku": {
+       "label": "習熟",
+       "problem_text": "16 章「５文型」 第16章「５文型」   15,16 習熟プリント\n――――――――――――――――――――――――――――――――――――――――――――――――\n\n   SVOC の訳のパターン\n\n１   次の日本文にあう英文になるように，   に適する語(句)を書きなさい。\n\n(1)   私たちはそのネコをトラと呼んでいる。\n\n   We   the   .\n\n(2)   その話を聞くと私は悲しくなる。\n\n   That story   me   .\n\n(3)   私は彼は正直な男だと思う。\n\n   I   him an   .\n\n(4)   彼らはジャックを学級委員長に選んだ。\n\n   They   Jack   president.\n\n(5)   そのうわさは私たちを不安にした。\n\n   The rumor   nervous.\n\n(6)   私たちはそのアイデアは役に立つとわかった。\n\n   We   the idea   .\n\n(7)   ドアを開けたままにしないでください。\n\n   Don’t   the   , please.\n\n   936",
+       "answer_text": "章「５文型」第16章「５文型」\n――――――――――――――――――――――――――――――――――――――――――\n\n   SVOC の訳のパターン －解答－\n\n１\n\n(1) call ／ cat Tora\n\n(2) makes ／ sad\n\n(3) think [believe] ／ honest man\n\n(4) elected ／ class\n\n   class president   「学級委員長」\n\n(5) made us\n\n(6) found ／ useful\n\n(7) leave [keep] ／ door open",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_015『ＳＶＯＣの訳のパターン』（習熟）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_015『ＳＶＯＣの訳のパターン』（習熟）.pdf",
+       "q_count": 7
+      },
+      "shutoku": {
+       "label": "習得",
+       "problem_text": "５文型 １５ １６   練習   次の英文を、日本語に訳しなさい。\n\n   SVOCの訳のパターン   ⑴ We believe Tom honest.\n\n 例題   次の英文を、日本語に訳しなさい。\n\n⑴ He calls me Bob.\n   ⑵ They named their son Taro.\n\n⑵ Tom made me happy.\n   ⑶ We elected him President.\n\n⑶ I think him a nice person.\n   入試レベルにチャレンジ\n   次の日本文にあうように、カッコ内の英語を並び替えなさい。\n   ただし、余計な１語が含まれています。\n\n   彼女は子どもの頃、蜂を見ると怖がった。\n   When she was a child,\n   （ bees / sight / by / her / of / the / made ）afraid.\n   omitsu Kimura の\n  Tom\n\n  SVOCの訳のパターン\n\n  ⎧ ①「OをCと呼ぶ」\t\t → call, name など\n  ⎪ ②「OをCにする・させる」→ make, elect など\n  ⎪\n  ⎩ ③「OがCだと考える」 → think, believe など\n   ※いずれも\n   「O=C」の関係に注目しよう!",
+       "answer_text": "",
+       "problem_pdf": "../第16章/問題_h_eng_gra_16_015『ＳＶＯＣの訳のパターン』（習得）.pdf",
+       "answer_pdf": "../第16章/解答_h_eng_gra_16_015『ＳＶＯＣの訳のパターン』（習得）.pdf",
+       "q_count": 9
+      }
+     }
+    }
+   ]
+  }
+ ]
+}
