@@ -1,0 +1,16 @@
+# バックアップ・一時ファイル
+*.bak
+*.tmp
+*.log
+desktop.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+local.db
+*.db
+
+# Claude Code 内部ファイル
+CLAUDE.md
