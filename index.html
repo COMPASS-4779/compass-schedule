@@ -2077,9 +2077,12 @@
                 }
 
                 return `
-                <div class="mb-3 group relative z-20">
+                <div class="mb-3 group relative z-20 gantt-row" draggable="true" data-task-id="${b.id}" data-subj-key="${b.subjKey}" style="cursor:grab;">
                     <div class="flex justify-between items-center mb-1">
-                        <div class="text-[9px] font-bold truncate pr-2" style="color:${barColor}">${b.name}</div>
+                        <div class="flex items-center gap-1 min-w-0 flex-1">
+                            <span class="gantt-handle select-none flex-shrink-0 opacity-0 group-hover:opacity-100 transition text-slate-400 hover:text-slate-600" style="font-size:12px;letter-spacing:-1px;" title="ドラッグで並び替え">⠿</span>
+                            <div class="text-[9px] font-bold truncate pr-2" style="color:${barColor}">${b.name}</div>
+                        </div>
                         <div class="flex items-center gap-1">
                             <button onclick="openEditModal('${b.subjKey}', '${b.id}')" class="text-[8px] bg-slate-100 px-1.5 py-0.5 rounded border opacity-0 group-hover:opacity-100 transition hover:bg-white flex-shrink-0">
                                 <i class="fas fa-cog"></i> 調整
@@ -2100,24 +2103,66 @@
                 </div>`;
             };
 
-            // 🌟 ご要望の順番 [テスト → 宿題 → 受験 → 行事] で描画
-            ["test", "homework", "exam", "event"].forEach(key => {
-                const g = groups[key];
-                if (g.tasks.length > 0) {
-                    g.tasks.sort((a, b) => a.startW - b.startW); // 開始週の昇順
+            // 全タスクをフラット配列に集約
+            const allTasksFlat = [
+                ...groups.test.tasks.map(t => Object.assign({}, t, {_groupKey: 'test'})),
+                ...groups.homework.tasks.map(t => Object.assign({}, t, {_groupKey: 'homework'})),
+                ...groups.exam.tasks.map(t => Object.assign({}, t, {_groupKey: 'exam'})),
+                ...groups.event.tasks.map(t => Object.assign({}, t, {_groupKey: 'event'}))
+            ];
 
+            if (appData.ganttRowOrder && appData.ganttRowOrder.length > 0) {
+                // 🌟 カスタム順（フラット表示）
+                const orderMap = {};
+                appData.ganttRowOrder.forEach((id, i) => { orderMap[String(id)] = i; });
+                allTasksFlat.sort((a, b) => {
+                    const oa = orderMap[String(a.id)] !== undefined ? orderMap[String(a.id)] : 9999;
+                    const ob = orderMap[String(b.id)] !== undefined ? orderMap[String(b.id)] : 9999;
+                    return oa - ob;
+                });
+                c.insertAdjacentHTML('beforeend', `
+                    <div class="flex items-center justify-between mb-3 px-1 py-1 bg-orange-50 rounded-lg border border-orange-200">
+                        <span class="text-[10px] text-[#D4622A] font-bold flex items-center gap-1">
+                            <span style="font-size:13px;">⠿</span> ドラッグで順番を変更できます
+                        </span>
+                        <button onclick="resetGanttOrder()" class="text-[10px] text-slate-500 border border-slate-300 bg-white rounded-lg px-2 py-0.5 hover:bg-slate-50 transition">
+                            グループ表示に戻す
+                        </button>
+                    </div>
+                `);
+                allTasksFlat.forEach(task => {
+                    const colorOverride = (task.isEvent && task.dayType !== 'holiday') ? '#10B981' : null;
+                    c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
+                });
+            } else {
+                // 🌟 グループ表示（デフォルト）[テスト → 宿題 → 受験 → 行事]
+                ["test", "homework", "exam", "event"].forEach(key => {
+                    const g = groups[key];
+                    if (g.tasks.length > 0) {
+                        g.tasks.sort((a, b) => a.startW - b.startW);
+                        c.insertAdjacentHTML('beforeend', `
+                            <h4 class="text-xs font-black border-l-4 pl-2 mb-2 mt-6 py-1 relative z-20 ${g.headerClass}">
+                                ${g.label}
+                            </h4>
+                        `);
+                        g.tasks.forEach(task => {
+                            const colorOverride = (key === 'event' && task.dayType !== 'holiday') ? "#10B981" : null;
+                            c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
+                        });
+                    }
+                });
+                // 🌟 ドラッグ説明ヒント
+                if (allTasksFlat.length > 0) {
                     c.insertAdjacentHTML('beforeend', `
-                        <h4 class="text-xs font-black border-l-4 pl-2 mb-2 mt-6 py-1 relative z-20 ${g.headerClass}">
-                            ${g.label}
-                        </h4>
+                        <div class="text-[9px] text-slate-400 text-right mt-2 px-1">
+                            <span style="font-size:11px;">⠿</span> 各行をドラッグして並び替えできます
+                        </div>
                     `);
-                    g.tasks.forEach(task => {
-                        // 行事グループの場合は特別な色指定（通常時）を適用可能
-                        const colorOverride = (key === 'event' && task.dayType !== 'holiday') ? "#10B981" : null;
-                        c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
-                    });
                 }
-            });
+            }
+
+            // ドラッグ＆ドロップ初期化
+            initGanttDrag(c);
 
             const currentPct = (((appData.currentWeek - 1) * 7 + (appData.currentDay - 1)) / (tw * 7)) * 100;
             if (currentPct >= 0 && currentPct <= 100) {
@@ -2128,6 +2173,100 @@
                 `);
             }
         }
+
+        // ── ガントチャート ドラッグ並び替え ──────────────────────────
+        function initGanttDrag(container) {
+            let dragEl = null;
+
+            function makePlaceholder() {
+                const ph = document.createElement('div');
+                ph.id = 'gantt-ph';
+                ph.style.cssText = 'height:26px;border:2px dashed #D4622A;border-radius:8px;margin-bottom:12px;background:#FEF3EE;opacity:0.8;transition:all 0.1s;';
+                return ph;
+            }
+
+            container.querySelectorAll('.gantt-row').forEach(row => {
+                row.addEventListener('dragstart', e => {
+                    dragEl = row;
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', row.dataset.taskId || '');
+                    setTimeout(() => { if (dragEl) dragEl.style.opacity = '0.3'; }, 0);
+                });
+
+                row.addEventListener('dragend', () => {
+                    if (dragEl) dragEl.style.opacity = '';
+                    const ph = document.getElementById('gantt-ph');
+                    if (ph && ph.parentNode) ph.parentNode.removeChild(ph);
+                    dragEl = null;
+                    saveGanttOrder(container);
+                });
+            });
+
+            container.addEventListener('dragover', e => {
+                e.preventDefault();
+                if (!dragEl) return;
+
+                let ph = document.getElementById('gantt-ph');
+                if (!ph) ph = makePlaceholder();
+
+                // ドラッグ中の行以外の .gantt-row を対象にする
+                const rows = [...container.querySelectorAll('.gantt-row')].filter(r => r !== dragEl);
+                let targetRow = null;
+                let insertBefore = true;
+                let minDist = Infinity;
+
+                rows.forEach(row => {
+                    const rect = row.getBoundingClientRect();
+                    const midY = rect.top + rect.height / 2;
+                    const dist = Math.abs(e.clientY - midY);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        targetRow = row;
+                        insertBefore = e.clientY < midY;
+                    }
+                });
+
+                if (targetRow) {
+                    insertBefore
+                        ? container.insertBefore(ph, targetRow)
+                        : container.insertBefore(ph, targetRow.nextSibling);
+                } else {
+                    const lastRow = rows[rows.length - 1];
+                    lastRow ? container.insertBefore(ph, lastRow.nextSibling) : container.appendChild(ph);
+                }
+            });
+
+            container.addEventListener('drop', e => {
+                e.preventDefault();
+                if (!dragEl) return;
+                const ph = document.getElementById('gantt-ph');
+                if (ph && ph.parentNode) {
+                    ph.parentNode.insertBefore(dragEl, ph);
+                    ph.parentNode.removeChild(ph);
+                }
+            });
+
+            container.addEventListener('dragleave', e => {
+                if (!container.contains(e.relatedTarget)) {
+                    const ph = document.getElementById('gantt-ph');
+                    if (ph && ph.parentNode) ph.parentNode.removeChild(ph);
+                }
+            });
+        }
+
+        function saveGanttOrder(container) {
+            const ids = [...container.querySelectorAll('.gantt-row[data-task-id]')].map(r => r.dataset.taskId);
+            if (ids.length === 0) return;
+            appData.ganttRowOrder = ids;
+            saveData();
+        }
+
+        function resetGanttOrder() {
+            appData.ganttRowOrder = [];
+            saveData();
+            renderGantt();
+        }
+        // ────────────────────────────────────────────────────────────
 
         // 🌟 リストから直接削除
         function deleteCurriculumItemDirect(subjKey, id) {
