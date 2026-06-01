@@ -12,5 +12,5 @@ __pycache__/
 local.db
 *.db
 
-# Claude Code 内部ファイル
-CLAUDE.md
+# Claude Code 内部ファイル（ローカル作業用のみ除外）
+# CLAUDE.md はリポジトリに含める
