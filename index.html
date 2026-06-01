@@ -3638,21 +3638,30 @@
                     appData.unitRecords.filter(r => r._sheetKey).map(r => r._sheetKey)
                 );
 
-                // 科目+テキスト名+章+節 でグループ化
+                // 科目+テキスト名+章+節 でグループ化（J列=総問題数 を使用）
                 const groups = {};
                 for (const row of studentRows) {
-                    const subjLabel = (row[2] || '').trim();
-                    const textbook  = (row[3] || '').trim();
-                    const chapter   = (row[5] || '').trim();
-                    const section   = (row[6] || '').trim();
-                    const sheetKey  = `${subjLabel}_${textbook}_${chapter}_${section}`;
+                    const subjLabel  = (row[2] || '').trim();
+                    const textbook   = (row[3] || '').trim();
+                    const chapter    = (row[5] || '').trim();
+                    const section    = (row[6] || '').trim();
+                    const wrongNum   = (row[7] || '').trim();
+                    const totalStr   = (row[9] || '').trim();
+                    const sheetKey   = `${subjLabel}_${textbook}_${chapter}_${section}`;
                     if (!groups[sheetKey]) {
                         groups[sheetKey] = {
                             subjKey: SHEET_SUBJ_MAP[subjLabel] || 'society',
-                            textbook, chapter, section, count: 0
+                            textbook, chapter, section,
+                            wrongCount: 0,
+                            total: parseInt(totalStr) || 0
                         };
                     }
-                    groups[sheetKey].count++;
+                    // J列（総問題数）は最大値を採用（行ごとに同じ値が入っているはず）
+                    if (parseInt(totalStr) > groups[sheetKey].total) {
+                        groups[sheetKey].total = parseInt(totalStr);
+                    }
+                    // 問題番号が空でない行 = 間違い問題
+                    if (wrongNum !== '') groups[sheetKey].wrongCount++;
                 }
 
                 let addedCount = 0;
@@ -3663,13 +3672,16 @@
                         g.chapter ? `${g.chapter}章` : '',
                         g.section ? `${g.section}節` : ''
                     ].filter(Boolean).join(' ');
+                    // J列がない旧データはwrongCountをmaxScoreとして使うフォールバック
+                    const maxScore = g.total > 0 ? g.total : g.wrongCount || 1;
+                    const score    = g.total > 0 ? Math.max(0, g.total - g.wrongCount) : 0;
                     appData.unitRecords.push({
                         id: 'unit_sheet_' + Date.now() + '_' + addedCount,
                         date: new Date().toISOString(),
                         subject: g.subjKey,
                         unit: unitName,
-                        score: 0,
-                        maxScore: g.count,
+                        score,
+                        maxScore,
                         source: g.textbook,
                         _sheetKey: sheetKey
                     });
