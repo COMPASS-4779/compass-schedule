@@ -1639,9 +1639,9 @@
             document.getElementById('dashboard-view').classList.remove('hidden');
             renderDashboard();
 
-            // 🔧 [Cowork変更②] 1日1回の自動スプレッドシート取込チェック
+            // 🔧 [Cowork変更②] ダッシュボードを開くたびに自動スプレッドシート取込（30分以内は再取込しない）
             const lastImport = appData.lastSheetImport ? new Date(appData.lastSheetImport) : null;
-            if (!lastImport || (Date.now() - lastImport.getTime()) > 24 * 60 * 60 * 1000) {
+            if (!lastImport || (Date.now() - lastImport.getTime()) > 30 * 60 * 1000) {
                 setTimeout(() => importFromSpreadsheet(true), 1500);
             }
         }
@@ -3512,7 +3512,7 @@
                 const ts = `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
                 el.textContent = `最終取込: ${ts}`;
             } else {
-                el.textContent = '自動取込: 1日1回';
+                el.textContent = '自動取込: ダッシュボードを開くたびに同期';
             }
         }
 
