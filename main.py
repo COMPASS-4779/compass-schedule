@@ -43,11 +43,6 @@ class UserEdit(BaseModel):
 def read_root():
     return {"message": "COMPASS API is ready with AI! 🤖"}
 
-@app.get("/api/config")
-def get_config():
-    """フロントエンド用の設定情報を返す（APIキーは環境変数から取得）"""
-    return {"gemini_api_key": GEMINI_API_KEY}
-
 # --- ユーザー管理系 API ---
 @app.post("/api/users/", response_model=schemas.UserResponse)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
