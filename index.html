@@ -1807,11 +1807,15 @@
             let hwCount = 0;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && appData.currentWeek >= b.startW && appData.currentWeek <= b.endW) {
+                    // 提出期限まで残り日数（endW週の金曜日基準）
+                    const hwDaysToDeadline = (b.endW - appData.currentWeek) * 7 + (5 - appData.currentDay);
+                    const hwIsSubmitted = !!(appData.progress && appData.progress[b.id + '_submitted']);
+                    // 条件: 行事・テスト以外のisOneOff、期間内、期限1週間前から表示、期限切れ非表示
+                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && appData.currentWeek >= b.startW && hwDaysToDeadline >= 0 && hwDaysToDeadline <= 7) {
                         hwCount++;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
-                        const target = b.total; 
+                        const target = b.total;
                         const pct = Math.min(100, Math.round((val / target) * 100));
                         const deadlineDate = getActualDate(b.endW, 5);
 
@@ -1866,24 +1870,19 @@
                             }
                         } else {
                             hwHtml += `
-                            <div class="bg-blue-50/50 p-4 rounded-2xl border-2 border-blue-200 shadow-sm relative mb-3">
+                            <div class="bg-blue-50/50 p-4 rounded-2xl border-2 ${hwIsSubmitted ? 'border-emerald-300' : 'border-blue-200'} shadow-sm relative mb-3">
                                 <div class="flex justify-between items-start mb-2">
                                     <span class="text-[10px] font-bold text-blue-600">${SUBJ_CONFIG[sk]?.label || sk}</span>
-                                    <span class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">期限: ${deadlineDate}</span>
+                                    <span class="text-[10px] font-bold ${hwDaysToDeadline <= 1 ? 'text-red-600 bg-red-100' : 'text-orange-600 bg-orange-100'} px-2 py-1 rounded">期限: ${deadlineDate}（あと${hwDaysToDeadline}日）</span>
                                 </div>
                                 <div class="text-sm font-black text-blue-900 mb-1">${b.name}</div>
-                                <div class="text-[10px] font-bold text-slate-500 mb-3">目標: ${target}${b.unit}</div>
-                                <div class="bg-white rounded-lg p-2 border border-blue-100">
-                                    ${pct >= 100
-                                        ? `<div class="text-center py-1 text-blue-600 font-black text-xs"><i class="fas fa-check-circle"></i> 本日分完了！ (100%)</div>`
-                                        : `<div class="flex items-center gap-2">
-                                               <div class="flex-grow bg-slate-200 h-2 rounded-full overflow-hidden">
-                                                   <div class="bg-blue-500 h-full transition-all" style="width:${pct}%"></div>
-                                               </div>
-                                               <span class="text-[10px] font-black text-blue-600">${pct}%</span>
-                                           </div>`
-                                    }
-                                </div>
+                                <div class="text-[10px] font-bold text-slate-500 mb-3">範囲: ${target}${b.unit}</div>
+                                ${hwIsSubmitted
+                                    ? `<div class="text-center py-2 text-emerald-600 font-black text-xs bg-emerald-50 rounded border border-emerald-200"><i class="fas fa-check-circle mr-1"></i>提出済み ✅</div>`
+                                    : `<button onclick="submitHomework('${b.id}')" class="w-full bg-blue-500 hover:bg-blue-600 text-white text-xs font-black py-2 rounded shadow transition">
+                                           📬 提出済みにする
+                                       </button>`
+                                }
                             </div>`;
                         }
                     }
@@ -1894,8 +1893,10 @@
             let minDays = 9999;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    if (!b.isEvent && (b.name.includes('【定期テスト】') || b.name.includes('【模試】')) && b.endW >= appData.currentWeek) {
-                        const daysLeft = (b.endW - appData.currentWeek) * 7 + (7 - appData.currentDay);
+                    // 定期テスト：期限日（endW週の金曜日）を過ぎたら非表示
+                    const testExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > 5);
+                    if (!b.isEvent && (b.name.includes('【定期テスト】') || b.name.includes('【模試】')) && !testExpired) {
+                        const daysLeft = (b.endW - appData.currentWeek) * 7 + (5 - appData.currentDay);
                         if (daysLeft >= 0 && daysLeft < minDays) {
                             minDays = daysLeft;
                             nextTest = b;
@@ -1925,12 +1926,25 @@
             let hasExamTask = false;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && appData.currentWeek <= b.endW) {
+                    // 日々タスク：期限（endW週の金曜日）を過ぎたら非表示
+                    const examExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > 5);
+                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && !examExpired) {
                         hasExamTask = true;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
-                        const target = Math.ceil(b.total / ((b.endW - b.startW + 1) * 5)); 
-                        const pct = Math.min(100, Math.round((val / target) * 100) || 0);
+
+                        // 実施状況に応じた動的目標量（残量 ÷ 残日数）
+                        let totalDone = 0;
+                        Object.keys(appData.progress || {}).forEach(k => {
+                            if (k.startsWith(b.id + '_W')) totalDone += parseFloat(appData.progress[k]) || 0;
+                        });
+                        const remaining = Math.max(0, b.total - totalDone);
+                        const remWeeks = b.endW - appData.currentWeek;
+                        const todayDayNum = Math.min(appData.currentDay, 5);
+                        const remainingDays = Math.max(1, remWeeks * 5 + (6 - todayDayNum));
+                        const target = Math.ceil(remaining / remainingDays);
+
+                        const pct = Math.min(100, Math.round((val / Math.max(1, target)) * 100) || 0);
 
                         examHtml += `
                         <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm relative mb-3">
@@ -1938,7 +1952,8 @@
                                 <span class="text-[10px] font-bold text-[#B8963E]">${SUBJ_CONFIG[sk]?.label || sk}</span>
                             </div>
                             <div class="text-xs font-bold text-slate-700 mb-1">${b.name}</div>
-                            <div class="text-[10px] font-bold text-slate-500 mb-2">目標: ${target}${b.unit}</div>
+                            <div class="text-[10px] font-bold text-slate-500 mb-1">今日の目標: ${target}${b.unit}</div>
+                            <div class="text-[9px] text-slate-400 mb-2">残り ${remaining}${b.unit} / ${remainingDays}日</div>
                             
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
                                 ${pct >= 100 ? 
@@ -3886,6 +3901,14 @@
 
 
         // 🔧 [Cowork変更②] 復習タスク完了ボタン → unit record を 100% に更新 → AI診断・リストから消去
+        // 宿題提出済みにする
+        function submitHomework(bookId) {
+            if (!appData.progress) appData.progress = {};
+            appData.progress[bookId + '_submitted'] = 1;
+            saveData();
+            renderDashboard();
+        }
+
         function completeReviewTask(curriculumId) {
             if (!confirm('この復習を完了済みにしますか？\n単元レコードが100%に更新され、AI診断から消えます。')) return;
 
