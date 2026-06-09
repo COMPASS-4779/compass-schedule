@@ -1807,11 +1807,12 @@
             let hwCount = 0;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 提出期限まで残り日数（endW週の金曜日基準）
-                    const hwDaysToDeadline = (b.endW - appData.currentWeek) * 7 + (5 - appData.currentDay);
+                    // 提出期限まで残り日数（endW週の金曜日基準、週末はday=5として計算）
+                    const hwCurrentDay = Math.min(appData.currentDay, 5);
+                    const hwDaysToDeadline = (b.endW - appData.currentWeek) * 7 + (5 - hwCurrentDay);
                     const hwIsSubmitted = !!(appData.progress && appData.progress[b.id + '_submitted']);
-                    // 条件: 行事・テスト以外のisOneOff、期間内、期限1週間前から表示、期限切れ非表示
-                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && appData.currentWeek >= b.startW && hwDaysToDeadline >= 0 && hwDaysToDeadline <= 7) {
+                    // 条件: 行事・テスト以外のisOneOff、期間内、期限14日前から表示（≒2週間前）、期限切れ非表示
+                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && appData.currentWeek >= b.startW && hwDaysToDeadline >= 0 && hwDaysToDeadline <= 14) {
                         hwCount++;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
@@ -1889,34 +1890,31 @@
                 });
             });
 
-            let nextTest = null;
-            let minDays = 9999;
+            // 直近3件のテスト・模試を収集（startW基準で昇順ソート）
+            const upcomingTests = [];
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 定期テスト：テスト当日（startW）を過ぎたら非表示
                     const testExpired = b.startW < appData.currentWeek || (b.startW === appData.currentWeek && appData.currentDay > 5);
                     if (!b.isEvent && (b.name.includes('【定期テスト】') || b.name.includes('【模試】')) && !testExpired) {
-                        // テスト当日までの残り日数（startW基準）
-                        const daysLeft = (b.startW - appData.currentWeek) * 7 + (1 - appData.currentDay);
-                        if (daysLeft >= 0 && daysLeft < minDays) {
-                            minDays = daysLeft;
-                            nextTest = b;
-                        }
+                        const daysLeft = (b.startW - appData.currentWeek) * 7 + (1 - Math.min(appData.currentDay, 5));
+                        if (daysLeft >= 0) upcomingTests.push({ b, daysLeft, sk });
                     }
                 });
             });
+            upcomingTests.sort((a, b) => a.daysLeft - b.daysLeft);
+            const topTests = upcomingTests.slice(0, 3);
 
             let testHtml = '';
-            if (nextTest) {
+            if (topTests.length > 0) {
+                testHtml = topTests.map(({ b: nextTest, daysLeft: minDays }) => {
                 let color = minDays <= 14 ? 'text-red-600' : 'text-orange-500';
                 let alertMsg = minDays <= 7 ? '⚠️ テスト直前！通常カリキュラムを止め、テスト対策を優先！' : (minDays <= 14 ? 'テスト対策期間に入りました。' : '順調に準備を進めましょう。');
                 let ratioText = minDays <= 7 ? (appData.settings?.testPrepRatio?.['1w'] || 100) : (minDays <= 14 ? (appData.settings?.testPrepRatio?.['2w'] || 70) : 0);
-                // テスト日表示: actualStartDate（編集で保存した実際の日付）優先、なければstartW週の月曜日
                 const testDisplayDate = nextTest.actualStartDate
                     ? (() => { const d = new Date(nextTest.actualStartDate); return `${d.getMonth()+1}/${d.getDate()}`; })()
                     : getActualDate(nextTest.startW, 1);
 
-                testHtml = `
+                return `
                 <div class="bg-red-50/50 p-4 rounded-xl border-2 border-red-200 flex flex-col items-center justify-center text-center mt-2 shadow-sm relative">
                     <div class="absolute top-2 right-2 text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">テスト日: ${testDisplayDate}</div>
                     <div class="text-xs font-bold text-red-500 mb-1 mt-6">${nextTest.name} まで</div>
@@ -1924,6 +1922,7 @@
                     ${ratioText > 0 ? `<div class="text-[10px] font-bold text-slate-500 mb-2">目標勉強比率 (テスト対策): <span class="text-red-600">${ratioText}%</span></div>` : ''}
                     <div class="text-[9px] text-red-600 font-bold bg-red-100 px-2 py-1 rounded w-full mt-1">${alertMsg}</div>
                 </div>`;
+                }).join('');
             }
 
             let examHtml = '';
@@ -1985,7 +1984,7 @@
                     </div>
                 `);
             }
-            if (nextTest) {
+            if (topTests.length > 0) {
                 activeBlocks.push(`
                     <div class="space-y-4 flex-grow ${activeBlocks.length > 0 ? 'lg:border-l lg:border-slate-100 lg:pl-6' : ''}">
                         <h4 class="text-xs font-black text-red-600 border-b border-red-100 pb-2 text-center">② 定期テスト対策</h4>
