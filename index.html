@@ -1815,8 +1815,8 @@
                     const hwCurrentDay = Math.min(appData.currentDay, 5);
                     const hwDaysToDeadline = (b.endW - appData.currentWeek) * 7 + (5 - hwCurrentDay);
                     const hwIsSubmitted = !!(appData.progress && appData.progress[b.id + '_submitted']);
-                    // 条件: 行事・テスト以外のisOneOff、期間内、期限8日前から表示、期限切れ非表示
-                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && appData.currentWeek >= b.startW && hwDaysToDeadline >= 0 && hwDaysToDeadline <= 8) {
+                    // 条件: 行事・テスト以外のisOneOff、期限8日前〜期限当日まで表示（startWの開始前でも表示）
+                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && hwDaysToDeadline >= 0 && hwDaysToDeadline <= 8) {
                         hwCount++;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
