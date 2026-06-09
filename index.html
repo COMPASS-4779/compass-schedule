@@ -1893,10 +1893,11 @@
             let minDays = 9999;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 定期テスト：期限日（endW週の金曜日）を過ぎたら非表示
-                    const testExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > 5);
+                    // 定期テスト：テスト当日（startW）を過ぎたら非表示
+                    const testExpired = b.startW < appData.currentWeek || (b.startW === appData.currentWeek && appData.currentDay > 5);
                     if (!b.isEvent && (b.name.includes('【定期テスト】') || b.name.includes('【模試】')) && !testExpired) {
-                        const daysLeft = (b.endW - appData.currentWeek) * 7 + (5 - appData.currentDay);
+                        // テスト当日までの残り日数（startW基準）
+                        const daysLeft = (b.startW - appData.currentWeek) * 7 + (1 - appData.currentDay);
                         if (daysLeft >= 0 && daysLeft < minDays) {
                             minDays = daysLeft;
                             nextTest = b;
@@ -1910,11 +1911,14 @@
                 let color = minDays <= 14 ? 'text-red-600' : 'text-orange-500';
                 let alertMsg = minDays <= 7 ? '⚠️ テスト直前！通常カリキュラムを止め、テスト対策を優先！' : (minDays <= 14 ? 'テスト対策期間に入りました。' : '順調に準備を進めましょう。');
                 let ratioText = minDays <= 7 ? (appData.settings?.testPrepRatio?.['1w'] || 100) : (minDays <= 14 ? (appData.settings?.testPrepRatio?.['2w'] || 70) : 0);
-                const testDeadlineDate = getActualDate(nextTest.endW, 5);
+                // テスト日表示: actualStartDate（編集で保存した実際の日付）優先、なければstartW週の月曜日
+                const testDisplayDate = nextTest.actualStartDate
+                    ? (() => { const d = new Date(nextTest.actualStartDate); return `${d.getMonth()+1}/${d.getDate()}`; })()
+                    : getActualDate(nextTest.startW, 1);
 
                 testHtml = `
                 <div class="bg-red-50/50 p-4 rounded-xl border-2 border-red-200 flex flex-col items-center justify-center text-center mt-2 shadow-sm relative">
-                    <div class="absolute top-2 right-2 text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">期限: ${testDeadlineDate}</div>
+                    <div class="absolute top-2 right-2 text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">テスト日: ${testDisplayDate}</div>
                     <div class="text-xs font-bold text-red-500 mb-1 mt-6">${nextTest.name} まで</div>
                     <div class="text-3xl font-black ${color} mb-1">あと ${minDays} 日</div>
                     ${ratioText > 0 ? `<div class="text-[10px] font-bold text-slate-500 mb-2">目標勉強比率 (テスト対策): <span class="text-red-600">${ratioText}%</span></div>` : ''}
@@ -3324,8 +3328,13 @@
             if (!book) return;
 
             book.name   = document.getElementById('edit-curr-name').value;
-            book.startW = dateStrToWeekNum(document.getElementById('edit-curr-start').value);
-            book.endW   = dateStrToWeekNum(document.getElementById('edit-curr-end').value);
+            const editStartVal = document.getElementById('edit-curr-start').value;
+            const editEndVal   = document.getElementById('edit-curr-end').value;
+            book.startW = dateStrToWeekNum(editStartVal);
+            book.endW   = dateStrToWeekNum(editEndVal);
+            // 実際の日付文字列も保存（表示用）
+            if (editStartVal) book.actualStartDate = editStartVal;
+            if (editEndVal)   book.actualEndDate   = editEndVal;
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) book.dayType = dayTypeEl.value; 
