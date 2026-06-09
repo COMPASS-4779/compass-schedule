@@ -1057,7 +1057,7 @@
         // 📌 [SECTION-CONFIG] ===== 設定定数・appData 初期化 =====
         const API_BASE_URL = "https://compass-schedule-api.onrender.com"; 
         const ADMIN_PASSWORD = "tm13274779";
-        const apiKey = "AIzaSyCaODs6JVu-3gbnAVYQz2gBaKuF82Tpmro"; 
+        let apiKey = ""; // 起動時にバックエンドから取得
 
         const COURSE_OPTIONS = {
             '小学生': ['学校授業サポート', '私立中学受験', '公立中高一貫校(適性検査)'],

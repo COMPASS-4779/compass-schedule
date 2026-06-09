@@ -11,9 +11,10 @@ import os
 # データベースの初期化
 models.Base.metadata.create_all(bind=engine)
 
-# Gemini APIの設定
-GEMINI_API_KEY = "AIzaSyCaODs6JVu-3gbnAVYQz2gBaKuF82Tpmro"
-genai.configure(api_key=GEMINI_API_KEY)
+# Gemini APIの設定（環境変数から取得）
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
 
 # ★ここで「app」を定義しています
 app = FastAPI(title="COMPASS式 学習管理システム API")
@@ -41,6 +42,11 @@ class UserEdit(BaseModel):
 @app.get("/")
 def read_root():
     return {"message": "COMPASS API is ready with AI! 🤖"}
+
+@app.get("/api/config")
+def get_config():
+    """フロントエンド用の設定情報を返す（APIキーは環境変数から取得）"""
+    return {"gemini_api_key": GEMINI_API_KEY}
 
 # --- ユーザー管理系 API ---
 @app.post("/api/users/", response_model=schemas.UserResponse)
