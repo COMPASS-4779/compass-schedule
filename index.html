@@ -768,7 +768,7 @@
                 <div class="space-y-4">
                     <div class="border-b border-slate-100 pb-3 mb-3">
                         <label class="block text-xs font-bold text-slate-500 mb-1">タスクのカテゴリ (表示場所の変更)</label>
-                        <select id="edit-curr-category" class="w-full border rounded-lg px-4 py-2 text-sm font-bold bg-white outline-none focus:ring-2 focus:ring-[#B8963E]">
+                        <select id="edit-curr-category" onchange="document.getElementById('edit-curr-label-wrap').style.display=this.value==='homework'?'':'none'" class="w-full border rounded-lg px-4 py-2 text-sm font-bold bg-white outline-none focus:ring-2 focus:ring-[#B8963E]">
                             <option value="exam">受験勉強 (長期カリキュラム)</option>
                             <option value="homework">学校の宿題・単発予定</option>
                             <option value="test">定期テスト対策・模試</option>
@@ -778,6 +778,10 @@
                     <div>
                         <label class="block text-xs font-bold text-slate-500 mb-1">教材名・タスク名</label>
                         <input type="text" id="edit-curr-name" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
+                    </div>
+                    <div id="edit-curr-label-wrap">
+                        <label class="block text-xs font-bold text-slate-500 mb-1">科目表示名（ダッシュボードに表示される科目名）</label>
+                        <input type="text" id="edit-curr-label" placeholder="例: 数学・英語・理科 など" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
                     </div>
                    <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -1811,8 +1815,8 @@
                     const hwCurrentDay = Math.min(appData.currentDay, 5);
                     const hwDaysToDeadline = (b.endW - appData.currentWeek) * 7 + (5 - hwCurrentDay);
                     const hwIsSubmitted = !!(appData.progress && appData.progress[b.id + '_submitted']);
-                    // 条件: 行事・テスト以外のisOneOff、期間内、期限14日前から表示（≒2週間前）、期限切れ非表示
-                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && appData.currentWeek >= b.startW && hwDaysToDeadline >= 0 && hwDaysToDeadline <= 14) {
+                    // 条件: 行事・テスト以外のisOneOff、期間内、期限8日前から表示、期限切れ非表示
+                    if (!b.isEvent && b.isOneOff && !b.name.includes('【定期テスト】') && !b.name.includes('【模試】') && !b.name.includes('【行事】') && appData.currentWeek >= b.startW && hwDaysToDeadline >= 0 && hwDaysToDeadline <= 8) {
                         hwCount++;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
@@ -1870,10 +1874,11 @@
                                 </div>`;
                             }
                         } else {
+                            const hwSubjLabel = b.displayLabel || SUBJ_CONFIG[sk]?.label || sk;
                             hwHtml += `
                             <div class="bg-blue-50/50 p-4 rounded-2xl border-2 ${hwIsSubmitted ? 'border-emerald-300' : 'border-blue-200'} shadow-sm relative mb-3">
                                 <div class="flex justify-between items-start mb-2">
-                                    <span class="text-[10px] font-bold text-blue-600">${SUBJ_CONFIG[sk]?.label || sk}</span>
+                                    <span class="text-[10px] font-bold text-blue-600">${hwSubjLabel}</span>
                                     <span class="text-[10px] font-bold ${hwDaysToDeadline <= 1 ? 'text-red-600 bg-red-100' : 'text-orange-600 bg-orange-100'} px-2 py-1 rounded">期限: ${deadlineDate}（あと${hwDaysToDeadline}日）</span>
                                 </div>
                                 <div class="text-sm font-black text-blue-900 mb-1">${b.name}</div>
@@ -3317,6 +3322,15 @@
             const catEl = document.getElementById('edit-curr-category');
             if(catEl) catEl.value = currentCat;
 
+            // 科目表示名フィールド（宿題カテゴリのみ表示）
+            const labelWrap = document.getElementById('edit-curr-label-wrap');
+            const labelInput = document.getElementById('edit-curr-label');
+            if (labelWrap && labelInput) {
+                labelInput.value = book.displayLabel || '';
+                const isHw = book.isOneOff && !book.isEvent && !book.name.includes('【定期テスト】') && !book.name.includes('【模試】') && !book.name.includes('【行事】');
+                labelWrap.style.display = isHw ? '' : 'none';
+            }
+
             document.getElementById('curriculum-edit-modal').classList.remove('hidden');
         }
 
@@ -3334,6 +3348,9 @@
             // 実際の日付文字列も保存（表示用）
             if (editStartVal) book.actualStartDate = editStartVal;
             if (editEndVal)   book.actualEndDate   = editEndVal;
+            // 科目表示名（宿題カテゴリのみ）
+            const labelVal = (document.getElementById('edit-curr-label')?.value || '').trim();
+            book.displayLabel = labelVal || '';
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) book.dayType = dayTypeEl.value; 
