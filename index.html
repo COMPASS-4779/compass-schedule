@@ -1895,14 +1895,17 @@
                 });
             });
 
-            // 直近3件のテスト・模試を収集（startW基準で昇順ソート）
+            // 直近3件のテスト・模試を収集（実際の日付ベースで昇順ソート）
+            const _today = new Date(); _today.setHours(0,0,0,0);
             const upcomingTests = [];
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    const testExpired = b.startW < appData.currentWeek || (b.startW === appData.currentWeek && appData.currentDay > 5);
-                    if (!b.isEvent && (b.name.includes('【定期テスト】') || b.name.includes('【模試】')) && !testExpired) {
-                        const daysLeft = (b.startW - appData.currentWeek) * 7 + (1 - Math.min(appData.currentDay, 5));
-                        if (daysLeft >= 0) upcomingTests.push({ b, daysLeft, sk });
+                    if (!b.isEvent && (b.name.includes('【定期テスト】') || b.name.includes('【模試】'))) {
+                        // 実際のテスト日：actualStartDate優先、なければstartW週の月曜日
+                        const testDateStr = b.actualStartDate || weekNumToDateStr(b.startW, 1);
+                        const testDate = new Date(testDateStr); testDate.setHours(0,0,0,0);
+                        const daysLeft = Math.round((testDate - _today) / (1000 * 60 * 60 * 24));
+                        if (daysLeft >= 0) upcomingTests.push({ b, daysLeft, testDate, sk });
                     }
                 });
             });
@@ -3306,8 +3309,9 @@
             document.getElementById('edit-curr-subject').value = subjKey;
             document.getElementById('edit-curr-id').value = id;
             document.getElementById('edit-curr-name').value = book.name;
-            document.getElementById('edit-curr-start').value = weekNumToDateStr(book.startW, 1);
-            document.getElementById('edit-curr-end').value   = weekNumToDateStr(book.endW,   7);
+            // actualStartDate/actualEndDate（実際に入力された日付）優先、なければweekNumから復元
+            document.getElementById('edit-curr-start').value = book.actualStartDate || weekNumToDateStr(book.startW, 1);
+            document.getElementById('edit-curr-end').value   = book.actualEndDate   || weekNumToDateStr(book.endW,   7);
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) dayTypeEl.value = book.dayType || 'normal'; 
