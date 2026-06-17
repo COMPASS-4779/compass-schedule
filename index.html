@@ -1589,7 +1589,8 @@
             
             if(!name || !sd || !ed) return alert("基本情報を入力してください");
 
-            appData.curriculum = {};
+            // 既存カリキュラムを保持したまま、フォームの新規エントリのみ追加
+            if (!appData.curriculum) appData.curriculum = {};
             const entries = document.querySelectorAll('.textbook-entry');
 
             entries.forEach((e, i) => {
@@ -1605,8 +1606,15 @@
 
                 if (!n) return;
                 if(!appData.curriculum[s]) appData.curriculum[s] = [];
-                appData.curriculum[s].push({ id: Math.random().toString(36).substr(2,5), name: n, total: t, unit: unit, startW: startW, endW: endW });
+                // 同名・同期間の重複は追加しない
+                const isDuplicate = appData.curriculum[s].some(b => b.name === n && b.startW === startW && b.endW === endW);
+                if (!isDuplicate) {
+                    appData.curriculum[s].push({ id: Math.random().toString(36).substr(2,5), name: n, total: t, unit: unit, startW: startW, endW: endW });
+                }
             });
+
+            // ganttRowOrderをリセット（新規追加後はグループ表示に戻す）
+            appData.ganttRowOrder = [];
 
             const diff = Math.ceil((new Date(ed) - new Date(sd)) / (1000*60*60*24*7));
             appData.profile = { 
