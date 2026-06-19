@@ -793,6 +793,16 @@
                             <input type="date" id="edit-curr-end" class="w-full border rounded-lg px-4 py-2 text-sm">
                         </div>
                     </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">総量（ページ数・問題数など）</label>
+                            <input type="number" id="edit-curr-total" min="1" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">単位</label>
+                            <input type="text" id="edit-curr-unit" placeholder="ページ・問・回" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
+                        </div>
+                    </div>
                     
                     <div class="border-t border-slate-100 pt-3 mt-2">
                         <label class="block text-xs font-bold text-slate-500 mb-1">期間中の学習モード (1日の目標時間)</label>
@@ -3320,6 +3330,8 @@
             // actualStartDate/actualEndDate（実際に入力された日付）優先、なければweekNumから復元
             document.getElementById('edit-curr-start').value = book.actualStartDate || weekNumToDateStr(book.startW, 1);
             document.getElementById('edit-curr-end').value   = book.actualEndDate   || weekNumToDateStr(book.endW,   7);
+            document.getElementById('edit-curr-total').value = book.total || '';
+            document.getElementById('edit-curr-unit').value  = book.unit  || 'ページ';
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) dayTypeEl.value = book.dayType || 'normal'; 
@@ -3363,6 +3375,11 @@
             // 科目表示名（宿題カテゴリのみ）
             const labelVal = (document.getElementById('edit-curr-label')?.value || '').trim();
             book.displayLabel = labelVal || '';
+            // 総量・単位
+            const totalVal = parseInt(document.getElementById('edit-curr-total')?.value);
+            if (totalVal > 0) book.total = totalVal;
+            const unitVal = (document.getElementById('edit-curr-unit')?.value || '').trim();
+            if (unitVal) book.unit = unitVal;
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) book.dayType = dayTypeEl.value; 
