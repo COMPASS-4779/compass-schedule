@@ -156,6 +156,30 @@
             <div class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 border-t-4 border-t-[#0A1628]">
                 <h2 class="text-xl font-bold text-[#0A1628] mb-6 border-b pb-2"><i class="fas fa-list-check text-[#B8963E] mr-2"></i>カリキュラム詳細設定</h2>
                 <div id="curriculum-builder-container" class="space-y-4 mb-8"></div>
+
+                <!-- スプレッドシート一括取込 -->
+                <div class="border border-emerald-200 bg-emerald-50 rounded-xl p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-black text-emerald-800"><i class="fas fa-table mr-2"></i>スプレッドシートから一括取込</span>
+                        <button onclick="document.getElementById('sheet-import-area').classList.toggle('hidden')" class="text-xs text-emerald-600 border border-emerald-300 rounded px-2 py-1 bg-white hover:bg-emerald-100 transition">開く／閉じる</button>
+                    </div>
+                    <div id="sheet-import-area" class="hidden">
+                        <p class="text-[10px] text-emerald-700 mb-2 font-bold">スプレッドシートの列順（ヘッダー行不要）：<br>
+                            <span class="bg-white border border-emerald-200 rounded px-2 py-0.5 font-mono">科目　カテゴリ　テキスト名　開始日　終了日　総数　単位</span>
+                        </p>
+                        <p class="text-[10px] text-slate-500 mb-1">
+                            科目例: 英語 数学 国語 理科 社会 英単語 英文法 現代文 古典 化学 物理 数学I 数学A 数学II 数学B<br>
+                            カテゴリ例: 受験勉強（長期） / 宿題 / 定期テスト / 行事<br>
+                            日付例: 2026/04/01　総数例: 100　単位例: ページ
+                        </p>
+                        <textarea id="sheet-import-text" rows="6" placeholder="スプレッドシートからコピーしてここに貼り付け（タブ区切り）" class="w-full border border-emerald-300 rounded-lg px-3 py-2 text-xs font-mono mb-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                        <button onclick="importFromSheetText()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-2 rounded shadow transition">
+                            <i class="fas fa-file-import mr-2"></i>取込実行（既存データに追加）
+                        </button>
+                        <div id="sheet-import-result" class="mt-2 text-xs font-bold hidden"></div>
+                    </div>
+                </div>
+
                 <div class="flex justify-center border-t pt-6 gap-3 bg-slate-50 p-4 rounded-xl">
                     <select id="manual-add-subject" class="border rounded px-4 py-2 text-sm font-bold bg-white"></select>
                     <button onclick="manualAdd()" class="bg-[#D4622A] text-white px-6 py-2 rounded font-bold shadow transition">手動で直接追加</button>
@@ -3490,6 +3514,85 @@
                 status.textContent = "";
                 document.getElementById('task-file-upload').value = ""; 
             }
+        }
+
+        // スプレッドシート貼り付けからカリキュラム一括取込
+        function importFromSheetText() {
+            const text = (document.getElementById('sheet-import-text')?.value || '').trim();
+            const resultEl = document.getElementById('sheet-import-result');
+            if (!text) { resultEl.textContent = '⚠️ データが入力されていません。'; resultEl.className = 'mt-2 text-xs font-bold text-orange-600'; resultEl.classList.remove('hidden'); return; }
+
+            // 科目ラベル → SUBJ_CONFIGキー マップ
+            const LABEL_TO_KEY = {};
+            Object.entries(SUBJ_CONFIG).forEach(([k, v]) => { LABEL_TO_KEY[v.label] = k; });
+            // 追加ショートカット
+            const extras = { '英語':['english'], '数学':['math'], '国語':['japanese'], '理科':['science'], '社会':['society'],
+                '英単語':['english_vocab'], '英文法':['english_grammar'], '現代文':['japanese_mod'], '古典':['japanese_cls'],
+                '化学':['chemistry'], '物理':['physics'], '数学I':['math1'], '数学A':['mathA'],
+                '数学II':['math2'], '数学B':['mathB'], '数学III':['math3'], '数学C':['mathC'],
+                '数学/算数':['math'] };
+            Object.entries(extras).forEach(([label, [key]]) => { LABEL_TO_KEY[label] = key; });
+
+            // カテゴリ文字列 → フラグ変換
+            function parseCat(cat) {
+                const c = (cat || '').replace(/\s/g,'');
+                if (c.includes('行事') || c.includes('イベント')) return { isEvent: true, isOneOff: true, prefix: '【行事】' };
+                if (c.includes('定期テスト') || c.includes('模試') || c.includes('テスト')) return { isEvent: false, isOneOff: true, prefix: '【定期テスト】' };
+                if (c.includes('宿題') || c.includes('提出')) return { isEvent: false, isOneOff: true, prefix: '' };
+                return { isEvent: false, isOneOff: false, prefix: '' }; // 受験勉強（長期）
+            }
+
+            // 日付文字列 → ISO形式
+            function parseDate(s) {
+                if (!s) return '';
+                return s.trim().replace(/\//g, '-').replace(/年/g,'-').replace(/月/g,'-').replace(/日/g,'');
+            }
+
+            if (!appData.curriculum) appData.curriculum = {};
+            let added = 0, skipped = 0, errors = [];
+
+            const lines = text.split('\n').filter(l => l.trim());
+            lines.forEach((line, idx) => {
+                const cols = line.split('\t').map(c => c.trim());
+                if (cols.length < 3) { errors.push(`行${idx+1}: 列数不足`); return; }
+
+                const [subjLabel, catLabel, textName, startRaw, endRaw, totalRaw, unitRaw] = cols;
+                const subjKey = LABEL_TO_KEY[subjLabel];
+                if (!subjKey) { errors.push(`行${idx+1}: 科目「${subjLabel}」が不明`); return; }
+                if (!textName) { errors.push(`行${idx+1}: テキスト名が空`); return; }
+
+                const { isEvent, isOneOff, prefix } = parseCat(catLabel);
+                const startStr = parseDate(startRaw) || (appData.profile?.startDate || '');
+                const endStr   = parseDate(endRaw)   || startStr;
+                const startW   = startStr ? dateStrToWeekNum(startStr) : 1;
+                const endW     = endStr   ? dateStrToWeekNum(endStr)   : startW;
+                const total    = parseInt(totalRaw) || 100;
+                const unit     = unitRaw || 'ページ';
+                const name     = prefix + textName.replace(/【.*?】/g, '');
+
+                if (!appData.curriculum[subjKey]) appData.curriculum[subjKey] = [];
+                const dup = appData.curriculum[subjKey].some(b => b.name === name && b.startW === startW && b.endW === endW);
+                if (dup) { skipped++; return; }
+
+                appData.curriculum[subjKey].push({
+                    id: Math.random().toString(36).substr(2,5),
+                    name, total, unit, startW, endW, isOneOff, isEvent,
+                    actualStartDate: startStr, actualEndDate: endStr
+                });
+                added++;
+            });
+
+            appData.ganttRowOrder = [];
+            saveData();
+            renderDashboard();
+
+            let msg = `✅ ${added}件追加しました。`;
+            if (skipped > 0) msg += ` （重複${skipped}件スキップ）`;
+            if (errors.length > 0) msg += `\n⚠️ エラー: ${errors.join(' / ')}`;
+            resultEl.textContent = msg;
+            resultEl.className = 'mt-2 text-xs font-bold ' + (errors.length > 0 ? 'text-orange-600' : 'text-emerald-700');
+            resultEl.classList.remove('hidden');
+            if (added > 0) document.getElementById('sheet-import-text').value = '';
         }
 
         function addManualTask() {
