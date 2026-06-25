@@ -3628,12 +3628,22 @@
             // 科目ラベル → SUBJ_CONFIGキー マップ
             const LABEL_TO_KEY = {};
             Object.entries(SUBJ_CONFIG).forEach(([k, v]) => { LABEL_TO_KEY[v.label] = k; });
-            // 追加ショートカット
-            const extras = { '英語':['english'], '数学':['math'], '国語':['japanese'], '理科':['science'], '社会':['society'],
+            // 追加ショートカット（別名・略称を含む）
+            const extras = {
+                '英語':['english'], '数学':['math'], '国語':['japanese'], '理科':['science'], '社会':['society'],
                 '英単語':['english_vocab'], '英文法':['english_grammar'], '現代文':['japanese_mod'], '古典':['japanese_cls'],
-                '化学':['chemistry'], '物理':['physics'], '数学I':['math1'], '数学A':['mathA'],
-                '数学II':['math2'], '数学B':['mathB'], '数学III':['math3'], '数学C':['mathC'],
-                '数学/算数':['math'] };
+                '古文':['japanese_cls'], '漢文':['japanese_cls'],
+                '化学':['chemistry'], '物理':['physics'],
+                '数学I':['math1'], '数学A':['mathA'], '数学II':['math2'], '数学B':['mathB'],
+                '数学III':['math3'], '数学C':['mathC'], '数学/算数':['math'],
+                '英文解釈':['english'], '英語長文':['english'], '英語リスニング':['english'],
+                'リスニング':['english'], '英作文':['english'], '英会話':['english'],
+                '地理':['society'], '歴史':['society'], '日本史':['society'], '世界史':['society'],
+                '公民':['society'], '政治経済':['society'], '倫理':['society'],
+                '生物':['science'], '地学':['science'], '算数':['math'],
+            };
+            // カスタム科目もLABEL_TO_KEYに追加
+            (appData.customSubjects || []).forEach(s => { LABEL_TO_KEY[s.label] = s.key; });
             Object.entries(extras).forEach(([label, [key]]) => { LABEL_TO_KEY[label] = key; });
 
             // カテゴリ文字列 → フラグ変換
@@ -3645,10 +3655,16 @@
                 return { isEvent: false, isOneOff: false, prefix: '' }; // 受験勉強（長期）
             }
 
-            // 日付文字列 → ISO形式
+            // 日付文字列 → ISO形式（YYYYMMDD・YYYY/MM/DD・YYYY-MM-DD・日本語形式に対応）
             function parseDate(s) {
                 if (!s) return '';
-                return s.trim().replace(/\//g, '-').replace(/年/g,'-').replace(/月/g,'-').replace(/日/g,'');
+                s = s.trim();
+                // 8桁数字 YYYYMMDD → YYYY-MM-DD
+                if (/^\d{8}$/.test(s)) return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
+                // 6桁数字 YYYYMM → YYYY-MM-01
+                if (/^\d{6}$/.test(s)) return `${s.slice(0,4)}-${s.slice(4,6)}-01`;
+                // スラッシュ・日本語形式
+                return s.replace(/\//g, '-').replace(/年/g,'-').replace(/月/g,'-').replace(/日/g,'');
             }
 
             if (!appData.curriculum) appData.curriculum = {};
