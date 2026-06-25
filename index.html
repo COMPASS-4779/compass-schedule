@@ -157,6 +157,23 @@
                 <h2 class="text-xl font-bold text-[#0A1628] mb-6 border-b pb-2"><i class="fas fa-list-check text-[#B8963E] mr-2"></i>カリキュラム詳細設定</h2>
                 <div id="curriculum-builder-container" class="space-y-4 mb-8"></div>
 
+                <!-- カスタム科目追加 -->
+                <div class="border border-purple-200 bg-purple-50 rounded-xl p-4 mb-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-black text-purple-800"><i class="fas fa-plus-circle mr-2"></i>対象科目を追加</span>
+                        <button onclick="document.getElementById('custom-subj-area').classList.toggle('hidden')" class="text-xs text-purple-600 border border-purple-300 rounded px-2 py-1 bg-white hover:bg-purple-100 transition">開く／閉じる</button>
+                    </div>
+                    <div id="custom-subj-area" class="hidden">
+                        <p class="text-[10px] text-slate-500 mb-3">デフォルトにない科目（例: 情報・家庭科・音楽など）を追加できます。</p>
+                        <div class="flex gap-2 mb-3">
+                            <input type="text" id="custom-subj-name" placeholder="科目名（例: 情報）" class="flex-grow border rounded-lg px-3 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-purple-400">
+                            <input type="color" id="custom-subj-color" value="#7C3AED" title="カラー" class="w-12 h-10 border rounded-lg cursor-pointer p-1">
+                            <button onclick="addCustomSubject()" class="bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold px-4 py-2 rounded shadow transition">追加</button>
+                        </div>
+                        <div id="custom-subj-list" class="space-y-1"></div>
+                    </div>
+                </div>
+
                 <!-- スプレッドシート一括取込 -->
                 <div class="border border-emerald-200 bg-emerald-50 rounded-xl p-4 mb-4">
                     <div class="flex items-center justify-between mb-2">
@@ -1252,16 +1269,20 @@
                 if(!data.hiddenPresets) data.hiddenPresets = [];
                 data.password = pass; 
 
-                appData = data; 
+                appData = data;
                 currentUser = id;
                 if (!appData.settings) {
                     appData.settings = { studyTimeWeekday: 120, studyTimeHoliday: 360, testPrepRatio: { "2w": 70, "1w": 100 } };
                 }
-                
+                if (!appData.customSubjects) appData.customSubjects = [];
+
+                // カスタム科目をSUBJ_CONFIGに反映
+                applyCustomSubjects();
+
                 document.getElementById('login-view').classList.add('hidden');
                 document.getElementById('nav-user-info').classList.remove('hidden');
                 document.getElementById('nav-user-id').textContent = id;
-                
+
                 updateCourseOptions(); 
                 
                 // 新規作成直後にクラウドDBへ保存しておく
@@ -1325,7 +1346,11 @@
                 ? ['english_vocab','english_grammar','math1','mathA','math2','mathB','math3','mathC','japanese_mod','japanese_cls','chemistry','physics','science','society','english', 'math', 'japanese'] 
                 : ['english','math','japanese','science','society'];
 
-            activeKeys.forEach(k => {
+            // デフォルト科目 + カスタム科目を結合して表示
+            const customKeys = (appData.customSubjects || []).map(s => s.key);
+            const allKeys = [...activeKeys, ...customKeys];
+
+            allKeys.forEach(k => {
                 if(SUBJ_CONFIG[k]) {
                     if(filter) filter.innerHTML += `<option value="${k}">${SUBJ_CONFIG[k].label}</option>`;
                     if(manual) manual.innerHTML += `<option value="${k}">${SUBJ_CONFIG[k].label}</option>`;
@@ -1333,8 +1358,8 @@
                     if(mTaskSubj) mTaskSubj.innerHTML += `<option value="${SUBJ_CONFIG[k].label}">${SUBJ_CONFIG[k].label}</option>`;
                 }
             });
-            
-            apiFetchedBooks = null; 
+
+            apiFetchedBooks = null;
             if(typeof renderPresetBooks === 'function') renderPresetBooks(false);
         }
 
@@ -3514,6 +3539,84 @@
                 status.textContent = "";
                 document.getElementById('task-file-upload').value = ""; 
             }
+        }
+
+        // ========== カスタム科目管理 ==========
+
+        // カスタム科目をSUBJ_CONFIGに反映し、全セレクトを再描画
+        function applyCustomSubjects() {
+            if (!appData.customSubjects) return;
+            appData.customSubjects.forEach(s => {
+                if (!SUBJ_CONFIG[s.key]) {
+                    SUBJ_CONFIG[s.key] = { label: s.label, hex: s.hex };
+                }
+            });
+            // セレクトを再構築
+            const targets = ['subject-filter','manual-add-subject','test-subject','manual-task-subj'];
+            targets.forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                const cur = el.value;
+                el.innerHTML = '';
+                Object.keys(SUBJ_CONFIG).forEach(k => {
+                    const opt = document.createElement('option');
+                    opt.value = k;
+                    opt.textContent = SUBJ_CONFIG[k].label;
+                    el.appendChild(opt);
+                });
+                el.value = cur;
+            });
+            renderCustomSubjectList();
+        }
+
+        // カスタム科目リスト表示
+        function renderCustomSubjectList() {
+            const el = document.getElementById('custom-subj-list');
+            if (!el) return;
+            if (!appData.customSubjects || appData.customSubjects.length === 0) {
+                el.innerHTML = '<p class="text-[10px] text-slate-400">追加済みの科目はありません。</p>';
+                return;
+            }
+            el.innerHTML = appData.customSubjects.map(s => `
+                <div class="flex items-center justify-between bg-white border border-purple-100 rounded-lg px-3 py-1.5">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full flex-shrink-0" style="background:${s.hex}"></span>
+                        <span class="text-xs font-bold text-slate-700">${s.label}</span>
+                        <span class="text-[10px] text-slate-400">(${s.key})</span>
+                    </div>
+                    <button onclick="removeCustomSubject('${s.key}')" class="text-[10px] text-red-500 hover:text-red-700 font-bold">削除</button>
+                </div>
+            `).join('');
+        }
+
+        // 科目を追加
+        function addCustomSubject() {
+            const name = (document.getElementById('custom-subj-name')?.value || '').trim();
+            const hex  = document.getElementById('custom-subj-color')?.value || '#7C3AED';
+            if (!name) return alert('科目名を入力してください。');
+
+            if (!appData.customSubjects) appData.customSubjects = [];
+            // キー生成（重複防止）
+            const key = 'custom_' + name.replace(/[^a-zA-Z0-9ぁ-ん亜-熙]/g, '') + '_' + Date.now().toString(36).slice(-4);
+            if (appData.customSubjects.some(s => s.label === name)) {
+                return alert(`「${name}」はすでに追加されています。`);
+            }
+            appData.customSubjects.push({ key, label: name, hex });
+            if (!appData.curriculum[key]) appData.curriculum[key] = [];
+            applyCustomSubjects();
+            saveData();
+            document.getElementById('custom-subj-name').value = '';
+        }
+
+        // 科目を削除
+        function removeCustomSubject(key) {
+            if (!confirm(`この科目を削除しますか？\n※その科目のカリキュラムデータも消えます。`)) return;
+            appData.customSubjects = (appData.customSubjects || []).filter(s => s.key !== key);
+            delete appData.curriculum[key];
+            delete SUBJ_CONFIG[key];
+            applyCustomSubjects();
+            saveData();
+            renderDashboard();
         }
 
         // スプレッドシート貼り付けからカリキュラム一括取込
