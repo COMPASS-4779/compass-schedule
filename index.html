@@ -298,9 +298,22 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="bg-white rounded-2xl shadow-sm border p-6 lg:col-span-2">
-                    <h2 class="font-bold mb-4 border-b pb-2 text-[#0A1628]"><i class="fas fa-map-signs text-[#B8963E] mr-2"></i>年間計画ロードマップ</h2>
-                    <div id="dash-gantt-dates" class="flex justify-between text-[10px] text-slate-400 font-bold mb-2 px-1"></div>
-                    <div id="dash-gantt-container" class="space-y-4"></div>
+                    <div class="flex items-center justify-between mb-3 border-b pb-2">
+                        <h2 class="font-bold text-[#0A1628]"><i class="fas fa-map-signs text-[#B8963E] mr-2"></i>年間計画ロードマップ</h2>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold text-slate-500 whitespace-nowrap">スケール</span>
+                            <input type="range" id="gantt-scale-slider" min="1" max="8" step="0.5" value="1"
+                                class="w-28 accent-[#B8963E]"
+                                oninput="applyGanttScale(this.value)">
+                            <span id="gantt-scale-label" class="text-[10px] font-black text-[#B8963E] w-8 text-right">×1</span>
+                        </div>
+                    </div>
+                    <div id="gantt-scroll-wrap" class="overflow-x-auto">
+                        <div id="gantt-scale-inner" style="min-width:100%;width:100%;transition:width 0.2s;">
+                            <div id="dash-gantt-dates" class="flex justify-between text-[10px] text-slate-400 font-bold mb-2 px-1"></div>
+                            <div id="dash-gantt-container" class="space-y-4 relative"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-sm border p-6 lg:col-span-2">
                     <h2 class="font-bold mb-6 border-b pb-2 text-[#0A1628]">
@@ -2087,6 +2100,15 @@
 
 
         // 📌 [SECTION-GANTT] ===== ガントチャート =====
+        let _ganttScale = 1;
+        function applyGanttScale(val) {
+            _ganttScale = parseFloat(val);
+            const inner = document.getElementById('gantt-scale-inner');
+            const label = document.getElementById('gantt-scale-label');
+            if (inner) inner.style.width = (_ganttScale * 100) + '%';
+            if (label) label.textContent = '×' + (_ganttScale % 1 === 0 ? _ganttScale : _ganttScale.toFixed(1));
+        }
+
         function renderGantt() {
             const c = document.getElementById('dash-gantt-container'); 
             if (!c) return;
