@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+<!-- updated: 2026-05-21 hook-test -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,9 +59,10 @@
 
     <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-        <div id="settings-tab-menu" class="hidden flex border-b-2 border-slate-200 mb-6 mt-2 max-w-7xl mx-auto">
-            <button onclick="switchSettingsTab('user')" id="tab-btn-user" class="px-6 py-3 font-bold text-sm border-b-4 border-[#D4622A] text-[#0A1628] transition-all">カリキュラム・学習設定</button>
-            <button onclick="switchSettingsTab('admin')" id="tab-btn-admin" class="px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-400 hover:text-slate-600 transition-all">システム管理 (DB追加)</button>
+        <div id="settings-tab-menu" class="hidden flex border-b-2 border-slate-200 mb-6 mt-2 max-w-7xl mx-auto overflow-x-auto">
+            <button onclick="switchSettingsTab('user')" id="tab-btn-user" class="whitespace-nowrap px-6 py-3 font-bold text-sm border-b-4 border-[#D4622A] text-[#0A1628] transition-all">カリキュラム・学習設定</button>
+            <button onclick="switchSettingsTab('admin')" id="tab-btn-admin" class="whitespace-nowrap px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-400 hover:text-slate-600 transition-all">システム管理 (DB追加)</button>
+            <button onclick="switchSettingsTab('studysites')" id="tab-btn-studysites" class="whitespace-nowrap px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-400 hover:text-slate-600 transition-all">📚 学習サイト管理</button>
         </div>
         
         <section id="login-view" class="fade-in max-w-md mx-auto mt-12 bg-white rounded-2xl shadow-xl border border-slate-200 p-8 border-t-4 border-t-[#0A1628]">
@@ -255,9 +257,22 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="bg-white rounded-2xl shadow-sm border p-6 lg:col-span-2">
-                    <h2 class="font-bold mb-4 border-b pb-2 text-[#0A1628]"><i class="fas fa-map-signs text-[#B8963E] mr-2"></i>年間計画ロードマップ</h2>
-                    <div id="dash-gantt-dates" class="flex justify-between text-[10px] text-slate-400 font-bold mb-2 px-1"></div>
-                    <div id="dash-gantt-container" class="space-y-4"></div>
+                    <div class="flex items-center justify-between mb-3 border-b pb-2">
+                        <h2 class="font-bold text-[#0A1628]"><i class="fas fa-map-signs text-[#B8963E] mr-2"></i>年間計画ロードマップ</h2>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold text-slate-500 whitespace-nowrap">スケール</span>
+                            <input type="range" id="gantt-scale-slider" min="1" max="8" step="0.5" value="1"
+                                class="w-28 accent-[#B8963E]"
+                                oninput="applyGanttScale(this.value)">
+                            <span id="gantt-scale-label" class="text-[10px] font-black text-[#B8963E] w-8 text-right">×1</span>
+                        </div>
+                    </div>
+                    <div id="gantt-scroll-wrap" class="overflow-x-auto">
+                        <div id="gantt-scale-inner" style="min-width:100%;width:100%;transition:width 0.2s;">
+                            <div id="dash-gantt-dates" class="flex justify-between text-[10px] text-slate-400 font-bold mb-2 px-1"></div>
+                            <div id="dash-gantt-container" class="space-y-4 relative"></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-sm border p-6 lg:col-span-2">
                     <h2 class="font-bold mb-6 border-b pb-2 text-[#0A1628]">
@@ -340,13 +355,19 @@
             </div>
 
             <div class="bg-white rounded-2xl shadow-sm border p-6 border-t-4 border-t-emerald-500 mt-8">
-                <div class="flex justify-between items-center mb-6 border-b pb-2">
+                <div class="flex flex-wrap justify-between items-center mb-6 border-b pb-2 gap-3">
                     <h2 class="text-xl font-bold text-[#0A1628] flex items-center gap-2">
                         <i class="fas fa-microscope text-emerald-500"></i>単元別・要復習リスト (100%未満)
                     </h2>
+                    <button onclick="openBulkPlanModal()"
+                        class="flex items-center gap-2 px-4 py-2 text-xs font-black bg-[#0A1628] text-white rounded-lg shadow hover:opacity-90 transition">
+                        📋 一括タスク計画
+                    </button>
                 </div>
                 <div id="unit-records-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
             </div>
+            <!-- トースト -->
+            <div id="bp-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-[#0A1628] text-white text-sm font-bold px-6 py-3 rounded-full shadow-xl opacity-0 transition-opacity duration-300 z-[200] pointer-events-none"></div>
         </section>
 
         <section id="input-view" class="hidden space-y-8 fade-in pb-12">
@@ -556,6 +577,170 @@
             </div>
         </section>
 
+        <!-- 学習サイト管理セクション -->
+        <section id="studysites-view" class="hidden fade-in space-y-6 pb-12">
+            <div class="bg-white rounded-2xl shadow-sm border p-6 md:p-8 border-t-4 border-t-violet-600">
+                <div class="flex items-center justify-between mb-6 border-b pb-3 flex-wrap gap-2">
+                    <h2 class="text-xl font-bold text-[#0A1628]"><i class="fas fa-globe text-violet-500 mr-2"></i>学習サイト管理</h2>
+                    <div class="flex gap-2 flex-wrap">
+                        <button onclick="openBulkUrlImportModal()" class="bg-white hover:bg-violet-50 text-violet-700 border border-violet-300 text-xs font-bold px-4 py-2 rounded-lg shadow-sm transition flex items-center gap-1">
+                            <i class="fas fa-file-import"></i> URL一括取込
+                        </button>
+                        <button onclick="openStudySiteModal()" class="bg-violet-600 hover:bg-violet-700 text-white text-xs font-bold px-4 py-2 rounded-lg shadow transition flex items-center gap-1">
+                            <i class="fas fa-plus"></i> サイトを追加
+                        </button>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-500 mb-4">登録した学習サイトは「📖 学習サイトで演習」や「📋 一括タスク計画」で活用されます。</p>
+                <div id="study-sites-list" class="space-y-3">
+                    <p class="text-sm text-slate-400 text-center py-8">まだ学習サイトが登録されていません。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- URL一括取込モーダル -->
+        <div id="bulk-url-import-modal" class="hidden fixed inset-0 bg-black/60 z-[200] flex items-start justify-center p-4 pt-6 overflow-y-auto">
+            <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl fade-in">
+                <div class="flex items-center justify-between px-6 py-4 border-b">
+                    <h3 class="text-base font-black text-[#0A1628]"><i class="fas fa-file-import text-violet-500 mr-2"></i>URL一括取込</h3>
+                    <button onclick="closeBulkUrlImportModal()" class="text-slate-400 hover:text-slate-700 text-xl leading-none">✕</button>
+                </div>
+
+                <!-- モード切替タブ -->
+                <div class="flex border-b border-slate-200 px-6">
+                    <button id="bimode-btn-single" onclick="switchBulkImportMode('single')"
+                        class="px-5 py-3 text-xs font-bold border-b-2 border-violet-500 text-violet-700 transition-all">
+                        📄 単一サイトへ取込
+                    </button>
+                    <button id="bimode-btn-multi" onclick="switchBulkImportMode('multi')"
+                        class="px-5 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all">
+                        📋 複数サイト一括取込
+                    </button>
+                </div>
+
+                <div class="p-6 space-y-4">
+
+                    <!-- ═══ 単一サイトモード ═══ -->
+                    <div id="bimode-single">
+                        <div class="mb-4">
+                            <label class="block text-xs font-bold text-slate-700 mb-1">取込先サイト <span class="text-red-500">*</span></label>
+                            <select id="bulk-import-site-sel" onchange="onBulkImportSiteChange(this.value)" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-violet-400">
+                                <option value="">── 選択してください ──</option>
+                                <option value="__new__">＋ 新しいサイトとして登録</option>
+                            </select>
+                        </div>
+                        <div id="bulk-new-site-fields" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 bg-violet-50 border border-violet-200 rounded-xl p-4 mb-4">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1">サイト名 <span class="text-red-500">*</span></label>
+                                <input type="text" id="bulk-new-site-name" class="w-full border border-slate-300 rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-violet-400" placeholder="例: スタディサプリ">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1">サイトURL</label>
+                                <input type="url" id="bulk-new-site-url" class="w-full border border-slate-300 rounded px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-violet-400" placeholder="https://...">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-600 mb-1">対応教科 <span class="text-red-500">*</span></label>
+                                <select id="bulk-new-site-subject" class="w-full border border-slate-300 rounded px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-violet-400"></select>
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 rounded-xl border border-slate-200 p-3 mb-3 text-[10px] text-slate-500 leading-relaxed">
+                            <span class="font-bold text-slate-700">列順：</span>単元名　キーワード(;区切り)　コンテンツURL　ラベル　時間(分)<br>
+                            タブ区切り・カンマ区切り両対応。1行目がヘッダーなら自動スキップ。
+                        </div>
+                        <textarea id="bulk-import-text" rows="8" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono outline-none focus:ring-2 focus:ring-violet-400 resize-none" placeholder="単元名&#9;キーワード(;区切り)&#9;コンテンツURL&#9;ラベル&#9;所要時間(分)
+二次関数&#9;二次;放物線;頂点&#9;https://example.com/unit1&#9;二次関数の基礎&#9;30
+一次関数&#9;一次;比例;傾き&#9;https://example.com/unit2&#9;&#9;25"></textarea>
+                    </div>
+
+                    <!-- ═══ 複数サイト一括モード ═══ -->
+                    <div id="bimode-multi" class="hidden">
+                        <div class="bg-violet-50 rounded-xl border border-violet-200 p-3 mb-3 text-[10px] text-violet-700 leading-relaxed">
+                            <div class="font-bold text-violet-800 mb-1">📋 複数サイトを一度に登録</div>
+                            <span class="font-bold">列順：</span>サイト名　サイトURL　対応科目コード<br>
+                            サイトURLや対応科目は空欄でも取込可。同名サイトが既存の場合はスキップ。<br>
+                            科目コード例：<span class="font-mono bg-violet-100 px-1 rounded">math english japanese science society math1 mathA</span>
+                        </div>
+                        <textarea id="bulk-import-text-multi" rows="8" class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs font-mono outline-none focus:ring-2 focus:ring-violet-400 resize-none" placeholder="サイト名&#9;サイトURL&#9;対応科目コード
+スタディサプリ&#9;https://studysapuri.jp&#9;math
+英語サイト&#9;https://example.com&#9;english
+国語教材サイト&#9;&#9;japanese
+読解問題集"></textarea>
+                    </div>
+
+                    <!-- ファイル選択（共通） -->
+                    <div class="flex justify-between items-center">
+                        <label class="cursor-pointer bg-slate-100 hover:bg-slate-200 text-slate-600 text-[10px] font-bold px-3 py-1.5 rounded border border-slate-300 transition">
+                            <i class="fas fa-upload mr-1"></i>CSVファイルを読み込む
+                            <input type="file" accept=".csv,.tsv,.txt" class="hidden" onchange="loadBulkImportFile(this)">
+                        </label>
+                        <span id="bulk-file-name" class="text-[10px] text-slate-400"></span>
+                    </div>
+
+                    <!-- プレビュー（共通） -->
+                    <div id="bulk-import-preview" class="hidden">
+                        <div class="text-xs font-bold text-slate-600 mb-2">取込プレビュー <span id="bulk-preview-count" class="text-violet-600"></span></div>
+                        <div id="bulk-preview-table" class="max-h-52 overflow-y-auto custom-scroll border border-slate-200 rounded-xl text-[10px] font-mono divide-y divide-slate-100"></div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center px-6 py-4 border-t bg-slate-50 rounded-b-2xl">
+                    <button onclick="previewBulkImport()" class="px-4 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold rounded-lg transition">👁 プレビュー</button>
+                    <div class="flex gap-3">
+                        <button onclick="closeBulkUrlImportModal()" class="px-4 py-2 text-xs font-bold border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-100 transition">キャンセル</button>
+                        <button onclick="executeBulkUrlImport()" class="px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white text-xs font-black rounded-lg shadow transition">取込実行</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 学習サイト追加・編集モーダル -->
+        <div id="study-site-modal" class="hidden fixed inset-0 bg-black/60 z-[200] flex items-start justify-center p-4 pt-8 overflow-y-auto">
+            <div class="bg-white rounded-2xl shadow-xl w-full max-w-2xl fade-in">
+                <div class="flex items-center justify-between px-6 py-4 border-b">
+                    <h3 id="ss-modal-title" class="text-base font-black text-[#0A1628]">📚 学習サイトの追加</h3>
+                    <button onclick="closeStudySiteModal()" class="text-slate-400 hover:text-slate-700 text-xl leading-none">✕</button>
+                </div>
+                <div class="p-6 space-y-5">
+                    <input type="hidden" id="ss-edit-id">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">サイト名 <span class="text-red-500">*</span></label>
+                            <input type="text" id="ss-edit-name" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-violet-400" placeholder="例: スタディサプリ">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">サイトURL</label>
+                            <input type="url" id="ss-edit-url" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-violet-400" placeholder="https://...">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">対応教科 <span class="text-red-500">*</span></label>
+                            <select id="ss-edit-subject" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-violet-400 bg-white"></select>
+                        </div>
+                        <div class="flex items-center gap-3 pt-5">
+                            <label class="flex items-center gap-2 cursor-pointer select-none">
+                                <input type="checkbox" id="ss-edit-active" checked class="w-4 h-4 accent-violet-600">
+                                <span class="text-sm font-bold text-slate-700">有効にする</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 単元マッピング -->
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-xs font-black text-slate-700">単元マッピング <span class="text-[10px] text-slate-400 font-normal ml-1">（どの単元名・キーワードに対応するか）</span></span>
+                            <button onclick="addStudySiteUnitRow()" class="text-xs bg-violet-100 hover:bg-violet-200 text-violet-700 font-bold px-3 py-1 rounded border border-violet-300 transition">＋ 単元を追加</button>
+                        </div>
+                        <div id="ss-units-table" class="space-y-2 max-h-80 overflow-y-auto custom-scroll pr-1">
+                            <!-- 単元行はJS生成 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 px-6 py-4 border-t bg-slate-50 rounded-b-2xl">
+                    <button onclick="closeStudySiteModal()" class="px-4 py-2 text-xs font-bold border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-100 transition">キャンセル</button>
+                    <button onclick="saveStudySite()" class="px-6 py-2 bg-violet-600 hover:bg-violet-700 text-white text-xs font-black rounded-lg shadow transition">保存する</button>
+                </div>
+            </div>
+        </div>
+
         <!-- モーダル群 -->
         <div id="admin-auth-modal" class="hidden fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4">
             <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 fade-in">
@@ -609,12 +794,12 @@
                     </div>
                    <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">開始週 (Week)</label>
-                            <input type="number" id="edit-curr-start" class="w-full border rounded-lg px-4 py-2 text-sm">
+                            <label class="block text-xs font-bold text-slate-500 mb-1">開始日</label>
+                            <input type="date" id="edit-curr-start" class="w-full border rounded-lg px-4 py-2 text-sm">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">終了週 (Week)</label>
-                            <input type="number" id="edit-curr-end" class="w-full border rounded-lg px-4 py-2 text-sm">
+                            <label class="block text-xs font-bold text-slate-500 mb-1">終了日</label>
+                            <input type="date" id="edit-curr-end" class="w-full border rounded-lg px-4 py-2 text-sm">
                         </div>
                     </div>
                     
@@ -719,24 +904,125 @@
                         <label class="block text-xs font-bold text-slate-500 mb-1">単元名・テーマ</label>
                         <input type="text" id="unit-input-name" class="w-full border rounded-lg px-4 py-2 text-sm" placeholder="例：関係代名詞、二次関数の最大最小">
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">スコア / 正解数</label>
-                            <input type="number" id="unit-input-score" class="w-full border rounded-lg px-4 py-2 text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">満点 / 総問題数</label>
-                            <input type="number" id="unit-input-max" class="w-full border rounded-lg px-4 py-2 text-sm">
-                        </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">スコア / 満点　<span class="font-normal text-slate-400">（例: 4/10、310/510）</span></label>
+                        <input type="text" id="unit-input-fraction" class="w-full border rounded-lg px-4 py-2 text-sm" placeholder="正解数/総問題数　例: 4/10">
+                        <p id="unit-fraction-preview" class="text-[11px] text-slate-400 mt-1 h-4"></p>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-500 mb-1">データソース名</label>
-                        <input type="text" id="unit-input-source" class="w-full border rounded-lg px-4 py-2 text-sm" value="手動入力 / 外部連携テスト">
+                        <select id="unit-input-source-sel" class="w-full border rounded-lg px-4 py-2 text-sm bg-white" onchange="onUnitSourceSelChange(this.value)">
+                            <option value="">── 選択してください ──</option>
+                        </select>
+                        <input type="text" id="unit-input-source-text" class="hidden w-full border rounded-lg px-4 py-2 text-sm mt-2" placeholder="データソース名を入力">
                     </div>
                 </div>
                 <div class="flex justify-end gap-3 mt-8">
                     <button onclick="closeUnitRecordModal()" class="px-4 py-2 text-sm text-slate-500 hover:bg-slate-100 rounded transition font-bold">キャンセル</button>
                     <button onclick="addUnitRecord()" class="bg-emerald-500 text-white px-6 py-2 rounded text-sm font-bold shadow hover:bg-emerald-600 transition">データを保存</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 一括タスク計画モーダル ===== -->
+        <div id="bp-modal" class="hidden fixed inset-0 bg-black/60 z-[150] flex items-start justify-center p-4 pt-10 overflow-y-auto">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl fade-in mb-8">
+                <div class="flex items-center justify-between p-5 border-b">
+                    <div>
+                        <h3 class="text-base font-black text-[#0A1628]">📋 一括タスク計画：学習サイト連携</h3>
+                        <p id="bp-count" class="text-xs text-slate-500 mt-0.5"></p>
+                    </div>
+                    <button onclick="document.getElementById('bp-modal').classList.add('hidden')" class="text-slate-400 hover:text-slate-700 text-xl leading-none">✕</button>
+                </div>
+                <!-- 計画設定 -->
+                <div class="px-5 pt-4 pb-3 bg-slate-50 border-b">
+                    <p class="text-xs font-black text-slate-600 mb-3">⚙️ 計画設定</p>
+                    <div class="flex flex-wrap gap-4 items-end">
+                        <label class="text-xs text-slate-600 font-bold flex flex-col gap-1">
+                            タスク間隔
+                            <select id="bp-interval" onchange="recalcBulkDeadlines()"
+                                class="border border-slate-300 rounded-lg px-3 py-1.5 text-xs bg-white outline-none focus:ring-2 focus:ring-[#B8963E]">
+                                <option value="1">毎日（1日ごと）</option>
+                                <option value="2">2日ごと</option>
+                                <option value="3" selected>3日ごと</option>
+                                <option value="5">5日ごと</option>
+                                <option value="7">1週間ごと</option>
+                            </select>
+                        </label>
+                        <label class="text-xs text-slate-600 font-bold flex flex-col gap-1">
+                            1件あたり繰り返し
+                            <select id="bp-reps" onchange="recalcBulkDeadlines()"
+                                class="border border-slate-300 rounded-lg px-3 py-1.5 text-xs bg-white outline-none focus:ring-2 focus:ring-[#B8963E]">
+                                <option value="1" selected>1回</option>
+                                <option value="2">2回</option>
+                                <option value="3">3回</option>
+                            </select>
+                        </label>
+                        <button onclick="recalcBulkDeadlines()"
+                            class="px-3 py-1.5 text-xs font-bold border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-100 transition">
+                            🔄 期限を再計算
+                        </button>
+                    </div>
+                </div>
+                <!-- 項目リスト -->
+                <div id="bp-item-list" class="p-5 space-y-2 max-h-[50vh] overflow-y-auto"></div>
+                <!-- フッター -->
+                <div class="flex justify-between items-center px-5 py-4 border-t bg-slate-50 rounded-b-2xl">
+                    <p class="text-[11px] text-slate-400">チェックを外した項目はスキップされます</p>
+                    <div class="flex gap-2">
+                        <button onclick="document.getElementById('bp-modal').classList.add('hidden')"
+                            class="px-4 py-2 text-xs font-bold border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-50 transition">キャンセル</button>
+                        <button onclick="executeBulkPlan()"
+                            class="px-5 py-2 text-xs font-black bg-[#0A1628] text-white rounded-lg hover:opacity-90 transition shadow">
+                            📋 タスクを一括追加
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 個別サイト演習モーダル ===== -->
+        <div id="ss-single-modal" class="hidden fixed inset-0 bg-black/60 z-[150] flex items-start justify-center p-4 pt-16 overflow-y-auto">
+            <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg fade-in">
+                <div class="flex items-center justify-between p-5 border-b">
+                    <div>
+                        <h3 class="text-base font-black text-[#0A1628]">📖 学習サイト演習タスクの追加</h3>
+                        <p id="ss-single-label" class="text-xs text-slate-500 mt-0.5"></p>
+                    </div>
+                    <button onclick="document.getElementById('ss-single-modal').classList.add('hidden')" class="text-slate-400 hover:text-slate-700 text-xl leading-none">✕</button>
+                </div>
+                <div class="p-5 space-y-4">
+                    <div id="ss-single-candidates" class="space-y-2 max-h-52 overflow-y-auto"></div>
+                    <div id="ss-single-manual" class="hidden space-y-3 border-t pt-4">
+                        <p class="text-xs font-bold text-slate-500">─ 対応コンテンツが見つからない場合：手動で指定 ─</p>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 mb-1">学習サイト</label>
+                                <select id="ss-single-site-sel" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs outline-none focus:ring-2 focus:ring-[#B8963E]"></select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-600 mb-1">コンテンツ URL（任意）</label>
+                                <input id="ss-single-url" type="url" placeholder="https://..." class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs outline-none focus:ring-2 focus:ring-[#B8963E]">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3 border-t pt-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">実施予定日</label>
+                            <input id="ss-single-deadline" type="date" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs outline-none focus:ring-2 focus:ring-[#B8963E]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-600 mb-1">繰り返し回数</label>
+                            <select id="ss-single-reps" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs outline-none focus:ring-2 focus:ring-[#B8963E]">
+                                <option value="1">1回</option><option value="2">2回</option>
+                                <option value="3">3回</option><option value="5">5回</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 pt-1">
+                        <button onclick="document.getElementById('ss-single-modal').classList.add('hidden')" class="px-4 py-2 text-xs font-bold border border-slate-300 rounded-lg text-slate-600 hover:bg-slate-50 transition">キャンセル</button>
+                        <button onclick="confirmSingleSiteTask()" class="px-5 py-2 text-xs font-bold bg-[#0A1628] text-white rounded-lg hover:opacity-90 transition shadow">タスクに追加する</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1268,12 +1554,12 @@
                         <input type="text" class="input-unit w-full border rounded p-2 text-sm font-bold" value="${pre?pre.unit:'ページ'}">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 mb-1">開始週</label>
-                        <input type="number" class="input-startW w-full border rounded p-2 text-center font-bold" value="${pre?pre.startW:1}">
+                        <label class="block text-[10px] font-bold text-slate-400 mb-1">開始日</label>
+                        <input type="date" class="input-startDate w-full border rounded p-2 text-sm font-bold" value="${pre ? weekNumToDateStr(pre.startW, 1) : weekNumToDateStr(1, 1)}">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-slate-400 mb-1">終了週</label>
-                        <input type="number" class="input-endW w-full border rounded p-2 text-center font-bold" value="${pre?pre.endW:12}">
+                        <label class="block text-[10px] font-bold text-slate-400 mb-1">終了日</label>
+                        <input type="date" class="input-endDate w-full border rounded p-2 text-sm font-bold" value="${pre ? weekNumToDateStr(pre.endW, 7) : weekNumToDateStr(12, 7)}">
                     </div>
                 </div>
             </div>`;
@@ -1321,8 +1607,10 @@
                 const tText = Array.from(e.querySelectorAll('.input-total')).map(inp => inp.value).find(v => v !== "") || "";
                 const t = parseInt(tText) || 100;
                 const unit = Array.from(e.querySelectorAll('.input-unit')).map(inp => inp.value).find(v => v !== "") || "ページ";
-                const startW = parseInt(Array.from(e.querySelectorAll('.input-startW')).map(inp => inp.value).find(v => v !== "") || "1");
-                const endW = parseInt(Array.from(e.querySelectorAll('.input-endW')).map(inp => inp.value).find(v => v !== "") || "12");
+                const startDateVal = Array.from(e.querySelectorAll('.input-startDate')).map(inp => inp.value).find(v => v !== "") || "";
+                const endDateVal   = Array.from(e.querySelectorAll('.input-endDate')).map(inp => inp.value).find(v => v !== "") || "";
+                const startW = startDateVal ? dateStrToWeekNum(startDateVal) : 1;
+                const endW   = endDateVal   ? dateStrToWeekNum(endDateVal)   : 12;
 
                 if (!n) return;
                 if(!appData.curriculum[s]) appData.curriculum[s] = [];
@@ -1423,6 +1711,35 @@
             return `${sd.getMonth() + 1}/${sd.getDate()}`;
         }
 
+        // 週番号 → ISO日付文字列（yyyy-mm-dd）。day=1:月, 5:金, 7:日
+        function weekNumToDateStr(weekNum, day) {
+            day = day || 1;
+            const sdStr = (appData.profile && appData.profile.startDate)
+                ? appData.profile.startDate
+                : (document.getElementById('setup-date') ? document.getElementById('setup-date').value : null);
+            if (!sdStr) {
+                const d = new Date();
+                d.setDate(d.getDate() + (weekNum - 1) * 7 + (day - 1));
+                return d.toISOString().split('T')[0];
+            }
+            const base = new Date(sdStr);
+            base.setDate(base.getDate() + (weekNum - 1) * 7 + (day - 1));
+            return base.toISOString().split('T')[0];
+        }
+
+        // ISO日付文字列 → 週番号（startDateからの経過週、最小1）
+        function dateStrToWeekNum(dateStr) {
+            if (!dateStr) return 1;
+            const sdStr = (appData.profile && appData.profile.startDate)
+                ? appData.profile.startDate
+                : (document.getElementById('setup-date') ? document.getElementById('setup-date').value : null);
+            if (!sdStr) return 1;
+            const base   = new Date(sdStr);
+            const target = new Date(dateStr);
+            const diffDays = Math.round((target - base) / (1000 * 60 * 60 * 24));
+            return Math.max(1, Math.floor(diffDays / 7) + 1);
+        }
+
 
         // 📌 [SECTION-LOG] ===== 学習ログ表示 =====
         function renderStudyLog() {
@@ -1513,20 +1830,53 @@
 
                         // 🔧 [Cowork変更②] 復習タスクは専用カード（完了ボタン付き）、通常宿題は既存カード
                         if (b.isReviewTask) {
-                            hwHtml += `
-                            <div class="bg-indigo-50/60 p-4 rounded-2xl border-2 border-indigo-200 shadow-sm relative mb-3">
-                                <div class="flex justify-between items-start mb-2">
-                                    <span class="text-[10px] font-bold text-indigo-600">${SUBJ_CONFIG[sk]?.label || sk}</span>
-                                    <span class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">期限: ${deadlineDate}</span>
-                                </div>
-                                <div class="text-sm font-black text-indigo-900 mb-3">${b.name}</div>
-                                ${pct >= 100
-                                    ? `<div class="text-center py-1 text-emerald-600 font-black text-xs bg-emerald-50 rounded"><i class="fas fa-check-circle"></i> 復習完了！</div>`
-                                    : `<button onclick="completeReviewTask('${b.id}')" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-black py-2 rounded shadow transition">
-                                           ✅ 復習完了にする
-                                       </button>`
-                                }
-                            </div>`;
+                            if (b.isStudySiteTask) {
+                                // 学習サイト演習タスク：セッション進捗バー＋1回完了ボタン
+                                const ssTotal = b._totalReps || b.total || 1;
+                                const ssDone  = parseInt(appData.progress[b.id + '_ss'] || 0);
+                                const ssPct   = Math.min(100, Math.round((ssDone / ssTotal) * 100));
+                                const ssAllDone = ssDone >= ssTotal;
+                                hwHtml += `
+                                <div class="bg-violet-50/70 p-4 rounded-2xl border-2 border-violet-200 shadow-sm relative mb-3">
+                                    <div class="flex justify-between items-start mb-1">
+                                        <span class="text-[10px] font-bold text-violet-600">${SUBJ_CONFIG[sk]?.label || sk}</span>
+                                        <span class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">期限: ${deadlineDate}</span>
+                                    </div>
+                                    <div class="text-sm font-black text-violet-900 mb-1">${b.name}</div>
+                                    ${b.studySiteName ? `<div class="text-[10px] text-violet-500 mb-2">📚 ${b.studySiteName}</div>` : ''}
+                                    <div class="flex items-center gap-2 mb-3">
+                                        <div class="flex-grow bg-slate-200 h-2 rounded-full overflow-hidden">
+                                            <div class="bg-violet-500 h-full transition-all" style="width:${ssPct}%"></div>
+                                        </div>
+                                        <span class="text-[10px] font-black text-violet-600 whitespace-nowrap">${ssDone}/${ssTotal}回</span>
+                                    </div>
+                                    ${ssAllDone
+                                        ? `<div class="text-center py-1 text-emerald-600 font-black text-xs bg-emerald-50 rounded"><i class="fas fa-check-circle"></i> 演習完了！</div>`
+                                        : `<div class="flex gap-2">
+                                               ${b.studySiteUrl ? `<a href="${b.studySiteUrl}" target="_blank" class="flex-shrink-0 bg-violet-100 hover:bg-violet-200 text-violet-700 text-xs font-bold px-3 py-2 rounded border border-violet-300 transition">🔗 サイトへ</a>` : ''}
+                                               <button onclick="completeStudySiteSession('${b.id}','${b._unitSubject || sk}','${b._unitName || ''}',${ssTotal})" class="flex-grow bg-violet-500 hover:bg-violet-600 text-white text-xs font-black py-2 rounded shadow transition">
+                                                   ✅ 1回完了
+                                               </button>
+                                           </div>`
+                                    }
+                                </div>`;
+                            } else {
+                                // 通常復習タスク
+                                hwHtml += `
+                                <div class="bg-indigo-50/60 p-4 rounded-2xl border-2 border-indigo-200 shadow-sm relative mb-3">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <span class="text-[10px] font-bold text-indigo-600">${SUBJ_CONFIG[sk]?.label || sk}</span>
+                                        <span class="text-[10px] font-bold text-red-600 bg-red-100 px-2 py-1 rounded">期限: ${deadlineDate}</span>
+                                    </div>
+                                    <div class="text-sm font-black text-indigo-900 mb-3">${b.name}</div>
+                                    ${pct >= 100
+                                        ? `<div class="text-center py-1 text-emerald-600 font-black text-xs bg-emerald-50 rounded"><i class="fas fa-check-circle"></i> 復習完了！</div>`
+                                        : `<button onclick="completeReviewTask('${b.id}')" class="w-full bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-black py-2 rounded shadow transition">
+                                               ✅ 復習完了にする
+                                           </button>`
+                                    }
+                                </div>`;
+                            }
                         } else {
                             hwHtml += `
                             <div class="bg-blue-50/50 p-4 rounded-2xl border-2 border-blue-200 shadow-sm relative mb-3">
@@ -1657,6 +2007,15 @@
 
 
         // 📌 [SECTION-GANTT] ===== ガントチャート =====
+        let _ganttScale = 1;
+        function applyGanttScale(val) {
+            _ganttScale = parseFloat(val);
+            const inner = document.getElementById('gantt-scale-inner');
+            const label = document.getElementById('gantt-scale-label');
+            if (inner) inner.style.width = (_ganttScale * 100) + '%';
+            if (label) label.textContent = '×' + (_ganttScale % 1 === 0 ? _ganttScale : _ganttScale.toFixed(1));
+        }
+
         function renderGantt() {
             const c = document.getElementById('dash-gantt-container'); 
             if (!c) return;
@@ -1740,9 +2099,12 @@
                 }
 
                 return `
-                <div class="mb-3 group relative z-20">
+                <div class="mb-3 group relative z-20 gantt-row" draggable="true" data-task-id="${b.id}" data-subj-key="${b.subjKey}" style="cursor:grab;">
                     <div class="flex justify-between items-center mb-1">
-                        <div class="text-[9px] font-bold truncate pr-2" style="color:${barColor}">${b.name}</div>
+                        <div class="flex items-center gap-1 min-w-0 flex-1">
+                            <span class="gantt-handle select-none flex-shrink-0 opacity-0 group-hover:opacity-100 transition text-slate-400 hover:text-slate-600" style="font-size:12px;letter-spacing:-1px;" title="ドラッグで並び替え">⠿</span>
+                            <div class="text-[9px] font-bold truncate pr-2" style="color:${barColor}">${b.name}</div>
+                        </div>
                         <div class="flex items-center gap-1">
                             <button onclick="openEditModal('${b.subjKey}', '${b.id}')" class="text-[8px] bg-slate-100 px-1.5 py-0.5 rounded border opacity-0 group-hover:opacity-100 transition hover:bg-white flex-shrink-0">
                                 <i class="fas fa-cog"></i> 調整
@@ -1763,24 +2125,66 @@
                 </div>`;
             };
 
-            // 🌟 ご要望の順番 [テスト → 宿題 → 受験 → 行事] で描画
-            ["test", "homework", "exam", "event"].forEach(key => {
-                const g = groups[key];
-                if (g.tasks.length > 0) {
-                    g.tasks.sort((a, b) => a.startW - b.startW); // 開始週の昇順
+            // 全タスクをフラット配列に集約
+            const allTasksFlat = [
+                ...groups.test.tasks.map(t => Object.assign({}, t, {_groupKey: 'test'})),
+                ...groups.homework.tasks.map(t => Object.assign({}, t, {_groupKey: 'homework'})),
+                ...groups.exam.tasks.map(t => Object.assign({}, t, {_groupKey: 'exam'})),
+                ...groups.event.tasks.map(t => Object.assign({}, t, {_groupKey: 'event'}))
+            ];
 
+            if (appData.ganttRowOrder && appData.ganttRowOrder.length > 0) {
+                // 🌟 カスタム順（フラット表示）
+                const orderMap = {};
+                appData.ganttRowOrder.forEach((id, i) => { orderMap[String(id)] = i; });
+                allTasksFlat.sort((a, b) => {
+                    const oa = orderMap[String(a.id)] !== undefined ? orderMap[String(a.id)] : 9999;
+                    const ob = orderMap[String(b.id)] !== undefined ? orderMap[String(b.id)] : 9999;
+                    return oa - ob;
+                });
+                c.insertAdjacentHTML('beforeend', `
+                    <div class="flex items-center justify-between mb-3 px-1 py-1 bg-orange-50 rounded-lg border border-orange-200">
+                        <span class="text-[10px] text-[#D4622A] font-bold flex items-center gap-1">
+                            <span style="font-size:13px;">⠿</span> ドラッグで順番を変更できます
+                        </span>
+                        <button onclick="resetGanttOrder()" class="text-[10px] text-slate-500 border border-slate-300 bg-white rounded-lg px-2 py-0.5 hover:bg-slate-50 transition">
+                            グループ表示に戻す
+                        </button>
+                    </div>
+                `);
+                allTasksFlat.forEach(task => {
+                    const colorOverride = (task.isEvent && task.dayType !== 'holiday') ? '#10B981' : null;
+                    c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
+                });
+            } else {
+                // 🌟 グループ表示（デフォルト）[テスト → 宿題 → 受験 → 行事]
+                ["test", "homework", "exam", "event"].forEach(key => {
+                    const g = groups[key];
+                    if (g.tasks.length > 0) {
+                        g.tasks.sort((a, b) => a.startW - b.startW);
+                        c.insertAdjacentHTML('beforeend', `
+                            <h4 class="text-xs font-black border-l-4 pl-2 mb-2 mt-6 py-1 relative z-20 ${g.headerClass}">
+                                ${g.label}
+                            </h4>
+                        `);
+                        g.tasks.forEach(task => {
+                            const colorOverride = (key === 'event' && task.dayType !== 'holiday') ? "#10B981" : null;
+                            c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
+                        });
+                    }
+                });
+                // 🌟 ドラッグ説明ヒント
+                if (allTasksFlat.length > 0) {
                     c.insertAdjacentHTML('beforeend', `
-                        <h4 class="text-xs font-black border-l-4 pl-2 mb-2 mt-6 py-1 relative z-20 ${g.headerClass}">
-                            ${g.label}
-                        </h4>
+                        <div class="text-[9px] text-slate-400 text-right mt-2 px-1">
+                            <span style="font-size:11px;">⠿</span> 各行をドラッグして並び替えできます
+                        </div>
                     `);
-                    g.tasks.forEach(task => {
-                        // 行事グループの場合は特別な色指定（通常時）を適用可能
-                        const colorOverride = (key === 'event' && task.dayType !== 'holiday') ? "#10B981" : null;
-                        c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
-                    });
                 }
-            });
+            }
+
+            // ドラッグ＆ドロップ初期化
+            initGanttDrag(c);
 
             const currentPct = (((appData.currentWeek - 1) * 7 + (appData.currentDay - 1)) / (tw * 7)) * 100;
             if (currentPct >= 0 && currentPct <= 100) {
@@ -1791,6 +2195,100 @@
                 `);
             }
         }
+
+        // ── ガントチャート ドラッグ並び替え ──────────────────────────
+        function initGanttDrag(container) {
+            let dragEl = null;
+
+            function makePlaceholder() {
+                const ph = document.createElement('div');
+                ph.id = 'gantt-ph';
+                ph.style.cssText = 'height:26px;border:2px dashed #D4622A;border-radius:8px;margin-bottom:12px;background:#FEF3EE;opacity:0.8;transition:all 0.1s;';
+                return ph;
+            }
+
+            container.querySelectorAll('.gantt-row').forEach(row => {
+                row.addEventListener('dragstart', e => {
+                    dragEl = row;
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', row.dataset.taskId || '');
+                    setTimeout(() => { if (dragEl) dragEl.style.opacity = '0.3'; }, 0);
+                });
+
+                row.addEventListener('dragend', () => {
+                    if (dragEl) dragEl.style.opacity = '';
+                    const ph = document.getElementById('gantt-ph');
+                    if (ph && ph.parentNode) ph.parentNode.removeChild(ph);
+                    dragEl = null;
+                    saveGanttOrder(container);
+                });
+            });
+
+            container.addEventListener('dragover', e => {
+                e.preventDefault();
+                if (!dragEl) return;
+
+                let ph = document.getElementById('gantt-ph');
+                if (!ph) ph = makePlaceholder();
+
+                // ドラッグ中の行以外の .gantt-row を対象にする
+                const rows = [...container.querySelectorAll('.gantt-row')].filter(r => r !== dragEl);
+                let targetRow = null;
+                let insertBefore = true;
+                let minDist = Infinity;
+
+                rows.forEach(row => {
+                    const rect = row.getBoundingClientRect();
+                    const midY = rect.top + rect.height / 2;
+                    const dist = Math.abs(e.clientY - midY);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        targetRow = row;
+                        insertBefore = e.clientY < midY;
+                    }
+                });
+
+                if (targetRow) {
+                    insertBefore
+                        ? container.insertBefore(ph, targetRow)
+                        : container.insertBefore(ph, targetRow.nextSibling);
+                } else {
+                    const lastRow = rows[rows.length - 1];
+                    lastRow ? container.insertBefore(ph, lastRow.nextSibling) : container.appendChild(ph);
+                }
+            });
+
+            container.addEventListener('drop', e => {
+                e.preventDefault();
+                if (!dragEl) return;
+                const ph = document.getElementById('gantt-ph');
+                if (ph && ph.parentNode) {
+                    ph.parentNode.insertBefore(dragEl, ph);
+                    ph.parentNode.removeChild(ph);
+                }
+            });
+
+            container.addEventListener('dragleave', e => {
+                if (!container.contains(e.relatedTarget)) {
+                    const ph = document.getElementById('gantt-ph');
+                    if (ph && ph.parentNode) ph.parentNode.removeChild(ph);
+                }
+            });
+        }
+
+        function saveGanttOrder(container) {
+            const ids = [...container.querySelectorAll('.gantt-row[data-task-id]')].map(r => r.dataset.taskId);
+            if (ids.length === 0) return;
+            appData.ganttRowOrder = ids;
+            saveData();
+        }
+
+        function resetGanttOrder() {
+            appData.ganttRowOrder = [];
+            saveData();
+            renderGantt();
+        }
+        // ────────────────────────────────────────────────────────────
 
         // 🌟 リストから直接削除
         function deleteCurriculumItemDirect(subjKey, id) {
@@ -2454,20 +2952,23 @@
         }
 
         function switchSettingsTab(tab) {
-            const btnUser = document.getElementById('tab-btn-user');
-            const btnAdmin = document.getElementById('tab-btn-admin');
-            
+            const activeClass   = "whitespace-nowrap px-6 py-3 font-bold text-sm border-b-4 border-[#D4622A] text-[#0A1628] transition-all";
+            const inactiveClass = "whitespace-nowrap px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-400 hover:text-slate-600 transition-all";
+            const views = ['setup-view', 'admin-view', 'studysites-view'];
+            const btns  = { user: 'tab-btn-user', admin: 'tab-btn-admin', studysites: 'tab-btn-studysites' };
+            views.forEach(v => document.getElementById(v).classList.add('hidden'));
+            Object.values(btns).forEach(b => { const el = document.getElementById(b); if(el) el.className = inactiveClass; });
+
             if(tab === 'user') {
                 document.getElementById('setup-view').classList.remove('hidden');
-                document.getElementById('admin-view').classList.add('hidden');
-                btnUser.className = "px-6 py-3 font-bold text-sm border-b-4 border-[#D4622A] text-[#0A1628] transition-all";
-                btnAdmin.className = "px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-400 hover:text-slate-600 transition-all";
             } else if(tab === 'admin') {
-                document.getElementById('setup-view').classList.add('hidden');
                 document.getElementById('admin-view').classList.remove('hidden');
-                btnAdmin.className = "px-6 py-3 font-bold text-sm border-b-4 border-[#D4622A] text-[#0A1628] transition-all";
-                btnUser.className = "px-6 py-3 font-bold text-sm border-b-4 border-transparent text-slate-400 hover:text-slate-600 transition-all";
+            } else if(tab === 'studysites') {
+                document.getElementById('studysites-view').classList.remove('hidden');
+                renderStudySiteAdmin();
             }
+            const activeBtn = document.getElementById(btns[tab]);
+            if(activeBtn) activeBtn.className = activeClass;
         }
 
         function openAdminAuthModal() { openSettingsAuthModal(); }
@@ -2804,8 +3305,8 @@
             document.getElementById('edit-curr-subject').value = subjKey;
             document.getElementById('edit-curr-id').value = id;
             document.getElementById('edit-curr-name').value = book.name;
-            document.getElementById('edit-curr-start').value = book.startW;
-            document.getElementById('edit-curr-end').value = book.endW;
+            document.getElementById('edit-curr-start').value = weekNumToDateStr(book.startW, 1);
+            document.getElementById('edit-curr-end').value   = weekNumToDateStr(book.endW,   7);
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) dayTypeEl.value = book.dayType || 'normal'; 
@@ -2829,9 +3330,9 @@
             const book = appData.curriculum[subjKey].find(b => b.id === id);
             if (!book) return;
 
-            book.name = document.getElementById('edit-curr-name').value;
-            book.startW = parseInt(document.getElementById('edit-curr-start').value);
-            book.endW = parseInt(document.getElementById('edit-curr-end').value);
+            book.name   = document.getElementById('edit-curr-name').value;
+            book.startW = dateStrToWeekNum(document.getElementById('edit-curr-start').value);
+            book.endW   = dateStrToWeekNum(document.getElementById('edit-curr-end').value);
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) book.dayType = dayTypeEl.value; 
@@ -3221,14 +3722,72 @@
 
         // 📌 [SECTION-UNITS] ===== 単元理解度記録 =====
         function openUnitRecordModal() {
+            // 科目プルダウン
             const sel = document.getElementById('unit-input-subject');
-            if(sel) {
+            if (sel) {
                 sel.innerHTML = '';
                 Object.keys(SUBJ_CONFIG).forEach(k => {
                     sel.innerHTML += `<option value="${k}">${SUBJ_CONFIG[k].label}</option>`;
                 });
             }
+
+            // スコアフィールドをリセット＆ライブプレビュー設定
+            const fracEl = document.getElementById('unit-input-fraction');
+            if (fracEl) {
+                fracEl.value = '';
+                fracEl.oninput = () => {
+                    const preview = document.getElementById('unit-fraction-preview');
+                    const parsed = parseUnitFraction(fracEl.value);
+                    if (preview) {
+                        preview.textContent = parsed
+                            ? `→ ${parsed.score} / ${parsed.max}（${Math.round(parsed.score / parsed.max * 100)}%）`
+                            : fracEl.value ? '形式: 正解数/総問題数　例) 4/10' : '';
+                    }
+                };
+            }
+
+            // データソースプルダウン生成
+            const srcSel = document.getElementById('unit-input-source-sel');
+            if (srcSel) {
+                srcSel.innerHTML = '<option value="">── 選択してください ──</option>';
+                // 登録済み学習サイト（存在する場合）
+                (appData.studySites || []).filter(s => s.active).forEach(s => {
+                    srcSel.innerHTML += `<option value="${s.siteName}">${s.siteName}</option>`;
+                });
+                srcSel.innerHTML += `<option value="手動入力">手動入力</option>`;
+                srcSel.innerHTML += `<option value="外部連携テスト">外部連携テスト</option>`;
+                srcSel.innerHTML += `<option value="__other__">その他（手動入力）</option>`;
+                srcSel.value = '';
+            }
+            const srcText = document.getElementById('unit-input-source-text');
+            if (srcText) { srcText.value = ''; srcText.classList.add('hidden'); }
+
+            document.getElementById('unit-input-name').value = '';
             document.getElementById('unit-record-modal').classList.remove('hidden');
+        }
+
+        function onUnitSourceSelChange(val) {
+            const txtEl = document.getElementById('unit-input-source-text');
+            if (!txtEl) return;
+            if (val === '__other__') {
+                txtEl.classList.remove('hidden');
+                txtEl.focus();
+            } else {
+                txtEl.classList.add('hidden');
+                txtEl.value = '';
+            }
+        }
+
+        function parseUnitFraction(str) {
+            if (!str) return null;
+            // 半角・全角スラッシュ対応
+            const m = str.trim().match(/^([0-9.]+)\s*[/／]\s*([0-9.]+)$/);
+            if (m) {
+                const score = parseFloat(m[1]);
+                const max   = parseFloat(m[2]);
+                if (!isNaN(score) && !isNaN(max) && max > 0) return { score, max };
+            }
+            return null;
         }
 
         function closeUnitRecordModal() {
@@ -3237,23 +3796,28 @@
 
         function addUnitRecord() {
             const subject = document.getElementById('unit-input-subject').value;
-            const unit = document.getElementById('unit-input-name').value.trim();
-            const score = parseFloat(document.getElementById('unit-input-score').value);
-            const max = parseFloat(document.getElementById('unit-input-max').value);
-            const source = document.getElementById('unit-input-source').value.trim();
+            const unit    = document.getElementById('unit-input-name').value.trim();
 
-            if (!unit || isNaN(score) || isNaN(max)) return alert("情報を正しく入力してください");
+            // スコア解析
+            const parsed = parseUnitFraction(document.getElementById('unit-input-fraction').value);
+            if (!parsed) return alert('スコアを「正解数/総問題数」の形式で入力してください。\n例: 4/10 または 310/510');
+
+            // データソース
+            const selVal = document.getElementById('unit-input-source-sel').value;
+            const txtVal = document.getElementById('unit-input-source-text').value.trim();
+            const source = selVal === '__other__' ? (txtVal || 'その他') : (selVal || '手動入力');
+
+            if (!unit) return alert('単元名・テーマを入力してください');
 
             if (!appData.unitRecords) appData.unitRecords = [];
-            
             appData.unitRecords.push({
                 id: 'unit_' + Date.now(),
                 date: new Date().toISOString(),
-                subject: subject,
-                unit: unit,
-                score: score,
-                maxScore: max,
-                source: source
+                subject,
+                unit,
+                score: parsed.score,
+                maxScore: parsed.max,
+                source
             });
 
             saveData();
@@ -3316,9 +3880,14 @@
                             <span class="text-[9px] block text-slate-400">${r.score}/${r.maxScore}問 正解</span>
                         </div>
                     </div>
-                    <button onclick="addUnitReviewTask('${r.id}')" class="mt-3 w-full text-[10px] font-bold py-1.5 rounded border border-indigo-300 text-indigo-600 bg-indigo-50 hover:bg-indigo-100 transition">
-                        📅 復習タスクに追加
-                    </button>
+                    <div class="mt-3 flex gap-2">
+                        <button onclick="addUnitReviewTask('${r.id}')" class="flex-1 text-[10px] font-bold py-1.5 rounded border border-indigo-300 text-indigo-600 bg-indigo-50 hover:bg-indigo-100 transition">
+                            📅 復習タスクに追加
+                        </button>
+                        <button onclick="openSingleSitePlanModal('${r.id}')" class="flex-1 text-[10px] font-bold py-1.5 rounded border border-emerald-300 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 transition">
+                            📖 学習サイトで演習
+                        </button>
+                    </div>
                 </div>`;
             });
         }
@@ -3565,6 +4134,737 @@
                 alert("完了として記録しました！");
             } else if (pass !== null) {
                 alert("パスワードが正しくありません。");
+            }
+        }
+
+        /**
+ * ==================================================================
+ * 7. 学習サイト連携・一括タスク計画
+ * ==================================================================
+ */
+
+        // 📌 [SECTION-STUDYPLAN] ===== 学習サイト連携・一括タスク計画 =====
+
+        // ── 学習サイト管理 (設定画面) ──────────────────────────────────
+
+        let _editingSiteId = null;
+
+        function renderStudySiteAdmin() {
+            const list = document.getElementById('study-sites-list');
+            if (!list) return;
+            const sites = appData.studySites || [];
+            if (!sites.length) {
+                list.innerHTML = '<p class="text-sm text-slate-400 text-center py-8">まだ学習サイトが登録されていません。</p>';
+                return;
+            }
+            list.innerHTML = sites.map(s => {
+                const subLabel = SUBJ_CONFIG[s.subject]?.label || s.subject || '不明';
+                const unitCount = (s.units || []).length;
+                return `
+                <div class="flex items-center justify-between p-4 rounded-xl border ${s.active ? 'border-violet-200 bg-violet-50' : 'border-slate-200 bg-slate-50'} gap-3">
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center gap-2 mb-0.5">
+                            <span class="text-sm font-black text-[#0A1628]">${s.siteName}</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded-full ${s.active ? 'bg-violet-200 text-violet-700' : 'bg-slate-200 text-slate-500'} font-bold">${s.active ? '有効' : '無効'}</span>
+                        </div>
+                        <div class="text-[11px] text-slate-500">教科: ${subLabel} ／ 単元マッピング: ${unitCount}件</div>
+                        ${s.siteUrl ? `<a href="${s.siteUrl}" target="_blank" class="text-[10px] text-blue-500 hover:underline">🔗 ${s.siteUrl}</a>` : ''}
+                    </div>
+                    <div class="flex gap-2 flex-shrink-0">
+                        <button onclick="openStudySiteModal('${s.id}')" class="text-xs bg-white border border-slate-300 text-slate-600 hover:bg-slate-100 px-3 py-1.5 rounded font-bold transition">編集</button>
+                        <button onclick="deleteStudySite('${s.id}')" class="text-xs bg-white border border-red-200 text-red-500 hover:bg-red-50 px-3 py-1.5 rounded font-bold transition">削除</button>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function openStudySiteModal(siteId) {
+            _editingSiteId = siteId || null;
+            const modal = document.getElementById('study-site-modal');
+            const title = document.getElementById('ss-modal-title');
+
+            // 教科プルダウンを生成
+            const subjSel = document.getElementById('ss-edit-subject');
+            subjSel.innerHTML = Object.entries(SUBJ_CONFIG)
+                .map(([k, v]) => `<option value="${k}">${v.label}</option>`).join('');
+
+            if (siteId) {
+                const s = (appData.studySites || []).find(x => x.id === siteId);
+                if (!s) return;
+                title.textContent = '📚 学習サイトを編集';
+                document.getElementById('ss-edit-id').value    = s.id;
+                document.getElementById('ss-edit-name').value  = s.siteName;
+                document.getElementById('ss-edit-url').value   = s.siteUrl || '';
+                subjSel.value = s.subject || '';
+                document.getElementById('ss-edit-active').checked = !!s.active;
+                renderStudySiteUnitRows(s.units || []);
+            } else {
+                title.textContent = '📚 学習サイトの追加';
+                document.getElementById('ss-edit-id').value   = '';
+                document.getElementById('ss-edit-name').value = '';
+                document.getElementById('ss-edit-url').value  = '';
+                document.getElementById('ss-edit-active').checked = true;
+                renderStudySiteUnitRows([]);
+            }
+            modal.classList.remove('hidden');
+        }
+
+        function closeStudySiteModal() {
+            document.getElementById('study-site-modal').classList.add('hidden');
+        }
+
+        function renderStudySiteUnitRows(units) {
+            const container = document.getElementById('ss-units-table');
+            container.innerHTML = '';
+            units.forEach((u, i) => addStudySiteUnitRow(u));
+            if (!units.length) addStudySiteUnitRow();
+        }
+
+        function addStudySiteUnitRow(unit) {
+            const container = document.getElementById('ss-units-table');
+            const idx = container.children.length;
+            const u = unit || {};
+            const row = document.createElement('div');
+            row.className = 'ss-unit-row grid grid-cols-1 gap-2 p-3 bg-slate-50 rounded-xl border border-slate-200';
+            row.innerHTML = `
+                <div class="flex gap-2">
+                    <div class="flex-1">
+                        <label class="block text-[10px] font-bold text-slate-500 mb-1">単元名 <span class="text-red-400">*</span></label>
+                        <input type="text" data-field="unitName" value="${u.unitName||''}" class="w-full border border-slate-300 rounded px-2 py-1.5 text-xs outline-none focus:ring-1 focus:ring-violet-400" placeholder="例: 二次関数">
+                    </div>
+                    <div class="flex-1">
+                        <label class="block text-[10px] font-bold text-slate-500 mb-1">コンテンツラベル</label>
+                        <input type="text" data-field="contentLabel" value="${u.contentLabel||''}" class="w-full border border-slate-300 rounded px-2 py-1.5 text-xs outline-none focus:ring-1 focus:ring-violet-400" placeholder="例: 二次関数の基礎">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-slate-500 mb-1">キーワード <span class="text-slate-400 font-normal">（カンマ区切り）</span></label>
+                    <input type="text" data-field="keywords" value="${(u.keywords||[]).join(', ')}" class="w-full border border-slate-300 rounded px-2 py-1.5 text-xs outline-none focus:ring-1 focus:ring-violet-400" placeholder="例: 二次, 放物線, 頂点">
+                </div>
+                <div class="flex gap-2">
+                    <div class="flex-1">
+                        <label class="block text-[10px] font-bold text-slate-500 mb-1">コンテンツURL</label>
+                        <input type="url" data-field="contentUrl" value="${u.contentUrl||''}" class="w-full border border-slate-300 rounded px-2 py-1.5 text-xs outline-none focus:ring-1 focus:ring-violet-400" placeholder="https://...">
+                    </div>
+                    <div class="w-20">
+                        <label class="block text-[10px] font-bold text-slate-500 mb-1">所要時間(分)</label>
+                        <input type="number" data-field="estimatedMinutes" value="${u.estimatedMinutes||''}" min="1" class="w-full border border-slate-300 rounded px-2 py-1.5 text-xs outline-none focus:ring-1 focus:ring-violet-400" placeholder="30">
+                    </div>
+                    <div class="flex items-end pb-0.5">
+                        <button onclick="this.closest('.ss-unit-row').remove()" class="text-xs text-red-400 hover:text-red-600 border border-red-200 hover:bg-red-50 px-2 py-1.5 rounded transition font-bold">削除</button>
+                    </div>
+                </div>`;
+            container.appendChild(row);
+        }
+
+        function saveStudySite() {
+            const name    = document.getElementById('ss-edit-name').value.trim();
+            const url     = document.getElementById('ss-edit-url').value.trim();
+            const subject = document.getElementById('ss-edit-subject').value;
+            const active  = document.getElementById('ss-edit-active').checked;
+            if (!name)    { alert('サイト名を入力してください'); return; }
+            if (!subject) { alert('対応教科を選択してください'); return; }
+
+            const units = [];
+            document.querySelectorAll('#ss-units-table .ss-unit-row').forEach(row => {
+                const unitName = row.querySelector('[data-field="unitName"]').value.trim();
+                if (!unitName) return;
+                const kwRaw    = row.querySelector('[data-field="keywords"]').value;
+                const keywords = kwRaw.split(/[,、，]/).map(k => k.trim()).filter(Boolean);
+                units.push({
+                    id:               'u_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+                    unitName,
+                    keywords,
+                    contentLabel:     row.querySelector('[data-field="contentLabel"]').value.trim() || unitName,
+                    contentUrl:       row.querySelector('[data-field="contentUrl"]').value.trim() || '',
+                    estimatedMinutes: parseInt(row.querySelector('[data-field="estimatedMinutes"]').value) || null,
+                });
+            });
+
+            if (!appData.studySites) appData.studySites = [];
+            const existId = document.getElementById('ss-edit-id').value;
+
+            if (existId) {
+                const idx = appData.studySites.findIndex(s => s.id === existId);
+                if (idx >= 0) {
+                    appData.studySites[idx] = { ...appData.studySites[idx], siteName: name, siteUrl: url, subject, active, units };
+                }
+            } else {
+                appData.studySites.push({
+                    id:       'site_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+                    siteName: name, siteUrl: url, subject, active, units,
+                });
+            }
+
+            saveData();
+            closeStudySiteModal();
+            renderStudySiteAdmin();
+        }
+
+        function deleteStudySite(siteId) {
+            if (!confirm('このサイトを削除しますか？\n関連する演習タスクの履歴は残ります。')) return;
+            appData.studySites = (appData.studySites || []).filter(s => s.id !== siteId);
+            saveData();
+            renderStudySiteAdmin();
+        }
+
+        // ── URL一括取込 ──────────────────────────────────────────────
+
+        let _bulkImportMode = 'single'; // 'single' | 'multi'
+
+        function switchBulkImportMode(mode) {
+            _bulkImportMode = mode;
+            const activeClass   = 'px-5 py-3 text-xs font-bold border-b-2 border-violet-500 text-violet-700 transition-all';
+            const inactiveClass = 'px-5 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-600 transition-all';
+            document.getElementById('bimode-btn-single').className = mode === 'single' ? activeClass : inactiveClass;
+            document.getElementById('bimode-btn-multi').className  = mode === 'multi'  ? activeClass : inactiveClass;
+            document.getElementById('bimode-single').classList.toggle('hidden', mode !== 'single');
+            document.getElementById('bimode-multi').classList.toggle('hidden',  mode !== 'multi');
+            document.getElementById('bulk-import-preview').classList.add('hidden');
+        }
+
+        function openBulkUrlImportModal() {
+            if (!appData.studySites) appData.studySites = [];
+
+            // 単一モード：サイト選択肢を構築
+            const sel = document.getElementById('bulk-import-site-sel');
+            sel.innerHTML = '<option value="">── 選択してください ──</option>' +
+                appData.studySites.map(s =>
+                    `<option value="${s.id}">${s.siteName}（${SUBJ_CONFIG[s.subject]?.label || s.subject}）</option>`
+                ).join('') +
+                '<option value="__new__">＋ 新しいサイトとして登録</option>';
+            sel.value = '';
+
+            // 教科セレクト初期化
+            const subjOpts = Object.entries(SUBJ_CONFIG)
+                .map(([k, v]) => `<option value="${k}">${v.label}</option>`).join('');
+            document.getElementById('bulk-new-site-subject').innerHTML = subjOpts;
+
+            document.getElementById('bulk-new-site-fields').classList.add('hidden');
+            document.getElementById('bulk-import-text').value = '';
+            document.getElementById('bulk-import-text-multi').value = '';
+            document.getElementById('bulk-import-preview').classList.add('hidden');
+            document.getElementById('bulk-file-name').textContent = '';
+
+            switchBulkImportMode('single');
+            document.getElementById('bulk-url-import-modal').classList.remove('hidden');
+        }
+
+        function closeBulkUrlImportModal() {
+            document.getElementById('bulk-url-import-modal').classList.add('hidden');
+        }
+
+        function onBulkImportSiteChange(val) {
+            document.getElementById('bulk-new-site-fields').classList.toggle('hidden', val !== '__new__');
+        }
+
+        function loadBulkImportFile(input) {
+            if (!input.files || !input.files[0]) return;
+            const file = input.files[0];
+            const reader = new FileReader();
+            reader.onload = e => {
+                const target = _bulkImportMode === 'multi'
+                    ? document.getElementById('bulk-import-text-multi')
+                    : document.getElementById('bulk-import-text');
+                target.value = e.target.result;
+                document.getElementById('bulk-file-name').textContent = file.name;
+                previewBulkImport();
+            };
+            reader.readAsText(file, 'UTF-8');
+            input.value = '';
+        }
+
+        // タブ・カンマ区切り行を列配列に変換
+        function _splitLine(line) {
+            const sep = line.includes('\t') ? '\t' : ',';
+            return line.split(sep).map(c => c.trim().replace(/^["']|["']$/g, ''));
+        }
+
+        // ヘッダー行かどうか判定
+        function _isHeaderLine(line) {
+            const first = _splitLine(line)[0].toLowerCase();
+            return ['単元名','サイト名','sitename','unitname','unit','name','名称'].includes(first);
+        }
+
+        // 単一サイトモード用パース（単元名,KW,URL,ラベル,時間）
+        function parseSingleModeText(raw) {
+            const lines = raw.split(/\r?\n/).map(l => l.trimEnd()).filter(l => l.trim());
+            if (!lines.length) return [];
+            const dataLines = _isHeaderLine(lines[0]) ? lines.slice(1) : lines;
+            return dataLines.map(line => {
+                const cols         = _splitLine(line);
+                const unitName     = cols[0] || '';
+                const keywordsRaw  = cols[1] || '';
+                const contentUrl   = cols[2] || '';
+                const contentLabel = cols[3] || unitName;
+                const estimatedMin = parseInt(cols[4]) || null;
+                const keywords     = keywordsRaw
+                    ? keywordsRaw.split(/[;；、]/).map(k => k.trim()).filter(Boolean)
+                    : [];
+                return { unitName, keywords, contentUrl, contentLabel, estimatedMin };
+            }).filter(r => r.unitName);
+        }
+
+        // 複数サイトモード用パース（サイト名, サイトURL, 科目コード）
+        function parseMultiModeText(raw) {
+            const lines = raw.split(/\r?\n/).map(l => l.trimEnd()).filter(l => l.trim());
+            if (!lines.length) return [];
+            const dataLines = _isHeaderLine(lines[0]) ? lines.slice(1) : lines;
+            return dataLines.map(line => {
+                const cols    = _splitLine(line);
+                const siteName = (cols[0] || '').trim();
+                const siteUrl  = (cols[1] || '').trim();
+                const subject  = (cols[2] || '').trim();
+                return { siteName, siteUrl, subject };
+            }).filter(r => r.siteName);
+        }
+
+        function previewBulkImport() {
+            const preview = document.getElementById('bulk-import-preview');
+            const table   = document.getElementById('bulk-preview-table');
+            const count   = document.getElementById('bulk-preview-count');
+
+            if (_bulkImportMode === 'multi') {
+                const rows = parseMultiModeText(document.getElementById('bulk-import-text-multi').value);
+                if (!rows.length) { preview.classList.add('hidden'); alert('データが読み取れませんでした。'); return; }
+                const existing = new Set((appData.studySites||[]).map(s => s.siteName));
+                count.textContent = `${rows.length}件`;
+                table.innerHTML = rows.map((r, i) => {
+                    const dup = existing.has(r.siteName);
+                    return `
+                    <div class="px-3 py-1.5 flex gap-2 items-center ${i%2===0?'bg-white':'bg-slate-50'} ${dup?'opacity-50':''}">
+                        <span class="w-36 truncate font-bold ${dup?'text-slate-400':'text-violet-700'}">${r.siteName}</span>
+                        <span class="flex-1 truncate text-blue-500 text-[10px]">${r.siteUrl||'─'}</span>
+                        <span class="w-20 truncate text-slate-500">${SUBJ_CONFIG[r.subject]?.label||r.subject||'─'}</span>
+                        <span class="text-[9px] ${dup?'text-amber-500 font-bold':'text-emerald-600'}">${dup?'既存':'新規'}</span>
+                    </div>`;
+                }).join('');
+            } else {
+                const rows = parseSingleModeText(document.getElementById('bulk-import-text').value);
+                if (!rows.length) { preview.classList.add('hidden'); alert('データが読み取れませんでした。'); return; }
+                count.textContent = `${rows.length}件`;
+                table.innerHTML = rows.map((r, i) => `
+                    <div class="px-3 py-1.5 flex gap-3 ${i%2===0?'bg-white':'bg-slate-50'}">
+                        <span class="w-32 truncate font-bold text-slate-800">${r.unitName}</span>
+                        <span class="w-36 truncate text-slate-500">${r.keywords.join(', ')||'─'}</span>
+                        <span class="flex-1 truncate text-blue-500">${r.contentUrl||'─'}</span>
+                        <span class="w-12 text-right text-slate-400">${r.estimatedMin?r.estimatedMin+'分':'─'}</span>
+                    </div>`).join('');
+            }
+            preview.classList.remove('hidden');
+        }
+
+        function _makeUnit(r) {
+            return {
+                id:               'u_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+                unitName:         r.unitName,
+                keywords:         r.keywords,
+                contentLabel:     r.contentLabel || r.unitName,
+                contentUrl:       r.contentUrl   || '',
+                estimatedMinutes: r.estimatedMin  || null,
+            };
+        }
+
+        function executeBulkUrlImport() {
+            if (!appData.studySites) appData.studySites = [];
+
+            if (_bulkImportMode === 'multi') {
+                // ── 複数サイト一括取込（サイト名・URL・科目のみ）──
+                const rows = parseMultiModeText(document.getElementById('bulk-import-text-multi').value);
+                if (!rows.length) { alert('取込データがありません'); return; }
+
+                let addedCount = 0, skippedCount = 0;
+                rows.forEach(r => {
+                    const exists = appData.studySites.find(s => s.siteName === r.siteName);
+                    if (exists) { skippedCount++; return; }
+                    appData.studySites.push({
+                        id:       'site_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+                        siteName: r.siteName,
+                        siteUrl:  r.siteUrl  || '',
+                        subject:  r.subject  || '',
+                        active:   true,
+                        units:    [],
+                    });
+                    addedCount++;
+                });
+
+                saveData();
+                closeBulkUrlImportModal();
+                renderStudySiteAdmin();
+                alert(`✅ サイト一括取込完了\n追加: ${addedCount}件　スキップ(既存): ${skippedCount}件`);
+
+            } else {
+                // ── 単一サイト取込 ──
+                const siteVal = document.getElementById('bulk-import-site-sel').value;
+                if (!siteVal) { alert('取込先サイトを選択してください'); return; }
+
+                const rows = parseSingleModeText(document.getElementById('bulk-import-text').value);
+                if (!rows.length) { alert('取込データがありません'); return; }
+
+                let targetSite;
+                if (siteVal === '__new__') {
+                    const newName    = document.getElementById('bulk-new-site-name').value.trim();
+                    const newUrl     = document.getElementById('bulk-new-site-url').value.trim();
+                    const newSubject = document.getElementById('bulk-new-site-subject').value;
+                    if (!newName)    { alert('新規サイト名を入力してください'); return; }
+                    if (!newSubject) { alert('対応教科を選択してください'); return; }
+                    targetSite = {
+                        id:       'site_' + Date.now() + '_' + Math.random().toString(36).slice(2,6),
+                        siteName: newName, siteUrl: newUrl, subject: newSubject,
+                        active: true, units: [],
+                    };
+                    appData.studySites.push(targetSite);
+                } else {
+                    targetSite = appData.studySites.find(s => s.id === siteVal);
+                    if (!targetSite) { alert('サイトが見つかりません'); return; }
+                }
+
+                const existNames = new Set((targetSite.units || []).map(u => u.unitName));
+                let addedCount = 0, skippedCount = 0;
+                rows.forEach(r => {
+                    if (existNames.has(r.unitName)) { skippedCount++; return; }
+                    targetSite.units.push(_makeUnit(r));
+                    existNames.add(r.unitName);
+                    addedCount++;
+                });
+
+                saveData();
+                closeBulkUrlImportModal();
+                renderStudySiteAdmin();
+                alert(`✅ 取込完了\n追加: ${addedCount}件　スキップ(既存): ${skippedCount}件\n取込先: ${targetSite.siteName}`);
+            }
+        }
+
+        // ── マッチング ────────────────────────────────────────────
+        function findStudySiteContent(subject, unitName) {
+            const results = [];
+            for (const site of (appData.studySites || [])) {
+                if (!site.active || site.subject !== subject) continue;
+                for (const unit of (site.units || [])) {
+                    let score = 0;
+                    if (unit.unitName === unitName) score += 10;
+                    (unit.keywords || []).forEach(kw => {
+                        if (unitName === kw)            score += 10;
+                        else if (unitName.includes(kw)) score += 3;
+                        else if (kw.includes(unitName)) score += 3;
+                    });
+                    if (score > 0) results.push({ site, unit, score });
+                }
+            }
+            return results.sort((a, b) => b.score - a.score);
+        }
+
+        // ── タスク追加（単体） ────────────────────────────────────
+        function addStudySiteTask(unitRecord, siteId, unitId, contentUrl, deadline, repetitions) {
+            const site = (appData.studySites || []).find(s => s.id === siteId);
+            const unit = site?.units?.find(u => u.id === unitId);
+            const startDate = appData.profile?.startDate ? new Date(appData.profile.startDate) : new Date();
+            const deadlineDate = new Date(deadline);
+            let weekNum = Math.ceil((deadlineDate - startDate + 1) / (7 * 24 * 60 * 60 * 1000));
+            if (isNaN(weekNum) || weekNum < 1) weekNum = (appData.currentWeek || 1) + 1;
+
+            const taskName = unit
+                ? `【演習】${unitRecord.unit} - ${unit.contentLabel || unit.unitName}`
+                : `【演習】${unitRecord.unit}${site ? ' - ' + site.siteName : ''}`;
+
+            const task = {
+                id: 'ss_task_' + Date.now() + Math.random().toString(36).substr(2,4),
+                name: taskName,
+                total: repetitions,
+                unit: '回',
+                startW: appData.currentWeek || 1,
+                endW: weekNum,
+                deadline,
+                isOneOff: true,
+                isReviewTask: true,
+                isStudySiteTask: true,
+                _unitSubject: unitRecord.subject,
+                _unitName: unitRecord.unit,
+                _studySiteId: siteId || null,
+                _studyUnitId: unitId || null,
+                studySiteUrl: contentUrl || site?.siteUrl || '',
+                studySiteName: site?.siteName || '',
+                studySiteContentLabel: unit?.contentLabel || unit?.unitName || '',
+                studySiteContentType: unit?.contentType || site?.defaultContentType || 'other',
+                studySiteEstimatedMin: unit?.estimatedMinutes || 0,
+                dayType: 'normal'
+            };
+            if (!appData.curriculum[unitRecord.subject]) appData.curriculum[unitRecord.subject] = [];
+            appData.curriculum[unitRecord.subject].push(task);
+        }
+
+        // ── セッション完了連携 ────────────────────────────────────
+        function completeStudySiteSession(taskId, unitSubject, unitName, totalReps) {
+            const done = parseInt(appData.progress[taskId + '_ss'] || 0);
+            if (done >= totalReps) return;
+            appData.progress[taskId + '_ss'] = done + 1;
+            if (done + 1 >= totalReps) {
+                const rec = (appData.unitRecords || [])
+                    .filter(r => r.subject === unitSubject && r.unit === unitName)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))[0];
+                if (rec) {
+                    rec.score = Math.min(rec.score + 1, rec.maxScore);
+                    rec.date  = new Date().toISOString();
+                    if (rec.score >= rec.maxScore && typeof cleanupCompletedReviewTasks === 'function')
+                        cleanupCompletedReviewTasks();
+                }
+            }
+            saveData();
+            renderDashboard();
+            renderUnitRecords();
+            if (typeof updateAIDiagnosis === 'function') updateAIDiagnosis();
+        }
+
+        // ── 個別演習モーダル ──────────────────────────────────────
+        let _singleRecord = null;
+        let _singleSelected = null;
+
+        function openSingleSitePlanModal(recordId) {
+            const r = (appData.unitRecords || []).find(x => x.id === recordId);
+            if (!r) return;
+            _singleRecord   = r;
+            _singleSelected = null;
+
+            document.getElementById('ss-single-label').textContent =
+                `単元：${r.unit}（${SUBJ_CONFIG[r.subject]?.label || r.subject}）`;
+
+            const def = new Date(Date.now() + 7*24*60*60*1000).toISOString().split('T')[0];
+            document.getElementById('ss-single-deadline').value = def;
+            document.getElementById('ss-single-reps').value = '1';
+
+            const candidates = findStudySiteContent(r.subject, r.unit);
+            const candEl   = document.getElementById('ss-single-candidates');
+            const manualEl = document.getElementById('ss-single-manual');
+
+            if (candidates.length > 0) {
+                candEl.innerHTML = candidates.map((c, i) => `
+                    <label class="flex items-start gap-3 p-3 rounded-xl border cursor-pointer hover:bg-blue-50 transition">
+                        <input type="radio" name="ss-single-cand" value="${i}" class="mt-0.5 accent-[#0A1628]" ${i===0?'checked':''}>
+                        <div class="min-w-0 flex-1">
+                            <div class="text-xs font-black text-[#0A1628]">${c.unit.contentLabel || c.unit.unitName}</div>
+                            <div class="text-[10px] text-slate-400 mt-0.5">${c.site.siteName}${c.unit.estimatedMinutes ? ' · 約'+c.unit.estimatedMinutes+'分' : ''}</div>
+                            <a href="${c.unit.contentUrl || c.site.siteUrl}" target="_blank" rel="noopener"
+                               class="text-[10px] text-blue-500 hover:underline" onclick="event.stopPropagation()">🔗 サイトで確認</a>
+                        </div>
+                    </label>`).join('');
+                candEl.querySelectorAll('input[name="ss-single-cand"]').forEach(radio => {
+                    radio.addEventListener('change', () => { _singleSelected = candidates[parseInt(radio.value)]; });
+                });
+                _singleSelected = candidates[0];
+                manualEl.classList.add('hidden');
+            } else {
+                candEl.innerHTML = '<p class="text-xs text-slate-400 text-center py-3">この単元に対応するコンテンツがまだ登録されていません。</p>';
+                manualEl.classList.remove('hidden');
+                const siteSel = document.getElementById('ss-single-site-sel');
+                const active = (appData.studySites||[]).filter(s => s.active);
+                siteSel.innerHTML = active.length
+                    ? active.map(s => `<option value="${s.id}">${s.siteName}</option>`).join('')
+                    : '<option value="">（登録済みサイトなし）</option>';
+            }
+
+            document.getElementById('ss-single-modal').classList.remove('hidden');
+        }
+
+        function confirmSingleSiteTask() {
+            if (!_singleRecord) return;
+            const deadline = document.getElementById('ss-single-deadline').value;
+            const reps     = parseInt(document.getElementById('ss-single-reps').value) || 1;
+            if (!deadline) { alert('実施予定日を選択してください'); return; }
+
+            let siteId = null, unitId = null, contentUrl = null;
+            if (_singleSelected) {
+                siteId     = _singleSelected.site.id;
+                unitId     = _singleSelected.unit.id;
+                contentUrl = _singleSelected.unit.contentUrl || _singleSelected.site.siteUrl;
+            } else {
+                siteId     = document.getElementById('ss-single-site-sel').value;
+                contentUrl = document.getElementById('ss-single-url').value.trim() || null;
+                const site = (appData.studySites||[]).find(s => s.id === siteId);
+                if (!contentUrl && site) contentUrl = site.siteUrl;
+            }
+
+            addStudySiteTask(_singleRecord, siteId, unitId, contentUrl, deadline, reps);
+            saveData();
+            renderDashboard();
+            document.getElementById('ss-single-modal').classList.add('hidden');
+
+            const toast = document.getElementById('bp-toast');
+            if (toast) {
+                toast.textContent = `✅ 演習タスクを追加しました：【演習】${_singleRecord.unit}`;
+                toast.classList.remove('opacity-0'); toast.classList.add('opacity-100');
+                setTimeout(() => { toast.classList.remove('opacity-100'); toast.classList.add('opacity-0'); }, 3500);
+            }
+        }
+
+        // ── 一括タスク計画 ────────────────────────────────────────
+        let _bulkItems = [];  // { record, match, deadline, reps, skip }
+
+        function openBulkPlanModal() {
+            // 100%未満の最新レコードを収集（科目・単元ごとに最新1件）
+            const latest = {};
+            (appData.unitRecords || []).forEach(r => {
+                const key = `${r.subject}_${r.unit}`;
+                if (!latest[key] || new Date(r.date) > new Date(latest[key].date)) latest[key] = r;
+            });
+            const incomplete = Object.values(latest)
+                .filter(r => (r.score / r.maxScore) * 100 < 100)
+                .sort((a, b) => (a.score / a.maxScore) - (b.score / b.maxScore)); // 低い順
+
+            if (incomplete.length === 0) {
+                alert('要復習リストに項目がありません。');
+                return;
+            }
+
+            // 既存タスクがある科目・単元をチェック
+            const hasTask = {};
+            Object.values(appData.curriculum || {}).forEach(arr =>
+                arr.forEach(b => {
+                    if (b.isReviewTask) hasTask[`${b._unitSubject}_${b._unitName}`] = true;
+                })
+            );
+
+            // 期限を間隔で分散割り当て
+            const interval = parseInt(document.getElementById('bp-interval')?.value || 3);
+            const repsDefault = parseInt(document.getElementById('bp-reps')?.value || 1);
+            const baseDate = new Date();
+            baseDate.setDate(baseDate.getDate() + 1); // 明日以降
+
+            let dayOffset = 0;
+            _bulkItems = incomplete.map(r => {
+                const key = `${r.subject}_${r.unit}`;
+                const alreadyHas = hasTask[key];
+                const deadline = new Date(baseDate.getTime() + dayOffset * 24 * 60 * 60 * 1000)
+                    .toISOString().split('T')[0];
+                if (!alreadyHas) dayOffset += interval;
+                const matches = findStudySiteContent(r.subject, r.unit);
+                return {
+                    record: r,
+                    match: matches[0] || null,
+                    deadline,
+                    reps: repsDefault,
+                    skip: alreadyHas
+                };
+            });
+
+            renderBulkPlanItems();
+            document.getElementById('bp-modal').classList.remove('hidden');
+        }
+
+        function renderBulkPlanItems() {
+            const list = document.getElementById('bp-item-list');
+            if (!list) return;
+            const newCount = _bulkItems.filter(i => !i.skip).length;
+            const skipCount = _bulkItems.filter(i => i.skip).length;
+            document.getElementById('bp-count').textContent = `${newCount}件追加 / ${skipCount}件スキップ（既存タスクあり）`;
+
+            list.innerHTML = _bulkItems.map((item, idx) => {
+                const r   = item.record;
+                const pct = Math.round((r.score / r.maxScore) * 100);
+                const dot = pct < 50 ? '🔴' : pct < 80 ? '🟠' : '🟡';
+                const subLabel = SUBJ_CONFIG[r.subject]?.label || r.subject;
+                const matchLabel = item.match
+                    ? `<span class="text-emerald-700 font-bold">🔗 ${item.match.site.siteName}：${item.match.unit.contentLabel || item.match.unit.unitName}</span>`
+                    : `<span class="text-slate-400">（学習サイト未登録 → 復習タスクのみ）</span>`;
+
+                if (item.skip) {
+                    return `<div class="flex items-center gap-3 px-4 py-2 bg-slate-50 rounded-lg border border-dashed border-slate-300 opacity-60">
+                        <input type="checkbox" disabled class="w-4 h-4">
+                        <div class="text-xs text-slate-400 flex-1">
+                            <span class="font-bold">${subLabel} ${r.unit}</span>
+                            <span class="ml-2 text-[10px] bg-slate-200 text-slate-500 px-1.5 py-0.5 rounded">既存タスクあり・スキップ</span>
+                        </div>
+                    </div>`;
+                }
+
+                return `<div class="flex items-start gap-3 px-4 py-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                    <input type="checkbox" id="bp-chk-${idx}" checked class="mt-1 w-4 h-4 accent-[#0A1628] shrink-0"
+                        onchange="_bulkItems[${idx}]._checked = !this.checked">
+                    <div class="flex-1 min-w-0 space-y-1">
+                        <div class="flex items-center gap-2 flex-wrap">
+                            <span class="text-[10px] font-bold px-2 py-0.5 bg-slate-100 rounded-full">${subLabel}</span>
+                            <span class="text-sm font-black text-[#0A1628]">${dot} ${r.unit}</span>
+                            <span class="text-[10px] font-bold ${pct < 50 ? 'text-red-500' : pct < 80 ? 'text-orange-500' : 'text-yellow-500'}">${pct}%</span>
+                        </div>
+                        <div class="text-[11px]">${matchLabel}</div>
+                        <div class="flex items-center gap-3 flex-wrap mt-1">
+                            <label class="text-[10px] text-slate-500 flex items-center gap-1">
+                                締切:
+                                <input type="date" value="${item.deadline}"
+                                    onchange="_bulkItems[${idx}].deadline = this.value"
+                                    class="border border-slate-300 rounded px-1.5 py-0.5 text-[10px] outline-none focus:ring-1 focus:ring-[#B8963E]">
+                            </label>
+                            <label class="text-[10px] text-slate-500 flex items-center gap-1">
+                                回数:
+                                <select onchange="_bulkItems[${idx}].reps = parseInt(this.value)"
+                                    class="border border-slate-300 rounded px-1 py-0.5 text-[10px] outline-none">
+                                    ${[1,2,3,4,5].map(n => `<option value="${n}" ${item.reps===n?'selected':''}>${n}回</option>`).join('')}
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function recalcBulkDeadlines() {
+            const interval    = parseInt(document.getElementById('bp-interval').value) || 3;
+            const repsDefault = parseInt(document.getElementById('bp-reps').value) || 1;
+            const baseDate = new Date();
+            baseDate.setDate(baseDate.getDate() + 1);
+            let dayOffset = 0;
+            _bulkItems.forEach(item => {
+                if (item.skip) return;
+                item.deadline = new Date(baseDate.getTime() + dayOffset * 24 * 60 * 60 * 1000)
+                    .toISOString().split('T')[0];
+                item.reps = repsDefault;
+                dayOffset += interval;
+            });
+            renderBulkPlanItems();
+        }
+
+        function executeBulkPlan() {
+            const targets = _bulkItems.filter(item => !item.skip && !item._checked);
+            if (targets.length === 0) {
+                alert('追加するタスクがありません。');
+                return;
+            }
+            let added = 0;
+            targets.forEach(item => {
+                const r = item.record;
+                if (item.match) {
+                    addStudySiteTask(r, item.match.site.id, item.match.unit.id,
+                        item.match.unit.contentUrl || item.match.site.siteUrl,
+                        item.deadline, item.reps);
+                } else {
+                    // 学習サイト未マッチ → 通常復習タスク
+                    const startDate = appData.profile?.startDate ? new Date(appData.profile.startDate) : new Date();
+                    const deadlineDate = new Date(item.deadline);
+                    let weekNum = Math.ceil((deadlineDate - startDate + 1) / (7*24*60*60*1000));
+                    if (isNaN(weekNum) || weekNum < 1) weekNum = (appData.currentWeek || 1) + 1;
+                    if (!appData.curriculum[r.subject]) appData.curriculum[r.subject] = [];
+                    appData.curriculum[r.subject].push({
+                        id: 'review_bulk_' + Date.now() + Math.random().toString(36).substr(2,4),
+                        name: `【復習】${r.unit}`,
+                        total: item.reps, unit: '回',
+                        startW: appData.currentWeek || 1, endW: weekNum,
+                        isOneOff: true, isReviewTask: true,
+                        _unitSubject: r.subject, _unitName: r.unit,
+                        deadline: item.deadline, dayType: 'normal'
+                    });
+                }
+                added++;
+            });
+
+            saveData();
+            renderDashboard();
+            document.getElementById('bp-modal').classList.add('hidden');
+            // 完了通知
+            const toast = document.getElementById('bp-toast');
+            if (toast) {
+                toast.textContent = `✅ ${added}件のタスクをGanttに追加しました`;
+                toast.classList.remove('opacity-0');
+                toast.classList.add('opacity-100');
+                setTimeout(() => { toast.classList.remove('opacity-100'); toast.classList.add('opacity-0'); }, 4000);
             }
         }
 
