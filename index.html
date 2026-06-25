@@ -3376,9 +3376,15 @@
             document.getElementById('edit-curr-subject').value = subjKey;
             document.getElementById('edit-curr-id').value = id;
             document.getElementById('edit-curr-name').value = book.name;
-            // actualStartDate/actualEndDate（実際に入力された日付）優先、なければweekNumから復元
-            document.getElementById('edit-curr-start').value = book.actualStartDate || weekNumToDateStr(book.startW, 1);
-            document.getElementById('edit-curr-end').value   = book.actualEndDate   || weekNumToDateStr(book.endW,   7);
+            // 日付文字列をYYYY-MM-DD形式に正規化（8桁YYYYMMDD・スラッシュ形式にも対応）
+            function normDate(s, fallback) {
+                if (!s) return fallback;
+                s = String(s).trim();
+                if (/^\d{8}$/.test(s)) return `${s.slice(0,4)}-${s.slice(4,6)}-${s.slice(6,8)}`;
+                return s.replace(/\//g, '-') || fallback;
+            }
+            document.getElementById('edit-curr-start').value = normDate(book.actualStartDate, weekNumToDateStr(book.startW, 1));
+            document.getElementById('edit-curr-end').value   = normDate(book.actualEndDate,   weekNumToDateStr(book.endW,   7));
             document.getElementById('edit-curr-total').value = book.total || '';
             document.getElementById('edit-curr-unit').value  = book.unit  || 'ページ';
             
