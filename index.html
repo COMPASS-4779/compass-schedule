@@ -588,7 +588,7 @@
                             <option value="基礎">基礎</option>
                             <option value="標準">標準</option>
                             <option value="応用">応用</option>
-                            <option value="発展">発展</option>
+                            <option value="受験">受験</option>
                         </select>
                     </div>
                     <div>
@@ -622,7 +622,7 @@
                         <p class="text-[10px] text-slate-500 mb-2">
                             学年例: 高校生 / 中学生 / 小学生<br>
                             コース例: 理系（数学・理科重視）/ 文系（英語・国語重視）<br>
-                            科目例: 英単語 / 数学I / 化学　　レベル例: 基礎 / 標準 / 応用 / 発展　　単位例: P / 問 / 単元
+                            科目例: 英単語 / 数学I / 化学　　レベル例: 基礎 / 標準 / 応用 / 受験　　単位例: P / 問 / 単元
                         </p>
                         <textarea id="preset-import-text" rows="6" placeholder="スプレッドシートからコピーしてここに貼り付け（タブ区切り）" class="w-full border border-emerald-300 rounded-lg px-3 py-2 text-xs font-mono mb-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
                         <button onclick="importPresetBooksFromSheet()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-2 rounded shadow transition">
@@ -931,7 +931,7 @@
                             <option value="基礎">基礎</option>
                             <option value="標準">標準</option>
                             <option value="応用">応用</option>
-                            <option value="発展">発展</option>
+                            <option value="受験">受験</option>
                         </select>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
@@ -1258,14 +1258,14 @@
             if(!SUBJ_CONFIG[s]) return;
             b('小学生', '学校授業サポート', s, '基礎', ['教科書ワーク','ぴったりトレーニング','たしかめプリント','習熟ドリル','10分間復習','教科書トレーニング','要点ポイント','基本のワーク','ぐんぐんわかる','テスト対策'].map(x=>x+' '+SUBJ_CONFIG[s].label), 'P', 120, 1, 40);
             b('小学生', '私立中学受験', s, '標準', ['予習シリーズ','自由自在','シリウス','新演習','精選問題集','最高水準問題集','トップクラス','応用力特訓','実力完成','合格への道'].map(x=>x+' '+SUBJ_CONFIG[s].label), 'P', 200, 1, 30);
-            b('小学生', '公立中高一貫校(適性検査)', s, '発展', ['適性検査対策','作文力トレーニング','論理エンジン','分野別問題集','銀本過去問','アインストーン','適性検査 基礎編','適性検査 応用編','テーマ別特訓','思考力アップ'].map(x=>x+' '+SUBJ_CONFIG[s].label), 'P', 150, 1, 40);
+            b('小学生', '公立中高一貫校(適性検査)', s, '受験', ['適性検査対策','作文力トレーニング','論理エンジン','分野別問題集','銀本過去問','アインストーン','適性検査 基礎編','適性検査 応用編','テーマ別特訓','思考力アップ'].map(x=>x+' '+SUBJ_CONFIG[s].label), 'P', 150, 1, 40);
         });
 
         ['english', 'math', 'japanese', 'science', 'society'].forEach(s => {
             if(!SUBJ_CONFIG[s]) return;
             b('中学生', '学校授業サポート', s, '基礎', ['教科書ワーク','必修テキスト','ひとつひとつわかりやすく','iワーク','新ワーク','定期テスト対策','要点ズバッ','基礎からの','テストの点数が上がる','パーフェクトコース'].map(x=>x+' '+SUBJ_CONFIG[s].label), 'P', 120, 1, 40);
             b('中学生', '公立高校受験', s, '標準', ['全国高校入試正解','ランク順 入試','入試の要点','公立記述攻略','合格への100','総仕上げ','実戦問題集','ポラリス','テーマ別演習','入試過去問'].map(x=>SUBJ_CONFIG[s].label+' '+x), 'P', 180, 1, 48);
-            b('中学生', '私立高校受験', s, '発展', ['最高水準問題集','最高水準特進','塾技','難関校入試','特進特選','ハイレベルテスト','難関突破','実力アップ','トップ校への道','スーパーエリート'].map(x=>SUBJ_CONFIG[s].label+' '+x), 'P', 200, 1, 48);
+            b('中学生', '私立高校受験', s, '受験', ['最高水準問題集','最高水準特進','塾技','難関校入試','特進特選','ハイレベルテスト','難関突破','実力アップ','トップ校への道','スーパーエリート'].map(x=>SUBJ_CONFIG[s].label+' '+x), 'P', 200, 1, 48);
         });
 
         ['english_vocab', 'english_grammar', 'math1', 'mathA', 'math2', 'mathB', 'math3', 'mathC', 'japanese_mod', 'japanese_cls', 'chemistry', 'physics', 'science', 'society', 'english'].forEach(s => {
@@ -1606,7 +1606,7 @@
                         '基礎': 'bg-green-100 text-green-700 border-green-300',
                         '標準': 'bg-blue-100 text-blue-700 border-blue-300',
                         '応用': 'bg-orange-100 text-orange-700 border-orange-300',
-                        '発展': 'bg-red-100 text-red-700 border-red-300',
+                        '受験': 'bg-red-100 text-red-700 border-red-300',
                     }[lvl] || 'bg-slate-100 text-slate-500 border-slate-200';
                     const lvlBadge = lvl ? `<span class="inline-block text-[8px] font-bold border rounded px-1 py-0.5 ${lvlColor}">${lvl}</span>` : '';
                     html += `<div class="preset-card relative group/card" onclick="toggleCb('${book.id}')">
@@ -3234,7 +3234,7 @@
             (appData.customSubjects || []).forEach(s => { LABEL_TO_KEY[s.label] = s.key; });
             Object.entries(extras).forEach(([label, [key]]) => { LABEL_TO_KEY[label] = key; });
 
-            const VALID_LEVELS = ['基礎','標準','応用','発展'];
+            const VALID_LEVELS = ['基礎','標準','応用','受験'];
 
             if (!appData.customPresets) appData.customPresets = [];
             let added = 0, skipped = 0, errors = [];
