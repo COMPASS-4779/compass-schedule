@@ -3450,7 +3450,12 @@
             document.getElementById('edit-sys-id').value = id;
             document.getElementById('edit-sys-id').dataset.isCustom = isCustom ? 'true' : 'false';
             document.getElementById('edit-sys-name').value = book.name;
-            document.getElementById('edit-sys-subject').value = book.subject || 'english';
+            // SUBJ_CONFIGからオプションを動的生成（カスタム科目を含む）
+            const subjSel = document.getElementById('edit-sys-subject');
+            subjSel.innerHTML = Object.entries(SUBJ_CONFIG).map(([k,v]) =>
+                `<option value="${k}">${v.label}</option>`
+            ).join('');
+            subjSel.value = book.subject || 'english';
             document.getElementById('edit-sys-level').value = book.level || '';
             document.getElementById('edit-sys-start').value = book.startW;
             document.getElementById('edit-sys-end').value = book.endW;
