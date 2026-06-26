@@ -1003,6 +1003,41 @@
             </div>
         </div>
 
+        <!-- 実績調整モーダル -->
+        <div id="progress-adjust-modal" class="hidden fixed inset-0 bg-black/50 z-[130] flex items-center justify-center p-4">
+            <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 fade-in border-t-4 border-t-[#B8963E]">
+                <h3 class="text-base font-bold text-[#0A1628] mb-1"><i class="fas fa-edit text-[#B8963E] mr-2"></i>実績数の調整</h3>
+                <p id="progress-adjust-bookname" class="text-xs text-slate-500 mb-4 truncate"></p>
+                <input type="hidden" id="progress-adjust-bookid">
+                <input type="hidden" id="progress-adjust-unit">
+                <div class="space-y-3">
+                    <div class="flex justify-between text-sm bg-slate-50 rounded-lg px-4 py-3">
+                        <span class="text-slate-500 font-bold">本日までの予定</span>
+                        <span id="progress-adjust-planned" class="font-black text-[#0A1628]">--</span>
+                    </div>
+                    <div class="flex justify-between text-sm bg-slate-50 rounded-lg px-4 py-3">
+                        <span class="text-slate-500 font-bold">現在の実績</span>
+                        <span id="progress-adjust-current" class="font-black text-[#0A1628]">--</span>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">調整後の実績数</label>
+                        <div class="flex gap-2 items-center">
+                            <input type="number" id="progress-adjust-input" min="0" class="flex-grow border rounded-lg px-4 py-2 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#B8963E]">
+                            <span id="progress-adjust-unit-label" class="text-sm text-slate-500 font-bold whitespace-nowrap"></span>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-400">※調整値はチャートのみに反映されます。週間入力は別途トラッカーで入力してください。</p>
+                </div>
+                <div class="flex justify-between gap-3 mt-6">
+                    <button onclick="clearProgressAdjust()" class="text-xs text-red-400 hover:text-red-600 transition px-2">調整をリセット</button>
+                    <div class="flex gap-2">
+                        <button onclick="document.getElementById('progress-adjust-modal').classList.add('hidden')" class="px-4 py-2 text-sm text-slate-500 hover:bg-slate-100 rounded transition">キャンセル</button>
+                        <button onclick="saveProgressAdjust()" class="bg-[#B8963E] text-white px-6 py-2 rounded text-sm font-bold shadow hover:opacity-90 transition">保存</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="user-edit-modal" class="hidden fixed inset-0 bg-black/50 z-[120] flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-xl max-w-sm w-full p-6 fade-in border-t-4 border-t-blue-500">
         <h3 class="text-lg font-bold text-[#0A1628] mb-4"><i class="fas fa-user-edit text-blue-500 mr-2"></i>ユーザー情報編集</h3>
@@ -2500,6 +2535,37 @@
             saveData();
         }
 
+        // 📌 実績調整モーダル
+        function openProgressAdjustModal(book, currentActual, plannedVal) {
+            document.getElementById('progress-adjust-bookid').value = book.id;
+            document.getElementById('progress-adjust-unit').value = book.unit || '';
+            document.getElementById('progress-adjust-bookname').textContent = book.name;
+            document.getElementById('progress-adjust-planned').textContent = `${plannedVal}${book.unit || ''}`;
+            document.getElementById('progress-adjust-current').textContent = `${currentActual}${book.unit || ''}`;
+            document.getElementById('progress-adjust-unit-label').textContent = book.unit || '';
+            document.getElementById('progress-adjust-input').value = currentActual;
+            document.getElementById('progress-adjust-modal').classList.remove('hidden');
+        }
+
+        function saveProgressAdjust() {
+            const id = document.getElementById('progress-adjust-bookid').value;
+            const val = parseFloat(document.getElementById('progress-adjust-input').value);
+            if (isNaN(val) || val < 0) return alert('正しい数値を入力してください');
+            if (!appData.progressAdjust) appData.progressAdjust = {};
+            appData.progressAdjust[id] = val;
+            saveData();
+            document.getElementById('progress-adjust-modal').classList.add('hidden');
+            initChart();
+        }
+
+        function clearProgressAdjust() {
+            const id = document.getElementById('progress-adjust-bookid').value;
+            if (appData.progressAdjust) delete appData.progressAdjust[id];
+            saveData();
+            document.getElementById('progress-adjust-modal').classList.add('hidden');
+            initChart();
+        }
+
         function resetGanttOrder() {
             appData.ganttRowOrder = [];
             saveData();
@@ -2763,51 +2829,94 @@
                 const ctx = document.getElementById(canvasId)?.getContext('2d');
                 if (!ctx) return null;
                 const labels = [], pData = [], aData = [], colors = [];
-                
+                const rawActual = [], rawPlanned = [], units = [];
+
                 tasks.forEach(b => {
-                    labels.push(b.name.substr(0, 10)); 
+                    labels.push(b.name.substr(0, 10));
                     colors.push(SUBJ_CONFIG[b.subjKey]?.hex || "#64748b");
-                    
-                    // 🌟 修正：「本日までの予定」を正確に算出するロジック
-                    let ps = 0; // 予定 (Planned Sum)
+
+                    let ps = 0;
                     if (appData.currentWeek > b.endW) {
-                        ps = b.total; // 目標期間を過ぎている場合は100%（全量）
+                        ps = b.total;
                     } else if (appData.currentWeek >= b.startW) {
-                        // 目標期間中の場合は、「本日までの経過日数」の割合で計算（土日は含まず週5日で計算）
-                        const totalDays = (b.endW - b.startW + 1) * 5; 
+                        const totalDays = (b.endW - b.startW + 1) * 5;
                         const passedDays = (appData.currentWeek - b.startW) * 5 + Math.min(appData.currentDay, 5);
                         ps = Math.round(b.total * (passedDays / totalDays));
                     }
 
-                    // 実績 (Actual Sum)
-                    let as = 0; 
-                    if (appData.progress) {
-                        Object.keys(appData.progress).forEach(k => { 
-                            if(k.startsWith(b.id)) as += parseFloat(appData.progress[k]) || 0; 
+                    let as = 0;
+                    const adj = appData.progressAdjust && appData.progressAdjust[b.id];
+                    if (adj !== undefined && adj !== null) {
+                        as = adj;
+                    } else if (appData.progress) {
+                        Object.keys(appData.progress).forEach(k => {
+                            if (k.startsWith(b.id + '_W') || k.startsWith(b.id + '_s')) as += parseFloat(appData.progress[k]) || 0;
                         });
                     }
 
-                    pData.push(Math.min(100, Math.round((ps/b.total)*100) || 0)); // 予定%
-                    aData.push(Math.min(100, Math.round((as/b.total)*100) || 0)); // 実績%
+                    rawActual.push(Math.round(as * 10) / 10);
+                    rawPlanned.push(ps);
+                    units.push(b.unit || '');
+
+                    pData.push(Math.min(100, Math.round((ps / b.total) * 100) || 0));
+                    aData.push(Math.min(100, Math.round((as / b.total) * 100) || 0));
                 });
-                
-                return new Chart(ctx, { 
-                    type: 'bar', 
+
+                // バー右端に 実績/予定 数値を表示するカスタムプラグイン
+                const countLabelPlugin = {
+                    id: 'countLabel_' + canvasId,
+                    afterDatasetsDraw(chart) {
+                        const ctx2 = chart.ctx;
+                        const meta = chart.getDatasetMeta(0); // 予定バー（背景）
+                        meta.data.forEach((bar, j) => {
+                            const txt = `実${rawActual[j]} / 予${rawPlanned[j]}${units[j]}`;
+                            ctx2.save();
+                            ctx2.font = 'bold 8px sans-serif';
+                            ctx2.fillStyle = '#475569';
+                            ctx2.textAlign = 'left';
+                            ctx2.textBaseline = 'middle';
+                            // バーの右端+4px の位置に描画
+                            const xEnd = chart.scales.x.getPixelForValue(Math.max(pData[j], aData[j]));
+                            ctx2.fillText(txt, xEnd + 4, bar.y);
+                            ctx2.restore();
+                        });
+                    }
+                };
+
+                return new Chart(ctx, {
+                    type: 'bar',
                     data: { labels, datasets: [
                         { label: '予定%', data: pData, backgroundColor: '#E2E8F0', borderRadius: 2 },
                         { label: '実績%', data: aData, backgroundColor: colors, borderRadius: 2 }
-                    ] }, 
-                    options: { 
-                        indexAxis: 'y', 
-                        responsive: true, 
-                        maintainAspectRatio: false, 
-                        plugins: { legend: { display: false } }, 
-                        scales: { 
-                            x: { min: 0, max: 100, ticks: { font: { size: 10 } } }, 
-                            y: { ticks: { font: { size: 9 }, autoSkip: false } } 
+                    ]},
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: (ti) => {
+                                        const j = ti.dataIndex;
+                                        if (ti.datasetIndex === 0) return `予定: ${rawPlanned[j]}${units[j]} (${pData[j]}%)`;
+                                        return `実績: ${rawActual[j]}${units[j]} (${aData[j]}%)`;
+                                    }
+                                }
+                            }
                         },
-                        layout: { padding: { left: 5, right: 15 } }
-                    } 
+                        scales: {
+                            x: { min: 0, max: 100, ticks: { font: { size: 10 } } },
+                            y: { ticks: { font: { size: 9 }, autoSkip: false } }
+                        },
+                        layout: { padding: { left: 5, right: 80 } },
+                        onClick: (e, elements) => {
+                            if (!elements.length) return;
+                            const j = elements[0].index;
+                            openProgressAdjustModal(tasks[j], rawActual[j], rawPlanned[j]);
+                        }
+                    },
+                    plugins: [countLabelPlugin]
                 });
             };
 
