@@ -1567,7 +1567,11 @@
             if (useApiData && apiFetchedBooks) {
                 baseBooks = apiFetchedBooks;
             } else {
-                const visiblePresets = PRESET_BOOKS.filter(b => !(appData.hiddenPresets && appData.hiddenPresets.includes(b.id)));
+                const hidden = appData.hiddenPresets || [];
+                const deleted = appData.deletedPresets || [];
+                const visiblePresets = PRESET_BOOKS
+                    .filter(b => !hidden.includes(b.id) && !deleted.includes(b.id))
+                    .map(b => { const ov = (appData.systemOverrides || {})[b.id]; return ov ? { ...b, ...ov } : b; });
                 baseBooks = [...visiblePresets, ...(appData.customPresets || [])];
             }
 
