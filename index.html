@@ -617,12 +617,12 @@
                     </div>
                     <div id="preset-import-area" class="hidden">
                         <p class="text-[10px] text-emerald-700 mb-2 font-bold">スプレッドシートの列順（ヘッダー行不要）：<br>
-                            <span class="bg-white border border-emerald-200 rounded px-2 py-0.5 font-mono">学年　コース　科目　テキスト名　総量　単位　開始週　終了週</span>
+                            <span class="bg-white border border-emerald-200 rounded px-2 py-0.5 font-mono">対象学年　対象コース　対象科目　テキスト・問題集名　総ページ/問題数　レベル　単位</span>
                         </p>
                         <p class="text-[10px] text-slate-500 mb-2">
                             学年例: 高校生 / 中学生 / 小学生<br>
                             コース例: 理系（数学・理科重視）/ 文系（英語・国語重視）<br>
-                            科目例: 英単語 / 数学I / 化学 など　　開始週・終了週: 省略時は 1 / 48
+                            科目例: 英単語 / 数学I / 化学　　レベル例: 基礎 / 標準 / 応用 / 発展　　単位例: P / 問 / 単元
                         </p>
                         <textarea id="preset-import-text" rows="6" placeholder="スプレッドシートからコピーしてここに貼り付け（タブ区切り）" class="w-full border border-emerald-300 rounded-lg px-3 py-2 text-xs font-mono mb-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
                         <button onclick="importPresetBooksFromSheet()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-2 rounded shadow transition">
@@ -3244,14 +3244,15 @@
                 const cols = line.split('\t').map(c => c.trim());
                 // 列: 学年 コース 科目 テキスト名 総量 単位 開始週 終了週
                 if (cols.length < 4) { errors.push(`行${idx+1}: 列数不足`); return; }
-                const [grade, course, subjLabel, name, totalRaw, unitRaw, swRaw, ewRaw, levelRaw] = cols;
+                // 列: 対象学年 対象コース 対象科目 テキスト名 総量 レベル 単位
+                const [grade, course, subjLabel, name, totalRaw, levelRaw, unitRaw] = cols;
                 const subjKey = LABEL_TO_KEY[subjLabel];
                 if (!subjKey) { errors.push(`行${idx+1}: 科目「${subjLabel}」が不明`); return; }
                 if (!name) { errors.push(`行${idx+1}: テキスト名が空`); return; }
                 const total = parseInt(totalRaw) || 100;
                 const unit = unitRaw || 'ページ';
-                const startW = parseInt(swRaw) || 1;
-                const endW = parseInt(ewRaw) || 48;
+                const startW = 1;
+                const endW = 48;
                 const level = VALID_LEVELS.includes(levelRaw) ? levelRaw : '';
                 const dup = appData.customPresets.some(b => b.name === name && b.grade === grade && b.course === course && b.subject === subjKey);
                 if (dup) { skipped++; return; }
