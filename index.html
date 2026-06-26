@@ -3242,9 +3242,8 @@
             const lines = text.split('\n').filter(l => l.trim());
             lines.forEach((line, idx) => {
                 const cols = line.split('\t').map(c => c.trim());
-                // 列: 学年 コース 科目 テキスト名 総量 単位 開始週 終了週
+                // 列: 対象学年 対象コース 対象科目 テキスト・問題集名 総ページ/問題数 レベル 単位
                 if (cols.length < 4) { errors.push(`行${idx+1}: 列数不足`); return; }
-                // 列: 対象学年 対象コース 対象科目 テキスト名 総量 レベル 単位
                 const [grade, course, subjLabel, name, totalRaw, levelRaw, unitRaw] = cols;
                 const subjKey = LABEL_TO_KEY[subjLabel];
                 if (!subjKey) { errors.push(`行${idx+1}: 科目「${subjLabel}」が不明`); return; }
