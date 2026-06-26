@@ -1557,8 +1557,10 @@
                     if (book.isApi) badge = '<span class="absolute -top-2 -right-2 bg-[#3B82F6] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow">Web</span>';
                     else if (book.isCustom) badge = '<span class="absolute -top-2 -right-2 bg-[#B8963E] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow">Original</span>';
 
-                    html += `<div class="preset-card relative" onclick="toggleCb('${book.id}')">
+                    const editBtn = (!book.isApi) ? `<button onclick="event.stopPropagation();openPresetEditModal('${book.id}',${!!book.isCustom})" class="absolute top-1 right-1 opacity-0 group-hover/card:opacity-100 transition text-[8px] bg-white border border-slate-300 text-slate-500 hover:text-[#B8963E] hover:border-[#B8963E] rounded px-1 py-0.5 z-10"><i class="fas fa-pen"></i></button>` : '';
+                    html += `<div class="preset-card relative group/card" onclick="toggleCb('${book.id}')">
                         ${badge}
+                        ${editBtn}
                         <div class="flex justify-between items-start mb-2">
                             <input type="checkbox" id="cb_${book.id}" class="preset-checkbox w-4 h-4" value="${book.id}" onclick="event.stopPropagation()">
                             <span class="text-[9px] text-slate-400 font-bold">W${book.startW}-W${book.endW}</span>
@@ -3246,19 +3248,50 @@
 
         function saveSysPresetEdit() {
             const id = document.getElementById('edit-sys-id').value;
-            if(!appData.systemOverrides) appData.systemOverrides = {};
-            
-            appData.systemOverrides[id] = {
-                startW: parseInt(document.getElementById('edit-sys-start').value),
-                endW: parseInt(document.getElementById('edit-sys-end').value),
-                total: parseInt(document.getElementById('edit-sys-total').value),
-                unit: document.getElementById('edit-sys-unit').value
-            };
+            const isCustom = document.getElementById('edit-sys-id').dataset.isCustom === 'true';
+            const name = document.getElementById('edit-sys-name').value.trim();
+            const total = parseInt(document.getElementById('edit-sys-total').value);
+            const unit = document.getElementById('edit-sys-unit').value.trim();
+            const startW = parseInt(document.getElementById('edit-sys-start').value);
+            const endW = parseInt(document.getElementById('edit-sys-end').value);
+
+            if (!name || isNaN(total) || !unit) return alert("テキスト名・総量・単位を入力してください");
+
+            if (isCustom) {
+                if (!appData.customPresets) appData.customPresets = [];
+                const idx = appData.customPresets.findIndex(b => b.id === id);
+                if (idx >= 0) Object.assign(appData.customPresets[idx], { name, total, unit, startW, endW });
+            } else {
+                if (!appData.systemOverrides) appData.systemOverrides = {};
+                appData.systemOverrides[id] = { name, startW, endW, total, unit };
+            }
 
             saveData();
             closeSysPresetEditModal();
-            renderAdminSysBooks(); 
-            alert("システム教材の初期設定を更新しました。以降、この教材を追加する際にこの設定が適用されます。");
+            renderPresetBooks(apiFetchedBooks !== null);
+            if (document.getElementById('admin-view') && !document.getElementById('admin-view').classList.contains('hidden')) renderAdminSysBooks();
+        }
+
+        function openPresetEditModal(id, isCustom) {
+            let book;
+            if (isCustom) {
+                book = (appData.customPresets || []).find(b => b.id === id);
+            } else {
+                const base = PRESET_BOOKS.find(b => b.id === id);
+                const ov = (appData.systemOverrides || {})[id];
+                book = ov ? { ...base, ...ov } : base;
+            }
+            if (!book) return;
+
+            document.getElementById('edit-sys-id').value = id;
+            document.getElementById('edit-sys-id').dataset.isCustom = isCustom ? 'true' : 'false';
+            document.getElementById('edit-sys-name').value = book.name;
+            document.getElementById('edit-sys-start').value = book.startW;
+            document.getElementById('edit-sys-end').value = book.endW;
+            document.getElementById('edit-sys-total').value = book.total;
+            document.getElementById('edit-sys-unit').value = book.unit;
+
+            document.getElementById('sys-preset-edit-modal').classList.remove('hidden');
         }
 
 
