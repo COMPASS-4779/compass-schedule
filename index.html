@@ -2696,12 +2696,33 @@
                     appData.curriculum[sk].forEach(b => {
                         b.subjKey = sk;
                         if (b.isEvent) return; // 行事は除外
-                        
+
                         if (!b.isOneOff) examTasks.push(b);
                         else if (b.name.includes('【定期テスト】') || b.name.includes('【模試】')) testTasks.push(b);
                         else hwTasks.push(b);
                     });
                 });
+            }
+
+            // ガントと同じ順序に揃える
+            if (appData.ganttRowOrder && appData.ganttRowOrder.length > 0) {
+                // カスタム順: ganttRowOrderに従う
+                const orderMap = {};
+                appData.ganttRowOrder.forEach((id, i) => { orderMap[String(id)] = i; });
+                const sortByOrder = arr => arr.slice().sort((a, b) => {
+                    const oa = orderMap[String(a.id)] !== undefined ? orderMap[String(a.id)] : 9999;
+                    const ob = orderMap[String(b.id)] !== undefined ? orderMap[String(b.id)] : 9999;
+                    return oa - ob;
+                });
+                testTasks = sortByOrder(testTasks);
+                hwTasks   = sortByOrder(hwTasks);
+                examTasks = sortByOrder(examTasks);
+            } else {
+                // デフォルト: startW順
+                const byStartW = arr => arr.slice().sort((a, b) => a.startW - b.startW);
+                testTasks = byStartW(testTasks);
+                hwTasks   = byStartW(hwTasks);
+                examTasks = byStartW(examTasks);
             }
 
             // 表示が必要なコンテナの制御
