@@ -582,6 +582,16 @@
                         <input type="text" id="admin-book-name" class="w-full border p-2 rounded text-sm" placeholder="例: オリジナル特訓プリント">
                     </div>
                     <div>
+                        <label class="block text-xs font-bold mb-1">レベル</label>
+                        <select id="admin-book-level" class="w-full border p-2 rounded text-sm">
+                            <option value="">（なし）</option>
+                            <option value="基礎">基礎</option>
+                            <option value="標準">標準</option>
+                            <option value="応用">応用</option>
+                            <option value="発展">発展</option>
+                        </select>
+                    </div>
+                    <div>
                         <label class="block text-xs font-bold mb-1">総ページ/問題数</label>
                         <input type="number" id="admin-book-total" class="w-full border p-2 rounded text-sm" placeholder="例: 150">
                     </div>
@@ -598,6 +608,29 @@
 
                 <h3 class="font-bold text-lg mb-4 text-[#0A1628]"><i class="fas fa-list-check text-[#B8963E] mr-2"></i>追加したオリジナルテキスト</h3>
                 <div id="admin-custom-books-list" class="space-y-2 max-h-[300px] overflow-y-auto custom-scroll pr-2 border-t pt-4"></div>
+
+                <!-- スプレッドシート一括取込 -->
+                <div class="border border-emerald-200 bg-emerald-50 rounded-xl p-4 mt-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-black text-emerald-800"><i class="fas fa-table mr-2"></i>スプレッドシートから一括取込</span>
+                        <button onclick="document.getElementById('preset-import-area').classList.toggle('hidden')" class="text-xs text-emerald-600 border border-emerald-300 rounded px-2 py-1 bg-white hover:bg-emerald-100 transition">開く／閉じる</button>
+                    </div>
+                    <div id="preset-import-area" class="hidden">
+                        <p class="text-[10px] text-emerald-700 mb-2 font-bold">スプレッドシートの列順（ヘッダー行不要）：<br>
+                            <span class="bg-white border border-emerald-200 rounded px-2 py-0.5 font-mono">学年　コース　科目　テキスト名　総量　単位　開始週　終了週</span>
+                        </p>
+                        <p class="text-[10px] text-slate-500 mb-2">
+                            学年例: 高校生 / 中学生 / 小学生<br>
+                            コース例: 理系（数学・理科重視）/ 文系（英語・国語重視）<br>
+                            科目例: 英単語 / 数学I / 化学 など　　開始週・終了週: 省略時は 1 / 48
+                        </p>
+                        <textarea id="preset-import-text" rows="6" placeholder="スプレッドシートからコピーしてここに貼り付け（タブ区切り）" class="w-full border border-emerald-300 rounded-lg px-3 py-2 text-xs font-mono mb-2 focus:outline-none focus:ring-2 focus:ring-emerald-400"></textarea>
+                        <button onclick="importPresetBooksFromSheet()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-2 rounded shadow transition">
+                            <i class="fas fa-file-import mr-2"></i>取込実行（既存データに追加）
+                        </button>
+                        <div id="preset-import-result" class="hidden mt-2 text-xs font-bold"></div>
+                    </div>
+                </div>
 
                 <h3 class="font-bold text-lg mb-4 mt-8 text-[#0A1628]"><i class="fas fa-database text-[#B8963E] mr-2"></i>システム登録済みの定番テキスト</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4 p-4 bg-slate-50 rounded-xl border border-slate-200">
@@ -889,7 +922,17 @@
                 <div class="space-y-4">
                     <div>
                         <label class="block text-xs font-bold text-slate-500 mb-1">教材名 (表示名)</label>
-                        <input type="text" id="edit-sys-name" class="w-full border rounded-lg px-4 py-2 text-sm font-bold bg-slate-50" readonly>
+                        <input type="text" id="edit-sys-name" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">レベル</label>
+                        <select id="edit-sys-level" class="w-full border rounded-lg px-4 py-2 text-sm">
+                            <option value="">（なし）</option>
+                            <option value="基礎">基礎</option>
+                            <option value="標準">標準</option>
+                            <option value="応用">応用</option>
+                            <option value="発展">発展</option>
+                        </select>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -1558,6 +1601,14 @@
                     else if (book.isCustom) badge = '<span class="absolute -top-2 -right-2 bg-[#B8963E] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow">Original</span>';
 
                     const editBtn = (!book.isApi) ? `<button onclick="event.stopPropagation();openPresetEditModal('${book.id}',${!!book.isCustom})" class="absolute top-1 right-1 opacity-0 group-hover/card:opacity-100 transition text-[8px] bg-white border border-slate-300 text-slate-500 hover:text-[#B8963E] hover:border-[#B8963E] rounded px-1 py-0.5 z-10"><i class="fas fa-pen"></i></button>` : '';
+                    const lvl = book.level || '';
+                    const lvlColor = {
+                        '基礎': 'bg-green-100 text-green-700 border-green-300',
+                        '標準': 'bg-blue-100 text-blue-700 border-blue-300',
+                        '応用': 'bg-orange-100 text-orange-700 border-orange-300',
+                        '発展': 'bg-red-100 text-red-700 border-red-300',
+                    }[lvl] || 'bg-slate-100 text-slate-500 border-slate-200';
+                    const lvlBadge = lvl ? `<span class="inline-block text-[8px] font-bold border rounded px-1 py-0.5 ${lvlColor}">${lvl}</span>` : '';
                     html += `<div class="preset-card relative group/card" onclick="toggleCb('${book.id}')">
                         ${badge}
                         ${editBtn}
@@ -1565,7 +1616,8 @@
                             <input type="checkbox" id="cb_${book.id}" class="preset-checkbox w-4 h-4" value="${book.id}" onclick="event.stopPropagation()">
                             <span class="text-[9px] text-slate-400 font-bold">W${book.startW}-W${book.endW}</span>
                         </div>
-                        <div class="text-[11px] font-bold text-[#0A1628] leading-tight mb-3 line-clamp-3">${book.name}</div>
+                        <div class="text-[11px] font-bold text-[#0A1628] leading-tight mb-1 line-clamp-3">${book.name}</div>
+                        <div class="mb-2">${lvlBadge}</div>
                         <div class="text-[9px] text-slate-500 mt-auto space-y-1 bg-slate-50 p-1.5 rounded border border-slate-100">
                             ${pageStr}
                             ${edStr}
@@ -3106,13 +3158,13 @@
                 grade: document.getElementById('admin-book-grade').value,
                 course: document.getElementById('admin-book-course').value,
                 subject: document.getElementById('admin-book-subject').value,
-                level: '標準', 
+                level: document.getElementById('admin-book-level').value || '',
                 name: name,
                 unit: unit,
                 total: total,
                 startW: 1,
                 endW: 48,
-                isCustom: true 
+                isCustom: true
             };
 
             if (!appData.customPresets) appData.customPresets = [];
@@ -3160,6 +3212,67 @@
             appData.customPresets = appData.customPresets.filter(b => b.id !== id);
             saveData();
             renderAdminCustomBooks();
+        }
+
+        function importPresetBooksFromSheet() {
+            const text = (document.getElementById('preset-import-text')?.value || '').trim();
+            const resultEl = document.getElementById('preset-import-result');
+            if (!text) { resultEl.textContent = '⚠️ データが入力されていません。'; resultEl.className = 'mt-2 text-xs font-bold text-orange-600'; resultEl.classList.remove('hidden'); return; }
+
+            // 科目ラベル → キー変換
+            const LABEL_TO_KEY = {};
+            Object.entries(SUBJ_CONFIG).forEach(([k, v]) => { LABEL_TO_KEY[v.label] = k; });
+            const extras = {
+                '英語':['english'],'数学':['math'],'国語':['japanese'],'理科':['science'],'社会':['society'],
+                '英単語':['english_vocab'],'英文法':['english_grammar'],'現代文':['japanese_mod'],'古典':['japanese_cls'],
+                '古文':['japanese_cls'],'漢文':['japanese_cls'],
+                '化学':['chemistry'],'物理':['physics'],
+                '数学I':['math1'],'数学A':['mathA'],'数学II':['math2'],'数学B':['mathB'],'数学III':['math3'],'数学C':['mathC'],
+                '英文解釈':['english'],'英語長文':['english'],'地理':['society'],'歴史':['society'],
+                '日本史':['society'],'世界史':['society'],'生物':['science'],'算数':['math'],
+            };
+            (appData.customSubjects || []).forEach(s => { LABEL_TO_KEY[s.label] = s.key; });
+            Object.entries(extras).forEach(([label, [key]]) => { LABEL_TO_KEY[label] = key; });
+
+            const VALID_LEVELS = ['基礎','標準','応用','発展'];
+
+            if (!appData.customPresets) appData.customPresets = [];
+            let added = 0, skipped = 0, errors = [];
+
+            const lines = text.split('\n').filter(l => l.trim());
+            lines.forEach((line, idx) => {
+                const cols = line.split('\t').map(c => c.trim());
+                // 列: 学年 コース 科目 テキスト名 総量 単位 開始週 終了週
+                if (cols.length < 4) { errors.push(`行${idx+1}: 列数不足`); return; }
+                const [grade, course, subjLabel, name, totalRaw, unitRaw, swRaw, ewRaw, levelRaw] = cols;
+                const subjKey = LABEL_TO_KEY[subjLabel];
+                if (!subjKey) { errors.push(`行${idx+1}: 科目「${subjLabel}」が不明`); return; }
+                if (!name) { errors.push(`行${idx+1}: テキスト名が空`); return; }
+                const total = parseInt(totalRaw) || 100;
+                const unit = unitRaw || 'ページ';
+                const startW = parseInt(swRaw) || 1;
+                const endW = parseInt(ewRaw) || 48;
+                const level = VALID_LEVELS.includes(levelRaw) ? levelRaw : '';
+                const dup = appData.customPresets.some(b => b.name === name && b.grade === grade && b.course === course && b.subject === subjKey);
+                if (dup) { skipped++; return; }
+                appData.customPresets.push({
+                    id: 'custom_' + Math.random().toString(36).substr(2,9),
+                    grade, course, subject: subjKey, level, name, total, unit, startW, endW, isCustom: true
+                });
+                added++;
+            });
+
+            saveData();
+            renderAdminCustomBooks();
+            renderPresetBooks(apiFetchedBooks !== null);
+
+            let msg = `✅ ${added}件追加しました。`;
+            if (skipped > 0) msg += ` （重複${skipped}件スキップ）`;
+            if (errors.length > 0) msg += `\n⚠️ エラー: ${errors.join(' / ')}`;
+            resultEl.textContent = msg;
+            resultEl.className = 'mt-2 text-xs font-bold ' + (errors.length > 0 ? 'text-orange-600' : 'text-emerald-700');
+            resultEl.classList.remove('hidden');
+            if (added > 0) document.getElementById('preset-import-text').value = '';
         }
 
         function updateAdminSysCourseOptions() {
@@ -3250,6 +3363,7 @@
             const id = document.getElementById('edit-sys-id').value;
             const isCustom = document.getElementById('edit-sys-id').dataset.isCustom === 'true';
             const name = document.getElementById('edit-sys-name').value.trim();
+            const level = document.getElementById('edit-sys-level').value;
             const total = parseInt(document.getElementById('edit-sys-total').value);
             const unit = document.getElementById('edit-sys-unit').value.trim();
             const startW = parseInt(document.getElementById('edit-sys-start').value);
@@ -3260,10 +3374,10 @@
             if (isCustom) {
                 if (!appData.customPresets) appData.customPresets = [];
                 const idx = appData.customPresets.findIndex(b => b.id === id);
-                if (idx >= 0) Object.assign(appData.customPresets[idx], { name, total, unit, startW, endW });
+                if (idx >= 0) Object.assign(appData.customPresets[idx], { name, level, total, unit, startW, endW });
             } else {
                 if (!appData.systemOverrides) appData.systemOverrides = {};
-                appData.systemOverrides[id] = { name, startW, endW, total, unit };
+                appData.systemOverrides[id] = { name, level, startW, endW, total, unit };
             }
 
             saveData();
@@ -3286,6 +3400,7 @@
             document.getElementById('edit-sys-id').value = id;
             document.getElementById('edit-sys-id').dataset.isCustom = isCustom ? 'true' : 'false';
             document.getElementById('edit-sys-name').value = book.name;
+            document.getElementById('edit-sys-level').value = book.level || '';
             document.getElementById('edit-sys-start').value = book.startW;
             document.getElementById('edit-sys-end').value = book.endW;
             document.getElementById('edit-sys-total').value = book.total;
