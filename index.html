@@ -1572,7 +1572,8 @@
                 const visiblePresets = PRESET_BOOKS
                     .filter(b => !hidden.includes(b.id) && !deleted.includes(b.id))
                     .map(b => { const ov = (appData.systemOverrides || {})[b.id]; return ov ? { ...b, ...ov } : b; });
-                customBooks = (appData.customPresets || []).filter(b => f === 'all' || b.subject === f);
+                customBooks = (appData.customPresets || []).map(b => ({...b, isCustom: true}));
+                if (f !== 'all') customBooks = customBooks.filter(b => b.subject === f);
                 baseBooks = visiblePresets.filter(b => b.grade === g && b.course === c);
             }
 
@@ -1581,40 +1582,13 @@
 
             const grouped = {};
             books.forEach(b => { if(!grouped[b.subject]) grouped[b.subject] = []; grouped[b.subject].push(b); });
+            // カスタムテキストを各科目グループに追加
+            customBooks.forEach(b => { if(!grouped[b.subject]) grouped[b.subject] = []; grouped[b.subject].push(b); });
 
-            // オリジナルテキストを最上部に専用セクションとして表示
-            if (customBooks.length > 0) {
-                let html = `<div class="bg-amber-50 border border-[#B8963E] p-5 rounded-2xl mb-6 shadow-sm">
-                    <h3 class="font-black text-sm mb-4 border-b-2 border-[#B8963E] pb-2 text-[#B8963E]"><i class="fas fa-star mr-1"></i>追加したオリジナルテキスト</h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">`;
-                customBooks.forEach(book => {
-                    const pageStr = book.total ? `<div><i class="fas fa-file-alt mr-1 text-slate-400 w-3 text-center"></i>${book.total} ${book.unit}</div>` : '';
-                    const lvl = book.level || '';
-                    const lvlColor = {'基礎':'bg-green-100 text-green-700 border-green-300','標準':'bg-blue-100 text-blue-700 border-blue-300','応用':'bg-orange-100 text-orange-700 border-orange-300','受験':'bg-red-100 text-red-700 border-red-300'}[lvl] || 'bg-slate-100 text-slate-500 border-slate-200';
-                    const lvlBadge = lvl ? `<span class="inline-block text-[8px] font-bold border rounded px-1 py-0.5 ${lvlColor}">${lvl}</span>` : '';
-                    const editBtn = `<button onclick="event.stopPropagation();openPresetEditModal('${book.id}',true)" class="absolute top-1 right-1 opacity-0 group-hover/card:opacity-100 transition text-[8px] bg-white border border-slate-300 text-slate-500 hover:text-[#B8963E] hover:border-[#B8963E] rounded px-1 py-0.5 z-10"><i class="fas fa-pen"></i></button>`;
-                    const subjLabel = SUBJ_CONFIG[book.subject]?.label || book.subject;
-                    html += `<div class="preset-card relative group/card" onclick="toggleCb('${book.id}')">
-                        <span class="absolute -top-2 -right-2 bg-[#B8963E] text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full shadow">Original</span>
-                        ${editBtn}
-                        <div class="flex justify-between items-start mb-2">
-                            <input type="checkbox" id="cb_${book.id}" class="preset-checkbox w-4 h-4" value="${book.id}" onclick="event.stopPropagation()">
-                            <span class="text-[9px] text-slate-400 font-bold">${subjLabel}</span>
-                        </div>
-                        <div class="text-[11px] font-bold text-[#0A1628] leading-tight mb-1 line-clamp-3">${book.name}</div>
-                        <div class="mb-2">${lvlBadge}</div>
-                        <div class="text-[9px] text-slate-500 mt-auto space-y-1 bg-slate-50 p-1.5 rounded border border-slate-100">${pageStr}</div>
-                    </div>`;
-                });
-                html += '</div></div>';
-                container.insertAdjacentHTML('beforeend', html);
-            }
-
-            if (Object.keys(grouped).length === 0 && customBooks.length === 0) {
+            if (Object.keys(grouped).length === 0) {
                 container.innerHTML = '<div class="text-center text-slate-500 py-12"><i class="fas fa-exclamation-triangle text-3xl mb-3 text-slate-300"></i><br>テキストが見つかりませんでした。</div>';
                 return;
             }
-            if (Object.keys(grouped).length === 0) return;
 
             Object.keys(grouped).forEach(sk => {
                 const conf = SUBJ_CONFIG[sk] || {label:sk, hex:'#64748b'};
@@ -1622,10 +1596,9 @@
                     <h3 class="font-black text-sm mb-4 border-b-2 pb-2" style="color:${conf.hex}; border-color:${conf.hex}">${conf.label}</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">`;
                 
-                let displayList = grouped[sk];
-                if (!useApiData) {
-                    displayList = shuffleArray(grouped[sk].filter(b => !b.isCustom)).slice(0, 5);
-                }
+                const customInGroup = grouped[sk].filter(b => b.isCustom);
+                const systemInGroup = grouped[sk].filter(b => !b.isCustom);
+                let displayList = useApiData ? grouped[sk] : [...customInGroup, ...shuffleArray(systemInGroup).slice(0, 5)];
 
                 displayList.forEach(book => {
                     const pageStr = book.total ? `<div title="総ページ/問題数"><i class="fas fa-file-alt mr-1 text-slate-400 w-3 text-center"></i>${book.total} ${book.unit}</div>` : '';
