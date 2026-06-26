@@ -1593,7 +1593,11 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">`;
                 
                 let displayList = grouped[sk];
-                if (!useApiData) displayList = shuffleArray(grouped[sk]).slice(0, 5);
+                if (!useApiData) {
+                    const customs = grouped[sk].filter(b => b.isCustom);
+                    const systems = shuffleArray(grouped[sk].filter(b => !b.isCustom)).slice(0, Math.max(0, 5 - customs.length));
+                    displayList = [...customs, ...systems];
+                }
 
                 displayList.forEach(book => {
                     const pageStr = book.total ? `<div title="総ページ/問題数"><i class="fas fa-file-alt mr-1 text-slate-400 w-3 text-center"></i>${book.total} ${book.unit}</div>` : '';
