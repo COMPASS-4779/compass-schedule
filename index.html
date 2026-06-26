@@ -1571,10 +1571,11 @@
                 const visiblePresets = PRESET_BOOKS
                     .filter(b => !hidden.includes(b.id) && !deleted.includes(b.id))
                     .map(b => { const ov = (appData.systemOverrides || {})[b.id]; return ov ? { ...b, ...ov } : b; });
-                baseBooks = [...visiblePresets, ...(appData.customPresets || [])];
+                // customPresetsは学年・コースを問わず全件表示（科目フィルタのみ適用）
+                baseBooks = [...visiblePresets.filter(b => b.grade === g && b.course === c), ...(appData.customPresets || [])];
             }
 
-            let books = baseBooks.filter(b => b.grade === g && b.course === c);
+            let books = useApiData ? baseBooks.filter(b => b.grade === g && b.course === c) : baseBooks;
             if(f !== 'all') books = books.filter(b => b.subject === f);
 
             const grouped = {};
