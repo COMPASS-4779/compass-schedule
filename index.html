@@ -2171,8 +2171,9 @@
                 const barColor = (b.isEvent && b.dayType === 'holiday') ? '#EF4444' : hex;
 
                 // 🔧 [Cowork変更①] ポップアップを「期間」表示から「日付」表示に変更
-                const startDateStr = getActualDate(b.startW, 1);
-                const endDateStr = getActualDate(b.endW, 7);
+                const _fmtDate = s => { const d = new Date(s); return `${d.getMonth()+1}/${d.getDate()}`; };
+                const startDateStr = b.actualStartDate ? _fmtDate(b.actualStartDate) : getActualDate(b.startW, 1);
+                const endDateStr   = b.actualEndDate   ? _fmtDate(b.actualEndDate)   : getActualDate(b.endW, 7);
                 // isOneOff（宿題・テスト・行事）は単日表示
                 //   deadline フィールドがある → M/D 形式に変換して表示
                 //   deadline がない既存データ → startW から計算した日付を表示
