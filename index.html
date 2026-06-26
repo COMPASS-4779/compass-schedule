@@ -3290,7 +3290,8 @@
             const g = document.getElementById('admin-sys-grade').value;
             const c = document.getElementById('admin-sys-course').value;
 
-            let books = PRESET_BOOKS.filter(b => b.grade === g && b.course === c).map(b => {
+            const deleted = appData.deletedPresets || [];
+            let books = PRESET_BOOKS.filter(b => b.grade === g && b.course === c && !deleted.includes(b.id)).map(b => {
                 const override = (appData.systemOverrides || {})[b.id];
                 return override ? { ...b, ...override } : b;
             });
@@ -3303,7 +3304,9 @@
             books.forEach(book => {
                 const subjLabel = SUBJ_CONFIG[book.subject] ? SUBJ_CONFIG[book.subject].label : book.subject;
                 const isHidden = appData.hiddenPresets && appData.hiddenPresets.includes(book.id);
-                
+                const lvl = book.level || '';
+                const lvlHtml = lvl ? `<span class="bg-blue-50 text-blue-600 border border-blue-200 px-1.5 py-0.5 rounded ml-1">${lvl}</span>` : '';
+
                 const html = `
                 <div class="flex justify-between items-center bg-white p-3 rounded-lg border border-slate-200 shadow-sm ${isHidden ? 'opacity-50' : ''}">
                     <div class="flex-grow">
@@ -3311,6 +3314,7 @@
                             <span class="bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mr-1">${book.grade}</span>
                             <span class="bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded mr-1">${book.course}</span>
                             <span class="bg-[#B8963E]/10 text-[#B8963E] border border-[#B8963E]/30 px-1.5 py-0.5 rounded">${subjLabel}</span>
+                            ${lvlHtml}
                             ${isHidden ? '<span class="bg-red-100 text-red-600 px-1.5 py-0.5 rounded ml-1">非表示</span>' : ''}
                             <span class="ml-2 text-slate-400">初期設定: W${book.startW}-W${book.endW}</span>
                         </div>
@@ -3323,6 +3327,9 @@
                         <button onclick="toggleSysPresetBook('${book.id}')" class="text-slate-400 hover:text-[#0A1628] transition px-2 py-1 text-xs font-bold border rounded">
                             ${isHidden ? '復元' : '非表示'}
                         </button>
+                        <button onclick="deleteSysPresetBook('${book.id}')" class="text-red-400 hover:text-red-600 hover:bg-red-50 transition px-2 py-1 text-xs font-bold border border-red-200 rounded">
+                            <i class="fas fa-trash"></i>
+                        </button>
                     </div>
                 </div>`;
                 list.insertAdjacentHTML('beforeend', html);
@@ -3333,6 +3340,17 @@
             if(!appData.hiddenPresets) appData.hiddenPresets = [];
             if(appData.hiddenPresets.includes(id)) appData.hiddenPresets = appData.hiddenPresets.filter(x => x !== id);
             else appData.hiddenPresets.push(id);
+            saveData();
+            renderAdminSysBooks();
+            if (!apiFetchedBooks) renderPresetBooks(false);
+        }
+
+        function deleteSysPresetBook(id) {
+            if (!confirm("このテキストをリストから削除しますか？\n（削除後は「システム登録済みの定番テキスト」には表示されなくなります）")) return;
+            if (!appData.deletedPresets) appData.deletedPresets = [];
+            if (!appData.deletedPresets.includes(id)) appData.deletedPresets.push(id);
+            // hiddenPresetsからも除去（整合性）
+            if (appData.hiddenPresets) appData.hiddenPresets = appData.hiddenPresets.filter(x => x !== id);
             saveData();
             renderAdminSysBooks();
             if (!apiFetchedBooks) renderPresetBooks(false);
