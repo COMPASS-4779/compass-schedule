@@ -315,21 +315,41 @@
                     </div>
                 </div>
                 <div class="bg-white rounded-2xl shadow-sm border p-6 lg:col-span-2">
-                    <h2 class="font-bold mb-6 border-b pb-2 text-[#0A1628]">
-                        <i class="fas fa-tasks text-[#B8963E] mr-2"></i>カテゴリー別進捗 (予定 vs 実績) 本日までの累積
-                    </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="flex flex-col">
-                            <h3 class="text-[10px] font-black mb-3 text-blue-600 border-b border-blue-100 pb-1 text-center">① 学校の宿題＆弱点補強</h3>
-                            <div class="chart-container flex-grow" style="height: 250px;"><canvas id="chart-homework"></canvas></div>
+                    <div class="flex flex-wrap items-center justify-between gap-3 mb-4 border-b pb-3">
+                        <h2 class="font-bold text-[#0A1628]">
+                            <i class="fas fa-tasks text-[#B8963E] mr-2"></i>カテゴリー別進捗 (予定 vs 実績) 本日までの累積
+                        </h2>
+                        <div class="flex flex-wrap items-center gap-4 text-[10px] text-slate-500 font-bold">
+                            <div class="flex items-center gap-1.5">
+                                <span class="whitespace-nowrap">横幅</span>
+                                <input type="range" id="progress-chart-x-scale" min="100" max="400" step="10" value="100"
+                                    class="w-24 accent-[#B8963E]" oninput="applyProgressChartScale()">
+                                <span id="progress-chart-x-label" class="text-[#B8963E] font-black w-8">100%</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="whitespace-nowrap">縦幅</span>
+                                <input type="range" id="progress-chart-y-scale" min="100" max="400" step="10" value="100"
+                                    class="w-24 accent-[#B8963E]" oninput="applyProgressChartScale()">
+                                <span id="progress-chart-y-label" class="text-[#B8963E] font-black w-8">100%</span>
+                            </div>
                         </div>
-                        <div class="flex flex-col">
-                            <h3 class="text-[10px] font-black mb-3 text-red-600 border-b border-red-100 pb-1 text-center">② 定期テスト対策</h3>
-                            <div class="chart-container flex-grow" style="height: 250px;"><canvas id="chart-test"></canvas></div>
-                        </div>
-                        <div class="flex flex-col">
-                            <h3 class="text-[10px] font-black mb-3 text-[#B8963E] border-b border-[#B8963E]/20 pb-1 text-center">③ 受験勉強 (長期)</h3>
-                            <div class="chart-container flex-grow" style="height: 250px;"><canvas id="chart-exam"></canvas></div>
+                    </div>
+                    <div id="progress-chart-scroll" class="overflow-auto">
+                        <div id="progress-chart-inner" style="min-width:100%;width:100%;transition:width 0.2s;">
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div class="flex flex-col">
+                                    <h3 class="text-[10px] font-black mb-3 text-blue-600 border-b border-blue-100 pb-1 text-center">① 学校の宿題＆弱点補強</h3>
+                                    <div class="chart-container flex-grow" id="chart-homework-wrap" style="height: 250px;"><canvas id="chart-homework"></canvas></div>
+                                </div>
+                                <div class="flex flex-col">
+                                    <h3 class="text-[10px] font-black mb-3 text-red-600 border-b border-red-100 pb-1 text-center">② 定期テスト対策</h3>
+                                    <div class="chart-container flex-grow" id="chart-test-wrap" style="height: 250px;"><canvas id="chart-test"></canvas></div>
+                                </div>
+                                <div class="flex flex-col">
+                                    <h3 class="text-[10px] font-black mb-3 text-[#B8963E] border-b border-[#B8963E]/20 pb-1 text-center">③ 受験勉強 (長期)</h3>
+                                    <div class="chart-container flex-grow" id="chart-exam-wrap" style="height: 250px;"><canvas id="chart-exam"></canvas></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2183,6 +2203,24 @@
             }
         } 
 
+
+        // カテゴリー別進捗チャート スケール
+        function applyProgressChartScale() {
+            const xVal = parseInt(document.getElementById('progress-chart-x-scale').value);
+            const yVal = parseInt(document.getElementById('progress-chart-y-scale').value);
+            document.getElementById('progress-chart-x-label').textContent = xVal + '%';
+            document.getElementById('progress-chart-y-label').textContent = yVal + '%';
+            const inner = document.getElementById('progress-chart-inner');
+            if (inner) inner.style.width = xVal + '%';
+            ['chart-homework-wrap','chart-test-wrap','chart-exam-wrap'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.style.height = (250 * yVal / 100) + 'px';
+            });
+            // Chart.jsにリサイズを通知
+            [chartHwInstance, chartTestInstance, chartExamInstance].forEach(c => {
+                if (c) c.resize();
+            });
+        }
 
         // 📌 [SECTION-GANTT] ===== ガントチャート =====
         let _ganttScale = 1;
