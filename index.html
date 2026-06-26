@@ -924,6 +924,28 @@
                         <input type="text" id="edit-sys-name" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
                     </div>
                     <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">科目</label>
+                        <select id="edit-sys-subject" class="w-full border rounded-lg px-4 py-2 text-sm">
+                            <option value="english">英語</option>
+                            <option value="english_vocab">英単語</option>
+                            <option value="english_grammar">英文法</option>
+                            <option value="math">数学/算数</option>
+                            <option value="math1">数学I</option>
+                            <option value="mathA">数学A</option>
+                            <option value="math2">数学II</option>
+                            <option value="mathB">数学B</option>
+                            <option value="math3">数学III</option>
+                            <option value="mathC">数学C</option>
+                            <option value="japanese">国語</option>
+                            <option value="japanese_mod">現代文</option>
+                            <option value="japanese_cls">古典</option>
+                            <option value="science">理科</option>
+                            <option value="chemistry">化学</option>
+                            <option value="physics">物理</option>
+                            <option value="society">社会</option>
+                        </select>
+                    </div>
+                    <div>
                         <label class="block text-xs font-bold text-slate-500 mb-1">レベル</label>
                         <select id="edit-sys-level" class="w-full border rounded-lg px-4 py-2 text-sm">
                             <option value="">（なし）</option>
@@ -3390,6 +3412,7 @@
             const id = document.getElementById('edit-sys-id').value;
             const isCustom = document.getElementById('edit-sys-id').dataset.isCustom === 'true';
             const name = document.getElementById('edit-sys-name').value.trim();
+            const subject = document.getElementById('edit-sys-subject').value;
             const level = document.getElementById('edit-sys-level').value;
             const total = parseInt(document.getElementById('edit-sys-total').value);
             const unit = document.getElementById('edit-sys-unit').value.trim();
@@ -3401,10 +3424,10 @@
             if (isCustom) {
                 if (!appData.customPresets) appData.customPresets = [];
                 const idx = appData.customPresets.findIndex(b => b.id === id);
-                if (idx >= 0) Object.assign(appData.customPresets[idx], { name, level, total, unit, startW, endW });
+                if (idx >= 0) Object.assign(appData.customPresets[idx], { name, subject, level, total, unit, startW, endW });
             } else {
                 if (!appData.systemOverrides) appData.systemOverrides = {};
-                appData.systemOverrides[id] = { name, level, startW, endW, total, unit };
+                appData.systemOverrides[id] = { name, subject, level, startW, endW, total, unit };
             }
 
             saveData();
@@ -3427,6 +3450,7 @@
             document.getElementById('edit-sys-id').value = id;
             document.getElementById('edit-sys-id').dataset.isCustom = isCustom ? 'true' : 'false';
             document.getElementById('edit-sys-name').value = book.name;
+            document.getElementById('edit-sys-subject').value = book.subject || 'english';
             document.getElementById('edit-sys-level').value = book.level || '';
             document.getElementById('edit-sys-start').value = book.startW;
             document.getElementById('edit-sys-end').value = book.endW;
