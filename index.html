@@ -4147,20 +4147,38 @@
 
         // 科目名（スプレッドシート表記）→ SUBJ_CONFIG キー の変換マップ
         const SHEET_SUBJ_MAP = {
-            '英語':     'english',
-            '数学':     'math',
-            '国語':     'japanese',
-            '理科':     'science',
-            '社会':     'society',
-            '英単語':   'english_vocab',
-            '英文法':   'english_grammar',
-            '現代文':   'japanese_mod',
-            '古典':     'japanese_cls',
-            '古文':     'japanese_cls',
-            '漢文':     'japanese_cls',
-            '化学':     'chemistry',
-            '物理':     'physics',
+            '英語':       'english',
+            '英単語':     'english_vocab',
+            '英文法':     'english_grammar',
+            '数学':       'math',
+            '数学/算数':  'math',
+            '算数':       'math',
+            '数学I':      'math1',
+            '数学Ⅰ':     'math1',
+            '数学A':      'mathA',
+            '数学II':     'math2',
+            '数学Ⅱ':     'math2',
+            '数学B':      'mathB',
+            '数学III':    'math3',
+            '数学Ⅲ':     'math3',
+            '数学C':      'mathC',
+            '国語':       'japanese',
+            '現代文':     'japanese_mod',
+            '古典':       'japanese_cls',
+            '古文':       'japanese_cls',
+            '漢文':       'japanese_cls',
+            '理科':       'science',
+            '化学':       'chemistry',
+            '物理':       'physics',
+            '社会':       'society',
         };
+        // フォールバック: SUBJ_CONFIGのラベルから逆引き
+        function _sheetSubjKey(label) {
+            if (SHEET_SUBJ_MAP[label]) return SHEET_SUBJ_MAP[label];
+            // ラベル完全一致で逆引き
+            const found = Object.entries(SUBJ_CONFIG).find(([, v]) => v.label === label);
+            return found ? found[0] : null;
+        }
 
         // CSVパーサーユーティリティ（RFC 4180準拠・ダブルクォート対応）
         function parseSheetCSV(text) {
@@ -4236,7 +4254,7 @@
                 const section   = (row[6] || '').trim();
                 const sheetKey  = `${subjLabel}_${textbook}_${chapter}_${section}`;
                 if (!groups[sheetKey]) {
-                    groups[sheetKey] = { subjKey: SHEET_SUBJ_MAP[subjLabel] || 'society', textbook, chapter, section, count: 0 };
+                    groups[sheetKey] = { subjKey: _sheetSubjKey(subjLabel) || subjLabel, textbook, chapter, section, count: 0 };
                 }
                 groups[sheetKey].count++;
             }
@@ -4334,7 +4352,7 @@
                     const sheetKey   = `${subjLabel}_${textbook}_${chapter}_${section}`;
                     if (!groups[sheetKey]) {
                         groups[sheetKey] = {
-                            subjKey: SHEET_SUBJ_MAP[subjLabel] || 'society',
+                            subjKey: _sheetSubjKey(subjLabel) || subjLabel,
                             textbook, chapter, section,
                             wrongCount: 0,
                             total: parseInt(totalStr) || 0
