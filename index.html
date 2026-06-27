@@ -4798,13 +4798,17 @@
                     }
                 });
 
+                // 科目マージマップ: math → math1 に統合
+                const SUBJ_MERGE = { math: 'math1', mathA: 'mathA', mathB: 'mathB', mathC: 'mathC' };
+
                 Object.values(latestStatus).forEach(r => {
                     const pct = Math.round((r.score / r.maxScore) * 100);
                     if (pct < PASS_THRESHOLD) {
-                        if (!weakUnitsBySubj[r.subject]) weakUnitsBySubj[r.subject] = [];
-                        weakUnitsBySubj[r.subject].push({
+                        const sk = SUBJ_MERGE[r.subject] || r.subject;
+                        if (!weakUnitsBySubj[sk]) weakUnitsBySubj[sk] = [];
+                        weakUnitsBySubj[sk].push({
                             id: r.id, name: r.unit, pct: pct,
-                            score: r.score, max: r.maxScore, subject: r.subject
+                            score: r.score, max: r.maxScore, subject: sk
                         });
                     }
                 });
