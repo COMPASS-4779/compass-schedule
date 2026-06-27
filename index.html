@@ -4257,10 +4257,10 @@
         // CSVファイルを選択して取込（file://プロトコル時のフォールバック）
         function importFromSheetCSV(input) {
             if (!input.files || !input.files[0]) return;
-            if (!appData.profile || !appData.profile.name) {
+            if (!currentUser) {
                 return alert("ログイン後に使用してください。");
             }
-            const studentName = appData.profile.name;
+            const studentName = currentUser; // ユーザーIDで照合
             const reader = new FileReader();
             reader.onload = function(e) {
                 try {
@@ -4359,12 +4359,12 @@
                     return;
                 }
 
-                const studentName = appData.profile.name;
-                // 列構成: 0=日時 1=生徒名 2=科目 3=テキスト名 4=ページ 5=章 6=節 7=問題番号 8=写真リンク
+                const studentName = currentUser; // ユーザーIDで照合
+                // 列構成: 0=日時 1=ユーザーID 2=科目 3=テキスト名 4=ページ 5=章 6=節 7=問題番号 8=サイトID 9=総問題数
                 const studentRows = rows.slice(1).filter(r => r[1] && r[1].trim() === studentName);
 
                 if (studentRows.length === 0) {
-                    if (!silent) alert(`「${studentName}」の記録がスプレッドシートに見つかりません。\n生徒名が完全一致しているか確認してください。`);
+                    if (!silent) alert(`「${studentName}」の記録がスプレッドシートに見つかりません。\n学習サイトと同じIDでログインしているか確認してください。`);
                     updateSheetImportStatus();
                     return;
                 }
