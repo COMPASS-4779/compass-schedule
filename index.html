@@ -2774,6 +2774,11 @@
             const container = document.getElementById(containerId);
             const col = document.getElementById(containerId + '-col');
             if (!container) return;
+            // 実績ゼロかつ開始週未到来のタスクは非表示
+            tasks = tasks.filter(b => {
+                const { as } = _calcBookStats(b);
+                return as > 0 || appData.currentWeek >= b.startW;
+            });
             if (tasks.length === 0) { if (col) col.style.display = 'none'; return; }
             if (col) col.style.display = 'flex';
 
