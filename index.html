@@ -1411,17 +1411,37 @@
                 // カスタム科目をSUBJ_CONFIGに反映
                 applyCustomSubjects();
 
-                // 既存unitRecordsの科目キー修正（_sheetKeyから再マッピング）
+                // 既存unitRecordsの科目キー修正
                 if (appData.unitRecords) {
                     let fixed = false;
                     appData.unitRecords.forEach(r => {
+                        // ① _sheetKeyの先頭から科目ラベルを取り出して再マッピング
                         if (r._sheetKey) {
                             const subjLabel = r._sheetKey.split('_')[0];
-                            const correct = _sheetSubjKey(subjLabel);
-                            if (correct && correct !== r.subject) {
-                                r.subject = correct;
-                                fixed = true;
-                            }
+                            const correct = SHEET_SUBJ_MAP[subjLabel]
+                                || Object.entries(SUBJ_CONFIG).find(([,v]) => v.label === subjLabel)?.[0];
+                            if (correct && correct !== r.subject) { r.subject = correct; fixed = true; }
+                        }
+                        // ② 科目が未解決 or 'society' のとき、unit名/source名から推測
+                        if (r.subject === 'society' || r.subject === 'unknown' || !SUBJ_CONFIG[r.subject]) {
+                            const txt = (r.unit || '') + ' ' + (r.source || '') + ' ' + (r._sheetKey || '');
+                            let g = null;
+                            if (/数[ⅢIi三]|数III|数学III/.test(txt))       g = 'math3';
+                            else if (/数[ⅡIi二]|数II|数学II/.test(txt))    g = 'math2';
+                            else if (/数[ⅠIi一]|数I|数学I/.test(txt))      g = 'math1';
+                            else if (/数A|数学A/.test(txt))                  g = 'mathA';
+                            else if (/数B|数学B/.test(txt))                  g = 'mathB';
+                            else if (/数C|数学C/.test(txt))                  g = 'mathC';
+                            else if (/数学|算数/.test(txt))                  g = 'math';
+                            else if (/化学/.test(txt))                       g = 'chemistry';
+                            else if (/物理/.test(txt))                       g = 'physics';
+                            else if (/現代文/.test(txt))                     g = 'japanese_mod';
+                            else if (/古典|古文|漢文/.test(txt))             g = 'japanese_cls';
+                            else if (/国語/.test(txt))                       g = 'japanese';
+                            else if (/英単語/.test(txt))                     g = 'english_vocab';
+                            else if (/英文法/.test(txt))                     g = 'english_grammar';
+                            else if (/英語/.test(txt))                       g = 'english';
+                            if (g && g !== r.subject) { r.subject = g; fixed = true; }
                         }
                     });
                     if (fixed) saveData();
