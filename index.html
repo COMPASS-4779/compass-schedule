@@ -1411,6 +1411,22 @@
                 // カスタム科目をSUBJ_CONFIGに反映
                 applyCustomSubjects();
 
+                // 既存unitRecordsの科目キー修正（_sheetKeyから再マッピング）
+                if (appData.unitRecords) {
+                    let fixed = false;
+                    appData.unitRecords.forEach(r => {
+                        if (r._sheetKey) {
+                            const subjLabel = r._sheetKey.split('_')[0];
+                            const correct = _sheetSubjKey(subjLabel);
+                            if (correct && correct !== r.subject) {
+                                r.subject = correct;
+                                fixed = true;
+                            }
+                        }
+                    });
+                    if (fixed) saveData();
+                }
+
                 document.getElementById('login-view').classList.add('hidden');
                 document.getElementById('nav-user-info').classList.remove('hidden');
                 document.getElementById('nav-user-id').textContent = id;
