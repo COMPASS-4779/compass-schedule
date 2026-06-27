@@ -337,17 +337,17 @@
                     <div id="progress-chart-scroll" class="overflow-auto">
                         <div id="progress-chart-inner" style="min-width:100%;width:100%;transition:width 0.2s;">
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                <div class="flex flex-col">
+                                <div class="flex flex-col" id="chart-homework-col">
                                     <h3 class="text-[10px] font-black mb-3 text-blue-600 border-b border-blue-100 pb-1 text-center">① 学校の宿題＆弱点補強</h3>
-                                    <div class="chart-container flex-grow" id="chart-homework-wrap" style="height: 250px;"><canvas id="chart-homework"></canvas></div>
+                                    <div id="chart-homework" class="space-y-1.5 overflow-y-auto"></div>
                                 </div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col" id="chart-test-col">
                                     <h3 class="text-[10px] font-black mb-3 text-red-600 border-b border-red-100 pb-1 text-center">② 定期テスト対策</h3>
-                                    <div class="chart-container flex-grow" id="chart-test-wrap" style="height: 250px;"><canvas id="chart-test"></canvas></div>
+                                    <div id="chart-test" class="space-y-1.5 overflow-y-auto"></div>
                                 </div>
-                                <div class="flex flex-col">
+                                <div class="flex flex-col" id="chart-exam-col">
                                     <h3 class="text-[10px] font-black mb-3 text-[#B8963E] border-b border-[#B8963E]/20 pb-1 text-center">③ 受験勉強 (長期)</h3>
-                                    <div class="chart-container flex-grow" id="chart-exam-wrap" style="height: 250px;"><canvas id="chart-exam"></canvas></div>
+                                    <div id="chart-exam" class="space-y-1.5 overflow-y-auto"></div>
                                 </div>
                             </div>
                         </div>
@@ -2247,13 +2247,10 @@
             document.getElementById('progress-chart-y-label').textContent = yVal + '%';
             const inner = document.getElementById('progress-chart-inner');
             if (inner) inner.style.width = xVal + '%';
-            ['chart-homework-wrap','chart-test-wrap','chart-exam-wrap'].forEach(id => {
+            // 縦幅: 各チャートコンテナのmax-heightで制御
+            ['chart-homework','chart-test','chart-exam'].forEach(id => {
                 const el = document.getElementById(id);
-                if (el) el.style.height = (250 * yVal / 100) + 'px';
-            });
-            // Chart.jsにリサイズを通知
-            [chartHwInstance, chartTestInstance, chartExamInstance].forEach(c => {
-                if (c) c.resize();
+                if (el) el.style.maxHeight = (400 * yVal / 100) + 'px';
             });
         }
 
@@ -2536,6 +2533,13 @@
         }
 
         // 📌 実績調整モーダル
+        function openProgressAdjustModalById(bookId) {
+            const book = window._chartBooksMap[bookId];
+            if (!book) return;
+            const { ps, as } = _calcBookStats(book);
+            openProgressAdjustModal(book, as, ps);
+        }
+
         function openProgressAdjustModal(book, currentActual, plannedVal) {
             document.getElementById('progress-adjust-bookid').value = book.id;
             document.getElementById('progress-adjust-unit').value = book.unit || '';
@@ -2742,27 +2746,138 @@
 
 
         // 📌 [SECTION-CHART] ===== グラフ描画 =====
-       function initChart() {
-            if (chartHwInstance) { chartHwInstance.destroy(); chartHwInstance = null; }
-            if (chartTestInstance) { chartTestInstance.destroy(); chartTestInstance = null; }
-            if (chartExamInstance) { chartExamInstance.destroy(); chartExamInstance = null; }
+        window._chartBooksMap = {};
 
-            const hwCanvas = document.getElementById('chart-homework');
-            if (!hwCanvas) return;
+        // 実績・予定数を計算するヘルパー
+        function _calcBookStats(b) {
+            let ps = 0;
+            if (appData.currentWeek > b.endW) {
+                ps = b.total;
+            } else if (appData.currentWeek >= b.startW) {
+                const totalDays = (b.endW - b.startW + 1) * 5;
+                const passedDays = (appData.currentWeek - b.startW) * 5 + Math.min(appData.currentDay, 5);
+                ps = Math.round(b.total * (passedDays / totalDays));
+            }
+            let as = 0;
+            const adj = appData.progressAdjust && appData.progressAdjust[b.id];
+            if (adj !== undefined && adj !== null) {
+                as = adj;
+            } else if (appData.progress) {
+                Object.keys(appData.progress).forEach(k => {
+                    if (k.startsWith(b.id + '_W') || k.startsWith(b.id + '_s')) as += parseFloat(appData.progress[k]) || 0;
+                });
+            }
+            return { ps, as: Math.round(as * 10) / 10 };
+        }
 
-            const chartSection = hwCanvas.closest('.bg-white'); // セクション全体
-            const hwContainer = hwCanvas.closest('.flex-col'); // 宿題の枠
-            const testContainer = document.getElementById('chart-test')?.closest('.flex-col'); // テストの枠
-            const examContainer = document.getElementById('chart-exam')?.closest('.flex-col'); // 受験の枠
+        function renderCategoryChart(containerId, tasks) {
+            const container = document.getElementById(containerId);
+            const col = document.getElementById(containerId + '-col');
+            if (!container) return;
+            if (tasks.length === 0) { if (col) col.style.display = 'none'; return; }
+            if (col) col.style.display = 'flex';
+
+            // 科目別グループ化（表示順を保持）
+            const subjOrder = [];
+            const subjectGroups = {};
+            tasks.forEach(b => {
+                window._chartBooksMap[b.id] = b;
+                if (!subjectGroups[b.subjKey]) { subjectGroups[b.subjKey] = []; subjOrder.push(b.subjKey); }
+                subjectGroups[b.subjKey].push(b);
+            });
+
+            let html = '';
+            subjOrder.forEach(sk => {
+                const books = subjectGroups[sk];
+                const conf = SUBJ_CONFIG[sk] || { label: sk, hex: '#64748b' };
+                const hex = conf.hex;
+
+                // 科目合計
+                let totalCap = 0, totalAs = 0, totalPs = 0;
+                books.forEach(b => {
+                    const { ps, as } = _calcBookStats(b);
+                    totalCap += b.total || 0;
+                    totalAs += as;
+                    totalPs += ps;
+                });
+                const plannedPct = totalCap > 0 ? Math.min(100, Math.round((totalPs / totalCap) * 100)) : 0;
+                const actualPct  = totalCap > 0 ? Math.min(100, Math.round((totalAs / totalCap) * 100)) : 0;
+                const onTrack = actualPct >= plannedPct;
+                const statusCls = onTrack
+                    ? 'text-green-700 bg-green-50 border-green-300'
+                    : 'text-red-600 bg-red-50 border-red-300';
+                const statusLbl = onTrack ? '✓ 順調' : '! 遅延';
+                const groupId = `cg_${containerId}_${sk}`;
+
+                // 個別テキスト行
+                let booksHtml = `<div id="${groupId}" class="hidden px-3 pb-3 pt-1 border-t bg-slate-50 space-y-2">`;
+                books.forEach(b => {
+                    const { ps, as } = _calcBookStats(b);
+                    const bPct  = b.total > 0 ? Math.min(100, Math.round((as / b.total) * 100)) : 0;
+                    const bPPct = b.total > 0 ? Math.min(100, Math.round((ps / b.total) * 100)) : 0;
+                    const bOk = bPct >= bPPct;
+                    const bSts = bOk
+                        ? '<span class="text-[8px] font-black text-green-600">順調</span>'
+                        : '<span class="text-[8px] font-black text-red-500">遅延</span>';
+                    const hasAdj = appData.progressAdjust && appData.progressAdjust[b.id] !== undefined;
+                    const adjMark = hasAdj ? '<span class="text-[7px] text-[#B8963E] font-bold ml-0.5">調整済</span>' : '';
+                    booksHtml += `
+                    <div class="bg-white border border-slate-200 rounded-lg px-3 py-2">
+                        <div class="flex items-center gap-1.5 mb-1.5">
+                            <span class="text-[10px] font-bold text-slate-700 flex-1 truncate">${b.name}</span>
+                            ${bSts}${adjMark}
+                            <button onclick="openProgressAdjustModalById('${b.id}')"
+                                class="shrink-0 text-[8px] border border-slate-300 text-slate-400 hover:text-[#B8963E] hover:border-[#B8963E] rounded px-1 py-0.5 transition">
+                                <i class="fas fa-pen"></i>
+                            </button>
+                        </div>
+                        <div class="relative h-2.5 bg-slate-100 rounded-full overflow-hidden mb-1">
+                            <div class="absolute inset-y-0 left-0 rounded-full bg-slate-200" style="width:${bPPct}%"></div>
+                            <div class="absolute inset-y-0 left-0 rounded-full opacity-90 transition-all" style="width:${bPct}%;background:${hex}"></div>
+                        </div>
+                        <div class="flex justify-between text-[8px] text-slate-400">
+                            <span>実績 ${as}${b.unit} / 予定 ${ps}${b.unit}</span>
+                            <span>実${bPct}% 予${bPPct}%</span>
+                        </div>
+                    </div>`;
+                });
+                booksHtml += '</div>';
+
+                html += `
+                <div class="border rounded-xl overflow-hidden shadow-sm" style="border-color:${hex}55">
+                    <div class="flex items-center gap-2 px-3 py-2.5 cursor-pointer hover:bg-slate-50 transition select-none"
+                         style="border-left:4px solid ${hex}"
+                         onclick="const el=document.getElementById('${groupId}');el.classList.toggle('hidden');this.querySelector('.tog').classList.toggle('rotate-90')">
+                        <span class="text-[11px] font-black shrink-0 w-16 truncate" style="color:${hex}">${conf.label}</span>
+                        <div class="flex-1 relative h-3 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="absolute inset-y-0 left-0 rounded-full bg-slate-200" style="width:${plannedPct}%"></div>
+                            <div class="absolute inset-y-0 left-0 rounded-full transition-all" style="width:${actualPct}%;background:${hex}"></div>
+                        </div>
+                        <span class="text-[10px] font-black shrink-0" style="color:${hex}">${actualPct}%</span>
+                        <span class="text-[9px] text-slate-400 shrink-0">予${plannedPct}%</span>
+                        <span class="text-[9px] font-black border rounded px-1.5 py-0.5 shrink-0 ${statusCls}">${statusLbl}</span>
+                        <i class="fas fa-chevron-right text-[9px] text-slate-400 shrink-0 tog transition-transform duration-200"></i>
+                    </div>
+                    ${booksHtml}
+                </div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function initChart() {
+            chartHwInstance = chartTestInstance = chartExamInstance = null;
+
+            const hwEl = document.getElementById('chart-homework');
+            if (!hwEl) return;
+            const chartSection = hwEl.closest('.bg-white');
 
             let examTasks = [], testTasks = [], hwTasks = [];
-
             if (appData.curriculum) {
                 Object.keys(appData.curriculum).forEach(sk => {
                     appData.curriculum[sk].forEach(b => {
                         b.subjKey = sk;
-                        if (b.isEvent) return; // 行事は除外
-
+                        if (b.isEvent) return;
                         if (!b.isOneOff) examTasks.push(b);
                         else if (b.name.includes('【定期テスト】') || b.name.includes('【模試】')) testTasks.push(b);
                         else hwTasks.push(b);
@@ -2770,159 +2885,31 @@
                 });
             }
 
-            // ガントと同じ順序に揃える
+            // ガントと同じ順序
             if (appData.ganttRowOrder && appData.ganttRowOrder.length > 0) {
-                // カスタム順: ganttRowOrderに従う
                 const orderMap = {};
                 appData.ganttRowOrder.forEach((id, i) => { orderMap[String(id)] = i; });
-                const sortByOrder = arr => arr.slice().sort((a, b) => {
-                    const oa = orderMap[String(a.id)] !== undefined ? orderMap[String(a.id)] : 9999;
-                    const ob = orderMap[String(b.id)] !== undefined ? orderMap[String(b.id)] : 9999;
+                const sortFn = arr => arr.slice().sort((a, b) => {
+                    const oa = orderMap[String(a.id)] ?? 9999;
+                    const ob = orderMap[String(b.id)] ?? 9999;
                     return oa - ob;
                 });
-                testTasks = sortByOrder(testTasks);
-                hwTasks   = sortByOrder(hwTasks);
-                examTasks = sortByOrder(examTasks);
+                testTasks = sortFn(testTasks); hwTasks = sortFn(hwTasks); examTasks = sortFn(examTasks);
             } else {
-                // デフォルト: startW順
-                const byStartW = arr => arr.slice().sort((a, b) => a.startW - b.startW);
-                testTasks = byStartW(testTasks);
-                hwTasks   = byStartW(hwTasks);
-                examTasks = byStartW(examTasks);
+                const byW = arr => arr.slice().sort((a, b) => a.startW - b.startW);
+                testTasks = byW(testTasks); hwTasks = byW(hwTasks); examTasks = byW(examTasks);
             }
 
-            // 表示が必要なコンテナの制御
-            let visibleCount = 0;
-            if (hwTasks.length > 0) { 
-                if (hwContainer) hwContainer.style.display = 'flex'; 
-                visibleCount++; 
-            } else { 
-                if (hwContainer) hwContainer.style.display = 'none'; 
-            }
-            
-            if (testTasks.length > 0) { 
-                if (testContainer) testContainer.style.display = 'flex'; 
-                visibleCount++; 
-            } else { 
-                if (testContainer) testContainer.style.display = 'none'; 
-            }
-            
-            if (examTasks.length > 0) { 
-                if (examContainer) examContainer.style.display = 'flex'; 
-                visibleCount++; 
-            } else { 
-                if (examContainer) examContainer.style.display = 'none'; 
-            }
+            const total = (hwTasks.length > 0 ? 1 : 0) + (testTasks.length > 0 ? 1 : 0) + (examTasks.length > 0 ? 1 : 0);
+            if (total === 0) { if (chartSection) chartSection.style.display = 'none'; return; }
+            if (chartSection) chartSection.style.display = 'block';
 
-            if (visibleCount === 0) {
-                if (chartSection) chartSection.style.display = 'none';
-                return;
-            } else {
-                if (chartSection) chartSection.style.display = 'block';
-                if (hwContainer && hwContainer.parentElement) {
-                    const grid = hwContainer.parentElement;
-                    grid.className = `grid grid-cols-1 md:grid-cols-${visibleCount} gap-8`;
-                }
-            }
+            const grid = document.getElementById('chart-homework-col')?.parentElement;
+            if (grid) grid.className = `grid grid-cols-1 md:grid-cols-${total} gap-8`;
 
-            const createCategoryChart = (canvasId, tasks) => {
-                const ctx = document.getElementById(canvasId)?.getContext('2d');
-                if (!ctx) return null;
-                const labels = [], pData = [], aData = [], colors = [];
-                const rawActual = [], rawPlanned = [], units = [];
-
-                tasks.forEach(b => {
-                    labels.push(b.name.substr(0, 10));
-                    colors.push(SUBJ_CONFIG[b.subjKey]?.hex || "#64748b");
-
-                    let ps = 0;
-                    if (appData.currentWeek > b.endW) {
-                        ps = b.total;
-                    } else if (appData.currentWeek >= b.startW) {
-                        const totalDays = (b.endW - b.startW + 1) * 5;
-                        const passedDays = (appData.currentWeek - b.startW) * 5 + Math.min(appData.currentDay, 5);
-                        ps = Math.round(b.total * (passedDays / totalDays));
-                    }
-
-                    let as = 0;
-                    const adj = appData.progressAdjust && appData.progressAdjust[b.id];
-                    if (adj !== undefined && adj !== null) {
-                        as = adj;
-                    } else if (appData.progress) {
-                        Object.keys(appData.progress).forEach(k => {
-                            if (k.startsWith(b.id + '_W') || k.startsWith(b.id + '_s')) as += parseFloat(appData.progress[k]) || 0;
-                        });
-                    }
-
-                    rawActual.push(Math.round(as * 10) / 10);
-                    rawPlanned.push(ps);
-                    units.push(b.unit || '');
-
-                    pData.push(Math.min(100, Math.round((ps / b.total) * 100) || 0));
-                    aData.push(Math.min(100, Math.round((as / b.total) * 100) || 0));
-                });
-
-                // バー右端に 実績/予定 数値を表示するカスタムプラグイン
-                const countLabelPlugin = {
-                    id: 'countLabel_' + canvasId,
-                    afterDatasetsDraw(chart) {
-                        const ctx2 = chart.ctx;
-                        const meta = chart.getDatasetMeta(0); // 予定バー（背景）
-                        meta.data.forEach((bar, j) => {
-                            const txt = `実${rawActual[j]} / 予${rawPlanned[j]}${units[j]}`;
-                            ctx2.save();
-                            ctx2.font = 'bold 8px sans-serif';
-                            ctx2.fillStyle = '#475569';
-                            ctx2.textAlign = 'left';
-                            ctx2.textBaseline = 'middle';
-                            // バーの右端+4px の位置に描画
-                            const xEnd = chart.scales.x.getPixelForValue(Math.max(pData[j], aData[j]));
-                            ctx2.fillText(txt, xEnd + 4, bar.y);
-                            ctx2.restore();
-                        });
-                    }
-                };
-
-                return new Chart(ctx, {
-                    type: 'bar',
-                    data: { labels, datasets: [
-                        { label: '予定%', data: pData, backgroundColor: '#E2E8F0', borderRadius: 2 },
-                        { label: '実績%', data: aData, backgroundColor: colors, borderRadius: 2 }
-                    ]},
-                    options: {
-                        indexAxis: 'y',
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: (ti) => {
-                                        const j = ti.dataIndex;
-                                        if (ti.datasetIndex === 0) return `予定: ${rawPlanned[j]}${units[j]} (${pData[j]}%)`;
-                                        return `実績: ${rawActual[j]}${units[j]} (${aData[j]}%)`;
-                                    }
-                                }
-                            }
-                        },
-                        scales: {
-                            x: { min: 0, max: 100, ticks: { font: { size: 10 } } },
-                            y: { ticks: { font: { size: 9 }, autoSkip: false } }
-                        },
-                        layout: { padding: { left: 5, right: 80 } },
-                        onClick: (e, elements) => {
-                            if (!elements.length) return;
-                            const j = elements[0].index;
-                            openProgressAdjustModal(tasks[j], rawActual[j], rawPlanned[j]);
-                        }
-                    },
-                    plugins: [countLabelPlugin]
-                });
-            };
-
-            if (hwTasks.length > 0) chartHwInstance = createCategoryChart('chart-homework', hwTasks);
-            if (testTasks.length > 0) chartTestInstance = createCategoryChart('chart-test', testTasks);
-            if (examTasks.length > 0) chartExamInstance = createCategoryChart('chart-exam', examTasks);
+            renderCategoryChart('chart-homework', hwTasks);
+            renderCategoryChart('chart-test', testTasks);
+            renderCategoryChart('chart-exam', examTasks);
         }
 
 
