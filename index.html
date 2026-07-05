@@ -41,7 +41,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/05/19</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V3</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V4</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2201,29 +2201,27 @@
                         const val = parseFloat(appData.progress[key]) || 0;
 
                         // 実施状況に応じた動的目標量（残量 ÷ 残日数）
-                        let totalDone = 0;
-                        Object.keys(appData.progress || {}).forEach(k => {
-                            if (k.startsWith(b.id + '_W')) totalDone += parseFloat(appData.progress[k]) || 0;
-                        });
-                        const remaining = Math.max(0, b.total - totalDone);
-                        const remWeeks = b.endW - appData.currentWeek;
-                        const todayDayNum = Math.min(appData.currentDay, 5);
-                        const remainingDays = Math.max(1, remWeeks * 5 + (6 - todayDayNum));
-                        const target = Math.ceil(remaining / remainingDays);
+                        const ranges = calcBookRanges(b);
+                        const { target, remaining, remainingDays, todayStart, todayEnd, weekStart, weekEnd } = ranges;
 
                         const pct = Math.min(100, Math.round((val / Math.max(1, target)) * 100) || 0);
+                        const todayLabel = formatRangeLabel(b, todayStart, todayEnd);
+                        const weekLabel  = formatRangeLabel(b, weekStart, weekEnd);
 
                         examHtml += `
                         <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm relative mb-3">
-                            <div class="flex justify-between items-start mb-1 text-center">
+                            <div class="flex justify-between items-start mb-1">
                                 <span class="text-[10px] font-bold text-[#B8963E]">${SUBJ_CONFIG[sk]?.label || sk}</span>
+                                <button onclick="openChapterModal('${sk}','${b.id}')" title="章節を設定" class="text-slate-300 hover:text-[#B8963E] text-[10px] font-bold leading-none ml-1 flex-shrink-0"><i class="fas fa-pen"></i> 章節</button>
                             </div>
                             <div class="text-xs font-bold text-slate-700 mb-1">${b.name}</div>
+                            ${todayLabel ? `<div class="text-[10px] font-bold text-blue-600 mb-0.5"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLabel}</div>` : ''}
+                            ${weekLabel  ? `<div class="text-[9px] text-slate-400 mb-1"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLabel}</div>` : ''}
                             <div class="text-[10px] font-bold text-slate-500 mb-1">今日の目標: ${target}${b.unit}</div>
                             <div class="text-[9px] text-slate-400 mb-2">残り ${remaining}${b.unit} / ${remainingDays}日</div>
-                            
+
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
-                                ${pct >= 100 ? 
+                                ${pct >= 100 ?
                                     `<div class="text-center text-blue-600 font-black text-[10px]"><i class="fas fa-check-circle"></i> 本日分完了！ (100%)</div>` :
                                     `<div class="flex items-center gap-2">
                                         <div class="flex-grow bg-slate-200 h-1.5 rounded-full overflow-hidden">
@@ -2637,11 +2635,19 @@
                 appData.curriculum[sk].forEach(b => {
                     // 🌟 行事(isEvent)は今日のタスク入力欄から除外
                     if(appData.currentWeek >= b.startW && appData.currentWeek <= b.endW && !b.isEvent) {
-                        const target = b.isOneOff ? b.total : Math.ceil(b.total / ((b.endW - b.startW + 1) * 5));
+                        const ranges2 = calcBookRanges(b);
+                        const { target, todayStart, todayEnd, weekStart, weekEnd } = ranges2;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
+                        const todayLbl = formatRangeLabel(b, todayStart, todayEnd);
+                        const weekLbl  = formatRangeLabel(b, weekStart, weekEnd);
                         grid.innerHTML += `<div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
-                            <div class="text-[9px] font-black mb-1" style="color:${SUBJ_CONFIG[sk].hex}">${SUBJ_CONFIG[sk].label}</div>
-                            <div class="text-xs font-black mb-3 truncate text-[#0A1628]">${b.name}</div>
+                            <div class="flex justify-between items-center mb-1">
+                                <div class="text-[9px] font-black" style="color:${SUBJ_CONFIG[sk].hex}">${SUBJ_CONFIG[sk].label}</div>
+                                <button onclick="openChapterModal('${sk}','${b.id}')" class="text-[9px] text-slate-300 hover:text-[#B8963E] font-bold"><i class="fas fa-pen"></i> 章節</button>
+                            </div>
+                            <div class="text-xs font-black mb-1 truncate text-[#0A1628]">${b.name}</div>
+                            ${todayLbl ? `<div class="text-[10px] font-bold text-blue-600 mb-0.5"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLbl}</div>` : ''}
+                            ${weekLbl  ? `<div class="text-[9px] text-slate-400 mb-2"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLbl}</div>` : ''}
                             <div class="flex items-center gap-2">
                                 <input type="number" class="w-full border rounded p-2 text-sm font-bold focus:ring-2 focus:ring-[#B8963E] outline-none" placeholder="実績を入力" value="${appData.progress[key]||''}" onchange="updateProg('${b.id}', this.value)">
                                 <span class="text-xs font-bold text-slate-400">${b.unit}</span>
@@ -3243,6 +3249,84 @@
         function adjustWeek(v) { appData.currentWeek = Math.max(1, appData.currentWeek + v); renderDayTabs(); renderTracker(); updateProgress(); initChart(); }
         function goToToday() { syncCurrentDate(); renderDayTabs(); renderTracker(); updateProgress(); if (typeof renderTodaysTaskWindow === 'function') renderTodaysTaskWindow(); }
         function executeLogout() { sessionStorage.clear(); location.reload(); }
+
+        // ===== 章節ヘルパー =====
+        function lookupChapter(chapters, page) {
+            if (!chapters || !chapters.length) return null;
+            const sorted = [...chapters].sort((a, b) => a.startPage - b.startPage);
+            let found = sorted[0];
+            for (const ch of sorted) {
+                if (ch.startPage <= page) found = ch;
+                else break;
+            }
+            return found;
+        }
+
+        function formatRangeLabel(b, startItem, endItem) {
+            if (!b || startItem > b.total) return '';
+            const clampedEnd = Math.min(endItem, b.total);
+            const ch = (b.chapters && b.chapters.length) ? lookupChapter(b.chapters, startItem) : null;
+            const range = `${startItem}〜${clampedEnd}${b.unit}`;
+            return ch ? `${ch.name}　${range}` : range;
+        }
+
+        function calcBookRanges(b) {
+            const currentWeek = appData.currentWeek;
+            const currentDay  = appData.currentDay;
+            const key = `${b.id}_W${currentWeek}_D${currentDay}`;
+            let totalDone = 0, thisWeekDone = 0;
+            Object.keys(appData.progress || {}).forEach(k => {
+                if (!k.startsWith(b.id + '_W')) return;
+                const v = parseFloat(appData.progress[k]) || 0;
+                totalDone += v;
+                if (k.startsWith(`${b.id}_W${currentWeek}_`)) thisWeekDone += v;
+            });
+            const todayDone      = parseFloat(appData.progress[key]) || 0;
+            const doneBefore     = totalDone - todayDone;
+            const beforeThisWeek = totalDone - thisWeekDone;
+            const remaining      = Math.max(0, b.total - totalDone);
+            const remWeeks       = b.endW - currentWeek;
+            const remainingDays  = Math.max(1, remWeeks * 5 + (6 - Math.min(currentDay, 5)));
+            const target         = Math.ceil(remaining / remainingDays);
+            const todayStart = Math.max(1, Math.floor(doneBefore) + 1);
+            const todayEnd   = Math.floor(doneBefore) + Math.max(1, target);
+            const weekStart  = Math.max(1, Math.floor(beforeThisWeek) + 1);
+            const weekEnd    = Math.floor(beforeThisWeek) + Math.max(1, target) * 5;
+            return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays, totalDone, todayDone };
+        }
+
+        // ===== 章節モーダル =====
+        function openChapterModal(sk, id) {
+            const b = (appData.curriculum[sk] || []).find(x => x.id === id);
+            if (!b) return;
+            document.getElementById('chapter-modal-bookname').textContent = b.name;
+            document.getElementById('chapter-modal-id').value = id;
+            document.getElementById('chapter-modal-sk').value = sk;
+            const txt = (b.chapters || []).sort((a,c) => a.startPage - c.startPage)
+                .map(ch => `${ch.name},${ch.startPage}`).join('\n');
+            document.getElementById('chapter-modal-data').value = txt;
+            document.getElementById('chapter-modal').classList.remove('hidden');
+        }
+
+        function saveChapterModal() {
+            const id = document.getElementById('chapter-modal-id').value;
+            const sk = document.getElementById('chapter-modal-sk').value;
+            const b  = (appData.curriculum[sk] || []).find(x => x.id === id);
+            if (!b) return;
+            const lines = document.getElementById('chapter-modal-data').value
+                .split('\n').map(l => l.trim()).filter(Boolean);
+            b.chapters = lines.map(line => {
+                const comma = line.lastIndexOf(',');
+                if (comma < 0) return null;
+                const name = line.slice(0, comma).trim();
+                const startPage = parseInt(line.slice(comma + 1)) || 1;
+                return name ? { name, startPage } : null;
+            }).filter(Boolean);
+            saveData();
+            document.getElementById('chapter-modal').classList.add('hidden');
+            renderDashboard();
+            renderTracker();
+        }
         
 
         // 📌 [SECTION-VIEW] ===== 画面切り替え =====
@@ -5737,5 +5821,22 @@ async function deleteCurrentAccount() {
 }
 
     </script>
+
+        <!-- ===== 章節設定モーダル ===== -->
+        <div id="chapter-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+            <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full mx-4">
+                <h3 class="text-lg font-black text-[#0A1628] mb-1"><i class="fas fa-list-ol text-[#B8963E] mr-2"></i>章・節の設定</h3>
+                <div class="text-sm font-bold text-slate-700 mb-1" id="chapter-modal-bookname"></div>
+                <div class="text-xs text-slate-400 mb-3">「章名,開始ページ」を1行ずつ入力してください。<br>例：<span class="font-mono">2次関数,1</span>　→　<span class="font-mono">三角関数,45</span></div>
+                <input type="hidden" id="chapter-modal-id">
+                <input type="hidden" id="chapter-modal-sk">
+                <textarea id="chapter-modal-data" class="w-full border rounded-lg p-3 text-sm font-mono h-44 focus:ring-2 focus:ring-[#B8963E] outline-none resize-none" placeholder="章名,開始ページ&#10;2次関数,1&#10;三角関数,45&#10;指数・対数,89"></textarea>
+                <div class="flex gap-3 mt-4 justify-end">
+                    <button onclick="document.getElementById('chapter-modal').classList.add('hidden')" class="px-4 py-2 text-sm font-bold text-slate-500 border rounded-lg hover:bg-slate-50">キャンセル</button>
+                    <button onclick="saveChapterModal()" class="px-4 py-2 text-sm font-bold bg-[#B8963E] text-white rounded-lg hover:bg-[#a07a30]"><i class="fas fa-save mr-1"></i>保存</button>
+                </div>
+            </div>
+        </div>
+
 </body>
 </html>
