@@ -1,82 +1,32 @@
-"""
-英文法学習サイト v3 バックエンド（FastAPI）
-- 静的配信：/      → HP/grammar_v3.html
-              /v1  → HP/grammar.html（旧版・互換用）
-              /pdf → ../第NN章/* （問題・解答PDF）
-              /HP/data/* → curriculum.json 等
-- API：v1互換（/getProgress, /saveProgress, /getWeaknesses, /saveWeaknesses, /getUsers, /saveUser）
-        v3新設（/getStageStatus, /saveStageStatus）
-"""
-import os
-import json
-from datetime import datetime
-from typing import Dict
-
-from fastapi import FastAPI, Depends, Request
+from fastapi import FastAPI, Depends, Query, Request, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse, RedirectResponse, JSONResponse
-from fastapi.staticfiles import StaticFiles
-from sqlalchemy import create_engine, Column, String, Integer, Boolean, UniqueConstraint
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import Session
+import models, schemas
+from database import engine, SessionLocal
+import json
+import google.generativeai as genai
 from pydantic import BaseModel
-import uvicorn
+import os
 
-# ─────────────────────────────────────────────
-# パス・データベース
-# ─────────────────────────────────────────────
-HERE = os.path.dirname(os.path.abspath(__file__))      # .../HP
-ROOT = os.path.dirname(HERE)                           # .../英文法_PDFまとめ
+# データベースの初期化
+models.Base.metadata.create_all(bind=engine)
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./local.db")
-if DATABASE_URL.startswith("postgres://"):
-    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {})
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+# Gemini APIの設定（環境変数から取得）
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
 
-# ─────────────────────────────────────────────
-# テーブル
-# ─────────────────────────────────────────────
-class UserDB(Base):
-    __tablename__ = "users"
-    uid = Column(String, primary_key=True, index=True)
-    name = Column(String)
-    password = Column(String)
-    role = Column(String, default="student")
-    created = Column(String)
+# ★ここで「app」を定義しています
+app = FastAPI(title="COMPASS式 学習管理システム API")
 
-class ProgressDB(Base):
-    __tablename__ = "progress"
-    id = Column(Integer, primary_key=True, index=True)
-    uid = Column(String, index=True)
-    sid = Column(String)
-    score = Column(Integer)
-    passed = Column(Boolean)
-    date = Column(String)
-
-class WeaknessDB(Base):
-    __tablename__ = "weaknesses"
-    id = Column(Integer, primary_key=True, index=True)
-    uid = Column(String, index=True)
-    category = Column(String)
-    count = Column(Integer, default=0)
-
-class StageStatusDB(Base):
-    """v3 段階制ロック用：項目×段階ごとの集計値"""
-    __tablename__ = "stage_status"
-    id = Column(Integer, primary_key=True, index=True)
-    uid = Column(String, index=True)
-    item_id = Column(String, index=True)              # ch02_001 等
-    stage = Column(String)                            # enshu / shujuku / shutoku
-    best_score = Column(Integer, default=0)
-    attempts = Column(Integer, default=0)
-    passed = Column(Boolean, default=False)
-    passed_at = Column(String, default="")
-    last_at = Column(String, default="")
-    __table_args__ = (UniqueConstraint("uid", "item_id", "stage", name="uq_uid_item_stage"),)
-
-Base.metadata.create_all(bind=engine)
+# CORS設定（ブラウザからの通信を許可）
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_db():
     db = SessionLocal()
@@ -85,134 +35,144 @@ def get_db():
     finally:
         db.close()
 
-# ─────────────────────────────────────────────
-# FastAPI
-# ─────────────────────────────────────────────
-app = FastAPI(title="英文法学習サイト API", version="3.0")
-app.add_middleware(
-    CORSMiddleware, allow_origins=["*"], allow_credentials=True,
-    allow_methods=["*"], allow_headers=["*"],
-)
-
-# ─────────────────────────────────────────────
-# 健康確認
-# ─────────────────────────────────────────────
-@app.get("/ping")
-def ping(): return "ok"
-
-@app.get("/health")
-def health(): return {"ok": True, "ts": datetime.utcnow().isoformat()}
-
-# ─────────────────────────────────────────────
-# v1 互換 API（既存クライアント用）
-# ─────────────────────────────────────────────
-@app.get("/getUsers")
-def get_users(db: Session = Depends(get_db)):
-    users = db.query(UserDB).all()
-    return {"ok": True, "users": {u.uid: {"name": u.name, "password": u.password, "role": u.role, "created": u.created} for u in users}}
-
-@app.get("/saveUser")
-def save_user(uid: str, name: str, password: str, role: str = "student", created: str = "", db: Session = Depends(get_db)):
-    user = db.query(UserDB).filter(UserDB.uid == uid).first()
-    if not user:
-        user = UserDB(uid=uid); db.add(user)
-    user.name, user.password, user.role, user.created = name, password, role, created
-    db.commit()
-    return {"ok": True, "saved": True}
-
-@app.get("/getProgress")
-def get_progress(uid: str, db: Session = Depends(get_db)):
-    rows = db.query(ProgressDB).filter(ProgressDB.uid == uid).all()
-    return {"ok": True, "progress": {p.sid: {"score": p.score, "passed": p.passed, "date": p.date} for p in rows}}
-
-@app.get("/saveProgress")
-def save_progress(uid: str, sid: str, score: int, passed: str, db: Session = Depends(get_db)):
-    is_passed = passed.lower() == "true"
-    item = db.query(ProgressDB).filter(ProgressDB.uid == uid, ProgressDB.sid == sid).first()
-    if not item:
-        item = ProgressDB(uid=uid, sid=sid); db.add(item)
-    item.score, item.passed = score, is_passed
-    item.date = datetime.now().strftime("%Y/%m/%d")
-    db.commit()
-    return {"ok": True, "saved": True}
-
-@app.get("/getWeaknesses")
-def get_weaknesses(uid: str, db: Session = Depends(get_db)):
-    rows = db.query(WeaknessDB).filter(WeaknessDB.uid == uid).all()
-    return {"ok": True, "weaknesses": {w.category: w.count for w in rows}}
-
-@app.get("/saveWeaknesses")
-def save_weaknesses(uid: str, data: str, db: Session = Depends(get_db)):
-    weak = json.loads(data)
-    for cat, count in weak.items():
-        item = db.query(WeaknessDB).filter(WeaknessDB.uid == uid, WeaknessDB.category == cat).first()
-        if not item:
-            item = WeaknessDB(uid=uid, category=cat); db.add(item)
-        item.count = count
-    db.commit()
-    return {"ok": True, "saved": True}
-
-# ─────────────────────────────────────────────
-# v3 新設：段階制ロック用 API
-# ─────────────────────────────────────────────
-@app.get("/getStageStatus")
-def get_stage_status(uid: str, db: Session = Depends(get_db)):
-    rows = db.query(StageStatusDB).filter(StageStatusDB.uid == uid).all()
-    out = {}
-    for r in rows:
-        out.setdefault(r.item_id, {})[r.stage] = {
-            "best": r.best_score, "attempts": r.attempts,
-            "passed": r.passed, "passed_at": r.passed_at, "last": r.last_at
-        }
-    return {"ok": True, "status": out}
-
-@app.get("/saveStageStatus")
-def save_stage_status(uid: str, item_id: str, stage: str, score: int, db: Session = Depends(get_db)):
-    PASS_MARK = 85
-    row = db.query(StageStatusDB).filter(
-        StageStatusDB.uid == uid, StageStatusDB.item_id == item_id, StageStatusDB.stage == stage
-    ).first()
-    if not row:
-        row = StageStatusDB(uid=uid, item_id=item_id, stage=stage,
-                            best_score=0, attempts=0, passed=False, passed_at="", last_at="")
-        db.add(row)
-    row.attempts = (row.attempts or 0) + 1
-    row.best_score = max(row.best_score or 0, score)
-    now_str = datetime.now().strftime("%Y/%m/%d %H:%M")
-    row.last_at = now_str
-    just_passed = False
-    if score >= PASS_MARK and not row.passed:
-        row.passed = True
-        row.passed_at = now_str
-        just_passed = True
-    db.commit()
-    next_unlock = None
-    if just_passed:
-        next_unlock = "shujuku" if stage == "enshu" else ("shutoku" if stage == "shujuku" else None)
-    return {"ok": True, "saved": True,
-            "best": row.best_score, "passed": row.passed,
-            "just_passed": just_passed, "next_unlock": next_unlock}
-
-# ─────────────────────────────────────────────
-# 静的配信
-# ─────────────────────────────────────────────
-@app.get("/v1")
-def page_v1():
-    return FileResponse(os.path.join(HERE, "grammar.html"))
+class UserEdit(BaseModel):
+    password: str
+    role: str
 
 @app.get("/")
-def index():
-    p = os.path.join(HERE, "grammar_v3.html")
-    if os.path.exists(p):
-        return FileResponse(p)
-    return FileResponse(os.path.join(HERE, "grammar.html"))
+def read_root():
+    return {"message": "COMPASS API is ready with AI! 🤖"}
 
-# 章PDFを /pdf/第NN章/... で配信
-if os.path.isdir(ROOT):
-    app.mount("/pdf", StaticFiles(directory=ROOT), name="pdf")
-if os.path.isdir(os.path.join(HERE, "data")):
-    app.mount("/data", StaticFiles(directory=os.path.join(HERE, "data")), name="data")
+# --- ユーザー管理系 API ---
+@app.post("/api/users/", response_model=schemas.UserResponse)
+def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = models.User(user_id=user.user_id, password=user.password, role=user.role)
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+@app.get("/api/users/all")
+def get_all_users(db: Session = Depends(get_db)):
+    users = db.query(models.User).all()
+    return {"success": True, "users": [{"user_id": u.user_id, "password": u.password, "role": u.role} for u in users]}
+
+@app.post("/api/users/edit/{user_id}")
+def edit_user(user_id: str, user_edit: UserEdit, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.user_id == user_id).first()
+    if user:
+        user.password = user_edit.password
+        user.role = user_edit.role
+        db.commit()
+        return {"success": True, "message": "更新しました"}
+    return {"success": False, "message": "ユーザーが見つかりません"}
+
+@app.delete("/api/users/delete/{user_id}")
+def delete_user(user_id: str, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(models.User.user_id == user_id).first()
+    if user:
+        db.delete(user)
+        db.commit()
+        return {"success": True, "message": "削除しました"}
+    return {"success": False, "message": "ユーザーが見つかりません"}
+
+# --- ログイン・保存系 API ---
+@app.get("/api")
+def api_get_handler(action: str, id: str, password: str = Query(alias="pass"), folderId: str = None, db: Session = Depends(get_db)):
+    if action == "login":
+        user = db.query(models.User).filter(models.User.user_id == id, models.User.password == password).first()
+        if user:
+            saved_data = json.loads(user.data) if user.data else {
+                "profile": None, "curriculum": {}, "progress": {}, 
+                "testResults": [], "customPresets": [], "hiddenPresets": [], 
+                "currentWeek": 1, "currentDay": 1
+            }
+            return {"success": True, "message": "ログイン成功", "appData": saved_data}
+        return {"success": False, "message": "IDまたはパスワードが間違っています。"}
+
+@app.post("/api")
+async def api_post_handler(request: Request, db: Session = Depends(get_db)):
+    body_bytes = await request.body()
+    body = json.loads(body_bytes)
+    action = body.get("action")
+    user_id = body.get("id")
+    app_data = body.get("data")
+
+    if action == "save":
+        user = db.query(models.User).filter(models.User.user_id == user_id).first()
+        if user:
+            user.data = json.dumps(app_data, ensure_ascii=False)
+            db.commit()
+            return {"success": True, "message": "保存完了しました！"}
+        return {"success": False, "message": "ユーザーが見つかりません。"}
+
+# --- AI画像解析系 API ---
+@app.post("/api/analyze-test")
+async def analyze_test(file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        prompt = """
+        あなたはプロのデータ入力アシスタントです。添付された成績表の画像から、以下のルールに絶対に従ってデータを読み取り、JSON形式の配列（リスト）のみで出力してください。
+        【出力JSONフォーマット】
+        [
+          { "subject": "英語", "score": 得点(数値), "average": 平均点(数値), "deviation": 偏差値(数値) }
+        ]
+        ※余計な文章（```jsonなど）を含めずに直接JSONのみを返してください。
+        """
+        image_parts = [{"mime_type": file.content_type, "data": contents}]
+        model = genai.GenerativeModel('gemini-2.5-flash')
+        response = model.generate_content([prompt, image_parts[0]])
+        text = response.text.replace("```json", "").replace("```", "").strip()
+        result_data = json.loads(text)
+        return {"success": True, "data": result_data}
+    except Exception as e:
+        return {"success": False, "message": f"AI解析エラー: {str(e)}"}
+
+@app.post("/api/analyze-task")
+async def analyze_task(file: UploadFile = File(...)):
+    try:
+        contents = await file.read()
+        
+        prompt = """
+        あなたはプロの教育プランナーです。添付された年間行事予定表、月間予定表、または宿題プリントの画像・PDFを解析し、記載されているイベントを**すべて**漏らさず抽出し、JSONの配列形式で出力してください。
+
+        【抽出対象】
+        1. 定期テスト（1学期中間、期末テストなどすべて）
+        2. 模試（進研模試、全統模試、実力テストなどすべて）
+        3. 学校行事（始業式、終業式、修学旅行、体育祭、夏休みの開始・終了などすべて）
+        4. 宿題・提出物・小テスト
+
+        【日付(deadline)に関する厳格なルール】
+        - 必ず「YYYY-MM-DD」の形式で実際の日付を出力してください（例: 2026-05-15）。
+        - プリントに「月/日」しか書かれていない場合、現在の年（2026年）を補って日付を作成してください。
+        - 日本の学校年度（4月始まり）を考慮し、1月〜3月の行事の場合は「2027年」として扱うなど、文脈から正しい年を推測してください。
+        - 期間（例：7/20〜8/31）で書かれている場合は、そのイベントの「開始日」を deadline として設定してください。
+
+        【出力JSONフォーマット】
+        [
+          {
+            "type": "定期テスト" または "模試" または "行事" または "宿題",
+            "subject": "科目名（行事や複数科目の場合は '総合'）",
+            "content": "内容（例: 1学期期末テスト、夏休み開始、英語ワークなど）",
+            "amount": "分量（予定や行事の場合は '-'、宿題の場合は 'P10-20' など）",
+            "deadline": "YYYY-MM-DD"
+          }
+        ]
+        ※画像のどこにも記載されていない架空の宿題（問題集 P10-15など）は絶対に作らないでください。画像にある情報のみを忠実に抽出すること。
+        ※余計な挨拶やマークダウン(```json)は含めず、純粋なJSONの配列のみを出力してください。
+        """
+        
+        image_parts = [{"mime_type": file.content_type, "data": contents}]
+        model = genai.GenerativeModel('gemini-2.5-flash')
+        response = model.generate_content([prompt, image_parts[0]])
+        text = response.text.replace("```json", "").replace("```", "").strip()
+        result_data = json.loads(text)
+        return {"success": True, "data": result_data}
+        
+    except Exception as e:
+        return {"success": False, "message": f"AI解析エラー: {str(e)}"}
 
 if __name__ == "__main__":
+    import uvicorn
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(app, host="0.0.0.0", port=port)

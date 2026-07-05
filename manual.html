@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMPASS スケジュール管理 取扱説明書</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --navy:   #0A1628;
+    --orange: #D4622A;
+    --gold:   #B8963E;
+    --light:  #F8F9FC;
+    --border: #E2E8F0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+         background: var(--light); color: #1e293b; line-height: 1.7; }
+
+  /* ── ヘッダー ── */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,.4);
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px;
+  }
+  .header-logo { display: flex; align-items: center; gap: 12px; }
+  .header-logo .badge {
+    background: var(--orange); color: white;
+    font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 4px; letter-spacing: .05em;
+  }
+  .header-logo h1 { font-size: 16px; font-weight: 900; letter-spacing: .03em; }
+  .header-logo p  { font-size: 10px; color: #94a3b8; margin-top: 1px; }
+  .header-nav { display: flex; gap: 6px; }
+  .header-nav a {
+    color: #94a3b8; text-decoration: none; font-size: 11px; font-weight: 700;
+    padding: 6px 12px; border-radius: 6px; transition: all .2s;
+  }
+  .header-nav a:hover { background: rgba(255,255,255,.1); color: white; }
+
+  /* ── レイアウト ── */
+  .layout { max-width: 1100px; margin: 0 auto; display: flex; gap: 28px; padding: 32px 24px; }
+
+  /* ── サイドバー目次 ── */
+  .sidebar {
+    width: 230px; flex-shrink: 0;
+    position: sticky; top: 70px; align-self: flex-start;
+    background: white; border-radius: 16px; border: 1px solid var(--border);
+    padding: 20px 0; max-height: calc(100vh - 90px); overflow-y: auto;
+    box-shadow: 0 1px 6px rgba(0,0,0,.06);
+  }
+  .sidebar-title {
+    font-size: 10px; font-weight: 900; color: #94a3b8; letter-spacing: .1em;
+    text-transform: uppercase; padding: 0 18px 10px; border-bottom: 1px solid var(--border); margin-bottom: 8px;
+  }
+  .sidebar a {
+    display: block; padding: 6px 18px; font-size: 12px; color: #475569; text-decoration: none;
+    font-weight: 600; transition: all .15s; border-left: 3px solid transparent;
+  }
+  .sidebar a:hover      { color: var(--navy); background: #f1f5f9; border-left-color: var(--orange); }
+  .sidebar a.active     { color: var(--orange); background: #fff5f0; border-left-color: var(--orange); }
+  .sidebar a.sub        { padding-left: 30px; font-size: 11px; font-weight: 500; color: #64748b; }
+  .sidebar a.sub:hover  { color: var(--navy); }
+
+  /* ── メインコンテンツ ── */
+  main { flex: 1; min-width: 0; }
+
+  /* セクション */
+  .section {
+    background: white; border-radius: 16px; border: 1px solid var(--border);
+    padding: 36px 40px; margin-bottom: 24px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.05);
+    scroll-margin-top: 80px;
+  }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--navy); color: white; font-size: 10px; font-weight: 900;
+    padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; letter-spacing: .06em;
+  }
+  .section > h2 {
+    font-size: 22px; font-weight: 900; color: var(--navy);
+    padding-bottom: 12px; border-bottom: 2px solid var(--border); margin-bottom: 24px;
+  }
+  .section > h2 i { color: var(--orange); margin-right: 8px; }
+  h3 {
+    font-size: 15px; font-weight: 900; color: var(--navy);
+    margin: 28px 0 12px; padding-left: 10px;
+    border-left: 3px solid var(--orange);
+  }
+  p { font-size: 13px; color: #374151; margin-bottom: 12px; }
+
+  /* ステップ */
+  .steps { list-style: none; padding: 0; counter-reset: step; }
+  .steps li {
+    counter-increment: step;
+    display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start;
+  }
+  .steps li::before {
+    content: counter(step);
+    flex-shrink: 0; width: 28px; height: 28px;
+    background: var(--orange); color: white;
+    border-radius: 50%; font-size: 12px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .steps li .step-body { flex: 1; padding-top: 4px; }
+  .steps li .step-body strong { font-size: 13px; color: var(--navy); display: block; margin-bottom: 3px; }
+  .steps li .step-body span  { font-size: 12px; color: #64748b; }
+
+  /* スクリーンショットエリア */
+  .screen-box {
+    background: var(--light); border: 2px dashed var(--border);
+    border-radius: 12px; padding: 20px; margin: 16px 0;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .screen-box .screen-label {
+    font-size: 10px; font-weight: 900; color: #94a3b8; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .screen-box .screen-desc {
+    font-size: 12px; color: #475569; text-align: center; max-width: 480px;
+  }
+  /* モック画面 */
+  .mock {
+    width: 100%; max-width: 600px; border-radius: 10px; overflow: hidden;
+    border: 1.5px solid var(--border); box-shadow: 0 4px 16px rgba(0,0,0,.1);
+  }
+  .mock-bar {
+    background: var(--navy); color: white; padding: 10px 16px;
+    font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 8px;
+  }
+  .mock-bar .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .mock-body { background: white; padding: 16px; }
+  .mock-field {
+    background: var(--light); border: 1px solid var(--border);
+    border-radius: 8px; padding: 9px 12px; font-size: 12px; color: #475569;
+    margin-bottom: 8px;
+  }
+  .mock-btn {
+    display: inline-block; border-radius: 8px; padding: 9px 20px;
+    font-size: 12px; font-weight: 900; cursor: default;
+  }
+  .mock-btn-primary { background: var(--orange); color: white; }
+  .mock-btn-navy    { background: var(--navy);   color: white; }
+  .mock-btn-outline { background: white; color: var(--navy); border: 1.5px solid var(--border); }
+
+  /* チップ / バッジ */
+  .chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 10px; font-weight: 900; padding: 3px 8px; border-radius: 999px;
+  }
+  .chip-orange { background: #fff5f0; color: var(--orange); border: 1px solid #fcd9c8; }
+  .chip-navy   { background: #eef2fb; color: var(--navy);   border: 1px solid #c7d5f3; }
+  .chip-green  { background: #ecfdf5; color: #059669;       border: 1px solid #a7f3d0; }
+  .chip-violet { background: #f5f3ff; color: #7c3aed;       border: 1px solid #ddd6fe; }
+
+  /* コールアウト */
+  .callout {
+    border-radius: 10px; padding: 14px 16px; margin: 16px 0;
+    font-size: 12px; line-height: 1.7;
+    display: flex; gap: 10px;
+  }
+  .callout i { font-size: 15px; margin-top: 1px; flex-shrink: 0; }
+  .callout-info  { background: #eff6ff; border-left: 3px solid #3b82f6; color: #1e40af; }
+  .callout-warn  { background: #fffbeb; border-left: 3px solid #f59e0b; color: #92400e; }
+  .callout-tip   { background: #f0fdf4; border-left: 3px solid #22c55e; color: #14532d; }
+
+  /* テーブル */
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 16px 0; }
+  th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 11px; }
+  td { padding: 9px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--light); }
+  td strong { color: var(--navy); }
+
+  /* フォーマット例 */
+  .code-box {
+    background: #1e293b; color: #e2e8f0; border-radius: 10px;
+    padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 11px;
+    line-height: 1.8; margin: 12px 0; overflow-x: auto;
+  }
+  .code-box .comment { color: #64748b; }
+  .code-box .hl      { color: #fbbf24; }
+
+  /* FAQ */
+  .faq-item { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+  .faq-q {
+    padding: 14px 18px; font-size: 13px; font-weight: 900; color: var(--navy);
+    cursor: pointer; display: flex; align-items: center; gap: 10px;
+    background: white; transition: background .15s; user-select: none;
+  }
+  .faq-q:hover { background: #f8fafc; }
+  .faq-q::before {
+    content: 'Q'; flex-shrink: 0; width: 22px; height: 22px;
+    background: var(--orange); color: white; border-radius: 5px;
+    font-size: 11px; font-weight: 900; display: flex; align-items: center; justify-content: center;
+  }
+  .faq-q .faq-arrow { margin-left: auto; color: #94a3b8; font-size: 11px; transition: transform .2s; }
+  .faq-a {
+    padding: 0 18px; max-height: 0; overflow: hidden;
+    transition: max-height .3s ease, padding .3s;
+    font-size: 12px; color: #374151; background: #f8fafc;
+  }
+  .faq-a.open { max-height: 400px; padding: 14px 18px; }
+  .faq-a.open + .faq-q .faq-arrow,
+  .faq-q.open .faq-arrow { transform: rotate(180deg); }
+
+  /* ヒーロー */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2f5e 100%);
+    border-radius: 16px; padding: 48px 40px; margin-bottom: 24px; color: white;
+    border: 1px solid rgba(255,255,255,.08); position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: ''; position: absolute; right: -40px; top: -40px;
+    width: 220px; height: 220px; border-radius: 50%;
+    background: rgba(212,98,42,.15);
+  }
+  .hero h2 { font-size: 28px; font-weight: 900; margin-bottom: 8px; }
+  .hero p  { font-size: 13px; color: #94a3b8; max-width: 560px; }
+  .hero-chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
+  .hero-chip {
+    background: rgba(255,255,255,.12); color: white; border: 1px solid rgba(255,255,255,.2);
+    border-radius: 999px; padding: 4px 12px; font-size: 11px; font-weight: 700;
+  }
+
+  /* レスポンシブ */
+  @media (max-width: 768px) {
+    .layout   { flex-direction: column; padding: 16px; }
+    .sidebar  { width: 100%; position: static; max-height: none; }
+    .section  { padding: 24px 20px; }
+    .hero     { padding: 32px 24px; }
+    .header-nav { display: none; }
+  }
+
+  /* スクロールバー */
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-track { background: transparent; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-inner">
+    <div class="header-logo">
+      <div>
+        <div class="badge">MANUAL</div>
+        <h1>COMPASS スケジュール管理</h1>
+        <p>取扱説明書 ver. 1.0</p>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <a href="#start">はじめに</a>
+      <a href="#login">ログイン</a>
+      <a href="#curriculum">カリキュラム</a>
+      <a href="#review">要復習リスト</a>
+      <a href="#studysite">学習サイト</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- サイドバー -->
+  <aside class="sidebar">
+    <div class="sidebar-title">目次</div>
+    <a href="#start"><i class="fas fa-flag fa-fw" style="color:var(--orange);margin-right:6px"></i>はじめに</a>
+    <a href="#login"><i class="fas fa-sign-in-alt fa-fw" style="color:var(--orange);margin-right:6px"></i>ログイン・新規作成</a>
+    <a href="#setup" class="sub">初回セットアップ</a>
+    <a href="#dashboard"><i class="fas fa-th-large fa-fw" style="color:var(--orange);margin-right:6px"></i>ダッシュボード</a>
+    <a href="#curriculum"><i class="fas fa-calendar-alt fa-fw" style="color:var(--orange);margin-right:6px"></i>カリキュラム作成</a>
+    <a href="#textbook" class="sub">教材の追加</a>
+    <a href="#period"   class="sub">期間・日付の設定</a>
+    <a href="#gantt"    class="sub">ガントチャートの見方</a>
+    <a href="#review"><i class="fas fa-list-check fa-fw" style="color:var(--orange);margin-right:6px"></i>単元別・要復習リスト</a>
+    <a href="#score"   class="sub">スコア入力（N/M形式）</a>
+    <a href="#task-add" class="sub">復習タスクに追加</a>
+    <a href="#bulk-plan" class="sub">一括タスク計画</a>
+    <a href="#studysite"><i class="fas fa-globe fa-fw" style="color:var(--orange);margin-right:6px"></i>学習サイト管理</a>
+    <a href="#site-add"     class="sub">サイトの登録</a>
+    <a href="#site-bulk"    class="sub">一括取込</a>
+    <a href="#exercise"     class="sub">演習タスクの使い方</a>
+    <a href="#today"><i class="fas fa-star fa-fw" style="color:var(--orange);margin-right:6px"></i>今日の集中タスク</a>
+    <a href="#settings"><i class="fas fa-cog fa-fw" style="color:var(--orange);margin-right:6px"></i>設定・管理</a>
+    <a href="#faq"><i class="fas fa-question-circle fa-fw" style="color:var(--orange);margin-right:6px"></i>よくある質問</a>
+  </aside>
+
+  <!-- メイン -->
+  <main>
+
+    <!-- ヒーロー -->
+    <div class="hero">
+      <h2><i class="fas fa-graduation-cap" style="color:var(--gold);margin-right:10px"></i>COMPASS スケジュール管理 取扱説明書</h2>
+      <p>本マニュアルでは、アカウント作成から日々の学習タスク管理、学習サイト連携まで、すべての操作を順番にご説明します。</p>
+      <div class="hero-chips">
+        <span class="hero-chip"><i class="fas fa-check" style="margin-right:4px"></i>アカウント作成</span>
+        <span class="hero-chip"><i class="fas fa-check" style="margin-right:4px"></i>カリキュラム設定</span>
+        <span class="hero-chip"><i class="fas fa-check" style="margin-right:4px"></i>要復習リスト管理</span>
+        <span class="hero-chip"><i class="fas fa-check" style="margin-right:4px"></i>学習サイト連携</span>
+        <span class="hero-chip"><i class="fas fa-check" style="margin-right:4px"></i>一括タスク計画</span>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════ はじめに ═══ -->
+    <section class="section" id="start">
+      <div class="section-tag"><i class="fas fa-flag"></i> SECTION 01</div>
+      <h2><i class="fas fa-flag"></i>はじめに</h2>
+      <p>COMPASS スケジュール管理は、受験・定期テスト対策から日常の学習計画まで、学習の全体像をガントチャートで可視化して管理するウェブアプリです。</p>
+
+      <h3>主な機能</h3>
+      <table>
+        <tr><th>機能</th><th>できること</th></tr>
+        <tr><td><strong>カリキュラム管理</strong></td><td>教科ごとの教材・タスクをガントチャートで管理。週・日単位で進捗を記録。</td></tr>
+        <tr><td><strong>単元別・要復習リスト</strong></td><td>理解度が100%未満の単元を自動リストアップ。スコアを N/M 形式で入力。</td></tr>
+        <tr><td><strong>学習サイト連携</strong></td><td>スタディサプリなどの学習サイトを登録し、演習タスクとして計画に組み込む。</td></tr>
+        <tr><td><strong>一括タスク計画</strong></td><td>要復習リストの全項目を、設定した間隔で自動的に日々のタスクに変換。</td></tr>
+        <tr><td><strong>今日の集中タスク</strong></td><td>今日やるべきタスクだけを表示。演習サイトへのリンクや完了ボタンを集約。</td></tr>
+      </table>
+
+      <div class="callout callout-info">
+        <i class="fas fa-info-circle"></i>
+        <div>本アプリはブラウザのlocalStorageにデータを保存します。同じデバイス・同じブラウザでのみデータが引き継がれます。ブラウザの履歴削除・キャッシュクリアを行うとデータが消える場合があります。</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ ログイン ═══ -->
+    <section class="section" id="login">
+      <div class="section-tag"><i class="fas fa-sign-in-alt"></i> SECTION 02</div>
+      <h2><i class="fas fa-sign-in-alt"></i>ログイン・新規作成</h2>
+
+      <h3>新規アカウントを作成する</h3>
+      <ol class="steps">
+        <li>
+          <div class="step-body">
+            <strong>サイトにアクセス</strong>
+            <span><a href="https://www.schedule.compassonline.site/" target="_blank" style="color:var(--orange)">https://www.schedule.compassonline.site/</a> を開く</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>ログインIDを入力</strong>
+            <span>自分で決めた任意のID（例: yamada_2026）を入力。半角英数字推奨。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>パスワードを入力</strong>
+            <span>自分のパスワードを設定。6文字以上推奨。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>管理者パスワードを入力（新規作成時のみ）</strong>
+            <span>塾・学校から配布された管理者パスワードを赤枠に入力。既存ユーザーはこの欄は空のままでOK。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>「ログイン / 新規作成」ボタンを押す</strong>
+            <span>初回は自動的に初回設定画面へ進みます。</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="mock">
+        <div class="mock-bar">
+          <span class="dot" style="background:#ef4444"></span>
+          <span class="dot" style="background:#f59e0b;margin-left:4px"></span>
+          <span class="dot" style="background:#22c55e;margin-left:4px"></span>
+          <span style="margin-left:12px">ログイン画面</span>
+        </div>
+        <div class="mock-body">
+          <div style="text-align:center;margin-bottom:16px">
+            <div style="font-size:18px;font-weight:900;color:var(--navy)">生徒ログイン</div>
+          </div>
+          <div class="mock-field">ログインID</div>
+          <div class="mock-field">パスワード</div>
+          <div style="background:#fff5f5;border:1px solid #fecaca;border-radius:8px;padding:10px;margin-bottom:10px">
+            <div style="font-size:10px;font-weight:900;color:#dc2626;margin-bottom:4px">新規作成時のみ：管理者PW</div>
+            <div class="mock-field" style="margin:0">管理者パスワード</div>
+          </div>
+          <div style="text-align:center"><span class="mock-btn mock-btn-primary" style="width:100%;display:block"><i class="fas fa-sign-in-alt" style="margin-right:6px"></i>ログイン / 新規作成</span></div>
+        </div>
+      </div>
+
+      <h3 id="setup">初回セットアップ</h3>
+      <p>新規作成後、自動的に設定画面が開きます。以下の順で入力してください。</p>
+      <ol class="steps">
+        <li>
+          <div class="step-body">
+            <strong>基本情報を入力</strong>
+            <span>氏名・受験学年・コース（例：高校受験 英数理社）・学習開始日を入力して「保存」。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>1日の学習時間を設定</strong>
+            <span>平日・休日それぞれの学習可能時間（分）を入力。カリキュラムの自動計算に使われます。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>コース選択と教材の追加</strong>
+            <span>受験科目にチェックを入れると、推奨教材が表示されます。使う教材にチェックを入れ「保存」。</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout callout-tip">
+        <i class="fas fa-lightbulb"></i>
+        <div>コースは後から「設定・管理」ページで変更できます。まずは自分の受験科目に合ったコースを選んでください。</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ ダッシュボード ═══ -->
+    <section class="section" id="dashboard">
+      <div class="section-tag"><i class="fas fa-th-large"></i> SECTION 03</div>
+      <h2><i class="fas fa-th-large"></i>ダッシュボード（トップ画面）</h2>
+      <p>ログイン後に表示されるメイン画面です。上部ナビゲーションで各ページへ移動できます。</p>
+
+      <table>
+        <tr><th>画面名</th><th>説明</th></tr>
+        <tr><td><strong>📊 ダッシュボード</strong></td><td>今日の集中タスク・学習進捗・テストまでのカウントダウンを表示</td></tr>
+        <tr><td><strong>📅 ガントチャート</strong></td><td>教科ごとのタスクを週単位のガントチャートで確認・編集</td></tr>
+        <tr><td><strong>📋 要復習リスト</strong></td><td>100%未満の単元の一覧と学習サイト演習タスクの計画</td></tr>
+        <tr><td><strong>⚙️ 設定・管理</strong></td><td>プロフィール・カリキュラム・学習サイトの設定</td></tr>
+      </table>
+    </section>
+
+    <!-- ═══════════════════════════════ カリキュラム ═══ -->
+    <section class="section" id="curriculum">
+      <div class="section-tag"><i class="fas fa-calendar-alt"></i> SECTION 04</div>
+      <h2><i class="fas fa-calendar-alt"></i>カリキュラムの作成</h2>
+      <p>カリキュラムは「教科ごとのタスク（教材）の集まり」です。ガントチャートに表示される学習スケジュールのベースになります。</p>
+
+      <h3 id="textbook">教材（タスク）を追加する</h3>
+      <ol class="steps">
+        <li>
+          <div class="step-body">
+            <strong>「設定・管理」→「カリキュラム・学習設定」タブを開く</strong>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>教科セクションで「＋ 教材を追加」を押す</strong>
+            <span>英語・数学・国語など教科別にセクションが分かれています。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>教材名・開始日・終了日・1日の目標量を入力</strong>
+            <span>例：「英単語帳」開始 2026/04/07 〜 終了 2026/08/31、1日10単語</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>「保存」を押す</strong>
+            <span>ガントチャートに反映されます。</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout callout-info">
+        <i class="fas fa-info-circle"></i>
+        <div><strong>プリセット教材</strong>を使うと入力が簡単です。「おすすめ教材から選ぶ」ボタンを押すと、コースに合った定番教材が一覧表示されます。チェックを入れて「追加」するだけで登録完了です。</div>
+      </div>
+
+      <h3 id="period">期間・日付の設定</h3>
+      <table>
+        <tr><th>設定項目</th><th>内容</th></tr>
+        <tr><td><strong>開始日</strong></td><td>教材を学習し始める日付をカレンダーから選択（例: 2026/04/07）。</td></tr>
+        <tr><td><strong>終了日</strong></td><td>教材を終わらせる目標日付をカレンダーから選択（例: 2026/08/31）。</td></tr>
+        <tr><td><strong>週番号（内部）</strong></td><td>入力した日付は内部で学習開始日からの週番号に自動変換されてガントチャートに反映されます。</td></tr>
+      </table>
+
+      <h3 id="gantt">ガントチャートの見方</h3>
+      <p>「📅 ガントチャート」ページでは、各教科のタスクが横棒グラフで表示されます。横棒の長さは入力した開始日〜終了日の期間に対応しています。</p>
+      <table>
+        <tr><th>表示要素</th><th>意味</th></tr>
+        <tr><td><span class="chip chip-navy">青帯</span></td><td>通常の学習タスク（教材・参考書など）</td></tr>
+        <tr><td><span class="chip chip-orange">オレンジ帯</span></td><td>定期テスト・模試の直前対策期間</td></tr>
+        <tr><td><span class="chip chip-violet">紫帯</span></td><td>学習サイト演習タスク（📖マーク）</td></tr>
+        <tr><td><span class="chip chip-green">緑帯</span></td><td>復習タスク（100%達成で自動消去）</td></tr>
+        <tr><td>日付ラベル</td><td>各タスクバーに開始日・終了日が表示される。</td></tr>
+        <tr><td>進捗バー</td><td>当日分の達成率を横棒で表示。クリックで入力モーダルが開く。</td></tr>
+      </table>
+    </section>
+
+    <!-- ═══════════════════════════════ 要復習リスト ═══ -->
+    <section class="section" id="review">
+      <div class="section-tag"><i class="fas fa-list-check"></i> SECTION 05</div>
+      <h2><i class="fas fa-list-check"></i>単元別・要復習リスト</h2>
+      <p>テストや模試などで正答率が100%未満だった単元を記録・管理する機能です。理解度の低い単元を可視化し、復習タスクや演習タスクへ変換できます。</p>
+
+      <h3>単元記録を追加する</h3>
+      <ol class="steps">
+        <li>
+          <div class="step-body">
+            <strong>「📋 要復習リスト」ページを開く</strong>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>「＋ 単元記録を追加」ボタンを押す</strong>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>教科・単元名を入力</strong>
+            <span>例：数学 ／ 二次関数</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>スコアを入力（N/M 形式）</strong>
+            <span>詳細は下記「スコア入力」を参照。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>データソースを選択</strong>
+            <span>テスト名や教材名を選択。手入力する場合は「その他」→テキストボックスに入力。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>「保存」を押す</strong>
+            <span>リストに追加されます。正答率が100%未満の単元だけが「要復習リスト」に表示されます。</span>
+          </div>
+        </li>
+      </ol>
+
+      <h3 id="score">スコア入力（N/M 形式）</h3>
+      <p>スコアは「<strong>正解数 / 総問題数</strong>」の形式で入力します。</p>
+
+      <div class="mock" style="max-width:420px">
+        <div class="mock-bar"><span style="font-size:12px">スコア入力欄</span></div>
+        <div class="mock-body">
+          <div style="font-size:10px;font-weight:700;color:#64748b;margin-bottom:4px">スコア / 満点　<span style="color:#94a3b8">（例: 4/10、310/510）</span></div>
+          <div class="mock-field" style="font-weight:900;color:var(--navy)">4/10</div>
+          <div style="font-size:10px;color:var(--orange);margin-top:4px">→ 4 ÷ 10 = <strong>40%</strong></div>
+        </div>
+      </div>
+
+      <table>
+        <tr><th>入力例</th><th>意味</th><th>正答率</th></tr>
+        <tr><td><code>4/10</code></td><td>10問中4問正解</td><td>40%</td></tr>
+        <tr><td><code>310/510</code></td><td>510点満点中310点</td><td>60.8%</td></tr>
+        <tr><td><code>7/10</code></td><td>10問中7問正解</td><td>70%</td></tr>
+      </table>
+
+      <div class="callout callout-tip">
+        <i class="fas fa-lightbulb"></i>
+        <div>全角スラッシュ「／」でも入力できます。入力すると画面下にリアルタイムで正答率が表示されます。</div>
+      </div>
+
+      <h3 id="task-add">復習タスクに追加する</h3>
+      <p>各単元カードの「<span class="chip chip-navy">📅 復習タスクに追加</span>」ボタンを押すと、ガントチャートに復習タスクが追加されます。</p>
+      <ul style="font-size:12px;color:#374151;padding-left:20px;line-height:2">
+        <li>追加されたタスクは <span class="chip chip-green">【復習】単元名</span> として表示されます。</li>
+        <li>「復習完了にする」ボタンを押すと正答率が +1 更新されます。</li>
+        <li>正答率が100%に達すると、タスクは自動的に完了済みに変わります。</li>
+      </ul>
+
+      <h3 id="bulk-plan">一括タスク計画</h3>
+      <p>要復習リストの全単元を一度に計画に落とし込む機能です。</p>
+      <ol class="steps">
+        <li>
+          <div class="step-body">
+            <strong>「📋 一括タスク計画」ボタンを押す</strong>
+            <span>要復習リストの上部にあります。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>開始日・タスク間隔を設定</strong>
+            <span>例：2026/06/01から3日おきにタスクを配置。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>プレビューで内容を確認</strong>
+            <span>学習サイトが対応している単元は「🔗 サイト連携」バッジが表示されます。既存タスクがある単元はスキップ表示。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>「計画を実行する」を押す</strong>
+            <span>ガントチャートに一括でタスクが追加されます。</span>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout callout-warn">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>既にタスクが存在する単元は自動スキップされます。重複登録の心配はありません。</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ 学習サイト ═══ -->
+    <section class="section" id="studysite">
+      <div class="section-tag"><i class="fas fa-globe"></i> SECTION 06</div>
+      <h2><i class="fas fa-globe"></i>学習サイト管理・連携</h2>
+      <p>スタディサプリ・Z会など外部の学習サイトを登録することで、要復習リストの単元と自動マッチングし、演習タスクとして計画に組み込めます。</p>
+
+      <h3 id="site-add">学習サイトを登録する</h3>
+      <ol class="steps">
+        <li>
+          <div class="step-body">
+            <strong>「⚙️ 設定・管理」→「📚 学習サイト管理」タブを開く</strong>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>「＋ サイトを追加」ボタンを押す</strong>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>サイト名・URL・対応教科を入力</strong>
+            <span>例：スタディサプリ ／ https://studysapuri.jp ／ 数学</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>単元マッピングを追加（任意）</strong>
+            <span>「＋ 単元を追加」で単元名・キーワード・コンテンツURLを登録。キーワードはカンマ区切りで複数入力可。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>「保存する」を押す</strong>
+          </div>
+        </li>
+      </ol>
+
+      <h3 id="site-bulk">URL一括取込</h3>
+      <p>スプレッドシートのデータをそのまま貼り付けて、複数の単元またはサイトをまとめて登録できます。</p>
+      <p>「📥 URL一括取込」ボタンを押すと、2つのモードから選べます。</p>
+
+      <table>
+        <tr><th>モード</th><th>用途</th><th>列の構成</th></tr>
+        <tr>
+          <td><strong>📄 単一サイトへ取込</strong></td>
+          <td>1つのサイトに大量の単元を一度に登録</td>
+          <td>単元名　キーワード(;区切り)　URL　ラベル　時間(分)</td>
+        </tr>
+        <tr>
+          <td><strong>📋 複数サイト一括取込</strong></td>
+          <td>複数のサイトをまとめて新規登録</td>
+          <td>サイト名　サイトURL　科目コード</td>
+        </tr>
+      </table>
+
+      <h3>複数サイト一括取込の例</h3>
+      <div class="code-box">
+<span class="comment"># スプレッドシートからコピーしてそのまま貼り付けOK（タブ区切り）</span>
+<span class="hl">サイト名</span>	<span class="hl">サイトURL</span>	<span class="hl">科目コード</span>
+スタディサプリ	https://studysapuri.jp	math
+英語サイト	https://example.com	english
+国語教材サイト		japanese
+<span class="comment"># サイトURLや科目コードが空欄でもOK</span>
+読解問題集
+      </div>
+
+      <h3>単一サイト取込の例（単元マッピング）</h3>
+      <div class="code-box">
+<span class="comment"># 1行目はヘッダーとして自動スキップ</span>
+<span class="hl">単元名</span>	<span class="hl">キーワード</span>	<span class="hl">URL</span>	<span class="hl">ラベル</span>	<span class="hl">時間(分)</span>
+二次関数	二次;放物線;頂点	https://example.com/unit1	二次関数の基礎	30
+一次関数	一次;比例;傾き	https://example.com/unit2		25
+三角関数	三角;sin;cos;tan	https://example.com/unit3	三角関数入門	40
+      </div>
+
+      <div class="callout callout-tip">
+        <i class="fas fa-lightbulb"></i>
+        <div>「👁 プレビュー」ボタンで取込前に内容を確認できます。既存サイトと同名の行は「既存」ラベルでグレーアウトされ、スキップ対象が一目でわかります。</div>
+      </div>
+
+      <h3 id="exercise">学習サイト演習タスクを使う</h3>
+      <p>サイトを登録すると、要復習リストの各単元カードに「<span class="chip chip-violet">📖 学習サイトで演習</span>」ボタンが表示されます。</p>
+      <ol class="steps">
+        <li>
+          <div class="step-body">
+            <strong>「📖 学習サイトで演習」ボタンを押す</strong>
+            <span>登録済みサイトから、その単元に対応するコンテンツが自動候補表示されます。</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>候補を選択、または手動でサイト・URLを指定</strong>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>実施予定日・繰り返し回数を設定して「タスクに追加する」</strong>
+          </div>
+        </li>
+        <li>
+          <div class="step-body">
+            <strong>ダッシュボードの「今日の集中タスク」から実施</strong>
+            <span>「🔗 サイトへ」ボタンで学習サイトへ移動。終わったら「✅ 1回完了」を押す。</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ═══════════════════════════════ 今日のタスク ═══ -->
+    <section class="section" id="today">
+      <div class="section-tag"><i class="fas fa-star"></i> SECTION 07</div>
+      <h2><i class="fas fa-star"></i>今日の集中タスク</h2>
+      <p>ダッシュボード上部に表示される「今日の集中タスク」には、今日取り組むべきタスクが自動的に集約されます。</p>
+
+      <table>
+        <tr><th>カードの種類</th><th>表示内容</th></tr>
+        <tr>
+          <td><span class="chip chip-navy">通常タスク</span></td>
+          <td>目標量の進捗バー。完了した量を入力すると達成率が更新される。</td>
+        </tr>
+        <tr>
+          <td><span class="chip chip-green">復習タスク</span></td>
+          <td>「✅ 復習完了にする」ボタン1クリックで完了記録。</td>
+        </tr>
+        <tr>
+          <td><span class="chip chip-violet">演習タスク</span></td>
+          <td>「🔗 サイトへ」リンク ＋ セッション進捗バー（完了回/総回数）＋「✅ 1回完了」ボタン。</td>
+        </tr>
+      </table>
+
+      <div class="callout callout-info">
+        <i class="fas fa-info-circle"></i>
+        <div>演習タスクは設定した回数（例：3回）分だけ「1回完了」を押すと「演習完了！」に変わります。完了すると単元の理解度スコアが自動更新されます。</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ 設定・管理 ═══ -->
+    <section class="section" id="settings">
+      <div class="section-tag"><i class="fas fa-cog"></i> SECTION 08</div>
+      <h2><i class="fas fa-cog"></i>設定・管理</h2>
+      <p>右上の「⚙️ 設定・管理」ボタン（パスワード認証あり）から各種設定ページへアクセスできます。</p>
+
+      <table>
+        <tr><th>タブ名</th><th>できること</th></tr>
+        <tr>
+          <td><strong>カリキュラム・学習設定</strong></td>
+          <td>プロフィール・学習時間・教材の追加変更・学校行事の登録</td>
+        </tr>
+        <tr>
+          <td><strong>システム管理 (DB追加)</strong></td>
+          <td>スプレッドシートからの成績取込・アカウント管理・データリセット</td>
+        </tr>
+        <tr>
+          <td><strong>📚 学習サイト管理</strong></td>
+          <td>学習サイトの登録・編集・削除・URL一括取込</td>
+        </tr>
+      </table>
+
+      <h3>パスワードを忘れた場合</h3>
+      <p>生徒パスワードを忘れた場合は、管理者パスワードで代わりに認証できます。管理者パスワードは塾・学校に確認してください。</p>
+
+      <div class="callout callout-warn">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div>「IDを削除」を実行すると、そのアカウントのすべての学習データが完全に削除されます。この操作は取り消せません。</div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════ FAQ ═══ -->
+    <section class="section" id="faq">
+      <div class="section-tag"><i class="fas fa-question-circle"></i> SECTION 09</div>
+      <h2><i class="fas fa-question-circle"></i>よくある質問（FAQ）</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          スコア入力でスラッシュ（/）が入力できない
+          <i class="fas fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          スコア入力欄は「正解数/総問題数」の形式（例: 4/10）に対応しています。半角スラッシュ「/」でも全角「／」でも入力できます。もし入力できない場合はブラウザのフォームオートコンプリートが干渉している可能性があります。その場合はいったん別の欄をクリックしてから再入力してください。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          学習サイトを登録したのに「対応コンテンツが見つかりません」と表示される
+          <i class="fas fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          学習サイトの単元マッピングに、その単元名またはキーワードが登録されていない可能性があります。設定→学習サイト管理→対象サイトの「編集」を開き、単元名やキーワードを追加してください。キーワードは単元名の一部（例：「二次」「放物線」）でも部分一致でヒットします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          データが消えてしまった
+          <i class="fas fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          本アプリはブラウザのlocalStorageにデータを保存しています。以下の操作でデータが消える場合があります：①ブラウザの「閲覧履歴・キャッシュ・Cookieを削除」②シークレット・プライベートモードで使用③別のブラウザでアクセス。同じブラウザを使い続けることをお勧めします。定期的に管理者にデータのバックアップを依頼することも検討してください。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          一括取込のCSVファイルはどのソフトで作ればよいですか？
+          <i class="fas fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          Googleスプレッドシートが最も使いやすいです。セルにデータを入力し、そのままコピー（Ctrl+C）してモーダルのテキストエリアに貼り付けるだけでタブ区切りとして認識されます。Excelでも同様です。CSVファイルとして保存した場合はカンマ区切りでも読み込み可能です。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          一括タスク計画で日付がうまく並ばない
+          <i class="fas fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          一括タスク計画では、正答率の低い単元から順に期日が割り当てられます（緊急度順）。開始日とタスク間隔（日）を調整してください。既にタスクが存在する単元は「スキップ」として表示され、追加はされません。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          複数の端末で使いたい
+          <i class="fas fa-chevron-down faq-arrow"></i>
+        </div>
+        <div class="faq-a">
+          現在、データは各端末のlocalStorageに保存されるため、異なる端末間での自動同期には対応していません。サーバー連携機能（スプレッドシート取込など）を活用することで、一部のデータは共有できます。
+        </div>
+      </div>
+
+    </section>
+
+    <!-- フッター -->
+    <div style="text-align:center;padding:32px 0 16px;font-size:11px;color:#94a3b8">
+      COMPASS スケジュール管理 取扱説明書 ver. 1.0　／　お問い合わせは塾・学校スタッフへ
+    </div>
+
+  </main>
+</div>
+
+<script>
+  // FAQ 開閉
+  function toggleFaq(el) {
+    const answer = el.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    // 全て閉じる
+    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+    if (!isOpen) {
+      answer.classList.add('open');
+      el.classList.add('open');
+    }
+  }
+
+  // サイドバー アクティブ追従
+  const sections = document.querySelectorAll('.section[id]');
+  const navLinks = document.querySelectorAll('.sidebar a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
