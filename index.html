@@ -3251,23 +3251,56 @@
         function executeLogout() { sessionStorage.clear(); location.reload(); }
 
         // ===== 章節ヘルパー =====
-        function lookupChapter(chapters, page) {
+        function lookupChapter(chapters, item) {
             if (!chapters || !chapters.length) return null;
             const sorted = [...chapters].sort((a, b) => a.startPage - b.startPage);
-            let found = sorted[0];
-            for (const ch of sorted) {
-                if (ch.startPage <= page) found = ch;
+            let found = sorted[0], foundIdx = 0;
+            for (let i = 0; i < sorted.length; i++) {
+                if (sorted[i].startPage <= item) { found = sorted[i]; foundIdx = i; }
                 else break;
             }
-            return found;
+            return { ch: found, idx: foundIdx, sorted };
+        }
+
+        function calcPageRange(chapters, startItem, endItem) {
+            if (!chapters || !chapters.length) return null;
+            const sorted = [...chapters].sort((a, b) => a.startPage - b.startPage);
+            // 開始アイテムが属する章を探す
+            let idx = 0;
+            for (let i = 0; i < sorted.length; i++) {
+                if (sorted[i].startPage <= startItem) idx = i;
+                else break;
+            }
+            const ch = sorted[idx];
+            if (ch.bookPage == null) return null;
+            const next = sorted[idx + 1];
+            let startPage, endPage;
+            if (next && next.bookPage != null && next.startPage > ch.startPage) {
+                const itemSpan = next.startPage - ch.startPage;
+                const pageSpan = next.bookPage - ch.bookPage;
+                const ratio = pageSpan / itemSpan;
+                startPage = ch.bookPage + Math.floor((startItem - ch.startPage) * ratio);
+                endPage   = ch.bookPage + Math.floor((endItem   - ch.startPage) * ratio);
+                endPage   = Math.min(endPage, next.bookPage - 1);
+            } else {
+                startPage = ch.bookPage + (startItem - ch.startPage);
+                endPage   = ch.bookPage + (endItem   - ch.startPage);
+            }
+            return { startPage: Math.max(ch.bookPage, startPage), endPage };
         }
 
         function formatRangeLabel(b, startItem, endItem) {
             if (!b || startItem > b.total) return '';
             const clampedEnd = Math.min(endItem, b.total);
-            const ch = (b.chapters && b.chapters.length) ? lookupChapter(b.chapters, startItem) : null;
+            const res = (b.chapters && b.chapters.length) ? lookupChapter(b.chapters, startItem) : null;
+            const ch = res ? res.ch : null;
             const range = `${startItem}〜${clampedEnd}${b.unit}`;
-            return ch ? `${ch.name}　${range}` : range;
+            let label = ch ? `${ch.name}　${range}` : range;
+            if (b.chapters && b.chapters.length) {
+                const pr = calcPageRange(b.chapters, startItem, clampedEnd);
+                if (pr) label += ` p.${pr.startPage}〜${pr.endPage}`;
+            }
+            return label;
         }
 
         function calcBookRanges(b) {
@@ -3303,7 +3336,7 @@
             document.getElementById('chapter-modal-id').value = id;
             document.getElementById('chapter-modal-sk').value = sk;
             const txt = (b.chapters || []).sort((a,c) => a.startPage - c.startPage)
-                .map(ch => `${ch.name},${ch.startPage}`).join('\n');
+                .map(ch => ch.bookPage != null ? `${ch.name},${ch.startPage},${ch.bookPage}` : `${ch.name},${ch.startPage}`).join('\n');
             document.getElementById('chapter-modal-data').value = txt;
             document.getElementById('chapter-modal').classList.remove('hidden');
         }
@@ -3316,11 +3349,18 @@
             const lines = document.getElementById('chapter-modal-data').value
                 .split('\n').map(l => l.trim()).filter(Boolean);
             b.chapters = lines.map(line => {
-                const comma = line.lastIndexOf(',');
-                if (comma < 0) return null;
-                const name = line.slice(0, comma).trim();
-                const startPage = parseInt(line.slice(comma + 1)) || 1;
-                return name ? { name, startPage } : null;
+                const parts = line.split(',');
+                if (parts.length < 2) return null;
+                if (parts.length >= 3) {
+                    const bookPage  = parseInt(parts[parts.length - 1]) || null;
+                    const startPage = parseInt(parts[parts.length - 2]) || 1;
+                    const name      = parts.slice(0, parts.length - 2).join(',').trim();
+                    return name ? { name, startPage, bookPage } : null;
+                } else {
+                    const startPage = parseInt(parts[parts.length - 1]) || 1;
+                    const name      = parts.slice(0, parts.length - 1).join(',').trim();
+                    return name ? { name, startPage } : null;
+                }
             }).filter(Boolean);
             saveData();
             document.getElementById('chapter-modal').classList.add('hidden');
@@ -5827,10 +5867,10 @@ async function deleteCurrentAccount() {
             <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full mx-4">
                 <h3 class="text-lg font-black text-[#0A1628] mb-1"><i class="fas fa-list-ol text-[#B8963E] mr-2"></i>章・節の設定</h3>
                 <div class="text-sm font-bold text-slate-700 mb-1" id="chapter-modal-bookname"></div>
-                <div class="text-xs text-slate-400 mb-3">「章名,開始ページ」を1行ずつ入力してください。<br>例：<span class="font-mono">2次関数,1</span>　→　<span class="font-mono">三角関数,45</span></div>
+                <div class="text-xs text-slate-400 mb-3">「章名,開始番号,開始ページ」を1行ずつ入力してください。開始ページは省略可。<br>例：<span class="font-mono">2次関数,1,10</span>　→　<span class="font-mono">三角関数,45,52</span></div>
                 <input type="hidden" id="chapter-modal-id">
                 <input type="hidden" id="chapter-modal-sk">
-                <textarea id="chapter-modal-data" class="w-full border rounded-lg p-3 text-sm font-mono h-44 focus:ring-2 focus:ring-[#B8963E] outline-none resize-none" placeholder="章名,開始ページ&#10;2次関数,1&#10;三角関数,45&#10;指数・対数,89"></textarea>
+                <textarea id="chapter-modal-data" class="w-full border rounded-lg p-3 text-sm font-mono h-44 focus:ring-2 focus:ring-[#B8963E] outline-none resize-none" placeholder="章名,開始番号,開始ページ&#10;2次関数,1,10&#10;三角関数,45,52&#10;指数・対数,89,98"></textarea>
                 <div class="flex gap-3 mt-4 justify-end">
                     <button onclick="document.getElementById('chapter-modal').classList.add('hidden')" class="px-4 py-2 text-sm font-bold text-slate-500 border rounded-lg hover:bg-slate-50">キャンセル</button>
                     <button onclick="saveChapterModal()" class="px-4 py-2 text-sm font-bold bg-[#B8963E] text-white rounded-lg hover:bg-[#a07a30]"><i class="fas fa-save mr-1"></i>保存</button>
