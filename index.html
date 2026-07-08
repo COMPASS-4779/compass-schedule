@@ -3306,25 +3306,37 @@
         function calcBookRanges(b) {
             const currentWeek = appData.currentWeek;
             const currentDay  = appData.currentDay;
+
+            // 進捗集計（実績入力欄・残り表示用）
             const key = `${b.id}_W${currentWeek}_D${currentDay}`;
-            let totalDone = 0, thisWeekDone = 0;
+            let totalDone = 0;
             Object.keys(appData.progress || {}).forEach(k => {
                 if (!k.startsWith(b.id + '_W')) return;
-                const v = parseFloat(appData.progress[k]) || 0;
-                totalDone += v;
-                if (k.startsWith(`${b.id}_W${currentWeek}_`)) thisWeekDone += v;
+                totalDone += parseFloat(appData.progress[k]) || 0;
             });
-            const todayDone      = parseFloat(appData.progress[key]) || 0;
-            const doneBefore     = totalDone - todayDone;
-            const beforeThisWeek = totalDone - thisWeekDone;
-            const remaining      = Math.max(0, b.total - totalDone);
-            const remWeeks       = b.endW - currentWeek;
-            const remainingDays  = Math.max(1, remWeeks * 5 + (6 - Math.min(currentDay, 5)));
-            const target         = Math.ceil(remaining / remainingDays);
-            const todayStart = Math.max(1, Math.floor(doneBefore) + 1);
-            const todayEnd   = Math.floor(doneBefore) + Math.max(1, target);
-            const weekStart  = Math.max(1, Math.floor(beforeThisWeek) + 1);
-            const weekEnd    = Math.floor(beforeThisWeek) + Math.max(1, target) * 5;
+            const todayDone = parseFloat(appData.progress[key]) || 0;
+            const remaining = Math.max(0, b.total - totalDone);
+
+            if (b.isOneOff) {
+                return { todayStart: 1, todayEnd: b.total, weekStart: 1, weekEnd: b.total,
+                         target: b.total, remaining, remainingDays: 1, totalDone, todayDone };
+            }
+
+            // カレンダー選択日ベースでスケジュール上の範囲を計算
+            const totalScheduledDays = Math.max(1, (b.endW - b.startW + 1) * 5);
+            const ipd = b.total / totalScheduledDays; // items per day
+
+            const dayIdx       = (currentWeek - b.startW) * 5 + (currentDay - 1); // 0始まり
+            const weekDayStart = (currentWeek - b.startW) * 5;
+            const weekDayEnd   = weekDayStart + 4;
+
+            const todayStart = Math.max(1, Math.floor(dayIdx * ipd) + 1);
+            const todayEnd   = Math.min(b.total, Math.ceil((dayIdx + 1) * ipd));
+            const weekStart  = Math.max(1, Math.floor(weekDayStart * ipd) + 1);
+            const weekEnd    = Math.min(b.total, Math.ceil((weekDayEnd + 1) * ipd));
+            const target     = Math.max(1, todayEnd - todayStart + 1);
+            const remainingDays = Math.max(1, totalScheduledDays - Math.max(0, dayIdx));
+
             return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays, totalDone, todayDone };
         }
 
