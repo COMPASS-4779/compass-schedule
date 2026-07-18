@@ -2196,32 +2196,37 @@
             let hasExamTask = false;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 日々タスク：期限（endW週の金曜日）を過ぎたら非表示
+                    // 日々タスク：期限（endW週の金曜日）を過ぎても残量があれば引き続き表示
                     const examExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > 5);
-                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && !examExpired) {
+                    const _bDone = Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const _bHasRemaining = _bDone < b.total;
+                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && (!examExpired || _bHasRemaining)) {
                         hasExamTask = true;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
 
                         // 実施状況に応じた動的目標量（残量 ÷ 残日数）
                         const ranges = calcBookRanges(b);
-                        const { target, remaining, remainingDays, todayStart, todayEnd, weekStart, weekEnd } = ranges;
+                        const { target, remaining, remainingDays, todayStart, todayEnd, weekStart, weekEnd, isOverdue } = ranges;
 
                         const pct = Math.min(100, Math.round((val / Math.max(1, target)) * 100) || 0);
                         const todayLabel = formatRangeLabel(b, todayStart, todayEnd);
                         const weekLabel  = formatRangeLabel(b, weekStart, weekEnd);
 
                         examHtml += `
-                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm relative mb-3">
+                        <div class="bg-white p-3 rounded-xl border ${isOverdue ? 'border-red-300' : 'border-slate-200'} shadow-sm relative mb-3">
                             <div class="flex justify-between items-start mb-1">
                                 <span class="text-[10px] font-bold text-[#B8963E]">${SUBJ_CONFIG[sk]?.label || sk}</span>
-                                <button onclick="openChapterModal('${sk}','${b.id}')" title="章節を設定" class="text-slate-300 hover:text-[#B8963E] text-[10px] font-bold leading-none ml-1 flex-shrink-0"><i class="fas fa-pen"></i> 章節</button>
+                                <div class="flex items-center gap-1">
+                                    ${isOverdue ? '<span class="text-[9px] font-black text-red-500 bg-red-50 border border-red-200 rounded px-1"><i class="fas fa-exclamation-triangle mr-0.5"></i>期限超過</span>' : ''}
+                                    <button onclick="openChapterModal('${sk}','${b.id}')" title="章節を設定" class="text-slate-300 hover:text-[#B8963E] text-[10px] font-bold leading-none ml-1 flex-shrink-0"><i class="fas fa-pen"></i> 章節</button>
+                                </div>
                             </div>
                             <div class="text-xs font-bold text-slate-700 mb-1">${b.name}</div>
-                            ${todayLabel ? `<div class="text-[11px] font-bold mb-0.5" style="color:#1a6fb5"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLabel}</div>` : ''}
-                            ${weekLabel  ? `<div class="text-[10px] font-bold text-slate-600 mb-1"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLabel}</div>` : ''}
-                            <div class="text-[10px] font-bold text-slate-500 mb-1">今日の目標: ${target}${b.unit}</div>
-                            <div class="text-[9px] text-slate-400 mb-2">残り ${remaining}${b.unit} / ${remainingDays}日</div>
+                            ${todayLabel ? `<div class="text-[11px] font-bold mb-0.5" style="color:${isOverdue?'#dc2626':'#1a6fb5'}"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLabel}</div>` : ''}
+                            ${!isOverdue && weekLabel ? `<div class="text-[10px] font-bold text-slate-600 mb-1"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLabel}</div>` : ''}
+                            <div class="text-[10px] font-bold ${isOverdue?'text-red-500':'text-slate-500'} mb-1">今日の目標: ${target}${b.unit}</div>
+                            <div class="text-[9px] text-slate-400 mb-2">残り ${remaining}${b.unit}${isOverdue?' (予定日超過)':' / '+remainingDays+'日'}</div>
 
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
                                 ${pct >= 100 ?
@@ -2684,26 +2689,32 @@
             const grid = document.getElementById('dash-tracker-columns'); grid.innerHTML = '';
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 🌟 行事(isEvent)は今日のタスク入力欄から除外
-                    if(appData.currentWeek >= b.startW && appData.currentWeek <= b.endW && !b.isEvent) {
+                    // 🌟 行事(isEvent)は今日のタスク入力欄から除外。期限切れでも残量ありなら表示
+                    const _tDone = Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const _tOverdue = appData.currentWeek > b.endW || (appData.currentWeek === b.endW && appData.currentDay > 5);
+                    const _tShow = !b.isEvent && appData.currentWeek >= b.startW && (!_tOverdue || _tDone < b.total);
+                    if(_tShow) {
                         const ranges2 = calcBookRanges(b);
-                        const { target, todayStart, todayEnd, weekStart, weekEnd } = ranges2;
+                        const { target, todayStart, todayEnd, weekStart, weekEnd, isOverdue: tOverdue } = ranges2;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const todayLbl = formatRangeLabel(b, todayStart, todayEnd);
                         const weekLbl  = formatRangeLabel(b, weekStart, weekEnd);
-                        grid.innerHTML += `<div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
+                        grid.innerHTML += `<div class="bg-white border ${tOverdue?'border-red-300':'border-slate-200'} p-4 rounded-xl shadow-sm">
                             <div class="flex justify-between items-center mb-1">
                                 <div class="text-[9px] font-black" style="color:${SUBJ_CONFIG[sk].hex}">${SUBJ_CONFIG[sk].label}</div>
-                                <button onclick="openChapterModal('${sk}','${b.id}')" class="text-[9px] text-slate-300 hover:text-[#B8963E] font-bold"><i class="fas fa-pen"></i> 章節</button>
+                                <div class="flex items-center gap-1">
+                                    ${tOverdue ? '<span class="text-[9px] font-black text-red-500 bg-red-50 border border-red-200 rounded px-1"><i class="fas fa-exclamation-triangle mr-0.5"></i>期限超過</span>' : ''}
+                                    <button onclick="openChapterModal('${sk}','${b.id}')" class="text-[9px] text-slate-300 hover:text-[#B8963E] font-bold"><i class="fas fa-pen"></i> 章節</button>
+                                </div>
                             </div>
                             <div class="text-xs font-black mb-1 truncate text-[#0A1628]">${b.name}</div>
-                            ${todayLbl ? `<div class="text-[11px] font-bold mb-0.5" style="color:#1a6fb5"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLbl}</div>` : ''}
-                            ${weekLbl  ? `<div class="text-[10px] font-bold text-slate-600 mb-2"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLbl}</div>` : ''}
-                            <div class="flex items-center gap-2">
+                            ${todayLbl ? `<div class="text-[11px] font-bold mb-0.5" style="color:${tOverdue?'#dc2626':'#1a6fb5'}"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLbl}</div>` : ''}
+                            ${!tOverdue && weekLbl ? `<div class="text-[10px] font-bold text-slate-600 mb-2"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLbl}</div>` : ''}
+                            <div class="flex items-center gap-2 ${tOverdue?'mt-1':''}">
                                 <input type="number" class="w-full border rounded p-2 text-sm font-bold focus:ring-2 focus:ring-[#B8963E] outline-none" placeholder="実績を入力" value="${appData.progress[key]||''}" onchange="updateProg('${b.id}', this.value)">
                                 <span class="text-xs font-bold text-slate-400">${b.unit}</span>
                             </div>
-                            <div class="text-[10px] text-[#B8963E] mt-2 font-bold italic">本日目標: ${target}${b.unit}</div>
+                            <div class="text-[10px] ${tOverdue?'text-red-500':'text-[#B8963E]'} mt-2 font-bold italic">本日目標: ${target}${b.unit}${tOverdue?' (期限超過・残量)':''}</div>
                         </div>`;
                     }
                 });
@@ -3373,6 +3384,18 @@
                          target: b.total, remaining, remainingDays: 1, totalDone, todayDone };
             }
 
+            // 期限切れ・残量ありの場合：残量を全部今日の目標として表示
+            const isOverdue = currentWeek > b.endW || (currentWeek === b.endW && currentDay > 5);
+            if (isOverdue && remaining > 0) {
+                const todayStart = Math.min(b.total, Math.floor(totalDone) + 1);
+                return {
+                    todayStart, todayEnd: b.total,
+                    weekStart: todayStart, weekEnd: b.total,
+                    target: remaining, remaining, remainingDays: 1,
+                    totalDone, todayDone, isOverdue: true
+                };
+            }
+
             // カレンダー選択日ベースでスケジュール上の範囲を計算
             const totalScheduledDays = Math.max(1, (b.endW - b.startW + 1) * 5);
             const ipd = b.total / totalScheduledDays; // items per day
@@ -3388,7 +3411,7 @@
             const target     = Math.max(1, todayEnd - todayStart + 1);
             const remainingDays = Math.max(1, totalScheduledDays - Math.max(0, dayIdx));
 
-            return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays, totalDone, todayDone };
+            return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays, totalDone, todayDone, isOverdue: false };
         }
 
         // ===== 章節モーダル =====
