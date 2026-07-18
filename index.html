@@ -3369,13 +3369,18 @@
             const currentWeek = appData.currentWeek;
             const currentDay  = appData.currentDay;
 
-            // 進捗集計（実績入力欄・残り表示用）
+            // 進捗集計：progressAdjust優先（実績数の調整モーダルと同じロジック）
             const key = `${b.id}_W${currentWeek}_D${currentDay}`;
+            const adj = appData.progressAdjust && appData.progressAdjust[b.id];
             let totalDone = 0;
-            Object.keys(appData.progress || {}).forEach(k => {
-                if (!k.startsWith(b.id + '_W')) return;
-                totalDone += parseFloat(appData.progress[k]) || 0;
-            });
+            if (adj !== undefined && adj !== null) {
+                totalDone = adj;
+            } else {
+                Object.keys(appData.progress || {}).forEach(k => {
+                    if (!k.startsWith(b.id + '_W')) return;
+                    totalDone += parseFloat(appData.progress[k]) || 0;
+                });
+            }
             const todayDone = parseFloat(appData.progress[key]) || 0;
             const remaining = Math.max(0, b.total - totalDone);
 
