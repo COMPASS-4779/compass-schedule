@@ -4605,10 +4605,14 @@
                         groups[sheetKey] = {
                             subjKey: _sheetSubjKey(subjLabel) || subjLabel,
                             textbook, chapter, section,
+                            pages: new Set(),
                             wrongCount: 0,
                             total: parseInt(totalStr) || 0
                         };
                     }
+                    // ページ(E列)を収集（'-'や空は除外）
+                    const _pageStr = (row[4] || '').trim();
+                    if (_pageStr && _pageStr !== '-') groups[sheetKey].pages.add(_pageStr);
                     // J列（総問題数）は最大値を採用（行ごとに同じ値が入っているはず）
                     if (parseInt(totalStr) > groups[sheetKey].total) {
                         groups[sheetKey].total = parseInt(totalStr);
@@ -4636,6 +4640,10 @@
                         score,
                         maxScore,
                         source: g.textbook,
+                        textbook: g.textbook,
+                        chapter: g.chapter,
+                        section: g.section,
+                        pages: Array.from(g.pages).sort((a,b)=>(parseInt(a)||0)-(parseInt(b)||0)),
                         _sheetKey: sheetKey
                     });
                     addedCount++;
@@ -4816,7 +4824,17 @@
                                 <button onclick="deleteUnitRecord('${r.id}')" class="text-slate-300 hover:text-red-500 transition text-xs leading-none" title="削除">✕</button>
                             </div>
                         </div>
-                        <div class="text-xs font-black text-[#0A1628] mb-1">${r.unit}</div>
+                        <div class="text-xs font-black text-[#0A1628] mb-1">${r.textbook || r.source || ''}</div>
+                        ${(() => {
+                            const _ch = r.chapter ? `${r.chapter}章` : '';
+                            const _se = r.section ? `${r.section}節` : '';
+                            const _cs = [_ch,_se].filter(Boolean).join(' ');
+                            const _pg = (r.pages && r.pages.length) ? `p.${r.pages.join(',')}` : '';
+                            const line = [_cs, _pg].filter(Boolean).join(' / ');
+                            return line
+                              ? `<div class="text-[10px] text-slate-600 font-bold">${line}</div>`
+                              : `<div class="text-[10px] text-slate-600 font-bold">${r.unit || ''}</div>`;
+                        })()}
                     </div>
                     <div class="flex items-end justify-between mt-4">
                         <div class="text-[9px] text-slate-500">Source: ${r.source}</div>
@@ -5023,7 +5041,10 @@
                         if (!weakUnitsBySubj[sk]) weakUnitsBySubj[sk] = [];
                         weakUnitsBySubj[sk].push({
                             id: r.id, name: r.unit, pct: pct,
-                            score: r.score, max: r.maxScore, subject: sk
+                            score: r.score, max: r.maxScore, subject: sk,
+                            textbook: r.textbook || r.source || '',
+                            chapter: r.chapter || '', section: r.section || '',
+                            pages: r.pages || []
                         });
                     }
                 });
@@ -5037,15 +5058,15 @@
                 subjs.forEach(sk => {
                     const label = SUBJ_CONFIG[sk]?.label || sk;
                     const units = weakUnitsBySubj[sk].map(u => {
-                        const opts = [1,2,3,4,5,6,7,8,9,10].map(n =>
-                            `<option value="${n}" ${u.max === n ? 'selected' : ''}>${n}回</option>`
-                        ).join('');
+                        const _ch = u.chapter ? `${u.chapter}章` : '';
+                        const _se = u.section ? `${u.section}節` : '';
+                        const _cs = [_ch,_se].filter(Boolean).join(' ');
+                        const _pg = (u.pages && u.pages.length) ? `p.${u.pages.join(',')}` : '';
+                        const detail = [u.textbook, _cs, _pg].filter(Boolean).join(' / ');
                         return `<span class="inline-flex items-center bg-red-500/20 border border-red-500/50 rounded px-2 py-1 mr-2 mb-1 gap-1.5 flex-wrap">
                             <span class="text-[10px] font-bold">${u.name}</span>
-                            <small class="opacity-60 text-[9px]">${u.score}/${u.max}回</small>
-                            <select onchange="setUnitRepetitions('${u.id}', this.value)" class="text-[8px] bg-white text-black border border-red-400/50 rounded px-0.5 outline-none cursor-pointer" title="必要回数を設定">
-                                ${opts}
-                            </select>
+                            ${detail ? `<small class="opacity-75 text-[9px]">${detail}</small>` : ''}
+                            <small class="opacity-60 text-[9px]">${u.score}/${u.max}問</small>
                             <button onclick="completeUnitStep('${sk}', '${u.name}')" class="text-[8px] bg-white/20 hover:bg-white/40 px-1.5 py-0.5 rounded transition font-bold" title="1回完了">✓+1</button>
                             <button onclick="deleteUnitRecord('${u.id}')" class="text-red-300 hover:text-white text-[9px] leading-none" title="削除">✕</button>
                         </span>`;
