@@ -2196,11 +2196,13 @@
             let hasExamTask = false;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 日々タスク：期限（endW週の金曜日）を過ぎても残量があれば引き続き表示
+                    // 日々タスク：完了済み（残量ゼロ）は非表示。期限切れでも残量ありなら表示
                     const examExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > 5);
-                    const _bDone = Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const _bAdj = appData.progressAdjust && appData.progressAdjust[b.id];
+                    const _bDone = (_bAdj !== undefined && _bAdj !== null) ? _bAdj :
+                        Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
                     const _bHasRemaining = _bDone < b.total;
-                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && (!examExpired || _bHasRemaining)) {
+                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && _bHasRemaining) {
                         hasExamTask = true;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
@@ -2690,9 +2692,11 @@
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
                     // 🌟 行事(isEvent)は今日のタスク入力欄から除外。期限切れでも残量ありなら表示
-                    const _tDone = Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const _tAdj = appData.progressAdjust && appData.progressAdjust[b.id];
+                    const _tDone = (_tAdj !== undefined && _tAdj !== null) ? _tAdj :
+                        Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
                     const _tOverdue = appData.currentWeek > b.endW || (appData.currentWeek === b.endW && appData.currentDay > 5);
-                    const _tShow = !b.isEvent && appData.currentWeek >= b.startW && (!_tOverdue || _tDone < b.total);
+                    const _tShow = !b.isEvent && appData.currentWeek >= b.startW && _tDone < b.total && (!_tOverdue || _tDone < b.total);
                     if(_tShow) {
                         const ranges2 = calcBookRanges(b);
                         const { target, todayStart, todayEnd, weekStart, weekEnd, isOverdue: tOverdue } = ranges2;
