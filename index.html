@@ -300,6 +300,9 @@
                     <div class="flex items-center justify-between mb-3 border-b pb-2">
                         <h2 class="font-bold text-[#0A1628]"><i class="fas fa-map-signs text-[#B8963E] mr-2"></i>年間計画ロードマップ</h2>
                         <div class="flex items-center gap-2">
+                            <button onclick="exportRoadmapCSV()" class="text-[10px] font-bold px-2 py-1 rounded-lg border border-slate-300 text-slate-500 bg-white hover:bg-slate-50 transition whitespace-nowrap">
+                                <i class="fas fa-download mr-1"></i>CSV出力
+                            </button>
                             <button id="gantt-focus-btn" onclick="toggleGanttFocus()" class="text-[10px] font-bold px-2 py-1 rounded-lg border border-slate-300 text-slate-500 bg-white hover:bg-slate-50 transition whitespace-nowrap">
                                 <i class="fas fa-filter mr-1"></i>現在のみ
                             </button>
@@ -2301,6 +2304,42 @@
         // 📌 [SECTION-GANTT] ===== ガントチャート =====
         let _ganttScale = 1;
         let _ganttFocusMode = false;
+
+        function exportRoadmapCSV() {
+            const fmtDate = (week, day) => {
+                if (!appData.profile || !appData.profile.startDate) return '';
+                const d = new Date(appData.profile.startDate);
+                d.setDate(d.getDate() + (week - 1) * 7 + (day - 1));
+                return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+            };
+            const rows = [['科目', 'テキスト', '総数', '実施済み', '開始日', '終了予定日']];
+            Object.keys(appData.curriculum).forEach(sk => {
+                const subjLabel = SUBJ_CONFIG[sk]?.label || sk;
+                appData.curriculum[sk].forEach(b => {
+                    if (b.isEvent || b.isOneOff) return;
+                    const adj = appData.progressAdjust && appData.progressAdjust[b.id];
+                    const done = (adj !== undefined && adj !== null) ? adj :
+                        Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W'))
+                            .reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const startDate = b.actualStartDate
+                        ? (() => { const d=new Date(b.actualStartDate); return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`; })()
+                        : fmtDate(b.startW, 1);
+                    const endDate = b.actualEndDate
+                        ? (() => { const d=new Date(b.actualEndDate); return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`; })()
+                        : fmtDate(b.endW, 7);
+                    rows.push([subjLabel, b.name, b.total, Math.round(done * 10) / 10, startDate, endDate]);
+                });
+            });
+            const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\r\n');
+            const bom = '﻿';
+            const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `roadmap_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
 
         function toggleGanttFocus() {
             _ganttFocusMode = !_ganttFocusMode;
