@@ -41,7 +41,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/05/19</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V3</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V4</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -300,6 +300,12 @@
                     <div class="flex items-center justify-between mb-3 border-b pb-2">
                         <h2 class="font-bold text-[#0A1628]"><i class="fas fa-map-signs text-[#B8963E] mr-2"></i>年間計画ロードマップ</h2>
                         <div class="flex items-center gap-2">
+                            <button onclick="exportRoadmapCSV()" class="text-[10px] font-bold px-2 py-1 rounded-lg border border-slate-300 text-slate-500 bg-white hover:bg-slate-50 transition whitespace-nowrap">
+                                <i class="fas fa-download mr-1"></i>CSV出力
+                            </button>
+                            <button id="gantt-focus-btn" onclick="toggleGanttFocus()" class="text-[10px] font-bold px-2 py-1 rounded-lg border border-slate-300 text-slate-500 bg-white hover:bg-slate-50 transition whitespace-nowrap">
+                                <i class="fas fa-filter mr-1"></i>現在のみ
+                            </button>
                             <span class="text-[10px] font-bold text-slate-500 whitespace-nowrap">スケール</span>
                             <input type="range" id="gantt-scale-slider" min="1" max="8" step="0.5" value="1"
                                 class="w-28 accent-[#B8963E]"
@@ -2193,37 +2199,42 @@
             let hasExamTask = false;
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 日々タスク：期限（endW週の金曜日）を過ぎたら非表示
+                    // 日々タスク：完了済み（残量ゼロ）は非表示。期限切れでも残量ありなら表示
                     const examExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > 5);
-                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && !examExpired) {
+                    const _bAdj = appData.progressAdjust && appData.progressAdjust[b.id];
+                    const _bDone = (_bAdj !== undefined && _bAdj !== null) ? _bAdj :
+                        Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const _bHasRemaining = _bDone < b.total;
+                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && _bHasRemaining) {
                         hasExamTask = true;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
 
                         // 実施状況に応じた動的目標量（残量 ÷ 残日数）
-                        let totalDone = 0;
-                        Object.keys(appData.progress || {}).forEach(k => {
-                            if (k.startsWith(b.id + '_W')) totalDone += parseFloat(appData.progress[k]) || 0;
-                        });
-                        const remaining = Math.max(0, b.total - totalDone);
-                        const remWeeks = b.endW - appData.currentWeek;
-                        const todayDayNum = Math.min(appData.currentDay, 5);
-                        const remainingDays = Math.max(1, remWeeks * 5 + (6 - todayDayNum));
-                        const target = Math.ceil(remaining / remainingDays);
+                        const ranges = calcBookRanges(b);
+                        const { target, remaining, remainingDays, todayStart, todayEnd, weekStart, weekEnd, isOverdue } = ranges;
 
                         const pct = Math.min(100, Math.round((val / Math.max(1, target)) * 100) || 0);
+                        const todayLabel = formatRangeLabel(b, todayStart, todayEnd);
+                        const weekLabel  = formatRangeLabel(b, weekStart, weekEnd);
 
                         examHtml += `
-                        <div class="bg-white p-3 rounded-xl border border-slate-200 shadow-sm relative mb-3">
-                            <div class="flex justify-between items-start mb-1 text-center">
+                        <div class="bg-white p-3 rounded-xl border ${isOverdue ? 'border-red-300' : 'border-slate-200'} shadow-sm relative mb-3">
+                            <div class="flex justify-between items-start mb-1">
                                 <span class="text-[10px] font-bold text-[#B8963E]">${SUBJ_CONFIG[sk]?.label || sk}</span>
+                                <div class="flex items-center gap-1">
+                                    ${isOverdue ? '<span class="text-[9px] font-black text-red-500 bg-red-50 border border-red-200 rounded px-1"><i class="fas fa-exclamation-triangle mr-0.5"></i>期限超過</span>' : ''}
+                                    <button onclick="openChapterModal('${sk}','${b.id}')" title="章節を設定" class="text-slate-300 hover:text-[#B8963E] text-[10px] font-bold leading-none ml-1 flex-shrink-0"><i class="fas fa-pen"></i> 章節</button>
+                                </div>
                             </div>
                             <div class="text-xs font-bold text-slate-700 mb-1">${b.name}</div>
-                            <div class="text-[10px] font-bold text-slate-500 mb-1">今日の目標: ${target}${b.unit}</div>
-                            <div class="text-[9px] text-slate-400 mb-2">残り ${remaining}${b.unit} / ${remainingDays}日</div>
-                            
+                            ${todayLabel ? `<div class="text-[11px] font-bold mb-0.5" style="color:${isOverdue?'#dc2626':'#1a6fb5'}"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLabel}</div>` : ''}
+                            ${!isOverdue && weekLabel ? `<div class="text-[10px] font-bold text-slate-600 mb-1"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLabel}</div>` : ''}
+                            <div class="text-[10px] font-bold ${isOverdue?'text-red-500':'text-slate-500'} mb-1">今日の目標: ${target}${b.unit}</div>
+                            <div class="text-[9px] text-slate-400 mb-2">残り ${remaining}${b.unit}${isOverdue?' (予定日超過)':' / '+remainingDays+'日'}</div>
+
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
-                                ${pct >= 100 ? 
+                                ${pct >= 100 ?
                                     `<div class="text-center text-blue-600 font-black text-[10px]"><i class="fas fa-check-circle"></i> 本日分完了！ (100%)</div>` :
                                     `<div class="flex items-center gap-2">
                                         <div class="flex-grow bg-slate-200 h-1.5 rounded-full overflow-hidden">
@@ -2292,6 +2303,59 @@
 
         // 📌 [SECTION-GANTT] ===== ガントチャート =====
         let _ganttScale = 1;
+        let _ganttFocusMode = false;
+
+        function exportRoadmapCSV() {
+            const fmtDate = (week, day) => {
+                if (!appData.profile || !appData.profile.startDate) return '';
+                const d = new Date(appData.profile.startDate);
+                d.setDate(d.getDate() + (week - 1) * 7 + (day - 1));
+                return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+            };
+            const rows = [['科目', 'テキスト', '総数', '実施済み', '開始日', '終了予定日']];
+            Object.keys(appData.curriculum).forEach(sk => {
+                const subjLabel = SUBJ_CONFIG[sk]?.label || sk;
+                appData.curriculum[sk].forEach(b => {
+                    if (b.isEvent || b.isOneOff) return;
+                    const adj = appData.progressAdjust && appData.progressAdjust[b.id];
+                    const done = (adj !== undefined && adj !== null) ? adj :
+                        Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W'))
+                            .reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const startDate = b.actualStartDate
+                        ? (() => { const d=new Date(b.actualStartDate); return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`; })()
+                        : fmtDate(b.startW, 1);
+                    const endDate = b.actualEndDate
+                        ? (() => { const d=new Date(b.actualEndDate); return `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`; })()
+                        : fmtDate(b.endW, 7);
+                    rows.push([subjLabel, b.name, b.total, Math.round(done * 10) / 10, startDate, endDate]);
+                });
+            });
+            const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\r\n');
+            const bom = '﻿';
+            const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `roadmap_${new Date().toISOString().slice(0,10)}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function toggleGanttFocus() {
+            _ganttFocusMode = !_ganttFocusMode;
+            const btn = document.getElementById('gantt-focus-btn');
+            if (btn) {
+                if (_ganttFocusMode) {
+                    btn.className = 'text-[10px] font-bold px-2 py-1 rounded-lg border border-[#B8963E] text-[#B8963E] bg-amber-50 hover:bg-amber-100 transition whitespace-nowrap';
+                    btn.innerHTML = '<i class="fas fa-filter mr-1"></i>現在のみ表示中';
+                } else {
+                    btn.className = 'text-[10px] font-bold px-2 py-1 rounded-lg border border-slate-300 text-slate-500 bg-white hover:bg-slate-50 transition whitespace-nowrap';
+                    btn.innerHTML = '<i class="fas fa-filter mr-1"></i>現在のみ';
+                }
+            }
+            renderGantt();
+        }
+
         function applyGanttScale(val) {
             _ganttScale = parseFloat(val);
             const inner = document.getElementById('gantt-scale-inner');
@@ -2443,21 +2507,52 @@
                 });
             } else {
                 // 🌟 グループ表示（デフォルト）[テスト → 宿題 → 受験 → 行事]
+                const cw = appData.currentWeek;
+                const isActive = b => !b.isOneOff
+                    ? (b.startW <= cw && b.endW >= cw)
+                    : (b.startW <= cw + 1 && b.endW >= cw - 1);
+
+                const inactiveAll = [];
+
                 ["test", "homework", "exam", "event"].forEach(key => {
                     const g = groups[key];
-                    if (g.tasks.length > 0) {
-                        g.tasks.sort((a, b) => a.startW - b.startW);
-                        c.insertAdjacentHTML('beforeend', `
-                            <h4 class="text-xs font-black border-l-4 pl-2 mb-2 mt-6 py-1 relative z-20 ${g.headerClass}">
-                                ${g.label}
-                            </h4>
-                        `);
-                        g.tasks.forEach(task => {
-                            const colorOverride = (key === 'event' && task.dayType !== 'holiday') ? "#10B981" : null;
-                            c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
-                        });
-                    }
+                    if (g.tasks.length === 0) return;
+                    g.tasks.sort((a, b) => a.startW - b.startW);
+
+                    const active   = _ganttFocusMode ? g.tasks.filter(t => isActive(t))  : g.tasks;
+                    const inactive = _ganttFocusMode ? g.tasks.filter(t => !isActive(t)) : [];
+                    inactive.forEach(t => inactiveAll.push({ task: t, key }));
+
+                    if (active.length === 0) return;
+
+                    c.insertAdjacentHTML('beforeend', `
+                        <h4 class="text-xs font-black border-l-4 pl-2 mb-2 mt-6 py-1 relative z-20 ${g.headerClass}">
+                            ${g.label}
+                        </h4>
+                    `);
+                    active.forEach(task => {
+                        const colorOverride = (key === 'event' && task.dayType !== 'holiday') ? "#10B981" : null;
+                        c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
+                    });
                 });
+
+                // 対象外アイテムを折りたたみセクションとして表示
+                if (_ganttFocusMode && inactiveAll.length > 0) {
+                    const inactiveId = 'gantt-inactive-group';
+                    c.insertAdjacentHTML('beforeend', `
+                        <div class="mt-6">
+                            <button onclick="(function(){var el=document.getElementById('${inactiveId}');var ic=document.getElementById('${inactiveId}-ic');el.classList.toggle('hidden');ic.classList.toggle('fa-chevron-down');ic.classList.toggle('fa-chevron-right');})()"
+                                class="w-full flex items-center justify-between text-xs font-black border-l-4 pl-2 py-1 text-slate-400 border-slate-300 bg-slate-50 hover:bg-slate-100 transition">
+                                <span><i class="fas fa-layer-group mr-1"></i>対象外 (${inactiveAll.length}件)</span>
+                                <i id="${inactiveId}-ic" class="fas fa-chevron-right text-[10px] mr-1"></i>
+                            </button>
+                            <div id="${inactiveId}" class="hidden mt-1 opacity-60">
+                                ${inactiveAll.map(({ task, key }) => drawBar(task, (key === 'event' && task.dayType !== 'holiday') ? '#10B981' : null)).join('')}
+                            </div>
+                        </div>
+                    `);
+                }
+
                 // 🌟 ドラッグ説明ヒント
                 if (allTasksFlat.length > 0) {
                     c.insertAdjacentHTML('beforeend', `
@@ -2635,18 +2730,34 @@
             const grid = document.getElementById('dash-tracker-columns'); grid.innerHTML = '';
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
-                    // 🌟 行事(isEvent)は今日のタスク入力欄から除外
-                    if(appData.currentWeek >= b.startW && appData.currentWeek <= b.endW && !b.isEvent) {
-                        const target = b.isOneOff ? b.total : Math.ceil(b.total / ((b.endW - b.startW + 1) * 5));
+                    // 🌟 行事(isEvent)は今日のタスク入力欄から除外。期限切れでも残量ありなら表示
+                    const _tAdj = appData.progressAdjust && appData.progressAdjust[b.id];
+                    const _tDone = (_tAdj !== undefined && _tAdj !== null) ? _tAdj :
+                        Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
+                    const _tOverdue = appData.currentWeek > b.endW || (appData.currentWeek === b.endW && appData.currentDay > 5);
+                    const _tShow = !b.isEvent && appData.currentWeek >= b.startW && _tDone < b.total && (!_tOverdue || _tDone < b.total);
+                    if(_tShow) {
+                        const ranges2 = calcBookRanges(b);
+                        const { target, todayStart, todayEnd, weekStart, weekEnd, isOverdue: tOverdue } = ranges2;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
-                        grid.innerHTML += `<div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
-                            <div class="text-[9px] font-black mb-1" style="color:${SUBJ_CONFIG[sk].hex}">${SUBJ_CONFIG[sk].label}</div>
-                            <div class="text-xs font-black mb-3 truncate text-[#0A1628]">${b.name}</div>
-                            <div class="flex items-center gap-2">
+                        const todayLbl = formatRangeLabel(b, todayStart, todayEnd);
+                        const weekLbl  = formatRangeLabel(b, weekStart, weekEnd);
+                        grid.innerHTML += `<div class="bg-white border ${tOverdue?'border-red-300':'border-slate-200'} p-4 rounded-xl shadow-sm">
+                            <div class="flex justify-between items-center mb-1">
+                                <div class="text-[9px] font-black" style="color:${SUBJ_CONFIG[sk].hex}">${SUBJ_CONFIG[sk].label}</div>
+                                <div class="flex items-center gap-1">
+                                    ${tOverdue ? '<span class="text-[9px] font-black text-red-500 bg-red-50 border border-red-200 rounded px-1"><i class="fas fa-exclamation-triangle mr-0.5"></i>期限超過</span>' : ''}
+                                    <button onclick="openChapterModal('${sk}','${b.id}')" class="text-[9px] text-slate-300 hover:text-[#B8963E] font-bold"><i class="fas fa-pen"></i> 章節</button>
+                                </div>
+                            </div>
+                            <div class="text-xs font-black mb-1 truncate text-[#0A1628]">${b.name}</div>
+                            ${todayLbl ? `<div class="text-[11px] font-bold mb-0.5" style="color:${tOverdue?'#dc2626':'#1a6fb5'}"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLbl}</div>` : ''}
+                            ${!tOverdue && weekLbl ? `<div class="text-[10px] font-bold text-slate-600 mb-2"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLbl}</div>` : ''}
+                            <div class="flex items-center gap-2 ${tOverdue?'mt-1':''}">
                                 <input type="number" class="w-full border rounded p-2 text-sm font-bold focus:ring-2 focus:ring-[#B8963E] outline-none" placeholder="実績を入力" value="${appData.progress[key]||''}" onchange="updateProg('${b.id}', this.value)">
                                 <span class="text-xs font-bold text-slate-400">${b.unit}</span>
                             </div>
-                            <div class="text-[10px] text-[#B8963E] mt-2 font-bold italic">本日目標: ${target}${b.unit}</div>
+                            <div class="text-[10px] ${tOverdue?'text-red-500':'text-[#B8963E]'} mt-2 font-bold italic">本日目標: ${target}${b.unit}${tOverdue?' (期限超過・残量)':''}</div>
                         </div>`;
                     }
                 });
@@ -3243,6 +3354,153 @@
         function adjustWeek(v) { appData.currentWeek = Math.max(1, appData.currentWeek + v); renderDayTabs(); renderTracker(); updateProgress(); initChart(); }
         function goToToday() { syncCurrentDate(); renderDayTabs(); renderTracker(); updateProgress(); if (typeof renderTodaysTaskWindow === 'function') renderTodaysTaskWindow(); }
         function executeLogout() { sessionStorage.clear(); location.reload(); }
+
+        // ===== 章節ヘルパー =====
+        function lookupChapter(chapters, item) {
+            if (!chapters || !chapters.length) return null;
+            const sorted = [...chapters].sort((a, b) => a.startPage - b.startPage);
+            let found = sorted[0], foundIdx = 0;
+            for (let i = 0; i < sorted.length; i++) {
+                if (sorted[i].startPage <= item) { found = sorted[i]; foundIdx = i; }
+                else break;
+            }
+            return { ch: found, idx: foundIdx, sorted };
+        }
+
+        function calcPageRange(chapters, startItem, endItem) {
+            if (!chapters || !chapters.length) return null;
+            const sorted = [...chapters].sort((a, b) => a.startPage - b.startPage);
+            // 開始アイテムが属する章を探す
+            let idx = 0;
+            for (let i = 0; i < sorted.length; i++) {
+                if (sorted[i].startPage <= startItem) idx = i;
+                else break;
+            }
+            const ch = sorted[idx];
+            if (ch.bookPage == null) return null;
+            const next = sorted[idx + 1];
+            let startPage, endPage;
+            if (next && next.bookPage != null && next.startPage > ch.startPage) {
+                const itemSpan = next.startPage - ch.startPage;
+                const pageSpan = next.bookPage - ch.bookPage;
+                const ratio = pageSpan / itemSpan;
+                startPage = ch.bookPage + Math.floor((startItem - ch.startPage) * ratio);
+                endPage   = ch.bookPage + Math.floor((endItem   - ch.startPage) * ratio);
+                endPage   = Math.min(endPage, next.bookPage - 1);
+            } else {
+                startPage = ch.bookPage + (startItem - ch.startPage);
+                endPage   = ch.bookPage + (endItem   - ch.startPage);
+            }
+            return { startPage: Math.max(ch.bookPage, startPage), endPage };
+        }
+
+        function formatRangeLabel(b, startItem, endItem) {
+            if (!b || startItem > b.total) return '';
+            const clampedEnd = Math.min(endItem, b.total);
+            const res = (b.chapters && b.chapters.length) ? lookupChapter(b.chapters, startItem) : null;
+            const ch = res ? res.ch : null;
+            const range = `${startItem}〜${clampedEnd}${b.unit}`;
+            let label = ch ? `${ch.name}　${range}` : range;
+            if (b.chapters && b.chapters.length) {
+                const pr = calcPageRange(b.chapters, startItem, clampedEnd);
+                if (pr) label += ` p.${pr.startPage}〜${pr.endPage}`;
+            }
+            return label;
+        }
+
+        function calcBookRanges(b) {
+            const currentWeek = appData.currentWeek;
+            const currentDay  = appData.currentDay;
+
+            // 進捗集計：progressAdjust優先（実績数の調整モーダルと同じロジック）
+            const key = `${b.id}_W${currentWeek}_D${currentDay}`;
+            const adj = appData.progressAdjust && appData.progressAdjust[b.id];
+            let totalDone = 0;
+            if (adj !== undefined && adj !== null) {
+                totalDone = adj;
+            } else {
+                Object.keys(appData.progress || {}).forEach(k => {
+                    if (!k.startsWith(b.id + '_W')) return;
+                    totalDone += parseFloat(appData.progress[k]) || 0;
+                });
+            }
+            const todayDone = parseFloat(appData.progress[key]) || 0;
+            const remaining = Math.max(0, b.total - totalDone);
+
+            if (b.isOneOff) {
+                return { todayStart: 1, todayEnd: b.total, weekStart: 1, weekEnd: b.total,
+                         target: b.total, remaining, remainingDays: 1, totalDone, todayDone };
+            }
+
+            // 期限切れ・残量ありの場合：残量を全部今日の目標として表示
+            const isOverdue = currentWeek > b.endW || (currentWeek === b.endW && currentDay > 5);
+            if (isOverdue && remaining > 0) {
+                const todayStart = Math.min(b.total, Math.floor(totalDone) + 1);
+                return {
+                    todayStart, todayEnd: b.total,
+                    weekStart: todayStart, weekEnd: b.total,
+                    target: remaining, remaining, remainingDays: 1,
+                    totalDone, todayDone, isOverdue: true
+                };
+            }
+
+            // カレンダー選択日ベースでスケジュール上の範囲を計算
+            const totalScheduledDays = Math.max(1, (b.endW - b.startW + 1) * 5);
+            const ipd = b.total / totalScheduledDays; // items per day
+
+            const dayIdx       = (currentWeek - b.startW) * 5 + (currentDay - 1); // 0始まり
+            const weekDayStart = (currentWeek - b.startW) * 5;
+            const weekDayEnd   = weekDayStart + 4;
+
+            const todayStart = Math.max(1, Math.floor(dayIdx * ipd) + 1);
+            const todayEnd   = Math.min(b.total, Math.ceil((dayIdx + 1) * ipd));
+            const weekStart  = Math.max(1, Math.floor(weekDayStart * ipd) + 1);
+            const weekEnd    = Math.min(b.total, Math.ceil((weekDayEnd + 1) * ipd));
+            const target     = Math.max(1, todayEnd - todayStart + 1);
+            const remainingDays = Math.max(1, totalScheduledDays - Math.max(0, dayIdx));
+
+            return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays, totalDone, todayDone, isOverdue: false };
+        }
+
+        // ===== 章節モーダル =====
+        function openChapterModal(sk, id) {
+            const b = (appData.curriculum[sk] || []).find(x => x.id === id);
+            if (!b) return;
+            document.getElementById('chapter-modal-bookname').textContent = b.name;
+            document.getElementById('chapter-modal-id').value = id;
+            document.getElementById('chapter-modal-sk').value = sk;
+            const txt = (b.chapters || []).sort((a,c) => a.startPage - c.startPage)
+                .map(ch => ch.bookPage != null ? `${ch.name},${ch.startPage},${ch.bookPage}` : `${ch.name},${ch.startPage}`).join('\n');
+            document.getElementById('chapter-modal-data').value = txt;
+            document.getElementById('chapter-modal').classList.remove('hidden');
+        }
+
+        function saveChapterModal() {
+            const id = document.getElementById('chapter-modal-id').value;
+            const sk = document.getElementById('chapter-modal-sk').value;
+            const b  = (appData.curriculum[sk] || []).find(x => x.id === id);
+            if (!b) return;
+            const lines = document.getElementById('chapter-modal-data').value
+                .split('\n').map(l => l.trim()).filter(Boolean);
+            b.chapters = lines.map(line => {
+                const parts = line.split(',');
+                if (parts.length < 2) return null;
+                if (parts.length >= 3) {
+                    const bookPage  = parseInt(parts[parts.length - 1]) || null;
+                    const startPage = parseInt(parts[parts.length - 2]) || 1;
+                    const name      = parts.slice(0, parts.length - 2).join(',').trim();
+                    return name ? { name, startPage, bookPage } : null;
+                } else {
+                    const startPage = parseInt(parts[parts.length - 1]) || 1;
+                    const name      = parts.slice(0, parts.length - 1).join(',').trim();
+                    return name ? { name, startPage } : null;
+                }
+            }).filter(Boolean);
+            saveData();
+            document.getElementById('chapter-modal').classList.add('hidden');
+            renderDashboard();
+            renderTracker();
+        }
         
 
         // 📌 [SECTION-VIEW] ===== 画面切り替え =====
@@ -4390,10 +4648,14 @@
                         groups[sheetKey] = {
                             subjKey: _sheetSubjKey(subjLabel) || subjLabel,
                             textbook, chapter, section,
+                            pages: new Set(),
                             wrongCount: 0,
                             total: parseInt(totalStr) || 0
                         };
                     }
+                    // ページ(E列)を収集（'-'や空は除外）
+                    const _pageStr = (row[4] || '').trim();
+                    if (_pageStr && _pageStr !== '-') groups[sheetKey].pages.add(_pageStr);
                     // J列（総問題数）は最大値を採用（行ごとに同じ値が入っているはず）
                     if (parseInt(totalStr) > groups[sheetKey].total) {
                         groups[sheetKey].total = parseInt(totalStr);
@@ -4421,6 +4683,10 @@
                         score,
                         maxScore,
                         source: g.textbook,
+                        textbook: g.textbook,
+                        chapter: g.chapter,
+                        section: g.section,
+                        pages: Array.from(g.pages).sort((a,b)=>(parseInt(a)||0)-(parseInt(b)||0)),
                         _sheetKey: sheetKey
                     });
                     addedCount++;
@@ -4601,7 +4867,17 @@
                                 <button onclick="deleteUnitRecord('${r.id}')" class="text-slate-300 hover:text-red-500 transition text-xs leading-none" title="削除">✕</button>
                             </div>
                         </div>
-                        <div class="text-xs font-black text-[#0A1628] mb-1">${r.unit}</div>
+                        <div class="text-xs font-black text-[#0A1628] mb-1">${r.textbook || r.source || ''}</div>
+                        ${(() => {
+                            const _ch = r.chapter ? `${r.chapter}章` : '';
+                            const _se = r.section ? `${r.section}節` : '';
+                            const _cs = [_ch,_se].filter(Boolean).join(' ');
+                            const _pg = (r.pages && r.pages.length) ? `p.${r.pages.join(',')}` : '';
+                            const line = [_cs, _pg].filter(Boolean).join(' / ');
+                            return line
+                              ? `<div class="text-[10px] text-slate-600 font-bold">${line}</div>`
+                              : `<div class="text-[10px] text-slate-600 font-bold">${r.unit || ''}</div>`;
+                        })()}
                     </div>
                     <div class="flex items-end justify-between mt-4">
                         <div class="text-[9px] text-slate-500">Source: ${r.source}</div>
@@ -4808,7 +5084,10 @@
                         if (!weakUnitsBySubj[sk]) weakUnitsBySubj[sk] = [];
                         weakUnitsBySubj[sk].push({
                             id: r.id, name: r.unit, pct: pct,
-                            score: r.score, max: r.maxScore, subject: sk
+                            score: r.score, max: r.maxScore, subject: sk,
+                            textbook: r.textbook || r.source || '',
+                            chapter: r.chapter || '', section: r.section || '',
+                            pages: r.pages || []
                         });
                     }
                 });
@@ -4822,15 +5101,15 @@
                 subjs.forEach(sk => {
                     const label = SUBJ_CONFIG[sk]?.label || sk;
                     const units = weakUnitsBySubj[sk].map(u => {
-                        const opts = [1,2,3,4,5,6,7,8,9,10].map(n =>
-                            `<option value="${n}" ${u.max === n ? 'selected' : ''}>${n}回</option>`
-                        ).join('');
+                        const _ch = u.chapter ? `${u.chapter}章` : '';
+                        const _se = u.section ? `${u.section}節` : '';
+                        const _cs = [_ch,_se].filter(Boolean).join(' ');
+                        const _pg = (u.pages && u.pages.length) ? `p.${u.pages.join(',')}` : '';
+                        const detail = [u.textbook, _cs, _pg].filter(Boolean).join(' / ');
                         return `<span class="inline-flex items-center bg-red-500/20 border border-red-500/50 rounded px-2 py-1 mr-2 mb-1 gap-1.5 flex-wrap">
                             <span class="text-[10px] font-bold">${u.name}</span>
-                            <small class="opacity-60 text-[9px]">${u.score}/${u.max}回</small>
-                            <select onchange="setUnitRepetitions('${u.id}', this.value)" class="text-[8px] bg-white text-black border border-red-400/50 rounded px-0.5 outline-none cursor-pointer" title="必要回数を設定">
-                                ${opts}
-                            </select>
+                            ${detail ? `<small class="opacity-75 text-[9px]">${detail}</small>` : ''}
+                            <small class="opacity-60 text-[9px]">${u.score}/${u.max}問</small>
                             <button onclick="completeUnitStep('${sk}', '${u.name}')" class="text-[8px] bg-white/20 hover:bg-white/40 px-1.5 py-0.5 rounded transition font-bold" title="1回完了">✓+1</button>
                             <button onclick="deleteUnitRecord('${u.id}')" class="text-red-300 hover:text-white text-[9px] leading-none" title="削除">✕</button>
                         </span>`;
@@ -5737,5 +6016,22 @@ async function deleteCurrentAccount() {
 }
 
     </script>
+
+        <!-- ===== 章節設定モーダル ===== -->
+        <div id="chapter-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+            <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full mx-4">
+                <h3 class="text-lg font-black text-[#0A1628] mb-1"><i class="fas fa-list-ol text-[#B8963E] mr-2"></i>章・節の設定</h3>
+                <div class="text-sm font-bold text-slate-700 mb-1" id="chapter-modal-bookname"></div>
+                <div class="text-xs text-slate-400 mb-3">「章名,開始番号,開始ページ」を1行ずつ入力してください。開始ページは省略可。<br>例：<span class="font-mono">2次関数,1,10</span>　→　<span class="font-mono">三角関数,45,52</span></div>
+                <input type="hidden" id="chapter-modal-id">
+                <input type="hidden" id="chapter-modal-sk">
+                <textarea id="chapter-modal-data" class="w-full border rounded-lg p-3 text-sm font-mono h-44 focus:ring-2 focus:ring-[#B8963E] outline-none resize-none" placeholder="章名,開始番号,開始ページ&#10;2次関数,1,10&#10;三角関数,45,52&#10;指数・対数,89,98"></textarea>
+                <div class="flex gap-3 mt-4 justify-end">
+                    <button onclick="document.getElementById('chapter-modal').classList.add('hidden')" class="px-4 py-2 text-sm font-bold text-slate-500 border rounded-lg hover:bg-slate-50">キャンセル</button>
+                    <button onclick="saveChapterModal()" class="px-4 py-2 text-sm font-bold bg-[#B8963E] text-white rounded-lg hover:bg-[#a07a30]"><i class="fas fa-save mr-1"></i>保存</button>
+                </div>
+            </div>
+        </div>
+
 </body>
 </html>
