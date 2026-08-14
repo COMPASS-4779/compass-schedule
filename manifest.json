@@ -1,6 +1,6 @@
 {
-  "name": "COMPASS式最短合格ルート",
-  "short_name": "COMPASS",
+  "name": "COMPASSスケジュール管理ソフト",
+  "short_name": "COMPASSスケジュール管理ソフト",
   "description": "COMPASS式スケジュール管理システム",
   "start_url": "/",
   "display": "standalone",
