@@ -2577,7 +2577,8 @@
             const currentPct = (((appData.currentWeek - 1) * 7 + (appData.currentDay - 1)) / (tw * 7)) * 100;
             if (currentPct >= 0 && currentPct <= 100) {
                 c.insertAdjacentHTML('beforeend', `
-                    <div class="absolute top-0 bottom-0 border-l-[1.5px] border-dashed border-red-500 z-10 pointer-events-none flex flex-col items-center" style="left: ${currentPct}%;">
+                    <div class="absolute top-0 bottom-0 z-10 pointer-events-none flex flex-col items-center"
+                         style="left: ${currentPct}%; width: 2px; margin-left: -1px; background-image: repeating-linear-gradient(to bottom, #EF4444 0, #EF4444 4px, transparent 4px, transparent 8px);">
                         <div class="bg-red-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full -mt-3 shadow-sm whitespace-nowrap">本日</div>
                     </div>
                 `);
@@ -2925,6 +2926,26 @@
             return { ps, as: Math.round(as * 10) / 10 };
         }
 
+        // カテゴリー別進捗の科目集約定義
+        // 数学・国語・英語・社会は大科目に集約。理科（物理/化学/生物/地学）は集約しない。
+        const CHART_GROUPS = {
+            math:     { label: '数学', hex: '#10B981', keys: ['math','math1','math2','math3','mathA','mathB','mathC'], kw: ['数学','算数'] },
+            japanese: { label: '国語', hex: '#F43F5E', keys: ['japanese','japanese_mod','japanese_cls'], kw: ['国語','現代文','古文','古典','漢文'] },
+            english:  { label: '英語', hex: '#3B82F6', keys: ['english','english_vocab','english_grammar'], kw: ['英語','英文法','英単語','英熟語','英文解釈','英語長文'] },
+            society:  { label: '社会', hex: '#8B5CF6', keys: ['society'], kw: ['社会','日本史','世界史','地理','公民','倫理','政治経済','政経'] }
+        };
+
+        // subjKey から所属する大科目グループのキーを返す。集約対象外なら null。
+        function getChartGroupKey(subjKey) {
+            const label = (SUBJ_CONFIG[subjKey] && SUBJ_CONFIG[subjKey].label) || subjKey || '';
+            for (const gk of Object.keys(CHART_GROUPS)) {
+                const g = CHART_GROUPS[gk];
+                if (g.keys.includes(subjKey)) return gk;
+                if (g.kw.some(w => label.includes(w) || String(subjKey).includes(w))) return gk;
+            }
+            return null;
+        }
+
         function renderCategoryChart(containerId, tasks) {
             const container = document.getElementById(containerId);
             const col = document.getElementById(containerId + '-col');
@@ -2937,19 +2958,29 @@
             if (tasks.length === 0) { if (col) col.style.display = 'none'; return; }
             if (col) col.style.display = 'flex';
 
-            // 科目別グループ化（表示順を保持）
+            // 大科目グループ化（数学/国語/英語/社会は集約、理科等は科目そのまま）
+            // 表示順は元の並びを保持。各グループ内は科目(subjKey)別に細分化する。
             const subjOrder = [];
             const subjectGroups = {};
             tasks.forEach(b => {
                 window._chartBooksMap[b.id] = b;
-                if (!subjectGroups[b.subjKey]) { subjectGroups[b.subjKey] = []; subjOrder.push(b.subjKey); }
-                subjectGroups[b.subjKey].push(b);
+                const gk = getChartGroupKey(b.subjKey);
+                const topKey = gk || b.subjKey;
+                if (!subjectGroups[topKey]) {
+                    const g = gk ? CHART_GROUPS[gk] : (SUBJ_CONFIG[b.subjKey] || { label: b.subjKey, hex: '#64748b' });
+                    subjectGroups[topKey] = { label: g.label, hex: g.hex, subs: {}, subOrder: [] };
+                    subjOrder.push(topKey);
+                }
+                const grp = subjectGroups[topKey];
+                if (!grp.subs[b.subjKey]) { grp.subs[b.subjKey] = []; grp.subOrder.push(b.subjKey); }
+                grp.subs[b.subjKey].push(b);
             });
 
             let html = '';
             subjOrder.forEach(sk => {
-                const books = subjectGroups[sk];
-                const conf = SUBJ_CONFIG[sk] || { label: sk, hex: '#64748b' };
+                const grp = subjectGroups[sk];
+                const books = grp.subOrder.flatMap(s => grp.subs[s]);
+                const conf = { label: grp.label, hex: grp.hex };
                 const hex = conf.hex;
 
                 // 科目合計
@@ -2971,7 +3002,32 @@
 
                 // 個別テキスト行
                 let booksHtml = `<div id="${groupId}" class="hidden px-3 pb-3 pt-1 border-t bg-slate-50 space-y-2">`;
-                books.forEach(b => {
+                grp.subOrder.forEach(subKey => {
+                const subBooks = grp.subs[subKey];
+                // 集約グループでは科目(数学I/数学A等)ごとの小計バーを挟む
+                if (grp.subOrder.length > 1 || subKey !== sk) {
+                    const sConf = SUBJ_CONFIG[subKey] || { label: subKey, hex: hex };
+                    let sCap = 0, sAs = 0, sPs = 0;
+                    subBooks.forEach(b => {
+                        const { ps, as } = _calcBookStats(b);
+                        sCap += b.total || 0; sAs += as; sPs += ps;
+                    });
+                    const sPPct = sCap > 0 ? Math.min(100, Math.round((sPs / sCap) * 100)) : 0;
+                    const sAPct = sCap > 0 ? Math.min(100, Math.round((sAs / sCap) * 100)) : 0;
+                    const sOk = sAPct >= sPPct;
+                    booksHtml += `
+                    <div class="flex items-center gap-2 pt-1">
+                        <span class="text-[10px] font-black shrink-0 w-14 truncate" style="color:${sConf.hex}">${sConf.label}</span>
+                        <div class="flex-1 relative h-2 bg-slate-200 rounded-full overflow-hidden">
+                            <div class="absolute inset-y-0 left-0 rounded-full bg-slate-300" style="width:${sPPct}%"></div>
+                            <div class="absolute inset-y-0 left-0 rounded-full transition-all" style="width:${sAPct}%;background:${sConf.hex}"></div>
+                        </div>
+                        <span class="text-[9px] font-black shrink-0" style="color:${sConf.hex}">${sAPct}%</span>
+                        <span class="text-[8px] text-slate-400 shrink-0">予${sPPct}%</span>
+                        <span class="text-[8px] font-black shrink-0 ${sOk ? 'text-green-600' : 'text-red-500'}">${sOk ? '順調' : '遅延'}</span>
+                    </div>`;
+                }
+                subBooks.forEach(b => {
                     const { ps, as } = _calcBookStats(b);
                     const bPct  = b.total > 0 ? Math.min(100, Math.round((as / b.total) * 100)) : 0;
                     const bPPct = b.total > 0 ? Math.min(100, Math.round((ps / b.total) * 100)) : 0;
@@ -3000,6 +3056,7 @@
                             <span>実${bPct}% 予${bPPct}%</span>
                         </div>
                     </div>`;
+                });
                 });
                 booksHtml += '</div>';
 
