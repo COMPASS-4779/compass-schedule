@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="32" fill="#0A1628"/>
+  <circle cx="96" cy="96" r="60" fill="none" stroke="#B8963E" stroke-width="8"/>
+  <circle cx="96" cy="96" r="6" fill="#B8963E"/>
+  <line x1="96" y1="36" x2="96" y2="56" stroke="#B8963E" stroke-width="6" stroke-linecap="round"/>
+  <line x1="96" y1="136" x2="96" y2="156" stroke="#B8963E" stroke-width="6" stroke-linecap="round"/>
+  <line x1="36" y1="96" x2="56" y2="96" stroke="#B8963E" stroke-width="6" stroke-linecap="round"/>
+  <line x1="136" y1="96" x2="156" y2="96" stroke="#B8963E" stroke-width="6" stroke-linecap="round"/>
+  <polygon points="96,50 88,90 96,96 104,90" fill="#B8963E"/>
+  <polygon points="96,142 104,102 96,96 88,102" fill="#ffffff" opacity="0.6"/>
+  <text x="96" y="175" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#B8963E">COMPASS</text>
+</svg>
