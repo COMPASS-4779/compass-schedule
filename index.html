@@ -124,6 +124,21 @@
                             </div>
                         </div>
                         <p class="text-[10px] text-slate-400">※年間予定表から自動判定された「休日」や「長期休暇」に休日時間が適用されます。</p>
+
+                        <h3 class="text-sm font-bold text-slate-700 pt-2">週の稼働日数</h3>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">1週間に学習する日数</label>
+                            <select id="setup-days-per-week" class="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-[#B8963E]">
+                                <option value="1">週1日</option>
+                                <option value="2">週2日</option>
+                                <option value="3">週3日</option>
+                                <option value="4">週4日</option>
+                                <option value="5" selected>週5日（平日のみ）</option>
+                                <option value="6">週6日</option>
+                                <option value="7">週7日（毎日）</option>
+                            </select>
+                        </div>
+                        <p class="text-[10px] text-slate-400">※1日あたりの必要量・今日／今週の範囲・進捗率の算出に使われます。</p>
                     </div>
 
                     <div class="space-y-4">
@@ -1286,6 +1301,13 @@
             physics: { label: '物理', hex: '#D97706' }
         };
 
+        // 週の稼働日数（1〜7）。未設定は5日。
+        // 1日あたりの必要量・今日／今週の範囲・進捗率の算出に使う。
+        function getDaysPerWeek() {
+            const v = parseInt(appData?.settings?.daysPerWeek);
+            return (v >= 1 && v <= 7) ? v : 5;
+        }
+
         const PRESET_BOOKS = [];
         let pIdCounter = 1;
 
@@ -1418,7 +1440,7 @@
                 appData = data;
                 currentUser = id;
                 if (!appData.settings) {
-                    appData.settings = { studyTimeWeekday: 120, studyTimeHoliday: 360, testPrepRatio: { "2w": 70, "1w": 100 } };
+                    appData.settings = { studyTimeWeekday: 120, studyTimeHoliday: 360, daysPerWeek: 5, testPrepRatio: { "2w": 70, "1w": 100 } };
                 }
                 if (!appData.customSubjects) appData.customSubjects = [];
 
@@ -1888,6 +1910,11 @@
         
             appData.settings = {
                 studyTimeWeekday: parseInt(document.getElementById('setup-time-weekday').value) || 120,
+                daysPerWeek: (function(){
+                    const el = document.getElementById('setup-days-per-week');
+                    const v = el ? parseInt(el.value) : 5;
+                    return (v >= 1 && v <= 7) ? v : 5;
+                })(),
                 studyTimeHoliday: parseInt(document.getElementById('setup-time-holiday').value) || 360,
                 testPrepRatio: {
                     "2w": parseInt(document.getElementById('setup-ratio-2w').value),
@@ -2082,7 +2109,7 @@
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
                     // 提出期限まで残り日数（endW週の金曜日基準、週末はday=5として計算）
-                    const hwCurrentDay = Math.min(appData.currentDay, 5);
+                    const hwCurrentDay = Math.min(appData.currentDay, getDaysPerWeek());
                     const hwDaysToDeadline = (b.endW - appData.currentWeek) * 7 + (5 - hwCurrentDay);
                     const hwIsSubmitted = !!(appData.progress && appData.progress[b.id + '_submitted']);
                     // 条件: 行事・テスト以外のisOneOff、期限8日前〜期限当日まで表示（startWの開始前でも表示）
@@ -2092,7 +2119,7 @@
                         const val = parseFloat(appData.progress[key]) || 0;
                         const target = b.total;
                         const pct = Math.min(100, Math.round((val / target) * 100));
-                        const deadlineDate = getActualDate(b.endW, 5);
+                        const deadlineDate = getActualDate(b.endW, getDaysPerWeek());
 
                         // 🔧 [Cowork変更②] 復習タスクは専用カード（完了ボタン付き）、通常宿題は既存カード
                         if (b.isReviewTask) {
@@ -2208,7 +2235,7 @@
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
                     // 日々タスク：完了済み（残量ゼロ）は非表示。期限切れでも残量ありなら表示
-                    const examExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > 5);
+                    const examExpired = b.endW < appData.currentWeek || (b.endW === appData.currentWeek && appData.currentDay > getDaysPerWeek());
                     const _bAdj = appData.progressAdjust && appData.progressAdjust[b.id];
                     const _bDone = (_bAdj !== undefined && _bAdj !== null) ? _bAdj :
                         Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
@@ -2743,7 +2770,7 @@
                     const _tAdj = appData.progressAdjust && appData.progressAdjust[b.id];
                     const _tDone = (_tAdj !== undefined && _tAdj !== null) ? _tAdj :
                         Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
-                    const _tOverdue = appData.currentWeek > b.endW || (appData.currentWeek === b.endW && appData.currentDay > 5);
+                    const _tOverdue = appData.currentWeek > b.endW || (appData.currentWeek === b.endW && appData.currentDay > getDaysPerWeek());
                     const _tShow = !b.isEvent && appData.currentWeek >= b.startW && _tDone < b.total && (!_tOverdue || _tDone < b.total);
                     if(_tShow) {
                         const ranges2 = calcBookRanges(b);
@@ -2862,7 +2889,7 @@
 
                     // 本日の実績計算
                     if(appData.currentWeek >= b.startW && appData.currentWeek <= b.endW && !b.isEvent) {
-                        const target = b.isOneOff ? b.total : Math.ceil(b.total / ((b.endW - b.startW + 1) * 5));
+                        const target = b.isOneOff ? b.total : Math.ceil(b.total / ((b.endW - b.startW + 1) * getDaysPerWeek()));
                         if (target > 0) {
                             const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                             const val = parseFloat(appData.progress[key]) || 0;
@@ -2910,8 +2937,9 @@
             if (appData.currentWeek > b.endW) {
                 ps = b.total;
             } else if (appData.currentWeek >= b.startW) {
-                const totalDays = (b.endW - b.startW + 1) * 5;
-                const passedDays = (appData.currentWeek - b.startW) * 5 + Math.min(appData.currentDay, 5);
+                const _dpw = getDaysPerWeek();
+                const totalDays = (b.endW - b.startW + 1) * _dpw;
+                const passedDays = (appData.currentWeek - b.startW) * _dpw + Math.min(appData.currentDay, _dpw);
                 ps = Math.round(b.total * (passedDays / totalDays));
             }
             let as = 0;
@@ -3396,10 +3424,13 @@
                             : 'bg-white text-slate-500 border border-slate-200 hover:bg-slate-50');
 
                     const isHoliday = checkIfHoliday(w, d);
-                    const title = isHoliday ? '休日/復習' : `Day ${(weekOffset * 7) + d}`;
+                    // 稼働日数の設定を超える曜日は「稼働日外」として薄く表示する
+                    const isOffDay = d > getDaysPerWeek();
+                    const title = isOffDay ? '稼働日外' : (isHoliday ? '休日/復習' : `Day ${(weekOffset * 7) + d}`);
+                    const offClass = (isOffDay && !isActive) ? ' opacity-40' : '';
 
                     tabs.innerHTML += `
-                        <button onclick="changeDayAndWeek(${w}, ${d})" class="flex-shrink-0 flex flex-col items-center justify-center min-w-[80px] px-3 py-2 rounded-xl transition shadow-sm ${activeClass}">
+                        <button onclick="changeDayAndWeek(${w}, ${d})" class="flex-shrink-0 flex flex-col items-center justify-center min-w-[80px] px-3 py-2 rounded-xl transition shadow-sm ${activeClass}${offClass}">
                             <span class="text-[10px] font-bold opacity-80 mb-1">${dateStr} (${dayName})</span>
                             <span class="text-xs font-black">${title}</span>
                         </button>
@@ -3498,7 +3529,7 @@
             }
 
             // 期限切れ・残量ありの場合：残量を全部今日の目標として表示
-            const isOverdue = currentWeek > b.endW || (currentWeek === b.endW && currentDay > 5);
+            const isOverdue = currentWeek > b.endW || (currentWeek === b.endW && currentDay > getDaysPerWeek());
             if (isOverdue && remaining > 0) {
                 const todayStart = Math.min(b.total, Math.floor(totalDone) + 1);
                 return {
@@ -3510,12 +3541,13 @@
             }
 
             // カレンダー選択日ベースでスケジュール上の範囲を計算
-            const totalScheduledDays = Math.max(1, (b.endW - b.startW + 1) * 5);
+            const _dpw = getDaysPerWeek();
+            const totalScheduledDays = Math.max(1, (b.endW - b.startW + 1) * _dpw);
             const ipd = b.total / totalScheduledDays; // items per day
 
-            const dayIdx       = (currentWeek - b.startW) * 5 + (currentDay - 1); // 0始まり
-            const weekDayStart = (currentWeek - b.startW) * 5;
-            const weekDayEnd   = weekDayStart + 4;
+            const dayIdx       = (currentWeek - b.startW) * _dpw + Math.min(currentDay - 1, _dpw - 1); // 0始まり
+            const weekDayStart = (currentWeek - b.startW) * _dpw;
+            const weekDayEnd   = weekDayStart + (_dpw - 1);
 
             const todayStart = Math.max(1, Math.floor(dayIdx * ipd) + 1);
             const todayEnd   = Math.min(b.total, Math.ceil((dayIdx + 1) * ipd));
@@ -3630,6 +3662,8 @@
                 }
                 if (appData.settings) {
                     document.getElementById('setup-time-weekday').value = appData.settings.studyTimeWeekday || 120;
+                    const _dpwEl = document.getElementById('setup-days-per-week');
+                    if (_dpwEl) _dpwEl.value = getDaysPerWeek();
                     document.getElementById('setup-time-holiday').value = appData.settings.studyTimeHoliday || 360;
                     document.getElementById('setup-ratio-2w').value = appData.settings.testPrepRatio?.['2w'] || 70;
                     document.getElementById('setup-ratio-1w').value = appData.settings.testPrepRatio?.['1w'] || 100;
