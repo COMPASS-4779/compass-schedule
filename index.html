@@ -1301,6 +1301,42 @@
             physics: { label: '物理', hex: '#D97706' }
         };
 
+        // サーバーから受け取ったデータに欠けているキーを補う。
+        // progress 等が undefined のままだと実績入力時に例外となり、
+        // saveData() まで到達せず入力が保存されない。
+        function normalizeAppData(d) {
+            if (!d || typeof d !== 'object') d = {};
+            if (typeof d.progress       !== 'object' || d.progress       === null) d.progress = {};
+            if (typeof d.progressAdjust !== 'object' || d.progressAdjust === null) d.progressAdjust = {};
+            if (typeof d.curriculum     !== 'object' || d.curriculum     === null) d.curriculum = {};
+            if (!Array.isArray(d.testResults))    d.testResults = [];
+            if (!Array.isArray(d.unitRecords))    d.unitRecords = [];
+            if (!Array.isArray(d.customPresets))  d.customPresets = [];
+            if (!Array.isArray(d.hiddenPresets))  d.hiddenPresets = [];
+            if (!Array.isArray(d.customSubjects)) d.customSubjects = [];
+            if (!Array.isArray(d.ganttRowOrder))  d.ganttRowOrder = [];
+            if (!d.currentWeek) d.currentWeek = 1;
+            if (!d.currentDay)  d.currentDay  = 1;
+            return d;
+        }
+
+        // 教材の実績合計（progressAdjust があればそちらを優先）
+        function getBookDone(b) {
+            const adj = appData.progressAdjust && appData.progressAdjust[b.id];
+            if (adj !== undefined && adj !== null) return parseFloat(adj) || 0;
+            return Object.keys(appData.progress || {})
+                .filter(k => k.startsWith(b.id + '_W'))
+                .reduce((sum, k) => sum + (parseFloat(appData.progress[k]) || 0), 0);
+        }
+
+        // 週間トラッカー／本日の達成率の対象となる教材か
+        // （表示条件と集計条件を一致させ、入力しても達成率に反映されない状態を防ぐ）
+        function isTrackedToday(b) {
+            if (b.isEvent) return false;
+            if (appData.currentWeek < b.startW) return false;
+            return getBookDone(b) < b.total;
+        }
+
         // 週の稼働日数（1〜7）。未設定は5日。
         // 1日あたりの必要量・今日／今週の範囲・進捗率の算出に使う。
         function getDaysPerWeek() {
@@ -1433,8 +1469,7 @@
                     Object.keys(SUBJ_CONFIG).forEach(k => data.curriculum[k] = []);
                 }
 
-                if(!data.customPresets) data.customPresets = [];
-                if(!data.hiddenPresets) data.hiddenPresets = [];
+                data = normalizeAppData(data);
                 data.password = pass; 
 
                 appData = data;
@@ -1519,7 +1554,40 @@
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
-            }).catch(e => console.error("DB保存エラー:", e));
+            })
+            .then(res => {
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                showSaveStatus(true);
+            })
+            .catch(e => {
+                console.error("DB保存エラー:", e);
+                showSaveStatus(false, e.message);
+            });
+        }
+
+        // サーバー保存の成否を画面右下に表示する。
+        // 失敗に気付かないままログインし直すと入力が失われるため、明示的に警告する。
+        function showSaveStatus(ok, msg) {
+            let el = document.getElementById('save-status-toast');
+            if (!el) {
+                el = document.createElement('div');
+                el.id = 'save-status-toast';
+                el.style.cssText = 'position:fixed;right:16px;bottom:16px;z-index:9999;'
+                    + 'padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700;'
+                    + 'box-shadow:0 4px 12px rgba(0,0,0,.15);transition:opacity .3s;';
+                document.body.appendChild(el);
+            }
+            clearTimeout(el._t);
+            el.style.opacity = '1';
+            if (ok) {
+                el.style.cssText += 'background:#ECFDF5;color:#047857;border:1px solid #6EE7B7;';
+                el.textContent = '保存しました';
+                el._t = setTimeout(() => { el.style.opacity = '0'; }, 1500);
+            } else {
+                el.style.cssText += 'background:#FEF2F2;color:#B91C1C;border:1px solid #FCA5A5;';
+                el.textContent = '⚠ サーバーに保存できませんでした（' + (msg || '通信エラー')
+                    + '）。この端末には一時保存されています。通信を確認してください。';
+            }
         }
 
         /**
@@ -2767,12 +2835,7 @@
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
                     // 🌟 行事(isEvent)は今日のタスク入力欄から除外。期限切れでも残量ありなら表示
-                    const _tAdj = appData.progressAdjust && appData.progressAdjust[b.id];
-                    const _tDone = (_tAdj !== undefined && _tAdj !== null) ? _tAdj :
-                        Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
-                    const _tOverdue = appData.currentWeek > b.endW || (appData.currentWeek === b.endW && appData.currentDay > getDaysPerWeek());
-                    const _tShow = !b.isEvent && appData.currentWeek >= b.startW && _tDone < b.total && (!_tOverdue || _tDone < b.total);
-                    if(_tShow) {
+                    if (isTrackedToday(b)) {
                         const ranges2 = calcBookRanges(b);
                         const { target, todayStart, todayEnd, weekStart, weekEnd, isOverdue: tOverdue } = ranges2;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
@@ -2801,6 +2864,7 @@
         }
 
         function updateProg(id, v) {
+            if (!appData.progress || typeof appData.progress !== 'object') appData.progress = {};
             const k = `${id}_W${appData.currentWeek}_D${appData.currentDay}`;
             if(v !== "") appData.progress[k] = v; else delete appData.progress[k];
             saveData();
@@ -2888,8 +2952,9 @@
                     }
 
                     // 本日の実績計算
-                    if(appData.currentWeek >= b.startW && appData.currentWeek <= b.endW && !b.isEvent) {
-                        const target = b.isOneOff ? b.total : Math.ceil(b.total / ((b.endW - b.startW + 1) * getDaysPerWeek()));
+                    // 期限超過でも残量があればトラッカーに表示されるため、集計対象に含める
+                    if (isTrackedToday(b)) {
+                        const target = b.isOneOff ? b.total : (calcBookRanges(b).target || 0);
                         if (target > 0) {
                             const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                             const val = parseFloat(appData.progress[key]) || 0;
