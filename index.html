@@ -1469,6 +1469,9 @@
                     Object.keys(SUBJ_CONFIG).forEach(k => data.curriculum[k] = []);
                 }
 
+                appData = appData || {};
+                currentUser = id;
+                data = offerLocalRecovery(data);
                 data = normalizeAppData(data);
                 data.password = pass; 
 
@@ -1546,23 +1549,66 @@
 
 
         // 📌 [SECTION-DATA] ===== データ永続化 =====
+        // サーバー保存。Promise を返すので、確実に保存したい操作では await できる。
         function saveData() {
-            if(!currentUser) return;
-            localStorage.setItem(`compass_user_${currentUser}`, JSON.stringify(appData));
-            const payload = { action: 'save', id: currentUser, data: appData };
-            fetch(`${API_BASE_URL}/api`, { 
+            if(!currentUser) return Promise.resolve(false);
+
+            // 端末バックアップ。サーバー保存に失敗した場合の復旧元になる。
+            appData.updatedAt = Date.now();
+            try {
+                localStorage.setItem(`compass_user_${currentUser}`, JSON.stringify(appData));
+            } catch (e) {
+                console.error("ローカル保存エラー:", e);
+            }
+
+            const body = JSON.stringify({ action: 'save', id: currentUser, data: appData });
+            return fetch(`${API_BASE_URL}/api`, { 
                 method: 'POST', 
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: body
             })
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 showSaveStatus(true);
+                return true;
             })
             .catch(e => {
-                console.error("DB保存エラー:", e);
-                showSaveStatus(false, e.message);
+                console.error("DB保存エラー:", e, `payload=${(body.length/1024).toFixed(1)}KB`);
+                showSaveStatus(false, `${e.message} / 送信量 ${(body.length/1024).toFixed(0)}KB`);
+                return false;
             });
+        }
+
+        // サーバーのデータより端末バックアップが新しい場合に復元を促す。
+        // サーバー保存が失敗していた場合でも、直前の入力を救済できるようにする。
+        function offerLocalRecovery(serverData) {
+            let local = null;
+            try {
+                const raw = localStorage.getItem(`compass_user_${currentUser}`);
+                if (raw) local = JSON.parse(raw);
+            } catch (e) { return serverData; }
+
+            if (!local || !local.updatedAt) return serverData;
+            const serverAt = serverData && serverData.updatedAt ? serverData.updatedAt : 0;
+            if (local.updatedAt <= serverAt) return serverData;
+
+            const d = new Date(local.updatedAt);
+            const stamp = `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+            const ok = confirm(
+                `この端末に、サーバーへ保存されていない変更が残っています（最終更新 ${stamp}）。
+
+` +
+                `章・節の設定や日々の実績が含まれている可能性があります。
+` +
+                `この端末の内容を復元しますか？
+
+` +
+                `[OK] 端末の内容を使う　/　[キャンセル] サーバーの内容を使う`
+            );
+            if (!ok) return serverData;
+
+            local.password = serverData ? serverData.password : local.password;
+            return local;
         }
 
         // サーバー保存の成否を画面右下に表示する。
@@ -3658,10 +3704,23 @@
                     return name ? { name, startPage } : null;
                 }
             }).filter(Boolean);
-            saveData();
-            document.getElementById('chapter-modal').classList.add('hidden');
-            renderDashboard();
-            renderTracker();
+
+            // 保存結果を確認してから閉じる。失敗時はモーダルを開いたままにして
+            // 入力内容が失われたことに気付けるようにする。
+            const btn = document.querySelector('#chapter-modal button[onclick="saveChapterModal()"]');
+            const btnHtml = btn ? btn.innerHTML : null;
+            if (btn) { btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i>保存中...'; }
+
+            saveData().then(ok => {
+                if (btn) { btn.disabled = false; if (btnHtml) btn.innerHTML = btnHtml; }
+                if (!ok) {
+                    alert('サーバーに保存できませんでした。\n通信状態を確認して、もう一度「保存」を押してください。\n（入力内容はこの画面に残っています）');
+                    return;
+                }
+                document.getElementById('chapter-modal').classList.add('hidden');
+                renderDashboard();
+                renderTracker();
+            });
         }
         
 
