@@ -28,6 +28,19 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.middleware("http")
+async def no_store_cache(request: Request, call_next):
+    """API応答をブラウザにキャッシュさせない。
+    Cache-Control が無いと GET /api?action=login が再利用され、
+    保存済みの内容ではなく古い状態が読み込まれることがある。"""
+    response = await call_next(request)
+    if request.url.path.startswith("/api") or request.url.path == "/health":
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+    return response
+
+
 def get_db():
     db = SessionLocal()
     try:

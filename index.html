@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V6</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V7</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1477,8 +1477,11 @@
 
             try {
                 // 1. API(Render)からユーザー取得を試みる
-                const url = `${API_BASE_URL}/api?action=login&id=${encodeURIComponent(id)}&pass=${encodeURIComponent(pass)}`;
-                const res = await fetch(url);
+                // キャッシュされた古い応答を読み込むと、保存済みの内容ではなく
+                // 以前の状態が復元されてしまうため無効化する
+                const url = `${API_BASE_URL}/api?action=login&id=${encodeURIComponent(id)}`
+                    + `&pass=${encodeURIComponent(pass)}&_=${Date.now()}`;
+                const res = await fetch(url, { cache: 'no-store' });
                 const json = await res.json();
 
                 let data = null;
@@ -1674,9 +1677,12 @@
 
             const url = `${API_BASE_URL}/api?action=login`
                 + `&id=${encodeURIComponent(currentUser)}`
-                + `&pass=${encodeURIComponent(appData.password)}`;
+                + `&pass=${encodeURIComponent(appData.password)}`
+                + `&_=${Date.now()}`;
             setTimeout(() => {
-                fetch(url)
+                // まだ保存が続いている間は状態が変わるため判定しない（誤検知防止）
+                if (_saveInFlight || _savePending) return;
+                fetch(url, { cache: 'no-store' })
                     .then(r => r.json())
                     .then(json => {
                         const saved = json && json.success ? json.appData : null;
@@ -1726,7 +1732,8 @@
             })
             .then(() => fetch(`${API_BASE_URL}/api?action=login`
                 + `&id=${encodeURIComponent(currentUser)}`
-                + `&pass=${encodeURIComponent(appData.password)}`))
+                + `&pass=${encodeURIComponent(appData.password)}`
+                + `&_=${Date.now()}`, { cache: 'no-store' }))
             .then(r => r.json())
             .then(json => {
                 const saved = json && json.success ? json.appData : null;
@@ -3767,6 +3774,28 @@
             sessionStorage.clear();
             location.reload();
         }
+
+        // タブを閉じる・非表示になる直前に、未送信の保存を投げておく。
+        // keepalive 付きなのでページが破棄されても送信は継続される。
+        function flushOnLeave() {
+            if (!currentUser || !_savePending) return;
+            _savePending = false;
+            try {
+                const body = JSON.stringify({ action: 'save', id: currentUser, data: appData });
+                if (body.length < 60000) {
+                    fetch(`${API_BASE_URL}/api`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: body,
+                        keepalive: true
+                    }).catch(() => {});
+                }
+            } catch (e) { /* 離脱時なので握りつぶす */ }
+        }
+        window.addEventListener('pagehide', flushOnLeave);
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'hidden') flushOnLeave();
+        });
 
         // 送信中・保留中の保存がすべて片付くまで待つ
         async function flushPendingSaves() {
