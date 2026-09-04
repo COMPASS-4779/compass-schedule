@@ -1337,6 +1337,41 @@
             return getBookDone(b) < b.total;
         }
 
+        // profile.startDate を起点に、日付が週内の何日目(1〜7)かを返す
+        function dateStrToDayOfWeekIdx(dateStr) {
+            if (!dateStr || !appData.profile || !appData.profile.startDate) return null;
+            const base = new Date(appData.profile.startDate);
+            const t    = new Date(dateStr);
+            const diff = Math.round((t - base) / 86400000);
+            if (isNaN(diff) || diff < 0) return null;
+            return (diff % 7) + 1;
+        }
+
+        // 教材のスケジュール範囲。startW/endW は週単位しか持たないため、
+        // actualStartDate / actualEndDate があれば週内の開始・終了日も加味する。
+        // これが無いと、週の途中から始まる教材が「その週の初日から開始」と
+        // 扱われ、初日なのに途中の範囲が課題として表示されてしまう。
+        function getBookSchedule(b) {
+            const dpw = getDaysPerWeek();
+            const clamp = d => Math.min(Math.max(d || 1, 1), dpw) - 1;
+            const startDay = dateStrToDayOfWeekIdx(b.actualStartDate);
+            const endDay   = dateStrToDayOfWeekIdx(b.actualEndDate);
+            const startOffset = clamp(startDay || 1);
+            const endOffset   = (b.endW - b.startW) * dpw + clamp(endDay || dpw);
+            return {
+                dpw, startOffset,
+                endOffset: Math.max(endOffset, startOffset),
+                totalScheduledDays: Math.max(1, Math.max(endOffset, startOffset) - startOffset + 1)
+            };
+        }
+
+        // 指定の週・日が、教材の開始からみて何稼働日目か（0始まり）
+        function bookDayIndex(b, week, day, sch) {
+            sch = sch || getBookSchedule(b);
+            const abs = (week - b.startW) * sch.dpw + Math.min(Math.max(day, 1), sch.dpw) - 1;
+            return abs - sch.startOffset;
+        }
+
         // 週の稼働日数（1〜7）。未設定は5日。
         // 1日あたりの必要量・今日／今週の範囲・進捗率の算出に使う。
         function getDaysPerWeek() {
@@ -1477,6 +1512,11 @@
 
                 appData = data;
                 currentUser = id;
+                if (appData._needsResync) {
+                    delete appData._needsResync;
+                    // 復元した内容をサーバーへ書き戻し、次回以降の確認を不要にする
+                    saveData();
+                }
                 if (!appData.settings) {
                     appData.settings = { studyTimeWeekday: 120, studyTimeHoliday: 360, daysPerWeek: 5, testPrepRatio: { "2w": 70, "1w": 100 } };
                 }
@@ -1608,6 +1648,7 @@
             if (!ok) return serverData;
 
             local.password = serverData ? serverData.password : local.password;
+            local._needsResync = true;   // ログイン処理の最後にサーバーへ再送する
             return local;
         }
 
@@ -3048,9 +3089,10 @@
             if (appData.currentWeek > b.endW) {
                 ps = b.total;
             } else if (appData.currentWeek >= b.startW) {
-                const _dpw = getDaysPerWeek();
-                const totalDays = (b.endW - b.startW + 1) * _dpw;
-                const passedDays = (appData.currentWeek - b.startW) * _dpw + Math.min(appData.currentDay, _dpw);
+                const _sch = getBookSchedule(b);
+                const totalDays = _sch.totalScheduledDays;
+                const passedDays = Math.min(totalDays,
+                    Math.max(0, bookDayIndex(b, appData.currentWeek, appData.currentDay, _sch) + 1));
                 ps = Math.round(b.total * (passedDays / totalDays));
             }
             let as = 0;
@@ -3652,18 +3694,31 @@
             }
 
             // カレンダー選択日ベースでスケジュール上の範囲を計算
-            const _dpw = getDaysPerWeek();
-            const totalScheduledDays = Math.max(1, (b.endW - b.startW + 1) * _dpw);
+            // 週内の開始日・終了日を考慮するため getBookSchedule を用いる
+            const sch = getBookSchedule(b);
+            const _dpw = sch.dpw;
+            const totalScheduledDays = sch.totalScheduledDays;
             const ipd = b.total / totalScheduledDays; // items per day
 
-            const dayIdx       = (currentWeek - b.startW) * _dpw + Math.min(currentDay - 1, _dpw - 1); // 0始まり
-            const weekDayStart = (currentWeek - b.startW) * _dpw;
-            const weekDayEnd   = weekDayStart + (_dpw - 1);
+            const dayIdx = Math.min(
+                Math.max(0, bookDayIndex(b, currentWeek, currentDay, sch)),
+                totalScheduledDays - 1
+            );
+            // 表示中の週のうち、実際に稼働する範囲だけを「今週」とする
+            const weekAbsStart = (currentWeek - b.startW) * _dpw;
+            const weekDayStart = Math.max(sch.startOffset, weekAbsStart) - sch.startOffset;
+            const weekDayEnd   = Math.min(sch.endOffset, weekAbsStart + _dpw - 1) - sch.startOffset;
 
-            const todayStart = Math.max(1, Math.floor(dayIdx * ipd) + 1);
-            const todayEnd   = Math.min(b.total, Math.ceil((dayIdx + 1) * ipd));
-            const weekStart  = Math.max(1, Math.floor(weekDayStart * ipd) + 1);
-            const weekEnd    = Math.min(b.total, Math.ceil((weekDayEnd + 1) * ipd));
+            // 区間の境界は floor で揃える。ceil を使うと前日の終わりと
+            // 当日の始まりが 1 問重複する。最終日は必ず b.total で終わらせる。
+            const bound = i => Math.min(b.total, Math.floor(i * ipd));
+            const isLastDay  = dayIdx      >= totalScheduledDays - 1;
+            const isLastWeek = weekDayEnd  >= totalScheduledDays - 1;
+
+            const todayStart = Math.max(1, bound(dayIdx) + 1);
+            const todayEnd   = isLastDay ? b.total : Math.max(todayStart, bound(dayIdx + 1));
+            const weekStart  = Math.max(1, bound(Math.max(0, weekDayStart)) + 1);
+            const weekEnd    = isLastWeek ? b.total : Math.max(weekStart, bound(Math.max(0, weekDayEnd) + 1));
             const target     = Math.max(1, todayEnd - todayStart + 1);
             const remainingDays = Math.max(1, totalScheduledDays - Math.max(0, dayIdx));
 
