@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V7</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V8</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1628,14 +1628,11 @@
         function _postAppData(retry) {
             retry = retry || 0;
             const body = JSON.stringify({ action: 'save', id: currentUser, data: appData });
-            // 64KB 未満なら keepalive を付け、ページ遷移で中断されないようにする
-            const useKeepalive = body.length < 60000;
             const sentAt = appData.updatedAt;
             return fetch(`${API_BASE_URL}/api`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: body,
-                keepalive: useKeepalive
+                body: body
             })
             .then(res => {
                 if (res.status === 409) {
@@ -1659,8 +1656,16 @@
             })
             .catch(e => {
                 console.error("DB保存エラー:", e, `payload=${(body.length/1024).toFixed(1)}KB`);
-                recordSaveError(`${e.message} / 送信量 ${(body.length/1024).toFixed(0)}KB`);
-                showSaveStatus(false, `${e.message} / 送信量 ${(body.length/1024).toFixed(0)}KB`);
+                // 一時的な通信断でも Failed to fetch になるため、間隔を空けて再試行する
+                if (retry < 3) {
+                    const wait = 1000 * Math.pow(2, retry);   // 1秒 → 2秒 → 4秒
+                    showSaveStatus(false, { full:
+                        `保存を再試行しています（${retry + 1}回目）… ${e.message}` });
+                    return new Promise(r => setTimeout(r, wait)).then(() => _postAppData(retry + 1));
+                }
+                const detail = `${e.message} / 送信量 ${(body.length/1024).toFixed(0)}KB`;
+                recordSaveError(detail);
+                showSaveStatus(false, detail);
                 return false;
             });
         }
@@ -3765,7 +3770,8 @@
                     btns.forEach(b => { b.disabled = true; b.textContent = '保存中...'; });
                     await Promise.race([
                         flushPendingSaves(),
-                        new Promise(r => setTimeout(r, 8000))   // 保険。無限に待たない
+                        // 再試行（1秒→2秒→4秒）を含めても待ちきれる長さにする
+                        new Promise(r => setTimeout(r, 15000))
                     ]);
                 }
             } catch (e) {
@@ -3782,7 +3788,8 @@
             _savePending = false;
             try {
                 const body = JSON.stringify({ action: 'save', id: currentUser, data: appData });
-                if (body.length < 60000) {
+                // keepalive は本文合計 64KB までのため、余裕をみて 50KB 未満に限る
+                if (body.length < 50000) {
                     fetch(`${API_BASE_URL}/api`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
