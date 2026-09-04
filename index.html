@@ -1610,6 +1610,7 @@
             .then(res => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 showSaveStatus(true);
+                verifySavePersisted(appData.updatedAt);
                 return true;
             })
             .catch(e => {
@@ -1617,6 +1618,36 @@
                 showSaveStatus(false, `${e.message} / 送信量 ${(body.length/1024).toFixed(0)}KB`);
                 return false;
             });
+        }
+
+        // 保存後にサーバーから読み戻し、本当に永続化されたか確認する。
+        // 200 が返っても保存されていない場合があり、それに気付けないと
+        // 次回ログインで入力が失われるため。過剰な通信を避けて間引く。
+        let _lastVerifyAt = 0;
+        function verifySavePersisted(expectedUpdatedAt) {
+            const now = Date.now();
+            if (now - _lastVerifyAt < 30000) return;   // 30秒に1回まで
+            _lastVerifyAt = now;
+            if (!currentUser || !appData.password) return;
+
+            const url = `${API_BASE_URL}/api?action=login`
+                + `&id=${encodeURIComponent(currentUser)}`
+                + `&pass=${encodeURIComponent(appData.password)}`;
+            setTimeout(() => {
+                fetch(url)
+                    .then(r => r.json())
+                    .then(json => {
+                        const saved = json && json.success ? json.appData : null;
+                        const savedAt = saved && saved.updatedAt ? saved.updatedAt : 0;
+                        if (savedAt < expectedUpdatedAt) {
+                            showSaveStatus(false, { full:
+                                'サーバーに保存が反映されていません。保存APIは成功を返していますが、'
+                                + '読み戻すと内容が更新されていません。サーバー側の不具合です。'
+                                + 'この端末には保存されているため、次回ログイン時に復元できます。' });
+                        }
+                    })
+                    .catch(() => { /* 検証自体の失敗は通知しない */ });
+            }, 1200);
         }
 
         // サーバーのデータより端末バックアップが新しい場合に復元を促す。
@@ -1645,7 +1676,14 @@
 ` +
                 `[OK] 端末の内容を使う　/　[キャンセル] サーバーの内容を使う`
             );
-            if (!ok) return serverData;
+            if (!ok) {
+                // サーバー優先を選んだので端末バックアップも揃える。
+                // そうしないと次回ログインでも同じ確認が出続ける。
+                try {
+                    localStorage.setItem(`compass_user_${currentUser}`, JSON.stringify(serverData || {}));
+                } catch (e) { /* 保存できなくても致命的ではない */ }
+                return serverData;
+            }
 
             local.password = serverData ? serverData.password : local.password;
             local._needsResync = true;   // ログイン処理の最後にサーバーへ再送する
@@ -1672,8 +1710,10 @@
                 el._t = setTimeout(() => { el.style.opacity = '0'; }, 1500);
             } else {
                 el.style.cssText += 'background:#FEF2F2;color:#B91C1C;border:1px solid #FCA5A5;';
-                el.textContent = '⚠ サーバーに保存できませんでした（' + (msg || '通信エラー')
-                    + '）。この端末には一時保存されています。通信を確認してください。';
+                el.textContent = msg && msg.full
+                    ? '⚠ ' + msg.full
+                    : '⚠ サーバーに保存できませんでした（' + (msg || '通信エラー')
+                      + '）。この端末には一時保存されています。通信を確認してください。';
             }
         }
 
