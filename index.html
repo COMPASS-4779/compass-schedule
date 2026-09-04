@@ -1592,6 +1592,12 @@
 
         // 📌 [SECTION-DATA] ===== データ永続化 =====
         // サーバー保存。Promise を返すので、確実に保存したい操作では await できる。
+        //
+        // 保存は必ず1件ずつ直列に送る。並行して投げると、古いスナップショットを
+        // 持つリクエストが後から到着して新しい内容を上書きし、入力が失われる。
+        let _saveInFlight = null;   // 送信中の Promise
+        let _savePending  = false;  // 送信中に追加の保存要求があったか
+
         function saveData() {
             if(!currentUser) return Promise.resolve(false);
 
@@ -1603,16 +1609,45 @@
                 console.error("ローカル保存エラー:", e);
             }
 
+            // 送信中なら、完了後に最新状態で1回だけ送り直す
+            if (_saveInFlight) {
+                _savePending = true;
+                return _saveInFlight;
+            }
+            _saveInFlight = _postAppData().then(ok => {
+                _saveInFlight = null;
+                if (_savePending) { _savePending = false; return saveData(); }
+                return ok;
+            });
+            return _saveInFlight;
+        }
+
+        function _postAppData(retry) {
+            retry = retry || 0;
             const body = JSON.stringify({ action: 'save', id: currentUser, data: appData });
-            return fetch(`${API_BASE_URL}/api`, { 
-                method: 'POST', 
+            const sentAt = appData.updatedAt;
+            return fetch(`${API_BASE_URL}/api`, {
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: body
             })
             .then(res => {
+                if (res.status === 409) {
+                    // サーバーにより新しい内容がある。最新時刻で送り直す。
+                    // 端末時計のずれ等で繰り返す場合があるため上限を設ける。
+                    if (retry >= 2) {
+                        showSaveStatus(false, { full:
+                            'サーバー側に、より新しいデータがあるため保存できませんでした。'
+                            + '別の端末で更新された可能性があります。'
+                            + '画面を再読み込みして最新の状態を確認してください。' });
+                        return false;
+                    }
+                    appData.updatedAt = Date.now();
+                    return _postAppData(retry + 1);
+                }
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 showSaveStatus(true);
-                verifySavePersisted(appData.updatedAt);
+                verifySavePersisted(sentAt);
                 return true;
             })
             .catch(e => {

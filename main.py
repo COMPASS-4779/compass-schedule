@@ -123,6 +123,29 @@ async def api_post_handler(request: Request, db: Session = Depends(get_db)):
         if not user:
             # 200 で返すとクライアントが保存成功と誤認し、入力が失われる
             raise HTTPException(status_code=404, detail="ユーザーが見つかりません。")
+        # 古いスナップショットによる上書きを防ぐ。
+        # 保存リクエストが並行・順不同で届くと、後から着いた古い内容が
+        # 新しい内容を消してしまうため、updatedAt を比較して拒否する。
+        incoming_at = 0
+        if isinstance(app_data, dict):
+            try:
+                incoming_at = int(app_data.get("updatedAt") or 0)
+            except (TypeError, ValueError):
+                incoming_at = 0
+        stored_at = 0
+        if user.data:
+            try:
+                stored = json.loads(user.data)
+                stored_at = int(stored.get("updatedAt") or 0) if isinstance(stored, dict) else 0
+            except (ValueError, TypeError):
+                stored_at = 0
+
+        if incoming_at and stored_at and incoming_at < stored_at:
+            raise HTTPException(
+                status_code=409,
+                detail="サーバー側により新しいデータがあります。最新の状態で保存し直してください。",
+            )
+
         try:
             user.data = json.dumps(app_data, ensure_ascii=False)
             db.commit()
