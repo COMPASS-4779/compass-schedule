@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V5</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V6</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1625,11 +1625,14 @@
         function _postAppData(retry) {
             retry = retry || 0;
             const body = JSON.stringify({ action: 'save', id: currentUser, data: appData });
+            // 64KB 未満なら keepalive を付け、ページ遷移で中断されないようにする
+            const useKeepalive = body.length < 60000;
             const sentAt = appData.updatedAt;
             return fetch(`${API_BASE_URL}/api`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: body
+                body: body,
+                keepalive: useKeepalive
             })
             .then(res => {
                 if (res.status === 409) {
@@ -1646,12 +1649,14 @@
                     return _postAppData(retry + 1);
                 }
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                clearSaveError();
                 showSaveStatus(true);
                 verifySavePersisted(sentAt);
                 return true;
             })
             .catch(e => {
                 console.error("DB保存エラー:", e, `payload=${(body.length/1024).toFixed(1)}KB`);
+                recordSaveError(`${e.message} / 送信量 ${(body.length/1024).toFixed(0)}KB`);
                 showSaveStatus(false, `${e.message} / 送信量 ${(body.length/1024).toFixed(0)}KB`);
                 return false;
             });
@@ -1685,6 +1690,23 @@
                     })
                     .catch(() => { /* 検証自体の失敗は通知しない */ });
             }, 1200);
+        }
+
+        // 直近の保存失敗を端末に残す。次回ログイン時の復元確認で原因を提示するため。
+        function recordSaveError(msg) {
+            try {
+                localStorage.setItem(`compass_saveerr_${currentUser}`,
+                    JSON.stringify({ at: Date.now(), msg: msg }));
+            } catch (e) { /* 記録できなくても致命的ではない */ }
+        }
+        function readSaveError() {
+            try {
+                const raw = localStorage.getItem(`compass_saveerr_${currentUser}`);
+                return raw ? JSON.parse(raw) : null;
+            } catch (e) { return null; }
+        }
+        function clearSaveError() {
+            try { localStorage.removeItem(`compass_saveerr_${currentUser}`); } catch (e) {}
         }
 
         // 保存 → 読み戻しを1往復して、保存機能が生きているか判定する。
@@ -1747,10 +1769,15 @@
                 return `${x.getMonth()+1}/${x.getDate()} `
                     + `${String(x.getHours()).padStart(2,'0')}:${String(x.getMinutes()).padStart(2,'0')}`;
             };
+            const err = readSaveError();
+            const errLine = err
+                ? '　前回の失敗理由: ' + err.msg + '\n'
+                : '';
             const ok = confirm(
                 'この端末に、サーバーへ保存されていない変更が残っています。\n\n'
                 + '　この端末　: ' + fmt(local.updatedAt) + '\n'
-                + '　サーバー　: ' + fmt(serverAt) + '\n\n'
+                + '　サーバー　: ' + fmt(serverAt) + '\n'
+                + errLine + '\n'
                 + '章・節の設定や日々の実績が含まれている可能性があります。\n'
                 + 'この端末の内容を復元しますか？\n\n'
                 + '[OK] 端末の内容を使う　/　[キャンセル] サーバーの内容を使う'
@@ -3721,7 +3748,33 @@
         function changeDay(d) { changeDayAndWeek(appData.currentWeek, d); }
         function adjustWeek(v) { appData.currentWeek = Math.max(1, appData.currentWeek + v); renderDayTabs(); renderTracker(); updateProgress(); initChart(); }
         function goToToday() { syncCurrentDate(); renderDayTabs(); renderTracker(); updateProgress(); if (typeof renderTodaysTaskWindow === 'function') renderTodaysTaskWindow(); }
-        function executeLogout() { sessionStorage.clear(); location.reload(); }
+        // 送信中の保存を待ってからログアウトする。
+        // 即座に reload すると通信が中断され、サーバーへ保存されないまま
+        // 端末側だけが新しい状態になり、次回ログインで復元確認が出る。
+        async function executeLogout() {
+            try {
+                if (_saveInFlight || _savePending) {
+                    const btns = document.querySelectorAll('[onclick="executeLogout()"]');
+                    btns.forEach(b => { b.disabled = true; b.textContent = '保存中...'; });
+                    await Promise.race([
+                        flushPendingSaves(),
+                        new Promise(r => setTimeout(r, 8000))   // 保険。無限に待たない
+                    ]);
+                }
+            } catch (e) {
+                console.error('ログアウト前の保存に失敗:', e);
+            }
+            sessionStorage.clear();
+            location.reload();
+        }
+
+        // 送信中・保留中の保存がすべて片付くまで待つ
+        async function flushPendingSaves() {
+            while (_saveInFlight || _savePending) {
+                await _saveInFlight;
+                if (!_savePending) break;
+            }
+        }
 
         // ===== 章節ヘルパー =====
         function lookupChapter(chapters, item) {
