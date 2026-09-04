@@ -1517,6 +1517,8 @@
                     // 復元した内容をサーバーへ書き戻し、次回以降の確認を不要にする
                     saveData();
                 }
+                // 保存が本当にサーバーへ反映されるかを毎回ログイン時に確認する
+                setTimeout(runSaveSelfTest, 2500);
                 if (!appData.settings) {
                     appData.settings = { studyTimeWeekday: 120, studyTimeHoliday: 360, daysPerWeek: 5, testPrepRatio: { "2w": 70, "1w": 100 } };
                 }
@@ -1650,6 +1652,47 @@
             }, 1200);
         }
 
+        // 保存 → 読み戻しを1往復して、保存機能が生きているか判定する。
+        // 「保存できているつもりで消える」状態を利用者と切り分けるための自己診断。
+        function runSaveSelfTest() {
+            if (!currentUser || !appData.password) return;
+            const stamp = Date.now();
+            appData.updatedAt = stamp;
+            fetch(`${API_BASE_URL}/api`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action: 'save', id: currentUser, data: appData })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error(`保存API HTTP ${res.status}`);
+                return new Promise(r => setTimeout(r, 1500));
+            })
+            .then(() => fetch(`${API_BASE_URL}/api?action=login`
+                + `&id=${encodeURIComponent(currentUser)}`
+                + `&pass=${encodeURIComponent(appData.password)}`))
+            .then(r => r.json())
+            .then(json => {
+                const saved = json && json.success ? json.appData : null;
+                if (!saved) throw new Error('読み戻しでデータを取得できません');
+                if (!saved.updatedAt) {
+                    showSaveStatus(false, { full:
+                        '診断結果: サーバーが保存内容を保持していません（updatedAt が返りません）。'
+                        + 'サーバー側の保存処理の不具合です。入力はこの端末に保存されます。' });
+                } else if (saved.updatedAt < stamp) {
+                    showSaveStatus(false, { full:
+                        '診断結果: サーバーへの書き込みが反映されていません'
+                        + `（サーバー側は ${new Date(saved.updatedAt).toLocaleString('ja-JP')} のまま）。`
+                        + 'サーバー側の保存処理の不具合です。入力はこの端末に保存されます。' });
+                } else {
+                    console.log('保存の自己診断: 正常');
+                }
+            })
+            .catch(e => {
+                showSaveStatus(false, { full: '診断結果: ' + e.message
+                    + '。サーバーに保存できていません。入力はこの端末に保存されます。' });
+            });
+        }
+
         // サーバーのデータより端末バックアップが新しい場合に復元を促す。
         // サーバー保存が失敗していた場合でも、直前の入力を救済できるようにする。
         function offerLocalRecovery(serverData) {
@@ -1663,18 +1706,19 @@
             const serverAt = serverData && serverData.updatedAt ? serverData.updatedAt : 0;
             if (local.updatedAt <= serverAt) return serverData;
 
-            const d = new Date(local.updatedAt);
-            const stamp = `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+            const fmt = t => {
+                if (!t) return 'サーバー側に保存記録なし';
+                const x = new Date(t);
+                return `${x.getMonth()+1}/${x.getDate()} `
+                    + `${String(x.getHours()).padStart(2,'0')}:${String(x.getMinutes()).padStart(2,'0')}`;
+            };
             const ok = confirm(
-                `この端末に、サーバーへ保存されていない変更が残っています（最終更新 ${stamp}）。
-
-` +
-                `章・節の設定や日々の実績が含まれている可能性があります。
-` +
-                `この端末の内容を復元しますか？
-
-` +
-                `[OK] 端末の内容を使う　/　[キャンセル] サーバーの内容を使う`
+                'この端末に、サーバーへ保存されていない変更が残っています。\n\n'
+                + '　この端末　: ' + fmt(local.updatedAt) + '\n'
+                + '　サーバー　: ' + fmt(serverAt) + '\n\n'
+                + '章・節の設定や日々の実績が含まれている可能性があります。\n'
+                + 'この端末の内容を復元しますか？\n\n'
+                + '[OK] 端末の内容を使う　/　[キャンセル] サーバーの内容を使う'
             );
             if (!ok) {
                 // サーバー優先を選んだので端末バックアップも揃える。
