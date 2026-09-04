@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Depends, Query, Request, UploadFile, File
+from fastapi import FastAPI, Depends, Query, Request, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import models, schemas
-from database import engine, SessionLocal
+from database import engine, SessionLocal, DB_BACKEND, IS_EPHEMERAL_DB
 import json
 import google.generativeai as genai
 from pydantic import BaseModel
@@ -76,6 +76,26 @@ def delete_user(user_id: str, db: Session = Depends(get_db)):
         return {"success": True, "message": "削除しました"}
     return {"success": False, "message": "ユーザーが見つかりません"}
 
+@app.get("/health")
+def health(db: Session = Depends(get_db)):
+    """DBの種別と保存状況を返す。データ消失の切り分け用。認証情報は含めない。"""
+    try:
+        user_count = db.query(models.User).count()
+        saved_count = db.query(models.User).filter(models.User.data.isnot(None)).count()
+    except Exception as e:
+        return {"db_backend": DB_BACKEND, "error": str(e)}
+    return {
+        "db_backend": DB_BACKEND,
+        "persistent": not IS_EPHEMERAL_DB,
+        "users": user_count,
+        "users_with_data": saved_count,
+        "warning": (
+            "DATABASE_URL が未設定のため SQLite を使用しています。"
+            "Render では再起動やインスタンスごとにデータが失われます。"
+        ) if IS_EPHEMERAL_DB else None,
+    }
+
+
 # --- ログイン・保存系 API ---
 @app.get("/api")
 def api_get_handler(action: str, id: str, password: str = Query(alias="pass"), folderId: str = None, db: Session = Depends(get_db)):
@@ -100,11 +120,18 @@ async def api_post_handler(request: Request, db: Session = Depends(get_db)):
 
     if action == "save":
         user = db.query(models.User).filter(models.User.user_id == user_id).first()
-        if user:
+        if not user:
+            # 200 で返すとクライアントが保存成功と誤認し、入力が失われる
+            raise HTTPException(status_code=404, detail="ユーザーが見つかりません。")
+        try:
             user.data = json.dumps(app_data, ensure_ascii=False)
             db.commit()
-            return {"success": True, "message": "保存完了しました！"}
-        return {"success": False, "message": "ユーザーが見つかりません。"}
+        except Exception as e:
+            db.rollback()
+            raise HTTPException(status_code=500, detail=f"保存に失敗しました: {e}")
+        return {"success": True, "message": "保存完了しました！"}
+
+    raise HTTPException(status_code=400, detail=f"不明な action: {action}")
 
 # --- AI画像解析系 API ---
 @app.post("/api/analyze-test")

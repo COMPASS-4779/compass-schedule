@@ -20,3 +20,13 @@ else:
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
+
+# 使用中のDB種別。SQLiteの場合、Renderではインスタンスごとに別ファイルとなり
+# 再起動でも消えるため、保存したデータが失われる。起動時に警告を出す。
+DB_BACKEND = "sqlite" if SQLALCHEMY_DATABASE_URL.startswith("sqlite") else "postgresql"
+IS_EPHEMERAL_DB = DB_BACKEND == "sqlite"
+
+if IS_EPHEMERAL_DB:
+    print("!!! 警告: DATABASE_URL が未設定のため SQLite を使用しています。", flush=True)
+    print("!!! Render ではインスタンスごとに別ファイルとなり、再起動で消えます。", flush=True)
+    print("!!! 保存データが失われます。DATABASE_URL に PostgreSQL を設定してください。", flush=True)
