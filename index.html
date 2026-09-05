@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V10</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V11</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2853,18 +2853,33 @@
             if (label) label.textContent = '×' + (_ganttScale % 1 === 0 ? _ganttScale : _ganttScale.toFixed(1));
         }
 
-        // ロードマップの並び順：科目カテゴリー順 → 科目内は登録順（新規追加は末尾）
-        const GANTT_SUBJ_ORDER = [
-            'english', 'english_grammar', 'english_vocab',
-            'math', 'math1', 'mathA', 'math2', 'mathB', 'math3', 'mathC',
-            'japanese', 'japanese_mod', 'japanese_cls',
-            'science', 'physics', 'chemistry',
-            'society'
+        // ロードマップの並び順（科目カテゴリー）
+        // 数学 → 物理 → 化学 → その他理科 → 英語 → 現代文 → 古典 → 社会 → その他
+        // 科目キーが SUBJ_CONFIG に無い自由入力（英熟語・古文読解など）にも
+        // 対応するため、キー一致に加えてラベルのキーワードでも判定する。
+        const GANTT_SUBJ_GROUPS = [
+            { keys: ['math','math1','mathA','math2','mathB','math3','mathC'],
+              kw: ['数学','算数'] },
+            { keys: ['physics'], kw: ['物理'] },
+            { keys: ['chemistry'], kw: ['化学'] },
+            { keys: ['science'], kw: ['生物','地学','理科'] },
+            { keys: ['english','english_grammar','english_vocab'],
+              kw: ['英語','英文法','英単語','英熟語','英文解釈','英語長文','英作文','リスニング'] },
+            { keys: ['japanese_mod','japanese'], kw: ['現代文','評論','小説','国語'] },
+            { keys: ['japanese_cls'], kw: ['古典','古文','漢文'] },
+            { keys: ['society'], kw: ['社会','日本史','世界史','地理','公民','倫理','政治経済','政経'] }
         ];
+
         function ganttSubjRank(sk) {
-            const i = GANTT_SUBJ_ORDER.indexOf(sk);
-            return i === -1 ? GANTT_SUBJ_ORDER.length : i;
+            const label = (SUBJ_CONFIG[sk] && SUBJ_CONFIG[sk].label) || sk || '';
+            for (let i = 0; i < GANTT_SUBJ_GROUPS.length; i++) {
+                const g = GANTT_SUBJ_GROUPS[i];
+                if (g.keys.includes(sk)) return i;
+                if (g.kw.some(w => label.includes(w) || String(sk).includes(w))) return i;
+            }
+            return GANTT_SUBJ_GROUPS.length;
         }
+
         // 科目内は開始日順。遅延で開始がずれた場合はその予定に従う。
         function ganttStartIdx(b) {
             if (!b.isEvent && !b.isOneOff) {
@@ -2876,7 +2891,7 @@
         function ganttTaskComparator(a, b) {
             const ra = ganttSubjRank(a.subjKey), rb = ganttSubjRank(b.subjKey);
             if (ra !== rb) return ra - rb;
-            if (a.subjKey !== b.subjKey) return String(a.subjKey).localeCompare(String(b.subjKey));
+            // 同じカテゴリー内（英文法・英単語・英熟語など）は開始日順にまとめる
             const sa = ganttStartIdx(a), sb = ganttStartIdx(b);
             if (sa !== sb) return sa - sb;
             return (a._orderIdx || 0) - (b._orderIdx || 0);
@@ -2941,6 +2956,13 @@
                 const _pr = (!b.isEvent && !b.isOneOff) ? getProjection(b) : null;
                 const _sW = _pr ? weekDayFromAbsIdx(_pr.projStart).week : b.startW;
                 const _eW = _pr ? weekDayFromAbsIdx(_pr.projEnd).week   : b.endW;
+                // 原設定（教材の調整画面で入力した期間）
+                const _osW = _pr ? weekDayFromAbsIdx(_pr.origStart).week : b.startW;
+                const _oeW = _pr ? weekDayFromAbsIdx(_pr.origEnd).week   : b.endW;
+                const _shifted = _pr && (_pr.projStart !== _pr.origStart || _pr.projEnd !== _pr.origEnd);
+                let ol = Math.max(0, Math.min(100, ((_osW - 1) / tw) * 100));
+                let oEndPct = Math.max(0, Math.min(100, (_oeW / tw) * 100));
+                let ow = Math.max(1, oEndPct - ol);
                 let l = ((_sW - 1) / tw) * 100;
                 let endPct = (_eW / tw) * 100;
                 l = Math.max(0, Math.min(100, l));
@@ -2972,6 +2994,10 @@
                         dateLabel = startDateStr;
                     }
                     tooltipText = `📅 ${dateLabel}`;
+                } else if (_shifted) {
+                    const _os = _fmtDate(weekDayFromAbsIdx(_pr.origStart).date);
+                    const _oe = _fmtDate(weekDayFromAbsIdx(_pr.origEnd).date);
+                    tooltipText = `設定 ${_os} 〜 ${_oe} ／ 遅れ反映 ${startDateStr} 〜 ${endDateStr}`;
                 } else {
                     tooltipText = `📅 ${startDateStr} 〜 ${endDateStr}`;
                 }
@@ -2993,6 +3019,8 @@
                         </div>
                     </div>
                     <div class="relative w-full h-2 bg-slate-100 rounded-full">
+                        ${_shifted ? `<div class="absolute h-full rounded-full" title="設定した期間"
+                             style="left:${ol}%; width:${ow}%; border:1px dashed ${barColor}; opacity:0.5;"></div>` : ''}
                         <div class="absolute h-full rounded-full transition-all duration-700 shadow-sm" style="left:${l}%; width:${w}%; background-color:${barColor}"></div>
                         <div class="absolute bottom-full left-0 mb-2 flex opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 pointer-events-none">
                             <span class="bg-slate-800 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap">
