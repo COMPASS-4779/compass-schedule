@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V8</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V9</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1333,8 +1333,10 @@
         // （表示条件と集計条件を一致させ、入力しても達成率に反映されない状態を防ぐ）
         function isTrackedToday(b) {
             if (b.isEvent) return false;
-            if (appData.currentWeek < b.startW) return false;
-            return getBookDone(b) < b.total;
+            if (getBookDone(b) >= b.total) return false;
+            // 遅延で開始が後ろへずれた教材は、その日が来るまで表示しない
+            const today = absIdxFromWeekDay(appData.currentWeek, appData.currentDay);
+            return today >= getProjection(b).projStart;
         }
 
         // profile.startDate を起点に、日付が週内の何日目(1〜7)かを返す
@@ -1370,6 +1372,140 @@
             sch = sch || getBookSchedule(b);
             const abs = (week - b.startW) * sch.dpw + Math.min(Math.max(day, 1), sch.dpw) - 1;
             return abs - sch.startOffset;
+        }
+
+        // ===== 遅延を反映した予定の再計算 =====
+        // 原設定（開始日・終了日・総量）はそのまま保持し、実績に応じて
+        // 「本日やるべき範囲」「延びた終了日」「後続教材の開始日」を都度算出する。
+        // profile.startDate を起点とした通し稼働日インデックス（0始まり）で扱う。
+
+        function absIdxFromWeekDay(week, day) {
+            const dpw = getDaysPerWeek();
+            const d = Math.min(Math.max(day || 1, 1), dpw);
+            return (week - 1) * dpw + (d - 1);
+        }
+
+        function absIdxFromDate(dateStr) {
+            if (!dateStr || !appData.profile || !appData.profile.startDate) return null;
+            const base = new Date(appData.profile.startDate);
+            const t = new Date(dateStr);
+            const diff = Math.round((t - base) / 86400000);
+            if (isNaN(diff)) return null;
+            const w = Math.floor(Math.max(0, diff) / 7) + 1;
+            const d = (Math.max(0, diff) % 7) + 1;
+            return absIdxFromWeekDay(w, d);
+        }
+
+        // 通し稼働日インデックス → { week, day, date }
+        function weekDayFromAbsIdx(idx) {
+            const dpw = getDaysPerWeek();
+            const i = Math.max(0, Math.round(idx));
+            const week = Math.floor(i / dpw) + 1;
+            const day  = (i % dpw) + 1;
+            return { week, day, date: weekNumToDateStr(week, day) };
+        }
+
+        // 原設定に基づく計画（1日あたりの分量はここで固定する）
+        function getBookPlan(b) {
+            const dpw = getDaysPerWeek();
+            let origStart = b.actualStartDate ? absIdxFromDate(b.actualStartDate) : null;
+            if (origStart === null || origStart === undefined) origStart = absIdxFromWeekDay(b.startW, 1);
+            let origEnd = b.actualEndDate ? absIdxFromDate(b.actualEndDate) : null;
+            if (origEnd === null || origEnd === undefined) origEnd = absIdxFromWeekDay(b.endW, dpw);
+            origEnd = Math.max(origEnd, origStart);
+            const plannedDays = Math.max(1, origEnd - origStart + 1);
+            return { origStart, origEnd, plannedDays, dailyQty: (b.total || 0) / plannedDays };
+        }
+
+        // 原設定の1日あたり分量（表示・繰り越し計算用に整数化）
+        function getBookDailyQty(b) {
+            return Math.max(1, Math.round(getBookPlan(b).dailyQty));
+        }
+
+        // 科目ごとに遅延を伝播させた予定を算出する。
+        // 遅れた教材は終了日が延び、同じ科目の後続教材の開始日も同じ日数だけ後ろへずれる。
+        let _projCache = null;
+        function invalidateProjection() { _projCache = null; }
+
+        function getProjectedSchedules() {
+            if (_projCache) return _projCache;
+            const today = absIdxFromWeekDay(appData.currentWeek, appData.currentDay);
+            const out = {};
+
+            // 遅延は大科目単位で伝播させる（数学IIの遅れは数学B＋ベクトルへ）。
+            // 物理・化学のように独立した科目は、getChartGroupKey が null を返すため
+            // 科目キー単位のままとなり、互いに影響しない。
+            const chains = {};
+            Object.keys(appData.curriculum || {}).forEach(sk => {
+                const chainKey = getChartGroupKey(sk) || sk;
+                if (!chains[chainKey]) chains[chainKey] = [];
+                (appData.curriculum[sk] || []).forEach((b, i) => {
+                    if (b.isEvent || b.isOneOff) return;
+                    chains[chainKey].push({ b, i, plan: getBookPlan(b) });
+                });
+            });
+
+            Object.keys(chains).forEach(chainKey => {
+                const list = chains[chainKey]
+                    .sort((x, y) => (x.plan.origStart - y.plan.origStart) || (x.i - y.i));
+
+                // shift: 直前までの教材の遅れ（次に始まる教材へ引き継ぐ日数）
+                // 元々期間が重なっている教材（並行して進めるもの）には適用しない。
+                // 適用するのは、前の教材が終わってから始まる予定だったものだけ。
+                let shift = 0;
+                let prevOrigEnd = -Infinity;
+
+                list.forEach(({ b, plan }) => {
+                    const done = getBookDone(b);
+                    const remaining = Math.max(0, (b.total || 0) - done);
+
+                    const isSequential = plan.origStart > prevOrigEnd;
+                    const applied = isSequential ? shift : 0;
+
+                    const projStart = plan.origStart + applied;
+                    const baseEnd   = plan.origEnd + applied;
+                    let projEnd = baseEnd;
+
+                    if (remaining > 0) {
+                        const daily = Math.max(1, plan.dailyQty);
+                        const daysNeeded = Math.max(1, Math.ceil(remaining / daily));
+                        // 開始前ならその開始日から、開始後なら本日から数え直す
+                        const from = Math.max(projStart, today);
+                        projEnd = Math.max(baseEnd, from + daysNeeded - 1);
+                    }
+
+                    out[b.id] = {
+                        origStart: plan.origStart, origEnd: plan.origEnd,
+                        projStart, projEnd,
+                        plannedDays: plan.plannedDays,
+                        dailyQty: plan.dailyQty,
+                        delayDays: projEnd - plan.origEnd,
+                        shiftedDays: applied,
+                        done, remaining
+                    };
+
+                    // 次に始まる教材へ引き継ぐ遅れ（並行教材のうち最も遅いものに合わせる）
+                    shift = Math.max(shift, projEnd - plan.origEnd);
+                    prevOrigEnd = Math.max(prevOrigEnd, plan.origEnd);
+                });
+            });
+
+            _projCache = out;
+            return out;
+        }
+
+        // 教材1件分の予定。対象外（行事・単発）の場合は原設定をそのまま返す。
+        function getProjection(b) {
+            const all = getProjectedSchedules();
+            if (all[b.id]) return all[b.id];
+            const plan = getBookPlan(b);
+            return {
+                origStart: plan.origStart, origEnd: plan.origEnd,
+                projStart: plan.origStart, projEnd: plan.origEnd,
+                plannedDays: plan.plannedDays, dailyQty: plan.dailyQty,
+                delayDays: 0, shiftedDays: 0,
+                done: getBookDone(b), remaining: Math.max(0, (b.total||0) - getBookDone(b))
+            };
         }
 
         // 週の稼働日数（1〜7）。未設定は5日。
@@ -2261,6 +2397,7 @@
         }
 
         function renderDashboard() {
+            invalidateProjection();   // 描画のたびに遅延反映を計算し直す
             cleanupCompletedReviewTasks();
             syncCurrentDate();
             if (appData.profile) {
@@ -2396,6 +2533,7 @@
 
         // 📌 [SECTION-TODAY] ===== 今日の集中タスク =====
       function renderTodaysTaskWindow() {
+            invalidateProjection();   // 描画のたびに遅延反映を計算し直す
             const container = document.getElementById('dash-today-task-container');
             const modeBadge = document.getElementById('dash-today-mode-badge');
             const dateLabel = document.getElementById('dash-focused-date-label'); // 🌟 追加
@@ -2712,7 +2850,27 @@
             if (label) label.textContent = '×' + (_ganttScale % 1 === 0 ? _ganttScale : _ganttScale.toFixed(1));
         }
 
+        // ロードマップの並び順：科目カテゴリー順 → 科目内は登録順（新規追加は末尾）
+        const GANTT_SUBJ_ORDER = [
+            'english', 'english_grammar', 'english_vocab',
+            'math', 'math1', 'mathA', 'math2', 'mathB', 'math3', 'mathC',
+            'japanese', 'japanese_mod', 'japanese_cls',
+            'science', 'physics', 'chemistry',
+            'society'
+        ];
+        function ganttSubjRank(sk) {
+            const i = GANTT_SUBJ_ORDER.indexOf(sk);
+            return i === -1 ? GANTT_SUBJ_ORDER.length : i;
+        }
+        function ganttTaskComparator(a, b) {
+            const ra = ganttSubjRank(a.subjKey), rb = ganttSubjRank(b.subjKey);
+            if (ra !== rb) return ra - rb;
+            if (a.subjKey !== b.subjKey) return String(a.subjKey).localeCompare(String(b.subjKey));
+            return (a._orderIdx || 0) - (b._orderIdx || 0);
+        }
+
         function renderGantt() {
+            invalidateProjection();   // 描画のたびに遅延反映を計算し直す
             const c = document.getElementById('dash-gantt-container'); 
             if (!c) return;
             c.innerHTML = '';
@@ -2744,9 +2902,10 @@
 
             // 全データを適切なグループに振り分け
             Object.keys(appData.curriculum).forEach(sk => {
-                appData.curriculum[sk].forEach(b => {
+                appData.curriculum[sk].forEach((b, _idx) => {
                     b.subjKey = sk;
-                    
+                    b._orderIdx = _idx;   // 科目内の登録順（新規追加は末尾）
+
                     if (b.isEvent) {
                         groups.event.tasks.push(b);
                     } else if (b.isOneOff) {
@@ -2764,8 +2923,12 @@
 
            const drawBar = (b, overrideHex = null) => {
                 const hex = overrideHex || SUBJ_CONFIG[b.subjKey]?.hex || "#64748b";
-                let l = ((b.startW - 1) / tw) * 100;
-                let endPct = (b.endW / tw) * 100;
+                // 遅延を反映した予定でバーを描く（原設定ではなく延長後の期間）
+                const _pr = (!b.isEvent && !b.isOneOff) ? getProjection(b) : null;
+                const _sW = _pr ? weekDayFromAbsIdx(_pr.projStart).week : b.startW;
+                const _eW = _pr ? weekDayFromAbsIdx(_pr.projEnd).week   : b.endW;
+                let l = ((_sW - 1) / tw) * 100;
+                let endPct = (_eW / tw) * 100;
                 l = Math.max(0, Math.min(100, l));
                 endPct = Math.max(0, Math.min(100, endPct));
                 let w = endPct - l;
@@ -2775,8 +2938,12 @@
 
                 // 🔧 [Cowork変更①] ポップアップを「期間」表示から「日付」表示に変更
                 const _fmtDate = s => { const d = new Date(s); return `${d.getMonth()+1}/${d.getDate()}`; };
-                const startDateStr = b.actualStartDate ? _fmtDate(b.actualStartDate) : getActualDate(b.startW, 1);
-                const endDateStr   = b.actualEndDate   ? _fmtDate(b.actualEndDate)   : getActualDate(b.endW, 7);
+                const startDateStr = _pr
+                    ? _fmtDate(weekDayFromAbsIdx(_pr.projStart).date)
+                    : (b.actualStartDate ? _fmtDate(b.actualStartDate) : getActualDate(b.startW, 1));
+                const endDateStr = _pr
+                    ? _fmtDate(weekDayFromAbsIdx(_pr.projEnd).date)
+                    : (b.actualEndDate ? _fmtDate(b.actualEndDate) : getActualDate(b.endW, 7));
                 // isOneOff（宿題・テスト・行事）は単日表示
                 //   deadline フィールドがある → M/D 形式に変換して表示
                 //   deadline がない既存データ → startW から計算した日付を表示
@@ -2865,7 +3032,8 @@
                 ["test", "homework", "exam", "event"].forEach(key => {
                     const g = groups[key];
                     if (g.tasks.length === 0) return;
-                    g.tasks.sort((a, b) => a.startW - b.startW);
+                    // カテゴリー別進捗と同じ科目順で並べ、科目内は登録順（新規は末尾）
+                    g.tasks.sort(ganttTaskComparator);
 
                     const active   = _ganttFocusMode ? g.tasks.filter(t => isActive(t))  : g.tasks;
                     const inactive = _ganttFocusMode ? g.tasks.filter(t => !isActive(t)) : [];
@@ -3076,6 +3244,7 @@
 
         // 📌 [SECTION-TRACKER] ===== 週間トラッカー =====
         function renderTracker() {
+            invalidateProjection();   // 描画のたびに遅延反映を計算し直す
             const grid = document.getElementById('dash-tracker-columns'); grid.innerHTML = '';
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
@@ -3102,6 +3271,14 @@
                                 <span class="text-xs font-bold text-slate-400">${b.unit}</span>
                             </div>
                             <div class="text-[10px] ${tOverdue?'text-red-500':'text-[#B8963E]'} mt-2 font-bold italic">本日目標: ${target}${b.unit}${tOverdue?' (期限超過・残量)':''}</div>
+                            ${(() => {
+                                const _d = getProjection(b);
+                                if (!_d || _d.delayDays <= 0) return '';
+                                const _e = weekDayFromAbsIdx(_d.projEnd).date;
+                                const _ed = new Date(_e);
+                                return `<div class="text-[10px] text-orange-600 font-bold mt-0.5">`
+                                     + `<i class="fas fa-clock mr-1"></i>${_d.delayDays}日遅れ → 終了予定 ${_ed.getMonth()+1}/${_ed.getDate()}</div>`;
+                            })()}
                         </div>`;
                     }
                 });
@@ -3110,6 +3287,7 @@
 
         function updateProg(id, v) {
             if (!appData.progress || typeof appData.progress !== 'object') appData.progress = {};
+            invalidateProjection();
             const k = `${id}_W${appData.currentWeek}_D${appData.currentDay}`;
             if(v !== "") appData.progress[k] = v; else delete appData.progress[k];
             saveData();
@@ -3174,6 +3352,7 @@
 
         // 📌 [SECTION-PROGRESS] ===== 進捗計算 =====
         function updateProgress() {
+            invalidateProjection();   // 描画のたびに遅延反映を計算し直す
             let hwTotal = 0, hwAchieved = 0;
             let testTotal = 0, testAchieved = 0;
             let examTotal = 0, examAchieved = 0;
@@ -3901,36 +4080,26 @@
                 };
             }
 
-            // カレンダー選択日ベースでスケジュール上の範囲を計算
-            // 週内の開始日・終了日を考慮するため getBookSchedule を用いる
-            const sch = getBookSchedule(b);
-            const _dpw = sch.dpw;
-            const totalScheduledDays = sch.totalScheduledDays;
-            const ipd = b.total / totalScheduledDays; // items per day
+            // 実績ベースで本日の範囲を決める。
+            // 前日までの未実施分は消えず、そのまま本日の予定として繰り越される。
+            // 1日あたりの分量は原設定のまま固定し、終了日を延ばす方針。
+            const _dpw = getDaysPerWeek();
+            const proj = getProjection(b);
+            const daily = Math.max(1, Math.round(proj.dailyQty));
 
-            const dayIdx = Math.min(
-                Math.max(0, bookDayIndex(b, currentWeek, currentDay, sch)),
-                totalScheduledDays - 1
-            );
-            // 表示中の週のうち、実際に稼働する範囲だけを「今週」とする
-            const weekAbsStart = (currentWeek - b.startW) * _dpw;
-            const weekDayStart = Math.max(sch.startOffset, weekAbsStart) - sch.startOffset;
-            const weekDayEnd   = Math.min(sch.endOffset, weekAbsStart + _dpw - 1) - sch.startOffset;
+            const todayStart = Math.min(b.total, Math.floor(totalDone) + 1);
+            const todayEnd   = Math.min(b.total, Math.floor(totalDone) + daily);
 
-            // 区間の境界は floor で揃える。ceil を使うと前日の終わりと
-            // 当日の始まりが 1 問重複する。最終日は必ず b.total で終わらせる。
-            const bound = i => Math.min(b.total, Math.floor(i * ipd));
-            const isLastDay  = dayIdx      >= totalScheduledDays - 1;
-            const isLastWeek = weekDayEnd  >= totalScheduledDays - 1;
+            // 今週＝本日を含む、その週の残り稼働日ぶん
+            const daysLeftThisWeek = Math.max(1, _dpw - Math.min(currentDay, _dpw) + 1);
+            const weekStart = todayStart;
+            const weekEnd   = Math.min(b.total, Math.floor(totalDone) + daily * daysLeftThisWeek);
 
-            const todayStart = Math.max(1, bound(dayIdx) + 1);
-            const todayEnd   = isLastDay ? b.total : Math.max(todayStart, bound(dayIdx + 1));
-            const weekStart  = Math.max(1, bound(Math.max(0, weekDayStart)) + 1);
-            const weekEnd    = isLastWeek ? b.total : Math.max(weekStart, bound(Math.max(0, weekDayEnd) + 1));
-            const target     = Math.max(1, todayEnd - todayStart + 1);
-            const remainingDays = Math.max(1, totalScheduledDays - Math.max(0, dayIdx));
+            const target = Math.max(1, todayEnd - todayStart + 1);
+            const remainingDays = Math.max(1, Math.ceil(remaining / daily));
 
-            return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays, totalDone, todayDone, isOverdue: false };
+            return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays,
+                     totalDone, todayDone, isOverdue: false, delayDays: proj.delayDays };
         }
 
         // ===== 章節モーダル =====
