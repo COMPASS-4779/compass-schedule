@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, Query, Request, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import models, schemas
+import lw_relay  # LINE WORKS Bot Callback 中継（テーブル登録のため create_all より前に import）
 from database import engine, SessionLocal
 import json
 import google.generativeai as genai
@@ -27,6 +28,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# LINE WORKS ファイル自動送受信の中継エンドポイント（/lw/...）
+app.include_router(lw_relay.router)
 
 def get_db():
     db = SessionLocal()
