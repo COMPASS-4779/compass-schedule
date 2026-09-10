@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V11</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V12</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2691,7 +2691,8 @@
                     const _bDone = (_bAdj !== undefined && _bAdj !== null) ? _bAdj :
                         Object.keys(appData.progress||{}).filter(k=>k.startsWith(b.id+'_W')).reduce((s,k)=>s+(parseFloat(appData.progress[k])||0),0);
                     const _bHasRemaining = _bDone < b.total;
-                    if(!b.isEvent && !b.isOneOff && appData.currentWeek >= b.startW && _bHasRemaining) {
+                    // 表示条件を週間トラッカーと揃える（遅延で開始がずれた教材はその日まで出さない）
+                    if(!b.isOneOff && isTrackedToday(b)) {
                         hasExamTask = true;
                         const key = `${b.id}_W${appData.currentWeek}_D${appData.currentDay}`;
                         const val = parseFloat(appData.progress[key]) || 0;
@@ -3362,7 +3363,11 @@
             saveData();
             updateProgress();
             initChart();
+            // 実績を入れた時点で、本日の範囲・遅れ・ロードマップを即座に組み直す。
+            // これらを更新しないと、入力しても予定表示が変わらない。
             if (typeof renderTodaysTaskWindow === 'function') renderTodaysTaskWindow();
+            if (typeof renderTracker === 'function') renderTracker();
+            if (typeof renderGantt === 'function') renderGantt();
 
             // 🔧 [Cowork変更②] 実績入力が目標値以上になったら自動完了
             if (v !== "" && parseFloat(v) > 0) autoCompleteOnProgress(id, parseFloat(v));
@@ -4137,23 +4142,17 @@
                          target: b.total, remaining, remainingDays: 1, totalDone, todayDone };
             }
 
-            // 期限切れ・残量ありの場合：残量を全部今日の目標として表示
-            const isOverdue = currentWeek > b.endW || (currentWeek === b.endW && currentDay > getDaysPerWeek());
-            if (isOverdue && remaining > 0) {
-                const todayStart = Math.min(b.total, Math.floor(totalDone) + 1);
-                return {
-                    todayStart, todayEnd: b.total,
-                    weekStart: todayStart, weekEnd: b.total,
-                    target: remaining, remaining, remainingDays: 1,
-                    totalDone, todayDone, isOverdue: true
-                };
-            }
+            // 当初の終了予定日を過ぎているか（バッジ表示用。遅れ日数はそのまま出す）
+            // 期限を過ぎても残量を全部その日に積まず、1日あたりの分量は原設定を維持し、
+            // 終了予定日を延ばす方針に統一する。
+            const proj = getProjection(b);
+            const _todayIdx = absIdxFromWeekDay(currentWeek, currentDay);
+            const isOverdue = remaining > 0 && _todayIdx > proj.origEnd;
 
             // 実績ベースで本日の範囲を決める。
             // 前日までの未実施分は消えず、そのまま本日の予定として繰り越される。
             // 1日あたりの分量は原設定のまま固定し、終了日を延ばす方針。
             const _dpw = getDaysPerWeek();
-            const proj = getProjection(b);
             const daily = Math.max(1, Math.round(proj.dailyQty));
 
             const todayStart = Math.min(b.total, Math.floor(totalDone) + 1);
@@ -4168,7 +4167,7 @@
             const remainingDays = Math.max(1, Math.ceil(remaining / daily));
 
             return { todayStart, todayEnd, weekStart, weekEnd, target, remaining, remainingDays,
-                     totalDone, todayDone, isOverdue: false, delayDays: proj.delayDays };
+                     totalDone, todayDone, isOverdue, delayDays: proj.delayDays };
         }
 
         // ===== 章節モーダル =====
