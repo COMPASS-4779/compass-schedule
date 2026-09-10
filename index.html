@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V19</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V20</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1406,6 +1406,10 @@
             return { week, day, date: weekNumToDateStr(week, day) };
         }
 
+        // 遅れを挽回するときに許容する1日あたりの分量の上限（当初ペースの何倍まで）。
+        // これを超える遅れは挽回可能とみなさず、終了予定を延ばして遅れとして表示する。
+        const CATCH_UP_MAX_RATIO = 2;
+
         // 実際の「今日」の通し稼働日インデックス。
         // カレンダーで別の日を選んでも、遅れ日数や残量の基準は本日のままにする。
         function realTodayAbsIdx() {
@@ -1482,20 +1486,30 @@
                     const baseEnd  = plan.origEnd + applied;
                     let projEnd = baseEnd;
 
-                    // 1日あたりの分量は「残量 ÷ 設定した終了日までの残り稼働日」で
-                    // 都度求め直す。終了日を変更すると、その日に間に合うように
-                    // 配分し直され、遅れも数え直される。
+                    // 1日あたりの分量は、当初のペースと「間に合う配分」の速いほうを採る。
+                    //   遅れている … 残量 ÷ 設定終了日までの残り稼働日（間に合う配分）
+                    //   進んでいる … 当初のペースのまま進み、終了予定が前倒しになる
+                    // 終了日を変更すると両方が計算し直され、遅れ・前倒しも数え直される。
                     let dailyQty = plan.dailyQty;
                     if (remaining > 0) {
                         const from = Math.max(projStart, today);   // 実際に進められる最初の日
                         const daysLeft = baseEnd - from + 1;       // 設定終了日までの残り稼働日
+                        // 挽回ペースには上限を設ける。上限なしだと「1日143問」のような
+                        // 非現実的な配分になり、遅れが表示されなくなってしまう。
+                        // 上限を超える遅れは、当初のペースのまま終了予定を延ばして遅れとして扱う。
+                        const catchUpLimit = plan.dailyQty * CATCH_UP_MAX_RATIO;
+                        const catchUp = daysLeft > 0 ? remaining / daysLeft : Infinity;
                         dailyQty = daysLeft > 0
-                            ? remaining / daysLeft                 // 間に合う配分
+                            ? Math.max(plan.dailyQty, Math.min(catchUp, catchUpLimit))
                             : Math.max(1, plan.dailyQty);          // 終了日を過ぎている場合は当初の分量
                         // 端数を切り上げないと設定した終了日に1日ぶん収まらない
                         const daily = Math.max(1, Math.ceil(dailyQty));
                         const daysNeeded = Math.max(1, Math.ceil(remaining / daily));
-                        projEnd = Math.max(baseEnd, from + daysNeeded - 1);
+                        // 早く終わる場合は短縮する（max で固定しない）
+                        projEnd = from + daysNeeded - 1;
+                    } else {
+                        // 完了済みは本日までで終わりとする
+                        projEnd = Math.min(baseEnd, Math.max(projStart, today));
                     }
 
                     out[b.id] = {
@@ -1509,6 +1523,7 @@
                         // 設定日を変更すると origStart/origEnd が入れ替わるため、
                         // その時点からの遅れとして数え直される。
                         delayDays: Math.max(0, projEnd - baseEnd),
+                        aheadDays: Math.max(0, baseEnd - projEnd),
                         shiftedDays: applied,
                         totalShiftDays: projEnd - plan.origEnd,
                         done, remaining
@@ -1532,7 +1547,7 @@
                 origStart: plan.origStart, origEnd: plan.origEnd,
                 projStart: plan.origStart, projEnd: plan.origEnd,
                 plannedDays: plan.plannedDays, dailyQty: plan.dailyQty,
-                delayDays: 0, shiftedDays: 0,
+                delayDays: 0, aheadDays: 0, shiftedDays: 0,
                 done: getBookDone(b), remaining: Math.max(0, (b.total||0) - getBookDone(b))
             };
         }
@@ -2891,15 +2906,16 @@
             const p = getProjection(b);
             if (!p) return '';
             const own = p.delayDays || 0;
+            const ahead = p.aheadDays || 0;
             const shifted = p.shiftedDays || 0;
-            if (own <= 0 && shifted <= 0) return '';
+            if (own <= 0 && shifted <= 0 && ahead <= 0) return '';
             const d = new Date(weekDayFromAbsIdx(p.projEnd).date);
             const end = `${d.getMonth() + 1}/${d.getDate()}`;
-            let txt;
-            if (own > 0 && shifted > 0) txt = `${own}日遅れ・前の教材の影響で${shifted}日後ろ倒し`;
-            else if (own > 0)           txt = `${own}日遅れ`;
-            else                        txt = `前の教材の遅れで${shifted}日後ろ倒し`;
-            const color = own > 0 ? 'text-orange-600' : 'text-slate-500';
+            let txt, color;
+            if (own > 0 && shifted > 0) { txt = `${own}日遅れ・前の教材の影響で${shifted}日後ろ倒し`; color = 'text-orange-600'; }
+            else if (own > 0)           { txt = `${own}日遅れ`;                              color = 'text-orange-600'; }
+            else if (shifted > 0)       { txt = `前の教材の遅れで${shifted}日後ろ倒し`;       color = 'text-slate-500'; }
+            else                        { txt = `${ahead}日前倒し`;                          color = 'text-emerald-600'; }
             return `<div class="text-[10px] ${color} font-bold mb-1">`
                  + `<i class="fas fa-clock mr-1"></i>${txt} → 終了予定 ${end}</div>`;
         }
@@ -3075,7 +3091,8 @@
                     }
                     tooltipText = `📅 ${dateLabel}`;
                 } else if (_shifted) {
-                    tooltipText = `設定 ${cfgStartStr} 〜 ${cfgEndStr} ／ 遅れ反映 ${startDateStr} 〜 ${endDateStr}`;
+                    const _lbl = (_pr && _pr.projEnd < _pr.origEnd) ? '前倒し後' : '遅れ反映';
+                    tooltipText = `設定 ${cfgStartStr} 〜 ${cfgEndStr} ／ ${_lbl} ${startDateStr} 〜 ${endDateStr}`;
                 } else {
                     tooltipText = `📅 ${cfgStartStr} 〜 ${cfgEndStr}`;
                 }
