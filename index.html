@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V21</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V22</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -5280,6 +5280,29 @@
 
         // スプレッドシートID（変更する場合はここだけ編集）
         const SPREADSHEET_ID = "1B8BKKY8SfR-V3ysirsNG6fqlrVzXqPBF_AdjFDc5fCc";
+        // スプレッドシートのB列は「生徒名」で、ログインIDとは一致しない。
+        // ログインIDと登録氏名のどちらでも照合できるようにする。
+        // 全角/半角スペースの有無で取りこぼさないよう正規化して比較する。
+        function _normName(v) {
+            return String(v || '').replace(/[\s　]/g, '').trim().toLowerCase();
+        }
+        function sheetIdentityKeys() {
+            const keys = [];
+            if (typeof currentUser !== 'undefined' && currentUser) keys.push(_normName(currentUser));
+            const pn = appData && appData.profile && appData.profile.name;
+            if (pn) keys.push(_normName(pn));
+            return keys.filter(Boolean);
+        }
+        function sheetRowMatchesStudent(row) {
+            const v = _normName(row && row[1]);
+            if (!v) return false;
+            return sheetIdentityKeys().includes(v);
+        }
+        function sheetIdentityLabel() {
+            const pn = appData && appData.profile && appData.profile.name;
+            return pn ? (currentUser + ' / ' + pn) : String(currentUser || '');
+        }
+
 
         // 科目名（スプレッドシート表記）→ SUBJ_CONFIG キー の変換マップ
         const SHEET_SUBJ_MAP = {
@@ -5298,6 +5321,18 @@
             '数学III':    'math3',
             '数学Ⅲ':     'math3',
             '数学C':      'mathC',
+            '数学1A':     'math1',
+            '数学ⅠA':    'math1',
+            '数学IA':     'math1',
+            '数学1':      'math1',
+            '数学2B':     'math2',
+            '数学ⅡB':    'math2',
+            '数学IIB':    'math2',
+            '数学3C':     'math3',
+            '数学ⅢC':    'math3',
+            '英熟語':     'english_vocab',
+            '生物':       'science',
+            '地学':       'science',
             '国語':       'japanese',
             '現代文':     'japanese_mod',
             '古典':       'japanese_cls',
@@ -5309,11 +5344,38 @@
             '社会':       'society',
         };
         // フォールバック: SUBJ_CONFIGのラベルから逆引き
-        function _sheetSubjKey(label) {
-            if (SHEET_SUBJ_MAP[label]) return SHEET_SUBJ_MAP[label];
+        function _sheetSubjKey(label, textbook) {
+            if (SHEET_SUBJ_MAP[label]) {
+                const key = SHEET_SUBJ_MAP[label];
+                // 「理科」「国語」のような大分類は、テキスト名から細分化を試みる
+                if (key === 'science' || key === 'japanese') {
+                    const refined = _refineSubjByTextbook(key, textbook);
+                    if (refined) return refined;
+                }
+                return key;
+            }
             // ラベル完全一致で逆引き
             const found = Object.entries(SUBJ_CONFIG).find(([, v]) => v.label === label);
-            return found ? found[0] : null;
+            if (found) return found[0];
+            // 部分一致で推定（数学ⅠA・英語長文 などの表記ゆれ対策）
+            for (const [k, v] of Object.entries(SHEET_SUBJ_MAP)) {
+                if (label && label.includes(k)) return v;
+            }
+            return null;
+        }
+
+        // 大分類の科目をテキスト名から細分化する
+        function _refineSubjByTextbook(baseKey, textbook) {
+            const t = String(textbook || '');
+            if (baseKey === 'science') {
+                if (/物理/.test(t)) return 'physics';
+                if (/化学/.test(t)) return 'chemistry';
+            }
+            if (baseKey === 'japanese') {
+                if (/現代文|評論|小説/.test(t)) return 'japanese_mod';
+                if (/古典|古文|漢文/.test(t)) return 'japanese_cls';
+            }
+            return null;
         }
 
         // CSVパーサーユーティリティ（RFC 4180準拠・ダブルクォート対応）
@@ -5376,9 +5438,9 @@
         // 取込済みチェック・保存・通知の共通処理
         function _processSheetRows(rows, studentName) {
             if (rows.length < 2) return alert("CSVにデータがありません。");
-            const studentRows = rows.slice(1).filter(r => r[1] && r[1].trim() === studentName);
+            const studentRows = rows.slice(1).filter(sheetRowMatchesStudent);
             if (studentRows.length === 0) {
-                return alert(`「${studentName}」の記録が見つかりません。\n生徒名が完全一致しているか確認してください。`);
+                return alert(`「${sheetIdentityLabel()}」の記録が見つかりません。\n生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
             }
             if (!appData.unitRecords) appData.unitRecords = [];
             const existingKeys = new Set(appData.unitRecords.filter(r => r._sheetKey).map(r => r._sheetKey));
@@ -5390,7 +5452,7 @@
                 const section   = (row[6] || '').trim();
                 const sheetKey  = `${subjLabel}_${textbook}_${chapter}_${section}`;
                 if (!groups[sheetKey]) {
-                    groups[sheetKey] = { subjKey: _sheetSubjKey(subjLabel) || subjLabel, textbook, chapter, section, count: 0 };
+                    groups[sheetKey] = { subjKey: _sheetSubjKey(subjLabel, textbook) || subjLabel, textbook, chapter, section, count: 0 };
                 }
                 groups[sheetKey].count++;
             }
@@ -5461,10 +5523,10 @@
 
                 const studentName = currentUser; // ユーザーIDで照合
                 // 列構成: 0=日時 1=ユーザーID 2=科目 3=テキスト名 4=ページ 5=章 6=節 7=問題番号 8=サイトID 9=総問題数
-                const studentRows = rows.slice(1).filter(r => r[1] && r[1].trim() === studentName);
+                const studentRows = rows.slice(1).filter(sheetRowMatchesStudent);
 
                 if (studentRows.length === 0) {
-                    if (!silent) alert(`「${studentName}」の記録がスプレッドシートに見つかりません。\n学習サイトと同じIDでログインしているか確認してください。`);
+                    if (!silent) alert(`「${sheetIdentityLabel()}」の記録がスプレッドシートに見つかりません。\n生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
                     updateSheetImportStatus();
                     return;
                 }
@@ -5488,7 +5550,7 @@
                     const sheetKey   = `${subjLabel}_${textbook}_${chapter}_${section}`;
                     if (!groups[sheetKey]) {
                         groups[sheetKey] = {
-                            subjKey: _sheetSubjKey(subjLabel) || subjLabel,
+                            subjKey: _sheetSubjKey(subjLabel, textbook) || subjLabel,
                             textbook, chapter, section,
                             pages: new Set(),
                             wrongCount: 0,
