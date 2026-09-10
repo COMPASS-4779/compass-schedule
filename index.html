@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V20</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V21</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1478,10 +1478,17 @@
                     const done = getBookDone(b);
                     const remaining = Math.max(0, (b.total || 0) - done);
 
+                    // 前の教材が終わってから始まる予定のものは、その終了直後へ連動させる。
+                    // 遅れれば後ろへ、早く終われば前へ、芋づる式に動く。
+                    // ただし既に開始している教材の開始日は動かさない（過去は変えられない）。
                     const isSequential = plan.origStart > prevOrigEnd;
-                    const projStart = isSequential
-                        ? Math.max(plan.origStart, prevProjEnd + 1)
-                        : plan.origStart;
+                    let projStart;
+                    if (!isSequential || plan.origStart <= today) {
+                        projStart = plan.origStart;
+                    } else {
+                        // 未開始の教材のみ連動。前倒ししても本日より前にはしない。
+                        projStart = Math.max(today, prevProjEnd + 1);
+                    }
                     const applied = projStart - plan.origStart;
                     const baseEnd  = plan.origEnd + applied;
                     let projEnd = baseEnd;
@@ -1524,7 +1531,8 @@
                         // その時点からの遅れとして数え直される。
                         delayDays: Math.max(0, projEnd - baseEnd),
                         aheadDays: Math.max(0, baseEnd - projEnd),
-                        shiftedDays: applied,
+                        shiftedDays: Math.max(0, applied),      // 前の教材の遅れで後ろへずれた日数
+                        advancedDays: Math.max(0, -applied),    // 前の教材が早まり前へ動いた日数
                         totalShiftDays: projEnd - plan.origEnd,
                         done, remaining
                     };
@@ -1547,7 +1555,7 @@
                 origStart: plan.origStart, origEnd: plan.origEnd,
                 projStart: plan.origStart, projEnd: plan.origEnd,
                 plannedDays: plan.plannedDays, dailyQty: plan.dailyQty,
-                delayDays: 0, aheadDays: 0, shiftedDays: 0,
+                delayDays: 0, aheadDays: 0, shiftedDays: 0, advancedDays: 0,
                 done: getBookDone(b), remaining: Math.max(0, (b.total||0) - getBookDone(b))
             };
         }
@@ -2908,14 +2916,16 @@
             const own = p.delayDays || 0;
             const ahead = p.aheadDays || 0;
             const shifted = p.shiftedDays || 0;
-            if (own <= 0 && shifted <= 0 && ahead <= 0) return '';
+            const advanced = p.advancedDays || 0;
+            if (own <= 0 && shifted <= 0 && ahead <= 0 && advanced <= 0) return '';
             const d = new Date(weekDayFromAbsIdx(p.projEnd).date);
             const end = `${d.getMonth() + 1}/${d.getDate()}`;
             let txt, color;
             if (own > 0 && shifted > 0) { txt = `${own}日遅れ・前の教材の影響で${shifted}日後ろ倒し`; color = 'text-orange-600'; }
-            else if (own > 0)           { txt = `${own}日遅れ`;                              color = 'text-orange-600'; }
-            else if (shifted > 0)       { txt = `前の教材の遅れで${shifted}日後ろ倒し`;       color = 'text-slate-500'; }
-            else                        { txt = `${ahead}日前倒し`;                          color = 'text-emerald-600'; }
+            else if (own > 0)           { txt = `${own}日遅れ`;                                color = 'text-orange-600'; }
+            else if (shifted > 0)       { txt = `前の教材の遅れで${shifted}日後ろ倒し`;         color = 'text-slate-500'; }
+            else if (advanced > 0)      { txt = `前の教材が早まり${advanced}日前倒し`;          color = 'text-emerald-600'; }
+            else                        { txt = `${ahead}日前倒し`;                            color = 'text-emerald-600'; }
             return `<div class="text-[10px] ${color} font-bold mb-1">`
                  + `<i class="fas fa-clock mr-1"></i>${txt} → 終了予定 ${end}</div>`;
         }
