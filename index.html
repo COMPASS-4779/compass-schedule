@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V14</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V15</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2996,12 +2996,16 @@
 
                 // 🔧 [Cowork変更①] ポップアップを「期間」表示から「日付」表示に変更
                 const _fmtDate = s => { const d = new Date(s); return `${d.getMonth()+1}/${d.getDate()}`; };
-                const startDateStr = _pr
-                    ? _fmtDate(weekDayFromAbsIdx(_pr.projStart).date)
-                    : (b.actualStartDate ? _fmtDate(b.actualStartDate) : getActualDate(b.startW, 1));
-                const endDateStr = _pr
-                    ? _fmtDate(weekDayFromAbsIdx(_pr.projEnd).date)
-                    : (b.actualEndDate ? _fmtDate(b.actualEndDate) : getActualDate(b.endW, 7));
+                // 設定した日付はそのまま表示する。
+                // 稼働日インデックスを経由すると、土日に設定された日付が
+                // 直前の稼働日へ丸められ、調整画面の入力とずれてしまう。
+                const cfgStartStr = b.actualStartDate ? _fmtDate(b.actualStartDate) : getActualDate(b.startW, 1);
+                const cfgEndStr   = b.actualEndDate   ? _fmtDate(b.actualEndDate)   : getActualDate(b.endW, 7);
+                // 遅れ反映後の日付は算出値。ずれていない場合は設定値をそのまま使う。
+                const startDateStr = (_pr && _pr.projStart !== _pr.origStart)
+                    ? _fmtDate(weekDayFromAbsIdx(_pr.projStart).date) : cfgStartStr;
+                const endDateStr = (_pr && _pr.projEnd !== _pr.origEnd)
+                    ? _fmtDate(weekDayFromAbsIdx(_pr.projEnd).date) : cfgEndStr;
                 // isOneOff（宿題・テスト・行事）は単日表示
                 //   deadline フィールドがある → M/D 形式に変換して表示
                 //   deadline がない既存データ → startW から計算した日付を表示
@@ -3017,11 +3021,9 @@
                     }
                     tooltipText = `📅 ${dateLabel}`;
                 } else if (_shifted) {
-                    const _os = _fmtDate(weekDayFromAbsIdx(_pr.origStart).date);
-                    const _oe = _fmtDate(weekDayFromAbsIdx(_pr.origEnd).date);
-                    tooltipText = `設定 ${_os} 〜 ${_oe} ／ 遅れ反映 ${startDateStr} 〜 ${endDateStr}`;
+                    tooltipText = `設定 ${cfgStartStr} 〜 ${cfgEndStr} ／ 遅れ反映 ${startDateStr} 〜 ${endDateStr}`;
                 } else {
-                    tooltipText = `📅 ${startDateStr} 〜 ${endDateStr}`;
+                    tooltipText = `📅 ${cfgStartStr} 〜 ${cfgEndStr}`;
                 }
 
                 return `
