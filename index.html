@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V15</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V16</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2987,10 +2987,15 @@
                 let ow = Math.max(1, oEndPct - ol);
                 let l = ((_sW - 1) / tw) * 100;
                 let endPct = (_eW / tw) * 100;
+                // 表示範囲（総週数）の外へはみ出す場合の目印
+                const _overRight = _eW > tw;
+                const _overLeft  = _sW < 1;
                 l = Math.max(0, Math.min(100, l));
                 endPct = Math.max(0, Math.min(100, endPct));
                 let w = endPct - l;
-                if(w < 1) w = 1; 
+                if (w < 2) w = 2;
+                // 右端を超えるとバーが枠外に出て見えなくなるため、必ず枠内に収める
+                if (l + w > 100) l = Math.max(0, 100 - w);
                 
                 const barColor = (b.isEvent && b.dayType === 'holiday') ? '#EF4444' : hex;
 
@@ -3046,6 +3051,8 @@
                         ${_shifted ? `<div class="absolute h-full rounded-full" title="設定した期間"
                              style="left:${ol}%; width:${ow}%; border:1px dashed ${barColor}; opacity:0.5;"></div>` : ''}
                         <div class="absolute h-full rounded-full transition-all duration-700 shadow-sm" style="left:${l}%; width:${w}%; background-color:${barColor}"></div>
+                        ${_overRight ? `<div class="absolute" style="right:-2px; top:50%; transform:translateY(-50%); color:${barColor}; font-size:9px; line-height:1;" title="表示期間の先まで続きます">▶</div>` : ''}
+                        ${_overLeft ? `<div class="absolute" style="left:-2px; top:50%; transform:translateY(-50%); color:${barColor}; font-size:9px; line-height:1;" title="表示期間より前から続いています">◀</div>` : ''}
                         <div class="absolute bottom-full left-0 mb-2 flex opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 pointer-events-none">
                             <span class="bg-slate-800 text-white text-[10px] font-bold px-2 py-1 rounded shadow-lg whitespace-nowrap">
                                 ${tooltipText}
