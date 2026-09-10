@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V16</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V17</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2928,18 +2928,38 @@
             c.classList.add('relative');
             c.style.paddingTop = '10px'; 
             
-            const tw = appData.profile.totalWeeks || 48;
+            const planWeeks = appData.profile.totalWeeks || 48;
             const sd = new Date(appData.profile.startDate);
             const ed = new Date(appData.profile.examDate);
-            const diff = ed.getTime() - sd.getTime();
-            const d25 = new Date(sd.getTime() + diff * 0.25);
-            const d50 = new Date(sd.getTime() + diff * 0.5);
-            const d75 = new Date(sd.getTime() + diff * 0.75);
             const fmt = d => `${d.getMonth()+1}/${d.getDate()}`;
-            
+
+            // 遅延で予定が伸びた場合は、その終了週まで横軸を延長する。
+            // これをしないと受験日以降に押し出された教材のバーが端に張り付く。
+            let maxWeek = planWeeks;
+            Object.keys(appData.curriculum || {}).forEach(sk => {
+                (appData.curriculum[sk] || []).forEach(b => {
+                    if (b.isEvent || b.isOneOff) {
+                        maxWeek = Math.max(maxWeek, b.endW || 0);
+                        return;
+                    }
+                    const pj = getProjection(b);
+                    if (pj) maxWeek = Math.max(maxWeek, weekDayFromAbsIdx(pj.projEnd).week);
+                });
+            });
+            const tw = Math.max(1, maxWeek);
+            const extended = tw > planWeeks;
+
+            // 横軸のラベルは延長後の期間で引き直す
+            // 延長していないときは従来どおり受験日を右端のラベルにする
+            const chartEnd = extended
+                ? new Date(sd.getTime() + tw * 7 * 86400000)
+                : ed;
+            const axisAt = r => new Date(sd.getTime() + (chartEnd.getTime() - sd.getTime()) * r);
             const datesEl = document.getElementById('dash-gantt-dates');
             if (datesEl) {
-                datesEl.innerHTML = `<span>${fmt(sd)}</span><span>${fmt(d25)}</span><span>${fmt(d50)}</span><span>${fmt(d75)}</span><span>${fmt(ed)}</span>`;
+                datesEl.innerHTML = `<span>${fmt(sd)}</span><span>${fmt(axisAt(0.25))}</span>`
+                    + `<span>${fmt(axisAt(0.5))}</span><span>${fmt(axisAt(0.75))}</span>`
+                    + `<span>${fmt(chartEnd)}</span>`;
             }
 
             // 🌟 グループ定義と表示順序の設定
@@ -3181,6 +3201,21 @@
 
             // ドラッグ＆ドロップ初期化
             initGanttDrag(c);
+
+            // 当初の学習終了日（受験日）の線。延長された場合のみ意味があるので、
+            // 横軸が伸びているときに本日の線と同じ形式で表示する。
+            if (extended) {
+                const examPct = (planWeeks / tw) * 100;
+                if (examPct >= 0 && examPct <= 100) {
+                    c.insertAdjacentHTML('beforeend', `
+                        <div class="absolute top-0 bottom-0 z-10 pointer-events-none flex flex-col items-center"
+                             style="left: ${examPct}%; width: 2px; margin-left: -1px; background-image: repeating-linear-gradient(to bottom, #7C3AED 0, #7C3AED 4px, transparent 4px, transparent 8px);"
+                             title="当初の学習終了日 ${fmt(ed)}">
+                            <div class="bg-violet-600 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full -mt-3 shadow-sm whitespace-nowrap">学習終了 ${fmt(ed)}</div>
+                        </div>
+                    `);
+                }
+            }
 
             const currentPct = (((appData.currentWeek - 1) * 7 + (appData.currentDay - 1)) / (tw * 7)) * 100;
             if (currentPct >= 0 && currentPct <= 100) {
