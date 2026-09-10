@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V18</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V19</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1433,7 +1433,7 @@
 
         // 原設定の1日あたり分量（表示・繰り越し計算用に整数化）
         function getBookDailyQty(b) {
-            return Math.max(1, Math.round(getBookPlan(b).dailyQty));
+            return Math.max(1, Math.ceil(getBookPlan(b).dailyQty));
         }
 
         // 科目ごとに遅延を伝播させた予定を算出する。
@@ -1482,11 +1482,19 @@
                     const baseEnd  = plan.origEnd + applied;
                     let projEnd = baseEnd;
 
+                    // 1日あたりの分量は「残量 ÷ 設定した終了日までの残り稼働日」で
+                    // 都度求め直す。終了日を変更すると、その日に間に合うように
+                    // 配分し直され、遅れも数え直される。
+                    let dailyQty = plan.dailyQty;
                     if (remaining > 0) {
-                        const daily = Math.max(1, plan.dailyQty);
+                        const from = Math.max(projStart, today);   // 実際に進められる最初の日
+                        const daysLeft = baseEnd - from + 1;       // 設定終了日までの残り稼働日
+                        dailyQty = daysLeft > 0
+                            ? remaining / daysLeft                 // 間に合う配分
+                            : Math.max(1, plan.dailyQty);          // 終了日を過ぎている場合は当初の分量
+                        // 端数を切り上げないと設定した終了日に1日ぶん収まらない
+                        const daily = Math.max(1, Math.ceil(dailyQty));
                         const daysNeeded = Math.max(1, Math.ceil(remaining / daily));
-                        // 開始前ならその開始日から、開始後なら本日から数え直す
-                        const from = Math.max(projStart, today);
                         projEnd = Math.max(baseEnd, from + daysNeeded - 1);
                     }
 
@@ -1494,7 +1502,8 @@
                         origStart: plan.origStart, origEnd: plan.origEnd,
                         projStart, projEnd,
                         plannedDays: plan.plannedDays,
-                        dailyQty: plan.dailyQty,
+                        dailyQty,
+                        origDailyQty: plan.dailyQty,
                         // delayDays: この教材自身の遅れ（調整画面で設定した期間に対する超過）
                         // shiftedDays: 前の教材の遅れを引き継いで後ろへずれた日数
                         // 設定日を変更すると origStart/origEnd が入れ替わるため、
@@ -4231,7 +4240,7 @@
             //  ・本日および過去を選んだ場合 … 未実施分をそのまま繰り越して表示する
             //  ・未来を選んだ場合           … その日までの分を毎日こなした前提で先に進める
             const _dpw = getDaysPerWeek();
-            const daily = Math.max(1, Math.round(proj.dailyQty));
+            const daily = Math.max(1, Math.ceil(proj.dailyQty));
 
             const _realToday = realTodayAbsIdx();
             // 選択日が本日から何稼働日先か（過去は0に丸め、繰り越し内容を表示し続ける）
