@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V12</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V13</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -1405,6 +1405,19 @@
             return { week, day, date: weekNumToDateStr(week, day) };
         }
 
+        // 実際の「今日」の通し稼働日インデックス。
+        // カレンダーで別の日を選んでも、遅れ日数や残量の基準は本日のままにする。
+        function realTodayAbsIdx() {
+            if (!appData.profile || !appData.profile.startDate) return 0;
+            const t = new Date(); t.setHours(0,0,0,0);
+            const st = new Date(appData.profile.startDate); st.setHours(0,0,0,0);
+            const diff = Math.floor((t - st) / 86400000);
+            if (diff < 0) return 0;
+            const w = Math.floor(diff / 7) + 1;
+            const d = (diff % 7) + 1;
+            return absIdxFromWeekDay(w, d);
+        }
+
         // 原設定に基づく計画（1日あたりの分量はここで固定する）
         function getBookPlan(b) {
             const dpw = getDaysPerWeek();
@@ -1429,7 +1442,8 @@
 
         function getProjectedSchedules() {
             if (_projCache) return _projCache;
-            const today = absIdxFromWeekDay(appData.currentWeek, appData.currentDay);
+            // 遅れ日数はカレンダーの選択日ではなく、実際の本日を基準に算出する
+            const today = realTodayAbsIdx();
             const out = {};
 
             // 遅延は大科目単位で伝播させる（数学IIの遅れは数学B＋ベクトルへ）。
@@ -4149,19 +4163,24 @@
             const _todayIdx = absIdxFromWeekDay(currentWeek, currentDay);
             const isOverdue = remaining > 0 && _todayIdx > proj.origEnd;
 
-            // 実績ベースで本日の範囲を決める。
-            // 前日までの未実施分は消えず、そのまま本日の予定として繰り越される。
-            // 1日あたりの分量は原設定のまま固定し、終了日を延ばす方針。
+            // 実績ベースで範囲を決める。1日あたりの分量は原設定のまま固定する。
+            //  ・本日および過去を選んだ場合 … 未実施分をそのまま繰り越して表示する
+            //  ・未来を選んだ場合           … その日までの分を毎日こなした前提で先に進める
             const _dpw = getDaysPerWeek();
             const daily = Math.max(1, Math.round(proj.dailyQty));
 
-            const todayStart = Math.min(b.total, Math.floor(totalDone) + 1);
-            const todayEnd   = Math.min(b.total, Math.floor(totalDone) + daily);
+            const _realToday = realTodayAbsIdx();
+            // 選択日が本日から何稼働日先か（過去は0に丸め、繰り越し内容を表示し続ける）
+            const _ahead = Math.max(0, _todayIdx - _realToday);
 
-            // 今週＝本日を含む、その週の残り稼働日ぶん
+            const _base = Math.floor(totalDone) + daily * _ahead;
+            const todayStart = Math.min(b.total, _base + 1);
+            const todayEnd   = Math.min(b.total, _base + daily);
+
+            // 今週＝選択日を含む、その週の残り稼働日ぶん
             const daysLeftThisWeek = Math.max(1, _dpw - Math.min(currentDay, _dpw) + 1);
             const weekStart = todayStart;
-            const weekEnd   = Math.min(b.total, Math.floor(totalDone) + daily * daysLeftThisWeek);
+            const weekEnd   = Math.min(b.total, _base + daily * daysLeftThisWeek);
 
             const target = Math.max(1, todayEnd - todayStart + 1);
             const remainingDays = Math.max(1, Math.ceil(remaining / daily));
