@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V17</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V18</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -928,6 +928,7 @@
                             <input type="date" id="edit-curr-end" class="w-full border rounded-lg px-4 py-2 text-sm">
                         </div>
                     </div>
+                    <p class="text-[10px] text-slate-400 -mt-2">※この期間が遅れを測る基準になります。変更すると、その時点からの遅れとして数え直されます。</p>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">総量（ページ数・問題数など）</label>
@@ -1463,21 +1464,22 @@
                 const list = chains[chainKey]
                     .sort((x, y) => (x.plan.origStart - y.plan.origStart) || (x.i - y.i));
 
-                // shift: 直前までの教材の遅れ（次に始まる教材へ引き継ぐ日数）
-                // 元々期間が重なっている教材（並行して進めるもの）には適用しない。
-                // 適用するのは、前の教材が終わってから始まる予定だったものだけ。
-                let shift = 0;
-                let prevOrigEnd = -Infinity;
+                // 前の教材が終わってから始まる予定のものだけを後ろへずらす。
+                // 元々期間が重なっている教材（並行して進めるもの）はずらさない。
+                // ずらす量は必要な分だけとし、設定した開始日に余裕があれば動かさない。
+                let prevOrigEnd = -Infinity;   // 設定上の終了（連続かどうかの判定用）
+                let prevProjEnd = -Infinity;   // 遅れ反映後の終了
 
                 list.forEach(({ b, plan }) => {
                     const done = getBookDone(b);
                     const remaining = Math.max(0, (b.total || 0) - done);
 
                     const isSequential = plan.origStart > prevOrigEnd;
-                    const applied = isSequential ? shift : 0;
-
-                    const projStart = plan.origStart + applied;
-                    const baseEnd   = plan.origEnd + applied;
+                    const projStart = isSequential
+                        ? Math.max(plan.origStart, prevProjEnd + 1)
+                        : plan.origStart;
+                    const applied = projStart - plan.origStart;
+                    const baseEnd  = plan.origEnd + applied;
                     let projEnd = baseEnd;
 
                     if (remaining > 0) {
@@ -1493,14 +1495,18 @@
                         projStart, projEnd,
                         plannedDays: plan.plannedDays,
                         dailyQty: plan.dailyQty,
-                        delayDays: projEnd - plan.origEnd,
+                        // delayDays: この教材自身の遅れ（調整画面で設定した期間に対する超過）
+                        // shiftedDays: 前の教材の遅れを引き継いで後ろへずれた日数
+                        // 設定日を変更すると origStart/origEnd が入れ替わるため、
+                        // その時点からの遅れとして数え直される。
+                        delayDays: Math.max(0, projEnd - baseEnd),
                         shiftedDays: applied,
+                        totalShiftDays: projEnd - plan.origEnd,
                         done, remaining
                     };
 
-                    // 次に始まる教材へ引き継ぐ遅れ（並行教材のうち最も遅いものに合わせる）
-                    shift = Math.max(shift, projEnd - plan.origEnd);
                     prevOrigEnd = Math.max(prevOrigEnd, plan.origEnd);
+                    prevProjEnd = Math.max(prevProjEnd, projEnd);
                 });
             });
 
@@ -2733,13 +2739,7 @@
                             ${!isOverdue && weekLabel ? `<div class="text-[10px] font-bold text-slate-600 mb-1"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLabel}</div>` : ''}
                             <div class="text-[10px] font-bold ${isOverdue?'text-red-500':'text-slate-500'} mb-1">今日の目標: ${target}${b.unit}</div>
                             <div class="text-[10px] font-bold ${isOverdue?'text-red-600':'text-slate-600'} mb-1">残り ${remaining}${b.unit}${isOverdue?' (予定日超過)':' / '+remainingDays+'日'}</div>
-                            ${(() => {
-                                const _p = getProjection(b);
-                                if (!_p || _p.delayDays <= 0) return '';
-                                const _d = new Date(weekDayFromAbsIdx(_p.projEnd).date);
-                                return `<div class="text-[10px] text-orange-600 font-bold mb-2">`
-                                     + `<i class="fas fa-clock mr-1"></i>${_p.delayDays}日遅れ → 終了予定 ${_d.getMonth()+1}/${_d.getDate()}</div>`;
-                            })()}
+                            ${delayNoteHtml(b)}
 
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
                                 ${pct >= 100 ?
@@ -2873,6 +2873,26 @@
             const label = document.getElementById('gantt-scale-label');
             if (inner) inner.style.width = (_ganttScale * 100) + '%';
             if (label) label.textContent = '×' + (_ganttScale % 1 === 0 ? _ganttScale : _ganttScale.toFixed(1));
+        }
+
+        // 遅れの内訳を1行の文言にする。
+        // 自身の遅れ（設定した期間に対する超過）と、前の教材から引き継いだ
+        // 後ろ倒しを区別して示す。
+        function delayNoteHtml(b) {
+            const p = getProjection(b);
+            if (!p) return '';
+            const own = p.delayDays || 0;
+            const shifted = p.shiftedDays || 0;
+            if (own <= 0 && shifted <= 0) return '';
+            const d = new Date(weekDayFromAbsIdx(p.projEnd).date);
+            const end = `${d.getMonth() + 1}/${d.getDate()}`;
+            let txt;
+            if (own > 0 && shifted > 0) txt = `${own}日遅れ・前の教材の影響で${shifted}日後ろ倒し`;
+            else if (own > 0)           txt = `${own}日遅れ`;
+            else                        txt = `前の教材の遅れで${shifted}日後ろ倒し`;
+            const color = own > 0 ? 'text-orange-600' : 'text-slate-500';
+            return `<div class="text-[10px] ${color} font-bold mb-1">`
+                 + `<i class="fas fa-clock mr-1"></i>${txt} → 終了予定 ${end}</div>`;
         }
 
         // ロードマップの並び順（科目カテゴリー）
@@ -3406,14 +3426,7 @@
                                 <span class="text-xs font-bold text-slate-400">${b.unit}</span>
                             </div>
                             <div class="text-[10px] ${tOverdue?'text-red-500':'text-[#B8963E]'} mt-2 font-bold italic">本日目標: ${target}${b.unit}${tOverdue?' (期限超過・残量)':''}</div>
-                            ${(() => {
-                                const _d = getProjection(b);
-                                if (!_d || _d.delayDays <= 0) return '';
-                                const _e = weekDayFromAbsIdx(_d.projEnd).date;
-                                const _ed = new Date(_e);
-                                return `<div class="text-[10px] text-orange-600 font-bold mt-0.5">`
-                                     + `<i class="fas fa-clock mr-1"></i>${_d.delayDays}日遅れ → 終了予定 ${_ed.getMonth()+1}/${_ed.getDate()}</div>`;
-                            })()}
+                            ${delayNoteHtml(b)}
                         </div>`;
                     }
                 });
