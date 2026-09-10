@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V13</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V14</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2732,7 +2732,14 @@
                             ${todayLabel ? `<div class="text-[11px] font-bold mb-0.5" style="color:${isOverdue?'#dc2626':'#1a6fb5'}"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLabel}</div>` : ''}
                             ${!isOverdue && weekLabel ? `<div class="text-[10px] font-bold text-slate-600 mb-1"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLabel}</div>` : ''}
                             <div class="text-[10px] font-bold ${isOverdue?'text-red-500':'text-slate-500'} mb-1">今日の目標: ${target}${b.unit}</div>
-                            <div class="text-[9px] text-slate-400 mb-2">残り ${remaining}${b.unit}${isOverdue?' (予定日超過)':' / '+remainingDays+'日'}</div>
+                            <div class="text-[9px] text-slate-400 mb-1">残り ${remaining}${b.unit}${isOverdue?' (予定日超過)':' / '+remainingDays+'日'}</div>
+                            ${(() => {
+                                const _p = getProjection(b);
+                                if (!_p || _p.delayDays <= 0) return '';
+                                const _d = new Date(weekDayFromAbsIdx(_p.projEnd).date);
+                                return `<div class="text-[10px] text-orange-600 font-bold mb-2">`
+                                     + `<i class="fas fa-clock mr-1"></i>${_p.delayDays}日遅れ → 終了予定 ${_d.getMonth()+1}/${_d.getDate()}</div>`;
+                            })()}
 
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
                                 ${pct >= 100 ?
