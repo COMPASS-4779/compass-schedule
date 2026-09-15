@@ -33,7 +33,7 @@ app.add_middleware(
 # LINE WORKS ファイル自動送受信の中継エンドポイント（/lw/...）
 app.include_router(lw_relay.router)
 
-# LINE 公式アカウント（Messaging API）の中継エンドポイント（/line/...）
+# LINE 公式アカウント（宿題自動送信）の中継エンドポイント（/line-hw/...）
 app.include_router(line_relay.router)
 
 def get_db():

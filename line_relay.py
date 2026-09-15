@@ -14,12 +14,16 @@ lw_relay.py（LINE WORKS 用）と同じ構成だが、LINE 固有の事情が2�
   GET https://api-data.line.me/v2/bot/message/{messageId}/content
 から直接取得する。
 
+このサーバには複数の LINE 公式アカウントが載る可能性があるため、
+環境変数とパスは「宿題配信用」と分かる名前にしている（LINE_HW_ / /line-hw）。
+他のアカウント（学習リマインド等）の設定と衝突しない。
+
 必要な環境変数（Render の Environment に設定）:
-  LINE_CHANNEL_SECRET       : Messaging API チャネルのチャネルシークレット（署名検証用）
-  LINE_CHANNEL_ACCESS_TOKEN : チャネルアクセストークン（受領返信用）
-  LINE_AGENT_TOKEN          : ローカルエージェント認証用（未設定なら LW_AGENT_TOKEN を流用）
-  LINE_WATCH_GROUPS         : 保存対象の groupId をカンマ区切り。未設定なら全て受理
-  LINE_ACK_TEXT             : 受領時の自動返信文。空なら返信しない
+  LINE_HW_CHANNEL_SECRET       : Messaging API チャネルのチャネルシークレット（署名検証用）
+  LINE_HW_CHANNEL_ACCESS_TOKEN : チャネルアクセストークン（受領返信用）
+  LINE_HW_AGENT_TOKEN          : ローカルエージェント認証用（未設定なら LW_AGENT_TOKEN を流用）
+  LINE_HW_WATCH_GROUPS         : 保存対象の groupId をカンマ区切り。未設定なら全て受理
+  LINE_HW_ACK_TEXT             : 受領時の自動返信文。空なら返信しない
                               {filename} が使える（例: 受け取りました: {filename}）
 """
 
@@ -40,17 +44,17 @@ from sqlalchemy.orm import Session
 
 from database import Base, SessionLocal
 
-log = logging.getLogger("line_relay")
+log = logging.getLogger("line_hw_relay")
 
-LINE_CHANNEL_SECRET = os.environ.get("LINE_CHANNEL_SECRET", "")
-LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN", "")
-LINE_AGENT_TOKEN = os.environ.get("LINE_AGENT_TOKEN", "") or os.environ.get(
+LINE_HW_CHANNEL_SECRET = os.environ.get("LINE_HW_CHANNEL_SECRET", "")
+LINE_HW_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_HW_CHANNEL_ACCESS_TOKEN", "")
+LINE_HW_AGENT_TOKEN = os.environ.get("LINE_HW_AGENT_TOKEN", "") or os.environ.get(
     "LW_AGENT_TOKEN", ""
 )
-LINE_WATCH_GROUPS = [
-    g.strip() for g in os.environ.get("LINE_WATCH_GROUPS", "").split(",") if g.strip()
+LINE_HW_WATCH_GROUPS = [
+    g.strip() for g in os.environ.get("LINE_HW_WATCH_GROUPS", "").split(",") if g.strip()
 ]
-LINE_ACK_TEXT = os.environ.get("LINE_ACK_TEXT", "")
+LINE_HW_ACK_TEXT = os.environ.get("LINE_HW_ACK_TEXT", "")
 
 REPLY_URL = "https://api.line.me/v2/bot/message/reply"
 MAX_RETRY = 5
@@ -62,10 +66,10 @@ SAVEABLE_TYPES = ("image", "file", "video", "audio")
 # --------------------------------------------------------------------------
 # モデル
 # --------------------------------------------------------------------------
-class LineEvent(Base):
+class LineHwEvent(Base):
     """LINE から届いた webhook イベントのキュー"""
 
-    __tablename__ = "line_events"
+    __tablename__ = "line_hw_events"
 
     id = Column(BigInteger().with_variant(Integer, "sqlite"), primary_key=True, index=True)
     event_type = Column(String, index=True)       # image / file / text / join / other
@@ -88,7 +92,7 @@ class LineEvent(Base):
 # --------------------------------------------------------------------------
 # 共通
 # --------------------------------------------------------------------------
-router = APIRouter(prefix="/line", tags=["line"])
+router = APIRouter(prefix="/line-hw", tags=["line-hw"])
 
 
 def get_db():
@@ -100,19 +104,19 @@ def get_db():
 
 
 def _require_agent(authorization: Optional[str]) -> bool:
-    if not LINE_AGENT_TOKEN:
+    if not LINE_HW_AGENT_TOKEN:
         return False
     if not authorization or not authorization.startswith("Bearer "):
         return False
-    return hmac.compare_digest(authorization[7:], LINE_AGENT_TOKEN)
+    return hmac.compare_digest(authorization[7:], LINE_HW_AGENT_TOKEN)
 
 
 def _verify_signature(body: bytes, signature: Optional[str]) -> bool:
     """X-Line-Signature（チャネルシークレットによる HMAC-SHA256 → Base64）"""
-    if not LINE_CHANNEL_SECRET or not signature:
+    if not LINE_HW_CHANNEL_SECRET or not signature:
         return False
     expected = base64.b64encode(
-        hmac.new(LINE_CHANNEL_SECRET.encode("utf-8"), body, hashlib.sha256).digest()
+        hmac.new(LINE_HW_CHANNEL_SECRET.encode("utf-8"), body, hashlib.sha256).digest()
     ).decode("utf-8")
     return hmac.compare_digest(expected, signature)
 
@@ -132,13 +136,13 @@ def _reply(reply_token: str, text: str):
     応答メッセージ（課金対象外）。replyToken は短時間で失効するため、
     webhook を受けたこのタイミングで送る必要がある。
     """
-    if not (reply_token and text and LINE_CHANNEL_ACCESS_TOKEN):
+    if not (reply_token and text and LINE_HW_CHANNEL_ACCESS_TOKEN):
         return
     try:
         r = requests.post(
             REPLY_URL,
             headers={
-                "Authorization": f"Bearer {LINE_CHANNEL_ACCESS_TOKEN}",
+                "Authorization": f"Bearer {LINE_HW_CHANNEL_ACCESS_TOKEN}",
                 "Content-Type": "application/json",
             },
             json={"replyToken": reply_token, "messages": [{"type": "text", "text": text[:5000]}]},
@@ -154,7 +158,7 @@ def _reply(reply_token: str, text: str):
 # (1) LINE からの Webhook
 # --------------------------------------------------------------------------
 @router.post("/callback")
-async def line_callback(
+async def line_hw_callback(
     request: Request,
     x_line_signature: str = Header(None, alias="X-Line-Signature"),
     db: Session = Depends(get_db),
@@ -162,7 +166,7 @@ async def line_callback(
     body = await request.body()
 
     if not _verify_signature(body, x_line_signature):
-        log.warning("line_callback: signature mismatch")
+        log.warning("line_hw_callback: signature mismatch")
         return Response(status_code=200)
 
     try:
@@ -175,7 +179,7 @@ async def line_callback(
             _handle_event(ev, db)
         except Exception as e:                      # 1件の失敗で全体を落とさない
             db.rollback()
-            log.exception("line_callback: event処理に失敗: %s", e)
+            log.exception("line_hw_callback: event処理に失敗: %s", e)
 
     return Response(status_code=200)
 
@@ -193,7 +197,7 @@ def _handle_event(ev: dict, db: Session):
     # グループへの参加イベントは groupId 採取に使えるので記録しておく
     if etype in ("join", "memberJoined"):
         db.add(
-            LineEvent(
+            LineHwEvent(
                 event_type=etype,
                 source_type=source.get("type"),
                 group_id=src_id,
@@ -216,7 +220,7 @@ def _handle_event(ev: dict, db: Session):
     if mtype not in SAVEABLE_TYPES:
         # テキスト等は groupId 採取用に記録だけ残す
         db.add(
-            LineEvent(
+            LineHwEvent(
                 event_type=mtype or "other",
                 source_type=source.get("type"),
                 group_id=src_id,
@@ -230,17 +234,17 @@ def _handle_event(ev: dict, db: Session):
         db.commit()
         return
 
-    if LINE_WATCH_GROUPS and src_id not in LINE_WATCH_GROUPS:
+    if LINE_HW_WATCH_GROUPS and src_id not in LINE_HW_WATCH_GROUPS:
         status = "skipped"
     else:
         status = "pending"
 
-    if message_id and db.query(LineEvent).filter(LineEvent.message_id == message_id).first():
+    if message_id and db.query(LineHwEvent).filter(LineHwEvent.message_id == message_id).first():
         return                                       # 重複 webhook
 
     file_name = msg.get("fileName")                  # file タイプのみ含まれる
     db.add(
-        LineEvent(
+        LineHwEvent(
             event_type=mtype,
             source_type=source.get("type"),
             group_id=src_id,
@@ -256,15 +260,15 @@ def _handle_event(ev: dict, db: Session):
     db.commit()
 
     # 受領返信（Reply API は無料。ここで返さないと replyToken が失効する）
-    if status == "pending" and LINE_ACK_TEXT:
-        _reply(reply_token, LINE_ACK_TEXT.replace("{filename}", file_name or "画像"))
+    if status == "pending" and LINE_HW_ACK_TEXT:
+        _reply(reply_token, LINE_HW_ACK_TEXT.replace("{filename}", file_name or "画像"))
 
 
 # --------------------------------------------------------------------------
 # (2) ローカルエージェント向け
 # --------------------------------------------------------------------------
 @router.get("/queue")
-def line_queue(
+def line_hw_queue(
     limit: int = 20,
     authorization: str = Header(None),
     db: Session = Depends(get_db),
@@ -274,9 +278,9 @@ def line_queue(
 
     limit = max(1, min(limit, 100))
     rows = (
-        db.query(LineEvent)
-        .filter(LineEvent.status == "pending", LineEvent.retry_count < MAX_RETRY)
-        .order_by(LineEvent.id.asc())
+        db.query(LineHwEvent)
+        .filter(LineHwEvent.status == "pending", LineHwEvent.retry_count < MAX_RETRY)
+        .order_by(LineHwEvent.id.asc())
         .limit(limit)
         .all()
     )
@@ -311,7 +315,7 @@ class FailBody(BaseModel):
 
 
 @router.post("/events/{event_id}/ack")
-def line_ack(
+def line_hw_ack(
     event_id: int,
     body: AckBody,
     authorization: str = Header(None),
@@ -319,7 +323,7 @@ def line_ack(
 ):
     if not _require_agent(authorization):
         return Response(status_code=401)
-    row = db.query(LineEvent).filter(LineEvent.id == event_id).first()
+    row = db.query(LineHwEvent).filter(LineHwEvent.id == event_id).first()
     if not row:
         return {"success": False, "message": "not found"}
     row.status = body.status if body.status in ("done", "skipped") else "done"
@@ -330,7 +334,7 @@ def line_ack(
 
 
 @router.post("/events/{event_id}/fail")
-def line_fail(
+def line_hw_fail(
     event_id: int,
     body: FailBody,
     authorization: str = Header(None),
@@ -338,7 +342,7 @@ def line_fail(
 ):
     if not _require_agent(authorization):
         return Response(status_code=401)
-    row = db.query(LineEvent).filter(LineEvent.id == event_id).first()
+    row = db.query(LineHwEvent).filter(LineHwEvent.id == event_id).first()
     if not row:
         return {"success": False, "message": "not found"}
     row.retry_count = (row.retry_count or 0) + 1
@@ -354,7 +358,7 @@ def line_fail(
 # (3) 運用・調査用
 # --------------------------------------------------------------------------
 @router.get("/discover")
-def line_discover(
+def line_hw_discover(
     limit: int = 30,
     authorization: str = Header(None),
     db: Session = Depends(get_db),
@@ -367,10 +371,10 @@ def line_discover(
         return Response(status_code=401)
 
     limit = max(1, min(limit, 100))
-    rows = db.query(LineEvent).order_by(LineEvent.id.desc()).limit(limit).all()
+    rows = db.query(LineHwEvent).order_by(LineHwEvent.id.desc()).limit(limit).all()
     return {
         "success": True,
-        "watch_groups": LINE_WATCH_GROUPS or "(未設定＝全グループ受理)",
+        "watch_groups": LINE_HW_WATCH_GROUPS or "(未設定＝全グループ受理)",
         "events": [
             {
                 "id": r.id,
@@ -389,18 +393,18 @@ def line_discover(
 
 
 @router.get("/status")
-def line_status(authorization: str = Header(None), db: Session = Depends(get_db)):
+def line_hw_status(authorization: str = Header(None), db: Session = Depends(get_db)):
     if not _require_agent(authorization):
         return Response(status_code=401)
     counts = {}
     for st in ("pending", "done", "failed", "skipped"):
-        counts[st] = db.query(LineEvent).filter(LineEvent.status == st).count()
+        counts[st] = db.query(LineHwEvent).filter(LineHwEvent.status == st).count()
     return {
         "success": True,
         "counts": counts,
-        "channel_secret_configured": bool(LINE_CHANNEL_SECRET),
-        "access_token_configured": bool(LINE_CHANNEL_ACCESS_TOKEN),
-        "agent_token_configured": bool(LINE_AGENT_TOKEN),
-        "ack_text": LINE_ACK_TEXT or "(未設定＝返信しない)",
-        "watch_groups": LINE_WATCH_GROUPS or "(未設定＝全グループ受理)",
+        "channel_secret_configured": bool(LINE_HW_CHANNEL_SECRET),
+        "access_token_configured": bool(LINE_HW_CHANNEL_ACCESS_TOKEN),
+        "agent_token_configured": bool(LINE_HW_AGENT_TOKEN),
+        "ack_text": LINE_HW_ACK_TEXT or "(未設定＝返信しない)",
+        "watch_groups": LINE_HW_WATCH_GROUPS or "(未設定＝全グループ受理)",
     }
