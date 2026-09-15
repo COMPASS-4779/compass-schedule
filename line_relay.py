@@ -357,6 +357,30 @@ def line_hw_fail(
 # --------------------------------------------------------------------------
 # (3) 運用・調査用
 # --------------------------------------------------------------------------
+@router.post("/heartbeat")
+def line_hw_heartbeat(
+    agent: str = "local",
+    authorization: str = Header(None),
+    db: Session = Depends(get_db),
+):
+    """
+    ローカルエージェントの死活監視。
+    LINE だけを使う構成でも監視できるよう、LINE WORKS 側と同じテーブルに記録する。
+    """
+    if not _require_agent(authorization):
+        return Response(status_code=401)
+
+    from lw_relay import LWHeartbeat
+
+    row = db.query(LWHeartbeat).filter(LWHeartbeat.agent_name == agent).first()
+    if not row:
+        row = LWHeartbeat(agent_name=agent)
+        db.add(row)
+    row.last_seen = datetime.now(timezone.utc)
+    db.commit()
+    return {"success": True}
+
+
 @router.get("/discover")
 def line_hw_discover(
     limit: int = 30,
