@@ -754,6 +754,53 @@ def student_files(student_id: int, authorization: str = Header(None),
     ]}
 
 
+@router.get("/students/{student_id}/received")
+def student_received(student_id: int, limit: int = 60,
+                     authorization: str = Header(None), db: Session = Depends(get_db)):
+    """
+    受信先フォルダにある提出物の一覧を返す（新しい順）。
+    画面で「誰が何を出したか」を確認するために使う。
+    """
+    if (r := _auth_or_401(authorization)):
+        return r
+    s = db.query(HwStudent).filter(HwStudent.id == student_id).first()
+    if not s:
+        return {"success": False, "message": "生徒が見つかりません"}
+
+    limit = max(1, min(limit, 200))
+    try:
+        folder = ensure_path(f"受信先/{s.name}")
+        res = drive().files().list(
+            q=f"'{folder}' in parents and trashed = false "
+              "and mimeType != 'application/vnd.google-apps.folder'",
+            orderBy="createdTime desc",
+            fields="files(id,name,size,createdTime,mimeType,webViewLink)",
+            pageSize=limit,
+        ).execute()
+    except Exception as e:
+        return {"success": False, "message": f"Driveの一覧取得に失敗しました: {e}"}
+
+    out = []
+    for f in res.get("files", []):
+        created = f.get("createdTime")
+        local = None
+        if created:
+            try:
+                local = to_local(datetime.fromisoformat(created.replace("Z", "+00:00")))
+            except ValueError:
+                local = None
+        out.append({
+            "id": f["id"],
+            "name": f.get("name"),
+            "size": f.get("size"),
+            "mime": f.get("mimeType"),
+            "url": f.get("webViewLink"),
+            "received_at": local.strftime("%Y-%m-%d %H:%M") if local else None,
+            "date": local.strftime("%Y-%m-%d") if local else None,
+        })
+    return {"success": True, "student": s.name, "files": out}
+
+
 # --- アップロード -----------------------------------------------------
 @router.post("/upload")
 async def upload(student_id: int = Form(...), file: UploadFile = File(...),
