@@ -670,6 +670,51 @@ def send_now(delivery_id: int, authorization: str = Header(None),
     return {"success": True, "delivery": _delivery_json(d, files)}
 
 
+@router.get("/groups")
+def recent_groups(limit: int = 50, authorization: str = Header(None),
+                  db: Session = Depends(get_db)):
+    """
+    最近イベントが届いたLINEグループの一覧。
+
+    groupId の採取に使う。/line-hw/discover でも同じことができるが、
+    あちらはエージェント用トークンを要求するため、コントロール画面からは
+    こちらを使う（画面が持つトークンを1つで済ませるため）。
+    """
+    if (r := _auth_or_401(authorization)):
+        return r
+
+    from line_relay import LineHwEvent
+
+    limit = max(1, min(limit, 200))
+    rows = (
+        db.query(LineHwEvent)
+        .filter(LineHwEvent.group_id.isnot(None))
+        .order_by(LineHwEvent.id.desc())
+        .limit(limit)
+        .all()
+    )
+
+    assigned = {
+        s.group_id: s.name
+        for s in db.query(HwStudent).filter(HwStudent.group_id != "").all()
+        if s.group_id
+    }
+
+    groups = {}
+    for ev in rows:
+        g = groups.setdefault(ev.group_id, {"group_id": ev.group_id, "count": 0, "last_at": None})
+        g["count"] += 1
+        if g["last_at"] is None and ev.event_time:
+            local = to_local(ev.event_time)
+            g["last_at"] = local.strftime("%Y-%m-%d %H:%M") if local else None
+
+    out = []
+    for gid, g in groups.items():
+        g["assigned_to"] = assigned.get(gid)
+        out.append(g)
+    return {"success": True, "groups": out}
+
+
 # --- 配信予定のファイル操作 -------------------------------------------
 class FileIn(BaseModel):
     drive_file_id: str
