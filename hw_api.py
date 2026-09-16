@@ -562,9 +562,94 @@ def send_now(delivery_id: int, authorization: str = Header(None),
     return {"success": True, "delivery": _delivery_json(d, files)}
 
 
+# --- 配信予定のファイル操作 -------------------------------------------
+class FileIn(BaseModel):
+    drive_file_id: str
+    file_name: str = ""
+
+
+@router.post("/deliveries/{delivery_id}/files")
+def add_file(delivery_id: int, body: FileIn, authorization: str = Header(None),
+             db: Session = Depends(get_db)):
+    """既存の配信予定にファイルを足す（カレンダーで後から追加する用）"""
+    if (r := _auth_or_401(authorization)):
+        return r
+    d = db.query(HwDelivery).filter(HwDelivery.id == delivery_id).first()
+    if not d:
+        return {"success": False, "message": "見つかりません"}
+    if d.status == "sent":
+        return {"success": False, "message": "送信済みの予定は変更できません"}
+    dup = db.query(HwDeliveryFile).filter(
+        HwDeliveryFile.delivery_id == delivery_id,
+        HwDeliveryFile.drive_file_id == body.drive_file_id,
+    ).first()
+    if dup:
+        return {"success": False, "message": "同じファイルが既に追加されています"}
+    db.add(HwDeliveryFile(delivery_id=delivery_id,
+                          drive_file_id=body.drive_file_id,
+                          file_name=body.file_name or body.drive_file_id))
+    db.commit()
+    files = db.query(HwDeliveryFile).filter(HwDeliveryFile.delivery_id == d.id).all()
+    return {"success": True, "delivery": _delivery_json(d, files)}
+
+
+@router.delete("/deliveries/{delivery_id}/files/{file_id}")
+def remove_file(delivery_id: int, file_id: int, authorization: str = Header(None),
+                db: Session = Depends(get_db)):
+    """配信予定からファイルを外す（Drive のファイル自体は消さない）"""
+    if (r := _auth_or_401(authorization)):
+        return r
+    d = db.query(HwDelivery).filter(HwDelivery.id == delivery_id).first()
+    if not d:
+        return {"success": False, "message": "見つかりません"}
+    if d.status == "sent":
+        return {"success": False, "message": "送信済みの予定は変更できません"}
+    db.query(HwDeliveryFile).filter(
+        HwDeliveryFile.id == file_id, HwDeliveryFile.delivery_id == delivery_id
+    ).delete()
+    db.commit()
+    files = db.query(HwDeliveryFile).filter(HwDeliveryFile.delivery_id == d.id).all()
+    return {"success": True, "delivery": _delivery_json(d, files)}
+
+
+@router.get("/students/{student_id}/files")
+def student_files(student_id: int, authorization: str = Header(None),
+                  db: Session = Depends(get_db)):
+    """配信元フォルダにある、まだ送っていないファイルを返す（画面の選択肢用）"""
+    if (r := _auth_or_401(authorization)):
+        return r
+    s = db.query(HwStudent).filter(HwStudent.id == student_id).first()
+    if not s:
+        return {"success": False, "message": "生徒が見つかりません"}
+    try:
+        folder = ensure_path(f"配信元/{s.name}")
+        res = drive().files().list(
+            q=f"'{folder}' in parents and trashed = false "
+              "and mimeType != 'application/vnd.google-apps.folder'",
+            orderBy="modifiedTime", fields="files(id,name,size,modifiedTime)", pageSize=200,
+        ).execute()
+    except Exception as e:
+        return {"success": False, "message": f"Driveの一覧取得に失敗しました: {e}"}
+
+    used = {
+        f.drive_file_id
+        for f in db.query(HwDeliveryFile)
+        .join(HwDelivery, HwDelivery.id == HwDeliveryFile.delivery_id)
+        .filter(HwDelivery.student_id == student_id,
+                HwDelivery.status.in_(("pending", "sent")))
+        .all()
+    }
+    return {"success": True, "files": [
+        {"drive_file_id": f["id"], "name": f["name"], "size": f.get("size"),
+         "assigned": f["id"] in used}
+        for f in res.get("files", [])
+    ]}
+
+
 # --- アップロード -----------------------------------------------------
 @router.post("/upload")
 async def upload(student_id: int = Form(...), file: UploadFile = File(...),
+                 delivery_id: int = Form(0),
                  authorization: str = Header(None), db: Session = Depends(get_db)):
     """画面から届いたファイルを Drive の 配信元/生徒名 に置く"""
     if (r := _auth_or_401(authorization)):
@@ -594,6 +679,14 @@ async def upload(student_id: int = Form(...), file: UploadFile = File(...),
     except Exception as e:
         log.exception("アップロードに失敗: %s", e)
         return {"success": False, "message": f"Driveへの保存に失敗しました: {e}"}
+
+    # delivery_id が指定されていれば、その予定にそのまま紐づける
+    if delivery_id:
+        d = db.query(HwDelivery).filter(HwDelivery.id == delivery_id).first()
+        if d and d.status != "sent":
+            db.add(HwDeliveryFile(delivery_id=delivery_id, drive_file_id=f["id"],
+                                  file_name=f.get("name"), size=int(f.get("size") or 0)))
+            db.commit()
 
     return {"success": True,
             "file": {"drive_file_id": f["id"], "name": f.get("name"), "size": f.get("size")}}
