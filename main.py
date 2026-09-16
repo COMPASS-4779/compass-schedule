@@ -2,6 +2,9 @@ from fastapi import FastAPI, Depends, Query, Request, UploadFile, File, HTTPExce
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import models, schemas
+import lw_relay   # LINE WORKS Bot Callback 中継（テーブル登録のため create_all より前に import）
+import line_relay  # LINE 公式アカウント Webhook 中継（同上）
+import hw_api      # 宿題自動配信のコントロールAPI（同上）
 from database import engine, SessionLocal, DB_BACKEND, IS_EPHEMERAL_DB
 import json
 import google.generativeai as genai
@@ -27,6 +30,24 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# LINE WORKS ファイル自動送受信の中継エンドポイント（/lw/...）
+app.include_router(lw_relay.router)
+
+# LINE 公式アカウント（宿題自動送信）の中継エンドポイント（/line-hw/...）
+app.include_router(line_relay.router)
+
+# 宿題自動配信のコントロールAPI（/hw/api/...）
+app.include_router(hw_api.router)
+
+
+@app.on_event("startup")
+def _start_hw_scheduler():
+    """配信予定を1分ごとに確認するスケジューラを起動する"""
+    try:
+        hw_api.start_scheduler()
+    except Exception as e:
+        print(f"宿題配信スケジューラの起動に失敗: {e}", flush=True)
 
 @app.middleware("http")
 async def no_store_cache(request: Request, call_next):
