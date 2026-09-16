@@ -5,3 +5,8 @@ sqlalchemy
 google-generativeai
 pydantic
 psycopg2-binary
+google-api-python-client
+google-auth
+google-auth-httplib2
+APScheduler
+requests
