@@ -609,10 +609,18 @@ def quota(authorization: str = Header(None)):
         return {"success": False, "message": "LINEのトークンが未設定です"}
     h = {"Authorization": f"Bearer {LINE_TOKEN}"}
     try:
-        lim = requests.get(QUOTA_URL, headers=h, timeout=15).json()
-        used = requests.get(QUOTA_USED_URL, headers=h, timeout=15).json()
+        r1 = requests.get(QUOTA_URL, headers=h, timeout=15)
+        r2 = requests.get(QUOTA_USED_URL, headers=h, timeout=15)
     except Exception as e:
         return {"success": False, "message": str(e)}
+
+    # トークンが無効だと 401 が返る。黙って None を返すと原因が分からないので明示する
+    if r1.status_code != 200:
+        return {"success": False,
+                "message": f"LINE APIがエラーを返しました ({r1.status_code}): {r1.text[:200]}",
+                "hint": "Render の LINE_HW_CHANNEL_ACCESS_TOKEN を確認してください"}
+
+    lim, used = r1.json(), (r2.json() if r2.status_code == 200 else {})
     limit = lim.get("value")
     total = used.get("totalUsage", 0)
     return {
