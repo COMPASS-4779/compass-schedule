@@ -18,8 +18,10 @@ LINE に送る」処理を、こちらへ移している。PC が落ちていて
 """
 
 import hmac
+import io
 import logging
 import os
+import re
 from datetime import datetime, timedelta, timezone
 from typing import List, Optional
 
@@ -310,6 +312,108 @@ def run_due_deliveries():
         db.close()
 
 
+# ======================================================================
+# 受信（LINEに投稿された画像・ファイルを Drive へ保存）
+# ======================================================================
+CONTENT_URL = "https://api-data.line.me/v2/bot/message/{message_id}/content"
+
+MIME_EXT = {
+    "image/jpeg": ".jpg", "image/png": ".png", "image/gif": ".gif",
+    "image/webp": ".webp", "video/mp4": ".mp4", "audio/x-m4a": ".m4a",
+    "application/pdf": ".pdf",
+}
+
+INVALID_CHARS = re.compile(r'[\\/:*?"<>|\r\n\t]')      # ファイル名に使えない文字
+
+
+def received_filename(student_name, event_time, file_name, message_id, content_type):
+    """受信ファイルの保存名を組み立てる（生徒名_日付_時刻.拡張子）"""
+    dt = to_local(event_time) or datetime.now(TZ)
+    if file_name:
+        ext = os.path.splitext(file_name)[1] or ".bin"
+    else:
+        # 画像・動画にはファイル名が無いので Content-Type から拡張子を決める
+        ext = MIME_EXT.get((content_type or "").split(";")[0].strip(), ".bin")
+    name = f"{student_name}_{dt:%Y%m%d_%H%M}{ext}"
+    return INVALID_CHARS.sub("_", name).strip(". ") or f"{message_id}{ext}"
+
+
+def save_received(db: Session, ev):
+    """キューに積まれた1件を Drive の 受信先/生徒名 へ保存する"""
+    from googleapiclient.http import MediaIoBaseUpload
+
+    student = (
+        db.query(HwStudent)
+        .filter(HwStudent.group_id == ev.group_id, HwStudent.enabled.is_(True))
+        .first()
+    )
+    if student is None:
+        return "skipped"          # 登録されていないグループからの投稿は無視する
+
+    if not LINE_TOKEN:
+        raise RuntimeError("LINE_HW_CHANNEL_ACCESS_TOKEN が未設定です")
+
+    r = requests.get(
+        CONTENT_URL.format(message_id=ev.message_id),
+        headers={"Authorization": f"Bearer {LINE_TOKEN}"}, timeout=120,
+    )
+    if r.status_code != 200:
+        raise RuntimeError(f"コンテンツ取得に失敗 ({r.status_code}): {r.text[:200]}")
+
+    name = received_filename(student.name, ev.event_time, ev.file_name,
+                             ev.message_id, r.headers.get("Content-Type"))
+    folder = ensure_path(f"受信先/{student.name}")
+    media = MediaIoBaseUpload(
+        io.BytesIO(r.content),
+        mimetype=r.headers.get("Content-Type") or "application/octet-stream",
+        resumable=False,
+    )
+    f = drive().files().create(
+        body={"name": name, "parents": [folder]}, media_body=media, fields="id,name"
+    ).execute()
+
+    ev.status = "done"
+    ev.saved_path = f"受信先/{student.name}/{f.get('name')}"
+    ev.updated_at = datetime.now(timezone.utc)
+    db.commit()
+    log.info("受信を保存しました: %s", ev.saved_path)
+    return "done"
+
+
+def run_pending_receives():
+    """スケジューラから毎分呼ばれる。未処理の受信イベントを Drive へ保存する"""
+    from line_relay import MAX_RETRY, LineHwEvent
+
+    db = SessionLocal()
+    try:
+        rows = (
+            db.query(LineHwEvent)
+            .filter(LineHwEvent.status == "pending", LineHwEvent.retry_count < MAX_RETRY)
+            .order_by(LineHwEvent.id.asc())
+            .limit(20)
+            .all()
+        )
+        for ev in rows:
+            try:
+                if save_received(db, ev) == "skipped":
+                    ev.status = "skipped"
+                    ev.updated_at = datetime.now(timezone.utc)
+                    db.commit()
+            except Exception as e:
+                db.rollback()
+                ev.retry_count = (ev.retry_count or 0) + 1
+                ev.last_error = str(e)[:2000]
+                ev.updated_at = datetime.now(timezone.utc)
+                if ev.retry_count >= MAX_RETRY:
+                    ev.status = "failed"
+                db.commit()
+                log.error("受信の保存に失敗 (id=%s): %s", ev.id, e)
+    except Exception as e:
+        log.exception("受信処理で想定外のエラー: %s", e)
+    finally:
+        db.close()
+
+
 def start_scheduler():
     """FastAPI 起動時に呼ぶ。1分ごとに配信予定を確認する"""
     from apscheduler.schedulers.background import BackgroundScheduler
@@ -320,8 +424,12 @@ def start_scheduler():
         run_due_deliveries, IntervalTrigger(minutes=1),
         id="hw:due", max_instances=1, coalesce=True,
     )
+    sched.add_job(
+        run_pending_receives, IntervalTrigger(minutes=1),
+        id="hw:receive", max_instances=1, coalesce=True,
+    )
     sched.start()
-    log.info("宿題配信スケジューラを開始しました（1分間隔）")
+    log.info("宿題の配信・受信スケジューラを開始しました（1分間隔）")
     return sched
 
 
