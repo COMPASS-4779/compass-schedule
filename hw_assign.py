@@ -551,13 +551,17 @@ def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_tex
             rows.append([when_text, a.sheet_student or student_name, a.subject, book,
                          str(dm) if dm else "", ch, se, str(w.get("number")).strip(),
                          link, total, "", "1", a.title])
-        items.append({"book": book, "chapter": ch, "section": se, "pages": []})
-    uniq, seen = [], set()
+        items.append({"book": book, "chapter": ch, "section": se, "pages": [],
+                      "wrong": [{"daimon": str(dm) if dm else "", "number": str(w.get("number")).strip()}
+                                for w in wrongs]})
+    uniq, seen = [], {}
     for it in items:
         k = (it["book"], it["chapter"], it["section"])
         if k not in seen:
-            seen.add(k)
+            seen[k] = it
             uniq.append(it)
+        else:
+            seen[k]["wrong"] += it["wrong"]
     return rows, uniq
 
 
@@ -579,7 +583,9 @@ def request_review(a: HwAssignment, student_name: str, items):
                "student": a.sheet_student or student_name, "subject": a.subject,
                "book": (items[0]["book"] if items else "") or a.book, "title": a.title,
                "round": (a.round or 1) + 1, "target_accuracy": a.target_accuracy, "accuracy": a.accuracy,
-               "items": [{"chapter": it["chapter"], "section": it["section"], "pages": it["pages"]} for it in items]}
+               "sid": a.external_ref or "",
+               "items": [{"chapter": it["chapter"], "section": it["section"], "pages": it["pages"],
+                          "wrong": it.get("wrong") or []} for it in items]}
     try:
         r = requests.post(f"{TESTGEN_URL}/api/hw/review_draft", json=payload,
                           headers={"Authorization": f"Bearer {TESTGEN_TOKEN}"}, timeout=30)
