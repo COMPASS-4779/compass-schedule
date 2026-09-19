@@ -41,7 +41,7 @@ from sqlalchemy.orm import Session
 
 import hw_api
 from database import Base, SessionLocal
-from hw_api import BIGINT, TZ, HwDelivery, HwStudent, get_db, to_local
+from hw_api import BIGINT, HwDelivery, HwStudent, get_db, to_local
 
 log = logging.getLogger("hw_assign")
 
@@ -73,6 +73,9 @@ def _remind_hours():
 # 用紙に印字するテストID（読み違えやすい 0/O, 1/I/L, 2/Z, 5/S, 8/B を除いた英数字）
 CODE_CHARS = "ACDEFGHJKMNPQRTUVWXY34679"
 ANSWER_MIME = ("image/", "application/pdf")
+# 復習テストを自動で作る種類（テスト作成システムで作ったテスト）。
+# 過去問・プリントなど PDF で直接送ったものは、元教材の目次が無いので提出したら完了にする
+REVIEW_KINDS = ("理解度確認テスト", "復習テスト")
 
 
 # ======================================================================
@@ -159,8 +162,12 @@ def assignment_message(a: HwAssignment, extra: str = ""):
     parts = [head]
     if extra.strip():
         parts.append(extra.strip())
-    parts.append("リンクを開いて問題を解き、最後の解答を見て自分で丸付けをしてください。\n"
-                 "丸付けした答案の写真をこのトークに送ると提出になります。")
+    if a.kind in REVIEW_KINDS:
+        parts.append("リンクを開いて問題を解き、最後の解答を見て自分で丸付けをしてください。\n"
+                     "丸付けした答案の写真をこのトークに送ると提出になります。")
+    else:
+        parts.append("リンクのPDFを開いて問題を解き、丸付けをしてください。\n"
+                     "丸付けした答案の写真（右上のテストIDが写るように）をこのトークに送ると提出になります。")
     parts.append(a.test_url)
     parts.append(f"テストID: {a.code}")
     return "\n\n".join(parts)
@@ -348,7 +355,7 @@ def ledger_state(a: HwAssignment):
         return "送付済・未提出" + (f"（リマインド{a.remind_count}回）" if a.remind_count else "")
     rs = a.review_status or ""
     if a.status == "done":
-        return "復習テスト送付済" if rs == "sent" else "目標達成"
+        return {"sent": "復習テスト送付済", "n/a": "提出済"}.get(rs, "目標達成")
     return {"requested": "提出済・復習テスト作成中", "drafted": "提出済・復習テスト承認待ち",
             "failed": "提出済・復習テスト作成失敗"}.get(rs, "提出済・確認待ち")
 
@@ -543,7 +550,9 @@ def grade_student(db: Session, student: HwStudent, open_as: List[HwAssignment], 
     for f in files:
         db.add(HwGradedFile(drive_file_id=f["id"], student_id=student.id, assignment_id=a.id,
                             file_name=f.get("name", ""), status="recorded"))
-    if acc is None:
+    if a.kind not in REVIEW_KINDS:
+        a.status, a.review_status = "done", "n/a"          # 過去問・プリントは提出で完了（復習テストは作らない）
+    elif acc is None:
         a.review_note = "小問数が読み取れず正解率を判定できませんでした。講師が確認してください。"
     elif acc >= (a.target_accuracy or TARGET_ACCURACY):
         a.status = "done"                                    # 目標達成 → ループ終了
