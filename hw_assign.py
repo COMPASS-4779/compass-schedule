@@ -528,8 +528,11 @@ def ledger_update(a: HwAssignment):
         return False
 
 
-def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_text: str):
-    """読み取った大問 → 結果シートの行（A:M）。間違えた小問ごとに1行。L列＝提出F=1、M列＝テストのタイトル。"""
+def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_text: str, fields=None):
+    """読み取った大問 → 結果シートの行（A:M）。間違えた小問ごとに1行。L列＝提出F=1、M列＝テストのタイトル。
+    fields = {(大問, 問題番号): (見出し, タイトル)} があれば、その問題の章＝見出し・節＝タイトルにする
+    （PDFで送った課題で、送った問題PDFから分野を読めたとき）。"""
+    fields = fields or {}
     units = _units(a)
     one_unit = units[0] if len(units) == 1 else {}
     rows, items = [], []
@@ -548,12 +551,13 @@ def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_tex
         dm = _to_int(s.get("daimon"))
         total = _to_int(s.get("total")) or 0
         for w in wrongs:
+            num = str(w.get("number")).strip()
+            h, t = fields.get((str(dm) if dm else "", num), ("", ""))
+            wch, wse = (h or ch), (t or se)
             rows.append([when_text, a.sheet_student or student_name, a.subject, book,
-                         str(dm) if dm else "", ch, se, str(w.get("number")).strip(),
-                         link, total, "", "1", a.title])
-        items.append({"book": book, "chapter": ch, "section": se, "pages": [],
-                      "wrong": [{"daimon": str(dm) if dm else "", "number": str(w.get("number")).strip()}
-                                for w in wrongs]})
+                         str(dm) if dm else "", wch, wse, num, link, total, "", "1", a.title])
+            items.append({"book": book, "chapter": wch, "section": wse, "pages": [],
+                          "wrong": [{"daimon": str(dm) if dm else "", "number": num}]})
     uniq, seen = [], {}
     for it in items:
         k = (it["book"], it["chapter"], it["section"])
@@ -563,6 +567,56 @@ def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_tex
         else:
             seen[k]["wrong"] += it["wrong"]
     return rows, uniq
+
+
+def read_fields(pdf_bytes, targets):
+    """問題PDFを Gemini で読み、各問題の分野（見出し・タイトル）を返す。戻り値: [{"key","heading","title"}]"""
+    import google.generativeai as genai
+    if GEMINI_API_KEY:
+        genai.configure(api_key=GEMINI_API_KEY)
+    lines = "\n".join(f"{t['key']}: " + " ".join(x for x in (f"大問{t['daimon']}" if t["daimon"] else "", t["number"]) if x)
+                      for t in targets)
+    prompt = (
+        "これは問題（問題用紙）のPDFです。下の一覧の各問題がどこにあるかを探し、その問題の分野を次の2つで答えてください。\n"
+        "・heading = その問題が含まれるまとまりの先頭にある見出し（例:「Ⅰ 長文読解」「第2章 二次関数」）\n"
+        "・title   = 問題番号のところに書かれたタイトル（例:「内容一致」「最大・最小」）。番号だけでタイトルが無ければ \"\"\n"
+        "用紙に書かれている文字をそのまま使い、推測で作らないこと。見つからない問題は両方 \"\" にする。\n\n"
+        f"【問題の一覧】\n{lines}\n\n【出力形式】JSON配列のみ。\n"
+        '[{"key":"1","heading":"Ⅰ 長文読解","title":"内容一致"}]')
+    model = genai.GenerativeModel(GRADE_MODEL)
+    resp = model.generate_content([prompt, {"mime_type": "application/pdf", "data": pdf_bytes}])
+    return [x for x in extract_json_array(getattr(resp, "text", "")) if isinstance(x, dict)]
+
+
+def classify_wrongs_with_question(a: HwAssignment, sections):
+    """PDFで送った課題（過去問・プリントなど）：送った問題PDF（公開リンク）から、間違えた問題の分野を読む。
+    戻り値: {(大問, 問題番号): (見出し, タイトル)}。読めない・対象外なら {}（記録はそのまま続ける）。"""
+    if a.kind in REVIEW_KINDS or not a.test_url:
+        return {}
+    targets = []
+    for s in sections:
+        dm = _to_int(s.get("daimon"))
+        for w in (s.get("wrong") or []):
+            if isinstance(w, dict) and str(w.get("number", "")).strip():
+                targets.append({"key": str(len(targets) + 1), "daimon": str(dm) if dm else "",
+                                "number": str(w.get("number")).strip()})
+    if not targets:
+        return {}
+    try:
+        r = requests.get(a.test_url, timeout=60)
+        if r.status_code != 200 or not r.content.startswith(b"%PDF"):
+            return {}
+        got = {str(x.get("key", "")).strip(): x for x in read_fields(r.content, targets)}
+    except Exception as e:
+        log.warning("問題PDFから分野を読めませんでした (%s): %s", a.code, e)
+        return {}
+    out = {}
+    for t in targets:
+        x = got.get(t["key"]) or {}
+        h, ti = str(x.get("heading", "") or "").strip(), str(x.get("title", "") or "").strip()
+        if h or ti:
+            out[(t["daimon"], t["number"])] = (h, ti)
+    return out
 
 
 def score(sections):
@@ -660,11 +714,13 @@ def apply_submission(db: Session, a: HwAssignment, student: HwStudent, files_met
     now = now or _now()
     acc, total, wrong = score(sections)
     link = "\n".join(f["link"] for f in files_meta)
-    rows, items = build_rows(a, student.name, sections, link, to_local(now).strftime("%Y-%m-%d %H:%M:%S"))
+    fields = classify_wrongs_with_question(a, sections)      # PDFで送った課題だけ（送った問題から分野を読む）
+    rows, items = build_rows(a, student.name, sections, link, to_local(now).strftime("%Y-%m-%d %H:%M:%S"),
+                             fields=fields)
     append_result_rows(rows)
 
     a.status, a.submitted_at, a.accuracy, a.updated_at = "submitted", now, acc, now
-    a.result = json.dumps({"total": total, "wrong": wrong, "match": match, "rows": len(rows),
+    a.result = json.dumps({"total": total, "wrong": wrong, "match": match, "rows": len(rows), "fields": len(fields),
                            "files": [f["name"] for f in files_meta], "units": items}, ensure_ascii=False)
     for f in files_meta:
         g = db.query(HwGradedFile).filter(HwGradedFile.drive_file_id == f["id"]).first()
