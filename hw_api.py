@@ -259,7 +259,7 @@ def send_delivery(db: Session, d: HwDelivery):
         raise RuntimeError("配信先の生徒またはgroupIdが未設定です")
 
     files = db.query(HwDeliveryFile).filter(HwDeliveryFile.delivery_id == d.id).all()
-    if not files:
+    if not files and not (d.message or "").strip():   # 課題はテストのリンクだけを送るのでメッセージのみも可
         raise RuntimeError("配信するファイルがありません")
 
     parts = []

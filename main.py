@@ -5,6 +5,7 @@ import models, schemas
 import lw_relay   # LINE WORKS Bot Callback 中継（テーブル登録のため create_all より前に import）
 import line_relay  # LINE 公式アカウント Webhook 中継（同上）
 import hw_api      # 宿題自動配信のコントロールAPI（同上）
+import hw_assign   # 課題（送付テスト）の管理・提出の自動記録・リマインド（同上）
 from database import engine, SessionLocal, DB_BACKEND, IS_EPHEMERAL_DB
 import json
 import google.generativeai as genai
@@ -40,12 +41,16 @@ app.include_router(line_relay.router)
 # 宿題自動配信のコントロールAPI（/hw/api/...）
 app.include_router(hw_api.router)
 
+# 課題（送付テスト）の登録・一覧・取消（/hw/api/assignments...）
+app.include_router(hw_assign.router)
+
 
 @app.on_event("startup")
 def _start_hw_scheduler():
     """配信予定を1分ごとに確認するスケジューラを起動する"""
     try:
-        hw_api.start_scheduler()
+        sched = hw_api.start_scheduler()
+        hw_assign.add_jobs(sched)   # 提出の自動記録（5分）・リマインド（10分）・送付テストタブ（1分）
     except Exception as e:
         print(f"宿題配信スケジューラの起動に失敗: {e}", flush=True)
 
