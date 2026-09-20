@@ -89,6 +89,13 @@ ANSWER_MIME = ("image/", "application/pdf")
 # 復習テストを自動で作る種類（テスト作成システムで作ったテスト）。
 # 過去問・プリントなど PDF で直接送ったものは、元教材の目次が無いので提出したら完了にする
 REVIEW_KINDS = ("理解度確認テスト", "復習テスト")
+# リマインドの設定を分ける単位。過去問・プリント・その他はまとめて「過去問」の設定を使う。
+REMIND_GROUPS = ("理解度確認テスト", "復習テスト", "過去問")
+
+
+def remind_group(kind):
+    k = (kind or "").strip()
+    return k if k in REVIEW_KINDS else "過去問"
 # 生徒の「解き終わった」連絡とみなす言葉（問題名が読めないときに管理者へ回すかの判断に使う）
 DONE_WORDS = ("できました", "できた", "出来ました", "終わりました", "おわりました", "終わった", "おわった",
               "完了", "終了", "解けました", "とけました")
@@ -149,6 +156,16 @@ class HwGradedFile(Base):
     status = Column(String, default="recorded")           # recorded / unmatched / error
     error = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+
+
+class HwSetting(Base):
+    """設定の保存（キーと値）。リマインドのタイミングなど、画面から変えられる設定に使う。"""
+
+    __tablename__ = "hw_settings"
+
+    key = Column(String, primary_key=True, index=True)
+    value = Column(Text, default="")
+    updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
 
 class HwPending(Base):
@@ -895,10 +912,95 @@ def run_texts(now=None):
 # ======================================================================
 # 3) 未提出のリマインド（同じ LINE ボットで生徒のグループへ）
 # ======================================================================
-def reminder_due(a: HwAssignment, now):
-    if a.status != "sent" or a.sent_at is None or (a.remind_count or 0) >= REMIND_MAX:
+_SETTING_KEY = "remind"
+
+
+def _default_remind_settings():
+    s, e = _remind_hours()
+    return {"hours": f"{s}-{e}",
+            "kinds": {g: {"enabled": True, "after_days": REMIND_AFTER_DAYS,
+                          "interval_days": REMIND_INTERVAL_DAYS, "max": REMIND_MAX}
+                      for g in REMIND_GROUPS}}
+
+
+def remind_settings(db: Optional[Session] = None):
+    """保存された設定（無ければ環境変数の既定値）。画面のフォームから変更できる。"""
+    out = _default_remind_settings()
+    own = db is None
+    db = db or SessionLocal()
+    try:
+        row = db.query(HwSetting).filter(HwSetting.key == _SETTING_KEY).first()
+        saved = json.loads(row.value) if row and row.value else {}
+    except Exception as e:
+        log.warning("リマインド設定の読み出しに失敗: %s", e)
+        saved = {}
+    finally:
+        if own:
+            db.close()
+    if isinstance(saved.get("hours"), str) and re.match(r"^\d{1,2}-\d{1,2}$", saved["hours"].strip()):
+        out["hours"] = saved["hours"].strip()
+    for g in REMIND_GROUPS:
+        v = (saved.get("kinds") or {}).get(g) or {}
+        if not isinstance(v, dict):
+            continue
+        cur = out["kinds"][g]
+        if "enabled" in v:
+            cur["enabled"] = bool(v["enabled"])
+        for k, lo, hi in (("after_days", 0, 60), ("interval_days", 1, 60), ("max", 0, 20)):
+            if k in v:
+                try:
+                    cur[k] = max(lo, min(hi, int(v[k])))
+                except (TypeError, ValueError):
+                    pass
+    return out
+
+
+def save_remind_settings(patch: dict):
+    """画面から来た設定を保存して、保存後の内容を返す。"""
+    cur = remind_settings()
+    if isinstance(patch.get("hours"), str) and re.match(r"^\s*\d{1,2}\s*-\s*\d{1,2}\s*$", patch["hours"]):
+        a, b = [int(x) for x in patch["hours"].replace(" ", "").split("-")]
+        if 0 <= a <= 23 and 1 <= b <= 24 and a < b:
+            cur["hours"] = f"{a}-{b}"
+    for g in REMIND_GROUPS:
+        v = (patch.get("kinds") or {}).get(g)
+        if not isinstance(v, dict):
+            continue
+        if "enabled" in v:
+            cur["kinds"][g]["enabled"] = bool(v["enabled"])
+        for k, lo, hi in (("after_days", 0, 60), ("interval_days", 1, 60), ("max", 0, 20)):
+            if k in v and str(v[k]).strip() != "":
+                try:
+                    cur["kinds"][g][k] = max(lo, min(hi, int(v[k])))
+                except (TypeError, ValueError):
+                    pass
+    db = SessionLocal()
+    try:
+        row = db.query(HwSetting).filter(HwSetting.key == _SETTING_KEY).first()
+        if row is None:
+            row = HwSetting(key=_SETTING_KEY)
+            db.add(row)
+        row.value = json.dumps(cur, ensure_ascii=False)
+        row.updated_at = _now()
+        db.commit()
+    finally:
+        db.close()
+    return cur
+
+
+def _remind_hours_setting(st):
+    m = re.match(r"^\s*(\d{1,2})\s*-\s*(\d{1,2})\s*$", st.get("hours") or "")
+    return (int(m.group(1)), int(m.group(2))) if m else _remind_hours()
+
+
+def reminder_due(a: HwAssignment, now, st=None):
+    st = st or remind_settings()
+    conf = st["kinds"][remind_group(a.kind)]
+    if not conf.get("enabled", True):
         return False
-    due = _aware(a.sent_at) + timedelta(days=REMIND_AFTER_DAYS + REMIND_INTERVAL_DAYS * (a.remind_count or 0))
+    if a.status != "sent" or a.sent_at is None or (a.remind_count or 0) >= conf["max"]:
+        return False
+    due = _aware(a.sent_at) + timedelta(days=conf["after_days"] + conf["interval_days"] * (a.remind_count or 0))
     if now < due:
         return False
     last = to_local(a.last_reminded_at)
@@ -917,7 +1019,8 @@ def remind_text(a: HwAssignment, now):
 
 def run_reminders(now=None):
     now = now or _now()
-    start, end = _remind_hours()
+    st = remind_settings()
+    start, end = _remind_hours_setting(st)
     if not (start <= to_local(now).hour < end):
         return 0
     db = SessionLocal()
@@ -925,7 +1028,7 @@ def run_reminders(now=None):
     try:
         sync_sent(db)
         for a in db.query(HwAssignment).filter(HwAssignment.status == "sent").all():
-            if not reminder_due(a, now):
+            if not reminder_due(a, now, st):
                 continue
             student = db.query(HwStudent).filter(HwStudent.id == a.student_id).first()
             if student is None or not student.group_id or not student.enabled:
@@ -1009,16 +1112,33 @@ class ReviewStatusIn(BaseModel):
     external_ref: str = ""
 
 
+def _settings_json(st):
+    """画面に返す設定一式。remind_* は「理解度確認テスト」の値（従来の表示との互換）。"""
+    base = st["kinds"]["理解度確認テスト"]
+    return {"ok": True, "grading_enabled": bool(RESULT_SPREADSHEET_ID and GEMINI_API_KEY),
+            "review_enabled": bool(TESTGEN_URL and TESTGEN_TOKEN), "target_accuracy": TARGET_ACCURACY,
+            "remind_after_days": base["after_days"], "remind_interval_days": base["interval_days"],
+            "remind_max": base["max"], "remind_hours": st["hours"], "settle_minutes": SETTLE_MINUTES,
+            "remind": st, "remind_groups": list(REMIND_GROUPS)}
+
+
 @router.get("/assignments/settings")
 def assignment_settings(authorization: str = Header(None)):
     err = hw_api._auth_or_401(authorization)
     if err:
         return err
-    s, e = _remind_hours()
-    return {"ok": True, "grading_enabled": bool(RESULT_SPREADSHEET_ID and GEMINI_API_KEY),
-            "review_enabled": bool(TESTGEN_URL and TESTGEN_TOKEN), "target_accuracy": TARGET_ACCURACY,
-            "remind_after_days": REMIND_AFTER_DAYS, "remind_interval_days": REMIND_INTERVAL_DAYS,
-            "remind_max": REMIND_MAX, "remind_hours": f"{s}-{e}", "settle_minutes": SETTLE_MINUTES}
+    return _settings_json(remind_settings())
+
+
+@router.post("/assignments/settings")
+def update_assignment_settings(payload: dict, authorization: str = Header(None)):
+    """リマインドのタイミングを保存する（種類ごと）。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    st = save_remind_settings(payload.get("remind") or payload)
+    log.info("リマインド設定を更新しました: %s", st)
+    return _settings_json(st)
 
 
 @router.get("/assignments")
