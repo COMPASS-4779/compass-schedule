@@ -537,6 +537,17 @@ def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_tex
     fields = fields or {}
     units = _units(a)
     one_unit = units[0] if len(units) == 1 else {}
+
+    def unit_page(ch, se):
+        """結果シートのページ列に書く「教材のページ」。課題の単元（章・節）から探す。"""
+        for u in units:
+            if (ch and norm_key(u.get("chapter")) == norm_key(ch)) or \
+               (se and norm_key(u.get("section")) == norm_key(se)):
+                pg = (u.get("pages") or [None])[0]
+                if pg:
+                    return str(pg)
+        pg = (one_unit.get("pages") or [None])[0]
+        return str(pg) if pg else ""
     rows, items = [], []
     for s in sections:
         wrongs = [w for w in (s.get("wrong") or []) if isinstance(w, dict) and str(w.get("number", "")).strip()]
@@ -557,7 +568,7 @@ def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_tex
             h, t = fields.get((str(dm) if dm else "", num), ("", ""))
             wch, wse = (h or ch), (t or se)
             rows.append([when_text, a.sheet_student or student_name, a.subject, book,
-                         str(dm) if dm else "", wch, wse, num, link, total, "", "1", a.title])
+                         unit_page(wch, wse), wch, wse, num, link, total, "", "1", a.title])
             items.append({"book": book, "chapter": wch, "section": wse, "pages": [],
                           "wrong": [{"daimon": str(dm) if dm else "", "number": num}]})
     uniq, seen = [], {}
