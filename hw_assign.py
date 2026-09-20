@@ -1205,6 +1205,33 @@ def update_assignment_settings(payload: dict, authorization: str = Header(None))
     return _settings_json(st)
 
 
+@router.post("/assignments/{assignment_id}/mark_sent")
+def mark_assignment_sent(assignment_id: int, authorization: str = Header(None),
+                         db: Session = Depends(get_db)):
+    """配信失敗になっているが実際にはLINEに届いていた課題を「送付済み」に直す。
+    （提出の自動記録・リマインドの対象に戻す）"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
+    if a is None:
+        return {"ok": False, "error": "課題が見つかりません"}
+    if a.status not in ("failed", "scheduled"):
+        return {"ok": False, "error": f"この課題は「{a.status}」なので変更できません"}
+    now = _now()
+    d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
+    if d is not None and d.status != "sent":
+        d.status, d.sent_at, d.error = "sent", d.sent_at or now, None
+    a.status = "sent"
+    a.sent_at = a.sent_at or (d.sent_at if d is not None else None) or now
+    a.review_note = None
+    a.updated_at = now
+    db.commit()
+    ledger_update(a)
+    log.info("配信失敗の課題を送付済みに直しました: %s", a.code)
+    return {"ok": True, "assignment": assignment_json(a, db)}
+
+
 @router.post("/assignments/{assignment_id}/remind")
 def update_assignment_remind(assignment_id: int, payload: dict,
                              authorization: str = Header(None), db: Session = Depends(get_db)):
