@@ -408,11 +408,15 @@ def grade_prompt(n_files, candidates):
         "\n【答案の構成】用紙の上部にテスト名と『テストID: 英数字6文字』が印字されています。"
         "太字・色付きの見出しが『単元』、その下の 1. 2. 3. が『大問』、(1)(2)… が『小問』です。"
         "大問番号は単元ごとに 1 から振り直されることがあります。\n"
+        "【重要】1回の写真の中に、別々のテスト（テストIDが違うもの）が混ざっていることがあります。"
+        "写真ごとに印字されたテストIDを読み、大問ごとに photo と test_id を必ず対応させてください"
+        "（別のテストの大問を1つにまとめないこと）。1つのテストが複数枚に分かれていることもあります。\n"
         + (f"\n【この生徒に送ったテスト（テストIDの候補）】\n{cand}\n" if cand else "")
         + "\n【出力形式】JSON配列のみ（説明文は不要）。大問ごとに1要素。\n"
-        '[{"test_id":"K7F3QA","test_title":"第3回 理解度確認テスト","text":"新中学問題集 数学1年",'
+        '[{"photo":1,"test_id":"K7F3QA","test_title":"第3回 理解度確認テスト","text":"新中学問題集 数学1年",'
         '"chapter":"第2章 文字と式","section":"第1節 文字を使った式","unit":"文字式",'
         '"daimon":"1","total":4,"wrong":[{"number":"(2)"}]}]\n'
+        "・photo   = その大問が写っている写真の番号（1枚目なら1。渡された順）。必ず入れる\n"
         "・test_id  = 用紙に印字されたテストID（読めなければ \"\"）\n"
         "・text / chapter / section = 出題元のテキスト名・章・節（書かれていなければ \"\"）\n"
         "・unit = 大問の上の単元見出し（無ければ \"\"）\n"
@@ -729,6 +733,51 @@ def add_pending(db: Session, student: HwStudent, kind, reason, files=None, readi
     return p
 
 
+def _photo_no(sec, n_files):
+    """その大問が写っている写真の番号（1始まり）。読めなければ None。"""
+    v = _to_int(sec.get("photo"))
+    return v if v and 1 <= v <= n_files else None
+
+
+def group_by_test(sections, files_meta):
+    """読み取り結果を「テストごと」に分ける。写真が別々のテストに分かれている場合に、
+    どの写真がどのテストのものかも一緒に返す。
+    戻り値: [(そのテストの大問リスト, そのテストの写真リスト)]。
+    写真番号が読めないときは分けられないので、全部まとめて1つとして返す。"""
+    n = len(files_meta)
+    if not sections:
+        return [(sections, files_meta)]
+    groups, order = {}, []
+    for sec in sections:
+        key = norm_key(sec.get("test_id")) or norm_key(sec.get("test_title")) or ""
+        if key not in groups:
+            groups[key] = {"sections": [], "photos": set()}
+            order.append(key)
+        groups[key]["sections"].append(sec)
+        ph = _photo_no(sec, n)
+        if ph:
+            groups[key]["photos"].add(ph)
+    if len(order) <= 1:
+        return [(sections, files_meta)]
+    # 写真番号が1つも読めない、または写真が複数のテストで重なっている場合は分けない
+    if any(not groups[k]["photos"] for k in order):
+        return [(sections, files_meta)]
+    seen = set()
+    for k in order:
+        if groups[k]["photos"] & seen:
+            return [(sections, files_meta)]
+        seen |= groups[k]["photos"]
+    out = []
+    for k in order:
+        g = groups[k]
+        out.append((g["sections"], [files_meta[i - 1] for i in sorted(g["photos"])]))
+    # どのテストにも結びつかなかった写真は、最初のまとまりに付けておく（取りこぼさない）
+    rest = [f for i, f in enumerate(files_meta, 1) if i not in seen]
+    if rest and out:
+        out[0] = (out[0][0], out[0][1] + rest)
+    return out
+
+
 def match_assignment(open_as: List[HwAssignment], sections):
     """読み取り結果と送った課題を照合する。テストIDが1件だけ一致、またはテスト名（問題名）が1件だけ一致したときだけ決める。"""
     codes = {norm_key(s.get("test_id")) for s in sections if s.get("test_id")}
@@ -795,22 +844,28 @@ def grade_student(db: Session, student: HwStudent, open_as: List[HwAssignment], 
                    "link": f.get("webViewLink") or f"https://drive.google.com/file/d/{f['id']}/view"} for f in files]
     blobs = [(hw_api.drive().files().get_media(fileId=f["id"]).execute(), f["mimeType"]) for f in files]
     sections = read_answers(blobs, open_as)
-    a, match = match_assignment(open_as, sections)
-    reason = ""
-    if a is None:
-        reason = ("テストIDもテスト名も読み取れた内容と一致せず、どのテストの答案か判別できませんでした"
-                  f"（未提出の課題: {'、'.join(x.label or x.title for x in open_as)}）")
-    elif not a.with_answers and a.answers_sent_at is None:
-        reason = f"解答を送る前に「{a.label or a.title}」の答案が届きました（丸付け前の可能性があります）"
-    if reason:
-        for f in files_meta:
-            db.add(HwGradedFile(drive_file_id=f["id"], student_id=student.id, assignment_id=None,
-                                file_name=f["name"], status="unmatched"))
-        add_pending(db, student, "answer", reason, files_meta, sections)
-        db.commit()
-        log.info("判定待ちにしました: %s %s", student.name, reason)
-        return None
-    return apply_submission(db, a, student, files_meta, sections, match, now)
+    # 届いた写真に複数のテストが混ざっていることがあるので、テストごとに分けて処理する
+    done = None
+    for g_sections, g_files in group_by_test(sections, files_meta):
+        if not g_files:
+            continue
+        a, match = match_assignment(open_as, g_sections)
+        reason = ""
+        if a is None:
+            reason = ("テストIDもテスト名も読み取れた内容と一致せず、どのテストの答案か判別できませんでした"
+                      f"（未提出の課題: {'、'.join(x.label or x.title for x in open_as)}）")
+        elif not a.with_answers and a.answers_sent_at is None:
+            reason = f"解答を送る前に「{a.label or a.title}」の答案が届きました（丸付け前の可能性があります）"
+        if reason:
+            for f in g_files:
+                db.add(HwGradedFile(drive_file_id=f["id"], student_id=student.id, assignment_id=None,
+                                    file_name=f["name"], status="unmatched"))
+            add_pending(db, student, "answer", reason, g_files, g_sections)
+            db.commit()
+            log.info("判定待ちにしました: %s %s", student.name, reason)
+            continue
+        done = apply_submission(db, a, student, g_files, g_sections, match, now) or done
+    return done
 
 
 def run_grading():
@@ -1374,6 +1429,7 @@ def run_now(authorization: str = Header(None)):
 
 # ---- 判定待ち（管理者の判定フォーム用）-------------------------------------------
 class PendingResolveIn(BaseModel):
+    file_ids: Optional[List[str]] = None     # 一部の写真だけを対象にするとき（残りは判定待ちのまま）
     action: str                      # record（この課題の答案として記録）/ send_answers（解答を送る）/ ignore
     assignment_id: Optional[int] = None
     note: str = ""
@@ -1432,11 +1488,23 @@ def resolve_pending(pending_id: int, body: PendingResolveIn, authorization: str 
         if a is None or student is None:
             return {"ok": False, "error": "この生徒の課題を選んでください"}
     try:
+        files = json.loads(p.files or "[]")
+        reading = json.loads(p.reading or "[]")
+        rest = []
+        if body.file_ids:                      # 選んだ写真だけを対象にする（写真を切り分ける）
+            want = set(body.file_ids)
+            idx = {f.get("id"): i + 1 for i, f in enumerate(files)}
+            picked = [f for f in files if f.get("id") in want]
+            rest = [f for f in files if f.get("id") not in want]
+            if not picked:
+                return {"ok": False, "error": "選んだ写真が見つかりません"}
+            nums = {idx[f["id"]] for f in picked}
+            sub = [sec for sec in reading if _to_int(sec.get("photo")) in nums]
+            files, reading = picked, (sub if sub else reading)
         if body.action == "record":
             if p.kind != "answer":
                 return {"ok": False, "error": "答案の写真ではないため記録できません"}
-            apply_submission(db, a, student, json.loads(p.files or "[]"), json.loads(p.reading or "[]"),
-                             "管理者の判定")
+            apply_submission(db, a, student, files, reading, "管理者の判定")
         elif body.action == "send_answers":
             send_answers(db, a, student)
         elif body.action != "ignore":
@@ -1446,5 +1514,16 @@ def resolve_pending(pending_id: int, body: PendingResolveIn, authorization: str 
         return {"ok": False, "error": str(e)}
     p.status = "ignored" if body.action == "ignore" else "resolved"
     p.assignment_id, p.note, p.resolved_at = (a.id if a else None), (body.note or body.action), _now()
+    left = None
+    if body.file_ids and rest:
+        # 残りの写真は、別のテストの答案として判定できるよう「判定待ち」に残す
+        left = add_pending(db, student, p.kind, p.reason, rest,
+                           [sec for sec in json.loads(p.reading or "[]")
+                            if _to_int(sec.get("photo")) not in
+                            {i + 1 for i, f in enumerate(json.loads(p.files or "[]")) if f.get("id") in set(body.file_ids)}],
+                           p.text or "")
     db.commit()
-    return {"ok": True, "pending": pending_json(p, db)}
+    out = {"ok": True, "pending": pending_json(p, db)}
+    if left is not None:
+        out["remaining"] = pending_json(left, db)
+    return out
