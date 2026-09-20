@@ -988,14 +988,76 @@ def save_remind_settings(patch: dict):
     return cur
 
 
+_ASSIGN_KEY = "remind_a_"
+
+
+def assignment_remind(db: Session, ids):
+    """課題1件ごとのリマインド設定（課題IDごと）。設定が無い課題は入らない。"""
+    if not ids:
+        return {}
+    keys = [f"{_ASSIGN_KEY}{i}" for i in ids]
+    out = {}
+    for row in db.query(HwSetting).filter(HwSetting.key.in_(keys)).all():
+        try:
+            out[int(row.key[len(_ASSIGN_KEY):])] = json.loads(row.value or "{}")
+        except (ValueError, TypeError):
+            pass
+    return out
+
+
+def save_assignment_remind(assignment_id: int, patch: dict):
+    """課題1件のリマインド設定を保存する。reset=True なら種類ごとの設定に戻す。"""
+    db = SessionLocal()
+    try:
+        key = f"{_ASSIGN_KEY}{int(assignment_id)}"
+        row = db.query(HwSetting).filter(HwSetting.key == key).first()
+        if patch.get("reset"):
+            if row is not None:
+                db.delete(row)
+                db.commit()
+            return None
+        cur = {}
+        if row is not None and row.value:
+            try:
+                cur = json.loads(row.value) or {}
+            except ValueError:
+                cur = {}
+        if "enabled" in patch:
+            cur["enabled"] = bool(patch["enabled"])
+        for k, lo, hi in (("after_days", 0, 60), ("interval_days", 1, 60), ("max", 0, 20)):
+            if k in patch and str(patch[k]).strip() != "":
+                try:
+                    cur[k] = max(lo, min(hi, int(patch[k])))
+                except (TypeError, ValueError):
+                    pass
+        if row is None:
+            row = HwSetting(key=key)
+            db.add(row)
+        row.value = json.dumps(cur, ensure_ascii=False)
+        row.updated_at = _now()
+        db.commit()
+        return cur
+    finally:
+        db.close()
+
+
+def effective_remind(a: HwAssignment, st=None, override=None):
+    """この課題に実際に使うリマインド設定（種類ごとの設定に、課題1件の設定を重ねる）。"""
+    st = st or remind_settings()
+    conf = dict(st["kinds"][remind_group(a.kind)])
+    for k, v in (override or {}).items():
+        if k in ("enabled", "after_days", "interval_days", "max"):
+            conf[k] = v
+    return conf
+
+
 def _remind_hours_setting(st):
     m = re.match(r"^\s*(\d{1,2})\s*-\s*(\d{1,2})\s*$", st.get("hours") or "")
     return (int(m.group(1)), int(m.group(2))) if m else _remind_hours()
 
 
-def reminder_due(a: HwAssignment, now, st=None):
-    st = st or remind_settings()
-    conf = st["kinds"][remind_group(a.kind)]
+def reminder_due(a: HwAssignment, now, st=None, override=None):
+    conf = effective_remind(a, st, override)
     if not conf.get("enabled", True):
         return False
     if a.status != "sent" or a.sent_at is None or (a.remind_count or 0) >= conf["max"]:
@@ -1027,8 +1089,10 @@ def run_reminders(now=None):
     n = 0
     try:
         sync_sent(db)
-        for a in db.query(HwAssignment).filter(HwAssignment.status == "sent").all():
-            if not reminder_due(a, now, st):
+        sent = db.query(HwAssignment).filter(HwAssignment.status == "sent").all()
+        overrides = assignment_remind(db, [x.id for x in sent])
+        for a in sent:
+            if not reminder_due(a, now, st, overrides.get(a.id)):
                 continue
             student = db.query(HwStudent).filter(HwStudent.id == a.student_id).first()
             if student is None or not student.group_id or not student.enabled:
@@ -1141,6 +1205,21 @@ def update_assignment_settings(payload: dict, authorization: str = Header(None))
     return _settings_json(st)
 
 
+@router.post("/assignments/{assignment_id}/remind")
+def update_assignment_remind(assignment_id: int, payload: dict,
+                             authorization: str = Header(None), db: Session = Depends(get_db)):
+    """課題1件のリマインド設定（送る/送らない・何日後・何日おき・最大何回）。reset=True で種類ごとの設定に戻す。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
+    if a is None:
+        return {"ok": False, "error": "課題が見つかりません"}
+    cur = save_assignment_remind(assignment_id, payload or {})
+    log.info("課題のリマインド設定を更新: %s %s", a.code, cur)
+    return {"ok": True, "remind": cur, "remind_effective": effective_remind(a, None, cur)}
+
+
 @router.get("/assignments")
 def list_assignments(status: str = "", student_id: int = 0, limit: int = 200,
                      authorization: str = Header(None), db: Session = Depends(get_db)):
@@ -1154,7 +1233,15 @@ def list_assignments(status: str = "", student_id: int = 0, limit: int = 200,
     if student_id:
         q = q.filter(HwAssignment.student_id == student_id)
     rows = q.order_by(HwAssignment.id.desc()).limit(max(1, min(limit, 1000))).all()
-    return {"ok": True, "assignments": [assignment_json(a, db) for a in rows]}
+    st = remind_settings(db)
+    overrides = assignment_remind(db, [a.id for a in rows])
+    out = []
+    for a in rows:
+        j = assignment_json(a, db)
+        j["remind"] = overrides.get(a.id)                      # 課題ごとの設定（無ければ None）
+        j["remind_effective"] = effective_remind(a, st, overrides.get(a.id))
+        out.append(j)
+    return {"ok": True, "assignments": out}
 
 
 @router.post("/assignments")
