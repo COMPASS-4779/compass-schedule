@@ -334,12 +334,13 @@ def _units(a):
 
 
 def assignment_json(a: HwAssignment, db: Optional[Session] = None):
-    student, dstatus = None, None
+    student, dstatus, dscheduled = None, None, None
     if db is not None:
         student = db.query(HwStudent).filter(HwStudent.id == a.student_id).first()
         if a.delivery_id:
             d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first()
             dstatus = d.status if d else None
+            dscheduled = _fmt(d.scheduled_at) if d else None      # 送付の予定日時
     try:
         result = json.loads(a.result) if a.result else None
     except Exception:
@@ -349,7 +350,8 @@ def assignment_json(a: HwAssignment, db: Optional[Session] = None):
         "sheet_student": a.sheet_student, "code": a.code, "kind": a.kind, "round": a.round,
         "parent_id": a.parent_id, "title": a.title, "test_url": a.test_url, "subject": a.subject,
         "book": a.book, "units": _units(a), "target_accuracy": a.target_accuracy, "status": a.status,
-        "delivery_status": dstatus, "sent_at": _fmt(a.sent_at), "submitted_at": _fmt(a.submitted_at),
+        "delivery_status": dstatus, "scheduled_at": dscheduled,
+        "sent_at": _fmt(a.sent_at), "submitted_at": _fmt(a.submitted_at),
         "accuracy": a.accuracy, "result": result, "remind_count": a.remind_count,
         "last_reminded_at": _fmt(a.last_reminded_at), "review_status": a.review_status,
         "review_note": a.review_note, "external_ref": a.external_ref, "created_at": _fmt(a.created_at),
