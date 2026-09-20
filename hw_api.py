@@ -270,19 +270,25 @@ def send_delivery(db: Session, d: HwDelivery):
 
     line_push(student.group_id, "\n\n".join(parts))
 
-    # 送信済みフォルダへ移す（配信元に残さない）
-    done = ensure_path(f"配信済み/{student.name}")
-    for f in files:
-        try:
-            move_file(f.drive_file_id, done)
-        except Exception as e:
-            log.warning("配信済みへの移動に失敗 (%s): %s", f.file_name, e)
-
+    # LINEに送れた時点で「送信済み」にする。このあとの Drive の片付けで失敗しても、
+    # 生徒には届いているので「配信失敗」にはしない（失敗にすると提出の記録もされなくなる）。
     d.status = "sent"
     d.sent_at = datetime.now(timezone.utc)
     d.error = None
     db.commit()
     log.info("配信しました: %s (%d件)", student.name, len(files))
+
+    # 送信済みフォルダへ移す（配信元に残さない）。失敗しても配信は成功のまま。
+    if files:
+        try:
+            done = ensure_path(f"配信済み/{student.name}")
+            for f in files:
+                try:
+                    move_file(f.drive_file_id, done)
+                except Exception as e:
+                    log.warning("配信済みへの移動に失敗 (%s): %s", f.file_name, e)
+        except Exception as e:
+            log.warning("配信済みフォルダの準備に失敗 (%s): %s", student.name, e)
 
 
 def run_due_deliveries():
