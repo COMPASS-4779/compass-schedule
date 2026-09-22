@@ -1450,6 +1450,36 @@ def cancel_assignment(assignment_id: int, authorization: str = Header(None), db:
     return {"ok": True, "assignment": assignment_json(a, db)}
 
 
+@router.delete("/assignments/{assignment_id}")
+def delete_assignment(assignment_id: int, authorization: str = Header(None),
+                      db: Session = Depends(get_db)):
+    """課題1件を一覧から削除する（元に戻せない）。
+    - まだ送っていない配信予定は取り消す（送られないようにする）。
+    - 読み取り済みの答案の控えは残したまま、課題との結びつきだけ外す
+      （控えを消すと同じ写真をまた読み取ってしまうため）。
+    - 結果シートの行・「送付テスト」タブの行は消さない（記録として残す）。
+    """
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
+    if a is None:
+        return Response(status_code=404)
+    code, title = a.code, a.title
+    d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
+    if d is not None and d.status == "pending":
+        d.status, d.error = "canceled", None
+    for g in db.query(HwGradedFile).filter(HwGradedFile.assignment_id == a.id).all():
+        g.assignment_id = None
+    for pnd in db.query(HwPending).filter(HwPending.assignment_id == a.id).all():
+        pnd.assignment_id = None
+    db.query(HwAssignment).filter(HwAssignment.parent_id == a.id).update({"parent_id": None})
+    db.delete(a)
+    db.commit()
+    log.info("課題を削除しました: %s %s", code, title)
+    return {"ok": True, "deleted": code}
+
+
 @router.post("/assignments/{assignment_id}/review")
 def review_status(assignment_id: int, body: ReviewStatusIn, authorization: str = Header(None),
                   db: Session = Depends(get_db)):
