@@ -1384,6 +1384,55 @@ def create_assignment(body: AssignmentIn, authorization: str = Header(None), db:
     return {"ok": True, "assignment": assignment_json(a, db)}
 
 
+class AssignmentEditIn(BaseModel):
+    """まだ送っていない課題の変更（渡された項目だけ変える）。"""
+
+    send_at: Optional[str] = None            # "YYYY-MM-DDTHH:MM"（空文字ですぐ送る）
+    message: Optional[str] = None            # 一緒に送るひとこと
+    label: Optional[str] = None              # 問題名（「<問題名> できました」の合図）
+    target_accuracy: Optional[int] = None
+    sheet_student: Optional[str] = None      # 結果シートに書く生徒名
+
+
+@router.patch("/assignments/{assignment_id}")
+def edit_assignment(assignment_id: int, body: AssignmentEditIn,
+                    authorization: str = Header(None), db: Session = Depends(get_db)):
+    """まだ送っていない課題（配信待ち）の内容を変える。送付済み以降は変えられない。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
+    if a is None:
+        return Response(status_code=404)
+    if a.status != "scheduled":
+        return {"ok": False, "error": f"この課題は「{a.status}」なので変更できません（未送信のものだけ変えられます）"}
+    d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
+    changed = []
+    if body.label is not None and body.label.strip():
+        a.label = body.label.strip()
+        changed.append("問題名")
+    if body.sheet_student is not None:
+        a.sheet_student = body.sheet_student.strip()
+        changed.append("結果シートの生徒名")
+    if body.target_accuracy is not None:
+        a.target_accuracy = max(0, min(100, int(body.target_accuracy)))
+        changed.append("目標正解率")
+    if d is not None and d.status != "pending" and (body.send_at is not None or body.message is not None):
+        return {"ok": False, "error": "配信の状態が変わっているため、日時と本文は変更できません"}
+    if body.send_at is not None and d is not None:
+        d.scheduled_at = hw_api.parse_local(body.send_at) if body.send_at.strip() else _now()
+        changed.append("送付日時")
+    if body.message is not None and d is not None:
+        # 本文は「課題の案内（リンク・テストID）＋ひとこと」なので作り直す
+        d.message = assignment_message(a, body.message.strip())
+        changed.append("ひとこと")
+    a.updated_at = _now()
+    db.commit()
+    ledger_update(a)
+    log.info("課題を変更しました: %s（%s）", a.code, "・".join(changed) or "変更なし")
+    return {"ok": True, "changed": changed, "assignment": assignment_json(a, db)}
+
+
 @router.post("/assignments/{assignment_id}/cancel")
 def cancel_assignment(assignment_id: int, authorization: str = Header(None), db: Session = Depends(get_db)):
     err = hw_api._auth_or_401(authorization)
