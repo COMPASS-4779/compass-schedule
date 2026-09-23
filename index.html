@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V26</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V27</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -5408,7 +5408,8 @@
         //     15リマインド回数 16状態 17元のテストID
         const SEND_TEST_SHEET = '送付テスト';
         const SEND_COL = { date:0, name:1, subject:2, testName:3, kind:4,
-                           testId:8, submitted:11, submitDate:12, rate:13, target:14, status:16 };
+                           textbook:6, chapSec:7, testId:8, testUrl:9,
+                           submitted:11, submitDate:12, rate:13, target:14, status:16 };
 
         function sendTestSheetUrl() {
             return `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq`
@@ -5462,6 +5463,63 @@
                 added++;
             });
             return added;
+        }
+
+
+        // 章・節の欄は「A / B / C …」と長く連なることがあるため要約する
+        function _summarizeChapSec(textbook, chapSec) {
+            const parts = String(chapSec || '').split('/').map(x => x.trim()).filter(Boolean);
+            let tail = '';
+            if (parts.length === 1) tail = parts[0];
+            else if (parts.length > 1) tail = `${parts[0]} ほか${parts.length - 1}項目`;
+            return [textbook, tail].filter(Boolean).join(' ');
+        }
+
+        // 未提出の送付テスト（提出Fが立っていない行）を要復習リストへ載せる。
+        // 提出されたら次回の取込で自動的に消える。
+        function importPendingTestsFromSendRows(rows) {
+            if (!appData.unitRecords) appData.unitRecords = [];
+            const pendingRows = rows.filter(r => !sheetRowSubmitted(r) && !isKakomonRow(r));
+            const pendingKeys = new Set();
+            let added = 0;
+
+            pendingRows.forEach(r => {
+                const testId = String(r[SEND_COL.testId] || '').trim();
+                const key = 'pendingtest_' + (testId || String(r[SEND_COL.testName] || ''));
+                pendingKeys.add(key);
+                if (appData.unitRecords.some(u => u._sendKey === key)) return;
+
+                const subjLabel = String(r[SEND_COL.subject] || '').trim();
+                const textbook  = String(r[6] || '').trim();      // 出典テキスト
+                const chapSec   = String(r[7] || '').trim();      // 章・節
+                const testName  = String(r[SEND_COL.testName] || '').trim();
+                const kind      = String(r[SEND_COL.kind] || '').trim();
+
+                appData.unitRecords.push({
+                    id: 'pending_' + (testId || Date.now() + '_' + added),
+                    _sendKey: key,
+                    date: String(r[SEND_COL.date] || '').replace(' ', 'T') || new Date().toISOString(),
+                    subject: _sheetSubjKey(subjLabel, textbook) || subjLabel,
+                    unit: _summarizeChapSec(textbook, chapSec) || testName,
+                    score: 0,
+                    maxScore: 1,
+                    source: textbook || testName,
+                    textbook: textbook,
+                    chapter: '', section: '',
+                    pendingTest: true,
+                    testKind: kind,
+                    testName: testName,
+                    testUrl: String(r[SEND_COL.testUrl] || '').trim(),
+                    testStatus: String(r[SEND_COL.status] || '').trim()
+                });
+                added++;
+            });
+
+            // 提出済みになった未提出テストは要復習から外す
+            const before = appData.unitRecords.length;
+            appData.unitRecords = appData.unitRecords.filter(u =>
+                !u.pendingTest || pendingKeys.has(u._sendKey));
+            return { added, removed: before - appData.unitRecords.length };
         }
 
         // 送付テストタブを取得して、過去問の取込と提出F未設定の抽出を行う
@@ -5900,10 +5958,12 @@
 
                 // 最終取込時刻を保存
                 // 送付テストタブも取り込む（過去問はテスト結果へ、未提出は要復習の対象）
-                let kakomonAdded = 0, pendingTests = 0;
+                let kakomonAdded = 0, pendingTests = 0, pendingAdded = 0;
                 try {
                     const sendRows = await fetchSendTestRows();
                     kakomonAdded = importKakomonFromSendRows(sendRows);
+                    const pend = importPendingTestsFromSendRows(sendRows);
+                    pendingAdded = pend.added;
                     pendingTests = sendRows.filter(r => !sheetRowSubmitted(r)).length;
                 } catch (e) {
                     console.error('送付テストタブの取込に失敗:', e);
@@ -5912,9 +5972,12 @@
                 appData.lastSheetImport = new Date().toISOString();
                 saveData();
 
-                if (addedCount > 0 || removedCount > 0 || kakomonAdded > 0) {
+                if (addedCount > 0 || removedCount > 0 || kakomonAdded > 0 || pendingAdded > 0) {
                     renderUnitRecords();
                     if (typeof updateAIDiagnosis === 'function') updateAIDiagnosis();
+                    // 過去問を取り込んでもグラフを描き直していなかったため反映されなかった
+                    if (typeof updateTestCharts === 'function') updateTestCharts();
+                    if (typeof renderHistory === 'function') renderHistory();
                 }
                 if (addedCount > 0) {
                     alert(`${addedCount}件の単元データを取り込みました！`
@@ -6315,7 +6378,10 @@
                             score: r.score, max: r.maxScore, subject: sk,
                             textbook: r.textbook || r.source || '',
                             chapter: r.chapter || '', section: r.section || '',
-                            pages: r.pages || []
+                            pages: r.pages || [],
+                            pendingTest: !!r.pendingTest,
+                            testKind: r.testKind || '',
+                            testUrl: r.testUrl || ''
                         });
                     }
                 });
@@ -6337,10 +6403,22 @@
                         const _tb = (u.textbook && !String(u.name || '').includes(u.textbook)) ? u.textbook : '';
                         const _csShown = (_cs && !String(u.name || '').includes(_cs)) ? _cs : '';
                         const detail = [_tb, _csShown, _pg].filter(Boolean).join(' / ');
-                        return `<span class="inline-flex items-center bg-red-500/20 border border-red-500/50 rounded px-2 py-1 mr-2 mb-1 gap-1.5 flex-wrap">
+                        // 未提出の送付テストは別色＋受験リンク付きで示す
+                        const _pending = !!u.pendingTest;
+                        const _box = _pending
+                            ? 'bg-amber-500/20 border-amber-500/60'
+                            : 'bg-red-500/20 border-red-500/50';
+                        const _badge = _pending
+                            ? `<small class="text-[9px] font-black text-amber-200">未提出${u.testKind ? '・' + u.testKind : ''}</small>`
+                            : '';
+                        const _link = (_pending && u.testUrl)
+                            ? `<a href="${u.testUrl}" target="_blank" class="text-[9px] underline text-amber-200 hover:text-white">受験する</a>`
+                            : '';
+                        return `<span class="inline-flex items-center ${_box} border rounded px-2 py-1 mr-2 mb-1 gap-1.5 flex-wrap">
                             <span class="text-[10px] font-bold">${u.name}</span>
+                            ${_badge}${_link}
                             ${detail ? `<small class="opacity-75 text-[9px]">${detail}</small>` : ''}
-                            <small class="opacity-60 text-[9px]">${u.score}/${u.max}問</small>
+                            ${_pending ? '' : `<small class="opacity-60 text-[9px]">${u.score}/${u.max}問</small>`}
                             <button onclick="completeUnitStep('${sk}', '${u.name}')" class="text-[8px] bg-white/20 hover:bg-white/40 px-1.5 py-0.5 rounded transition font-bold" title="1回完了">✓+1</button>
                             <button onclick="deleteUnitRecord('${u.id}')" class="text-red-300 hover:text-white text-[9px] leading-none" title="削除">✕</button>
                         </span>`;
