@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V28</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V29</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -5407,13 +5407,17 @@
         //     8テストID 9テストURL 10処理F 11提出F 12提出日時 13正解率 14目標正解率
         //     15リマインド回数 16状態 17元のテストID
         const SEND_TEST_SHEET = '送付テスト';
+        // 送付テストタブの gid。
+        // gviz/tq は Access-Control-Allow-Origin を返さないためブラウザから読めない。
+        // gid 指定の export?format=csv は CORS 許可があるのでこちらを使う。
+        const SEND_TEST_GID = '1752046071';
         const SEND_COL = { date:0, name:1, subject:2, testName:3, kind:4,
                            textbook:6, chapSec:7, testId:8, testUrl:9,
                            submitted:11, submitDate:12, rate:13, target:14, status:16 };
 
         function sendTestSheetUrl() {
-            return `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq`
-                 + `?tqx=out:csv&sheet=${encodeURIComponent(SEND_TEST_SHEET)}`;
+            return `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export`
+                 + `?format=csv&gid=${SEND_TEST_GID}&_=${Date.now()}`;
         }
 
         // 過去問として扱う行かどうか。
@@ -6011,6 +6015,11 @@
                     pendingTests = sendRows.filter(r => !sheetRowSubmitted(r)).length;
                 } catch (e) {
                     console.error('送付テストタブの取込に失敗:', e);
+                    if (!silent) {
+                        showSaveStatus(false, { full:
+                            '送付テストタブを読み込めませんでした（' + e.message + '）。'
+                            + 'シートの共有設定をご確認ください。' });
+                    }
                 }
 
                 appData.lastSheetImport = new Date().toISOString();
