@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V25</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V26</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -3982,7 +3982,27 @@
             renderHistory();
         }
 
+        // 校内・校外として登録済みの共通テストを過去問カテゴリへ移す。
+        // 基準点（共通テストの平均点）も併せて補完する。
+        function migrateKyotsuToKakomon() {
+            if (!Array.isArray(appData.testResults)) return 0;
+            let moved = 0;
+            appData.testResults.forEach(t => {
+                const nm = String(t.name || '');
+                if (t.type === '過去問') return;
+                if (!/共通テスト|センター試験/.test(nm)) return;
+                t.type = '過去問';
+                if (t.average == null || !t.baselineLabel) {
+                    const b = getKakomonBaseline(nm, t.subject);
+                    if (b) { t.average = b.pct; t.baselineLabel = b.label; t.baselineKind = b.kind; }
+                }
+                moved++;
+            });
+            return moved;
+        }
+
        function updateTestCharts() {
+            migrateKyotsuToKakomon();
             if(internalScoreChartInstance) internalScoreChartInstance.destroy();
             if(externalScoreChartInstance) externalScoreChartInstance.destroy();
             if(externalDevChartInstance) externalDevChartInstance.destroy();
@@ -5395,13 +5415,24 @@
                  + `?tqx=out:csv&sheet=${encodeURIComponent(SEND_TEST_SHEET)}`;
         }
 
+        // 過去問として扱う行かどうか。
+        // 種類が「過去問」のものに加えて、共通テスト・センター試験も過去問として扱う。
+        function isKakomonRow(row) {
+            const kind = String((row && row[SEND_COL.kind]) || '').trim();
+            const name = String((row && row[SEND_COL.testName]) || '');
+            if (kind === '過去問') return true;
+            if (/共通テスト|センター試験/.test(kind)) return true;
+            if (/共通テスト|センター試験/.test(name)) return true;
+            return false;
+        }
+
         // 送付テストの行から、過去問をテスト結果(過去問カテゴリ)へ取り込む。
         // 得点は正解率(%)、平均点は共通テストの平均点または合格最低点を用いる。
         function importKakomonFromSendRows(rows) {
             if (!appData.testResults) appData.testResults = [];
             let added = 0;
             rows.forEach(r => {
-                if (String(r[SEND_COL.kind] || '').trim() !== '過去問') return;
+                if (!isKakomonRow(r)) return;
                 const rate = parseFloat(r[SEND_COL.rate]);
                 if (isNaN(rate)) return;   // 未提出・未採点は対象外
 
