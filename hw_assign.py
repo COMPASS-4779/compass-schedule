@@ -44,7 +44,7 @@ from email.utils import formatdate
 from typing import List, Optional
 
 import requests
-from fastapi import APIRouter, Depends, Header, Response
+from fastapi import APIRouter, Depends, Header, HTTPException, Response
 from pydantic import BaseModel
 from sqlalchemy import Boolean, Column, DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Session
@@ -551,6 +551,93 @@ def ledger_update(a: HwAssignment):
     except Exception as e:
         log.warning("送付テストタブの更新に失敗 (%s): %s", a.code, e)
         return False
+
+
+
+# ---- スケジュール管理アプリからの「取込F」書き込み ------------------------------
+# 要復習ポイントで個別に削除されたとき、対象の行の「取込F」に 1 を立てて
+# 次回以降の取込対象から外す。提出F とは別の列なのでリマインド判定には影響しない。
+INTAKE_HEADER = "取込F"
+INTAKE_TABS = {
+    # タブ名: (照合する列の見出し, 値が入る列の見出し)
+    "シート1":   "日時",
+    "送付テスト": "テストID",
+}
+
+
+def _sheet_values(svc, tab, rng):
+    return svc.spreadsheets().values().get(
+        spreadsheetId=RESULT_SPREADSHEET_ID, range=f"{tab}!{rng}"
+    ).execute().get("values", [])
+
+
+def _col_letter(idx0: int) -> str:
+    """0始まりの列番号を A1 記法の列名にする（0->A, 26->AA）。"""
+    s = ""
+    n = idx0
+    while True:
+        s = chr(ord("A") + n % 26) + s
+        n = n // 26 - 1
+        if n < 0:
+            return s
+
+
+def ensure_intake_column(svc, tab: str) -> int:
+    """タブに「取込F」列が無ければ末尾に追加し、その0始まり列番号を返す。"""
+    header = _sheet_values(svc, tab, "1:1")
+    row = header[0] if header else []
+    for i, name in enumerate(row):
+        if str(name).strip() == INTAKE_HEADER:
+            return i
+    idx = len(row)
+    svc.spreadsheets().values().update(
+        spreadsheetId=RESULT_SPREADSHEET_ID,
+        range=f"{tab}!{_col_letter(idx)}1",
+        valueInputOption="RAW", body={"values": [[INTAKE_HEADER]]},
+    ).execute()
+    return idx
+
+
+def mark_intake(tab: str, key_header: str, key_value: str, student: str = "") -> dict:
+    """tab の key_header 列が key_value と一致する行の「取込F」に 1 を立てる。"""
+    if not RESULT_SPREADSHEET_ID:
+        raise HTTPException(status_code=503, detail="結果シートが未設定です。")
+    svc = _sheets()
+
+    header = _sheet_values(svc, tab, "1:1")
+    hrow = header[0] if header else []
+    try:
+        key_idx = [str(h).strip() for h in hrow].index(key_header)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"{tab} に「{key_header}」列がありません。")
+
+    intake_idx = ensure_intake_column(svc, tab)
+    name_idx = [str(h).strip() for h in hrow].index("生徒名") if "生徒名" in [str(h).strip() for h in hrow] else None
+
+    rows = _sheet_values(svc, tab, "A:ZZ")
+    updated = []
+    for i, r in enumerate(rows):
+        if i == 0:
+            continue
+        val = str(r[key_idx]).strip() if len(r) > key_idx else ""
+        if not val or val != str(key_value).strip():
+            continue
+        if student and name_idx is not None:
+            who = str(r[name_idx]).strip() if len(r) > name_idx else ""
+            if who and who != student:
+                continue
+        updated.append(i + 1)
+
+    if not updated:
+        raise HTTPException(status_code=404, detail="該当する行が見つかりません。")
+
+    col = _col_letter(intake_idx)
+    svc.spreadsheets().values().batchUpdate(
+        spreadsheetId=RESULT_SPREADSHEET_ID,
+        body={"valueInputOption": "RAW",
+              "data": [{"range": f"{tab}!{col}{r}", "values": [["1"]]} for r in updated]},
+    ).execute()
+    return {"success": True, "tab": tab, "rows": updated, "column": col}
 
 
 def build_rows(a: HwAssignment, student_name: str, sections, link: str, when_text: str, fields=None):

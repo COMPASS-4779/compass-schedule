@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V29</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V30</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -5531,7 +5531,10 @@
             const res = await fetch(sendTestSheetUrl(), { cache: 'no-store' });
             if (!res.ok) throw new Error(`送付テスト HTTP ${res.status}`);
             const rows = parseSheetCSV(await res.text());
-            return rows.slice(1).filter(sheetRowMatchesStudent);
+            findIntakeCol(rows[0], '送付テスト');
+            return rows.slice(1)
+                .filter(sheetRowMatchesStudent)
+                .filter(r => !sheetRowIntakeDone(r, '送付テスト'));
         }
 
         // ===== 過去問の基準点 =====
@@ -5675,6 +5678,20 @@
 
         // L列(index 11) = 提出F。1 が立っている行は提出済みなので要復習から除く。
         const SHEET_COL_SUBMITTED = 11;
+        // 「取込F」列はヘッダ行から位置を特定する（列を追加しても追従できるように）
+        let _intakeColIdx = { 'シート1': -1, '送付テスト': -1 };
+        function findIntakeCol(headerRow, tab) {
+            const i = (headerRow || []).findIndex(h => String(h || '').trim() === '取込F');
+            _intakeColIdx[tab] = i;
+            return i;
+        }
+        function sheetRowIntakeDone(row, tab) {
+            const i = _intakeColIdx[tab];
+            if (i == null || i < 0) return false;
+            const v = String((row && row[i]) || '').trim();
+            return v === '1' || v.toLowerCase() === 'true';
+        }
+
         function sheetRowSubmitted(row) {
             const v = String((row && row[SHEET_COL_SUBMITTED]) || '').trim();
             return v === '1' || v.toLowerCase() === 'true';
@@ -5826,9 +5843,12 @@
         function _processSheetRows(rows, studentName) {
             if (rows.length < 2) return alert("CSVにデータがありません。");
             // 提出F(L列)が立っている行は提出済みのため、要復習の対象から外す
+            // 取込F が立っている行は、アプリ側で削除済みなので再取込しない
+            findIntakeCol(rows[0], 'シート1');
             const studentRows = rows.slice(1)
                 .filter(sheetRowMatchesStudent)
-                .filter(r => !sheetRowSubmitted(r));
+                .filter(r => !sheetRowSubmitted(r))
+                .filter(r => !sheetRowIntakeDone(r, 'シート1'));
             if (studentRows.length === 0) {
                 return alert(`「${sheetIdentityLabel()}」の記録が見つかりません。\n生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
             }
@@ -5923,9 +5943,12 @@
                 const studentName = currentUser; // ユーザーIDで照合
                 // 列構成: 0=日時 1=ユーザーID 2=科目 3=テキスト名 4=ページ 5=章 6=節 7=問題番号 8=サイトID 9=総問題数
                 // 提出F(L列)が立っている行は提出済みのため、要復習の対象から外す
+                // 取込F が立っている行は、アプリ側で削除済みなので再取込しない
+                findIntakeCol(rows[0], 'シート1');
                 const studentRows = rows.slice(1)
                     .filter(sheetRowMatchesStudent)
-                    .filter(r => !sheetRowSubmitted(r));
+                    .filter(r => !sheetRowSubmitted(r))
+                    .filter(r => !sheetRowIntakeDone(r, 'シート1'));
 
                 if (studentRows.length === 0) {
                     if (!silent) alert(`「${sheetIdentityLabel()}」の記録がスプレッドシートに見つかりません。\n生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
@@ -5950,13 +5973,15 @@
                     const wrongNum   = (row[7] || '').trim();
                     const totalStr   = (row[9] || '').trim();
                     const sheetKey   = `${subjLabel}_${textbook}_${chapter}_${section}`;
+                    const rowDateTime = String(row[0] || '').trim();   // 削除時の照合に使う
                     if (!groups[sheetKey]) {
                         groups[sheetKey] = {
                             subjKey: _sheetSubjKey(subjLabel, textbook) || subjLabel,
                             textbook, chapter, section,
                             pages: new Set(),
                             wrongCount: 0,
-                            total: parseInt(totalStr) || 0
+                            total: parseInt(totalStr) || 0,
+                            dateTime: rowDateTime
                         };
                     }
                     // ページ(E列)を収集（'-'や空は除外）
@@ -5995,6 +6020,7 @@
                         score,
                         maxScore,
                         source: g.textbook,
+                        sheetDateTime: g.dateTime || '',
                         textbook: g.textbook,
                         chapter: g.chapter,
                         section: g.section,
@@ -6365,10 +6391,50 @@
         // 🔧 [Cowork変更②] 単元レコード個別削除
         function deleteUnitRecord(id) {
             if (!confirm('このレコードを削除しますか？')) return;
+            const rec = (appData.unitRecords || []).find(r => r.id === id);
             appData.unitRecords = (appData.unitRecords || []).filter(r => r.id !== id);
             saveData();
             renderUnitRecords();
             if (typeof updateAIDiagnosis === 'function') updateAIDiagnosis();
+            // シート由来のレコードは「取込F」に1を立て、次回の取込で戻らないようにする
+            markIntakeOnSheet(rec);
+        }
+
+        // 削除したレコードに対応するシートの行の「取込F」に 1 を立てる。
+        // 提出F とは別の列なので、LINE課題配信のリマインド判定には影響しない。
+        function markIntakeOnSheet(rec) {
+            if (!rec || !currentUser || !appData.password) return;
+            let tab = '', keyHeader = '', keyValue = '';
+
+            if (rec.pendingTest || rec._sendKey) {
+                // 送付テスト由来：テストIDで照合
+                tab = '送付テスト';
+                keyHeader = 'テストID';
+                keyValue = String(rec._sendKey || '').replace(/^(pendingtest_|kakomon_)/, '');
+            } else if (rec._sheetKey) {
+                // シート1由来：日時で照合（_sheetKey には日時が無いため記録時の日時を使う）
+                tab = 'シート1';
+                keyHeader = '日時';
+                keyValue = String(rec.sheetDateTime || '');
+            }
+            if (!tab || !keyValue) return;
+
+            fetch(`${API_BASE_URL}/api/intake/mark`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: currentUser, password: appData.password,
+                    tab, key_header: keyHeader, key_value: keyValue
+                })
+            })
+            .then(res => res.ok ? res.json() : res.json().then(j => Promise.reject(new Error(j.detail || res.status))))
+            .then(j => showSaveStatus(true))
+            .catch(e => {
+                console.error('取込Fの書き込みに失敗:', e);
+                showSaveStatus(false, { full:
+                    'シートの「取込F」を更新できませんでした（' + e.message + '）。'
+                    + 'この項目は次回の取込で再び表示される場合があります。' });
+            });
         }
 
         // 🔧 [Cowork変更②] 単元を1回分完了（パスワード不要）→ maxScore到達で自動消去

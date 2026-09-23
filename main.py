@@ -195,6 +195,41 @@ async def api_post_handler(request: Request, db: Session = Depends(get_db)):
 
     raise HTTPException(status_code=400, detail=f"不明な action: {action}")
 
+
+
+class IntakeMarkRequest(BaseModel):
+    """スケジュール管理アプリから「取込F」に1を立てる要求。
+    管理トークンを画面に置かずに済むよう、生徒のIDとパスワードで本人確認する。"""
+    id: str
+    password: str
+    tab: str            # "シート1" または "送付テスト"
+    key_header: str     # 照合する列の見出し（例: "テストID"）
+    key_value: str      # その値
+
+
+@app.post("/api/intake/mark")
+def intake_mark(req: IntakeMarkRequest, db: Session = Depends(get_db)):
+    user = db.query(models.User).filter(
+        models.User.user_id == req.id, models.User.password == req.password).first()
+    if not user:
+        raise HTTPException(status_code=401, detail="IDまたはパスワードが違います。")
+
+    allowed = {"シート1", "送付テスト"}
+    if req.tab not in allowed:
+        raise HTTPException(status_code=400, detail=f"対象外のタブです: {req.tab}")
+
+    # 生徒名は appData の profile.name を使う（シートのB列と突き合わせる）
+    student = ""
+    try:
+        data = json.loads(user.data) if user.data else {}
+        student = (data.get("profile") or {}).get("name") or ""
+    except (ValueError, TypeError):
+        student = ""
+
+    import hw_assign
+    return hw_assign.mark_intake(req.tab, req.key_header, req.key_value, student)
+
+
 # --- AI画像解析系 API ---
 @app.post("/api/analyze-test")
 async def analyze_test(file: UploadFile = File(...)):
