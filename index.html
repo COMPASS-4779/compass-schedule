@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V22</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V23</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -3733,7 +3733,15 @@
                         <span class="text-[8px] font-black shrink-0 ${sOk ? 'text-green-600' : 'text-red-500'}">${sOk ? '順調' : '遅延'}</span>
                     </div>`;
                 }
-                subBooks.forEach(b => {
+                // 完了済み（実績が総量に達したもの）は下部に折りたたむ。
+                // 進行中の教材に埋もれて見つけにくくなるのを防ぐ。
+                const activeBooks = subBooks.filter(b => getBookDone(b) < (b.total || 0));
+                const doneBooks   = subBooks.filter(b => getBookDone(b) >= (b.total || 0));
+                const doneId = `cgdone_${containerId}_${subKey}`.replace(/[^A-Za-z0-9_]/g, '_');
+                let doneHtml = '';
+                [...activeBooks, ...doneBooks].forEach(b => {
+                    const _isDone = getBookDone(b) >= (b.total || 0);
+                    const _out = [];
                     const { ps, as } = _calcBookStats(b);
                     const bPct  = b.total > 0 ? Math.min(100, Math.round((as / b.total) * 100)) : 0;
                     const bPPct = b.total > 0 ? Math.min(100, Math.round((ps / b.total) * 100)) : 0;
@@ -3743,7 +3751,7 @@
                         : '<span class="text-[8px] font-black text-red-500">遅延</span>';
                     const hasAdj = appData.progressAdjust && appData.progressAdjust[b.id] !== undefined;
                     const adjMark = hasAdj ? '<span class="text-[7px] text-[#B8963E] font-bold ml-0.5">調整済</span>' : '';
-                    booksHtml += `
+                    _out.push(`
                     <div class="bg-white border border-slate-200 rounded-lg px-3 py-2">
                         <div class="flex items-center gap-1.5 mb-1.5">
                             <span class="text-[10px] font-bold text-slate-700 flex-1 truncate">${b.name}</span>
@@ -3761,8 +3769,21 @@
                             <span>実績 ${as}${b.unit} / 予定 ${ps}${b.unit}</span>
                             <span>実${bPct}% 予${bPPct}%</span>
                         </div>
-                    </div>`;
+                    </div>`);
+                    if (_isDone) doneHtml += _out.join('');
+                    else         booksHtml += _out.join('');
                 });
+
+                // 完了済みは見出しつきで折りたたむ
+                if (doneBooks.length > 0) {
+                    booksHtml += `
+                    <button onclick="(function(){var el=document.getElementById('${doneId}');var ic=document.getElementById('${doneId}-ic');el.classList.toggle('hidden');ic.classList.toggle('rotate-90');})()"
+                        class="w-full flex items-center justify-between text-[9px] font-black text-slate-400 bg-white border border-slate-200 rounded-lg px-2 py-1 hover:bg-slate-50 transition">
+                        <span><i class="fas fa-check-circle mr-1 text-green-500"></i>完了済み (${doneBooks.length}件)</span>
+                        <i id="${doneId}-ic" class="fas fa-chevron-right text-[8px] transition-transform"></i>
+                    </button>
+                    <div id="${doneId}" class="hidden space-y-2">${doneHtml}</div>`;
+                }
                 });
                 booksHtml += '</div>';
 
