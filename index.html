@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V24</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V25</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -440,6 +440,11 @@
                         <h3 class="text-sm font-bold text-[#0A1628] mb-2"><i class="fas fa-chart-line text-[#D4622A] mr-1"></i>校外テスト (偏差値)</h3>
                         <div class="chart-container" style="height: 250px;"><canvas id="dash-externalDevChart"></canvas></div>
                     </div>
+                    <div class="bg-slate-50 border rounded-xl p-4 shadow-sm" id="chart-kakomon-col">
+                        <h3 class="text-sm font-bold text-[#0A1628] mb-2"><i class="fas fa-file-alt text-[#7C3AED] mr-1"></i>過去問 (得点率・基準点)</h3>
+                        <div class="chart-container" style="height: 250px;"><canvas id="dash-kakomonChart"></canvas></div>
+                        <p id="kakomon-baseline-note" class="text-[10px] text-slate-500 mt-2 leading-relaxed"></p>
+                    </div>
                 </div>  
             </div>
 
@@ -470,7 +475,7 @@
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="p-6 bg-slate-50 rounded-2xl border space-y-4 shadow-inner">
                         <div class="space-y-2">
-                            <select id="test-type" class="w-full border p-2 rounded text-sm font-bold bg-white text-[#D4622A] outline-none"><option value="校内">校内テスト</option><option value="校外" selected>校外テスト (模試等)</option></select>
+                            <select id="test-type" class="w-full border p-2 rounded text-sm font-bold bg-white text-[#D4622A] outline-none"><option value="校内">校内テスト</option><option value="校外" selected>校外テスト (模試等)</option><option value="過去問">過去問</option></select>
                             <input type="text" id="test-name" class="w-full border p-2 rounded text-sm font-bold" placeholder="テスト名">
                             <input type="date" id="test-date" class="w-full border p-2 rounded text-sm">
                         </div>
@@ -4006,9 +4011,19 @@
             const extScoreContainer = ctxExtScore.closest('.bg-slate-50');
             const extDevContainer = ctxExtDev.closest('.bg-slate-50');
 
+            // 過去問（送付テストの種類=過去問）
+            const resKako = appData.testResults.filter(t => t.type === '過去問');
+            const ctxKako = document.getElementById('dash-kakomonChart');
+            const kakoContainer = ctxKako ? ctxKako.closest('.bg-slate-50') : null;
+            const hasKako = resKako.some(t => t.score !== null && t.score !== undefined);
+
             if (hasIntScore) { intContainer.style.display = 'block'; visibleCount++; } else { intContainer.style.display = 'none'; }
             if (hasExtScore) { extScoreContainer.style.display = 'block'; visibleCount++; } else { extScoreContainer.style.display = 'none'; }
             if (hasExtDev) { extDevContainer.style.display = 'block'; visibleCount++; } else { extDevContainer.style.display = 'none'; }
+            if (kakoContainer) {
+                if (hasKako) { kakoContainer.style.display = 'block'; visibleCount++; }
+                else { kakoContainer.style.display = 'none'; }
+            }
 
             if (visibleCount === 0) {
                 section.style.display = 'none';
@@ -4066,6 +4081,57 @@
                     datasets.push({ label: `${s} (偏差値)`, data: dates.map(d => { const r = resExt.find(t => t.date===d && t.subject===s); return r && r.deviation !== null ? r.deviation : null; }), borderColor: col, backgroundColor: col, tension: 0.3, spanGaps: true });
                 });
                 externalDevChartInstance = new Chart(ctxExtDev.getContext('2d'), { type: 'line', data: { labels: dates, datasets }, options: chartOptions });
+            }
+
+            if (hasKako && ctxKako) {
+                const dates = [...new Set(resKako.map(t => t.date))].sort();
+                const subjs = [...new Set(resKako.map(t => t.subject))];
+                const datasets = [];
+                subjs.forEach(sName => {
+                    let col = '#7C3AED';
+                    Object.values(SUBJ_CONFIG).forEach(c => { if (c.label === sName) col = c.hex; });
+                    datasets.push({
+                        label: `${sName} (得点率%)`,
+                        data: dates.map(d => { const r = resKako.find(t => t.date===d && t.subject===sName);
+                                               return r && r.score != null ? r.score : null; }),
+                        borderColor: col, backgroundColor: col, tension: 0.3, spanGaps: true
+                    });
+                    // 平均点（共通テスト）または合格最低点を基準線として重ねる
+                    datasets.push({
+                        label: `${sName} (基準)`,
+                        data: dates.map(d => { const r = resKako.find(t => t.date===d && t.subject===sName);
+                                               return r && r.average != null ? r.average : null; }),
+                        borderColor: col, backgroundColor: 'transparent',
+                        borderDash: [5,5], tension: 0.3, spanGaps: true
+                    });
+                });
+                if (window.kakomonChartInstance) window.kakomonChartInstance.destroy();
+                const kakoOptions = JSON.parse(JSON.stringify({ scales: { y: { min: 0, max: 100 } } }));
+                window.kakomonChartInstance = new Chart(ctxKako.getContext('2d'), {
+                    type: 'line',
+                    data: { labels: dates, datasets },
+                    options: Object.assign({}, chartOptions, kakoOptions)
+                });
+
+                // 基準点の内訳（平均点 / 合格最低点）を下に注記する
+                const note = document.getElementById('kakomon-baseline-note');
+                if (note) {
+                    const seen = new Set();
+                    const lines = [];
+                    resKako.forEach(t => {
+                        if (!t.baselineLabel) return;
+                        const k = `${t.name}_${t.subject}`;
+                        if (seen.has(k)) return;
+                        seen.add(k);
+                        lines.push(`${t.name} ${t.subject}：${t.baselineLabel}`);
+                    });
+                    const missing = resKako.filter(t => !t.baselineLabel)
+                        .map(t => `${t.name} ${t.subject}`);
+                    note.innerHTML = lines.map(l => `・${l}`).join('<br>')
+                        + (missing.length
+                            ? `<br><span class="text-orange-600">・基準点が未登録：${[...new Set(missing)].join(' / ')}</span>`
+                            : '');
+                }
             }
         }
 
@@ -5314,6 +5380,162 @@
             if (pn) keys.push(_normName(pn));
             return keys.filter(Boolean);
         }
+
+
+        // ===== 送付テストタブの取込 =====
+        // 列: 0送付日時 1生徒名 2科目 3テスト名 4種類 5回 6出典テキスト 7章・節
+        //     8テストID 9テストURL 10処理F 11提出F 12提出日時 13正解率 14目標正解率
+        //     15リマインド回数 16状態 17元のテストID
+        const SEND_TEST_SHEET = '送付テスト';
+        const SEND_COL = { date:0, name:1, subject:2, testName:3, kind:4,
+                           testId:8, submitted:11, submitDate:12, rate:13, target:14, status:16 };
+
+        function sendTestSheetUrl() {
+            return `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq`
+                 + `?tqx=out:csv&sheet=${encodeURIComponent(SEND_TEST_SHEET)}`;
+        }
+
+        // 送付テストの行から、過去問をテスト結果(過去問カテゴリ)へ取り込む。
+        // 得点は正解率(%)、平均点は共通テストの平均点または合格最低点を用いる。
+        function importKakomonFromSendRows(rows) {
+            if (!appData.testResults) appData.testResults = [];
+            let added = 0;
+            rows.forEach(r => {
+                if (String(r[SEND_COL.kind] || '').trim() !== '過去問') return;
+                const rate = parseFloat(r[SEND_COL.rate]);
+                if (isNaN(rate)) return;   // 未提出・未採点は対象外
+
+                const testName = String(r[SEND_COL.testName] || '').trim();
+                const subject  = String(r[SEND_COL.subject]  || '').trim();
+                const rawDate  = String(r[SEND_COL.submitDate] || r[SEND_COL.date] || '').trim();
+                const date     = rawDate.split(' ')[0].replace(/\//g, '-') || new Date().toISOString().split('T')[0];
+                const testId   = String(r[SEND_COL.testId] || '').trim();
+                const key      = `kakomon_${testId || (testName + '_' + subject + '_' + date)}`;
+
+                if (appData.testResults.some(t => t._sendKey === key)) return;
+
+                const base = getKakomonBaseline(testName, subject);
+                appData.testResults.push({
+                    id: key,
+                    _sendKey: key,
+                    date,
+                    type: '過去問',
+                    name: testName,
+                    subject,
+                    score: Math.round(rate * 10) / 10,   // 正解率(%)
+                    average: base ? base.pct : null,     // 平均点/合格最低点(%)
+                    baselineLabel: base ? base.label : '',
+                    baselineKind:  base ? base.kind  : '',
+                    deviation: null
+                });
+                added++;
+            });
+            return added;
+        }
+
+        // 送付テストタブを取得して、過去問の取込と提出F未設定の抽出を行う
+        async function fetchSendTestRows() {
+            const res = await fetch(sendTestSheetUrl(), { cache: 'no-store' });
+            if (!res.ok) throw new Error(`送付テスト HTTP ${res.status}`);
+            const rows = parseSheetCSV(await res.text());
+            return rows.slice(1).filter(sheetRowMatchesStudent);
+        }
+
+        // ===== 過去問の基準点 =====
+        // 共通テストの平均点（大学入試センター発表の確定値 / 出典: 河合塾 Kei-Net）。
+        // 過去問の「平均点」欄に表示する基準として用いる。満点はすべて100（国語のみ200）。
+        const KYOTSU_AVERAGES = {
+            2024: {
+                '英語リーディング': 51.54, '英語リスニング': 67.24,
+                '数学ⅠA': 51.38, '数学ⅡB': 57.74,
+                '国語': 116.50, '物理': 62.97, '化学': 54.77, '生物': 54.82,
+                '日本史B': 56.27, '世界史B': 60.28, '地理B': 65.74
+            },
+            2025: {
+                '英語リーディング': 57.69, '英語リスニング': 61.31,
+                '数学ⅠA': 53.51, '数学ⅡBC': 51.56,
+                '国語': 126.67, '情報Ⅰ': 69.26,
+                '物理': 58.96, '化学': 45.34, '生物': 52.21,
+                '日本史探究': 56.99, '世界史探究': 66.12, '地理探究': 57.48
+            },
+            2026: {
+                '英語リーディング': 62.81, '英語リスニング': 54.65,
+                '数学ⅠA': 47.20, '数学ⅡBC': 54.52,
+                '国語': 116.37, '情報Ⅰ': 56.59,
+                '物理': 45.55, '化学': 56.86, '生物': 55.01,
+                '日本史探究': 62.29, '世界史探究': 60.88, '地理探究': 61.87
+            }
+        };
+        // 科目名の満点（未指定は100点）
+        const KYOTSU_FULL_MARKS = { '国語': 200 };
+
+        // 大学別の合格最低点。共通テスト以外の過去問で「平均点」欄に表示する。
+        // 形式: { 'キーワード': { label, minPass, full, subjects } }
+        // subjects は複数科目の総合点の場合の科目数。
+        // 必要に応じてここに追記する（大学名・学部・年度で調べた値を入れる）。
+        const KAKOMON_PASS_MARKS = {};
+
+        // 科目名のゆれを共通テストの科目名に寄せる
+        function _normKyotsuSubject(subject) {
+            const s = String(subject || '').replace(/[\s　・，,]/g, '');
+            if (/^英語?リーディング|^リーディング/.test(s)) return '英語リーディング';
+            if (/^英語?リスニング|^リスニング/.test(s)) return '英語リスニング';
+            if (/^数学(Ⅰ|I|1)A/.test(s)) return '数学ⅠA';
+            if (/^数学(Ⅱ|II|2)B(C|Ｃ)/.test(s)) return '数学ⅡBC';
+            if (/^数学(Ⅱ|II|2)B/.test(s)) return '数学ⅡB';
+            if (/^国語/.test(s)) return '国語';
+            if (/^情報/.test(s)) return '情報Ⅰ';
+            if (/^物理/.test(s)) return '物理';
+            if (/^化学/.test(s)) return '化学';
+            if (/^生物/.test(s)) return '生物';
+            if (/日本史/.test(s)) return s.includes('探究') ? '日本史探究' : '日本史B';
+            if (/世界史/.test(s)) return s.includes('探究') ? '世界史探究' : '世界史B';
+            if (/地理/.test(s))   return s.includes('探究') ? '地理探究' : '地理B';
+            return s;
+        }
+
+        // テスト名から年度を取り出す（例: 2024共通テスト -> 2024）
+        function _extractYear(testName) {
+            const m = String(testName || '').match(/(19|20)\d{2}/);
+            return m ? parseInt(m[0]) : null;
+        }
+
+        // 過去問1件の基準点を求める。
+        // 共通テストなら平均点、それ以外は登録済みの合格最低点を返す。
+        // 得点は正解率(%)で扱うため、基準点も満点に対する割合(%)に直す。
+        function getKakomonBaseline(testName, subject) {
+            const name = String(testName || '');
+            const year = _extractYear(name);
+
+            if (/共通テスト|センター試験/.test(name) && year && KYOTSU_AVERAGES[year]) {
+                const key = _normKyotsuSubject(subject);
+                const avg = KYOTSU_AVERAGES[year][key];
+                if (avg !== undefined) {
+                    const full = KYOTSU_FULL_MARKS[key] || 100;
+                    return {
+                        pct: Math.round((avg / full) * 1000) / 10,
+                        label: `平均点 ${avg}/${full}`,
+                        kind: '平均点'
+                    };
+                }
+            }
+
+            for (const kw of Object.keys(KAKOMON_PASS_MARKS)) {
+                if (name.includes(kw)) {
+                    const m = KAKOMON_PASS_MARKS[kw];
+                    const full = m.full || 100;
+                    return {
+                        pct: Math.round((m.minPass / full) * 1000) / 10,
+                        label: m.subjects
+                            ? `合格最低点 ${m.minPass}/${full}（${m.subjects}科目）`
+                            : `合格最低点 ${m.minPass}/${full}`,
+                        kind: '合格最低点'
+                    };
+                }
+            }
+            return null;
+        }
+
         // L列(index 11) = 提出F。1 が立っている行は提出済みなので要復習から除く。
         const SHEET_COL_SUBMITTED = 11;
         function sheetRowSubmitted(row) {
@@ -5646,18 +5868,37 @@
                 }
 
                 // 最終取込時刻を保存
+                // 送付テストタブも取り込む（過去問はテスト結果へ、未提出は要復習の対象）
+                let kakomonAdded = 0, pendingTests = 0;
+                try {
+                    const sendRows = await fetchSendTestRows();
+                    kakomonAdded = importKakomonFromSendRows(sendRows);
+                    pendingTests = sendRows.filter(r => !sheetRowSubmitted(r)).length;
+                } catch (e) {
+                    console.error('送付テストタブの取込に失敗:', e);
+                }
+
                 appData.lastSheetImport = new Date().toISOString();
                 saveData();
 
-                if (addedCount > 0 || removedCount > 0) {
+                if (addedCount > 0 || removedCount > 0 || kakomonAdded > 0) {
                     renderUnitRecords();
                     if (typeof updateAIDiagnosis === 'function') updateAIDiagnosis();
                 }
                 if (addedCount > 0) {
-                    alert(`${addedCount}件の単元データを取り込みました！` + (removedCount > 0 ? `
-提出済みの${removedCount}件を要復習から外しました。` : ""));
+                    alert(`${addedCount}件の単元データを取り込みました！`
+                        + (removedCount > 0 ? `
+提出済みの${removedCount}件を要復習から外しました。` : "")
+                        + (kakomonAdded > 0 ? `
+過去問の結果を${kakomonAdded}件追加しました。` : "")
+                        + (pendingTests > 0 ? `
+未提出の送付テストが${pendingTests}件あります。` : ""));
                 } else if (!silent) {
-                    alert(removedCount > 0 ? `提出済みの${removedCount}件を要復習から外しました。` : "新しいデータはありませんでした（すべて取込済みです）。");
+                    const _msgs = [];
+                    if (removedCount > 0)  _msgs.push(`提出済みの${removedCount}件を要復習から外しました。`);
+                    if (kakomonAdded > 0)  _msgs.push(`過去問の結果を${kakomonAdded}件追加しました。`);
+                    if (pendingTests > 0)  _msgs.push(`未提出の送付テストが${pendingTests}件あります。`);
+                    alert(_msgs.length ? _msgs.join('\n') : "新しいデータはありませんでした（すべて取込済みです）。");
                 }
 
             } catch (err) {
