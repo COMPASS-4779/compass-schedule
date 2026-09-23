@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V27</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V28</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -4145,11 +4145,11 @@
                         seen.add(k);
                         lines.push(`${t.name} ${t.subject}：${t.baselineLabel}`);
                     });
-                    const missing = resKako.filter(t => !t.baselineLabel)
-                        .map(t => `${t.name} ${t.subject}`);
+                    const missing = listMissingBaselines();
                     note.innerHTML = lines.map(l => `・${l}`).join('<br>')
                         + (missing.length
-                            ? `<br><span class="text-orange-600">・基準点が未登録：${[...new Set(missing)].join(' / ')}</span>`
+                            ? `<br><span class="text-orange-600">・合格最低点が未登録（要調査）：`
+                              + missing.map(m => m.label).join(' / ') + `</span>`
                             : '');
                 }
             }
@@ -5557,6 +5557,50 @@
         };
         // 科目名の満点（未指定は100点）
         const KYOTSU_FULL_MARKS = { '国語': 200 };
+
+
+        // 過去問のテスト名から、調査に必要な 年度／大学名／学部 を読み取る。
+        // 例: 「2025早稲田大学 商学部」→ {year:2025, university:'早稲田大学', faculty:'商学部'}
+        function parseKakomonTarget(testName) {
+            const name = String(testName || '').trim();
+            const year = _extractYear(name);
+            if (/共通テスト|センター試験/.test(name)) {
+                return { year, university: '共通テスト', faculty: '', isKyotsu: true };
+            }
+            let rest = name.replace(/(19|20)\d{2}\s*年?度?/, '').trim();
+            const uni = rest.match(/([^\s　]*?(?:大学|大))/);
+            const university = uni ? uni[1] : '';
+            // 「立教大学法学部」のように続けて書かれる場合があるため、
+            // 大学名を取り除いてから学部名を探す
+            if (university) rest = rest.replace(university, ' ').trim();
+            const fac = rest.match(/([^\s　]*?(?:学部|学群|学科|研究科))/);
+            return {
+                year,
+                university,
+                faculty: fac ? fac[1] : '',
+                isKyotsu: false
+            };
+        }
+
+        // 基準点が未登録の過去問を一覧にする（調査依頼用）
+        function listMissingBaselines() {
+            const seen = new Set();
+            const out = [];
+            (appData.testResults || []).forEach(t => {
+                if (t.type !== '過去問' || t.baselineLabel) return;
+                const key = `${t.name}_${t.subject}`;
+                if (seen.has(key)) return;
+                seen.add(key);
+                const p = parseKakomonTarget(t.name);
+                out.push({
+                    testName: t.name, subject: t.subject,
+                    year: p.year, university: p.university, faculty: p.faculty,
+                    label: [p.year ? p.year + '年度' : '', p.university, p.faculty, t.subject]
+                        .filter(Boolean).join(' ')
+                });
+            });
+            return out;
+        }
 
         // 大学別の合格最低点。共通テスト以外の過去問で「平均点」欄に表示する。
         // 形式: { 'キーワード': { label, minPass, full, subjects } }
