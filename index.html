@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V23</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V24</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2557,7 +2557,7 @@
             });
 
             const unitLogs = (appData.unitRecords || []).filter(r => (r.score / r.maxScore) * 100 >= 100).map(r => ({
-                date: r.date.split('T')[0].replace(/-/g, '/'),
+                date: String(r.date || '').split('T')[0].replace(/-/g, '/'),
                 subject: SUBJ_CONFIG[r.subject]?.label || r.subject,
                 type: '理解度確認',
                 name: `【合格】${r.unit}`,
@@ -5314,6 +5314,13 @@
             if (pn) keys.push(_normName(pn));
             return keys.filter(Boolean);
         }
+        // L列(index 11) = 提出F。1 が立っている行は提出済みなので要復習から除く。
+        const SHEET_COL_SUBMITTED = 11;
+        function sheetRowSubmitted(row) {
+            const v = String((row && row[SHEET_COL_SUBMITTED]) || '').trim();
+            return v === '1' || v.toLowerCase() === 'true';
+        }
+
         function sheetRowMatchesStudent(row) {
             const v = _normName(row && row[1]);
             if (!v) return false;
@@ -5459,7 +5466,10 @@
         // 取込済みチェック・保存・通知の共通処理
         function _processSheetRows(rows, studentName) {
             if (rows.length < 2) return alert("CSVにデータがありません。");
-            const studentRows = rows.slice(1).filter(sheetRowMatchesStudent);
+            // 提出F(L列)が立っている行は提出済みのため、要復習の対象から外す
+            const studentRows = rows.slice(1)
+                .filter(sheetRowMatchesStudent)
+                .filter(r => !sheetRowSubmitted(r));
             if (studentRows.length === 0) {
                 return alert(`「${sheetIdentityLabel()}」の記録が見つかりません。\n生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
             }
@@ -5477,6 +5487,13 @@
                 }
                 groups[sheetKey].count++;
             }
+            // 提出F が立った単元は要復習から外す。取込済みレコードも同期して削除する。
+            const pendingKeys = new Set(Object.keys(groups));
+            const beforeCount = appData.unitRecords.length;
+            appData.unitRecords = appData.unitRecords.filter(r =>
+                !r._sheetKey || pendingKeys.has(r._sheetKey));
+            const removedCount = beforeCount - appData.unitRecords.length;
+
             let addedCount = 0;
             for (const [sheetKey, g] of Object.entries(groups)) {
                 if (existingKeys.has(sheetKey)) continue;
@@ -5495,9 +5512,11 @@
             if (addedCount > 0) {
                 renderUnitRecords();
                 if (typeof updateAIDiagnosis === 'function') updateAIDiagnosis();
-                alert(`${addedCount}件の単元データを取り込みました！`);
+                alert(`${addedCount}件の単元データを取り込みました！` + (removedCount > 0 ? `
+提出済みの${removedCount}件を要復習から外しました。` : ""));
             } else {
-                alert("新しいデータはありませんでした（すべて取込済みです）。");
+                if (removedCount > 0) { saveData(); if (typeof updateAIDiagnosis === 'function') updateAIDiagnosis(); }
+                alert(removedCount > 0 ? `提出済みの${removedCount}件を要復習から外しました。` : "新しいデータはありませんでした（すべて取込済みです）。");
             }
             updateSheetImportStatus();
         }
@@ -5544,7 +5563,10 @@
 
                 const studentName = currentUser; // ユーザーIDで照合
                 // 列構成: 0=日時 1=ユーザーID 2=科目 3=テキスト名 4=ページ 5=章 6=節 7=問題番号 8=サイトID 9=総問題数
-                const studentRows = rows.slice(1).filter(sheetRowMatchesStudent);
+                // 提出F(L列)が立っている行は提出済みのため、要復習の対象から外す
+                const studentRows = rows.slice(1)
+                    .filter(sheetRowMatchesStudent)
+                    .filter(r => !sheetRowSubmitted(r));
 
                 if (studentRows.length === 0) {
                     if (!silent) alert(`「${sheetIdentityLabel()}」の記録がスプレッドシートに見つかりません。\n生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
@@ -5589,14 +5611,20 @@
                     if (wrongNum !== '') groups[sheetKey].wrongCount++;
                 }
 
+                // 提出F が立った単元は要復習から外す。取込済みレコードも同期して削除する。
+                const pendingKeys = new Set(Object.keys(groups));
+                const beforeCount = appData.unitRecords.length;
+                appData.unitRecords = appData.unitRecords.filter(r =>
+                    !r._sheetKey || pendingKeys.has(r._sheetKey));
+                const removedCount = beforeCount - appData.unitRecords.length;
+
                 let addedCount = 0;
                 for (const [sheetKey, g] of Object.entries(groups)) {
                     if (existingKeys.has(sheetKey)) continue;
-                    const unitName = [
-                        g.textbook,
-                        g.chapter ? `${g.chapter}章` : '',
-                        g.section ? `${g.section}節` : ''
-                    ].filter(Boolean).join(' ');
+                    // 章の欄にテキスト名がそのまま入っている行があるため、重複は落とす
+                    const _chap = (g.chapter && g.chapter !== g.textbook) ? `${g.chapter}章` : '';
+                    const unitName = [g.textbook, _chap, g.section ? `${g.section}節` : '']
+                        .filter(Boolean).join(' ');
                     // J列がない旧データはwrongCountをmaxScoreとして使うフォールバック
                     const maxScore = g.total > 0 ? g.total : g.wrongCount || 1;
                     const score    = g.total > 0 ? Math.max(0, g.total - g.wrongCount) : 0;
@@ -5621,12 +5649,15 @@
                 appData.lastSheetImport = new Date().toISOString();
                 saveData();
 
-                if (addedCount > 0) {
+                if (addedCount > 0 || removedCount > 0) {
                     renderUnitRecords();
                     if (typeof updateAIDiagnosis === 'function') updateAIDiagnosis();
-                    alert(`${addedCount}件の単元データを取り込みました！`);
+                }
+                if (addedCount > 0) {
+                    alert(`${addedCount}件の単元データを取り込みました！` + (removedCount > 0 ? `
+提出済みの${removedCount}件を要復習から外しました。` : ""));
                 } else if (!silent) {
-                    alert("新しいデータはありませんでした（すべて取込済みです）。");
+                    alert(removedCount > 0 ? `提出済みの${removedCount}件を要復習から外しました。` : "新しいデータはありませんでした（すべて取込済みです）。");
                 }
 
             } catch (err) {
@@ -5788,7 +5819,7 @@
                         <div class="flex justify-between items-start mb-2">
                             <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-white border">${SUBJ_CONFIG[r.subject]?.label || r.subject}</span>
                             <div class="flex items-center gap-1">
-                                <span class="text-[9px] text-slate-400">${r.date.split('T')[0]}</span>
+                                <span class="text-[9px] text-slate-400">${String(r.date || '').split('T')[0]}</span>
                                 <button onclick="deleteUnitRecord('${r.id}')" class="text-slate-300 hover:text-red-500 transition text-xs leading-none" title="削除">✕</button>
                             </div>
                         </div>
@@ -6030,7 +6061,10 @@
                         const _se = u.section ? `${u.section}節` : '';
                         const _cs = [_ch,_se].filter(Boolean).join(' ');
                         const _pg = (u.pages && u.pages.length) ? `p.${u.pages.join(',')}` : '';
-                        const detail = [u.textbook, _cs, _pg].filter(Boolean).join(' / ');
+                        // u.name にテキスト名・章・節が入っているため、重複分は出さない
+                        const _tb = (u.textbook && !String(u.name || '').includes(u.textbook)) ? u.textbook : '';
+                        const _csShown = (_cs && !String(u.name || '').includes(_cs)) ? _cs : '';
+                        const detail = [_tb, _csShown, _pg].filter(Boolean).join(' / ');
                         return `<span class="inline-flex items-center bg-red-500/20 border border-red-500/50 rounded px-2 py-1 mr-2 mb-1 gap-1.5 flex-wrap">
                             <span class="text-[10px] font-bold">${u.name}</span>
                             ${detail ? `<small class="opacity-75 text-[9px]">${detail}</small>` : ''}
