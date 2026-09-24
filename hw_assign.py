@@ -598,29 +598,40 @@ def ensure_intake_column(svc, tab: str) -> int:
     return idx
 
 
-def mark_intake(tab: str, key_header: str, key_value: str, student: str = "") -> dict:
-    """tab の key_header 列が key_value と一致する行の「取込F」に 1 を立てる。"""
+def mark_intake(tab: str, matches: dict, student: str = "") -> dict:
+    """tab の中で matches（列見出し → 値）がすべて一致する行の「取込F」に 1 を立てる。
+    単一の列だけでは特定できないシートもあるため、複数列での照合に対応する。"""
     if not RESULT_SPREADSHEET_ID:
         raise HTTPException(status_code=503, detail="結果シートが未設定です。")
+    if not matches:
+        raise HTTPException(status_code=400, detail="照合する値がありません。")
     svc = _sheets()
 
     header = _sheet_values(svc, tab, "1:1")
-    hrow = header[0] if header else []
-    try:
-        key_idx = [str(h).strip() for h in hrow].index(key_header)
-    except ValueError:
-        raise HTTPException(status_code=400, detail=f"{tab} に「{key_header}」列がありません。")
+    hrow = [str(h).strip() for h in (header[0] if header else [])]
+
+    idx_map = {}
+    for col, val in matches.items():
+        try:
+            idx_map[hrow.index(col)] = str(val).strip()
+        except ValueError:
+            raise HTTPException(status_code=400, detail=f"{tab} に「{col}」列がありません。")
 
     intake_idx = ensure_intake_column(svc, tab)
-    name_idx = [str(h).strip() for h in hrow].index("生徒名") if "生徒名" in [str(h).strip() for h in hrow] else None
+    name_idx = hrow.index("生徒名") if "生徒名" in hrow else None
 
     rows = _sheet_values(svc, tab, "A:ZZ")
     updated = []
     for i, r in enumerate(rows):
         if i == 0:
             continue
-        val = str(r[key_idx]).strip() if len(r) > key_idx else ""
-        if not val or val != str(key_value).strip():
+        ok = True
+        for ci, want in idx_map.items():
+            got = str(r[ci]).strip() if len(r) > ci else ""
+            if got != want:
+                ok = False
+                break
+        if not ok:
             continue
         if student and name_idx is not None:
             who = str(r[name_idx]).strip() if len(r) > name_idx else ""

@@ -202,9 +202,8 @@ class IntakeMarkRequest(BaseModel):
     管理トークンを画面に置かずに済むよう、生徒のIDとパスワードで本人確認する。"""
     id: str
     password: str
-    tab: str            # "シート1" または "送付テスト"
-    key_header: str     # 照合する列の見出し（例: "テストID"）
-    key_value: str      # その値
+    tab: str                          # "シート1" または "送付テスト"
+    matches: dict                     # 列見出し → 値（複数指定で絞り込む）
 
 
 @app.post("/api/intake/mark")
@@ -227,7 +226,7 @@ def intake_mark(req: IntakeMarkRequest, db: Session = Depends(get_db)):
         student = ""
 
     import hw_assign
-    return hw_assign.mark_intake(req.tab, req.key_header, req.key_value, student)
+    return hw_assign.mark_intake(req.tab, req.matches, student)
 
 
 # --- AI画像解析系 API ---

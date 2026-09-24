@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V32</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V33</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -6492,31 +6492,45 @@
         // 提出F とは別の列なので、LINE課題配信のリマインド判定には影響しない。
         function markIntakeOnSheet(rec) {
             if (!rec || !currentUser || !appData.password) return;
-            let tab = '', keyHeader = '', keyValue = '';
+            let tab = '', matches = null;
 
-            if (rec.pendingTest || rec._sendKey) {
-                // 送付テスト由来：テストIDで照合
+            if (rec.pendingTest || (rec._sendKey || '').startsWith('pendingtest_')) {
+                // 送付テスト由来：テストIDで一意に決まる
                 tab = '送付テスト';
-                keyHeader = 'テストID';
-                keyValue = String(rec._sendKey || '').replace(/^(pendingtest_|kakomon_)/, '');
+                matches = { 'テストID': String(rec._sendKey || '').replace(/^pendingtest_/, '') };
             } else if (rec._sheetKey) {
-                // シート1由来：日時で照合（_sheetKey には日時が無いため記録時の日時を使う）
+                // シート1由来：テキスト名・章・節の組み合わせで照合する。
+                // 日時は古いレコードに保持されていないため使わない。
+                // テキスト名が空の行もあるため、値が入っている列だけで照合する
                 tab = 'シート1';
-                keyHeader = '日時';
-                keyValue = String(rec.sheetDateTime || '');
+                const _cand = {
+                    'テキスト名': rec.textbook || rec.source || '',
+                    '章': rec.chapter || '',
+                    '節': rec.section || ''
+                };
+                matches = {};
+                Object.keys(_cand).forEach(k => { if (_cand[k]) matches[k] = _cand[k]; });
+                if (Object.keys(matches).length === 0) matches = null;
             }
-            if (!tab || !keyValue) return;
+            if (!tab || !matches) {
+                showSaveStatus(false, { full:
+                    'この項目はシートと結び付いていないため、シート側には記録しませんでした。' });
+                return;
+            }
 
             fetch(`${API_BASE_URL}/api/intake/mark`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    id: currentUser, password: appData.password,
-                    tab, key_header: keyHeader, key_value: keyValue
+                    id: currentUser, password: appData.password, tab, matches
                 })
             })
-            .then(res => res.ok ? res.json() : res.json().then(j => Promise.reject(new Error(j.detail || res.status))))
-            .then(j => showSaveStatus(true))
+            .then(res => res.ok ? res.json()
+                                : res.json().then(j => Promise.reject(new Error(j.detail || res.status))))
+            .then(j => {
+                console.log('取込Fに記録:', tab, j.rows);
+                showSaveStatus(true);
+            })
             .catch(e => {
                 console.error('取込Fの書き込みに失敗:', e);
                 showSaveStatus(false, { full:
