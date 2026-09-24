@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V34</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V35</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -926,14 +926,23 @@
                    <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">開始日</label>
-                            <input type="date" id="edit-curr-start" class="w-full border rounded-lg px-4 py-2 text-sm">
+                            <input type="date" id="edit-curr-start" class="w-full border rounded-lg px-4 py-2 text-sm"
+                                   onchange="const c=document.getElementById('edit-curr-datesfixed'); if(c) c.checked=true;">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">終了日</label>
-                            <input type="date" id="edit-curr-end" class="w-full border rounded-lg px-4 py-2 text-sm">
+                            <input type="date" id="edit-curr-end" class="w-full border rounded-lg px-4 py-2 text-sm"
+                                   onchange="const c=document.getElementById('edit-curr-datesfixed'); if(c) c.checked=true;">
                         </div>
                     </div>
                     <p class="text-[10px] text-slate-400 -mt-2">※この期間が遅れを測る基準になります。変更すると、その時点からの遅れとして数え直されます。</p>
+                    <label class="flex items-start gap-2 cursor-pointer -mt-1">
+                        <input type="checkbox" id="edit-curr-datesfixed" class="w-4 h-4 mt-0.5 accent-[#B8963E]">
+                        <span class="text-[10px] font-bold text-slate-600">
+                            この期間を固定する（前倒し・後ろ倒しの対象外にする）<br>
+                            <span class="font-normal text-slate-400">この教材のバーは設定した期間のまま動きません。後に続く教材は、実際の進み方に合わせて調整されます。</span>
+                        </span>
+                    </label>
 
                     <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
                         <label class="flex items-center gap-2 cursor-pointer">
@@ -1569,9 +1578,17 @@
                         projEnd = Math.min(baseEnd, Math.max(projStart, today));
                     }
 
+                    // 期間を固定した教材は、自身のバーを設定どおりに保つ。
+                    // 後続へ引き継ぐ日付（chainEnd）には実際の見込みを使うので、
+                    // 次の教材は進み方に合わせて調整される。
+                    const chainEnd = projEnd;
+                    const showStart = b.datesFixed ? plan.origStart : projStart;
+                    const showEnd   = b.datesFixed ? plan.origEnd   : projEnd;
+
                     out[b.id] = {
                         origStart: plan.origStart, origEnd: plan.origEnd,
-                        projStart, projEnd,
+                        projStart: showStart, projEnd: showEnd,
+                        datesFixed: !!b.datesFixed,
                         plannedDays: plan.plannedDays,
                         dailyQty,
                         origDailyQty: plan.dailyQty,
@@ -1579,16 +1596,17 @@
                         // shiftedDays: 前の教材の遅れを引き継いで後ろへずれた日数
                         // 設定日を変更すると origStart/origEnd が入れ替わるため、
                         // その時点からの遅れとして数え直される。
-                        delayDays: Math.max(0, projEnd - baseEnd),
-                        aheadDays: Math.max(0, baseEnd - projEnd),
-                        shiftedDays: Math.max(0, applied),      // 前の教材の遅れで後ろへずれた日数
-                        advancedDays: Math.max(0, -applied),    // 前の教材が早まり前へ動いた日数
-                        totalShiftDays: projEnd - plan.origEnd,
+                        // 固定した教材には遅れ・前倒しの表示を出さない
+                        delayDays:    b.datesFixed ? 0 : Math.max(0, projEnd - baseEnd),
+                        aheadDays:    b.datesFixed ? 0 : Math.max(0, baseEnd - projEnd),
+                        shiftedDays:  b.datesFixed ? 0 : Math.max(0, applied),
+                        advancedDays: b.datesFixed ? 0 : Math.max(0, -applied),
+                        totalShiftDays: showEnd - plan.origEnd,
                         done, remaining
                     };
 
                     prevOrigEnd = Math.max(prevOrigEnd, plan.origEnd);
-                    prevProjEnd = Math.max(prevProjEnd, projEnd);
+                    prevProjEnd = Math.max(prevProjEnd, chainEnd);
                 });
             });
 
@@ -3131,6 +3149,8 @@
                         _stateBadge = '<span class="text-[8px] bg-orange-100 text-orange-700 rounded px-1">総量未設定</span>';
                     } else if (b.completed || getBookDone(b) >= b.total) {
                         _stateBadge = '<span class="text-[8px] bg-emerald-100 text-emerald-700 rounded px-1">完了</span>';
+                    } else if (b.datesFixed) {
+                        _stateBadge = '<span class="text-[8px] bg-amber-100 text-amber-700 rounded px-1">期間固定</span>';
                     }
                 }
                 const barColor = (b.discontinued || !(b.total > 0)) ? '#94A3B8'
@@ -5107,6 +5127,8 @@
             }
             document.getElementById('edit-curr-start').value = normDate(book.actualStartDate, weekNumToDateStr(book.startW, 1));
             document.getElementById('edit-curr-end').value   = normDate(book.actualEndDate,   weekNumToDateStr(book.endW,   7));
+            const _fix = document.getElementById('edit-curr-datesfixed');
+            if (_fix) _fix.checked = !!book.datesFixed;
             const _comp = document.getElementById('edit-curr-completed');
             const _compRow = document.getElementById('edit-curr-completed-row');
             const _compAt = document.getElementById('edit-curr-completed-at');
@@ -5166,6 +5188,12 @@
             if (editStartVal) book.actualStartDate = editStartVal;
             if (editEndVal)   book.actualEndDate   = editEndVal;
             // 科目表示名（宿題カテゴリのみ）
+            // 期間の固定。チェックするとこの教材自身は前倒し・後ろ倒しされない。
+            const _fixEl = document.getElementById('edit-curr-datesfixed');
+            if (_fixEl) {
+                if (_fixEl.checked) book.datesFixed = true;
+                else delete book.datesFixed;
+            }
             // 完了の設定。総量に達していなくても完了として扱う。
             const _compEl = document.getElementById('edit-curr-completed');
             if (_compEl) {
