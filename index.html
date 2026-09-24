@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V33</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V34</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -935,6 +935,21 @@
                     </div>
                     <p class="text-[10px] text-slate-400 -mt-2">※この期間が遅れを測る基準になります。変更すると、その時点からの遅れとして数え直されます。</p>
 
+                    <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" id="edit-curr-completed" class="w-4 h-4 accent-emerald-600"
+                                   onchange="document.getElementById('edit-curr-completed-row').classList.toggle('hidden', !this.checked)">
+                            <span class="text-xs font-bold text-emerald-800">この教材を完了にする</span>
+                        </label>
+                        <div id="edit-curr-completed-row" class="hidden mt-2">
+                            <label class="block text-[10px] font-bold text-slate-500 mb-1">完了日</label>
+                            <input type="date" id="edit-curr-completed-at" class="w-full border rounded-lg px-3 py-1.5 text-sm">
+                            <p class="text-[10px] text-slate-400 mt-1">
+                                総量に達していなくても完了として扱います。実績はそのまま残ります。
+                            </p>
+                        </div>
+                    </div>
+
                     <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
                         <label class="flex items-center gap-2 cursor-pointer">
                             <input type="checkbox" id="edit-curr-discontinued" class="w-4 h-4 accent-[#D4622A]"
@@ -1353,10 +1368,16 @@
 
         // 週間トラッカー／本日の達成率の対象となる教材か
         // （表示条件と集計条件を一致させ、入力しても達成率に反映されない状態を防ぐ）
+        // 完了または中止で、これ以上進めない教材か
+        function isBookFinished(b) {
+            if (!b) return false;
+            if (b.completed || b.discontinued) return true;
+            return getBookDone(b) >= (b.total || 0);
+        }
+
         function isTrackedToday(b) {
             if (b.isEvent) return false;
-            if (b.discontinued) return false;          // 中止した教材は日々のタスクに出さない
-            if (getBookDone(b) >= b.total) return false;
+            if (isBookFinished(b)) return false;        // 完了・中止した教材は日々のタスクに出さない
             // 遅延で開始が後ろへずれた教材は、その日が来るまで表示しない
             const today = absIdxFromWeekDay(appData.currentWeek, appData.currentDay);
             return today >= getProjection(b).projStart;
@@ -1500,7 +1521,8 @@
                     const done = getBookDone(b);
                     // 中止した教材は残量を持たない扱いにし、中止日で終了させる。
                     // これにより同じ科目の次の教材が前倒しで始められる。
-                    const remaining = b.discontinued ? 0 : Math.max(0, (b.total || 0) - done);
+                    const remaining = (b.completed || b.discontinued)
+                        ? 0 : Math.max(0, (b.total || 0) - done);
 
                     // 前の教材が終わってから始まる予定のものは、その終了直後へ連動させる。
                     // 遅れれば後ろへ、早く終われば前へ、芋づる式に動く。
@@ -1538,9 +1560,9 @@
                         const daysNeeded = Math.max(1, Math.ceil(remaining / daily));
                         // 早く終わる場合は短縮する（max で固定しない）
                         projEnd = from + daysNeeded - 1;
-                    } else if (b.discontinued) {
-                        // 中止日（未設定なら本日）で終了とする
-                        const stop = absIdxFromDate(b.discontinuedAt);
+                    } else if (b.discontinued || b.completed) {
+                        // 中止日・完了日（未設定なら本日）で終了とする
+                        const stop = absIdxFromDate(b.discontinuedAt || b.completedAt);
                         projEnd = Math.max(projStart, (stop == null ? today : stop));
                     } else {
                         // 完了済みは本日までで終わりとする
@@ -3107,7 +3129,7 @@
                         _stateBadge = '<span class="text-[8px] bg-slate-200 text-slate-600 rounded px-1">中止</span>';
                     } else if (!(b.total > 0)) {
                         _stateBadge = '<span class="text-[8px] bg-orange-100 text-orange-700 rounded px-1">総量未設定</span>';
-                    } else if (getBookDone(b) >= b.total) {
+                    } else if (b.completed || getBookDone(b) >= b.total) {
                         _stateBadge = '<span class="text-[8px] bg-emerald-100 text-emerald-700 rounded px-1">完了</span>';
                     }
                 }
@@ -3140,9 +3162,11 @@
                         dateLabel = startDateStr;
                     }
                     tooltipText = `📅 ${dateLabel}`;
-                } else if (b.discontinued) {
-                    const _st = b.discontinuedAt ? _fmtDate(b.discontinuedAt) : endDateStr;
-                    tooltipText = `設定 ${cfgStartStr} 〜 ${cfgEndStr} ／ ${_st} に中止`;
+                } else if (b.discontinued || b.completed) {
+                    const _raw = b.discontinuedAt || b.completedAt;
+                    const _st = _raw ? _fmtDate(_raw) : endDateStr;
+                    const _word = b.discontinued ? '中止' : '完了';
+                    tooltipText = `設定 ${cfgStartStr} 〜 ${cfgEndStr} ／ ${_st} に${_word}`;
                 } else if (_shifted) {
                     const _lbl = (_pr && _pr.projEnd < _pr.origEnd) ? '前倒し後' : '遅れ反映';
                     tooltipText = `設定 ${cfgStartStr} 〜 ${cfgEndStr} ／ ${_lbl} ${startDateStr} 〜 ${endDateStr}`;
@@ -3225,7 +3249,7 @@
                         if (b.startW > cw + 1) return 1;
                         return 0;
                     }
-                    if (b.discontinued) return -1;            // 中止は終了済み扱い
+                    if (b.discontinued || b.completed) return -1;   // 完了・中止は終了済み扱い
                     const p = getProjection(b);
                     if (p.remaining <= 0) return -1;          // 完了済みは過去扱い
                     if (todayIdx < p.projStart) return 1;     // まだ始まっていない
@@ -3517,7 +3541,7 @@
             const _noTotal = [];
             Object.keys(appData.curriculum).forEach(sk => {
                 (appData.curriculum[sk] || []).forEach(b => {
-                    if (b.isEvent || b.isOneOff || b.discontinued) return;
+                    if (b.isEvent || b.isOneOff || isBookFinished(b)) return;
                     if (!(b.total > 0)) _noTotal.push({ sk, b });
                 });
             });
@@ -3807,7 +3831,7 @@
                 }
                 // 完了済み（実績が総量に達したもの）は下部に折りたたむ。
                 // 進行中の教材に埋もれて見つけにくくなるのを防ぐ。
-                const _finished = b => b.discontinued || getBookDone(b) >= (b.total || 0);
+                const _finished = b => isBookFinished(b);
                 const activeBooks = subBooks.filter(b => !_finished(b));
                 const doneBooks   = subBooks.filter(b => _finished(b));
                 const doneId = `cgdone_${containerId}_${subKey}`.replace(/[^A-Za-z0-9_]/g, '_');
@@ -3827,7 +3851,7 @@
                     _out.push(`
                     <div class="bg-white border border-slate-200 rounded-lg px-3 py-2">
                         <div class="flex items-center gap-1.5 mb-1.5">
-                            <span class="text-[10px] font-bold text-slate-700 flex-1 truncate">${b.name}${b.discontinued ? ' <span class="text-[8px] bg-slate-200 text-slate-600 rounded px-1">中止</span>' : ''}</span>
+                            <span class="text-[10px] font-bold text-slate-700 flex-1 truncate">${b.name}${b.discontinued ? ' <span class="text-[8px] bg-slate-200 text-slate-600 rounded px-1">中止</span>' : (b.completed ? ' <span class="text-[8px] bg-emerald-100 text-emerald-700 rounded px-1">完了</span>' : '')}</span>
                             ${bSts}${adjMark}
                             <button onclick="openProgressAdjustModalById('${b.id}')"
                                 class="shrink-0 text-[8px] border border-slate-300 text-slate-400 hover:text-[#B8963E] hover:border-[#B8963E] rounded px-1 py-0.5 transition">
@@ -5083,6 +5107,14 @@
             }
             document.getElementById('edit-curr-start').value = normDate(book.actualStartDate, weekNumToDateStr(book.startW, 1));
             document.getElementById('edit-curr-end').value   = normDate(book.actualEndDate,   weekNumToDateStr(book.endW,   7));
+            const _comp = document.getElementById('edit-curr-completed');
+            const _compRow = document.getElementById('edit-curr-completed-row');
+            const _compAt = document.getElementById('edit-curr-completed-at');
+            if (_comp) {
+                _comp.checked = !!book.completed;
+                if (_compRow) _compRow.classList.toggle('hidden', !book.completed);
+                if (_compAt) _compAt.value = normDate(book.completedAt, new Date().toISOString().split('T')[0]);
+            }
             const _disc = document.getElementById('edit-curr-discontinued');
             const _discRow = document.getElementById('edit-curr-discontinued-row');
             const _discAt = document.getElementById('edit-curr-discontinued-at');
@@ -5134,6 +5166,18 @@
             if (editStartVal) book.actualStartDate = editStartVal;
             if (editEndVal)   book.actualEndDate   = editEndVal;
             // 科目表示名（宿題カテゴリのみ）
+            // 完了の設定。総量に達していなくても完了として扱う。
+            const _compEl = document.getElementById('edit-curr-completed');
+            if (_compEl) {
+                if (_compEl.checked) {
+                    book.completed = true;
+                    book.completedAt = (document.getElementById('edit-curr-completed-at')?.value || '')
+                        || new Date().toISOString().split('T')[0];
+                } else {
+                    delete book.completed;
+                    delete book.completedAt;
+                }
+            }
             // 中止の設定。中止日までの実績は残す。
             const _discEl = document.getElementById('edit-curr-discontinued');
             if (_discEl) {
