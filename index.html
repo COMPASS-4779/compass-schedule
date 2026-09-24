@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V31</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V32</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -3100,7 +3100,18 @@
                 // 右端を超えるとバーが枠外に出て見えなくなるため、必ず枠内に収める
                 if (l + w > 100) l = Math.max(0, 100 - w);
                 
-                const barColor = b.discontinued ? '#94A3B8'
+                // 日々のタスクに出ない理由をロードマップ上で分かるようにする
+                let _stateBadge = '';
+                if (!b.isEvent && !b.isOneOff) {
+                    if (b.discontinued) {
+                        _stateBadge = '<span class="text-[8px] bg-slate-200 text-slate-600 rounded px-1">中止</span>';
+                    } else if (!(b.total > 0)) {
+                        _stateBadge = '<span class="text-[8px] bg-orange-100 text-orange-700 rounded px-1">総量未設定</span>';
+                    } else if (getBookDone(b) >= b.total) {
+                        _stateBadge = '<span class="text-[8px] bg-emerald-100 text-emerald-700 rounded px-1">完了</span>';
+                    }
+                }
+                const barColor = (b.discontinued || !(b.total > 0)) ? '#94A3B8'
                                : ((b.isEvent && b.dayType === 'holiday') ? '#EF4444' : hex);
 
                 // 🔧 [Cowork変更①] ポップアップを「期間」表示から「日付」表示に変更
@@ -3144,7 +3155,7 @@
                     <div class="flex justify-between items-center mb-1">
                         <div class="flex items-center gap-1 min-w-0 flex-1">
                             <span class="gantt-handle select-none flex-shrink-0 opacity-0 group-hover:opacity-100 transition text-slate-400 hover:text-slate-600" style="font-size:12px;letter-spacing:-1px;" title="ドラッグで並び替え">⠿</span>
-                            <div class="text-[9px] font-bold truncate pr-2" style="color:${barColor}">${b.name}${b.discontinued ? ' <span class="text-[8px] bg-slate-200 text-slate-600 rounded px-1">中止</span>' : ''}</div>
+                            <div class="text-[9px] font-bold truncate pr-2" style="color:${barColor}">${b.name} ${_stateBadge}</div>
                         </div>
                         <div class="flex items-center gap-1">
                             <button onclick="openEditModal('${b.subjKey}', '${b.id}')" class="text-[8px] bg-slate-100 px-1.5 py-0.5 rounded border opacity-0 group-hover:opacity-100 transition hover:bg-white flex-shrink-0">
@@ -3500,6 +3511,34 @@
                     }
                 });
             });
+
+            // 総量が未設定の教材は日々の分量を計算できず黙って消えてしまうため、
+            // 気付けるように一覧で知らせる。
+            const _noTotal = [];
+            Object.keys(appData.curriculum).forEach(sk => {
+                (appData.curriculum[sk] || []).forEach(b => {
+                    if (b.isEvent || b.isOneOff || b.discontinued) return;
+                    if (!(b.total > 0)) _noTotal.push({ sk, b });
+                });
+            });
+            if (_noTotal.length > 0) {
+                grid.innerHTML += `
+                <div class="bg-orange-50 border border-orange-200 p-4 rounded-xl shadow-sm">
+                    <div class="text-[10px] font-black text-orange-700 mb-1">
+                        <i class="fas fa-exclamation-triangle mr-1"></i>総量が未設定のため表示できません (${_noTotal.length}件)
+                    </div>
+                    <div class="space-y-1">
+                        ${_noTotal.map(({ sk, b }) => `
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-bold text-slate-700 flex-1 truncate">${b.name}</span>
+                            <button onclick="openEditModal('${sk}', '${b.id}')"
+                                class="text-[9px] border border-orange-300 text-orange-700 rounded px-1.5 py-0.5 hover:bg-orange-100 transition">
+                                総量を設定
+                            </button>
+                        </div>`).join('')}
+                    </div>
+                </div>`;
+            }
         }
 
         function updateProg(id, v) {
