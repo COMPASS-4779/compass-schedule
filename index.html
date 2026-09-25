@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V36</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V37</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -5173,6 +5173,44 @@
             document.getElementById('curriculum-edit-modal').classList.remove('hidden');
         }
 
+        // 日付文字列に日数を足す（YYYY-MM-DD）
+        function addDaysToDateStr(dateStr, n) {
+            const d = new Date(dateStr);
+            if (isNaN(d)) return dateStr;
+            d.setDate(d.getDate() + n);
+            const p = x => String(x).padStart(2, '0');
+            return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+        }
+
+        // 手動で日程を変えた教材の後に続く教材を、同じ日数だけずらして保存し直す。
+        // 保存値そのものを書き換えるので、ずらした後の日程が新しい「元の予定」になる
+        // （ロードマップに変更前の点線は出ない）。
+        // 対象は同じ大科目で、変更前の終了日より後に始まる予定だった教材。
+        // 期間を固定した教材・完了/中止した教材は動かさない。
+        function cascadeManualShift(sk, book, oldEnd, newEnd) {
+            if (!oldEnd || !newEnd || book.isEvent || book.isOneOff) return 0;
+            const delta = Math.round((new Date(newEnd) - new Date(oldEnd)) / 86400000);
+            if (!delta) return 0;
+            const chainKey = getChartGroupKey(sk) || sk;
+            let moved = 0;
+            Object.keys(appData.curriculum || {}).forEach(k => {
+                if ((getChartGroupKey(k) || k) !== chainKey) return;
+                (appData.curriculum[k] || []).forEach(b => {
+                    if (b === book || b.isEvent || b.isOneOff) return;
+                    if (b.datesFixed || b.completed || b.discontinued) return;
+                    const bs = b.actualStartDate || weekNumToDateStr(b.startW, 1);
+                    const be = b.actualEndDate   || weekNumToDateStr(b.endW, 7);
+                    if (new Date(bs) <= new Date(oldEnd)) return;   // 連続して後に続く教材だけ
+                    b.actualStartDate = addDaysToDateStr(bs, delta);
+                    b.actualEndDate   = addDaysToDateStr(be, delta);
+                    b.startW = dateStrToWeekNum(b.actualStartDate);
+                    b.endW   = dateStrToWeekNum(b.actualEndDate);
+                    moved++;
+                });
+            });
+            return moved;
+        }
+
         function saveCurriculumEdit() {
             const subjKey = document.getElementById('edit-curr-subject').value;
             const id = document.getElementById('edit-curr-id').value;
@@ -5182,11 +5220,15 @@
             book.name   = document.getElementById('edit-curr-name').value;
             const editStartVal = document.getElementById('edit-curr-start').value;
             const editEndVal   = document.getElementById('edit-curr-end').value;
+            // 後続を連動させるため、変更前の終了日を控えておく
+            const _oldEnd = book.actualEndDate || weekNumToDateStr(book.endW, 7);
             book.startW = dateStrToWeekNum(editStartVal);
             book.endW   = dateStrToWeekNum(editEndVal);
             // 実際の日付文字列も保存（表示用）
             if (editStartVal) book.actualStartDate = editStartVal;
             if (editEndVal)   book.actualEndDate   = editEndVal;
+            // 手動で終了日を動かしたら、後に続く教材も同じ日数だけずらして保存する
+            const _cascaded = cascadeManualShift(subjKey, book, _oldEnd, editEndVal);
             // 科目表示名（宿題カテゴリのみ）
             // 期間の固定。チェックするとこの教材自身は前倒し・後ろ倒しされない。
             const _fixEl = document.getElementById('edit-curr-datesfixed');
@@ -5256,6 +5298,11 @@
             saveData();
             closeEditModal();
             renderDashboard();
+            if (_cascaded > 0) {
+                showSaveStatus(true);
+                const _t = document.getElementById('save-status-toast');
+                if (_t) _t.textContent = `保存しました（後に続く${_cascaded}件の教材の日程も連動して変更）`;
+            }
         }
 
         function closeEditModal() {
