@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V35</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V36</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -5944,26 +5944,36 @@
 
         // CSVパーサーユーティリティ（RFC 4180準拠・ダブルクォート対応）
         function parseSheetCSV(text) {
+            // 引用符の中に改行が入るセル（写真リンクを複数行で持つ行など）があるため、
+            // 行で分割してから解析すると1行が壊れて列がずれる。
+            // 文字単位で走査し、引用符の外の改行だけを行区切りとして扱う。
+            const src = String(text || '').replace(/\r\n/g, '\n').replace(/\r/g, '\n');
             const rows = [];
-            const lines = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n');
-            for (const line of lines) {
-                if (!line.trim()) continue;
-                const cols = [];
-                let cur = '', inQ = false;
-                for (let i = 0; i < line.length; i++) {
-                    const c = line[i];
+            let cols = [], cur = '', inQ = false;
+
+            for (let i = 0; i < src.length; i++) {
+                const c = src[i];
+                if (inQ) {
                     if (c === '"') {
-                        if (inQ && line[i + 1] === '"') { cur += '"'; i++; }
-                        else inQ = !inQ;
-                    } else if (c === ',' && !inQ) {
-                        cols.push(cur); cur = '';
+                        if (src[i + 1] === '"') { cur += '"'; i++; }   // 連続する二重引用符はエスケープ
+                        else inQ = false;
                     } else {
-                        cur += c;
+                        cur += c;                                      // 引用符内の改行もそのまま保持
                     }
+                    continue;
                 }
-                cols.push(cur);
-                rows.push(cols);
+                if (c === '"') { inQ = true; }
+                else if (c === ',') { cols.push(cur); cur = ''; }
+                else if (c === '\n') {
+                    cols.push(cur); cur = '';
+                    if (cols.some(v => String(v).trim() !== '')) rows.push(cols);
+                    cols = [];
+                } else {
+                    cur += c;
+                }
             }
+            cols.push(cur);
+            if (cols.some(v => String(v).trim() !== '')) rows.push(cols);
             return rows;
         }
 
@@ -6105,16 +6115,21 @@
                 // 提出F(L列)が立っている行は提出済みのため、要復習の対象から外す
                 // 取込F が立っている行は、アプリ側で削除済みなので再取込しない
                 findIntakeCol(rows[0], 'シート1');
-                const studentRows = rows.slice(1)
-                    .filter(sheetRowMatchesStudent)
-                    .filter(r => !sheetRowSubmitted(r))
-                    .filter(r => !sheetRowIntakeDone(r, 'シート1'));
+                const myRows = rows.slice(1).filter(sheetRowMatchesStudent);
 
-                if (studentRows.length === 0) {
-                    if (!silent) alert(`「${sheetIdentityLabel()}」の記録がスプレッドシートに見つかりません。\n生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
+                // 自分の行が1件も無い場合だけ、名前の不一致として知らせる。
+                // 全行が提出済み・取込済みの場合は取込は行わないが、
+                // 古いレコードの掃除は進める必要がある。
+                if (myRows.length === 0) {
+                    if (!silent) alert(`「${sheetIdentityLabel()}」の記録がスプレッドシートに見つかりません。
+生徒名（B列）が、ログインIDまたは登録氏名と一致しているか確認してください。`);
                     updateSheetImportStatus();
                     return;
                 }
+
+                const studentRows = myRows
+                    .filter(r => !sheetRowSubmitted(r))
+                    .filter(r => !sheetRowIntakeDone(r, 'シート1'));
 
                 if (!appData.unitRecords) appData.unitRecords = [];
 
