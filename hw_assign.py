@@ -351,6 +351,7 @@ def assignment_json(a: HwAssignment, db: Optional[Session] = None):
         "parent_id": a.parent_id, "title": a.title, "test_url": a.test_url, "subject": a.subject,
         "book": a.book, "units": _units(a), "target_accuracy": a.target_accuracy, "status": a.status,
         "delivery_status": dstatus, "scheduled_at": dscheduled,
+        "paused": (a.status == "scheduled" and dstatus == "paused"),
         "sent_at": _fmt(a.sent_at), "submitted_at": _fmt(a.submitted_at),
         "accuracy": a.accuracy, "result": result, "remind_count": a.remind_count,
         "last_reminded_at": _fmt(a.last_reminded_at), "review_status": a.review_status,
@@ -1515,7 +1516,7 @@ def edit_assignment(assignment_id: int, body: AssignmentEditIn,
     if body.target_accuracy is not None:
         a.target_accuracy = max(0, min(100, int(body.target_accuracy)))
         changed.append("目標正解率")
-    if d is not None and d.status != "pending" and (body.send_at is not None or body.message is not None):
+    if d is not None and d.status not in ("pending", "paused") and (body.send_at is not None or body.message is not None):
         return {"ok": False, "error": "配信の状態が変わっているため、日時と本文は変更できません"}
     if body.send_at is not None and d is not None:
         d.scheduled_at = hw_api.parse_local(body.send_at) if body.send_at.strip() else _now()
@@ -1531,6 +1532,73 @@ def edit_assignment(assignment_id: int, body: AssignmentEditIn,
     return {"ok": True, "changed": changed, "assignment": assignment_json(a, db)}
 
 
+class PauseIn(BaseModel):
+    paused: bool = True
+
+
+def _scheduled_chain(db: Session, a: HwAssignment, d: HwDelivery, statuses):
+    """同じ生徒の、まだ送っていない課題のうち、この課題と同じ時刻以降のもの（送る順）。"""
+    out = []
+    base = _aware(d.scheduled_at)
+    for x in db.query(HwAssignment).filter(HwAssignment.student_id == a.student_id,
+                                           HwAssignment.status == "scheduled").all():
+        xd = db.query(HwDelivery).filter(HwDelivery.id == x.delivery_id).first() if x.delivery_id else None
+        if xd is None or xd.status not in statuses:
+            continue
+        if x.id != a.id and _aware(xd.scheduled_at) < base:
+            continue
+        out.append((x, xd))
+    out.sort(key=lambda t: (_aware(t[1].scheduled_at), t[0].id))
+    return out
+
+
+@router.post("/assignments/{assignment_id}/pause")
+def pause_assignment(assignment_id: int, body: PauseIn, authorization: str = Header(None),
+                     db: Session = Depends(get_db)):
+    """送信予定の一時停止 / 再開。
+    - 停止: この課題と、同じ生徒のそれ以降の送信予定をまとめて止める（送られなくなる）。
+    - 再開: この課題とそれ以降の止めていた予定を戻す。予定日が明日より前になっているときは、
+      最初の1件を「明日（同じ時刻）」にし、残りも同じ日数だけ後ろにずらす（間隔はそのまま）。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
+    if a is None:
+        return Response(status_code=404)
+    d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
+    if a.status != "scheduled" or d is None:
+        return {"ok": False, "error": "まだ送っていない課題だけ、一時停止・再開できます"}
+    now = _now()
+    changed = []
+    if body.paused:
+        if d.status not in ("pending", "paused"):
+            return {"ok": False, "error": "配信の状態が変わっているため、一時停止できません"}
+        for x, xd in _scheduled_chain(db, a, d, ("pending",)):
+            xd.status = "paused"
+            x.updated_at = now
+            changed.append(x)
+        shift = 0
+    else:
+        chain = _scheduled_chain(db, a, d, ("paused",))
+        shift = 0
+        if chain:
+            first = to_local(chain[0][1].scheduled_at)
+            tomorrow = to_local(now).date() + timedelta(days=1)
+            if first.date() < tomorrow:
+                shift = (tomorrow - first.date()).days
+        for x, xd in chain:
+            if shift:
+                xd.scheduled_at = _aware(xd.scheduled_at) + timedelta(days=shift)
+            xd.status = "pending"
+            x.updated_at = now
+            changed.append(x)
+    db.commit()
+    log.info("送信予定を%s: %s（%d件, %d日ずらし）", "一時停止" if body.paused else "再開",
+             a.code, len(changed), shift)
+    return {"ok": True, "paused": bool(body.paused), "count": len(changed), "shift_days": shift,
+            "assignments": [assignment_json(x, db) for x in changed]}
+
+
 @router.post("/assignments/{assignment_id}/cancel")
 def cancel_assignment(assignment_id: int, authorization: str = Header(None), db: Session = Depends(get_db)):
     err = hw_api._auth_or_401(authorization)
@@ -1541,7 +1609,7 @@ def cancel_assignment(assignment_id: int, authorization: str = Header(None), db:
         return Response(status_code=404)
     a.status, a.updated_at = "canceled", _now()
     d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
-    if d is not None and d.status == "pending":
+    if d is not None and d.status in ("pending", "paused"):
         d.status = "canceled"
     db.commit()
     ledger_update(a)
@@ -1565,7 +1633,7 @@ def delete_assignment(assignment_id: int, authorization: str = Header(None),
         return Response(status_code=404)
     code, title = a.code, a.title
     d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
-    if d is not None and d.status == "pending":
+    if d is not None and d.status in ("pending", "paused"):
         d.status, d.error = "canceled", None
     for g in db.query(HwGradedFile).filter(HwGradedFile.assignment_id == a.id).all():
         g.assignment_id = None
