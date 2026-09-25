@@ -79,7 +79,7 @@ class HwDelivery(Base):
     student_id = Column(BIGINT, ForeignKey("hw_students.id"), index=True)
     scheduled_at = Column(DateTime(timezone=True), index=True)
     message = Column(Text, default="")
-    status = Column(String, default="pending", index=True)   # pending/sent/failed/canceled
+    status = Column(String, default="pending", index=True)   # pending/paused(一時停止)/sent/failed/canceled
     sent_at = Column(DateTime(timezone=True), nullable=True)
     error = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
@@ -539,7 +539,7 @@ def delete_student(student_id: int, authorization: str = Header(None),
     if not s:
         return {"success": False, "message": "見つかりません"}
     pending = db.query(HwDelivery).filter(
-        HwDelivery.student_id == student_id, HwDelivery.status == "pending"
+        HwDelivery.student_id == student_id, HwDelivery.status.in_(("pending", "paused"))
     ).count()
     if pending:
         return {"success": False,
@@ -795,7 +795,7 @@ def student_files(student_id: int, authorization: str = Header(None),
         for f in db.query(HwDeliveryFile)
         .join(HwDelivery, HwDelivery.id == HwDeliveryFile.delivery_id)
         .filter(HwDelivery.student_id == student_id,
-                HwDelivery.status.in_(("pending", "sent")))
+                HwDelivery.status.in_(("pending", "paused", "sent")))
         .all()
     }
     return {"success": True, "files": [
