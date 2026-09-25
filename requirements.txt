@@ -1,7 +1,7 @@
 fastapi
 uvicorn
 python-multipart
-sqlalchemy
+sqlalchemy>=2.0,<2.1
 google-generativeai
 pydantic
 psycopg2-binary
