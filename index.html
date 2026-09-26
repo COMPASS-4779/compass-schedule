@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V38</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V39</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -84,6 +84,10 @@
             <div class="space-y-4">
                 <input type="text" id="login-id" autocomplete="username" class="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#B8963E]" placeholder="ログインID">
                 <input type="password" id="login-pass" autocomplete="current-password" class="w-full border border-slate-300 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#B8963E]" placeholder="パスワード">
+                <label class="flex items-center gap-2 text-xs font-bold text-slate-600 cursor-pointer select-none">
+                    <input type="checkbox" id="login-remember" checked class="w-4 h-4 accent-[#D4622A]">
+                    この端末にIDとパスワードを保存する
+                </label>
                 <div class="bg-red-50 p-4 rounded-xl border border-red-100 mt-4 shadow-inner">
                     <label class="block text-xs font-bold text-red-600 mb-1">新規作成時のみ：管理者PW</label>
                     <input type="password" id="admin-pass" class="w-full border border-slate-300 rounded-lg px-4 py-2 text-sm outline-none focus:ring-1 focus:ring-[#B8963E]" placeholder="">
@@ -1880,6 +1884,7 @@
                 return _saveInFlight;
             }
             _saveInFlight = _postAppData().then(ok => {
+                window._lastSaveOk = !!ok;
                 _saveInFlight = null;
                 if (_savePending) { _savePending = false; return saveData(); }
                 return ok;
@@ -3612,7 +3617,17 @@
                             ${todayLbl ? `<div class="text-[11px] font-bold mb-0.5" style="color:${tOverdue?'#dc2626':'#1a6fb5'}"><i class="fas fa-calendar-day mr-1"></i>今日: ${todayLbl}</div>` : ''}
                             ${!tOverdue && weekLbl ? `<div class="text-[10px] font-bold text-slate-600 mb-2"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLbl}</div>` : ''}
                             <div class="flex items-center gap-2 ${tOverdue?'mt-1':''}">
-                                <input type="number" class="w-full border rounded p-2 text-sm font-bold focus:ring-2 focus:ring-[#B8963E] outline-none" placeholder="実績を入力" value="${appData.progress[key]||''}" onchange="updateProg('${b.id}', this.value)">
+                                <input type="number" inputmode="decimal" id="prog-input-${b.id}"
+                                    class="w-full border rounded p-2 text-sm font-bold focus:ring-2 focus:ring-[#B8963E] outline-none"
+                                    placeholder="実績を入力" value="${appData.progress[key]||''}"
+                                    oninput="this.classList.add('border-orange-400','bg-orange-50')"
+                                    onkeydown="if(event.key==='Enter'){event.preventDefault();saveProgInput('${b.id}');}"
+                                    onchange="updateProg('${b.id}', this.value)">
+                                <button type="button"
+                                    onpointerdown="event.preventDefault(); saveProgInput('${b.id}');"
+                                    class="shrink-0 text-xs font-black text-white bg-[#0A1628] hover:opacity-90 rounded px-3 py-2 shadow transition">
+                                    保存
+                                </button>
                                 <span class="text-xs font-bold text-slate-400">${b.unit}</span>
                             </div>
                             <div class="text-[10px] ${tOverdue?'text-red-500':'text-[#B8963E]'} mt-2 font-bold italic">本日目標: ${target}${b.unit}${tOverdue?' (期限超過・残量)':''}</div>
@@ -7644,6 +7659,7 @@ async function fetchAdminUsers() {
                     <td class="p-3 text-xs text-slate-500 font-mono">${u.password}</td>
                     <td class="p-3">${roleBadge}</td>
                     <td class="p-3 text-center">
+                        <button onclick="openUserActivityModal('${u.user_id}', '${u.password}')" class="text-emerald-600 hover:bg-emerald-50 px-2 py-1 rounded transition text-xs font-bold border border-emerald-200 mr-2"><i class="fas fa-history"></i> 履歴</button>
                         <button onclick="openUserEditModal('${u.user_id}', '${u.password}', '${u.role}')" class="text-blue-500 hover:bg-blue-50 px-2 py-1 rounded transition text-xs font-bold border border-blue-200 mr-2"><i class="fas fa-edit"></i> 編集</button>
                         <button onclick="deleteAdminUser('${u.user_id}')" class="text-slate-400 hover:text-red-500 transition px-2 py-1 text-xs"><i class="fas fa-trash"></i></button>
                     </td>
@@ -7763,6 +7779,283 @@ async function deleteCurrentAccount() {
             </div>
         </div>
 
+
+
+<div id="user-activity-modal" class="hidden fixed inset-0 bg-black/50 z-[140] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[85vh] flex flex-col border-t-4 border-t-emerald-500">
+        <div class="flex items-center justify-between p-4 border-b gap-3">
+            <h3 id="user-activity-title" class="text-base font-bold text-[#0A1628]"><i class="fas fa-history text-emerald-600 mr-2"></i>作業履歴</h3>
+            <div class="flex items-center gap-2">
+                <input id="user-activity-filter" oninput="renderUserActivity()" placeholder="絞り込み（例: 実績入力）"
+                    class="border rounded-lg px-3 py-1.5 text-xs w-44 outline-none focus:ring-1 focus:ring-emerald-400">
+                <button onclick="document.getElementById('user-activity-modal').classList.add('hidden')"
+                    class="text-slate-400 hover:text-slate-700 text-lg px-2">&times;</button>
+            </div>
+        </div>
+        <div id="user-activity-body" class="overflow-auto flex-1"></div>
+    </div>
+</div>
+<script>
+// ===== 実績の保存ボタン =====
+// 入力欄の onchange はフォーカスが外れたときにしか発火しないため、スマホで
+// 入力したまま画面を閉じると記録されないことがあった。保存ボタンで確実に送り、
+// サーバーへの保存完了まで待って結果を表示する。
+async function saveProgInput(id) {
+    const el = document.getElementById('prog-input-' + id);
+    if (!el) return;
+    const v = String(el.value || '').trim();
+    updateProg(id, v);                  // ここで saveData() が呼ばれる
+    try { await flushPendingSaves(); } catch (e) {}
+    if (window._lastSaveOk === false) {
+        alert('サーバーに保存できませんでした。\n通信状態を確認して、もう一度「保存」を押してください。');
+        return;
+    }
+    const b = _findBookById(id);
+    showSaveStatus(true);
+    const t = document.getElementById('save-status-toast');
+    if (t) t.textContent = `保存しました：${b ? b.name : ''} ${v === '' ? '（削除）' : v + (b ? b.unit || '' : '')}`;
+}
+
+// ===== 作業履歴 =====
+// 何をしたかを appData.activityLog に残し、サーバーへ一緒に保存する。
+// 管理画面のユーザー一覧から生徒ごとに確認できる。
+const ACTIVITY_LOG_MAX = 1000;
+
+function _findBookById(id) {
+    for (const sk of Object.keys(appData.curriculum || {})) {
+        const b = (appData.curriculum[sk] || []).find(x => String(x.id) === String(id));
+        if (b) return b;
+    }
+    return null;
+}
+
+function _deviceLabel() {
+    const ua = navigator.userAgent || '';
+    const pwa = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone;
+    const kind = /iPhone|iPad|iPod/.test(ua) ? 'iOS' : /Android/.test(ua) ? 'Android'
+               : /Windows/.test(ua) ? 'Windows' : /Macintosh/.test(ua) ? 'Mac' : 'その他';
+    return kind + (pwa ? '・アプリ' : '・ブラウザ');
+}
+
+function _selectedDayLabel() {
+    try {
+        const d = new Date(weekNumToDateStr(appData.currentWeek, appData.currentDay));
+        return `${d.getMonth() + 1}/${d.getDate()}`;
+    } catch (e) { return ''; }
+}
+
+function logActivity(action, detail) {
+    if (!appData || typeof appData !== 'object') return;
+    if (!Array.isArray(appData.activityLog)) appData.activityLog = [];
+    appData.activityLog.push({
+        at: new Date().toISOString(),
+        action: action,
+        detail: detail || '',
+        device: _deviceLabel()
+    });
+    const over = appData.activityLog.length - ACTIVITY_LOG_MAX;
+    if (over > 0) appData.activityLog.splice(0, over);
+}
+
+// 既存の関数を包んで履歴を付ける。
+// before: 実行前に内容を決めて記録（元の関数内の保存に含まれる）
+// after : 実行後に変化を見て記録し、改めて保存（確認ダイアログで取り消される操作向け）
+function _wrapBefore(name, describe) {
+    const orig = window[name];
+    if (typeof orig !== 'function') return;
+    window[name] = function (...args) {
+        try { const d = describe.apply(this, args); if (d) logActivity(d[0], d[1]); } catch (e) {}
+        return orig.apply(this, args);
+    };
+}
+function _wrapAfter(name, snapshot, describe) {
+    const orig = window[name];
+    if (typeof orig !== 'function') return;
+    window[name] = async function (...args) {
+        let snap = null;
+        try { snap = snapshot.apply(this, args); } catch (e) {}
+        const r = await orig.apply(this, args);
+        try {
+            const d = describe(snap, ...args);
+            if (d) { logActivity(d[0], d[1]); saveData(); }
+        } catch (e) {}
+        return r;
+    };
+}
+
+(function installActivityLog() {
+    _wrapBefore('updateProg', (id, v) => {
+        const b = _findBookById(id);
+        return ['実績入力', `${b ? b.name : id}　${_selectedDayLabel()}　${v === '' ? '削除' : v + (b ? b.unit || '' : '')}`];
+    });
+    _wrapBefore('saveProgressAdjust', () => {
+        const id = document.getElementById('progress-adjust-bookid')?.value;
+        const val = parseFloat(document.getElementById('progress-adjust-input')?.value);
+        if (isNaN(val) || val < 0) return null;
+        const b = _findBookById(id);
+        return ['実績数の調整', `${b ? b.name : id}　→ ${val}${b ? b.unit || '' : ''}`];
+    });
+    _wrapBefore('clearProgressAdjust', () => {
+        const b = _findBookById(document.getElementById('progress-adjust-bookid')?.value);
+        return ['実績数の調整を解除', b ? b.name : ''];
+    });
+    _wrapBefore('saveCurriculumEdit', () => {
+        const id = document.getElementById('edit-curr-id')?.value;
+        const b = _findBookById(id);
+        if (!b) return null;
+        const v = x => document.getElementById(x);
+        const parts = [];
+        const ns = v('edit-curr-start')?.value, ne = v('edit-curr-end')?.value;
+        if (ns && ns !== b.actualStartDate) parts.push(`開始 ${b.actualStartDate || '-'}→${ns}`);
+        if (ne && ne !== b.actualEndDate)   parts.push(`終了 ${b.actualEndDate || '-'}→${ne}`);
+        const nt = parseInt(v('edit-curr-total')?.value);
+        if (nt > 0 && nt !== b.total) parts.push(`総量 ${b.total}→${nt}`);
+        if (v('edit-curr-completed') && v('edit-curr-completed').checked !== !!b.completed)
+            parts.push(v('edit-curr-completed').checked ? '完了にした' : '完了を解除');
+        if (v('edit-curr-discontinued') && v('edit-curr-discontinued').checked !== !!b.discontinued)
+            parts.push(v('edit-curr-discontinued').checked ? '中止にした' : '中止を解除');
+        if (v('edit-curr-datesfixed') && v('edit-curr-datesfixed').checked !== !!b.datesFixed)
+            parts.push(v('edit-curr-datesfixed').checked ? '期間を固定' : '期間の固定を解除');
+        return ['教材の調整', `${b.name}　${parts.join(' / ') || '変更なし'}`];
+    });
+    _wrapBefore('saveChapterModal', () => {
+        const b = _findBookById(document.getElementById('chapter-modal-id')?.value);
+        const n = String(document.getElementById('chapter-modal-data')?.value || '').split('\n').filter(l => l.trim()).length;
+        return ['章・節の設定', `${b ? b.name : ''}　${n}件`];
+    });
+    _wrapBefore('completeUnitStep', (subj, unitName) => ['要復習 ✓+1', unitName]);
+    _wrapBefore('generateDashboard', () => ['教材の追加・計画の作成', '']);
+    _wrapBefore('addSelectedPresets', () => ['定番テキストの追加', '']);
+    _wrapBefore('addManualTask', () => ['タスクの追加', document.getElementById('manual-task-name')?.value || '']);
+    _wrapBefore('addTestResult', () => ['テスト結果の登録', document.getElementById('test-name')?.value || '']);
+
+    // 確認ダイアログで取り消されうる操作は、実行後の変化を見て記録する
+    const countUnits = () => (appData.unitRecords || []).length;
+    const countTests = () => (appData.testResults || []).length;
+    const bookExists = id => !!_findBookById(id);
+
+    _wrapAfter('deleteUnitRecord',
+        id => { const r = (appData.unitRecords || []).find(x => x.id === id); return r ? r.unit : null; },
+        (unit, id) => (unit && !(appData.unitRecords || []).some(x => x.id === id)) ? ['要復習の削除', unit] : null);
+    _wrapAfter('deleteCurriculumItemDirect',
+        (sk, id) => { const b = _findBookById(id); return b ? b.name : null; },
+        (name, sk, id) => (name && !bookExists(id)) ? ['教材の削除', name] : null);
+    _wrapAfter('deleteCurriculumItem',
+        () => { const id = document.getElementById('edit-curr-id')?.value; const b = _findBookById(id); return b ? { id, name: b.name } : null; },
+        snap => (snap && !bookExists(snap.id)) ? ['教材の削除', snap.name] : null);
+    _wrapAfter('deleteTestResult',
+        () => countTests(), before => (before > countTests()) ? ['テスト結果の削除', ''] : null);
+    _wrapAfter('resetAllUnitRecords',
+        () => countUnits(), before => (before > 0 && countUnits() === 0) ? ['要復習を全件リセット', `${before}件`] : null);
+    _wrapAfter('importFromSpreadsheet',
+        () => countUnits(), (before, silent) => ['スプレッドシート取込', `${silent ? '自動' : '手動'}　要復習 ${before}→${countUnits()}件`]);
+
+    // ログインは appData が入れ替わるため、完了後に記録する
+    const origLogin = window.executeLogin;
+    if (typeof origLogin === 'function') {
+        window.executeLogin = async function (...args) {
+            const r = await origLogin.apply(this, args);
+            if (currentUser && appData && typeof appData === 'object') {
+                logActivity('ログイン', '');
+                rememberLoginIfChecked();
+            }
+            return r;
+        };
+    }
+    const origLogout = window.executeLogout;
+    if (typeof origLogout === 'function') {
+        window.executeLogout = async function (...args) {
+            if (currentUser) { logActivity('ログアウト', ''); saveData(); }
+            return origLogout.apply(this, args);
+        };
+    }
+    // 保存の失敗も履歴に残す（次に保存できたときにサーバーへ届く）
+    const origRecord = window.recordSaveError;
+    if (typeof origRecord === 'function') {
+        window.recordSaveError = function (msg) {
+            logActivity('保存失敗', msg);
+            return origRecord.apply(this, arguments);
+        };
+    }
+})();
+
+// ===== 管理画面：作業履歴の表示 =====
+async function openUserActivityModal(userId, pass) {
+    const modal = document.getElementById('user-activity-modal');
+    const body = document.getElementById('user-activity-body');
+    document.getElementById('user-activity-title').textContent = `${userId} の作業履歴`;
+    const f = document.getElementById('user-activity-filter');
+    if (f) f.value = '';
+    body.innerHTML = '<p class="text-xs text-slate-400 p-4">読み込み中…</p>';
+    modal.classList.remove('hidden');
+    try {
+        const url = `${API_BASE_URL}/api?action=login&id=${encodeURIComponent(userId)}`
+                  + `&pass=${encodeURIComponent(pass)}&_=${Date.now()}`;
+        const json = await (await fetch(url, { cache: 'no-store' })).json();
+        const log = (json && json.success && json.appData && json.appData.activityLog) || [];
+        window._activityView = log.slice().reverse();
+        renderUserActivity();
+    } catch (e) {
+        body.innerHTML = `<p class="text-xs text-red-500 p-4">取得できませんでした（${e.message}）</p>`;
+    }
+}
+
+function renderUserActivity() {
+    const body = document.getElementById('user-activity-body');
+    const q = (document.getElementById('user-activity-filter')?.value || '').trim();
+    const list = (window._activityView || []).filter(x => !q || (x.action + ' ' + x.detail).includes(q));
+    if (list.length === 0) {
+        body.innerHTML = '<p class="text-xs text-slate-400 p-4">履歴はまだありません。</p>';
+        return;
+    }
+    const fmt = iso => { const d = new Date(iso); const p = n => String(n).padStart(2, '0');
+        return `${d.getMonth() + 1}/${d.getDate()} ${p(d.getHours())}:${p(d.getMinutes())}`; };
+    const esc = s => String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    body.innerHTML = `
+        <table class="w-full text-xs">
+            <thead class="bg-slate-50 text-slate-500 sticky top-0">
+                <tr><th class="p-2 text-left w-24">日時</th><th class="p-2 text-left w-32">操作</th>
+                    <th class="p-2 text-left">内容</th><th class="p-2 text-left w-28">端末</th></tr>
+            </thead>
+            <tbody>${list.map(x => `
+                <tr class="border-t ${x.action === '保存失敗' ? 'bg-red-50' : ''}">
+                    <td class="p-2 text-slate-500 whitespace-nowrap">${fmt(x.at)}</td>
+                    <td class="p-2 font-bold text-[#0A1628] whitespace-nowrap">${esc(x.action)}</td>
+                    <td class="p-2 text-slate-700">${esc(x.detail)}</td>
+                    <td class="p-2 text-slate-400 whitespace-nowrap">${esc(x.device)}</td>
+                </tr>`).join('')}</tbody>
+        </table>
+        <p class="text-[10px] text-slate-400 p-2">${list.length}件（新しい順・最大${ACTIVITY_LOG_MAX}件まで保持）</p>`;
+}
+
+// ===== ログインIDとパスワードを端末に保存 =====
+const SAVED_LOGIN_KEY = 'compass_saved_login';
+
+function rememberLoginIfChecked() {
+    try {
+        const chk = document.getElementById('login-remember');
+        const id = document.getElementById('login-id')?.value.trim();
+        const pass = document.getElementById('login-pass')?.value.trim();
+        if (chk && chk.checked && id && pass) {
+            localStorage.setItem(SAVED_LOGIN_KEY, JSON.stringify({ id, pass }));
+        } else if (chk && !chk.checked) {
+            localStorage.removeItem(SAVED_LOGIN_KEY);
+        }
+    } catch (e) {}
+}
+
+(function restoreSavedLogin() {
+    try {
+        const raw = localStorage.getItem(SAVED_LOGIN_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        const idEl = document.getElementById('login-id');
+        const passEl = document.getElementById('login-pass');
+        if (idEl && !idEl.value && saved.id) idEl.value = saved.id;
+        if (passEl && !passEl.value && saved.pass) passEl.value = saved.pass;
+    } catch (e) {}
+})();
+</script>
 
 <script>
 if ('serviceWorker' in navigator) {
