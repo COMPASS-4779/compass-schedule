@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V39</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V40</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -4738,6 +4738,8 @@
                 document.getElementById('setup-view').classList.remove('hidden');
             } else if(tab === 'admin') {
                 document.getElementById('admin-view').classList.remove('hidden');
+                // 開いたときに登録ユーザーの一覧を読み込む（履歴ボタンもここに出る）
+                if (typeof fetchAdminUsers === 'function') fetchAdminUsers();
             } else if(tab === 'studysites') {
                 document.getElementById('studysites-view').classList.remove('hidden');
                 renderStudySiteAdmin();
