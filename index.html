@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V40</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V41</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -419,9 +419,9 @@
                         <button onclick="goToToday()" class="text-xs font-black text-white bg-[#D4622A] px-4 py-1.5 rounded-lg shadow hover:opacity-90 transition">
                             <i class="fas fa-calendar-day mr-1"></i>本日
                         </button>
-                        <button onclick="exportWeekDoneCSV()" title="表示中の週に実施した範囲をCSVで出力"
+                        <button onclick="openRangeCsvModal()" title="期間を指定して、テキストごとの実施範囲をCSVで出力"
                             class="text-xs font-bold text-slate-600 bg-white border border-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-50 shadow-sm transition">
-                            <i class="fas fa-download mr-1"></i>今週の実施範囲CSV
+                            <i class="fas fa-download mr-1"></i>実施範囲CSV
                         </button>
                     </div>
                     <button onclick="adjustWeek(1)" class="flex items-center gap-1 text-xs font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 shadow-sm transition">
@@ -2924,64 +2924,129 @@
         let _ganttScale = 1;
         let _ganttFocusMode = true;   // 既定で現在実施中のみ表示（過去・未来は折りたたみ）
 
-        // 表示中の週に実施したテキストの範囲をCSVで出力する。
-        // 実績は日ごとの入力(progress)を古い順に積み上げ、その日の分が
-        // 何問目〜何問目にあたるかを求める。章・ページは章節設定から付ける。
-        function exportWeekDoneCSV() {
-            const week = appData.currentWeek;
+        // ===== 実施範囲のCSV出力（期間指定・テキストごとに集計） =====
+        const _pad2 = n => String(n).padStart(2, '0');
+        const _ymd = d => `${d.getFullYear()}-${_pad2(d.getMonth() + 1)}-${_pad2(d.getDate())}`;
+
+        // 教材ごとに、日ごとの実績を古い順に積み上げて「何問目〜何問目」を求める
+        function _progressEntriesWithRange(b) {
+            const list = Object.keys(appData.progress || {})
+                .map(k => {
+                    const m = k.match(/^(.+)_W(\d+)_D(\d+)$/);
+                    if (!m || m[1] !== String(b.id)) return null;
+                    const v = parseFloat(appData.progress[k]) || 0;
+                    if (v <= 0) return null;
+                    return { w: +m[2], d: +m[3], v, date: weekNumToDateStr(+m[2], +m[3]) };
+                })
+                .filter(Boolean)
+                .sort((x, y) => (x.w - y.w) || (x.d - y.d));
+            let cum = 0;
+            list.forEach(e => {
+                e.start = Math.floor(cum) + 1;
+                cum += e.v;
+                e.end = Math.floor(cum);
+            });
+            return list;
+        }
+
+        // 開始〜終了にかかる章とページ（章をまたぐ場合は「最初の章〜最後の章」）
+        function _rangeChapterLabel(b, start, end) {
+            if (!b.chapters || !b.chapters.length || start > end) return '';
+            const cs = lookupChapter(b.chapters, start);
+            const ce = lookupChapter(b.chapters, end);
+            let label = cs ? cs.ch.name : '';
+            if (ce && cs && ce.ch !== cs.ch) label += ` 〜 ${ce.ch.name}`;
+            const ps = calcPageRange(b.chapters, start, start);
+            const pe = calcPageRange(b.chapters, end, end);
+            if (ps && pe) label += `　p.${ps.startPage}〜${pe.endPage}`;
+            return label;
+        }
+
+        function openRangeCsvModal() {
+            const m = document.getElementById('range-csv-modal');
+            if (!m) return;
+            if (!document.getElementById('range-csv-from').value) setRangeCsvPreset('shown');
+            m.classList.remove('hidden');
+        }
+
+        // 期間のプリセット
+        function setRangeCsvPreset(kind) {
+            const today = new Date(); today.setHours(0, 0, 0, 0);
+            const monday = d => { const x = new Date(d); const w = (x.getDay() + 6) % 7; x.setDate(x.getDate() - w); return x; };
+            let from, to;
+            if (kind === 'shown') {
+                from = new Date(weekNumToDateStr(appData.currentWeek, 1));
+                to = new Date(from); to.setDate(to.getDate() + 6);
+            } else if (kind === 'thisWeek') {
+                from = monday(today); to = new Date(from); to.setDate(to.getDate() + 6);
+            } else if (kind === 'lastWeek') {
+                from = monday(today); from.setDate(from.getDate() - 7);
+                to = new Date(from); to.setDate(to.getDate() + 6);
+            } else if (kind === 'thisMonth') {
+                from = new Date(today.getFullYear(), today.getMonth(), 1);
+                to = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+            } else if (kind === 'lastMonth') {
+                from = new Date(today.getFullYear(), today.getMonth() - 1, 1);
+                to = new Date(today.getFullYear(), today.getMonth(), 0);
+            } else if (kind === 'all') {
+                from = new Date(appData.profile.startDate); to = today;
+            }
+            document.getElementById('range-csv-from').value = _ymd(from);
+            document.getElementById('range-csv-to').value = _ymd(to);
+        }
+
+        function exportRangeCSV() {
+            const from = document.getElementById('range-csv-from').value;
+            const to = document.getElementById('range-csv-to').value;
+            const withDaily = document.getElementById('range-csv-daily')?.checked;
+            if (!from || !to || from > to) return alert('期間を正しく指定してください。');
+
             const esc = v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
-            const rows = [['日付', '曜日', '科目', 'テキスト', '実施量', '単位', '開始', '終了', '範囲（章・ページ）']];
-            const dayNames = ['日','月','火','水','木','金','土'];
+            const dayNames = ['日', '月', '火', '水', '木', '金', '土'];
+            const header = ['期間', '科目', 'テキスト', '実施日数', '実施量', '単位', '開始', '終了',
+                            '総量', '終了時点の進捗', '範囲（章・ページ）'];
+            const rows = [];
+            const daily = [];
 
             Object.keys(appData.curriculum || {}).forEach(sk => {
                 (appData.curriculum[sk] || []).forEach(b => {
                     if (b.isEvent) return;
-                    // この教材の日ごとの実績を古い順に並べる
-                    const entries = Object.keys(appData.progress || {})
-                        .map(k => {
-                            const m = k.match(/^(.+)_W(\d+)_D(\d+)$/);
-                            if (!m || m[1] !== b.id) return null;
-                            return { w: +m[2], d: +m[3], v: parseFloat(appData.progress[k]) || 0 };
-                        })
-                        .filter(e => e && e.v > 0)
-                        .sort((x, y) => (x.w - y.w) || (x.d - y.d));
-
-                    let cum = 0;
-                    entries.forEach(e => {
-                        const start = Math.floor(cum) + 1;
-                        cum += e.v;
-                        const end = Math.floor(cum);
-                        if (e.w !== week) return;
-                        const dateStr = weekNumToDateStr(e.w, e.d);
-                        const dt = new Date(dateStr);
-                        const clampedEnd = b.total ? Math.min(end, b.total) : end;
-                        const label = (b.chapters && b.chapters.length && start <= clampedEnd)
-                            ? formatRangeLabel(b, start, clampedEnd) : '';
-                        rows.push([
-                            dateStr, dayNames[dt.getDay()] || '',
-                            (SUBJ_CONFIG[sk] && SUBJ_CONFIG[sk].label) || sk,
-                            b.name, e.v, b.unit || '', start, clampedEnd, label
-                        ]);
+                    const inRange = _progressEntriesWithRange(b).filter(e => e.date >= from && e.date <= to);
+                    if (inRange.length === 0) return;
+                    const subj = (SUBJ_CONFIG[sk] && SUBJ_CONFIG[sk].label) || sk;
+                    const start = inRange[0].start;
+                    const end = inRange[inRange.length - 1].end;
+                    const qty = Math.round(inRange.reduce((a, e) => a + e.v, 0) * 10) / 10;
+                    const total = b.total || '';
+                    const pct = b.total ? Math.min(100, Math.round((end / b.total) * 100)) + '%' : '';
+                    rows.push([`${from}〜${to}`, subj, b.name, new Set(inRange.map(e => e.date)).size,
+                               qty, b.unit || '', start, end, total, pct, _rangeChapterLabel(b, start, end)]);
+                    inRange.forEach(e => {
+                        const dt = new Date(e.date);
+                        daily.push([e.date, dayNames[dt.getDay()], subj, b.name, e.v, b.unit || '',
+                                    e.start, e.end, _rangeChapterLabel(b, e.start, e.end)]);
                     });
                 });
             });
 
-            if (rows.length === 1) {
-                alert('この週に入力された実績はありません。');
-                return;
+            if (rows.length === 0) return alert('この期間に入力された実績はありません。');
+            rows.sort((a, b) => String(a[1]).localeCompare(String(b[1])) || String(a[2]).localeCompare(String(b[2])));
+
+            let lines = [header, ...rows].map(r => r.map(esc).join(','));
+            if (withDaily) {
+                daily.sort((a, b) => String(a[0]).localeCompare(String(b[0])) || String(a[2]).localeCompare(String(b[2])));
+                lines.push('');
+                lines.push(['日付', '曜日', '科目', 'テキスト', '実施量', '単位', '開始', '終了', '範囲（章・ページ）'].map(esc).join(','));
+                lines = lines.concat(daily.map(r => r.map(esc).join(',')));
             }
-            // 日付順に並べ替え（見出しは先頭に残す）
-            const body = rows.slice(1).sort((a, b) => String(a[0]).localeCompare(String(b[0]))
-                                                  || String(a[2]).localeCompare(String(b[2])));
-            const csv = [rows[0], ...body].map(r => r.map(esc).join(',')).join('\r\n');
-            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+            const blob = new Blob(['﻿' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            const from = weekNumToDateStr(week, 1).replace(/-/g, '');
             a.href = url;
-            a.download = `実施範囲_${from}週.csv`;
+            a.download = `実施範囲_${from.replace(/-/g, '')}-${to.replace(/-/g, '')}.csv`;
             a.click();
             URL.revokeObjectURL(url);
+            document.getElementById('range-csv-modal').classList.add('hidden');
         }
 
         function exportRoadmapCSV() {
@@ -7783,6 +7848,34 @@ async function deleteCurrentAccount() {
 
 
 
+<div id="range-csv-modal" class="hidden fixed inset-0 bg-black/50 z-[140] flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6 border-t-4 border-t-[#B8963E]">
+        <h3 class="text-base font-bold text-[#0A1628] mb-1"><i class="fas fa-download text-[#B8963E] mr-2"></i>実施範囲のCSV出力</h3>
+        <p class="text-[11px] text-slate-500 mb-4">指定した期間に実施した範囲を、テキストごとにまとめて出力します。</p>
+        <div class="flex flex-wrap gap-2 mb-3">
+            <button onclick="setRangeCsvPreset('shown')" class="text-[11px] font-bold border rounded-lg px-2.5 py-1 hover:bg-slate-50">表示中の週</button>
+            <button onclick="setRangeCsvPreset('thisWeek')" class="text-[11px] font-bold border rounded-lg px-2.5 py-1 hover:bg-slate-50">今週</button>
+            <button onclick="setRangeCsvPreset('lastWeek')" class="text-[11px] font-bold border rounded-lg px-2.5 py-1 hover:bg-slate-50">先週</button>
+            <button onclick="setRangeCsvPreset('thisMonth')" class="text-[11px] font-bold border rounded-lg px-2.5 py-1 hover:bg-slate-50">今月</button>
+            <button onclick="setRangeCsvPreset('lastMonth')" class="text-[11px] font-bold border rounded-lg px-2.5 py-1 hover:bg-slate-50">先月</button>
+            <button onclick="setRangeCsvPreset('all')" class="text-[11px] font-bold border rounded-lg px-2.5 py-1 hover:bg-slate-50">全期間</button>
+        </div>
+        <div class="grid grid-cols-2 gap-3 mb-3">
+            <div><label class="block text-[10px] font-bold text-slate-500 mb-1">開始日</label>
+                <input type="date" id="range-csv-from" class="w-full border rounded-lg px-3 py-1.5 text-sm"></div>
+            <div><label class="block text-[10px] font-bold text-slate-500 mb-1">終了日</label>
+                <input type="date" id="range-csv-to" class="w-full border rounded-lg px-3 py-1.5 text-sm"></div>
+        </div>
+        <label class="flex items-center gap-2 text-xs text-slate-600 mb-5 cursor-pointer">
+            <input type="checkbox" id="range-csv-daily" class="w-4 h-4 accent-[#B8963E]">
+            日ごとの明細も下に付ける
+        </label>
+        <div class="flex justify-end gap-2">
+            <button onclick="document.getElementById('range-csv-modal').classList.add('hidden')" class="px-4 py-2 text-sm text-slate-500 border rounded-lg">キャンセル</button>
+            <button onclick="exportRangeCSV()" class="px-5 py-2 text-sm font-bold text-white bg-[#B8963E] rounded-lg shadow hover:opacity-90">出力</button>
+        </div>
+    </div>
+</div>
 <div id="user-activity-modal" class="hidden fixed inset-0 bg-black/50 z-[140] flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-xl w-full max-w-3xl max-h-[85vh] flex flex-col border-t-4 border-t-emerald-500">
         <div class="flex items-center justify-between p-4 border-b gap-3">
