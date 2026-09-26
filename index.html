@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V37</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V38</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -411,9 +411,15 @@
                     <button onclick="adjustWeek(-1)" class="flex items-center gap-1 text-xs font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 shadow-sm transition">
                         <i class="fas fa-chevron-left text-[10px]"></i> 前の週
                     </button>
-                    <button onclick="goToToday()" class="text-xs font-black text-white bg-[#D4622A] px-4 py-1.5 rounded-lg shadow hover:opacity-90 transition">
-                        <i class="fas fa-calendar-day mr-1"></i>本日
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <button onclick="goToToday()" class="text-xs font-black text-white bg-[#D4622A] px-4 py-1.5 rounded-lg shadow hover:opacity-90 transition">
+                            <i class="fas fa-calendar-day mr-1"></i>本日
+                        </button>
+                        <button onclick="exportWeekDoneCSV()" title="表示中の週に実施した範囲をCSVで出力"
+                            class="text-xs font-bold text-slate-600 bg-white border border-slate-300 px-3 py-1.5 rounded-lg hover:bg-slate-50 shadow-sm transition">
+                            <i class="fas fa-download mr-1"></i>今週の実施範囲CSV
+                        </button>
+                    </div>
                     <button onclick="adjustWeek(1)" class="flex items-center gap-1 text-xs font-bold text-slate-500 bg-white border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 shadow-sm transition">
                         次の週 <i class="fas fa-chevron-right text-[10px]"></i>
                     </button>
@@ -2912,6 +2918,66 @@
         // 📌 [SECTION-GANTT] ===== ガントチャート =====
         let _ganttScale = 1;
         let _ganttFocusMode = true;   // 既定で現在実施中のみ表示（過去・未来は折りたたみ）
+
+        // 表示中の週に実施したテキストの範囲をCSVで出力する。
+        // 実績は日ごとの入力(progress)を古い順に積み上げ、その日の分が
+        // 何問目〜何問目にあたるかを求める。章・ページは章節設定から付ける。
+        function exportWeekDoneCSV() {
+            const week = appData.currentWeek;
+            const esc = v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`;
+            const rows = [['日付', '曜日', '科目', 'テキスト', '実施量', '単位', '開始', '終了', '範囲（章・ページ）']];
+            const dayNames = ['日','月','火','水','木','金','土'];
+
+            Object.keys(appData.curriculum || {}).forEach(sk => {
+                (appData.curriculum[sk] || []).forEach(b => {
+                    if (b.isEvent) return;
+                    // この教材の日ごとの実績を古い順に並べる
+                    const entries = Object.keys(appData.progress || {})
+                        .map(k => {
+                            const m = k.match(/^(.+)_W(\d+)_D(\d+)$/);
+                            if (!m || m[1] !== b.id) return null;
+                            return { w: +m[2], d: +m[3], v: parseFloat(appData.progress[k]) || 0 };
+                        })
+                        .filter(e => e && e.v > 0)
+                        .sort((x, y) => (x.w - y.w) || (x.d - y.d));
+
+                    let cum = 0;
+                    entries.forEach(e => {
+                        const start = Math.floor(cum) + 1;
+                        cum += e.v;
+                        const end = Math.floor(cum);
+                        if (e.w !== week) return;
+                        const dateStr = weekNumToDateStr(e.w, e.d);
+                        const dt = new Date(dateStr);
+                        const clampedEnd = b.total ? Math.min(end, b.total) : end;
+                        const label = (b.chapters && b.chapters.length && start <= clampedEnd)
+                            ? formatRangeLabel(b, start, clampedEnd) : '';
+                        rows.push([
+                            dateStr, dayNames[dt.getDay()] || '',
+                            (SUBJ_CONFIG[sk] && SUBJ_CONFIG[sk].label) || sk,
+                            b.name, e.v, b.unit || '', start, clampedEnd, label
+                        ]);
+                    });
+                });
+            });
+
+            if (rows.length === 1) {
+                alert('この週に入力された実績はありません。');
+                return;
+            }
+            // 日付順に並べ替え（見出しは先頭に残す）
+            const body = rows.slice(1).sort((a, b) => String(a[0]).localeCompare(String(b[0]))
+                                                  || String(a[2]).localeCompare(String(b[2])));
+            const csv = [rows[0], ...body].map(r => r.map(esc).join(',')).join('\r\n');
+            const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const from = weekNumToDateStr(week, 1).replace(/-/g, '');
+            a.href = url;
+            a.download = `実施範囲_${from}週.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
 
         function exportRoadmapCSV() {
             const fmtDate = (week, day) => {
