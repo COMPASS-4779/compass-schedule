@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V43</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V44</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -937,7 +937,7 @@
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">開始日</label>
                             <input type="date" id="edit-curr-start" class="w-full border rounded-lg px-4 py-2 text-sm"
-                                   onchange="const c=document.getElementById('edit-curr-datesfixed'); if(c) c.checked=true;">
+                                   onchange="const c=document.getElementById('edit-curr-datesfixed'); if(c) c.checked=true; recalcEditEndDate();">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">終了日</label>
@@ -987,7 +987,7 @@
                     <div class="grid grid-cols-2 gap-4">
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">総量（ページ数・問題数など）</label>
-                            <input type="number" id="edit-curr-total" min="1" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
+                            <input type="number" id="edit-curr-total" min="1" oninput="recalcEditEndDate()" class="w-full border rounded-lg px-4 py-2 text-sm font-bold">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-slate-500 mb-1">単位</label>
@@ -995,6 +995,29 @@
                         </div>
                     </div>
                     
+                    <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl">
+                        <label class="block text-xs font-bold text-blue-900 mb-2"><i class="fas fa-calculator mr-1"></i>1日の実施量から終了日を計算</label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-500 mb-1">1日の実施量</label>
+                                <input type="number" id="edit-curr-daily" min="0.1" step="0.1" placeholder="例: 5"
+                                       oninput="recalcEditEndDate()" class="w-full border rounded-lg px-3 py-1.5 text-sm font-bold">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-slate-500 mb-1">実施する日</label>
+                                <select id="edit-curr-daymode" onchange="recalcEditEndDate()" class="w-full border rounded-lg px-2 py-1.5 text-sm font-bold bg-white">
+                                    <option value="weekdays">土日を除く</option>
+                                    <option value="weekdaysNoHoliday">土日祝日を除く</option>
+                                    <option value="all">7日（毎日）</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p id="edit-curr-calc-note" class="text-[10px] text-blue-800 font-bold mt-2"></p>
+                        <p class="text-[10px] text-slate-400 mt-1">
+                            1日の実施量・実施する日・総量・開始日を変えると終了日を計算し直します。
+                            すでに始まっている教材は、残りの量を本日から数えます。
+                        </p>
+                    </div>
                     <div class="border-t border-slate-100 pt-3 mt-2">
                         <label class="block text-xs font-bold text-slate-500 mb-1">期間中の学習モード (1日の目標時間)</label>
                         <select id="edit-curr-daytype" class="w-full border rounded-lg px-4 py-2 text-sm font-bold bg-slate-50 outline-none focus:ring-2 focus:ring-[#B8963E]">
@@ -5313,6 +5336,98 @@
 
 
         // 📌 [SECTION-EDIT] ===== カリキュラム編集モーダル =====
+        // ===== 1日の実施量から終了日を計算 =====
+        const _ymdKey = x => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, '0')}-${String(x.getDate()).padStart(2, '0')}`;
+
+        // 日本の祝日（振替休日・国民の休日を含む）。年ごとにキャッシュする。
+        const _jpHolidayCache = {};
+        function jpHolidays(y) {
+            if (_jpHolidayCache[y]) return _jpHolidayCache[y];
+            // 第n月曜日
+            const nthMon = (m, n) => { const f = new Date(y, m - 1, 1).getDay(); return 1 + ((8 - f) % 7) + (n - 1) * 7; };
+            const vernal   = Math.floor(20.8431 + 0.242194 * (y - 1980) - Math.floor((y - 1980) / 4));
+            const autumnal = Math.floor(23.2488 + 0.242194 * (y - 1980) - Math.floor((y - 1980) / 4));
+            const base = [
+                [1, 1], [1, nthMon(1, 2)], [2, 11], [2, 23], [3, vernal], [4, 29],
+                [5, 3], [5, 4], [5, 5], [7, nthMon(7, 3)], [8, 11], [9, nthMon(9, 3)],
+                [9, autumnal], [10, nthMon(10, 2)], [11, 3], [11, 23]
+            ].map(([m, d]) => _ymdKey(new Date(y, m - 1, d)));
+            const set = new Set(base);
+            // 国民の休日（祝日に挟まれた平日）
+            base.forEach(s => {
+                const mid = new Date(s + 'T00:00'); mid.setDate(mid.getDate() + 1);
+                const next = new Date(s + 'T00:00'); next.setDate(next.getDate() + 2);
+                if (set.has(_ymdKey(next)) && !set.has(_ymdKey(mid)) && mid.getDay() !== 0) set.add(_ymdKey(mid));
+            });
+            // 振替休日（日曜の祝日の後の最初の祝日でない日）
+            base.forEach(s => {
+                const d = new Date(s + 'T00:00');
+                if (d.getDay() !== 0) return;
+                do { d.setDate(d.getDate() + 1); } while (set.has(_ymdKey(d)));
+                set.add(_ymdKey(d));
+            });
+            _jpHolidayCache[y] = set;
+            return set;
+        }
+
+        // その日が実施日か（mode: weekdays=土日を除く / weekdaysNoHoliday=土日祝日を除く / all=毎日）
+        function isStudyDay(d, mode) {
+            if (mode === 'all') return true;
+            const w = d.getDay();
+            if (w === 0 || w === 6) return false;
+            if (mode === 'weekdaysNoHoliday' && jpHolidays(d.getFullYear()).has(_ymdKey(d))) return false;
+            return true;
+        }
+
+        // 開始日から実施日を days 日数えて、最後の日を返す
+        function endDateByStudyDays(startStr, days, mode) {
+            const d = new Date(startStr + 'T00:00');
+            if (isNaN(d) || !(days > 0)) return null;
+            while (!isStudyDay(d, mode)) d.setDate(d.getDate() + 1);
+            let n = 1;
+            while (n < days) { d.setDate(d.getDate() + 1); if (isStudyDay(d, mode)) n++; }
+            return _ymdKey(d);
+        }
+
+        // 期間内の実施日数
+        function countStudyDays(startStr, endStr, mode) {
+            const d = new Date(startStr + 'T00:00'), e = new Date(endStr + 'T00:00');
+            if (isNaN(d) || isNaN(e) || d > e) return 0;
+            let n = 0;
+            for (; d <= e; d.setDate(d.getDate() + 1)) if (isStudyDay(d, mode)) n++;
+            return n;
+        }
+
+        // 編集画面の値から終了日を計算して入れる
+        function recalcEditEndDate() {
+            const note = document.getElementById('edit-curr-calc-note');
+            const daily = parseFloat(document.getElementById('edit-curr-daily')?.value);
+            const mode = document.getElementById('edit-curr-daymode')?.value || 'weekdays';
+            const total = parseInt(document.getElementById('edit-curr-total')?.value);
+            const start = document.getElementById('edit-curr-start')?.value;
+            if (!(daily > 0) || !(total > 0) || !start) { if (note) note.textContent = ''; return; }
+            const sk = document.getElementById('edit-curr-subject').value;
+            const id = document.getElementById('edit-curr-id').value;
+            const book = (appData.curriculum[sk] || []).find(b => b.id === id);
+            const unit = (book && book.unit) || '';
+            // 既に始まっている教材は、残りの量を本日から数える
+            const todayStr = _ymdKey(new Date());
+            const done = book ? getBookDone(book) : 0;
+            const started = start < todayStr && done > 0;
+            const from = started ? todayStr : start;
+            const qty = started ? Math.max(0, total - done) : total;
+            if (qty <= 0) { if (note) note.textContent = '総量まで実施済みです。'; return; }
+            const days = Math.ceil(qty / daily);
+            const end = endDateByStudyDays(from, days, mode);
+            if (!end) return;
+            document.getElementById('edit-curr-end').value = end;
+            const e = new Date(end + 'T00:00');
+            const md = `${e.getMonth() + 1}/${e.getDate()}`;
+            if (note) note.textContent = started
+                ? `残り${qty}${unit} ÷ ${daily} = ${days}日 → 本日から数えて終了 ${md}`
+                : `${qty}${unit} ÷ ${daily} = ${days}日 → 終了 ${md}`;
+        }
+
        function openEditModal(subjKey, id) {
             const book = appData.curriculum[subjKey].find(b => b.id === id);
             if (!book) return;
@@ -5349,6 +5464,17 @@
             }
             document.getElementById('edit-curr-total').value = book.total || '';
             document.getElementById('edit-curr-unit').value  = book.unit  || 'ページ';
+            // 1日の実施量と実施する日（未保存なら現在の期間から逆算して表示する）
+            const _mode = book.dayCountMode || 'weekdays';
+            document.getElementById('edit-curr-daymode').value = _mode;
+            let _daily = book.dailyQty;
+            if (!_daily && book.total > 0) {
+                const _n = countStudyDays(document.getElementById('edit-curr-start').value,
+                                          document.getElementById('edit-curr-end').value, _mode);
+                if (_n > 0) _daily = Math.round((book.total / _n) * 10) / 10;
+            }
+            document.getElementById('edit-curr-daily').value = _daily || '';
+            document.getElementById('edit-curr-calc-note').textContent = '';
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) dayTypeEl.value = book.dayType || 'normal'; 
@@ -5469,6 +5595,10 @@
             if (totalVal > 0) book.total = totalVal;
             const unitVal = (document.getElementById('edit-curr-unit')?.value || '').trim();
             if (unitVal) book.unit = unitVal;
+            // 1日の実施量と実施する日（終了日の自動計算に使う）
+            const _dailyVal = parseFloat(document.getElementById('edit-curr-daily')?.value);
+            if (_dailyVal > 0) book.dailyQty = _dailyVal; else delete book.dailyQty;
+            book.dayCountMode = document.getElementById('edit-curr-daymode')?.value || 'weekdays';
             
             const dayTypeEl = document.getElementById('edit-curr-daytype');
             if(dayTypeEl) book.dayType = dayTypeEl.value; 
