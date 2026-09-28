@@ -369,6 +369,7 @@ def assignment_json(a: HwAssignment, db: Optional[Session] = None):
         result = None
     return {
         "id": a.id, "student_id": a.student_id, "student_name": student.name if student else None,
+        "delivery_id": a.delivery_id,
         "sheet_student": a.sheet_student, "code": a.code, "kind": a.kind, "round": a.round,
         "parent_id": a.parent_id, "title": a.title, "test_url": a.test_url, "subject": a.subject,
         "book": a.book, "units": _units(a), "target_accuracy": a.target_accuracy, "status": a.status,
@@ -1633,6 +1634,35 @@ def pause_assignment(assignment_id: int, body: PauseIn, authorization: str = Hea
              a.code, len(changed), shift)
     return {"ok": True, "paused": bool(body.paused), "count": len(changed), "shift_days": shift,
             "assignments": [assignment_json(x, db) for x in changed]}
+
+
+class RecodeIn(BaseModel):
+    code: str                            # テスト作成時のテストID
+
+
+@router.post("/assignments/{assignment_id}/recode")
+def recode_assignment(assignment_id: int, body: RecodeIn, authorization: str = Header(None),
+                      db: Session = Depends(get_db)):
+    """まだ送っていない課題のテストIDを、テスト作成時のテストIDに付け替える（同じテストが他にあれば -2, -3…）。
+    送る本文の「テストID: …」も書き換える。送付済み以降は変えない（生徒の手元の用紙と食い違うため）。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
+    if a is None:
+        return Response(status_code=404)
+    d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
+    if a.status != "scheduled" or d is None or d.status not in ("pending", "paused"):
+        return {"ok": False, "error": "まだ送っていない課題だけ、テストIDを付け替えられます"}
+    old = a.code
+    if code_base(old) == norm_key(body.code):
+        return {"ok": True, "changed": False, "old": old, "code": old}
+    new = code_for(db, body.code)
+    a.code, a.updated_at = new, _now()
+    d.message = (d.message or "").replace(f"テストID: {old}", f"テストID: {new}")
+    db.commit()
+    log.info("課題のテストIDを付け替えました: %s → %s", old, new)
+    return {"ok": True, "changed": True, "old": old, "code": new}
 
 
 @router.post("/assignments/{assignment_id}/cancel")
