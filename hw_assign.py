@@ -226,6 +226,28 @@ def new_code(db: Session):
     raise RuntimeError("テストIDを発行できませんでした")
 
 
+def code_for(db: Session, wanted: str = ""):
+    """テスト作成システムが作成時に付けたテストIDを、課題のテストIDとして使う。
+    同じテストを別の生徒（や2回目）に送るときは、重ならないよう「-2」「-3」…を付ける。
+    指定が無い・形が不正なときは新しく発行する。"""
+    base = re.sub(r"[^A-Z0-9]", "", unicodedata.normalize("NFKC", str(wanted or "")).upper())
+    if not (4 <= len(base) <= 10):
+        return new_code(db)
+    used = lambda c: db.query(HwAssignment).filter(HwAssignment.code == c).first() is not None
+    if not used(base):
+        return base
+    for n in range(2, 1000):
+        c = f"{base}-{n}"
+        if not used(c):
+            return c
+    return new_code(db)
+
+
+def code_base(code: str) -> str:
+    """テストIDの「-2」などを除いた部分（作成時のテストID）。照合用に正規化して返す。"""
+    return norm_key(str(code or "").split("-")[0])
+
+
 def norm_key(v):
     """問題名・テストIDの照合用（全角半角・大文字小文字・空白や記号の違いを無視する）"""
     s = unicodedata.normalize("NFKC", str(v or "")).upper()
@@ -347,6 +369,7 @@ def assignment_json(a: HwAssignment, db: Optional[Session] = None):
         result = None
     return {
         "id": a.id, "student_id": a.student_id, "student_name": student.name if student else None,
+        "delivery_id": a.delivery_id,
         "sheet_student": a.sheet_student, "code": a.code, "kind": a.kind, "round": a.round,
         "parent_id": a.parent_id, "title": a.title, "test_url": a.test_url, "subject": a.subject,
         "book": a.book, "units": _units(a), "target_accuracy": a.target_accuracy, "status": a.status,
@@ -406,7 +429,7 @@ def grade_prompt(n_files, candidates):
     return (
         f"これは生徒が自分で丸付けしたテスト答案の写真です（全{n_files}枚）。赤ペンの採点記号を1問ずつ判定してください。\n\n"
         + _MARK_RULES +
-        "\n【答案の構成】用紙の上部にテスト名と『テストID: 英数字6文字』が印字されています。"
+        "\n【答案の構成】用紙の上部にテスト名と『テストID: 英数字6文字』（各ページの右上にも。後ろに -2 などの番号が付くことがある）が印字されています。"
         "太字・色付きの見出しが『単元』、その下の 1. 2. 3. が『大問』、(1)(2)… が『小問』です。"
         "大問番号は単元ごとに 1 から振り直されることがあります。\n"
         "【重要】1回の写真の中に、別々のテスト（テストIDが違うもの）が混ざっていることがあります。"
@@ -879,10 +902,23 @@ def group_by_test(sections, files_meta):
 
 def match_assignment(open_as: List[HwAssignment], sections):
     """読み取り結果と送った課題を照合する。テストIDが1件だけ一致、またはテスト名（問題名）が1件だけ一致したときだけ決める。"""
-    codes = {norm_key(s.get("test_id")) for s in sections if s.get("test_id")}
-    hit = [a for a in open_as if a.code in codes]
+    codes = {norm_key(s.get("test_id")) for s in sections if s.get("test_id")} - {""}
+    hit = [a for a in open_as if norm_key(a.code) in codes]
     if len(hit) == 1:
-        return hit[0], "テストID"
+        a = hit[0]
+        # 「-2」などが付かないIDは、作成画面から印刷した用紙と区別できない。同じテストの課題が
+        # この生徒に2件以上残っているときは、どちらか決められないので決めない（手で確認する）。
+        same = [x for x in open_as if code_base(x.code) == code_base(a.code)]
+        if "-" in (a.code or "") or len(same) == 1:
+            return a, "テストID"
+        return None, ""
+    # 作成画面から印刷した用紙には作成時のテストID（「-2」などが付かない）が印字されている。
+    # この生徒のまだ終わっていない課題の中で、作成時のテストIDが1件だけ一致すれば、その課題とする。
+    if not hit and codes:
+        bases = {c[:6] for c in codes if len(c) >= 6} | codes
+        hit = [a for a in open_as if code_base(a.code) in bases]
+        if len(hit) == 1:
+            return hit[0], "テストID"
     titles = {norm_key(s.get("test_title")) for s in sections if s.get("test_title")} - {""}
     if titles:
         hit = [a for a in open_as
@@ -1324,6 +1360,7 @@ class AssignmentIn(BaseModel):
     with_answers: bool = True        # False なら「問題と解答用紙のみ」送り、「できました」で解答を送る
     label: str = ""                  # 問題名（空なら 送付日＋種類＋科目）
     answer_url: str = ""             # 解答のリンク
+    code: str = ""                   # テスト作成時のテストID（あればこれを課題のテストIDにする）
 
 
 class ReviewStatusIn(BaseModel):
@@ -1454,7 +1491,7 @@ def create_assignment(body: AssignmentIn, authorization: str = Header(None), db:
         return {"ok": False, "error": str(e)}
 
     a = HwAssignment(
-        student_id=student.id, sheet_student=body.sheet_student.strip(), code=new_code(db),
+        student_id=student.id, sheet_student=body.sheet_student.strip(), code=code_for(db, body.code),
         kind=body.kind or "理解度確認テスト", round=((parent.round or 1) + 1) if parent else 1,
         parent_id=parent.id if parent else None, title=body.title.strip(), test_url=body.test_url.strip(),
         subject=body.subject.strip() or (parent.subject if parent else ""),
@@ -1597,6 +1634,35 @@ def pause_assignment(assignment_id: int, body: PauseIn, authorization: str = Hea
              a.code, len(changed), shift)
     return {"ok": True, "paused": bool(body.paused), "count": len(changed), "shift_days": shift,
             "assignments": [assignment_json(x, db) for x in changed]}
+
+
+class RecodeIn(BaseModel):
+    code: str                            # テスト作成時のテストID
+
+
+@router.post("/assignments/{assignment_id}/recode")
+def recode_assignment(assignment_id: int, body: RecodeIn, authorization: str = Header(None),
+                      db: Session = Depends(get_db)):
+    """まだ送っていない課題のテストIDを、テスト作成時のテストIDに付け替える（同じテストが他にあれば -2, -3…）。
+    送る本文の「テストID: …」も書き換える。送付済み以降は変えない（生徒の手元の用紙と食い違うため）。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
+    if a is None:
+        return Response(status_code=404)
+    d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
+    if a.status != "scheduled" or d is None or d.status not in ("pending", "paused"):
+        return {"ok": False, "error": "まだ送っていない課題だけ、テストIDを付け替えられます"}
+    old = a.code
+    if code_base(old) == norm_key(body.code):
+        return {"ok": True, "changed": False, "old": old, "code": old}
+    new = code_for(db, body.code)
+    a.code, a.updated_at = new, _now()
+    d.message = (d.message or "").replace(f"テストID: {old}", f"テストID: {new}")
+    db.commit()
+    log.info("課題のテストIDを付け替えました: %s → %s", old, new)
+    return {"ok": True, "changed": True, "old": old, "code": new}
 
 
 @router.post("/assignments/{assignment_id}/cancel")
