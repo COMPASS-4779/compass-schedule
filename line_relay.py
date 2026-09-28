@@ -24,6 +24,10 @@ lw_relay.py（LINE WORKS 用）と同じ構成だが、LINE 固有の事情が2�
   LINE_HW_AGENT_TOKEN          : ローカルエージェント認証用（未設定なら LW_AGENT_TOKEN を流用）
   LINE_HW_WATCH_GROUPS         : 保存対象の groupId をカンマ区切り。未設定なら全て受理
   LINE_HW_ACK_TEXT             : 受領時の自動返信文。空なら返信しない
+  LINE_HW_FORWARD_URLS         : 受け取った Webhook をそのまま転送する先（カンマ区切り）。
+                                 公式アカウントを1つにまとめたとき、同じアカウントを使う別のシステム
+                                 （例: テスト作成システムの単語学習 https://test.compassonline.site/line/callback）へ渡す。
+                                 本文と署名(X-Line-Signature)をそのまま渡すので、転送先も同じチャネルシークレットで検証できる。
                               {filename} が使える（例: 受け取りました: {filename}）
 """
 
@@ -33,6 +37,7 @@ import hmac
 import json
 import logging
 import os
+import threading
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -55,6 +60,9 @@ LINE_HW_WATCH_GROUPS = [
     g.strip() for g in os.environ.get("LINE_HW_WATCH_GROUPS", "").split(",") if g.strip()
 ]
 LINE_HW_ACK_TEXT = os.environ.get("LINE_HW_ACK_TEXT", "")
+LINE_HW_FORWARD_URLS = [
+    u.strip() for u in os.environ.get("LINE_HW_FORWARD_URLS", "").split(",") if u.strip()
+]
 
 REPLY_URL = "https://api.line.me/v2/bot/message/reply"
 MAX_RETRY = 5
@@ -169,6 +177,8 @@ async def line_hw_callback(
         log.warning("line_hw_callback: signature mismatch")
         return Response(status_code=200)
 
+    _forward(body, x_line_signature)               # 同じ公式アカウントを使う別システムへも渡す
+
     try:
         payload = json.loads(body)
     except json.JSONDecodeError:
@@ -182,6 +192,26 @@ async def line_hw_callback(
             log.exception("line_hw_callback: event処理に失敗: %s", e)
 
     return Response(status_code=200)
+
+
+def _forward(body: bytes, signature: Optional[str]):
+    """Webhook をそのまま別のシステムへ転送する（LINE への応答を待たせないよう別スレッドで）。
+    転送先の失敗はこちらの処理に影響させない。"""
+    if not LINE_HW_FORWARD_URLS:
+        return
+
+    def run():
+        for url in LINE_HW_FORWARD_URLS:
+            try:
+                r = requests.post(url, data=body, timeout=15,
+                                  headers={"Content-Type": "application/json",
+                                           "X-Line-Signature": signature or ""})
+                if r.status_code >= 300:
+                    log.warning("Webhook の転送先がエラーを返しました (%s): %s %s", url, r.status_code, r.text[:200])
+            except Exception as e:
+                log.warning("Webhook の転送に失敗 (%s): %s", url, e)
+
+    threading.Thread(target=run, daemon=True).start()
 
 
 def _handle_event(ev: dict, db: Session):
