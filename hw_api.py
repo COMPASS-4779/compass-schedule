@@ -44,6 +44,7 @@ TZ_NAME = os.environ.get("HW_TIMEZONE", "Asia/Tokyo")
 PUSH_URL = "https://api.line.me/v2/bot/message/push"
 QUOTA_URL = "https://api.line.me/v2/bot/message/quota"
 QUOTA_USED_URL = "https://api.line.me/v2/bot/message/quota/consumption"
+BOT_INFO_URL = "https://api.line.me/v2/bot/info"
 
 try:
     from zoneinfo import ZoneInfo
@@ -922,8 +923,18 @@ def quota(authorization: str = Header(None)):
     lim, used = r1.json(), (r2.json() if r2.status_code == 200 else {})
     limit = lim.get("value")
     total = used.get("totalUsage", 0)
+    # どの公式アカウントの数字かが分かるよう、アカウント名と @ID も返す（取れなくても通数は返す）
+    info = {}
+    try:
+        r3 = requests.get(BOT_INFO_URL, headers=h, timeout=15)
+        if r3.status_code == 200:
+            info = r3.json()
+    except Exception:
+        info = {}
     return {
         "success": True, "type": lim.get("type"), "limit": limit, "used": total,
+        "account_name": info.get("displayName") or "", "basic_id": info.get("basicId") or "",
+        "premium_id": info.get("premiumId") or "",
         "remaining": (limit - total) if isinstance(limit, int) else None,
         "warning": bool(isinstance(limit, int) and limit and total / limit >= 0.8),
     }
