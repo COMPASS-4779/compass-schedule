@@ -1455,11 +1455,21 @@ def list_assignments(status: str = "", student_id: int = 0, limit: int = 200,
     rows = q.order_by(HwAssignment.id.desc()).limit(max(1, min(limit, 1000))).all()
     st = remind_settings(db)
     overrides = assignment_remind(db, [a.id for a in rows])
+    # 受け取った答案の写真（読み取って課題に記録したもの）。Drive のリンクを課題ごとに付ける
+    answers = {}
+    if rows:
+        for g in (db.query(HwGradedFile)
+                  .filter(HwGradedFile.assignment_id.in_([a.id for a in rows]))
+                  .order_by(HwGradedFile.id.asc()).all()):
+            answers.setdefault(g.assignment_id, []).append({
+                "name": g.file_name or "", "at": _fmt(g.created_at),
+                "link": f"https://drive.google.com/file/d/{g.drive_file_id}/view"})
     out = []
     for a in rows:
         j = assignment_json(a, db)
         j["remind"] = overrides.get(a.id)                      # 課題ごとの設定（無ければ None）
         j["remind_effective"] = effective_remind(a, st, overrides.get(a.id))
+        j["answer_files"] = answers.get(a.id, [])
         out.append(j)
     return {"ok": True, "assignments": out}
 
