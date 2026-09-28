@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V42</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V43</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2850,7 +2850,7 @@
                             ${!isOverdue && weekLabel ? `<div class="text-[10px] font-bold text-slate-600 mb-1"><i class="fas fa-calendar-week mr-1"></i>今週: ${weekLabel}</div>` : ''}
                             <div class="text-[10px] font-bold ${isOverdue?'text-red-500':'text-slate-500'} mb-1">今日の目標: ${target}${b.unit}</div>
                             <div class="text-[10px] font-bold ${isOverdue?'text-red-600':'text-slate-600'} mb-1">残り ${remaining}${b.unit}${isOverdue?' (予定日超過)':' / '+remainingDays+'日'}</div>
-                            ${delayNoteHtml(b)}
+                            ${delayNoteHtml(b)}${weeklyDelayHtml(b)}
 
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
                                 ${pct >= 100 ?
@@ -3137,8 +3137,9 @@
             const doneBy = x => offset + entries.filter(e => e.idx <= x).reduce((a, e) => a + e.v, 0);
             const planned = x => Math.min(b.total, Math.max(0, (x - plan.origStart + 1) * plan.dailyQty));
 
-            const prevQty = Math.max(0, planned(weekStart - 1) - doneBy(weekStart - 1));
-            const nowQty  = Math.max(0, planned(today - 1) - doneBy(today));
+            // プラスは遅れ、マイナスは前倒し（計画より先に進んでいる分）
+            const prevQty = planned(weekStart - 1) - doneBy(weekStart - 1);
+            const nowQty  = planned(today - 1) - doneBy(today);
             const toDays = q => Math.round((q / plan.dailyQty) * 10) / 10;
             return {
                 prevQty: Math.round(prevQty * 10) / 10, prevDays: toDays(prevQty),
@@ -3150,14 +3151,15 @@
         // ロードマップの行に出す遅れの内訳
         function weeklyDelayHtml(b) {
             const s = getWeeklyDelaySplit(b);
-            if (!s || (s.prevDays <= 0 && s.weekDays === 0)) return '';
+            if (!s || (s.prevDays === 0 && s.weekDays === 0)) return '';
             const u = b.unit || '';
-            const prev = s.prevDays > 0
-                ? `<span class="text-red-600">先週まで ${s.prevDays}日遅れ（${s.prevQty}${u}）</span>`
-                : `<span class="text-slate-400">先週まで 遅れなし</span>`;
+            let prev;
+            if (s.prevDays > 0)      prev = `<span class="text-red-600">先週まで ${s.prevDays}日遅れ（${s.prevQty}${u}）</span>`;
+            else if (s.prevDays < 0) prev = `<span class="text-emerald-600">先週まで ${-s.prevDays}日前倒し（${-s.prevQty}${u}）</span>`;
+            else                     prev = `<span class="text-slate-400">先週まで 予定どおり</span>`;
             let week;
             if (s.weekDays > 0)      week = `<span class="text-orange-600">今週 +${s.weekDays}日遅れ（${s.weekQty}${u}）</span>`;
-            else if (s.weekDays < 0) week = `<span class="text-emerald-600">今週 ${-s.weekDays}日挽回（${-s.weekQty}${u}）</span>`;
+            else if (s.weekDays < 0) week = `<span class="text-emerald-600">今週 ${-s.weekDays}日${s.prevDays > 0 ? '挽回' : '前倒し'}（${-s.weekQty}${u}）</span>`;
             else                     week = `<span class="text-slate-400">今週 増減なし</span>`;
             return `<div class="text-[9px] font-bold mb-1 flex flex-wrap gap-x-2"><span><i class="fas fa-clock mr-0.5 text-slate-400"></i>${prev}</span><span>${week}</span></div>`;
         }
@@ -3748,7 +3750,7 @@
                                 <span class="text-xs font-bold text-slate-400">${b.unit}</span>
                             </div>
                             <div class="text-[10px] ${tOverdue?'text-red-500':'text-[#B8963E]'} mt-2 font-bold italic">本日目標: ${target}${b.unit}${tOverdue?' (期限超過・残量)':''}</div>
-                            ${delayNoteHtml(b)}
+                            ${delayNoteHtml(b)}${weeklyDelayHtml(b)}
                         </div>`;
                     }
                 });

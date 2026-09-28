@@ -1,4 +1,4 @@
-const CACHE_NAME = 'compass-schedule-v47';
+const CACHE_NAME = 'compass-schedule-v48';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
