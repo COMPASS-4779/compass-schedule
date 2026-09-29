@@ -426,8 +426,9 @@ _MARK_RULES = (
 )
 
 
-def grade_prompt(n_files, candidates):
+def grade_prompt(n_files, candidates, texts=None):
     cand = "\n".join(f"・{a.code}：{a.title}" for a in candidates)
+    msgs = "\n".join(f"・{t}" for t in (texts or []) if t)
     return (
         f"これは生徒が自分で丸付けしたテスト答案の写真です（全{n_files}枚）。赤ペンの採点記号を1問ずつ判定してください。\n\n"
         + _MARK_RULES +
@@ -438,6 +439,11 @@ def grade_prompt(n_files, candidates):
         "写真ごとに印字されたテストIDを読み、大問ごとに photo と test_id を必ず対応させてください"
         "（別のテストの大問を1つにまとめないこと）。1つのテストが複数枚に分かれていることもあります。\n"
         + (f"\n【この生徒に送ったテスト（テストIDの候補）】\n{cand}\n" if cand else "")
+        + (f"\n【生徒が写真と一緒にトークに送った文面】\n{msgs}\n"
+           "文面に大学名・学部・年度・科目・方式・点数が書かれていれば、写真の文字より文面を優先して kakomon に使う。"
+           "文面に点数があれば kakomon の score（得点）と max_score（満点）に入れる"
+           "（例「72点」→score 72、「36/50」→score 36・max_score 50、満点が書かれていなければ max_score は \"\"）。\n"
+           if msgs else "")
         + "\n【出力形式】JSON配列のみ（説明文は不要）。大問ごとに1要素。\n"
         '[{"photo":1,"test_id":"K7F3QA","test_title":"第3回 理解度確認テスト","text":"新中学問題集 数学1年",'
         '"chapter":"第2章 文字と式","section":"第1節 文字を使った式","unit":"文字式",'
@@ -448,19 +454,20 @@ def grade_prompt(n_files, candidates):
         "・unit = 大問の上の単元見出し（無ければ \"\"）\n"
         "・total = その大問の小問の個数（数えられなければ 0）／ wrong = 間違いだった小問の番号だけ\n"
         "・kakomon = 大学入試の過去問（大学名・学部・年度などが印字された入試問題や、その解答用紙）のときだけ、"
-        "{\"school\":\"大学名\",\"faculty\":\"学部\",\"subject\":\"科目\",\"year\":\"年度(西暦)\",\"method\":\"方式・日程\"} を入れる。"
+        "{\"school\":\"大学名\",\"faculty\":\"学部\",\"subject\":\"科目\",\"year\":\"年度(西暦)\",\"method\":\"方式・日程\",\"score\":\"\",\"max_score\":\"\"} を入れる。"
         "書かれていない項目は \"\"。過去問でなければ kakomon は入れない\n"
         "推測で埋めないこと。読めない項目は必ず空文字にする。"
     )
 
 
-def read_answers(files, candidates):
-    """files: [(bytes, mime)]。Gemini で読み取り、大問ごとの dict のリストを返す。"""
+def read_answers(files, candidates, texts=None):
+    """files: [(bytes, mime)]。Gemini で読み取り、大問ごとの dict のリストを返す。
+    texts: 写真と一緒に生徒がトークに送った文面（大学名・点数などが書かれていれば参考にする）。"""
     import google.generativeai as genai
     if GEMINI_API_KEY:
         genai.configure(api_key=GEMINI_API_KEY)
     model = genai.GenerativeModel(GRADE_MODEL)
-    parts = [grade_prompt(len(files), candidates)] + [{"mime_type": m, "data": b} for b, m in files]
+    parts = [grade_prompt(len(files), candidates, texts)] + [{"mime_type": m, "data": b} for b, m in files]
     resp = model.generate_content(parts)
     return [x for x in extract_json_array(getattr(resp, "text", "")) if isinstance(x, dict)]
 
@@ -496,8 +503,29 @@ def kakomon_meta(sections):
     for sec in sections or []:
         k = sec.get("kakomon")
         if isinstance(k, dict) and str(k.get("school") or "").strip():
-            return {x: str(k.get(x) or "").strip() for x in ("school", "faculty", "subject", "year", "method")}
+            return {x: str(k.get(x) or "").strip()
+                    for x in ("school", "faculty", "subject", "year", "method", "score", "max_score")}
     return None
+
+
+def _num_or_none(v):
+    m = re.search(r"\d+(?:\.\d+)?", unicodedata.normalize("NFKC", str(v or "")))
+    return float(m.group(0)) if m else None
+
+
+def nearby_texts(db: Session, student: HwStudent, files):
+    """写真と同じころ（最初の写真の30分前〜最後の写真の15分後）に、その生徒のトークへ送られた文面。"""
+    from line_relay import LineHwEvent
+    if not student.group_id or not files:
+        return []
+    times = [f.get("_t") for f in files if f.get("_t")]
+    if not times:
+        return []
+    lo, hi = min(times) - timedelta(minutes=30), max(times) + timedelta(minutes=15)
+    evs = (db.query(LineHwEvent).filter(LineHwEvent.event_type == "text", LineHwEvent.group_id == student.group_id,
+                                        LineHwEvent.created_at >= lo, LineHwEvent.created_at <= hi)
+           .order_by(LineHwEvent.id.asc()).limit(20).all())
+    return [t[:300] for t in (_event_text(e).strip() for e in evs) if t]
 
 
 def ensure_kakomon_tab(svc):
@@ -524,13 +552,21 @@ def record_kakomon(db: Session, student: HwStudent, sections, files_meta, meta, 
     問題数が数えられないときは記録せず False を返す（判定待ちにする）。"""
     now = now or _now()
     _acc, total, wrong = score(sections)
-    if not total:
+    pts, mx = _num_or_none(meta.get("score")), _num_or_none(meta.get("max_score"))
+    if pts is not None:                      # 文面に点数が書かれていればそれを使う（満点が無ければ100点満点とみなす）
+        got, full = pts, (mx if mx else (100 if pts <= 100 else None))
+        if not full:
+            return False
+    elif total:
+        got, full = max(0, total - wrong), total
+    else:
         return False
+    fmt = lambda x: str(int(x)) if float(x).is_integer() else str(x)
     rec_id = "LINE-" + secrets.token_hex(5)
     local = to_local(now)
     row = [local.strftime("%Y-%m-%d %H:%M:%S"), _sheet_student_name(db, student), local.strftime("%Y-%m-%d"),
            meta.get("school", ""), meta.get("faculty", ""), meta.get("subject", ""), meta.get("method", ""),
-           meta.get("year", ""), str(max(0, total - wrong)), str(total),
+           meta.get("year", ""), fmt(got), fmt(full),
            "\n".join(f["link"] for f in files_meta), rec_id]
     svc = _sheets()
     ensure_kakomon_tab(svc)
@@ -546,7 +582,7 @@ def record_kakomon(db: Session, student: HwStudent, sections, files_meta, meta, 
             g.status = "kakomon"
     db.commit()
     log.info("過去問を記録しました: %s %s %s %s %s/%s", student.name, meta.get("school"), meta.get("faculty"),
-             meta.get("subject"), total - wrong, total)
+             meta.get("subject"), fmt(got), fmt(full))
     return True
 
 
@@ -1048,7 +1084,7 @@ def grade_student(db: Session, student: HwStudent, open_as: List[HwAssignment], 
     files_meta = [{"id": f["id"], "name": f.get("name", ""),
                    "link": f.get("webViewLink") or f"https://drive.google.com/file/d/{f['id']}/view"} for f in files]
     blobs = [(hw_api.drive().files().get_media(fileId=f["id"]).execute(), f["mimeType"]) for f in files]
-    sections = read_answers(blobs, open_as)
+    sections = read_answers(blobs, open_as, nearby_texts(db, student, files))
     # 届いた写真に複数のテストが混ざっていることがあるので、テストごとに分けて処理する
     done = None
     for g_sections, g_files in group_by_test(sections, files_meta):
@@ -1109,7 +1145,7 @@ def scan_kakomon(db: Session, student: HwStudent, now=None):
     files_meta = [{"id": f["id"], "name": f.get("name", ""),
                    "link": f.get("webViewLink") or f"https://drive.google.com/file/d/{f['id']}/view"} for f in files]
     blobs = [(hw_api.drive().files().get_media(fileId=f["id"]).execute(), f["mimeType"]) for f in files]
-    sections = read_answers(blobs, [])
+    sections = read_answers(blobs, [], nearby_texts(db, student, files))
     n = 0
     for g_sections, g_files in group_by_test(sections, files_meta):
         if not g_files:
