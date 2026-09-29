@@ -24,6 +24,7 @@ lw_relay.py（LINE WORKS 用）と同じ構成だが、LINE 固有の事情が2�
   LINE_HW_AGENT_TOKEN          : ローカルエージェント認証用（未設定なら LW_AGENT_TOKEN を流用）
   LINE_HW_WATCH_GROUPS         : 保存対象の groupId をカンマ区切り。未設定なら全て受理
   LINE_HW_ACK_TEXT             : 受領時の自動返信文。空なら返信しない
+  LINE_HW_ACK_QUIET_SEC        : 同じトークへの受領返信をまとめる秒数（既定 60。写真を何枚か続けて送っても返信は1回）
   LINE_HW_FORWARD_URLS         : 受け取った Webhook をそのまま転送する先（カンマ区切り）。
                                  公式アカウントを1つにまとめたとき、同じアカウントを使う別のシステム
                                  （例: テスト作成システムの単語学習 https://test.compassonline.site/line/callback）へ渡す。
@@ -38,6 +39,7 @@ import json
 import logging
 import os
 import threading
+import time
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -60,6 +62,9 @@ LINE_HW_WATCH_GROUPS = [
     g.strip() for g in os.environ.get("LINE_HW_WATCH_GROUPS", "").split(",") if g.strip()
 ]
 LINE_HW_ACK_TEXT = os.environ.get("LINE_HW_ACK_TEXT", "")
+LINE_HW_ACK_QUIET_SEC = int(os.environ.get("LINE_HW_ACK_QUIET_SEC", "60") or 60)
+_last_ack = {}                       # トーク(グループ)ごとの最後の受領返信の時刻
+_ack_lock = threading.Lock()
 LINE_HW_FORWARD_URLS = [
     u.strip() for u in os.environ.get("LINE_HW_FORWARD_URLS", "").split(",") if u.strip()
 ]
@@ -290,8 +295,26 @@ def _handle_event(ev: dict, db: Session):
     db.commit()
 
     # 受領返信（Reply API は無料。ここで返さないと replyToken が失効する）
-    if status == "pending" and LINE_HW_ACK_TEXT:
+    # 写真を何枚かまとめて送ると1枚ずつ別のイベントで届くので、返信は1回にまとめる
+    if status == "pending" and LINE_HW_ACK_TEXT and _should_ack(msg, src_id):
         _reply(reply_token, LINE_HW_ACK_TEXT.replace("{filename}", file_name or "画像"))
+
+
+def _should_ack(msg: dict, src_id) -> bool:
+    """受領返信を送るか。
+    - まとめて送った写真（imageSet）は1枚目（index=1）のときだけ
+    - 同じトークに LINE_HW_ACK_QUIET_SEC 秒以内に返信していれば送らない（1枚ずつ続けて送った場合）"""
+    iset = msg.get("imageSet") or {}
+    if iset and int(iset.get("index") or 1) != 1:
+        return False
+    key = src_id or ""
+    now = time.monotonic()
+    with _ack_lock:
+        last = _last_ack.get(key)
+        if last is not None and now - last < LINE_HW_ACK_QUIET_SEC:
+            return False
+        _last_ack[key] = now
+    return True
 
 
 # --------------------------------------------------------------------------
