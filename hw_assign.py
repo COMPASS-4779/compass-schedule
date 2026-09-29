@@ -1922,6 +1922,62 @@ def run_now(authorization: str = Header(None)):
 
 
 # ---- 判定待ち（管理者の判定フォーム用）-------------------------------------------
+class KakomonIn(BaseModel):
+    """過去問を手で記録する（大学名が写っていない答案・先生が代わりに送った答案など）。"""
+    student_id: int
+    school: str
+    faculty: str = ""
+    subject: str = ""
+    year: str = ""
+    method: str = ""
+    score: str                                   # 得点（正解数でも点数でもよい）
+    max_score: str = ""                          # 満点（空なら100点満点とみなす）
+    files: Optional[List[dict]] = None           # [{id, name}] 受信先の写真（Drive）
+    pending_id: Optional[int] = None             # 判定待ちから記録するときは、その件を閉じる
+
+
+@router.post("/kakomon")
+def record_kakomon_manual(body: KakomonIn, authorization: str = Header(None), db: Session = Depends(get_db)):
+    """過去問を「過去問」タブに手で記録する。写真を選べば写真のリンクも入れ、同じ写真は自動の読み取りから外す。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    student = db.query(HwStudent).filter(HwStudent.id == body.student_id).first()
+    if student is None:
+        return {"ok": False, "error": "生徒が見つかりません"}
+    if not body.school.strip():
+        return {"ok": False, "error": "大学名を入れてください"}
+    if _num_or_none(body.score) is None:
+        return {"ok": False, "error": "得点を入れてください"}
+    p = None
+    files = [f for f in (body.files or []) if isinstance(f, dict) and f.get("id")]
+    if body.pending_id:
+        p = db.query(HwPending).filter(HwPending.id == body.pending_id,
+                                       HwPending.student_id == student.id).first()
+        if p is None or p.status != "open":
+            return {"ok": False, "error": "この判定待ちの件は見つからないか、すでに判定済みです"}
+        if not files:
+            try:
+                files = json.loads(p.files or "[]")
+            except Exception:
+                files = []
+    files_meta = [{"id": f["id"], "name": f.get("name", ""),
+                   "link": f.get("link") or f"https://drive.google.com/file/d/{f['id']}/view"} for f in files]
+    meta = {"school": body.school.strip(), "faculty": body.faculty.strip(), "subject": body.subject.strip(),
+            "year": body.year.strip(), "method": body.method.strip(),
+            "score": body.score.strip(), "max_score": body.max_score.strip()}
+    try:
+        if not record_kakomon(db, student, [], files_meta, meta):
+            return {"ok": False, "error": "満点が分かりません（100点を超える点数のときは満点も入れてください）"}
+    except Exception as e:
+        db.rollback()
+        return {"ok": False, "error": f"スプレッドシートへの記録に失敗しました: {e}"}
+    if p is not None:
+        p.status, p.note, p.resolved_at = "resolved", "過去問として記録", _now()
+        db.commit()
+    return {"ok": True, "student": _sheet_student_name(db, student)}
+
+
 class PendingResolveIn(BaseModel):
     file_ids: Optional[List[str]] = None     # 一部の写真だけを対象にするとき（残りは判定待ちのまま）
     action: str                      # record（この課題の答案として記録）/ send_answers（解答を送る）/ ignore
@@ -1942,7 +1998,8 @@ def pending_json(p: HwPending, db: Session):
             "kind": p.kind, "reason": p.reason, "files": files, "text": p.text,
             "reading": [{"test_id": r.get("test_id", ""), "test_title": r.get("test_title", ""),
                          "unit": r.get("unit", ""), "daimon": r.get("daimon", ""), "total": r.get("total", 0),
-                         "wrong": [w.get("number") for w in (r.get("wrong") or []) if isinstance(w, dict)]}
+                         "wrong": [w.get("number") for w in (r.get("wrong") or []) if isinstance(w, dict)],
+                         "kakomon": r.get("kakomon") if isinstance(r.get("kakomon"), dict) else None}
                         for r in reading if isinstance(r, dict)],
             "status": p.status, "assignment_id": p.assignment_id, "note": p.note,
             "created_at": _fmt(p.created_at), "resolved_at": _fmt(p.resolved_at),
