@@ -450,12 +450,13 @@
                         <h3 class="text-sm font-bold text-[#0A1628] mb-2"><i class="fas fa-chart-line text-[#D4622A] mr-1"></i>校外テスト (偏差値)</h3>
                         <div class="chart-container" style="height: 250px;"><canvas id="dash-externalDevChart"></canvas></div>
                     </div>
-                    <div class="bg-slate-50 border rounded-xl p-4 shadow-sm" id="chart-kakomon-col">
-                        <h3 class="text-sm font-bold text-[#0A1628] mb-2"><i class="fas fa-file-alt text-[#7C3AED] mr-1"></i>過去問 (得点率・基準点)</h3>
-                        <div class="chart-container" style="height: 250px;"><canvas id="dash-kakomonChart"></canvas></div>
-                        <p id="kakomon-baseline-note" class="text-[10px] text-slate-500 mt-2 leading-relaxed"></p>
-                    </div>
-                </div>  
+                </div>
+                <!-- 過去問: 大学ごとのグラフ（正解率%。基準点があれば点線で重ねる） -->
+                <div id="kakomon-uni-section" class="mt-6" style="display:none">
+                    <h3 class="text-sm font-bold text-[#0A1628] mb-3"><i class="fas fa-university text-[#7C3AED] mr-1"></i>過去問（大学別の正解率）</h3>
+                    <div id="kakomon-uni-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                    <p id="kakomon-baseline-note" class="text-[10px] text-slate-500 mt-2 leading-relaxed"></p>
+                </div>
             </div>
 
             <div class="bg-white rounded-2xl shadow-sm border p-6 border-t-4 border-t-emerald-500 mt-8">
@@ -4202,11 +4203,19 @@
             const list = document.getElementById('test-history-list'); list.innerHTML = '';
             appData.testResults.sort((a,b)=>b.date.localeCompare(a.date)).forEach(t => {
                 const tType = t.type || '校内';
-                const tColor = tType === '校内' ? 'text-[#B8963E] border-[#B8963E]' : 'text-[#D4622A] border-[#D4622A]';
+                const tColor = tType === '校内' ? 'text-[#B8963E] border-[#B8963E]'
+                             : tType === '過去問' ? 'text-[#6D4C9F] border-[#6D4C9F]'
+                             : 'text-[#D4622A] border-[#D4622A]';
+                // 過去問: 年度・方式を2行目に、得点は「得点/満点」で表示
+                const kkDetail = tType === '過去問'
+                    ? [t.year ? `${t.year}年度` : '', t.method || ''].filter(Boolean).join('・') : '';
+                const scoreHtml = tType === '過去問'
+                    ? `${(t.score ?? '') === '' ? '-' : t.score}${t.maxScore ? `<span class="text-xs text-slate-400 ml-0.5">/${t.maxScore}</span>` : ''}`
+                    : `${t.score||'-'}`;
 
                 list.innerHTML += `<div class="bg-white border border-slate-200 p-3 rounded-lg text-sm flex justify-between items-center shadow-sm mb-1">
-                    <div><div class="text-[10px] text-slate-400 font-bold"><span class="${tColor} border rounded px-1 mr-1">${tType}</span>${t.date}</div><div class="font-black text-[#0A1628]">${t.name}</div></div>
-                    <div class="flex items-center gap-3"><span class="bg-[#0A1628] text-[#B8963E] text-[10px] font-bold px-2 py-0.5 rounded">${t.subject}</span><span class="font-black text-lg">${t.score||'-'}<span class="text-xs ml-0.5">点</span></span><button onclick="deleteTestResult('${t.id}')" class="text-slate-300 hover:text-red-500"><i class="fas fa-times"></i></button></div>
+                    <div><div class="text-[10px] text-slate-400 font-bold"><span class="${tColor} border rounded px-1 mr-1">${tType}</span>${t.date}</div><div class="font-black text-[#0A1628]">${t.name}</div>${kkDetail ? `<div class="text-[10px] text-slate-500 font-bold">${kkDetail}</div>` : ''}</div>
+                    <div class="flex items-center gap-3"><span class="bg-[#0A1628] text-[#B8963E] text-[10px] font-bold px-2 py-0.5 rounded">${t.subject}</span><span class="font-black text-lg">${scoreHtml}<span class="text-xs ml-0.5">点</span></span><button onclick="deleteTestResult('${t.id}')" class="text-slate-300 hover:text-red-500"><i class="fas fa-times"></i></button></div>
                 </div>`;
             });
             updateTestCharts();
@@ -4312,6 +4321,10 @@
 
         
         function deleteTestResult(id) {
+            const del = appData.testResults.find(x => String(x.id) === String(id));
+            if (del && del._sheetKey && String(del._sheetKey).startsWith('kakomon_')) {
+                appData.kakomonDeleted = [...new Set([...(appData.kakomonDeleted || []), del._sheetKey])];
+            }
             appData.testResults = appData.testResults.filter(x => String(x.id) !== String(id));
             saveData();
             renderHistory();
@@ -4370,7 +4383,7 @@
             const resKako = appData.testResults.filter(t => t.type === '過去問');
             const ctxKako = document.getElementById('dash-kakomonChart');
             const kakoContainer = ctxKako ? ctxKako.closest('.bg-slate-50') : null;
-            const hasKako = resKako.some(t => t.score !== null && t.score !== undefined);
+            const hasKako = resKako.some(t => kakomonRate(t) !== null);
 
             if (hasIntScore) { intContainer.style.display = 'block'; visibleCount++; } else { intContainer.style.display = 'none'; }
             if (hasExtScore) { extScoreContainer.style.display = 'block'; visibleCount++; } else { extScoreContainer.style.display = 'none'; }
@@ -4380,14 +4393,16 @@
                 else { kakoContainer.style.display = 'none'; }
             }
 
-            if (visibleCount === 0) {
+            if (visibleCount === 0 && !hasKako) {
                 section.style.display = 'none';
+                renderKakomonByUniversity([]);
                 return;
             } else {
                 section.style.display = 'block';
                 const grid = intContainer.parentElement;
                 // データが存在するグラフ数に合わせてカラム数を変更し横幅いっぱいに
-                grid.className = `grid grid-cols-1 md:grid-cols-${visibleCount} gap-6`;
+                grid.style.display = visibleCount ? '' : 'none';
+                if (visibleCount) grid.className = `grid grid-cols-1 md:grid-cols-${visibleCount} gap-6`;
             }
 
             const chartOptions = { 
@@ -4438,6 +4453,8 @@
                 externalDevChartInstance = new Chart(ctxExtDev.getContext('2d'), { type: 'line', data: { labels: dates, datasets }, options: chartOptions });
             }
 
+            renderKakomonByUniversity(resKako);
+
             if (hasKako && ctxKako) {
                 const dates = [...new Set(resKako.map(t => t.date))].sort();
                 const subjs = [...new Set(resKako.map(t => t.subject))];
@@ -4487,6 +4504,110 @@
                               + missing.map(m => m.label).join(' / ') + `</span>`
                             : '');
                 }
+            }
+        }
+
+
+        // ===== 過去問：大学ごとのグラフ =====
+        // 正解率(%)。採点システム・LINEで記録した「過去問」タブの行は 得点/満点（正解数/問題数）、
+        // 送付テストから取り込んだ行は score がすでに正解率(%)。
+        function kakomonRate(t) {
+            if (!t || t.score === null || t.score === undefined || t.score === '') return null;
+            const s = Number(t.score);
+            if (isNaN(s)) return null;
+            if (t.maxScore) {
+                const m = Number(t.maxScore);
+                return m ? Math.round(s / m * 1000) / 10 : null;
+            }
+            return s;
+        }
+        // どの大学の過去問か（「過去問」タブは学校名の列、送付テストはテスト名から読む）
+        function kakomonUniversity(t) {
+            if (t.school) return String(t.school).trim();
+            const p = parseKakomonTarget(t.name);
+            return p.university || 'その他';
+        }
+        function kakomonFaculty(t) {
+            if (t.faculty) return String(t.faculty).trim();
+            return parseKakomonTarget(t.name).faculty || '';
+        }
+        window.kakomonUniCharts = window.kakomonUniCharts || [];
+        function renderKakomonByUniversity(resKako) {
+            const wrap = document.getElementById('kakomon-uni-section');
+            const grid = document.getElementById('kakomon-uni-grid');
+            if (!wrap || !grid) return;
+            window.kakomonUniCharts.forEach(c => { try { c.destroy(); } catch (e) {} });
+            window.kakomonUniCharts = [];
+            const rows = (resKako || []).filter(t => kakomonRate(t) !== null && t.date);
+            if (!rows.length) { wrap.style.display = 'none'; grid.innerHTML = ''; return; }
+            wrap.style.display = 'block';
+            // 大学ごとにまとめ、最近受けた大学から並べる
+            const byUni = {};
+            rows.forEach(t => { const u = kakomonUniversity(t); (byUni[u] = byUni[u] || []).push(t); });
+            const lastDate = u => byUni[u].map(t => String(t.date)).sort().pop();
+            const unis = Object.keys(byUni).sort((a, b) => lastDate(b).localeCompare(lastDate(a)));
+            const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+            grid.innerHTML = unis.map((u, i) => {
+                const list = byUni[u];
+                const facs = [...new Set(list.map(kakomonFaculty).filter(Boolean))];
+                const latest = list.slice().sort((a, b) => String(a.date).localeCompare(String(b.date))).pop();
+                return `<div class="bg-slate-50 border rounded-xl p-4 shadow-sm">
+                    <h4 class="text-sm font-bold text-[#0A1628] mb-1"><i class="fas fa-university text-[#7C3AED] mr-1"></i>${esc(u)}</h4>
+                    <div class="text-[10px] text-slate-500 mb-2">${facs.length ? esc(facs.join('・')) + '　' : ''}${list.length}回　最新 ${esc(latest.date)} ${esc(latest.subject)} ${kakomonRate(latest)}%</div>
+                    <div class="chart-container" style="height: 230px;"><canvas id="kakomon-uni-chart-${i}"></canvas></div>
+                </div>`;
+            }).join('');
+            unis.forEach((u, i) => {
+                const list = byUni[u];
+                const dates = [...new Set(list.map(t => t.date))].sort();
+                const subjs = [...new Set(list.map(t => t.subject || '-'))];
+                const datasets = [];
+                subjs.forEach(sName => {
+                    let col = '#7C3AED';
+                    Object.values(SUBJ_CONFIG).forEach(c => { if (c.label === sName) col = c.hex; });
+                    const pick = d => list.filter(t => t.date === d && (t.subject || '-') === sName);
+                    datasets.push({
+                        label: `${sName}（正解率%）`,
+                        data: dates.map(d => { const r = pick(d); return r.length ? kakomonRate(r[r.length - 1]) : null; }),
+                        borderColor: col, backgroundColor: col, tension: 0.3, spanGaps: true
+                    });
+                    if (list.some(t => (t.subject || '-') === sName && t.average != null)) {
+                        datasets.push({
+                            label: `${sName}（基準）`,
+                            data: dates.map(d => { const r = pick(d).filter(t => t.average != null); return r.length ? r[r.length - 1].average : null; }),
+                            borderColor: col, backgroundColor: 'transparent', borderDash: [5, 5], tension: 0.3, spanGaps: true
+                        });
+                    }
+                });
+                const ctx = document.getElementById(`kakomon-uni-chart-${i}`);
+                if (!ctx) return;
+                window.kakomonUniCharts.push(new Chart(ctx.getContext('2d'), {
+                    type: 'line',
+                    data: { labels: dates, datasets },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: { y: { min: 0, max: 100 } },
+                        plugins: { legend: { position: 'bottom', labels: { boxWidth: 12, padding: 10, font: { size: 10 } } } },
+                        layout: { padding: { top: 10 } }
+                    }
+                }));
+            });
+            // 基準点の内訳（平均点 / 合格最低点）と、未登録の一覧
+            const note = document.getElementById('kakomon-baseline-note');
+            if (note) {
+                const seen = new Set(), lines = [];
+                rows.forEach(t => {
+                    if (!t.baselineLabel) return;
+                    const k = `${t.name}_${t.subject}`;
+                    if (seen.has(k)) return;
+                    seen.add(k);
+                    lines.push(`${t.name} ${t.subject}：${t.baselineLabel}`);
+                });
+                const missing = listMissingBaselines();
+                note.innerHTML = lines.map(l => `・${esc(l)}`).join('<br>')
+                    + (missing.length
+                        ? `<br><span class="text-orange-600">・合格最低点が未登録（要調査）：` + missing.map(m => esc(m.label)).join(' / ') + `</span>`
+                        : '');
             }
         }
 
@@ -6631,7 +6752,83 @@
             } catch (err) {
                 if (!silent) alert("スプレッドシート取込エラー: " + err.message + "\n\nシートが「リンクを知っている全員が閲覧可能」に設定されているか確認してください。");
             } finally {
+                await importKakomonFromSheet(silent);   // 過去問（「過去問」タブ）→ テスト結果
                 updateSheetImportStatus();
+            }
+        }
+
+        // ------------------------------------------------------------
+        // 過去問の取込：採点システム（auto_scoring_system）が書き込む「過去問」タブを
+        // テスト結果（appData.testResults, type='過去問'）として取り込む
+        //   列: 0=登録日時 1=生徒名 2=実施日 3=学校名 4=学部 5=科目 6=方式 7=年度
+        //       8=得点 9=満点 10=写真リンク 11=記録ID
+        //   ・生徒の照合は単元の取込と同じ（B列＝ログインID または登録氏名）
+        //   ・記録IDで重複を防ぎ、シート側で直した内容は次回の取込で反映する
+        //   ・画面で削除したものは appData.kakomonDeleted に控え、復活させない
+        // ------------------------------------------------------------
+        const KAKOMON_SHEET = '過去問';
+        function _kkYmd(v) {
+            const m = String(v || '').match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+            return m ? `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}` : '';
+        }
+        function _kkNum(v) {
+            const n = parseFloat(String(v ?? '').replace(/[^\d.\-]/g, ''));
+            return isNaN(n) ? null : n;
+        }
+        function kakomonRowToTestResult(r) {
+            const recId = String(r[11] || '').trim();
+            if (!recId) return null;
+            const school = String(r[3] || '').trim(), faculty = String(r[4] || '').trim();
+            return {
+                id: 'kakomon_' + recId,
+                type: '過去問',
+                name: [school, faculty].filter(Boolean).join(' ') || '過去問',
+                date: _kkYmd(r[2]) || _kkYmd(r[0]),
+                subject: String(r[5] || '').trim() || '-',
+                score: _kkNum(r[8]),
+                maxScore: _kkNum(r[9]),
+                average: null,
+                deviation: null,
+                school, faculty,
+                method: String(r[6] || '').trim(),
+                year: String(r[7] || '').trim(),
+                _sheetKey: 'kakomon_' + recId
+            };
+        }
+        async function importKakomonFromSheet(silent = false) {
+            try {
+                // 名前でタブを指定できる gviz の CSV 出力を使う（型を揃えるため採点システムは文字列で書き込む）
+                const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(KAKOMON_SHEET)}`;
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                const rows = parseSheetCSV(await res.text());
+                // タブが無いと Google は1枚目のシートを返すので、見出しで「過去問」タブか確かめる
+                if (rows.length < 2 || String(rows[0][11] || '').trim() !== '記録ID') return 0;
+
+                if (!Array.isArray(appData.testResults)) appData.testResults = [];
+                const deleted = new Set(appData.kakomonDeleted || []);
+                const FIELDS = ['name', 'date', 'subject', 'score', 'maxScore', 'school', 'faculty', 'method', 'year'];
+                let added = 0, updated = 0;
+                for (const row of rows.slice(1).filter(sheetRowMatchesStudent)) {
+                    const item = kakomonRowToTestResult(row);
+                    if (!item || deleted.has(item._sheetKey)) continue;
+                    const idx = appData.testResults.findIndex(t => t._sheetKey === item._sheetKey);
+                    if (idx < 0) {
+                        appData.testResults.push(item); added++;
+                    } else if (FIELDS.some(k => appData.testResults[idx][k] !== item[k])) {
+                        appData.testResults[idx] = item; updated++;
+                    }
+                }
+                if (added || updated) {
+                    saveData();
+                    if (typeof renderHistory === 'function') renderHistory();
+                }
+                if (added) alert(`過去問 ${added}件をテスト結果に取り込みました！`);
+                return added;
+            } catch (err) {
+                console.warn('過去問の取込に失敗:', err);
+                if (!silent) alert('過去問の取込エラー: ' + err.message);
+                return 0;
             }
         }
 

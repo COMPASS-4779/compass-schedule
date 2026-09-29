@@ -67,6 +67,8 @@ RESULT_SPREADSHEET_ID = os.environ.get("HW_RESULT_SPREADSHEET_ID", "").strip()
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip()
 GRADE_MODEL = os.environ.get("HW_GRADE_MODEL", "").strip() or "gemini-2.5-flash"
 SETTLE_MINUTES = _int_env("HW_GRADE_SETTLE_MINUTES", 10)
+# 送っていない過去問（生徒がグループに上げた過去問）も読み取って「過去問」タブに記録するか（0で止める）
+KAKOMON_SCAN = os.environ.get("HW_KAKOMON_SCAN", "1").strip() != "0"
 TARGET_ACCURACY = _int_env("HW_TARGET_ACCURACY", 80)
 REMIND_AFTER_DAYS = _int_env("HW_REMIND_AFTER_DAYS", 3)
 REMIND_INTERVAL_DAYS = _int_env("HW_REMIND_INTERVAL_DAYS", 2)
@@ -445,6 +447,9 @@ def grade_prompt(n_files, candidates):
         "・text / chapter / section = 出題元のテキスト名・章・節（書かれていなければ \"\"）\n"
         "・unit = 大問の上の単元見出し（無ければ \"\"）\n"
         "・total = その大問の小問の個数（数えられなければ 0）／ wrong = 間違いだった小問の番号だけ\n"
+        "・kakomon = 大学入試の過去問（大学名・学部・年度などが印字された入試問題や、その解答用紙）のときだけ、"
+        "{\"school\":\"大学名\",\"faculty\":\"学部\",\"subject\":\"科目\",\"year\":\"年度(西暦)\",\"method\":\"方式・日程\"} を入れる。"
+        "書かれていない項目は \"\"。過去問でなければ kakomon は入れない\n"
         "推測で埋めないこと。読めない項目は必ず空文字にする。"
     )
 
@@ -478,6 +483,71 @@ def append_result_rows(rows):
         _sheets().spreadsheets().values().append(
             spreadsheetId=RESULT_SPREADSHEET_ID, range="A1",
             valueInputOption="USER_ENTERED", body={"values": rows}).execute()
+
+
+# ---- 「過去問」タブ（採点システムと同じ形式。スケジュール管理が大学別のグラフに使う）------------
+KAKOMON_TAB = "過去問"
+KAKOMON_HEADER = ["登録日時", "生徒名", "実施日", "学校名", "学部", "科目", "方式", "年度", "得点", "満点",
+                  "写真リンク", "記録ID"]
+
+
+def kakomon_meta(sections):
+    """読み取り結果から過去問の情報（大学名など）を取り出す。過去問でなければ None。"""
+    for sec in sections or []:
+        k = sec.get("kakomon")
+        if isinstance(k, dict) and str(k.get("school") or "").strip():
+            return {x: str(k.get(x) or "").strip() for x in ("school", "faculty", "subject", "year", "method")}
+    return None
+
+
+def ensure_kakomon_tab(svc):
+    meta = svc.spreadsheets().get(spreadsheetId=RESULT_SPREADSHEET_ID).execute()
+    if KAKOMON_TAB not in [s["properties"]["title"] for s in meta.get("sheets", [])]:
+        svc.spreadsheets().batchUpdate(
+            spreadsheetId=RESULT_SPREADSHEET_ID,
+            body={"requests": [{"addSheet": {"properties": {"title": KAKOMON_TAB}}}]}).execute()
+        svc.spreadsheets().values().update(
+            spreadsheetId=RESULT_SPREADSHEET_ID, range=f"{KAKOMON_TAB}!A1",
+            valueInputOption="RAW", body={"values": [KAKOMON_HEADER]}).execute()
+
+
+def _sheet_student_name(db: Session, student: HwStudent):
+    """結果シートの生徒名（スケジュール管理のログインID）。直近の課題で使った名前があればそれを使う。"""
+    a = (db.query(HwAssignment).filter(HwAssignment.student_id == student.id,
+                                      HwAssignment.sheet_student != "")
+         .order_by(HwAssignment.id.desc()).first())
+    return (a.sheet_student if a and a.sheet_student else student.name) or ""
+
+
+def record_kakomon(db: Session, student: HwStudent, sections, files_meta, meta, now=None):
+    """送っていない過去問の答案を「過去問」タブに1回分として記録する（何問中何問正解か）。
+    問題数が数えられないときは記録せず False を返す（判定待ちにする）。"""
+    now = now or _now()
+    _acc, total, wrong = score(sections)
+    if not total:
+        return False
+    rec_id = "LINE-" + secrets.token_hex(5)
+    local = to_local(now)
+    row = [local.strftime("%Y-%m-%d %H:%M:%S"), _sheet_student_name(db, student), local.strftime("%Y-%m-%d"),
+           meta.get("school", ""), meta.get("faculty", ""), meta.get("subject", ""), meta.get("method", ""),
+           meta.get("year", ""), str(max(0, total - wrong)), str(total),
+           "\n".join(f["link"] for f in files_meta), rec_id]
+    svc = _sheets()
+    ensure_kakomon_tab(svc)
+    svc.spreadsheets().values().append(
+        spreadsheetId=RESULT_SPREADSHEET_ID, range=f"{KAKOMON_TAB}!A1",
+        valueInputOption="RAW", body={"values": [row]}).execute()
+    for f in files_meta:
+        g = db.query(HwGradedFile).filter(HwGradedFile.drive_file_id == f["id"]).first()
+        if g is None:
+            db.add(HwGradedFile(drive_file_id=f["id"], student_id=student.id, assignment_id=None,
+                                file_name=f.get("name", ""), status="kakomon"))
+        else:
+            g.status = "kakomon"
+    db.commit()
+    log.info("過去問を記録しました: %s %s %s %s %s/%s", student.name, meta.get("school"), meta.get("faculty"),
+             meta.get("subject"), total - wrong, total)
+    return True
 
 
 # ---- 「送付テスト」タブ（送付した記録と提出状況の台帳）------------------------------
@@ -986,6 +1056,11 @@ def grade_student(db: Session, student: HwStudent, open_as: List[HwAssignment], 
             continue
         a, match = match_assignment(open_as, g_sections)
         reason = ""
+        # 送った課題に当てはまらない過去問（生徒が自分で解いた過去問など）は、判定待ちにせず過去問として記録する
+        if a is None:
+            meta = kakomon_meta(g_sections)
+            if meta and record_kakomon(db, student, g_sections, g_files, meta, now):
+                continue
         if a is None:
             reason = ("テストIDもテスト名も読み取れた内容と一致せず、どのテストの答案か判別できませんでした"
                       f"（未提出の課題: {'、'.join(x.label or x.title for x in open_as)}）")
@@ -1001,6 +1076,58 @@ def grade_student(db: Session, student: HwStudent, open_as: List[HwAssignment], 
             continue
         done = apply_submission(db, a, student, g_files, g_sections, match, now) or done
     return done
+
+
+_KAKOMON_SINCE_KEY = "kakomon_scan_since"
+
+
+def _kakomon_since(db: Session):
+    """送っていない過去問を探し始める時刻（この機能を入れたとき。それより前の写真は読み直さない）。"""
+    row = db.query(HwSetting).filter(HwSetting.key == _KAKOMON_SINCE_KEY).first()
+    if row is None:
+        row = HwSetting(key=_KAKOMON_SINCE_KEY, value=_now().isoformat())
+        db.add(row)
+        db.commit()
+    try:
+        return _aware(datetime.fromisoformat(row.value))
+    except Exception:
+        return _now()
+
+
+def scan_kakomon(db: Session, student: HwStudent, now=None):
+    """まだ終わっていない課題が無い生徒に届いた写真を読み、過去問なら「過去問」タブに記録する。
+    過去問でない写真は記録しない（読み直さないよう控えだけ残す）。"""
+    now = now or _now()
+    since = max(_kakomon_since(db), now - timedelta(days=14))
+    files = [f for f in list_answer_files(student, since)
+             if not db.query(HwGradedFile).filter(HwGradedFile.drive_file_id == f["id"]).first()]
+    if not files:
+        return 0
+    newest = max(f["_t"] or now for f in files)
+    if now - newest < timedelta(minutes=SETTLE_MINUTES):      # まだ続きの写真が届くかもしれない
+        return 0
+    files_meta = [{"id": f["id"], "name": f.get("name", ""),
+                   "link": f.get("webViewLink") or f"https://drive.google.com/file/d/{f['id']}/view"} for f in files]
+    blobs = [(hw_api.drive().files().get_media(fileId=f["id"]).execute(), f["mimeType"]) for f in files]
+    sections = read_answers(blobs, [])
+    n = 0
+    for g_sections, g_files in group_by_test(sections, files_meta):
+        if not g_files:
+            continue
+        meta = kakomon_meta(g_sections)
+        if meta:
+            if record_kakomon(db, student, g_sections, g_files, meta, now):
+                n += 1
+                continue
+            add_pending(db, student, "answer",
+                        f"過去問（{meta.get('school')} {meta.get('faculty')} {meta.get('subject')}）の答案のようですが、"
+                        "問題数を数えられず記録できませんでした", g_files, g_sections)
+        for f in g_files:
+            if not db.query(HwGradedFile).filter(HwGradedFile.drive_file_id == f["id"]).first():
+                db.add(HwGradedFile(drive_file_id=f["id"], student_id=student.id, assignment_id=None,
+                                    file_name=f["name"], status="ignored"))
+        db.commit()
+    return n
 
 
 def run_grading():
@@ -1023,6 +1150,16 @@ def run_grading():
             except Exception as e:
                 db.rollback()
                 log.error("答案の記録に失敗 (%s): %s", student.name, e)
+        # まだ終わっていない課題が無い生徒も、グループに届いた過去問は記録する
+        if KAKOMON_SCAN:
+            for student in db.query(HwStudent).filter(HwStudent.enabled.is_(True)).all():
+                if student.id in by_student or not student.group_id:
+                    continue
+                try:
+                    n += scan_kakomon(db, student)
+                except Exception as e:
+                    db.rollback()
+                    log.error("過去問の読み取りに失敗 (%s): %s", student.name, e)
     finally:
         db.close()
     return n
