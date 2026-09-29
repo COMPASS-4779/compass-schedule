@@ -454,7 +454,10 @@ def grade_prompt(n_files, candidates, texts=None):
         "・unit = 大問の上の単元見出し（無ければ \"\"）\n"
         "・total = その大問の小問の個数（数えられなければ 0）／ wrong = 間違いだった小問の番号だけ\n"
         "・kakomon = 大学入試の過去問（大学名・学部・年度などが印字された入試問題や、その解答用紙）のときだけ、"
-        "{\"school\":\"大学名\",\"faculty\":\"学部\",\"subject\":\"科目\",\"year\":\"年度(西暦)\",\"method\":\"方式・日程\",\"score\":\"\",\"max_score\":\"\"} を入れる。"
+        "{\"school\":\"大学名\",\"faculty\":\"学部\",\"subject\":\"科目\",\"year\":\"年度(西暦)\",\"method\":\"方式・日程\",\"score\":\"\",\"max_score\":\"\","
+        "\"subjects\":[{\"subject\":\"英語\",\"score\":\"33\",\"max_score\":\"150\"}]} を入れる。"
+        "科目ごとの点数が複数書かれていれば subjects に1科目ずつ入れ、合計があれば subject を「合計」として入れる"
+        "（「9/40≒33/150」のように換算点があれば換算後の 33/150 を使う）。"
         "書かれていない項目は \"\"。過去問でなければ kakomon は入れない\n"
         "推測で埋めないこと。読めない項目は必ず空文字にする。"
     )
@@ -503,9 +506,21 @@ def kakomon_meta(sections):
     for sec in sections or []:
         k = sec.get("kakomon")
         if isinstance(k, dict) and str(k.get("school") or "").strip():
-            return {x: str(k.get(x) or "").strip()
+            meta = {x: str(k.get(x) or "").strip()
                     for x in ("school", "faculty", "subject", "year", "method", "score", "max_score")}
+            meta["subjects"] = _clean_subjects(k.get("subjects"))
+            return meta
     return None
+
+
+def _clean_subjects(v):
+    """科目ごとの点数 [{subject, score, max_score}] をそろえる（点数の無い行は除く）。"""
+    out = []
+    for x in v or []:
+        if isinstance(x, dict) and str(x.get("subject") or "").strip() and _num_or_none(x.get("score")) is not None:
+            out.append({"subject": str(x.get("subject")).strip(), "score": str(x.get("score")).strip(),
+                        "max_score": str(x.get("max_score") or "").strip()})
+    return out
 
 
 def _num_or_none(v):
@@ -551,28 +566,50 @@ def record_kakomon(db: Session, student: HwStudent, sections, files_meta, meta, 
     """送っていない過去問の答案を「過去問」タブに1回分として記録する（何問中何問正解か）。
     問題数が数えられないときは記録せず False を返す（判定待ちにする）。"""
     now = now or _now()
-    _acc, total, wrong = score(sections)
-    pts, mx = _num_or_none(meta.get("score")), _num_or_none(meta.get("max_score"))
-    if pts is not None:                      # 文面に点数が書かれていればそれを使う（満点が無ければ100点満点とみなす）
-        got, full = pts, (mx if mx else (100 if pts <= 100 else None))
-        if not full:
-            return False
-    elif total:
-        got, full = max(0, total - wrong), total
+
+    def pair(sc, mxs):
+        """文面・入力の点数（満点が無ければ100点満点とみなす）。点数が無ければ None。"""
+        pts, mx = _num_or_none(sc), _num_or_none(mxs)
+        if pts is None:
+            return None
+        full = mx if mx else (100 if pts <= 100 else None)
+        return (pts, full) if full else False
+
+    items = []                               # [(科目, 得点, 満点)]
+    subs = _clean_subjects(meta.get("subjects"))
+    if subs:                                 # 科目ごとの点数があれば1科目1行
+        for x in subs:
+            pr = pair(x["score"], x["max_score"])
+            if pr is False:
+                return False
+            if pr:
+                items.append((x["subject"], pr[0], pr[1]))
     else:
+        pr = pair(meta.get("score"), meta.get("max_score"))
+        if pr is False:
+            return False
+        if pr:
+            items.append((meta.get("subject", ""), pr[0], pr[1]))
+        else:                                # 点数が無ければ、正解した問題数/問題数
+            _acc, total, wrong = score(sections)
+            if not total:
+                return False
+            items.append((meta.get("subject", ""), max(0, total - wrong), total))
+    if not items:
         return False
     fmt = lambda x: str(int(x)) if float(x).is_integer() else str(x)
-    rec_id = "LINE-" + secrets.token_hex(5)
     local = to_local(now)
-    row = [local.strftime("%Y-%m-%d %H:%M:%S"), _sheet_student_name(db, student), local.strftime("%Y-%m-%d"),
-           meta.get("school", ""), meta.get("faculty", ""), meta.get("subject", ""), meta.get("method", ""),
-           meta.get("year", ""), fmt(got), fmt(full),
-           "\n".join(f["link"] for f in files_meta), rec_id]
+    name = _sheet_student_name(db, student)
+    links = "\n".join(f["link"] for f in files_meta)
+    rows = [[local.strftime("%Y-%m-%d %H:%M:%S"), name, local.strftime("%Y-%m-%d"),
+             meta.get("school", ""), meta.get("faculty", ""), subj, meta.get("method", ""),
+             meta.get("year", ""), fmt(got), fmt(full), links, "LINE-" + secrets.token_hex(5)]
+            for subj, got, full in items]
     svc = _sheets()
     ensure_kakomon_tab(svc)
     svc.spreadsheets().values().append(
         spreadsheetId=RESULT_SPREADSHEET_ID, range=f"{KAKOMON_TAB}!A1",
-        valueInputOption="RAW", body={"values": [row]}).execute()
+        valueInputOption="RAW", body={"values": rows}).execute()
     for f in files_meta:
         g = db.query(HwGradedFile).filter(HwGradedFile.drive_file_id == f["id"]).first()
         if g is None:
@@ -581,8 +618,8 @@ def record_kakomon(db: Session, student: HwStudent, sections, files_meta, meta, 
         else:
             g.status = "kakomon"
     db.commit()
-    log.info("過去問を記録しました: %s %s %s %s %s/%s", student.name, meta.get("school"), meta.get("faculty"),
-             meta.get("subject"), fmt(got), fmt(full))
+    log.info("過去問を記録しました: %s %s %s %s", student.name, meta.get("school"), meta.get("faculty"),
+             "、".join(f"{a} {fmt(b)}/{fmt(c)}" for a, b, c in items))
     return True
 
 
@@ -1930,8 +1967,9 @@ class KakomonIn(BaseModel):
     subject: str = ""
     year: str = ""
     method: str = ""
-    score: str                                   # 得点（正解数でも点数でもよい）
+    score: str = ""                              # 得点（正解数でも点数でもよい）
     max_score: str = ""                          # 満点（空なら100点満点とみなす）
+    subjects: Optional[List[dict]] = None        # 科目ごと [{subject, score, max_score}]（あれば1科目1行で記録）
     files: Optional[List[dict]] = None           # [{id, name}] 受信先の写真（Drive）
     pending_id: Optional[int] = None             # 判定待ちから記録するときは、その件を閉じる
 
@@ -1947,7 +1985,8 @@ def record_kakomon_manual(body: KakomonIn, authorization: str = Header(None), db
         return {"ok": False, "error": "生徒が見つかりません"}
     if not body.school.strip():
         return {"ok": False, "error": "大学名を入れてください"}
-    if _num_or_none(body.score) is None:
+    subs = _clean_subjects(body.subjects)
+    if not subs and _num_or_none(body.score) is None:
         return {"ok": False, "error": "得点を入れてください"}
     p = None
     files = [f for f in (body.files or []) if isinstance(f, dict) and f.get("id")]
@@ -1965,7 +2004,7 @@ def record_kakomon_manual(body: KakomonIn, authorization: str = Header(None), db
                    "link": f.get("link") or f"https://drive.google.com/file/d/{f['id']}/view"} for f in files]
     meta = {"school": body.school.strip(), "faculty": body.faculty.strip(), "subject": body.subject.strip(),
             "year": body.year.strip(), "method": body.method.strip(),
-            "score": body.score.strip(), "max_score": body.max_score.strip()}
+            "score": body.score.strip(), "max_score": body.max_score.strip(), "subjects": subs}
     try:
         if not record_kakomon(db, student, [], files_meta, meta):
             return {"ok": False, "error": "満点が分かりません（100点を超える点数のときは満点も入れてください）"}
@@ -1975,7 +2014,60 @@ def record_kakomon_manual(body: KakomonIn, authorization: str = Header(None), db
     if p is not None:
         p.status, p.note, p.resolved_at = "resolved", "過去問として記録", _now()
         db.commit()
-    return {"ok": True, "student": _sheet_student_name(db, student)}
+    return {"ok": True, "student": _sheet_student_name(db, student), "rows": max(1, len(subs))}
+
+
+@router.get("/students/{student_id}/texts")
+def student_texts(student_id: int, hours: int = 72, authorization: str = Header(None),
+                  db: Session = Depends(get_db)):
+    """生徒のトーク（グループ）に届いた文面（新しい順）。過去問を手で記録するときに参考にする。"""
+    from line_relay import LineHwEvent
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    student = db.query(HwStudent).filter(HwStudent.id == student_id).first()
+    if student is None or not student.group_id:
+        return {"ok": True, "texts": []}
+    since = _now() - timedelta(hours=max(1, min(hours, 24 * 14)))
+    evs = (db.query(LineHwEvent).filter(LineHwEvent.event_type == "text", LineHwEvent.group_id == student.group_id,
+                                        LineHwEvent.created_at >= since)
+           .order_by(LineHwEvent.id.desc()).limit(40).all())
+    return {"ok": True, "texts": [{"at": _fmt(e.created_at), "text": _event_text(e)} for e in evs if _event_text(e).strip()]}
+
+
+class KakomonParseIn(BaseModel):
+    texts: List[str]
+
+
+@router.post("/kakomon/parse")
+def parse_kakomon_text(body: KakomonParseIn, authorization: str = Header(None)):
+    """トークの文面から、過去問の大学名・学部・年度・方式・科目ごとの点数を読み取る（入力欄に入れるため）。"""
+    err = hw_api._auth_or_401(authorization)
+    if err:
+        return err
+    texts = [str(t)[:500] for t in (body.texts or []) if str(t).strip()][:20]
+    if not texts:
+        return {"ok": False, "error": "文面を選んでください"}
+    if not GEMINI_API_KEY:
+        return {"ok": False, "error": "読み取りのAIが設定されていません"}
+    import google.generativeai as genai
+    genai.configure(api_key=GEMINI_API_KEY)
+    prompt = ("次の文面は、生徒が解いた大学入試の過去問の結果を知らせるメッセージです。"
+              "大学名・学部・年度（西暦）・方式や日程・科目ごとの点数を読み取ってください。"
+              "「9/40≒33/150」のように換算した点数があれば換算後（33/150）を使う。合計があれば科目を「合計」として入れる。"
+              "書かれていない項目は空文字。推測で埋めない。\n"
+              "出力はJSON配列1要素のみ："
+              '[{"school":"","faculty":"","year":"","method":"","subjects":[{"subject":"","score":"","max_score":""}]}]\n\n'
+              "【文面】\n" + "\n".join(texts))
+    try:
+        resp = genai.GenerativeModel(GRADE_MODEL).generate_content(prompt)
+        arr = extract_json_array(getattr(resp, "text", ""))
+    except Exception as e:
+        return {"ok": False, "error": f"読み取りに失敗しました: {e}"}
+    d = arr[0] if arr and isinstance(arr[0], dict) else {}
+    return {"ok": True, "meta": {"school": str(d.get("school") or "").strip(), "faculty": str(d.get("faculty") or "").strip(),
+                                 "year": str(d.get("year") or "").strip(), "method": str(d.get("method") or "").strip(),
+                                 "subjects": _clean_subjects(d.get("subjects"))}}
 
 
 class PendingResolveIn(BaseModel):
