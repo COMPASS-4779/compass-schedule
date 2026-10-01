@@ -3447,6 +3447,43 @@
                 ...groups.event.tasks.map(t => Object.assign({}, t, {_groupKey: 'event'}))
             ];
 
+            const cw = appData.currentWeek;
+            const todayIdx = absIdxFromWeekDay(appData.currentWeek, appData.currentDay);
+
+            // 実施中かどうかは、遅延を反映した予定で判定する。
+            // -1: 終了済み（過去）, 0: 実施中, 1: 開始前（未来）
+            const phaseOf = b => {
+                if (b.isOneOff || b.isEvent) {
+                    if (b.endW < cw - 1) return -1;
+                    if (b.startW > cw + 1) return 1;
+                    return 0;
+                }
+                if (b.discontinued || b.completed) return -1;   // 完了・中止は終了済み扱い
+                const p = getProjection(b);
+                if (p.remaining <= 0) return -1;          // 完了済みは過去扱い
+                if (todayIdx < p.projStart) return 1;     // まだ始まっていない
+                if (todayIdx > p.projEnd) return -1;      // 予定を過ぎている
+                return 0;
+            };
+
+            const pastAll = [], futureAll = [];
+            // 過去（終了済み）・未来（開始前）はそれぞれ折りたたんで表示する
+            const renderCollapsed = (items, id, label, icon) => {
+                if (items.length === 0) return;
+                c.insertAdjacentHTML('beforeend', `
+                    <div class="mt-6">
+                        <button onclick="(function(){var el=document.getElementById('${id}');var ic=document.getElementById('${id}-ic');el.classList.toggle('hidden');ic.classList.toggle('fa-chevron-down');ic.classList.toggle('fa-chevron-right');})()"
+                            class="w-full flex items-center justify-between text-xs font-black border-l-4 pl-2 py-1 text-slate-400 border-slate-300 bg-slate-50 hover:bg-slate-100 transition">
+                            <span><i class="fas ${icon} mr-1"></i>${label} (${items.length}件)</span>
+                            <i id="${id}-ic" class="fas fa-chevron-right text-[10px] mr-1"></i>
+                        </button>
+                        <div id="${id}" class="hidden mt-1 opacity-60">
+                            ${items.map(({ task, key }) => drawBar(task, (key === 'event' && task.dayType !== 'holiday') ? '#10B981' : null)).join('')}
+                        </div>
+                    </div>
+                `);
+            };
+
             if (appData.ganttRowOrder && appData.ganttRowOrder.length > 0) {
                 // 🌟 カスタム順（フラット表示）
                 const orderMap = {};
@@ -3467,31 +3504,20 @@
                     </div>
                 `);
                 allTasksFlat.forEach(task => {
+                    if (_ganttFocusMode) {
+                        const ph = phaseOf(task);
+                        if (ph < 0) { pastAll.push({ task, key: task._groupKey }); return; }
+                        if (ph > 0) { futureAll.push({ task, key: task._groupKey }); return; }
+                    }
                     const colorOverride = (task.isEvent && task.dayType !== 'holiday') ? '#10B981' : null;
                     c.insertAdjacentHTML('beforeend', drawBar(task, colorOverride));
                 });
+                if (_ganttFocusMode) {        // 並べた順のまま折りたたむ
+                    renderCollapsed(pastAll,   'gantt-past-group',   '終了済み・期間外', 'fa-check-circle');
+                    renderCollapsed(futureAll, 'gantt-future-group', '開始前',           'fa-hourglass-start');
+                }
             } else {
                 // 🌟 グループ表示（デフォルト）[テスト → 宿題 → 受験 → 行事]
-                const cw = appData.currentWeek;
-                const todayIdx = absIdxFromWeekDay(appData.currentWeek, appData.currentDay);
-
-                // 実施中かどうかは、遅延を反映した予定で判定する。
-                // -1: 終了済み（過去）, 0: 実施中, 1: 開始前（未来）
-                const phaseOf = b => {
-                    if (b.isOneOff || b.isEvent) {
-                        if (b.endW < cw - 1) return -1;
-                        if (b.startW > cw + 1) return 1;
-                        return 0;
-                    }
-                    if (b.discontinued || b.completed) return -1;   // 完了・中止は終了済み扱い
-                    const p = getProjection(b);
-                    if (p.remaining <= 0) return -1;          // 完了済みは過去扱い
-                    if (todayIdx < p.projStart) return 1;     // まだ始まっていない
-                    if (todayIdx > p.projEnd) return -1;      // 予定を過ぎている
-                    return 0;
-                };
-
-                const pastAll = [], futureAll = [];
 
                 ["test", "homework", "exam", "event"].forEach(key => {
                     const g = groups[key];
@@ -3523,22 +3549,6 @@
                     });
                 });
 
-                // 過去（終了済み）・未来（開始前）はそれぞれ折りたたんで表示する
-                const renderCollapsed = (items, id, label, icon) => {
-                    if (items.length === 0) return;
-                    c.insertAdjacentHTML('beforeend', `
-                        <div class="mt-6">
-                            <button onclick="(function(){var el=document.getElementById('${id}');var ic=document.getElementById('${id}-ic');el.classList.toggle('hidden');ic.classList.toggle('fa-chevron-down');ic.classList.toggle('fa-chevron-right');})()"
-                                class="w-full flex items-center justify-between text-xs font-black border-l-4 pl-2 py-1 text-slate-400 border-slate-300 bg-slate-50 hover:bg-slate-100 transition">
-                                <span><i class="fas ${icon} mr-1"></i>${label} (${items.length}件)</span>
-                                <i id="${id}-ic" class="fas fa-chevron-right text-[10px] mr-1"></i>
-                            </button>
-                            <div id="${id}" class="hidden mt-1 opacity-60">
-                                ${items.map(({ task, key }) => drawBar(task, (key === 'event' && task.dayType !== 'holiday') ? '#10B981' : null)).join('')}
-                            </div>
-                        </div>
-                    `);
-                };
 
                 if (_ganttFocusMode) {
                     pastAll.sort((a, b) => ganttTaskComparator(a.task, b.task));
@@ -3667,9 +3677,21 @@
         }
 
         function saveGanttOrder(container) {
-            const ids = [...container.querySelectorAll('.gantt-row[data-task-id]')].map(r => r.dataset.taskId);
-            if (ids.length === 0) return;
-            appData.ganttRowOrder = ids;
+            const rows = [...container.querySelectorAll('.gantt-row[data-task-id]')];
+            if (rows.length === 0) return;
+            const ids = rows.map(r => r.dataset.taskId);
+            // 「現在のみ」で終了済み・開始前を折りたたんでいるときは、見えている行の並びだけを入れ替え、
+            // 折りたたんだ行は前に並べた位置のままにする（末尾に寄せない）
+            const shown = rows.filter(r => !r.closest('#gantt-past-group, #gantt-future-group')).map(r => r.dataset.taskId);
+            const prev = (appData.ganttRowOrder || []).map(String);
+            let order = ids;
+            if (prev.length && shown.length < ids.length) {
+                const shownSet = new Set(shown), queue = shown.slice();
+                order = prev.map(id => shownSet.has(id) ? queue.shift() : id).filter(Boolean);
+                queue.forEach(id => order.push(id));
+                ids.forEach(id => { if (!order.includes(id)) order.push(id); });
+            }
+            appData.ganttRowOrder = order;
             saveData();
         }
 
