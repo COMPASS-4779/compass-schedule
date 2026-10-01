@@ -3886,6 +3886,7 @@
             let examTotal = 0, examAchieved = 0;
             let dailyTaskPcts = []; 
             let todayActualTotal = 0; // 🌟 本日の実績合計数
+            const countedToday = new Set();   // 本日の実績に数えた教材
 
             Object.keys(appData.curriculum).forEach(sk => {
                 appData.curriculum[sk].forEach(b => {
@@ -3912,6 +3913,7 @@
                             const val = parseFloat(appData.progress[key]) || 0;
                             
                             todayActualTotal += val; // 🌟 本日の実績を加算
+                            countedToday.add(String(b.id));
 
                             let pct = (val / target) * 100;
                             if (pct > 100) pct = 100; 
@@ -3919,6 +3921,27 @@
                         }
                     }
                 });
+            });
+
+            // 今日の入力で終わった教材・宿題も本日の実績に数える。
+            // 教材を最後まで終えると完了扱いで、宿題・一時タスクは目標まで入れると一覧から外れるため、
+            // 上の集計（今日のタスクに出ている教材だけ）では入力したのに 0 に戻っていた。
+            const todaySuffix = `_W${appData.currentWeek}_D${appData.currentDay}`;
+            Object.keys(appData.progress || {}).forEach(k => {
+                if (!k.endsWith(todaySuffix)) return;
+                const id = k.slice(0, -todaySuffix.length);
+                if (countedToday.has(id)) return;
+                const val = parseFloat(appData.progress[k]) || 0;
+                if (val <= 0) return;
+                let book = null;
+                Object.keys(appData.curriculum || {}).forEach(sk => {
+                    const f = (appData.curriculum[sk] || []).find(x => String(x.id) === id);
+                    if (f) book = f;
+                });
+                if (book && book.isEvent) return;
+                todayActualTotal += val;
+                // 一覧から外れた（終えた）宿題・最後まで終えた教材は、本日分を達成とみなす
+                if (!book || isBookFinished(book)) dailyTaskPcts.push(100);
             });
 
             const examPct = examTotal === 0 ? 0 : Math.round((examAchieved / examTotal) * 100);
