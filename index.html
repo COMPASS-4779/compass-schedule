@@ -270,6 +270,7 @@
                         <i class="fas fa-bullseye text-[#D4622A]"></i>本日の集中タスク
                         <span id="dash-focused-date-label" class="text-sm font-normal text-slate-400 ml-1"></span>
                     </h2>
+                    <div id="dash-focused-day-stats" class="text-[11px] font-bold text-slate-600 flex items-center gap-2"></div>
                     <div id="dash-today-mode-badge" class="bg-slate-100 text-[#D4622A] px-3 py-1 rounded-full text-[10px] font-bold border border-slate-200">
                         判定中...
                     </div>
@@ -396,11 +397,11 @@
                     
                     <div class="flex items-center gap-4 bg-slate-50 px-4 py-2 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex flex-col items-center border-r border-slate-300 pr-3 mr-1">
-                            <span class="text-[9px] font-bold text-slate-500">本日の実績合計</span>
+                            <span id="dash-today-total-lbl" class="text-[9px] font-bold text-slate-500">本日の実績合計</span>
                             <span id="dash-today-total-val" class="text-xs font-black text-[#0A1628]">0</span>
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-[9px] font-bold text-slate-500">本日の達成率</span>
+                            <span id="dash-daily-lbl" class="text-[9px] font-bold text-slate-500">本日の達成率</span>
                             <div class="flex items-center gap-2">
                                 <div class="w-20 bg-slate-200 rounded-full h-1.5 overflow-hidden">
                                     <div id="dash-daily-bar" class="bg-[#D4622A] h-full transition-all duration-500" style="width:0%"></div>
@@ -2878,12 +2879,13 @@
 
                             <div class="bg-slate-50 rounded-lg p-1.5 border border-slate-100">
                                 ${pct >= 100 ?
-                                    `<div class="text-center text-blue-600 font-black text-[10px]"><i class="fas fa-check-circle"></i> 本日分完了！ (100%)</div>` :
+                                    `<div class="text-center text-blue-600 font-black text-[10px]"><i class="fas fa-check-circle"></i> 本日分完了！ (100%・${val}/${target}${b.unit})</div>` :
                                     `<div class="flex items-center gap-2">
+                                        <span class="text-[9px] font-bold text-slate-500 whitespace-nowrap">当日の達成度</span>
                                         <div class="flex-grow bg-slate-200 h-1.5 rounded-full overflow-hidden">
                                             <div class="bg-[#B8963E] h-full transition-all" style="width:${pct}%"></div>
                                         </div>
-                                        <span class="text-[9px] font-black text-slate-600">${pct}%</span>
+                                        <span class="text-[9px] font-black text-slate-600 whitespace-nowrap">${pct}%（${val}/${target}${b.unit}）</span>
                                     </div>`
                                 }
                             </div>
@@ -3986,7 +3988,30 @@
             
             if(dBar) dBar.style.width = dailyPct + '%';
             if(dTxt) dTxt.textContent = dailyPct + '%';
-            if(dTotal) dTotal.textContent = todayActualTotal; 
+            if(dTotal) dTotal.textContent = todayActualTotal;
+
+            // 今日以外の日を選んでいるときは「9/30の実績合計」のように、選んだ日の数字だと分かるようにする
+            let dayName = '本日';
+            try {
+                if (absIdxFromWeekDay(appData.currentWeek, appData.currentDay) !== realTodayAbsIdx()) {
+                    const dt = new Date(weekNumToDateStr(appData.currentWeek, appData.currentDay));
+                    if (!isNaN(dt)) dayName = `${dt.getMonth() + 1}/${dt.getDate()}`;
+                }
+            } catch (e) {}
+            const lblTotal = document.getElementById('dash-today-total-lbl');
+            const lblPct = document.getElementById('dash-daily-lbl');
+            if (lblTotal) lblTotal.textContent = `${dayName}の実績合計`;
+            if (lblPct) lblPct.textContent = `${dayName}の達成率`;
+            // 本日の集中タスクの見出しにも、その日の達成度（全体）を出す
+            const fStats = document.getElementById('dash-focused-day-stats');
+            if (fStats) {
+                fStats.innerHTML = dailyTaskPcts.length
+                    ? `<span>${dayName === '本日' ? '当日' : dayName}の達成度</span>
+                       <span class="w-20 bg-slate-200 rounded-full h-1.5 overflow-hidden inline-block"><span class="bg-[#D4622A] h-full block" style="width:${dailyPct}%"></span></span>
+                       <span class="text-[#0A1628] font-black">${dailyPct}%</span>
+                       <span class="text-slate-400">（実績合計 ${todayActualTotal}）</span>`
+                    : '';
+            }
         }
 
 
@@ -4730,6 +4755,7 @@
             appData.currentDay = d;
             renderDayTabs();
             renderTracker();
+            updateProgress();              // 選んだ日の実績合計・達成率に計算し直す
             if (typeof renderTodaysTaskWindow === 'function') renderTodaysTaskWindow();
         }
         function changeDay(d) { changeDayAndWeek(appData.currentWeek, d); }
