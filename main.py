@@ -125,6 +125,7 @@ def health(db: Session = Depends(get_db)):
         return {"db_backend": DB_BACKEND, "error": str(e)}
     return {
         "db_backend": DB_BACKEND,
+        "commit": (os.environ.get("RENDER_GIT_COMMIT") or "")[:7],   # デプロイが反映されたかの確認用
         "persistent": not IS_EPHEMERAL_DB,
         "users": user_count,
         "users_with_data": saved_count,
