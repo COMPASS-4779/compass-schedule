@@ -155,7 +155,7 @@ class HwGradedFile(Base):
     student_id = Column(BIGINT, index=True)
     assignment_id = Column(BIGINT, nullable=True, index=True)
     file_name = Column(String, default="")
-    status = Column(String, default="recorded")           # recorded / unmatched / error
+    status = Column(String, default="recorded")           # recorded / unmatched / error / before_answers（丸付け前→解答を送った）
     error = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
@@ -1107,7 +1107,8 @@ def apply_submission(db: Session, a: HwAssignment, student: HwStudent, files_met
 
 def grade_student(db: Session, student: HwStudent, open_as: List[HwAssignment], now=None):
     """1人分：新しく届いた答案をまとめて読み取り、課題に記録する。処理した課題（無ければ None）を返す。
-    どの課題の答案か判別できない・解答を送る前に届いた場合は、判定待ちにして管理者へ知らせる。"""
+    解答を送る前の答案（丸付け前）が届いた場合は、その課題の解答を自動で送る（設定で止められる。止めたときや
+    送れなかったときは判定待ち）。どの課題の答案か判別できない場合は、判定待ちにして管理者へ知らせる。"""
     now = now or _now()
     since = min(_aware(a.sent_at) or now for a in open_as)
     files = [f for f in list_answer_files(student, since)
@@ -1138,7 +1139,22 @@ def grade_student(db: Session, student: HwStudent, open_as: List[HwAssignment], 
             reason = ("テストIDもテスト名も読み取れた内容と一致せず、どのテストの答案か判別できませんでした"
                       f"（未提出の課題: {'、'.join(x.label or x.title for x in open_as)}）")
         elif not a.with_answers and a.answers_sent_at is None:
-            reason = f"解答を送る前に「{a.label or a.title}」の答案が届きました（丸付け前の可能性があります）"
+            # 丸付け前の答案が届いた → この課題の解答を送る（答案はまだ記録しない。丸付けした写真が届いたら記録する）
+            if remind_settings(db).get("answers_on_upload", True) and a.answer_url:
+                try:
+                    send_answers(db, a, student, now)
+                    for f in g_files:
+                        db.add(HwGradedFile(drive_file_id=f["id"], student_id=student.id, assignment_id=a.id,
+                                            file_name=f["name"], status="before_answers"))
+                    db.commit()
+                    log.info("丸付け前の答案が届いたので解答を送りました: %s %s（%s で判別）", student.name, a.code, match)
+                    continue
+                except Exception as e:
+                    db.rollback()
+                    reason = (f"「{a.label or a.title}」の丸付け前の答案が届きましたが、解答を自動で送れませんでした"
+                              f"（{str(e)[:120]}）")
+            else:
+                reason = f"解答を送る前に「{a.label or a.title}」の答案が届きました（丸付け前の可能性があります）"
         if reason:
             for f in g_files:
                 db.add(HwGradedFile(drive_file_id=f["id"], student_id=student.id, assignment_id=None,
@@ -1320,6 +1336,8 @@ _SETTING_KEY = "remind"
 def _default_remind_settings():
     s, e = _remind_hours()
     return {"hours": f"{s}-{e}",
+            # 解答を送る前の答案（丸付け前）の写真が届いたら、その課題の解答を自動で送る
+            "answers_on_upload": True,
             "kinds": {g: {"enabled": True, "after_days": REMIND_AFTER_DAYS,
                           "interval_days": REMIND_INTERVAL_DAYS, "max": REMIND_MAX}
                       for g in REMIND_GROUPS}}
@@ -1341,6 +1359,8 @@ def remind_settings(db: Optional[Session] = None):
             db.close()
     if isinstance(saved.get("hours"), str) and re.match(r"^\d{1,2}-\d{1,2}$", saved["hours"].strip()):
         out["hours"] = saved["hours"].strip()
+    if "answers_on_upload" in saved:
+        out["answers_on_upload"] = bool(saved["answers_on_upload"])
     for g in REMIND_GROUPS:
         v = (saved.get("kinds") or {}).get(g) or {}
         if not isinstance(v, dict):
@@ -1364,6 +1384,8 @@ def save_remind_settings(patch: dict):
         a, b = [int(x) for x in patch["hours"].replace(" ", "").split("-")]
         if 0 <= a <= 23 and 1 <= b <= 24 and a < b:
             cur["hours"] = f"{a}-{b}"
+    if "answers_on_upload" in patch:
+        cur["answers_on_upload"] = bool(patch["answers_on_upload"])
     for g in REMIND_GROUPS:
         v = (patch.get("kinds") or {}).get(g)
         if not isinstance(v, dict):
@@ -1586,7 +1608,8 @@ def _settings_json(st):
             "review_enabled": bool(TESTGEN_URL and TESTGEN_TOKEN), "target_accuracy": TARGET_ACCURACY,
             "remind_after_days": base["after_days"], "remind_interval_days": base["interval_days"],
             "remind_max": base["max"], "remind_hours": st["hours"], "settle_minutes": SETTLE_MINUTES,
-            "remind": st, "remind_groups": list(REMIND_GROUPS)}
+            "remind": st, "remind_groups": list(REMIND_GROUPS),
+            "answers_on_upload": bool(st.get("answers_on_upload", True))}
 
 
 @router.get("/assignments/settings")
