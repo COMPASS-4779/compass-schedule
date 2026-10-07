@@ -959,11 +959,12 @@ def request_review(a: HwAssignment, student_name: str, items):
 def send_result_report(a: HwAssignment, student: HwStudent, sections):
     """採点した結果（大問ごとの問題数・間違えた番号）をテスト作成システムに送って、単元別・レベル別に記録する。
     返ってきた文（今回の正答率・見直したい単元・成績ページのリンク）を、生徒の LINE グループに送る。
-    テスト作成システムで作ったテスト（external_ref あり）だけ。失敗しても採点の記録には影響させない。"""
-    if not (TESTGEN_URL and TESTGEN_TOKEN) or not a.external_ref:
+    テスト作成システムで作ったテスト（external_ref あり）と、送った過去問が対象。失敗しても採点の記録には影響させない。"""
+    if not (TESTGEN_URL and TESTGEN_TOKEN) or not (a.external_ref or a.kind == "過去問"):
         return False
-    payload = {"sid": a.external_ref, "code": a.code, "hw_student_id": student.id,
-               "student": a.sheet_student or student.name, "title": a.title, "subject": a.subject,
+    payload = {"sid": a.external_ref or "", "code": a.code, "hw_student_id": student.id, "kind": a.kind,
+               "student": a.sheet_student or student.name, "student_name": student.name,
+               "title": a.title, "subject": a.subject,
                "sections": [{"daimon": s.get("daimon"), "total": s.get("total"), "unit": s.get("unit"),
                              "wrong": [w for w in (s.get("wrong") or []) if isinstance(w, dict)]}
                             for s in sections or [] if isinstance(s, dict)]}
