@@ -956,6 +956,31 @@ def request_review(a: HwAssignment, student_name: str, items):
         return False
 
 
+def send_result_report(a: HwAssignment, student: HwStudent, sections):
+    """採点した結果（大問ごとの問題数・間違えた番号）をテスト作成システムに送って、単元別・レベル別に記録する。
+    返ってきた文（今回の正答率・見直したい単元・成績ページのリンク）を、生徒の LINE グループに送る。
+    テスト作成システムで作ったテスト（external_ref あり）だけ。失敗しても採点の記録には影響させない。"""
+    if not (TESTGEN_URL and TESTGEN_TOKEN) or not a.external_ref:
+        return False
+    payload = {"sid": a.external_ref, "code": a.code, "hw_student_id": student.id,
+               "student": a.sheet_student or student.name, "title": a.title, "subject": a.subject,
+               "sections": [{"daimon": s.get("daimon"), "total": s.get("total"), "unit": s.get("unit"),
+                             "wrong": [w for w in (s.get("wrong") or []) if isinstance(w, dict)]}
+                            for s in sections or [] if isinstance(s, dict)]}
+    try:
+        r = requests.post(f"{TESTGEN_URL}/api/hw/result", json=payload,
+                          headers={"Authorization": f"Bearer {TESTGEN_TOKEN}"}, timeout=30)
+        if r.status_code >= 400:
+            raise RuntimeError(f"HTTP {r.status_code}: {r.text[:300]}")
+        j = r.json()
+        if j.get("ok") and j.get("message") and student.group_id and remind_settings().get("result_report", True):
+            hw_api.line_push(student.group_id, j["message"])
+        return True
+    except Exception as e:
+        log.warning("成績の記録・結果のLINEに失敗しました（%s %s）: %s", student.name, a.code, e)
+        return False
+
+
 def _parse_time(s):
     try:
         return datetime.fromisoformat(str(s).replace("Z", "+00:00"))
@@ -1101,6 +1126,7 @@ def apply_submission(db: Session, a: HwAssignment, student: HwStudent, files_met
         request_review(a, student.name, items)
     db.commit()
     ledger_update(a)                                         # 送付テストタブ：提出F=1・提出日時・正解率・状態
+    send_result_report(a, student, sections)                 # 単元別・レベル別の記録と、生徒への結果のLINE
     log.info("答案を記録しました: %s %s 正解率=%s（%s）", student.name, a.code, acc, match)
     return a
 
@@ -1338,6 +1364,8 @@ def _default_remind_settings():
     return {"hours": f"{s}-{e}",
             # 解答を送る前の答案（丸付け前）の写真が届いたら、その課題の解答を自動で送る
             "answers_on_upload": True,
+            # 採点したら、結果（正答率・見直したい単元・成績ページのリンク）を生徒の LINE に送る
+            "result_report": True,
             "kinds": {g: {"enabled": True, "after_days": REMIND_AFTER_DAYS,
                           "interval_days": REMIND_INTERVAL_DAYS, "max": REMIND_MAX}
                       for g in REMIND_GROUPS}}
@@ -1361,6 +1389,8 @@ def remind_settings(db: Optional[Session] = None):
         out["hours"] = saved["hours"].strip()
     if "answers_on_upload" in saved:
         out["answers_on_upload"] = bool(saved["answers_on_upload"])
+    if "result_report" in saved:
+        out["result_report"] = bool(saved["result_report"])
     for g in REMIND_GROUPS:
         v = (saved.get("kinds") or {}).get(g) or {}
         if not isinstance(v, dict):
@@ -1386,6 +1416,8 @@ def save_remind_settings(patch: dict):
             cur["hours"] = f"{a}-{b}"
     if "answers_on_upload" in patch:
         cur["answers_on_upload"] = bool(patch["answers_on_upload"])
+    if "result_report" in patch:
+        cur["result_report"] = bool(patch["result_report"])
     for g in REMIND_GROUPS:
         v = (patch.get("kinds") or {}).get(g)
         if not isinstance(v, dict):
@@ -1609,7 +1641,8 @@ def _settings_json(st):
             "remind_after_days": base["after_days"], "remind_interval_days": base["interval_days"],
             "remind_max": base["max"], "remind_hours": st["hours"], "settle_minutes": SETTLE_MINUTES,
             "remind": st, "remind_groups": list(REMIND_GROUPS),
-            "answers_on_upload": bool(st.get("answers_on_upload", True))}
+            "answers_on_upload": bool(st.get("answers_on_upload", True)),
+            "result_report": bool(st.get("result_report", True))}
 
 
 @router.get("/assignments/settings")
