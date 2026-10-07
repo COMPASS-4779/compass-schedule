@@ -49,7 +49,7 @@
                 
                 <div class="text-right leading-tight pr-4 border-r border-slate-700 hidden sm:block">
                     <p class="text-[9px] text-slate-500 font-bold tracking-tighter">Last Updated: 2026/09/04</p>
-                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V45</p>
+                    <p class="text-[10px] text-[#B8963E] font-black">System Ver. V46</p>
                 </div>
                 
                 <div id="nav-user-info" class="hidden flex items-center gap-2 sm:gap-4">
@@ -2549,6 +2549,9 @@
             const lastImport = appData.lastSheetImport ? new Date(appData.lastSheetImport) : null;
             if (!lastImport || (Date.now() - lastImport.getTime()) > 30 * 60 * 1000) {
                 setTimeout(() => importFromSpreadsheet(true), 1500);
+            } else {
+                // 過去問は採点システムから随時追加されるため、30分以内でも毎回取り込む
+                setTimeout(() => importKakomonFromSheet(true), 1500);
             }
         }
 
@@ -6893,6 +6896,8 @@
                 if (added || updated) {
                     saveData();
                     if (typeof renderHistory === 'function') renderHistory();
+                    // 一覧だけでなく大学別のグラフも描き直す（従来は再読み込みまで反映されなかった）
+                    if (typeof updateTestCharts === 'function') updateTestCharts();
                 }
                 if (added) alert(`過去問 ${added}件をテスト結果に取り込みました！`);
                 return added;
