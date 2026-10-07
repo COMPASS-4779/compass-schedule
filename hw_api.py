@@ -486,6 +486,26 @@ class StudentIn(BaseModel):
     note: str = ""
 
 
+@router.get("/student-grades")
+def student_grades(authorization: str = Header(None), db: Session = Depends(get_db)):
+    """生徒の学年（スケジュール管理のプロフィールの 小学生／中学生／高校生）。
+    テスト作成システムが、成績の教科を学年に合わせる（高校生に「算数」を出さない）のに使う。パスワードは返さない。"""
+    if (r := _auth_or_401(authorization)):
+        return r
+    import json
+    import models
+    out = {}
+    for u in db.query(models.User).all():
+        try:
+            prof = (json.loads(u.data) if u.data else {}).get("profile") or {}
+        except (ValueError, TypeError, AttributeError):
+            prof = {}
+        grade = str(prof.get("grade") or "").strip()
+        if grade:
+            out[u.user_id] = {"grade": grade, "name": str(prof.get("name") or "").strip()}
+    return {"ok": True, "students": out}
+
+
 @router.get("/students")
 def list_students(authorization: str = Header(None), db: Session = Depends(get_db)):
     if (r := _auth_or_401(authorization)):
