@@ -964,6 +964,8 @@ def send_result_report(a: HwAssignment, student: HwStudent, sections):
         return False
     payload = {"sid": a.external_ref or "", "code": a.code, "hw_student_id": student.id, "kind": a.kind,
                "student": a.sheet_student or student.name, "student_name": student.name,
+               # 何回目か（初回＝1、復習テストは 2・3…）と、どの課題から続く復習か（回数別の正答率に使う）
+               "round": a.round or 1, "assignment_id": a.id, "parent_id": a.parent_id,
                "title": a.title, "subject": a.subject,
                "sections": [{"daimon": s.get("daimon"), "total": s.get("total"), "unit": s.get("unit"),
                              "wrong": [w for w in (s.get("wrong") or []) if isinstance(w, dict)]}
