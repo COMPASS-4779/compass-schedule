@@ -151,6 +151,10 @@ def _reply(reply_token: str, text: str):
     """
     if not (reply_token and text and LINE_HW_CHANNEL_ACCESS_TOKEN):
         return
+    import envmode
+    if envmode.IS_STAGING:                     # テスト環境: 応答も送らない
+        envmode.hold("LINE応答", reply_token[:8], text)
+        return
     try:
         r = requests.post(
             REPLY_URL,

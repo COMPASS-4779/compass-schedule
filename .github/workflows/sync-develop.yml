@@ -1,0 +1,22 @@
+# main に入った変更（緊急の修正・クラウドの自動運転の目次データ）を、develop（テスト環境）にも自動で取り込む。
+# 取り込めない（develop と main で同じところを変えている）ときは失敗し、GitHub の Actions に出る → 手で直す。
+name: sync-develop
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  merge-main-into-develop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: develop
+      - name: merge main into develop
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git merge --no-edit origin/main
+          git push origin develop

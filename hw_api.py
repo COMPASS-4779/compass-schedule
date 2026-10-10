@@ -161,6 +161,8 @@ _folder_cache = {}
 def drive():
     """Drive サービスを返す（初回だけ組み立てる）"""
     global _drive_service
+    import envmode
+    envmode.require_google("Google Drive")     # テスト環境で本番のフォルダを触らない
     if _drive_service is not None:
         return _drive_service
 
@@ -238,6 +240,10 @@ def move_file(file_id, new_parent_id):
 # LINE 配信
 # ======================================================================
 def line_push(group_id, text):
+    import envmode
+    if envmode.IS_STAGING:                     # テスト環境: 生徒に届かないよう、送らずに記録だけ
+        envmode.hold("LINE", group_id, text)
+        return
     if not LINE_TOKEN:
         raise RuntimeError("LINE_HW_CHANNEL_ACCESS_TOKEN が設定されていません")
     r = requests.post(

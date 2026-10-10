@@ -290,6 +290,9 @@ def answers_message(a: HwAssignment):
 
 def notify_admin(subject, body):
     """管理者（HW_ADMIN_EMAIL）へメールで知らせる。未設定・失敗でも処理は止めない。"""
+    import envmode
+    if envmode.IS_STAGING:                     # テスト環境: メールは送らない
+        return envmode.hold("メール", ADMIN_EMAIL, f"{subject}\n{body}")
     if not (MAIL_FROM and MAIL_PASSWORD and ADMIN_EMAIL):
         log.warning("管理者へのメールが未設定のため送れません: %s", subject)
         return False
@@ -476,6 +479,8 @@ def read_answers(files, candidates, texts=None):
 
 
 def _sheets():
+    import envmode
+    envmode.require_google("スプレッドシート")   # テスト環境で本番の結果シートを触らない
     from google.oauth2.credentials import Credentials
     from googleapiclient.discovery import build
     creds = Credentials(
