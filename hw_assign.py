@@ -1945,20 +1945,37 @@ def recode_assignment(assignment_id: int, body: RecodeIn, authorization: str = H
 
 
 @router.post("/assignments/{assignment_id}/cancel")
-def cancel_assignment(assignment_id: int, authorization: str = Header(None), db: Session = Depends(get_db)):
+def cancel_assignment(assignment_id: int, notify: bool = False, authorization: str = Header(None),
+                      db: Session = Depends(get_db)):
+    """課題を取り消す（記録は「取消」として残り、リマインドも止まる）。
+    notify=true で、生徒の手元にある（送付済み・未提出の）テストなら、取り消したことを生徒の LINE に送る（送信取消し）。"""
     err = hw_api._auth_or_401(authorization)
     if err:
         return err
     a = db.query(HwAssignment).filter(HwAssignment.id == assignment_id).first()
     if a is None:
         return Response(status_code=404)
+    notified = False
+    if notify and a.status == "sent":
+        student = db.query(HwStudent).filter(HwStudent.id == a.student_id).first()
+        if student is None or not student.group_id:
+            return {"ok": False, "error": "生徒のLINEの送り先が登録されていないため、取り消しを送れません"}
+        try:
+            hw_api.line_push(student.group_id,
+                             f"🗑 「{a.label or a.title}」（テストID {a.code}）は取り消しになりました。\n"
+                             "このテストは解かなくて大丈夫です（提出も不要です）。")
+            notified = True
+        except Exception as e:
+            return {"ok": False, "error": f"取り消しのLINEを送れませんでした: {e}"}
     a.status, a.updated_at = "canceled", _now()
     d = db.query(HwDelivery).filter(HwDelivery.id == a.delivery_id).first() if a.delivery_id else None
     if d is not None and d.status in ("pending", "paused"):
         d.status = "canceled"
     db.commit()
     ledger_update(a)
-    return {"ok": True, "assignment": assignment_json(a, db)}
+    if notified:
+        log.info("送信を取り消し、生徒に連絡しました: %s %s", a.code, a.title)
+    return {"ok": True, "assignment": assignment_json(a, db), "notified": notified}
 
 
 @router.delete("/assignments/{assignment_id}")
