@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends, Query, Request, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
+import envmode   # 本番／テスト環境（ENVIRONMENT=staging では LINE・メールを送らない）
 import models, schemas
 import lw_relay   # LINE WORKS Bot Callback 中継（テーブル登録のため create_all より前に import）
 import line_relay  # LINE 公式アカウント Webhook 中継（同上）
@@ -51,6 +52,8 @@ def _start_hw_scheduler():
     try:
         sched = hw_api.start_scheduler()
         hw_assign.add_jobs(sched)   # 提出の自動記録（5分）・リマインド（10分）・送付テストタブ（1分）
+        import db_backup
+        db_backup.add_jobs(sched)   # DBのバックアップ（新しい版の起動時・毎日3時。本番だけ）
     except Exception as e:
         print(f"宿題配信スケジューラの起動に失敗: {e}", flush=True)
 
@@ -115,6 +118,12 @@ def delete_user(user_id: str, db: Session = Depends(get_db)):
         return {"success": True, "message": "削除しました"}
     return {"success": False, "message": "ユーザーが見つかりません"}
 
+try:
+    _APP_VERSION = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "VERSION"), encoding="utf-8").read().strip()
+except Exception:
+    _APP_VERSION = ""
+
+
 @app.get("/health")
 def health(db: Session = Depends(get_db)):
     """DBの種別と保存状況を返す。データ消失の切り分け用。認証情報は含めない。"""
@@ -126,6 +135,7 @@ def health(db: Session = Depends(get_db)):
     return {
         "db_backend": DB_BACKEND,
         "commit": (os.environ.get("RENDER_GIT_COMMIT") or "")[:7],   # デプロイが反映されたかの確認用
+        "version": _APP_VERSION, "environment": envmode.ENVIRONMENT,
         "persistent": not IS_EPHEMERAL_DB,
         "users": user_count,
         "users_with_data": saved_count,
